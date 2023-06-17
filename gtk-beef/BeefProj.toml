@@ -1,0 +1,6 @@
+FileVersion = 1
+
+[Project]
+Name = "gtk-beef"
+TargetType = "BeefLib"
+StartupObject = "gtk_beef.Program"
