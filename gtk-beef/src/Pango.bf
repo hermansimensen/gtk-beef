@@ -195,7 +195,7 @@ class Pango
 	[CRepr]
 	public struct Context;
 	[LinkName("pango_context_new")]
-	public static extern Context ContextNew();
+	public static extern Context* ContextNew();
 	[LinkName("pango_context_changed")]
 	public static extern void ContextChanged(Context context);
 	[LinkName("pango_context_get_base_dir")]
@@ -203,19 +203,19 @@ class Pango
 	[LinkName("pango_context_get_base_gravity")]
 	public static extern Gravity ContextGetBaseGravity(Context context);
 	[LinkName("pango_context_get_font_description")]
-	public static extern FontDescription ContextGetFontDescription(Context context);
+	public static extern FontDescription* ContextGetFontDescription(Context context);
 	[LinkName("pango_context_get_font_map")]
-	public static extern FontMap ContextGetFontMap(Context context);
+	public static extern FontMap* ContextGetFontMap(Context context);
 	[LinkName("pango_context_get_gravity")]
 	public static extern Gravity ContextGetGravity(Context context);
 	[LinkName("pango_context_get_gravity_hint")]
 	public static extern GravityHint ContextGetGravityHint(Context context);
 	[LinkName("pango_context_get_language")]
-	public static extern Language ContextGetLanguage(Context context);
+	public static extern Language* ContextGetLanguage(Context context);
 	[LinkName("pango_context_get_matrix")]
-	public static extern Matrix ContextGetMatrix(Context context);
+	public static extern Matrix* ContextGetMatrix(Context context);
 	[LinkName("pango_context_get_metrics")]
-	public static extern FontMetrics ContextGetMetrics(Context context, FontDescription desc, Language language);
+	public static extern FontMetrics* ContextGetMetrics(Context context, FontDescription desc, Language language);
 	[LinkName("pango_context_get_round_glyph_positions")]
 	public static extern c_int ContextGetRoundGlyphPositions(Context context);
 	[LinkName("pango_context_get_serial")]
@@ -223,9 +223,9 @@ class Pango
 	[LinkName("pango_context_list_families")]
 	public static extern void ContextListFamilies(Context context, c_int n_families);
 	[LinkName("pango_context_load_font")]
-	public static extern Font ContextLoadFont(Context context, FontDescription desc);
+	public static extern Font* ContextLoadFont(Context context, FontDescription desc);
 	[LinkName("pango_context_load_fontset")]
-	public static extern Fontset ContextLoadFontset(Context context, FontDescription desc, Language language);
+	public static extern Fontset* ContextLoadFontset(Context context, FontDescription desc, Language language);
 	[LinkName("pango_context_set_base_dir")]
 	public static extern void ContextSetBaseDir(Context context, Direction direction);
 	[LinkName("pango_context_set_base_gravity")]
@@ -249,15 +249,15 @@ class Pango
 	[CRepr]
 	public struct Coverage;
 	[LinkName("pango_coverage_new")]
-	public static extern Coverage CoverageNew();
+	public static extern Coverage* CoverageNew();
 	[LinkName("pango_coverage_copy")]
-	public static extern Coverage CoverageCopy(Coverage coverage);
+	public static extern Coverage* CoverageCopy(Coverage coverage);
 	[LinkName("pango_coverage_get")]
 	public static extern CoverageLevel CoverageGet(Coverage coverage, c_int index_);
 	[LinkName("pango_coverage_max")]
 	public static extern void CoverageMax(Coverage coverage, Coverage other);
 	[LinkName("pango_coverage_ref")]
-	public static extern Coverage CoverageRef(Coverage coverage);
+	public static extern Coverage* CoverageRef(Coverage coverage);
 	[LinkName("pango_coverage_set")]
 	public static extern void CoverageSet(Coverage coverage, c_int index_, CoverageLevel level);
 	[LinkName("pango_coverage_to_bytes")]
@@ -291,17 +291,17 @@ class Pango
 	[CRepr]
 	public struct Font;
 	[LinkName("pango_font_describe")]
-	public static extern FontDescription FontDescribe(Font font);
+	public static extern FontDescription* FontDescribe(Font font);
 	[LinkName("pango_font_describe_with_absolute_size")]
-	public static extern FontDescription FontDescribeWithAbsoluteSize(Font font);
+	public static extern FontDescription* FontDescribeWithAbsoluteSize(Font font);
 	[LinkName("pango_font_get_coverage")]
-	public static extern Coverage FontGetCoverage(Font font, Language language);
+	public static extern Coverage* FontGetCoverage(Font font, Language language);
 	[LinkName("pango_font_get_face")]
-	public static extern FontFace FontGetFace(Font font);
+	public static extern FontFace* FontGetFace(Font font);
 	[LinkName("pango_font_get_features")]
 	public static extern void FontGetFeatures(Font font, void* features, c_uint len, c_uint num_features);
 	[LinkName("pango_font_get_font_map")]
-	public static extern FontMap FontGetFontMap(Font font);
+	public static extern FontMap* FontGetFontMap(Font font);
 	[LinkName("pango_font_get_glyph_extents")]
 	public static extern void FontGetGlyphExtents(Font font, Glyph glyph, Rectangle ink_rect, Rectangle logical_rect);
 	[LinkName("pango_font_get_hb_font")]
@@ -309,11 +309,11 @@ class Pango
 	[LinkName("pango_font_get_languages")]
 	public static extern Language FontGetLanguages(Font font);
 	[LinkName("pango_font_get_metrics")]
-	public static extern FontMetrics FontGetMetrics(Font font, Language language);
+	public static extern FontMetrics* FontGetMetrics(Font font, Language language);
 	[LinkName("pango_font_has_char")]
 	public static extern c_int FontHasChar(Font font, c_uint wc);
 	[LinkName("pango_font_serialize")]
-	public static extern GLib.Bytes FontSerialize(Font font);
+	public static extern GLib.Bytes* FontSerialize(Font font);
 	[CRepr]
 	public struct FontClass
 	{
@@ -326,11 +326,11 @@ class Pango
 	[CRepr]
 	public struct FontFace;
 	[LinkName("pango_font_face_describe")]
-	public static extern FontDescription FontFaceDescribe(FontFace face);
+	public static extern FontDescription* FontFaceDescribe(FontFace face);
 	[LinkName("pango_font_face_get_face_name")]
-	public static extern char8* FontFaceGetFaceName(FontFace face);
+	public static extern char8** FontFaceGetFaceName(FontFace face);
 	[LinkName("pango_font_face_get_family")]
-	public static extern FontFamily FontFaceGetFamily(FontFace face);
+	public static extern FontFamily* FontFaceGetFamily(FontFace face);
 	[LinkName("pango_font_face_is_synthesized")]
 	public static extern c_int FontFaceIsSynthesized(FontFace face);
 	[LinkName("pango_font_face_list_sizes")]
@@ -343,9 +343,9 @@ class Pango
 	[CRepr]
 	public struct FontFamily;
 	[LinkName("pango_font_family_get_face")]
-	public static extern FontFace FontFamilyGetFace(FontFamily family, char8* name);
+	public static extern FontFace* FontFamilyGetFace(FontFamily family, char8* name);
 	[LinkName("pango_font_family_get_name")]
-	public static extern char8* FontFamilyGetName(FontFamily family);
+	public static extern char8** FontFamilyGetName(FontFamily family);
 	[LinkName("pango_font_family_is_monospace")]
 	public static extern c_int FontFamilyIsMonospace(FontFamily family);
 	[LinkName("pango_font_family_is_variable")]
@@ -362,17 +362,17 @@ class Pango
 	[LinkName("pango_font_map_changed")]
 	public static extern void FontMapChanged(FontMap fontmap);
 	[LinkName("pango_font_map_create_context")]
-	public static extern Context FontMapCreateContext(FontMap fontmap);
+	public static extern Context* FontMapCreateContext(FontMap fontmap);
 	[LinkName("pango_font_map_get_family")]
-	public static extern FontFamily FontMapGetFamily(FontMap fontmap, char8* name);
+	public static extern FontFamily* FontMapGetFamily(FontMap fontmap, char8* name);
 	[LinkName("pango_font_map_get_serial")]
 	public static extern c_uint FontMapGetSerial(FontMap fontmap);
 	[LinkName("pango_font_map_list_families")]
 	public static extern void FontMapListFamilies(FontMap fontmap, c_int n_families);
 	[LinkName("pango_font_map_load_font")]
-	public static extern Font FontMapLoadFont(FontMap fontmap, Context context, FontDescription desc);
+	public static extern Font* FontMapLoadFont(FontMap fontmap, Context context, FontDescription desc);
 	[LinkName("pango_font_map_load_fontset")]
-	public static extern Fontset FontMapLoadFontset(FontMap fontmap, Context context, FontDescription desc, Language language);
+	public static extern Fontset* FontMapLoadFontset(FontMap fontmap, Context context, FontDescription desc, Language language);
 	[CRepr]
 	public struct FontMapClass
 	{
@@ -417,9 +417,9 @@ class Pango
 	[LinkName("pango_fontset_foreach")]
 	public static extern void FontsetForeach(Fontset fontset, FontsetForeachFunc func, void* data);
 	[LinkName("pango_fontset_get_font")]
-	public static extern Font FontsetGetFont(Fontset fontset, c_uint wc);
+	public static extern Font* FontsetGetFont(Fontset fontset, c_uint wc);
 	[LinkName("pango_fontset_get_metrics")]
-	public static extern FontMetrics FontsetGetMetrics(Fontset fontset);
+	public static extern FontMetrics* FontsetGetMetrics(Fontset fontset);
 	[CRepr]
 	public struct FontsetClass
 	{
@@ -429,7 +429,7 @@ class Pango
 	[CRepr]
 	public struct FontsetSimple;
 	[LinkName("pango_fontset_simple_new")]
-	public static extern FontsetSimple FontsetSimpleNew(Language language);
+	public static extern FontsetSimple* FontsetSimpleNew(Language language);
 	[LinkName("pango_fontset_simple_append")]
 	public static extern void FontsetSimpleAppend(FontsetSimple fontset, Font font);
 	[LinkName("pango_fontset_simple_size")]
@@ -514,15 +514,15 @@ class Pango
 	[CRepr]
 	public struct Layout;
 	[LinkName("pango_layout_new")]
-	public static extern Layout LayoutNew(Context context);
+	public static extern Layout* LayoutNew(Context context);
 	[LinkName("pango_layout_context_changed")]
 	public static extern void LayoutContextChanged(Layout layout);
 	[LinkName("pango_layout_copy")]
-	public static extern Layout LayoutCopy(Layout src);
+	public static extern Layout* LayoutCopy(Layout src);
 	[LinkName("pango_layout_get_alignment")]
 	public static extern Alignment LayoutGetAlignment(Layout layout);
 	[LinkName("pango_layout_get_attributes")]
-	public static extern AttrList LayoutGetAttributes(Layout layout);
+	public static extern AttrList* LayoutGetAttributes(Layout layout);
 	[LinkName("pango_layout_get_auto_dir")]
 	public static extern c_int LayoutGetAutoDir(Layout layout);
 	[LinkName("pango_layout_get_baseline")]
@@ -532,7 +532,7 @@ class Pango
 	[LinkName("pango_layout_get_character_count")]
 	public static extern c_int LayoutGetCharacterCount(Layout layout);
 	[LinkName("pango_layout_get_context")]
-	public static extern Context LayoutGetContext(Layout layout);
+	public static extern Context* LayoutGetContext(Layout layout);
 	[LinkName("pango_layout_get_cursor_pos")]
 	public static extern void LayoutGetCursorPos(Layout layout, c_int index_, Rectangle strong_pos, Rectangle weak_pos);
 	[LinkName("pango_layout_get_direction")]
@@ -542,29 +542,29 @@ class Pango
 	[LinkName("pango_layout_get_extents")]
 	public static extern void LayoutGetExtents(Layout layout, Rectangle ink_rect, Rectangle logical_rect);
 	[LinkName("pango_layout_get_font_description")]
-	public static extern FontDescription LayoutGetFontDescription(Layout layout);
+	public static extern FontDescription* LayoutGetFontDescription(Layout layout);
 	[LinkName("pango_layout_get_height")]
 	public static extern c_int LayoutGetHeight(Layout layout);
 	[LinkName("pango_layout_get_indent")]
 	public static extern c_int LayoutGetIndent(Layout layout);
 	[LinkName("pango_layout_get_iter")]
-	public static extern LayoutIter LayoutGetIter(Layout layout);
+	public static extern LayoutIter* LayoutGetIter(Layout layout);
 	[LinkName("pango_layout_get_justify")]
 	public static extern c_int LayoutGetJustify(Layout layout);
 	[LinkName("pango_layout_get_justify_last_line")]
 	public static extern c_int LayoutGetJustifyLastLine(Layout layout);
 	[LinkName("pango_layout_get_line")]
-	public static extern LayoutLine LayoutGetLine(Layout layout, c_int line);
+	public static extern LayoutLine* LayoutGetLine(Layout layout, c_int line);
 	[LinkName("pango_layout_get_line_count")]
 	public static extern c_int LayoutGetLineCount(Layout layout);
 	[LinkName("pango_layout_get_line_readonly")]
-	public static extern LayoutLine LayoutGetLineReadonly(Layout layout, c_int line);
+	public static extern LayoutLine* LayoutGetLineReadonly(Layout layout, c_int line);
 	[LinkName("pango_layout_get_line_spacing")]
 	public static extern float LayoutGetLineSpacing(Layout layout);
 	[LinkName("pango_layout_get_lines")]
-	public static extern GLib.SList LayoutGetLines(Layout layout);
+	public static extern GLib.SList* LayoutGetLines(Layout layout);
 	[LinkName("pango_layout_get_lines_readonly")]
-	public static extern GLib.SList LayoutGetLinesReadonly(Layout layout);
+	public static extern GLib.SList* LayoutGetLinesReadonly(Layout layout);
 	[LinkName("pango_layout_get_log_attrs")]
 	public static extern void LayoutGetLogAttrs(Layout layout, c_int n_attrs);
 	[LinkName("pango_layout_get_log_attrs_readonly")]
@@ -582,9 +582,9 @@ class Pango
 	[LinkName("pango_layout_get_spacing")]
 	public static extern c_int LayoutGetSpacing(Layout layout);
 	[LinkName("pango_layout_get_tabs")]
-	public static extern TabArray LayoutGetTabs(Layout layout);
+	public static extern TabArray* LayoutGetTabs(Layout layout);
 	[LinkName("pango_layout_get_text")]
-	public static extern char8* LayoutGetText(Layout layout);
+	public static extern char8** LayoutGetText(Layout layout);
 	[LinkName("pango_layout_get_unknown_glyphs_count")]
 	public static extern c_int LayoutGetUnknownGlyphsCount(Layout layout);
 	[LinkName("pango_layout_get_width")]
@@ -602,7 +602,7 @@ class Pango
 	[LinkName("pango_layout_move_cursor_visually")]
 	public static extern void LayoutMoveCursorVisually(Layout layout, c_int strong, c_int old_index, c_int old_trailing, c_int direction, c_int new_index, c_int new_trailing);
 	[LinkName("pango_layout_serialize")]
-	public static extern GLib.Bytes LayoutSerialize(Layout layout, LayoutSerializeFlags flags);
+	public static extern GLib.Bytes* LayoutSerialize(Layout layout, LayoutSerializeFlags flags);
 	[LinkName("pango_layout_set_alignment")]
 	public static extern void LayoutSetAlignment(Layout layout, Alignment alignment);
 	[LinkName("pango_layout_set_attributes")]
@@ -756,13 +756,13 @@ class Pango
 	[LinkName("pango_renderer_get_alpha")]
 	public static extern c_ushort RendererGetAlpha(Renderer renderer, RenderPart part);
 	[LinkName("pango_renderer_get_color")]
-	public static extern Color RendererGetColor(Renderer renderer, RenderPart part);
+	public static extern Color* RendererGetColor(Renderer renderer, RenderPart part);
 	[LinkName("pango_renderer_get_layout")]
-	public static extern Layout RendererGetLayout(Renderer renderer);
+	public static extern Layout* RendererGetLayout(Renderer renderer);
 	[LinkName("pango_renderer_get_layout_line")]
-	public static extern LayoutLine RendererGetLayoutLine(Renderer renderer);
+	public static extern LayoutLine* RendererGetLayoutLine(Renderer renderer);
 	[LinkName("pango_renderer_get_matrix")]
-	public static extern Matrix RendererGetMatrix(Renderer renderer);
+	public static extern Matrix* RendererGetMatrix(Renderer renderer);
 	[LinkName("pango_renderer_part_changed")]
 	public static extern void RendererPartChanged(Renderer renderer, RenderPart part);
 	[LinkName("pango_renderer_set_alpha")]

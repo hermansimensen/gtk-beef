@@ -14,19 +14,19 @@ class GObject
 	[CRepr]
 	public struct Binding;
 	[LinkName("g_binding_dup_source")]
-	public static extern Object BindindupSource(Binding binding);
+	public static extern Object* BindindupSource(Binding binding);
 	[LinkName("g_binding_dup_target")]
-	public static extern Object BindindupTarget(Binding binding);
+	public static extern Object* BindindupTarget(Binding binding);
 	[LinkName("g_binding_get_flags")]
 	public static extern BindingFlags BindingetFlags(Binding binding);
 	[LinkName("g_binding_get_source")]
-	public static extern Object BindingetSource(Binding binding);
+	public static extern Object* BindingetSource(Binding binding);
 	[LinkName("g_binding_get_source_property")]
-	public static extern char8* BindingetSourceProperty(Binding binding);
+	public static extern char8** BindingetSourceProperty(Binding binding);
 	[LinkName("g_binding_get_target")]
-	public static extern Object BindingetTarget(Binding binding);
+	public static extern Object* BindingetTarget(Binding binding);
 	[LinkName("g_binding_get_target_property")]
-	public static extern char8* BindingetTargetProperty(Binding binding);
+	public static extern char8** BindingetTargetProperty(Binding binding);
 	[LinkName("g_binding_unbind")]
 	public static extern void Bindinunbind(Binding binding);
 	[CRepr]
@@ -40,7 +40,7 @@ class GObject
 	[CRepr]
 	public struct BindingGroup;
 	[LinkName("g_binding_group_new")]
-	public static extern BindingGroup BindingroupNew();
+	public static extern BindingGroup* BindingroupNew();
 	[LinkName("g_binding_group_bind")]
 	public static extern void BindingroupBind(BindingGroup self, char8* source_property, Object target, char8* target_property, BindingFlags flags);
 	[LinkName("g_binding_group_bind_full")]
@@ -152,9 +152,9 @@ class GObject
 	[LinkName("g_object_new")]
 	public static extern Object ObjectNew(GLib.Type object_type, char8* first_property_name);
 	[LinkName("g_object_new_valist")]
-	public static extern Object ObjectNewValist(GLib.Type object_type, char8* first_property_name, VarArgs var_args);
+	public static extern Object* ObjectNewValist(GLib.Type object_type, char8* first_property_name, VarArgs var_args);
 	[LinkName("g_object_new_with_properties")]
-	public static extern Object ObjectNewWithProperties(GLib.Type object_type, c_uint n_properties);
+	public static extern Object* ObjectNewWithProperties(GLib.Type object_type, c_uint n_properties);
 	[LinkName("g_object_newv")]
 	public static extern Object ObjectNewv(GLib.Type object_type, c_uint n_parameters);
 	[LinkName("g_object_add_toggle_ref")]
@@ -162,11 +162,11 @@ class GObject
 	[LinkName("g_object_add_weak_pointer")]
 	public static extern void ObjectAddWeakPointer(Object object, void* weak_pointer_location);
 	[LinkName("g_object_bind_property")]
-	public static extern Binding ObjectBindProperty(Object source, char8* source_property, Object target, char8* target_property, BindingFlags flags);
+	public static extern Binding* ObjectBindProperty(Object source, char8* source_property, Object target, char8* target_property, BindingFlags flags);
 	[LinkName("g_object_bind_property_full")]
-	public static extern Binding ObjectBindPropertyFull(Object source, char8* source_property, Object target, char8* target_property, BindingFlags flags, BindingTransformFunc transform_to, BindingTransformFunc transform_from, void* user_data, GLib.DestroyNotify notify);
+	public static extern Binding* ObjectBindPropertyFull(Object source, char8* source_property, Object target, char8* target_property, BindingFlags flags, BindingTransformFunc transform_to, BindingTransformFunc transform_from, void* user_data, GLib.DestroyNotify notify);
 	[LinkName("g_object_bind_property_with_closures")]
-	public static extern Binding ObjectBindPropertyWithClosures(Object source, char8* source_property, Object target, char8* target_property, BindingFlags flags, Closure transform_to, Closure transform_from);
+	public static extern Binding* ObjectBindPropertyWithClosures(Object source, char8* source_property, Object target, char8* target_property, BindingFlags flags, Closure transform_to, Closure transform_from);
 	[LinkName("g_object_connect")]
 	public static extern Object ObjectConnect(Object object, char8* signal_spec);
 	[LinkName("g_object_disconnect")]
@@ -281,23 +281,23 @@ class GObject
 	[CRepr]
 	public struct ParamSpec;
 	[LinkName("g_param_spec_get_blurb")]
-	public static extern char8* ParamSpecGetBlurb(ParamSpec pspec);
+	public static extern char8** ParamSpecGetBlurb(ParamSpec pspec);
 	[LinkName("g_param_spec_get_default_value")]
-	public static extern Value ParamSpecGetDefaultValue(ParamSpec pspec);
+	public static extern Value* ParamSpecGetDefaultValue(ParamSpec pspec);
 	[LinkName("g_param_spec_get_name")]
-	public static extern char8* ParamSpecGetName(ParamSpec pspec);
+	public static extern char8** ParamSpecGetName(ParamSpec pspec);
 	[LinkName("g_param_spec_get_name_quark")]
 	public static extern GLib.Quark ParamSpecGetNameQuark(ParamSpec pspec);
 	[LinkName("g_param_spec_get_nick")]
-	public static extern char8* ParamSpecGetNick(ParamSpec pspec);
+	public static extern char8** ParamSpecGetNick(ParamSpec pspec);
 	[LinkName("g_param_spec_get_qdata")]
 	public static extern void* ParamSpecGetQdata(ParamSpec pspec, GLib.Quark quark);
 	[LinkName("g_param_spec_get_redirect_target")]
-	public static extern ParamSpec ParamSpecGetRedirectTarget(ParamSpec pspec);
+	public static extern ParamSpec* ParamSpecGetRedirectTarget(ParamSpec pspec);
 	[LinkName("g_param_spec_ref")]
-	public static extern ParamSpec ParamSpecRef(ParamSpec pspec);
+	public static extern ParamSpec* ParamSpecRef(ParamSpec pspec);
 	[LinkName("g_param_spec_ref_sink")]
-	public static extern ParamSpec ParamSpecRefSink(ParamSpec pspec);
+	public static extern ParamSpec* ParamSpecRefSink(ParamSpec pspec);
 	[LinkName("g_param_spec_set_qdata")]
 	public static extern void ParamSpecSetQdata(ParamSpec pspec, GLib.Quark quark, void* data);
 	[LinkName("g_param_spec_set_qdata_full")]
@@ -396,7 +396,7 @@ class GObject
 	[CRepr]
 	public struct SignalGroup;
 	[LinkName("g_signal_group_new")]
-	public static extern SignalGroup SignalGroupNew(GLib.Type target_type);
+	public static extern SignalGroup* SignalGroupNew(GLib.Type target_type);
 	[LinkName("g_signal_group_block")]
 	public static extern void SignalGroupBlock(SignalGroup self);
 	[LinkName("g_signal_group_connect")]

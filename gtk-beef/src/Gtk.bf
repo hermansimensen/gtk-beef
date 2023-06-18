@@ -19,9 +19,9 @@ class Gtk
 	[CRepr]
 	public struct ATContext;
 	[LinkName("gtk_at_context_create")]
-	public static extern ATContext AtContextCreate(AccessibleRole accessible_role, Accessible accessible, Gdk.Display display);
+	public static extern ATContext* AtContextCreate(AccessibleRole accessible_role, Accessible accessible, Gdk.Display display);
 	[LinkName("gtk_at_context_get_accessible")]
-	public static extern Accessible AtContextGetAccessible(ATContext self);
+	public static extern Accessible* AtContextGetAccessible(ATContext self);
 	[LinkName("gtk_at_context_get_accessible_role")]
 	public static extern AccessibleRole AtContextGetAccessibleRole(ATContext self);
 	[CRepr]
@@ -31,7 +31,7 @@ class Gtk
 	[CRepr]
 	public struct AboutDialog;
 	[LinkName("gtk_about_dialog_new")]
-	public static extern Widget AboutDialogNew();
+	public static extern Widget* AboutDialogNew();
 	[LinkName("gtk_about_dialog_add_credit_section")]
 	public static extern void AboutDialogAddCreditSection(AboutDialog about, char8* section_name);
 	[LinkName("gtk_about_dialog_get_artists")]
@@ -39,31 +39,31 @@ class Gtk
 	[LinkName("gtk_about_dialog_get_authors")]
 	public static extern char8* AboutDialogGetAuthors(AboutDialog about);
 	[LinkName("gtk_about_dialog_get_comments")]
-	public static extern char8* AboutDialogGetComments(AboutDialog about);
+	public static extern char8** AboutDialogGetComments(AboutDialog about);
 	[LinkName("gtk_about_dialog_get_copyright")]
-	public static extern char8* AboutDialogGetCopyright(AboutDialog about);
+	public static extern char8** AboutDialogGetCopyright(AboutDialog about);
 	[LinkName("gtk_about_dialog_get_documenters")]
 	public static extern char8* AboutDialogGetDocumenters(AboutDialog about);
 	[LinkName("gtk_about_dialog_get_license")]
-	public static extern char8* AboutDialogGetLicense(AboutDialog about);
+	public static extern char8** AboutDialogGetLicense(AboutDialog about);
 	[LinkName("gtk_about_dialog_get_license_type")]
 	public static extern License AboutDialogGetLicenseType(AboutDialog about);
 	[LinkName("gtk_about_dialog_get_logo")]
-	public static extern Gdk.Paintable AboutDialogGetLogo(AboutDialog about);
+	public static extern Gdk.Paintable* AboutDialogGetLogo(AboutDialog about);
 	[LinkName("gtk_about_dialog_get_logo_icon_name")]
-	public static extern char8* AboutDialogGetLogoIconName(AboutDialog about);
+	public static extern char8** AboutDialogGetLogoIconName(AboutDialog about);
 	[LinkName("gtk_about_dialog_get_program_name")]
-	public static extern char8* AboutDialogGetProgramName(AboutDialog about);
+	public static extern char8** AboutDialogGetProgramName(AboutDialog about);
 	[LinkName("gtk_about_dialog_get_system_information")]
-	public static extern char8* AboutDialogGetSystemInformation(AboutDialog about);
+	public static extern char8** AboutDialogGetSystemInformation(AboutDialog about);
 	[LinkName("gtk_about_dialog_get_translator_credits")]
-	public static extern char8* AboutDialogGetTranslatorCredits(AboutDialog about);
+	public static extern char8** AboutDialogGetTranslatorCredits(AboutDialog about);
 	[LinkName("gtk_about_dialog_get_version")]
-	public static extern char8* AboutDialogGetVersion(AboutDialog about);
+	public static extern char8** AboutDialogGetVersion(AboutDialog about);
 	[LinkName("gtk_about_dialog_get_website")]
-	public static extern char8* AboutDialogGetWebsite(AboutDialog about);
+	public static extern char8** AboutDialogGetWebsite(AboutDialog about);
 	[LinkName("gtk_about_dialog_get_website_label")]
-	public static extern char8* AboutDialogGetWebsiteLabel(AboutDialog about);
+	public static extern char8** AboutDialogGetWebsiteLabel(AboutDialog about);
 	[LinkName("gtk_about_dialog_get_wrap_license")]
 	public static extern c_int AboutDialogGetWrapLicense(AboutDialog about);
 	[LinkName("gtk_about_dialog_set_artists")]
@@ -301,9 +301,9 @@ class Gtk
 	[CRepr]
 	public struct ActionBar;
 	[LinkName("gtk_action_bar_new")]
-	public static extern Widget ActionBarNew();
+	public static extern Widget* ActionBarNew();
 	[LinkName("gtk_action_bar_get_center_widget")]
-	public static extern Widget ActionBarGetCenterWidget(ActionBar action_bar);
+	public static extern Widget* ActionBarGetCenterWidget(ActionBar action_bar);
 	[LinkName("gtk_action_bar_get_revealed")]
 	public static extern c_int ActionBarGetRevealed(ActionBar action_bar);
 	[LinkName("gtk_action_bar_pack_end")]
@@ -341,7 +341,7 @@ class Gtk
 	[CRepr]
 	public struct Adjustment;
 	[LinkName("gtk_adjustment_new")]
-	public static extern Adjustment AdjustmentNew(double value, double lower, double upper, double step_increment, double page_increment, double page_size);
+	public static extern Adjustment* AdjustmentNew(double value, double lower, double upper, double step_increment, double page_increment, double page_size);
 	[LinkName("gtk_adjustment_clamp_page")]
 	public static extern void AdjustmentClampPage(Adjustment adjustment, double lower, double upper);
 	[LinkName("gtk_adjustment_configure")]
@@ -380,7 +380,7 @@ class Gtk
 	[CRepr]
 	public struct AlertDialog;
 	[LinkName("gtk_alert_dialog_new")]
-	public static extern AlertDialog AlertDialogNew(char8* format);
+	public static extern AlertDialog* AlertDialogNew(char8* format);
 	[LinkName("gtk_alert_dialog_choose")]
 	public static extern void AlertDialogChoose(AlertDialog self, Window parent, Gio.Cancellable cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gtk_alert_dialog_choose_finish")]
@@ -392,9 +392,9 @@ class Gtk
 	[LinkName("gtk_alert_dialog_get_default_button")]
 	public static extern c_int AlertDialogGetDefaultButton(AlertDialog self);
 	[LinkName("gtk_alert_dialog_get_detail")]
-	public static extern char8* AlertDialogGetDetail(AlertDialog self);
+	public static extern char8** AlertDialogGetDetail(AlertDialog self);
 	[LinkName("gtk_alert_dialog_get_message")]
-	public static extern char8* AlertDialogGetMessage(AlertDialog self);
+	public static extern char8** AlertDialogGetMessage(AlertDialog self);
 	[LinkName("gtk_alert_dialog_get_modal")]
 	public static extern c_int AlertDialogGetModal(AlertDialog self);
 	[LinkName("gtk_alert_dialog_set_buttons")]
@@ -429,11 +429,11 @@ class Gtk
 	[CRepr]
 	public struct AlternativeTrigger;
 	[LinkName("gtk_alternative_trigger_new")]
-	public static extern ShortcutTrigger AlternativeTriggerNew(ShortcutTrigger first, ShortcutTrigger second);
+	public static extern ShortcutTrigger* AlternativeTriggerNew(ShortcutTrigger first, ShortcutTrigger second);
 	[LinkName("gtk_alternative_trigger_get_first")]
-	public static extern ShortcutTrigger AlternativeTriggerGetFirst(AlternativeTrigger self);
+	public static extern ShortcutTrigger* AlternativeTriggerGetFirst(AlternativeTrigger self);
 	[LinkName("gtk_alternative_trigger_get_second")]
-	public static extern ShortcutTrigger AlternativeTriggerGetSecond(AlternativeTrigger self);
+	public static extern ShortcutTrigger* AlternativeTriggerGetSecond(AlternativeTrigger self);
 	[CRepr]
 	public struct AlternativeTriggerClass
 	{
@@ -441,7 +441,7 @@ class Gtk
 	[CRepr]
 	public struct AnyFilter;
 	[LinkName("gtk_any_filter_new")]
-	public static extern AnyFilter AnyFilterNew();
+	public static extern AnyFilter* AnyFilterNew();
 	[CRepr]
 	public struct AnyFilterClass
 	{
@@ -452,13 +452,13 @@ class Gtk
 	[CRepr]
 	public struct AppChooserButton;
 	[LinkName("gtk_app_chooser_button_new")]
-	public static extern Widget AppChooserButtonNew(char8* content_type);
+	public static extern Widget* AppChooserButtonNew(char8* content_type);
 	[LinkName("gtk_app_chooser_button_append_custom_item")]
 	public static extern void AppChooserButtonAppendCustomItem(AppChooserButton self, char8* name, char8* label, Gio.Icon icon);
 	[LinkName("gtk_app_chooser_button_append_separator")]
 	public static extern void AppChooserButtonAppendSeparator(AppChooserButton self);
 	[LinkName("gtk_app_chooser_button_get_heading")]
-	public static extern char8* AppChooserButtonGetHeading(AppChooserButton self);
+	public static extern char8** AppChooserButtonGetHeading(AppChooserButton self);
 	[LinkName("gtk_app_chooser_button_get_modal")]
 	public static extern c_int AppChooserButtonGetModal(AppChooserButton self);
 	[LinkName("gtk_app_chooser_button_get_show_default_item")]
@@ -478,21 +478,21 @@ class Gtk
 	[CRepr]
 	public struct AppChooserDialog;
 	[LinkName("gtk_app_chooser_dialog_new")]
-	public static extern Widget AppChooserDialogNew(Window parent, DialogFlags flags, Gio.File file);
+	public static extern Widget* AppChooserDialogNew(Window parent, DialogFlags flags, Gio.File file);
 	[LinkName("gtk_app_chooser_dialog_new_for_content_type")]
-	public static extern Widget AppChooserDialogNewForContentType(Window parent, DialogFlags flags, char8* content_type);
+	public static extern Widget* AppChooserDialogNewForContentType(Window parent, DialogFlags flags, char8* content_type);
 	[LinkName("gtk_app_chooser_dialog_get_heading")]
-	public static extern char8* AppChooserDialogGetHeading(AppChooserDialog self);
+	public static extern char8** AppChooserDialogGetHeading(AppChooserDialog self);
 	[LinkName("gtk_app_chooser_dialog_get_widget")]
-	public static extern Widget AppChooserDialogGetWidget(AppChooserDialog self);
+	public static extern Widget* AppChooserDialogGetWidget(AppChooserDialog self);
 	[LinkName("gtk_app_chooser_dialog_set_heading")]
 	public static extern void AppChooserDialogSetHeading(AppChooserDialog self, char8* heading);
 	[CRepr]
 	public struct AppChooserWidget;
 	[LinkName("gtk_app_chooser_widget_new")]
-	public static extern Widget AppChooserWidgetNew(char8* content_type);
+	public static extern Widget* AppChooserWidgetNew(char8* content_type);
 	[LinkName("gtk_app_chooser_widget_get_default_text")]
-	public static extern char8* AppChooserWidgetGetDefaultText(AppChooserWidget self);
+	public static extern char8** AppChooserWidgetGetDefaultText(AppChooserWidget self);
 	[LinkName("gtk_app_chooser_widget_get_show_all")]
 	public static extern c_int AppChooserWidgetGetShowAll(AppChooserWidget self);
 	[LinkName("gtk_app_chooser_widget_get_show_default")]
@@ -518,7 +518,7 @@ class Gtk
 	[CRepr]
 	public struct Application;
 	[LinkName("gtk_application_new")]
-	public static extern Application ApplicationNew(char8* application_id, Gio.ApplicationFlags flags);
+	public static extern Application* ApplicationNew(char8* application_id, Gio.ApplicationFlags flags);
 	[LinkName("gtk_application_add_window")]
 	public static extern void ApplicationAddWindow(Application application, Window window);
 	[LinkName("gtk_application_get_accels_for_action")]
@@ -526,15 +526,15 @@ class Gtk
 	[LinkName("gtk_application_get_actions_for_accel")]
 	public static extern char8* ApplicationGetActionsForAccel(Application application, char8* accel);
 	[LinkName("gtk_application_get_active_window")]
-	public static extern Window ApplicationGetActiveWindow(Application application);
+	public static extern Window* ApplicationGetActiveWindow(Application application);
 	[LinkName("gtk_application_get_menu_by_id")]
-	public static extern Gio.Menu ApplicationGetMenuById(Application application, char8* id);
+	public static extern Gio.Menu* ApplicationGetMenuById(Application application, char8* id);
 	[LinkName("gtk_application_get_menubar")]
-	public static extern Gio.MenuModel ApplicationGetMenubar(Application application);
+	public static extern Gio.MenuModel* ApplicationGetMenubar(Application application);
 	[LinkName("gtk_application_get_window_by_id")]
-	public static extern Window ApplicationGetWindowById(Application application, c_uint id);
+	public static extern Window* ApplicationGetWindowById(Application application, c_uint id);
 	[LinkName("gtk_application_get_windows")]
-	public static extern GLib.List ApplicationGetWindows(Application application);
+	public static extern GLib.List* ApplicationGetWindows(Application application);
 	[LinkName("gtk_application_inhibit")]
 	public static extern c_uint ApplicationInhibit(Application application, Window window, ApplicationInhibitFlags flags, char8* reason);
 	[LinkName("gtk_application_list_action_descriptions")]
@@ -563,9 +563,9 @@ class Gtk
 	[CRepr]
 	public struct ApplicationWindow;
 	[LinkName("gtk_application_window_new")]
-	public static extern Widget ApplicationWindowNew(Application application);
+	public static extern Widget* ApplicationWindowNew(Application application);
 	[LinkName("gtk_application_window_get_help_overlay")]
-	public static extern ShortcutsWindow ApplicationWindowGetHelpOverlay(ApplicationWindow window);
+	public static extern ShortcutsWindow* ApplicationWindowGetHelpOverlay(ApplicationWindow window);
 	[LinkName("gtk_application_window_get_id")]
 	public static extern c_uint ApplicationWindowGetId(ApplicationWindow window);
 	[LinkName("gtk_application_window_get_show_menubar")]
@@ -590,9 +590,9 @@ class Gtk
 	[CRepr]
 	public struct AspectFrame;
 	[LinkName("gtk_aspect_frame_new")]
-	public static extern Widget AspectFrameNew(float xalign, float yalign, float ratio, c_int obey_child);
+	public static extern Widget* AspectFrameNew(float xalign, float yalign, float ratio, c_int obey_child);
 	[LinkName("gtk_aspect_frame_get_child")]
-	public static extern Widget AspectFrameGetChild(AspectFrame self);
+	public static extern Widget* AspectFrameGetChild(AspectFrame self);
 	[LinkName("gtk_aspect_frame_get_obey_child")]
 	public static extern c_int AspectFrameGetObeyChild(AspectFrame self);
 	[LinkName("gtk_aspect_frame_get_ratio")]
@@ -614,7 +614,7 @@ class Gtk
 	[CRepr]
 	public struct Assistant;
 	[LinkName("gtk_assistant_new")]
-	public static extern Widget AssistantNew();
+	public static extern Widget* AssistantNew();
 	[LinkName("gtk_assistant_add_action_widget")]
 	public static extern void AssistantAddActionWidget(Assistant assistant, Widget child);
 	[LinkName("gtk_assistant_append_page")]
@@ -626,17 +626,17 @@ class Gtk
 	[LinkName("gtk_assistant_get_n_pages")]
 	public static extern c_int AssistantGetNPages(Assistant assistant);
 	[LinkName("gtk_assistant_get_nth_page")]
-	public static extern Widget AssistantGetNthPage(Assistant assistant, c_int page_num);
+	public static extern Widget* AssistantGetNthPage(Assistant assistant, c_int page_num);
 	[LinkName("gtk_assistant_get_page")]
-	public static extern AssistantPage AssistantGetPage(Assistant assistant, Widget child);
+	public static extern AssistantPage* AssistantGetPage(Assistant assistant, Widget child);
 	[LinkName("gtk_assistant_get_page_complete")]
 	public static extern c_int AssistantGetPageComplete(Assistant assistant, Widget page);
 	[LinkName("gtk_assistant_get_page_title")]
-	public static extern char8* AssistantGetPageTitle(Assistant assistant, Widget page);
+	public static extern char8** AssistantGetPageTitle(Assistant assistant, Widget page);
 	[LinkName("gtk_assistant_get_page_type")]
 	public static extern AssistantPageType AssistantGetPageType(Assistant assistant, Widget page);
 	[LinkName("gtk_assistant_get_pages")]
-	public static extern Gio.ListModel AssistantGetPages(Assistant assistant);
+	public static extern Gio.ListModel* AssistantGetPages(Assistant assistant);
 	[LinkName("gtk_assistant_insert_page")]
 	public static extern c_int AssistantInsertPage(Assistant assistant, Widget page, c_int position);
 	[LinkName("gtk_assistant_next_page")]
@@ -664,7 +664,7 @@ class Gtk
 	[CRepr]
 	public struct AssistantPage;
 	[LinkName("gtk_assistant_page_get_child")]
-	public static extern Widget AssistantPageGetChild(AssistantPage page);
+	public static extern Widget* AssistantPageGetChild(AssistantPage page);
 	public function c_int AssistantPageFunc(c_int current_page, void* data);
 	public enum AssistantPageType : c_int
 	{
@@ -684,7 +684,7 @@ class Gtk
 	[CRepr]
 	public struct BinLayout;
 	[LinkName("gtk_bin_layout_new")]
-	public static extern LayoutManager BinLayoutNew();
+	public static extern LayoutManager* BinLayoutNew();
 	[CRepr]
 	public struct BinLayoutClass
 	{
@@ -701,11 +701,11 @@ class Gtk
 	[CRepr]
 	public struct BookmarkList;
 	[LinkName("gtk_bookmark_list_new")]
-	public static extern BookmarkList BookmarkListNew(char8* filename, char8* attributes);
+	public static extern BookmarkList* BookmarkListNew(char8* filename, char8* attributes);
 	[LinkName("gtk_bookmark_list_get_attributes")]
-	public static extern char8* BookmarkListGetAttributes(BookmarkList self);
+	public static extern char8** BookmarkListGetAttributes(BookmarkList self);
 	[LinkName("gtk_bookmark_list_get_filename")]
-	public static extern char8* BookmarkListGetFilename(BookmarkList self);
+	public static extern char8** BookmarkListGetFilename(BookmarkList self);
 	[LinkName("gtk_bookmark_list_get_io_priority")]
 	public static extern c_int BookmarkListGetIoPriority(BookmarkList self);
 	[LinkName("gtk_bookmark_list_is_loading")]
@@ -722,9 +722,9 @@ class Gtk
 	[CRepr]
 	public struct BoolFilter;
 	[LinkName("gtk_bool_filter_new")]
-	public static extern BoolFilter BoolFilterNew(Expression expression);
+	public static extern BoolFilter* BoolFilterNew(Expression expression);
 	[LinkName("gtk_bool_filter_get_expression")]
-	public static extern Expression BoolFilterGetExpression(BoolFilter self);
+	public static extern Expression* BoolFilterGetExpression(BoolFilter self);
 	[LinkName("gtk_bool_filter_get_invert")]
 	public static extern c_int BoolFilterGetInvert(BoolFilter self);
 	[LinkName("gtk_bool_filter_set_expression")]
@@ -760,7 +760,7 @@ class Gtk
 	[CRepr]
 	public struct Box;
 	[LinkName("gtk_box_new")]
-	public static extern Widget BoxNew(Orientation orientation, c_int spacing);
+	public static extern Widget* BoxNew(Orientation orientation, c_int spacing);
 	[LinkName("gtk_box_append")]
 	public static extern void BoxAppend(Box box_, Widget child);
 	[LinkName("gtk_box_get_baseline_child")]
@@ -795,7 +795,7 @@ class Gtk
 	[CRepr]
 	public struct BoxLayout;
 	[LinkName("gtk_box_layout_new")]
-	public static extern LayoutManager BoxLayoutNew(Orientation orientation);
+	public static extern LayoutManager* BoxLayoutNew(Orientation orientation);
 	[LinkName("gtk_box_layout_get_baseline_child")]
 	public static extern c_int BoxLayoutGetBaselineChild(BoxLayout box_layout);
 	[LinkName("gtk_box_layout_get_baseline_position")]
@@ -856,13 +856,13 @@ class Gtk
 	[CRepr]
 	public struct Builder;
 	[LinkName("gtk_builder_new")]
-	public static extern Builder BuilderNew();
+	public static extern Builder* BuilderNew();
 	[LinkName("gtk_builder_new_from_file")]
-	public static extern Builder BuilderNewFromFile(char8* filename);
+	public static extern Builder* BuilderNewFromFile(char8* filename);
 	[LinkName("gtk_builder_new_from_resource")]
-	public static extern Builder BuilderNewFromResource(char8* resource_path);
+	public static extern Builder* BuilderNewFromResource(char8* resource_path);
 	[LinkName("gtk_builder_new_from_string")]
-	public static extern Builder BuilderNewFromString(char8* string, c_long length);
+	public static extern Builder* BuilderNewFromString(char8* string, c_long length);
 	[LinkName("gtk_builder_add_from_file")]
 	public static extern c_int BuilderAddFromFile(Builder builder, char8* filename);
 	[LinkName("gtk_builder_add_from_resource")]
@@ -876,21 +876,21 @@ class Gtk
 	[LinkName("gtk_builder_add_objects_from_string")]
 	public static extern c_int BuilderAddObjectsFromString(Builder builder, char8* buffer, c_long length);
 	[LinkName("gtk_builder_create_closure")]
-	public static extern GObject.Closure BuilderCreateClosure(Builder builder, char8* function_name, BuilderClosureFlags flags, GObject.Object object);
+	public static extern GObject.Closure* BuilderCreateClosure(Builder builder, char8* function_name, BuilderClosureFlags flags, GObject.Object object);
 	[LinkName("gtk_builder_expose_object")]
 	public static extern void BuilderExposeObject(Builder builder, char8* name, GObject.Object object);
 	[LinkName("gtk_builder_extend_with_template")]
 	public static extern c_int BuilderExtendWithTemplate(Builder builder, GObject.Object object, GLib.Type template_type, char8* buffer, c_long length);
 	[LinkName("gtk_builder_get_current_object")]
-	public static extern GObject.Object BuilderGetCurrentObject(Builder builder);
+	public static extern GObject.Object* BuilderGetCurrentObject(Builder builder);
 	[LinkName("gtk_builder_get_object")]
-	public static extern GObject.Object BuilderGetObject(Builder builder, char8* name);
+	public static extern GObject.Object* BuilderGetObject(Builder builder, char8* name);
 	[LinkName("gtk_builder_get_objects")]
-	public static extern GLib.SList BuilderGetObjects(Builder builder);
+	public static extern GLib.SList* BuilderGetObjects(Builder builder);
 	[LinkName("gtk_builder_get_scope")]
-	public static extern BuilderScope BuilderGetScope(Builder builder);
+	public static extern BuilderScope* BuilderGetScope(Builder builder);
 	[LinkName("gtk_builder_get_translation_domain")]
-	public static extern char8* BuilderGetTranslationDomain(Builder builder);
+	public static extern char8** BuilderGetTranslationDomain(Builder builder);
 	[LinkName("gtk_builder_get_type_from_name")]
 	public static extern GLib.Type BuilderGetTypeFromName(Builder builder, char8* type_name);
 	[LinkName("gtk_builder_set_current_object")]
@@ -906,7 +906,7 @@ class Gtk
 	[CRepr]
 	public struct BuilderCScope;
 	[LinkName("gtk_builder_cscope_new")]
-	public static extern BuilderCScope BuilderCscopeNew();
+	public static extern BuilderCScope* BuilderCscopeNew();
 	[LinkName("gtk_builder_cscope_add_callback_symbol")]
 	public static extern void BuilderCscopeAddCallbackSymbol(BuilderCScope self, char8* callback_name, GObject.Callback callback_symbol);
 	[LinkName("gtk_builder_cscope_add_callback_symbols")]
@@ -948,15 +948,15 @@ class Gtk
 	[CRepr]
 	public struct BuilderListItemFactory;
 	[LinkName("gtk_builder_list_item_factory_new_from_bytes")]
-	public static extern ListItemFactory BuilderListItemFactoryNewFromBytes(BuilderScope scope_, GLib.Bytes bytes);
+	public static extern ListItemFactory* BuilderListItemFactoryNewFromBytes(BuilderScope scope_, GLib.Bytes bytes);
 	[LinkName("gtk_builder_list_item_factory_new_from_resource")]
-	public static extern ListItemFactory BuilderListItemFactoryNewFromResource(BuilderScope scope_, char8* resource_path);
+	public static extern ListItemFactory* BuilderListItemFactoryNewFromResource(BuilderScope scope_, char8* resource_path);
 	[LinkName("gtk_builder_list_item_factory_get_bytes")]
-	public static extern GLib.Bytes BuilderListItemFactoryGetBytes(BuilderListItemFactory self);
+	public static extern GLib.Bytes* BuilderListItemFactoryGetBytes(BuilderListItemFactory self);
 	[LinkName("gtk_builder_list_item_factory_get_resource")]
-	public static extern char8* BuilderListItemFactoryGetResource(BuilderListItemFactory self);
+	public static extern char8** BuilderListItemFactoryGetResource(BuilderListItemFactory self);
 	[LinkName("gtk_builder_list_item_factory_get_scope")]
-	public static extern BuilderScope BuilderListItemFactoryGetScope(BuilderListItemFactory self);
+	public static extern BuilderScope* BuilderListItemFactoryGetScope(BuilderListItemFactory self);
 	[CRepr]
 	public struct BuilderListItemFactoryClass
 	{
@@ -978,23 +978,23 @@ class Gtk
 	[CRepr]
 	public struct Button;
 	[LinkName("gtk_button_new")]
-	public static extern Widget ButtonNew();
+	public static extern Widget* ButtonNew();
 	[LinkName("gtk_button_new_from_icon_name")]
-	public static extern Widget ButtonNewFromIconName(char8* icon_name);
+	public static extern Widget* ButtonNewFromIconName(char8* icon_name);
 	[LinkName("gtk_button_new_with_label")]
-	public static extern Widget ButtonNewWithLabel(char8* label);
+	public static extern Widget* ButtonNewWithLabel(char8* label);
 	[LinkName("gtk_button_new_with_mnemonic")]
-	public static extern Widget ButtonNewWithMnemonic(char8* label);
+	public static extern Widget* ButtonNewWithMnemonic(char8* label);
 	[LinkName("gtk_button_get_can_shrink")]
 	public static extern c_int ButtonGetCanShrink(Button button);
 	[LinkName("gtk_button_get_child")]
-	public static extern Widget ButtonGetChild(Button button);
+	public static extern Widget* ButtonGetChild(Button button);
 	[LinkName("gtk_button_get_has_frame")]
 	public static extern c_int ButtonGetHasFrame(Button button);
 	[LinkName("gtk_button_get_icon_name")]
-	public static extern char8* ButtonGetIconName(Button button);
+	public static extern char8** ButtonGetIconName(Button button);
 	[LinkName("gtk_button_get_label")]
-	public static extern char8* ButtonGetLabel(Button button);
+	public static extern char8** ButtonGetLabel(Button button);
 	[LinkName("gtk_button_get_use_underline")]
 	public static extern c_int ButtonGetUseUnderline(Button button);
 	[LinkName("gtk_button_set_can_shrink")]
@@ -1030,15 +1030,15 @@ class Gtk
 	[CRepr]
 	public struct CClosureExpression;
 	[LinkName("gtk_cclosure_expression_new")]
-	public static extern CClosureExpression CclosureExpressionNew(GLib.Type value_type, GObject.ClosureMarshal marshal, c_uint n_params, GObject.Callback callback_func, void* user_data, GObject.ClosureNotify user_destroy);
+	public static extern CClosureExpression* CclosureExpressionNew(GLib.Type value_type, GObject.ClosureMarshal marshal, c_uint n_params, GObject.Callback callback_func, void* user_data, GObject.ClosureNotify user_destroy);
 	[CRepr]
 	public struct Calendar;
 	[LinkName("gtk_calendar_new")]
-	public static extern Widget CalendarNew();
+	public static extern Widget* CalendarNew();
 	[LinkName("gtk_calendar_clear_marks")]
 	public static extern void CalendarClearMarks(Calendar calendar);
 	[LinkName("gtk_calendar_get_date")]
-	public static extern GLib.DateTime CalendarGetDate(Calendar self);
+	public static extern GLib.DateTime* CalendarGetDate(Calendar self);
 	[LinkName("gtk_calendar_get_day_is_marked")]
 	public static extern c_int CalendarGetDayIsMarked(Calendar calendar, c_uint day);
 	[LinkName("gtk_calendar_get_show_day_names")]
@@ -1062,7 +1062,7 @@ class Gtk
 	[CRepr]
 	public struct CallbackAction;
 	[LinkName("gtk_callback_action_new")]
-	public static extern CallbackAction CallbackActionNew(ShortcutFunc callback, void* data, GLib.DestroyNotify destroy);
+	public static extern CallbackAction* CallbackActionNew(ShortcutFunc callback, void* data, GLib.DestroyNotify destroy);
 	[CRepr]
 	public struct CallbackActionClass
 	{
@@ -1101,9 +1101,9 @@ class Gtk
 	[LinkName("gtk_cell_area_cell_set_valist")]
 	public static extern void CellAreaCellSetValist(CellArea area, CellRenderer renderer, char8* first_property_name, VarArgs var_args);
 	[LinkName("gtk_cell_area_copy_context")]
-	public static extern CellAreaContext CellAreaCopyContext(CellArea area, CellAreaContext context);
+	public static extern CellAreaContext* CellAreaCopyContext(CellArea area, CellAreaContext context);
 	[LinkName("gtk_cell_area_create_context")]
-	public static extern CellAreaContext CellAreaCreateContext(CellArea area);
+	public static extern CellAreaContext* CellAreaCreateContext(CellArea area);
 	[LinkName("gtk_cell_area_event")]
 	public static extern c_int CellAreaEvent(CellArea area, CellAreaContext context, Widget widget, Gdk.Event event, Gdk.Rectangle cell_area, CellRendererState flags);
 	[LinkName("gtk_cell_area_focus")]
@@ -1115,19 +1115,19 @@ class Gtk
 	[LinkName("gtk_cell_area_get_cell_allocation")]
 	public static extern void CellAreaGetCellAllocation(CellArea area, CellAreaContext context, Widget widget, CellRenderer renderer, Gdk.Rectangle cell_area, Gdk.Rectangle allocation);
 	[LinkName("gtk_cell_area_get_cell_at_position")]
-	public static extern CellRenderer CellAreaGetCellAtPosition(CellArea area, CellAreaContext context, Widget widget, Gdk.Rectangle cell_area, c_int x, c_int y, Gdk.Rectangle alloc_area);
+	public static extern CellRenderer* CellAreaGetCellAtPosition(CellArea area, CellAreaContext context, Widget widget, Gdk.Rectangle cell_area, c_int x, c_int y, Gdk.Rectangle alloc_area);
 	[LinkName("gtk_cell_area_get_current_path_string")]
-	public static extern char8* CellAreaGetCurrentPathString(CellArea area);
+	public static extern char8** CellAreaGetCurrentPathString(CellArea area);
 	[LinkName("gtk_cell_area_get_edit_widget")]
-	public static extern CellEditable CellAreaGetEditWidget(CellArea area);
+	public static extern CellEditable* CellAreaGetEditWidget(CellArea area);
 	[LinkName("gtk_cell_area_get_edited_cell")]
-	public static extern CellRenderer CellAreaGetEditedCell(CellArea area);
+	public static extern CellRenderer* CellAreaGetEditedCell(CellArea area);
 	[LinkName("gtk_cell_area_get_focus_cell")]
-	public static extern CellRenderer CellAreaGetFocusCell(CellArea area);
+	public static extern CellRenderer* CellAreaGetFocusCell(CellArea area);
 	[LinkName("gtk_cell_area_get_focus_from_sibling")]
-	public static extern CellRenderer CellAreaGetFocusFromSibling(CellArea area, CellRenderer renderer);
+	public static extern CellRenderer* CellAreaGetFocusFromSibling(CellArea area, CellRenderer renderer);
 	[LinkName("gtk_cell_area_get_focus_siblings")]
-	public static extern GLib.List CellAreaGetFocusSiblings(CellArea area, CellRenderer renderer);
+	public static extern GLib.List* CellAreaGetFocusSiblings(CellArea area, CellRenderer renderer);
 	[LinkName("gtk_cell_area_get_preferred_height")]
 	public static extern void CellAreaGetPreferredHeight(CellArea area, CellAreaContext context, Widget widget, c_int minimum_height, c_int natural_height);
 	[LinkName("gtk_cell_area_get_preferred_height_for_width")]
@@ -1161,7 +1161,7 @@ class Gtk
 	[CRepr]
 	public struct CellAreaBox;
 	[LinkName("gtk_cell_area_box_new")]
-	public static extern CellArea CellAreaBoxNew();
+	public static extern CellArea* CellAreaBoxNew();
 	[LinkName("gtk_cell_area_box_get_spacing")]
 	public static extern c_int CellAreaBoxGetSpacing(CellAreaBox box_);
 	[LinkName("gtk_cell_area_box_pack_end")]
@@ -1182,7 +1182,7 @@ class Gtk
 	[LinkName("gtk_cell_area_context_get_allocation")]
 	public static extern void CellAreaContextGetAllocation(CellAreaContext context, c_int width, c_int height);
 	[LinkName("gtk_cell_area_context_get_area")]
-	public static extern CellArea CellAreaContextGetArea(CellAreaContext context);
+	public static extern CellArea* CellAreaContextGetArea(CellAreaContext context);
 	[LinkName("gtk_cell_area_context_get_preferred_height")]
 	public static extern void CellAreaContextGetPreferredHeight(CellAreaContext context, c_int minimum_height, c_int natural_height);
 	[LinkName("gtk_cell_area_context_get_preferred_height_for_width")]
@@ -1301,13 +1301,13 @@ class Gtk
 	[LinkName("gtk_cell_renderer_snapshot")]
 	public static extern void CellRendererSnapshot(CellRenderer cell, Snapshot snapshot, Widget widget, Gdk.Rectangle background_area, Gdk.Rectangle cell_area, CellRendererState flags);
 	[LinkName("gtk_cell_renderer_start_editing")]
-	public static extern CellEditable CellRendererStartEditing(CellRenderer cell, Gdk.Event event, Widget widget, char8* path, Gdk.Rectangle background_area, Gdk.Rectangle cell_area, CellRendererState flags);
+	public static extern CellEditable* CellRendererStartEditing(CellRenderer cell, Gdk.Event event, Widget widget, char8* path, Gdk.Rectangle background_area, Gdk.Rectangle cell_area, CellRendererState flags);
 	[LinkName("gtk_cell_renderer_stop_editing")]
 	public static extern void CellRendererStopEditing(CellRenderer cell, c_int canceled);
 	[CRepr]
 	public struct CellRendererAccel;
 	[LinkName("gtk_cell_renderer_accel_new")]
-	public static extern CellRenderer CellRendererAccelNew();
+	public static extern CellRenderer* CellRendererAccelNew();
 	public enum CellRendererAccelMode : c_int
 	{
 		GTK_CELL_RENDERER_ACCEL_MODE_GTK,
@@ -1325,7 +1325,7 @@ class Gtk
 	[CRepr]
 	public struct CellRendererCombo;
 	[LinkName("gtk_cell_renderer_combo_new")]
-	public static extern CellRenderer CellRendererComboNew();
+	public static extern CellRenderer* CellRendererComboNew();
 	public enum CellRendererMode : c_int
 	{
 		GTK_CELL_RENDERER_MODE_INERT,
@@ -1335,7 +1335,7 @@ class Gtk
 	[CRepr]
 	public struct CellRendererPixbuf;
 	[LinkName("gtk_cell_renderer_pixbuf_new")]
-	public static extern CellRenderer CellRendererPixbufNew();
+	public static extern CellRenderer* CellRendererPixbufNew();
 	[CRepr]
 	public struct CellRendererPrivate
 	{
@@ -1343,15 +1343,15 @@ class Gtk
 	[CRepr]
 	public struct CellRendererProgress;
 	[LinkName("gtk_cell_renderer_progress_new")]
-	public static extern CellRenderer CellRendererProgressNew();
+	public static extern CellRenderer* CellRendererProgressNew();
 	[CRepr]
 	public struct CellRendererSpin;
 	[LinkName("gtk_cell_renderer_spin_new")]
-	public static extern CellRenderer CellRendererSpinNew();
+	public static extern CellRenderer* CellRendererSpinNew();
 	[CRepr]
 	public struct CellRendererSpinner;
 	[LinkName("gtk_cell_renderer_spinner_new")]
-	public static extern CellRenderer CellRendererSpinnerNew();
+	public static extern CellRenderer* CellRendererSpinnerNew();
 	[CRepr]
 	public struct CellRendererState
 	{
@@ -1366,7 +1366,7 @@ class Gtk
 	[CRepr]
 	public struct CellRendererText;
 	[LinkName("gtk_cell_renderer_text_new")]
-	public static extern CellRenderer CellRendererTextNew();
+	public static extern CellRenderer* CellRendererTextNew();
 	[LinkName("gtk_cell_renderer_text_set_fixed_height_from_font")]
 	public static extern void CellRendererTextSetFixedHeightFromFont(CellRendererText renderer, c_int number_of_rows);
 	[CRepr]
@@ -1377,7 +1377,7 @@ class Gtk
 	[CRepr]
 	public struct CellRendererToggle;
 	[LinkName("gtk_cell_renderer_toggle_new")]
-	public static extern CellRenderer CellRendererToggleNew();
+	public static extern CellRenderer* CellRendererToggleNew();
 	[LinkName("gtk_cell_renderer_toggle_get_activatable")]
 	public static extern c_int CellRendererToggleGetActivatable(CellRendererToggle toggle);
 	[LinkName("gtk_cell_renderer_toggle_get_active")]
@@ -1393,23 +1393,23 @@ class Gtk
 	[CRepr]
 	public struct CellView;
 	[LinkName("gtk_cell_view_new")]
-	public static extern Widget CellViewNew();
+	public static extern Widget* CellViewNew();
 	[LinkName("gtk_cell_view_new_with_context")]
-	public static extern Widget CellViewNewWithContext(CellArea area, CellAreaContext context);
+	public static extern Widget* CellViewNewWithContext(CellArea area, CellAreaContext context);
 	[LinkName("gtk_cell_view_new_with_markup")]
-	public static extern Widget CellViewNewWithMarkup(char8* markup);
+	public static extern Widget* CellViewNewWithMarkup(char8* markup);
 	[LinkName("gtk_cell_view_new_with_text")]
-	public static extern Widget CellViewNewWithText(char8* text);
+	public static extern Widget* CellViewNewWithText(char8* text);
 	[LinkName("gtk_cell_view_new_with_texture")]
-	public static extern Widget CellViewNewWithTexture(Gdk.Texture texture);
+	public static extern Widget* CellViewNewWithTexture(Gdk.Texture texture);
 	[LinkName("gtk_cell_view_get_displayed_row")]
-	public static extern TreePath CellViewGetDisplayedRow(CellView cell_view);
+	public static extern TreePath* CellViewGetDisplayedRow(CellView cell_view);
 	[LinkName("gtk_cell_view_get_draw_sensitive")]
 	public static extern c_int CellViewGetDrawSensitive(CellView cell_view);
 	[LinkName("gtk_cell_view_get_fit_model")]
 	public static extern c_int CellViewGetFitModel(CellView cell_view);
 	[LinkName("gtk_cell_view_get_model")]
-	public static extern TreeModel CellViewGetModel(CellView cell_view);
+	public static extern TreeModel* CellViewGetModel(CellView cell_view);
 	[LinkName("gtk_cell_view_set_displayed_row")]
 	public static extern void CellViewSetDisplayedRow(CellView cell_view, TreePath path);
 	[LinkName("gtk_cell_view_set_draw_sensitive")]
@@ -1421,17 +1421,17 @@ class Gtk
 	[CRepr]
 	public struct CenterBox;
 	[LinkName("gtk_center_box_new")]
-	public static extern Widget CenterBoxNew();
+	public static extern Widget* CenterBoxNew();
 	[LinkName("gtk_center_box_get_baseline_position")]
 	public static extern BaselinePosition CenterBoxGetBaselinePosition(CenterBox self);
 	[LinkName("gtk_center_box_get_center_widget")]
-	public static extern Widget CenterBoxGetCenterWidget(CenterBox self);
+	public static extern Widget* CenterBoxGetCenterWidget(CenterBox self);
 	[LinkName("gtk_center_box_get_end_widget")]
-	public static extern Widget CenterBoxGetEndWidget(CenterBox self);
+	public static extern Widget* CenterBoxGetEndWidget(CenterBox self);
 	[LinkName("gtk_center_box_get_shrink_center_last")]
 	public static extern c_int CenterBoxGetShrinkCenterLast(CenterBox self);
 	[LinkName("gtk_center_box_get_start_widget")]
-	public static extern Widget CenterBoxGetStartWidget(CenterBox self);
+	public static extern Widget* CenterBoxGetStartWidget(CenterBox self);
 	[LinkName("gtk_center_box_set_baseline_position")]
 	public static extern void CenterBoxSetBaselinePosition(CenterBox self, BaselinePosition position);
 	[LinkName("gtk_center_box_set_center_widget")]
@@ -1449,19 +1449,19 @@ class Gtk
 	[CRepr]
 	public struct CenterLayout;
 	[LinkName("gtk_center_layout_new")]
-	public static extern LayoutManager CenterLayoutNew();
+	public static extern LayoutManager* CenterLayoutNew();
 	[LinkName("gtk_center_layout_get_baseline_position")]
 	public static extern BaselinePosition CenterLayoutGetBaselinePosition(CenterLayout self);
 	[LinkName("gtk_center_layout_get_center_widget")]
-	public static extern Widget CenterLayoutGetCenterWidget(CenterLayout self);
+	public static extern Widget* CenterLayoutGetCenterWidget(CenterLayout self);
 	[LinkName("gtk_center_layout_get_end_widget")]
-	public static extern Widget CenterLayoutGetEndWidget(CenterLayout self);
+	public static extern Widget* CenterLayoutGetEndWidget(CenterLayout self);
 	[LinkName("gtk_center_layout_get_orientation")]
 	public static extern Orientation CenterLayoutGetOrientation(CenterLayout self);
 	[LinkName("gtk_center_layout_get_shrink_center_last")]
 	public static extern c_int CenterLayoutGetShrinkCenterLast(CenterLayout self);
 	[LinkName("gtk_center_layout_get_start_widget")]
-	public static extern Widget CenterLayoutGetStartWidget(CenterLayout self);
+	public static extern Widget* CenterLayoutGetStartWidget(CenterLayout self);
 	[LinkName("gtk_center_layout_set_baseline_position")]
 	public static extern void CenterLayoutSetBaselinePosition(CenterLayout self, BaselinePosition baseline_position);
 	[LinkName("gtk_center_layout_set_center_widget")]
@@ -1482,19 +1482,19 @@ class Gtk
 	[CRepr]
 	public struct CheckButton;
 	[LinkName("gtk_check_button_new")]
-	public static extern Widget CheckButtonNew();
+	public static extern Widget* CheckButtonNew();
 	[LinkName("gtk_check_button_new_with_label")]
-	public static extern Widget CheckButtonNewWithLabel(char8* label);
+	public static extern Widget* CheckButtonNewWithLabel(char8* label);
 	[LinkName("gtk_check_button_new_with_mnemonic")]
-	public static extern Widget CheckButtonNewWithMnemonic(char8* label);
+	public static extern Widget* CheckButtonNewWithMnemonic(char8* label);
 	[LinkName("gtk_check_button_get_active")]
 	public static extern c_int CheckButtonGetActive(CheckButton self);
 	[LinkName("gtk_check_button_get_child")]
-	public static extern Widget CheckButtonGetChild(CheckButton button);
+	public static extern Widget* CheckButtonGetChild(CheckButton button);
 	[LinkName("gtk_check_button_get_inconsistent")]
 	public static extern c_int CheckButtonGetInconsistent(CheckButton check_button);
 	[LinkName("gtk_check_button_get_label")]
-	public static extern char8* CheckButtonGetLabel(CheckButton self);
+	public static extern char8** CheckButtonGetLabel(CheckButton self);
 	[LinkName("gtk_check_button_get_use_underline")]
 	public static extern c_int CheckButtonGetUseUnderline(CheckButton self);
 	[LinkName("gtk_check_button_set_active")]
@@ -1517,7 +1517,7 @@ class Gtk
 	[CRepr]
 	public struct ClosureExpression;
 	[LinkName("gtk_closure_expression_new")]
-	public static extern ClosureExpression ClosureExpressionNew(GLib.Type value_type, GObject.Closure closure, c_uint n_params);
+	public static extern ClosureExpression* ClosureExpressionNew(GLib.Type value_type, GObject.Closure closure, c_uint n_params);
 	public enum Collation : c_int
 	{
 		GTK_COLLATION_NONE,
@@ -1527,13 +1527,13 @@ class Gtk
 	[CRepr]
 	public struct ColorButton;
 	[LinkName("gtk_color_button_new")]
-	public static extern Widget ColorButtonNew();
+	public static extern Widget* ColorButtonNew();
 	[LinkName("gtk_color_button_new_with_rgba")]
-	public static extern Widget ColorButtonNewWithRgba(Gdk.RGBA rgba);
+	public static extern Widget* ColorButtonNewWithRgba(Gdk.RGBA rgba);
 	[LinkName("gtk_color_button_get_modal")]
 	public static extern c_int ColorButtonGetModal(ColorButton button);
 	[LinkName("gtk_color_button_get_title")]
-	public static extern char8* ColorButtonGetTitle(ColorButton button);
+	public static extern char8** ColorButtonGetTitle(ColorButton button);
 	[LinkName("gtk_color_button_set_modal")]
 	public static extern void ColorButtonSetModal(ColorButton button, c_int modal);
 	[LinkName("gtk_color_button_set_title")]
@@ -1552,7 +1552,7 @@ class Gtk
 	[CRepr]
 	public struct ColorChooserDialog;
 	[LinkName("gtk_color_chooser_dialog_new")]
-	public static extern Widget ColorChooserDialogNew(char8* title, Window parent);
+	public static extern Widget* ColorChooserDialogNew(char8* title, Window parent);
 	[CRepr]
 	public struct ColorChooserInterface
 	{
@@ -1561,19 +1561,19 @@ class Gtk
 	[CRepr]
 	public struct ColorChooserWidget;
 	[LinkName("gtk_color_chooser_widget_new")]
-	public static extern Widget ColorChooserWidgetNew();
+	public static extern Widget* ColorChooserWidgetNew();
 	[CRepr]
 	public struct ColorDialog;
 	[LinkName("gtk_color_dialog_new")]
-	public static extern ColorDialog ColorDialogNew();
+	public static extern ColorDialog* ColorDialogNew();
 	[LinkName("gtk_color_dialog_choose_rgba")]
 	public static extern void ColorDialogChooseRgba(ColorDialog self, Window parent, Gdk.RGBA initial_color, Gio.Cancellable cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gtk_color_dialog_choose_rgba_finish")]
-	public static extern Gdk.RGBA ColorDialogChooseRgbaFinish(ColorDialog self, Gio.AsyncResult result);
+	public static extern Gdk.RGBA* ColorDialogChooseRgbaFinish(ColorDialog self, Gio.AsyncResult result);
 	[LinkName("gtk_color_dialog_get_modal")]
 	public static extern c_int ColorDialogGetModal(ColorDialog self);
 	[LinkName("gtk_color_dialog_get_title")]
-	public static extern char8* ColorDialogGetTitle(ColorDialog self);
+	public static extern char8** ColorDialogGetTitle(ColorDialog self);
 	[LinkName("gtk_color_dialog_get_with_alpha")]
 	public static extern c_int ColorDialogGetWithAlpha(ColorDialog self);
 	[LinkName("gtk_color_dialog_set_modal")]
@@ -1585,11 +1585,11 @@ class Gtk
 	[CRepr]
 	public struct ColorDialogButton;
 	[LinkName("gtk_color_dialog_button_new")]
-	public static extern Widget ColorDialogButtonNew(ColorDialog dialog);
+	public static extern Widget* ColorDialogButtonNew(ColorDialog dialog);
 	[LinkName("gtk_color_dialog_button_get_dialog")]
-	public static extern ColorDialog ColorDialogButtonGetDialog(ColorDialogButton self);
+	public static extern ColorDialog* ColorDialogButtonGetDialog(ColorDialogButton self);
 	[LinkName("gtk_color_dialog_button_get_rgba")]
-	public static extern Gdk.RGBA ColorDialogButtonGetRgba(ColorDialogButton self);
+	public static extern Gdk.RGBA* ColorDialogButtonGetRgba(ColorDialogButton self);
 	[LinkName("gtk_color_dialog_button_set_dialog")]
 	public static extern void ColorDialogButtonSetDialog(ColorDialogButton self, ColorDialog dialog);
 	[LinkName("gtk_color_dialog_button_set_rgba")]
@@ -1607,21 +1607,21 @@ class Gtk
 	[CRepr]
 	public struct ColumnView;
 	[LinkName("gtk_column_view_new")]
-	public static extern Widget ColumnViewNew(SelectionModel model);
+	public static extern Widget* ColumnViewNew(SelectionModel model);
 	[LinkName("gtk_column_view_append_column")]
 	public static extern void ColumnViewAppendColumn(ColumnView self, ColumnViewColumn column);
 	[LinkName("gtk_column_view_get_columns")]
-	public static extern Gio.ListModel ColumnViewGetColumns(ColumnView self);
+	public static extern Gio.ListModel* ColumnViewGetColumns(ColumnView self);
 	[LinkName("gtk_column_view_get_enable_rubberband")]
 	public static extern c_int ColumnViewGetEnableRubberband(ColumnView self);
 	[LinkName("gtk_column_view_get_header_factory")]
-	public static extern ListItemFactory ColumnViewGetHeaderFactory(ColumnView self);
+	public static extern ListItemFactory* ColumnViewGetHeaderFactory(ColumnView self);
 	[LinkName("gtk_column_view_get_model")]
-	public static extern SelectionModel ColumnViewGetModel(ColumnView self);
+	public static extern SelectionModel* ColumnViewGetModel(ColumnView self);
 	[LinkName("gtk_column_view_get_reorderable")]
 	public static extern c_int ColumnViewGetReorderable(ColumnView self);
 	[LinkName("gtk_column_view_get_row_factory")]
-	public static extern ListItemFactory ColumnViewGetRowFactory(ColumnView self);
+	public static extern ListItemFactory* ColumnViewGetRowFactory(ColumnView self);
 	[LinkName("gtk_column_view_get_show_column_separators")]
 	public static extern c_int ColumnViewGetShowColumnSeparators(ColumnView self);
 	[LinkName("gtk_column_view_get_show_row_separators")]
@@ -1629,7 +1629,7 @@ class Gtk
 	[LinkName("gtk_column_view_get_single_click_activate")]
 	public static extern c_int ColumnViewGetSingleClickActivate(ColumnView self);
 	[LinkName("gtk_column_view_get_sorter")]
-	public static extern Sorter ColumnViewGetSorter(ColumnView self);
+	public static extern Sorter* ColumnViewGetSorter(ColumnView self);
 	[LinkName("gtk_column_view_get_tab_behavior")]
 	public static extern ListTabBehavior ColumnViewGetTabBehavior(ColumnView self);
 	[LinkName("gtk_column_view_insert_column")]
@@ -1659,7 +1659,7 @@ class Gtk
 	[CRepr]
 	public struct ColumnViewCell;
 	[LinkName("gtk_column_view_cell_get_child")]
-	public static extern Widget ColumnViewCellGetChild(ColumnViewCell self);
+	public static extern Widget* ColumnViewCellGetChild(ColumnViewCell self);
 	[LinkName("gtk_column_view_cell_get_focusable")]
 	public static extern c_int ColumnViewCellGetFocusable(ColumnViewCell self);
 	[LinkName("gtk_column_view_cell_get_item")]
@@ -1683,25 +1683,25 @@ class Gtk
 	[CRepr]
 	public struct ColumnViewColumn;
 	[LinkName("gtk_column_view_column_new")]
-	public static extern ColumnViewColumn ColumnViewColumnNew(char8* title, ListItemFactory factory);
+	public static extern ColumnViewColumn* ColumnViewColumnNew(char8* title, ListItemFactory factory);
 	[LinkName("gtk_column_view_column_get_column_view")]
-	public static extern ColumnView ColumnViewColumnGetColumnView(ColumnViewColumn self);
+	public static extern ColumnView* ColumnViewColumnGetColumnView(ColumnViewColumn self);
 	[LinkName("gtk_column_view_column_get_expand")]
 	public static extern c_int ColumnViewColumnGetExpand(ColumnViewColumn self);
 	[LinkName("gtk_column_view_column_get_factory")]
-	public static extern ListItemFactory ColumnViewColumnGetFactory(ColumnViewColumn self);
+	public static extern ListItemFactory* ColumnViewColumnGetFactory(ColumnViewColumn self);
 	[LinkName("gtk_column_view_column_get_fixed_width")]
 	public static extern c_int ColumnViewColumnGetFixedWidth(ColumnViewColumn self);
 	[LinkName("gtk_column_view_column_get_header_menu")]
-	public static extern Gio.MenuModel ColumnViewColumnGetHeaderMenu(ColumnViewColumn self);
+	public static extern Gio.MenuModel* ColumnViewColumnGetHeaderMenu(ColumnViewColumn self);
 	[LinkName("gtk_column_view_column_get_id")]
-	public static extern char8* ColumnViewColumnGetId(ColumnViewColumn self);
+	public static extern char8** ColumnViewColumnGetId(ColumnViewColumn self);
 	[LinkName("gtk_column_view_column_get_resizable")]
 	public static extern c_int ColumnViewColumnGetResizable(ColumnViewColumn self);
 	[LinkName("gtk_column_view_column_get_sorter")]
-	public static extern Sorter ColumnViewColumnGetSorter(ColumnViewColumn self);
+	public static extern Sorter* ColumnViewColumnGetSorter(ColumnViewColumn self);
 	[LinkName("gtk_column_view_column_get_title")]
-	public static extern char8* ColumnViewColumnGetTitle(ColumnViewColumn self);
+	public static extern char8** ColumnViewColumnGetTitle(ColumnViewColumn self);
 	[LinkName("gtk_column_view_column_get_visible")]
 	public static extern c_int ColumnViewColumnGetVisible(ColumnViewColumn self);
 	[LinkName("gtk_column_view_column_set_expand")]
@@ -1755,9 +1755,9 @@ class Gtk
 	[LinkName("gtk_column_view_sorter_get_n_sort_columns")]
 	public static extern c_uint ColumnViewSorterGetNSortColumns(ColumnViewSorter self);
 	[LinkName("gtk_column_view_sorter_get_nth_sort_column")]
-	public static extern ColumnViewColumn ColumnViewSorterGetNthSortColumn(ColumnViewSorter self, c_uint position, SortType sort_order);
+	public static extern ColumnViewColumn* ColumnViewSorterGetNthSortColumn(ColumnViewSorter self, c_uint position, SortType sort_order);
 	[LinkName("gtk_column_view_sorter_get_primary_sort_column")]
-	public static extern ColumnViewColumn ColumnViewSorterGetPrimarySortColumn(ColumnViewSorter self);
+	public static extern ColumnViewColumn* ColumnViewSorterGetPrimarySortColumn(ColumnViewSorter self);
 	[LinkName("gtk_column_view_sorter_get_primary_sort_order")]
 	public static extern SortType ColumnViewSorterGetPrimarySortOrder(ColumnViewSorter self);
 	[CRepr]
@@ -1768,23 +1768,23 @@ class Gtk
 	[CRepr]
 	public struct ComboBox;
 	[LinkName("gtk_combo_box_new")]
-	public static extern Widget ComboBoxNew();
+	public static extern Widget* ComboBoxNew();
 	[LinkName("gtk_combo_box_new_with_entry")]
-	public static extern Widget ComboBoxNewWithEntry();
+	public static extern Widget* ComboBoxNewWithEntry();
 	[LinkName("gtk_combo_box_new_with_model")]
-	public static extern Widget ComboBoxNewWithModel(TreeModel model);
+	public static extern Widget* ComboBoxNewWithModel(TreeModel model);
 	[LinkName("gtk_combo_box_new_with_model_and_entry")]
-	public static extern Widget ComboBoxNewWithModelAndEntry(TreeModel model);
+	public static extern Widget* ComboBoxNewWithModelAndEntry(TreeModel model);
 	[LinkName("gtk_combo_box_get_active")]
 	public static extern c_int ComboBoxGetActive(ComboBox combo_box);
 	[LinkName("gtk_combo_box_get_active_id")]
-	public static extern char8* ComboBoxGetActiveId(ComboBox combo_box);
+	public static extern char8** ComboBoxGetActiveId(ComboBox combo_box);
 	[LinkName("gtk_combo_box_get_active_iter")]
 	public static extern c_int ComboBoxGetActiveIter(ComboBox combo_box, TreeIter iter);
 	[LinkName("gtk_combo_box_get_button_sensitivity")]
 	public static extern SensitivityType ComboBoxGetButtonSensitivity(ComboBox combo_box);
 	[LinkName("gtk_combo_box_get_child")]
-	public static extern Widget ComboBoxGetChild(ComboBox combo_box);
+	public static extern Widget* ComboBoxGetChild(ComboBox combo_box);
 	[LinkName("gtk_combo_box_get_entry_text_column")]
 	public static extern c_int ComboBoxGetEntryTextColumn(ComboBox combo_box);
 	[LinkName("gtk_combo_box_get_has_entry")]
@@ -1792,7 +1792,7 @@ class Gtk
 	[LinkName("gtk_combo_box_get_id_column")]
 	public static extern c_int ComboBoxGetIdColumn(ComboBox combo_box);
 	[LinkName("gtk_combo_box_get_model")]
-	public static extern TreeModel ComboBoxGetModel(ComboBox combo_box);
+	public static extern TreeModel* ComboBoxGetModel(ComboBox combo_box);
 	[LinkName("gtk_combo_box_get_popup_fixed_width")]
 	public static extern c_int ComboBoxGetPopupFixedWidth(ComboBox combo_box);
 	[LinkName("gtk_combo_box_get_row_separator_func")]
@@ -1831,15 +1831,15 @@ class Gtk
 	[CRepr]
 	public struct ComboBoxText;
 	[LinkName("gtk_combo_box_text_new")]
-	public static extern Widget ComboBoxTextNew();
+	public static extern Widget* ComboBoxTextNew();
 	[LinkName("gtk_combo_box_text_new_with_entry")]
-	public static extern Widget ComboBoxTextNewWithEntry();
+	public static extern Widget* ComboBoxTextNewWithEntry();
 	[LinkName("gtk_combo_box_text_append")]
 	public static extern void ComboBoxTextAppend(ComboBoxText combo_box, char8* id, char8* text);
 	[LinkName("gtk_combo_box_text_append_text")]
 	public static extern void ComboBoxTextAppendText(ComboBoxText combo_box, char8* text);
 	[LinkName("gtk_combo_box_text_get_active_text")]
-	public static extern char8* ComboBoxTextGetActiveText(ComboBoxText combo_box);
+	public static extern char8** ComboBoxTextGetActiveText(ComboBoxText combo_box);
 	[LinkName("gtk_combo_box_text_insert")]
 	public static extern void ComboBoxTextInsert(ComboBoxText combo_box, c_int position, char8* id, char8* text);
 	[LinkName("gtk_combo_box_text_insert_text")]
@@ -1855,17 +1855,17 @@ class Gtk
 	[CRepr]
 	public struct ConstantExpression;
 	[LinkName("gtk_constant_expression_new")]
-	public static extern ConstantExpression ConstantExpressionNew(GLib.Type value_type);
+	public static extern ConstantExpression* ConstantExpressionNew(GLib.Type value_type);
 	[LinkName("gtk_constant_expression_new_for_value")]
-	public static extern ConstantExpression ConstantExpressionNewForValue(GObject.Value value);
+	public static extern ConstantExpression* ConstantExpressionNewForValue(GObject.Value value);
 	[LinkName("gtk_constant_expression_get_value")]
-	public static extern GObject.Value ConstantExpressionGetValue(ConstantExpression expression);
+	public static extern GObject.Value* ConstantExpressionGetValue(ConstantExpression expression);
 	[CRepr]
 	public struct Constraint;
 	[LinkName("gtk_constraint_new")]
-	public static extern Constraint ConstraintNew(ConstraintTarget target, ConstraintAttribute target_attribute, ConstraintRelation relation, ConstraintTarget source, ConstraintAttribute source_attribute, double multiplier, double constant, c_int strength);
+	public static extern Constraint* ConstraintNew(ConstraintTarget target, ConstraintAttribute target_attribute, ConstraintRelation relation, ConstraintTarget source, ConstraintAttribute source_attribute, double multiplier, double constant, c_int strength);
 	[LinkName("gtk_constraint_new_constant")]
-	public static extern Constraint ConstraintNewConstant(ConstraintTarget target, ConstraintAttribute target_attribute, ConstraintRelation relation, double constant, c_int strength);
+	public static extern Constraint* ConstraintNewConstant(ConstraintTarget target, ConstraintAttribute target_attribute, ConstraintRelation relation, double constant, c_int strength);
 	[LinkName("gtk_constraint_get_constant")]
 	public static extern double ConstraintGetConstant(Constraint constraint);
 	[LinkName("gtk_constraint_get_multiplier")]
@@ -1873,13 +1873,13 @@ class Gtk
 	[LinkName("gtk_constraint_get_relation")]
 	public static extern ConstraintRelation ConstraintGetRelation(Constraint constraint);
 	[LinkName("gtk_constraint_get_source")]
-	public static extern ConstraintTarget ConstraintGetSource(Constraint constraint);
+	public static extern ConstraintTarget* ConstraintGetSource(Constraint constraint);
 	[LinkName("gtk_constraint_get_source_attribute")]
 	public static extern ConstraintAttribute ConstraintGetSourceAttribute(Constraint constraint);
 	[LinkName("gtk_constraint_get_strength")]
 	public static extern c_int ConstraintGetStrength(Constraint constraint);
 	[LinkName("gtk_constraint_get_target")]
-	public static extern ConstraintTarget ConstraintGetTarget(Constraint constraint);
+	public static extern ConstraintTarget* ConstraintGetTarget(Constraint constraint);
 	[LinkName("gtk_constraint_get_target_attribute")]
 	public static extern ConstraintAttribute ConstraintGetTargetAttribute(Constraint constraint);
 	[LinkName("gtk_constraint_is_attached")]
@@ -1911,13 +1911,13 @@ class Gtk
 	[CRepr]
 	public struct ConstraintGuide;
 	[LinkName("gtk_constraint_guide_new")]
-	public static extern ConstraintGuide ConstraintGuideNew();
+	public static extern ConstraintGuide* ConstraintGuideNew();
 	[LinkName("gtk_constraint_guide_get_max_size")]
 	public static extern void ConstraintGuideGetMaxSize(ConstraintGuide guide, c_int width, c_int height);
 	[LinkName("gtk_constraint_guide_get_min_size")]
 	public static extern void ConstraintGuideGetMinSize(ConstraintGuide guide, c_int width, c_int height);
 	[LinkName("gtk_constraint_guide_get_name")]
-	public static extern char8* ConstraintGuideGetName(ConstraintGuide guide);
+	public static extern char8** ConstraintGuideGetName(ConstraintGuide guide);
 	[LinkName("gtk_constraint_guide_get_nat_size")]
 	public static extern void ConstraintGuideGetNatSize(ConstraintGuide guide, c_int width, c_int height);
 	[LinkName("gtk_constraint_guide_get_strength")]
@@ -1940,19 +1940,19 @@ class Gtk
 	[CRepr]
 	public struct ConstraintLayout;
 	[LinkName("gtk_constraint_layout_new")]
-	public static extern LayoutManager ConstraintLayoutNew();
+	public static extern LayoutManager* ConstraintLayoutNew();
 	[LinkName("gtk_constraint_layout_add_constraint")]
 	public static extern void ConstraintLayoutAddConstraint(ConstraintLayout layout, Constraint constraint);
 	[LinkName("gtk_constraint_layout_add_constraints_from_description")]
-	public static extern GLib.List ConstraintLayoutAddConstraintsFromDescription(ConstraintLayout layout, c_ulong n_lines, c_int hspacing, c_int vspacing, GLib.Error error, char8* first_view);
+	public static extern GLib.List* ConstraintLayoutAddConstraintsFromDescription(ConstraintLayout layout, c_ulong n_lines, c_int hspacing, c_int vspacing, GLib.Error error, char8* first_view);
 	[LinkName("gtk_constraint_layout_add_constraints_from_descriptionv")]
-	public static extern GLib.List ConstraintLayoutAddConstraintsFromDescriptionv(ConstraintLayout layout, c_ulong n_lines, c_int hspacing, c_int vspacing, GLib.HashTable views);
+	public static extern GLib.List* ConstraintLayoutAddConstraintsFromDescriptionv(ConstraintLayout layout, c_ulong n_lines, c_int hspacing, c_int vspacing, GLib.HashTable views);
 	[LinkName("gtk_constraint_layout_add_guide")]
 	public static extern void ConstraintLayoutAddGuide(ConstraintLayout layout, ConstraintGuide guide);
 	[LinkName("gtk_constraint_layout_observe_constraints")]
-	public static extern Gio.ListModel ConstraintLayoutObserveConstraints(ConstraintLayout layout);
+	public static extern Gio.ListModel* ConstraintLayoutObserveConstraints(ConstraintLayout layout);
 	[LinkName("gtk_constraint_layout_observe_guides")]
-	public static extern Gio.ListModel ConstraintLayoutObserveGuides(ConstraintLayout layout);
+	public static extern Gio.ListModel* ConstraintLayoutObserveGuides(ConstraintLayout layout);
 	[LinkName("gtk_constraint_layout_remove_all_constraints")]
 	public static extern void ConstraintLayoutRemoveAllConstraints(ConstraintLayout layout);
 	[LinkName("gtk_constraint_layout_remove_constraint")]
@@ -2040,7 +2040,7 @@ class Gtk
 	[CRepr]
 	public struct CssProvider;
 	[LinkName("gtk_css_provider_new")]
-	public static extern CssProvider CssProviderNew();
+	public static extern CssProvider* CssProviderNew();
 	[LinkName("gtk_css_provider_load_from_bytes")]
 	public static extern void CssProviderLoadFromBytes(CssProvider css_provider, GLib.Bytes data);
 	[LinkName("gtk_css_provider_load_from_data")]
@@ -2056,7 +2056,7 @@ class Gtk
 	[LinkName("gtk_css_provider_load_named")]
 	public static extern void CssProviderLoadNamed(CssProvider provider, char8* name, char8* variant);
 	[LinkName("gtk_css_provider_to_string")]
-	public static extern char8* CssProviderToString(CssProvider provider);
+	public static extern char8** CssProviderToString(CssProvider provider);
 	[CRepr]
 	public struct CssProviderClass
 	{
@@ -2077,7 +2077,7 @@ class Gtk
 	[CRepr]
 	public struct CustomFilter;
 	[LinkName("gtk_custom_filter_new")]
-	public static extern CustomFilter CustomFilterNew(CustomFilterFunc match_func, void* user_data, GLib.DestroyNotify user_destroy);
+	public static extern CustomFilter* CustomFilterNew(CustomFilterFunc match_func, void* user_data, GLib.DestroyNotify user_destroy);
 	[LinkName("gtk_custom_filter_set_filter_func")]
 	public static extern void CustomFilterSetFilterFunc(CustomFilter self, CustomFilterFunc match_func, void* user_data, GLib.DestroyNotify user_destroy);
 	[CRepr]
@@ -2089,7 +2089,7 @@ class Gtk
 	[CRepr]
 	public struct CustomLayout;
 	[LinkName("gtk_custom_layout_new")]
-	public static extern LayoutManager CustomLayoutNew(CustomRequestModeFunc request_mode, CustomMeasureFunc measure, CustomAllocateFunc allocate);
+	public static extern LayoutManager* CustomLayoutNew(CustomRequestModeFunc request_mode, CustomMeasureFunc measure, CustomAllocateFunc allocate);
 	[CRepr]
 	public struct CustomLayoutClass
 	{
@@ -2100,7 +2100,7 @@ class Gtk
 	[CRepr]
 	public struct CustomSorter;
 	[LinkName("gtk_custom_sorter_new")]
-	public static extern CustomSorter CustomSorterNew(GLib.CompareDataFunc sort_func, void* user_data, GLib.DestroyNotify user_destroy);
+	public static extern CustomSorter* CustomSorterNew(GLib.CompareDataFunc sort_func, void* user_data, GLib.DestroyNotify user_destroy);
 	[LinkName("gtk_custom_sorter_set_sort_func")]
 	public static extern void CustomSorterSetSortFunc(CustomSorter self, GLib.CompareDataFunc sort_func, void* user_data, GLib.DestroyNotify user_destroy);
 	[CRepr]
@@ -2146,23 +2146,23 @@ class Gtk
 	[CRepr]
 	public struct Dialog;
 	[LinkName("gtk_dialog_new")]
-	public static extern Widget DialogNew();
+	public static extern Widget* DialogNew();
 	[LinkName("gtk_dialog_new_with_buttons")]
-	public static extern Widget DialogNewWithButtons(char8* title, Window parent, DialogFlags flags, char8* first_button_text);
+	public static extern Widget* DialogNewWithButtons(char8* title, Window parent, DialogFlags flags, char8* first_button_text);
 	[LinkName("gtk_dialog_add_action_widget")]
 	public static extern void DialogAddActionWidget(Dialog dialog, Widget child, c_int response_id);
 	[LinkName("gtk_dialog_add_button")]
-	public static extern Widget DialogAddButton(Dialog dialog, char8* button_text, c_int response_id);
+	public static extern Widget* DialogAddButton(Dialog dialog, char8* button_text, c_int response_id);
 	[LinkName("gtk_dialog_add_buttons")]
 	public static extern void DialogAddButtons(Dialog dialog, char8* first_button_text);
 	[LinkName("gtk_dialog_get_content_area")]
-	public static extern Box DialogGetContentArea(Dialog dialog);
+	public static extern Box* DialogGetContentArea(Dialog dialog);
 	[LinkName("gtk_dialog_get_header_bar")]
-	public static extern HeaderBar DialogGetHeaderBar(Dialog dialog);
+	public static extern HeaderBar* DialogGetHeaderBar(Dialog dialog);
 	[LinkName("gtk_dialog_get_response_for_widget")]
 	public static extern c_int DialogGetResponseForWidget(Dialog dialog, Widget widget);
 	[LinkName("gtk_dialog_get_widget_for_response")]
-	public static extern Widget DialogGetWidgetForResponse(Dialog dialog, c_int response_id);
+	public static extern Widget* DialogGetWidgetForResponse(Dialog dialog, c_int response_id);
 	[LinkName("gtk_dialog_response")]
 	public static extern void DialogResponse(Dialog dialog, c_int response_id);
 	[LinkName("gtk_dialog_set_default_response")]
@@ -2199,13 +2199,13 @@ class Gtk
 	[CRepr]
 	public struct DirectoryList;
 	[LinkName("gtk_directory_list_new")]
-	public static extern DirectoryList DirectoryListNew(char8* attributes, Gio.File file);
+	public static extern DirectoryList* DirectoryListNew(char8* attributes, Gio.File file);
 	[LinkName("gtk_directory_list_get_attributes")]
-	public static extern char8* DirectoryListGetAttributes(DirectoryList self);
+	public static extern char8** DirectoryListGetAttributes(DirectoryList self);
 	[LinkName("gtk_directory_list_get_error")]
-	public static extern GLib.Error DirectoryListGetError(DirectoryList self);
+	public static extern GLib.Error* DirectoryListGetError(DirectoryList self);
 	[LinkName("gtk_directory_list_get_file")]
-	public static extern Gio.File DirectoryListGetFile(DirectoryList self);
+	public static extern Gio.File* DirectoryListGetFile(DirectoryList self);
 	[LinkName("gtk_directory_list_get_io_priority")]
 	public static extern c_int DirectoryListGetIoPriority(DirectoryList self);
 	[LinkName("gtk_directory_list_get_monitored")]
@@ -2228,7 +2228,7 @@ class Gtk
 	[CRepr]
 	public struct DragIcon;
 	[LinkName("gtk_drag_icon_get_child")]
-	public static extern Widget DragIconGetChild(DragIcon self);
+	public static extern Widget* DragIconGetChild(DragIcon self);
 	[LinkName("gtk_drag_icon_set_child")]
 	public static extern void DragIconSetChild(DragIcon self, Widget child);
 	[CRepr]
@@ -2239,15 +2239,15 @@ class Gtk
 	[CRepr]
 	public struct DragSource;
 	[LinkName("gtk_drag_source_new")]
-	public static extern DragSource DragSourceNew();
+	public static extern DragSource* DragSourceNew();
 	[LinkName("gtk_drag_source_drag_cancel")]
 	public static extern void DragSourceDragCancel(DragSource source);
 	[LinkName("gtk_drag_source_get_actions")]
 	public static extern Gdk.DragAction DragSourceGetActions(DragSource source);
 	[LinkName("gtk_drag_source_get_content")]
-	public static extern Gdk.ContentProvider DragSourceGetContent(DragSource source);
+	public static extern Gdk.ContentProvider* DragSourceGetContent(DragSource source);
 	[LinkName("gtk_drag_source_get_drag")]
-	public static extern Gdk.Drag DragSourceGetDrag(DragSource source);
+	public static extern Gdk.Drag* DragSourceGetDrag(DragSource source);
 	[LinkName("gtk_drag_source_set_actions")]
 	public static extern void DragSourceSetActions(DragSource source, Gdk.DragAction actions);
 	[LinkName("gtk_drag_source_set_content")]
@@ -2261,7 +2261,7 @@ class Gtk
 	[CRepr]
 	public struct DrawingArea;
 	[LinkName("gtk_drawing_area_new")]
-	public static extern Widget DrawingAreaNew();
+	public static extern Widget* DrawingAreaNew();
 	[LinkName("gtk_drawing_area_get_content_height")]
 	public static extern c_int DrawingAreaGetContentHeight(DrawingArea self);
 	[LinkName("gtk_drawing_area_get_content_width")]
@@ -2281,11 +2281,11 @@ class Gtk
 	[CRepr]
 	public struct DropControllerMotion;
 	[LinkName("gtk_drop_controller_motion_new")]
-	public static extern EventController DropControllerMotionNew();
+	public static extern EventController* DropControllerMotionNew();
 	[LinkName("gtk_drop_controller_motion_contains_pointer")]
 	public static extern c_int DropControllerMotionContainsPointer(DropControllerMotion self);
 	[LinkName("gtk_drop_controller_motion_get_drop")]
-	public static extern Gdk.Drop DropControllerMotionGetDrop(DropControllerMotion self);
+	public static extern Gdk.Drop* DropControllerMotionGetDrop(DropControllerMotion self);
 	[LinkName("gtk_drop_controller_motion_is_pointer")]
 	public static extern c_int DropControllerMotionIsPointer(DropControllerMotion self);
 	[CRepr]
@@ -2295,19 +2295,19 @@ class Gtk
 	[CRepr]
 	public struct DropDown;
 	[LinkName("gtk_drop_down_new")]
-	public static extern Widget DropDownNew(Gio.ListModel model, Expression expression);
+	public static extern Widget* DropDownNew(Gio.ListModel model, Expression expression);
 	[LinkName("gtk_drop_down_new_from_strings")]
-	public static extern Widget DropDownNewFromStrings();
+	public static extern Widget* DropDownNewFromStrings();
 	[LinkName("gtk_drop_down_get_enable_search")]
 	public static extern c_int DropDownGetEnableSearch(DropDown self);
 	[LinkName("gtk_drop_down_get_expression")]
-	public static extern Expression DropDownGetExpression(DropDown self);
+	public static extern Expression* DropDownGetExpression(DropDown self);
 	[LinkName("gtk_drop_down_get_factory")]
-	public static extern ListItemFactory DropDownGetFactory(DropDown self);
+	public static extern ListItemFactory* DropDownGetFactory(DropDown self);
 	[LinkName("gtk_drop_down_get_list_factory")]
-	public static extern ListItemFactory DropDownGetListFactory(DropDown self);
+	public static extern ListItemFactory* DropDownGetListFactory(DropDown self);
 	[LinkName("gtk_drop_down_get_model")]
-	public static extern Gio.ListModel DropDownGetModel(DropDown self);
+	public static extern Gio.ListModel* DropDownGetModel(DropDown self);
 	[LinkName("gtk_drop_down_get_selected")]
 	public static extern c_uint DropDownGetSelected(DropDown self);
 	[LinkName("gtk_drop_down_get_selected_item")]
@@ -2336,21 +2336,21 @@ class Gtk
 	[CRepr]
 	public struct DropTarget;
 	[LinkName("gtk_drop_target_new")]
-	public static extern DropTarget DropTargetNew(GLib.Type type, Gdk.DragAction actions);
+	public static extern DropTarget* DropTargetNew(GLib.Type type, Gdk.DragAction actions);
 	[LinkName("gtk_drop_target_get_actions")]
 	public static extern Gdk.DragAction DropTargetGetActions(DropTarget self);
 	[LinkName("gtk_drop_target_get_current_drop")]
-	public static extern Gdk.Drop DropTargetGetCurrentDrop(DropTarget self);
+	public static extern Gdk.Drop* DropTargetGetCurrentDrop(DropTarget self);
 	[LinkName("gtk_drop_target_get_drop")]
-	public static extern Gdk.Drop DropTargetGetDrop(DropTarget self);
+	public static extern Gdk.Drop* DropTargetGetDrop(DropTarget self);
 	[LinkName("gtk_drop_target_get_formats")]
-	public static extern Gdk.ContentFormats DropTargetGetFormats(DropTarget self);
+	public static extern Gdk.ContentFormats* DropTargetGetFormats(DropTarget self);
 	[LinkName("gtk_drop_target_get_gtypes")]
 	public static extern GLib.Type DropTargetGetGtypes(DropTarget self, c_ulong n_types);
 	[LinkName("gtk_drop_target_get_preload")]
 	public static extern c_int DropTargetGetPreload(DropTarget self);
 	[LinkName("gtk_drop_target_get_value")]
-	public static extern GObject.Value DropTargetGetValue(DropTarget self);
+	public static extern GObject.Value* DropTargetGetValue(DropTarget self);
 	[LinkName("gtk_drop_target_reject")]
 	public static extern void DropTargetReject(DropTarget self);
 	[LinkName("gtk_drop_target_set_actions")]
@@ -2362,11 +2362,11 @@ class Gtk
 	[CRepr]
 	public struct DropTargetAsync;
 	[LinkName("gtk_drop_target_async_new")]
-	public static extern DropTargetAsync DropTargetAsyncNew(Gdk.ContentFormats formats, Gdk.DragAction actions);
+	public static extern DropTargetAsync* DropTargetAsyncNew(Gdk.ContentFormats formats, Gdk.DragAction actions);
 	[LinkName("gtk_drop_target_async_get_actions")]
 	public static extern Gdk.DragAction DropTargetAsyncGetActions(DropTargetAsync self);
 	[LinkName("gtk_drop_target_async_get_formats")]
-	public static extern Gdk.ContentFormats DropTargetAsyncGetFormats(DropTargetAsync self);
+	public static extern Gdk.ContentFormats* DropTargetAsyncGetFormats(DropTargetAsync self);
 	[LinkName("gtk_drop_target_async_reject_drop")]
 	public static extern void DropTargetAsyncRejectDrop(DropTargetAsync self, Gdk.Drop drop);
 	[LinkName("gtk_drop_target_async_set_actions")]
@@ -2410,7 +2410,7 @@ class Gtk
 	[CRepr]
 	public struct EditableLabel;
 	[LinkName("gtk_editable_label_new")]
-	public static extern Widget EditableLabelNew(char8* str);
+	public static extern Widget* EditableLabelNew(char8* str);
 	[LinkName("gtk_editable_label_get_editing")]
 	public static extern c_int EditableLabelGetEditing(EditableLabel self);
 	[LinkName("gtk_editable_label_start_editing")]
@@ -2437,7 +2437,7 @@ class Gtk
 	[CRepr]
 	public struct EmojiChooser;
 	[LinkName("gtk_emoji_chooser_new")]
-	public static extern Widget EmojiChooserNew();
+	public static extern Widget* EmojiChooserNew();
 	[CRepr]
 	public struct EmojiChooserClass
 	{
@@ -2445,23 +2445,23 @@ class Gtk
 	[CRepr]
 	public struct Entry;
 	[LinkName("gtk_entry_new")]
-	public static extern Widget EntryNew();
+	public static extern Widget* EntryNew();
 	[LinkName("gtk_entry_new_with_buffer")]
-	public static extern Widget EntryNewWithBuffer(EntryBuffer buffer);
+	public static extern Widget* EntryNewWithBuffer(EntryBuffer buffer);
 	[LinkName("gtk_entry_get_activates_default")]
 	public static extern c_int EntryGetActivatesDefault(Entry entry);
 	[LinkName("gtk_entry_get_alignment")]
 	public static extern float EntryGetAlignment(Entry entry);
 	[LinkName("gtk_entry_get_attributes")]
-	public static extern Pango.AttrList EntryGetAttributes(Entry entry);
+	public static extern Pango.AttrList* EntryGetAttributes(Entry entry);
 	[LinkName("gtk_entry_get_buffer")]
-	public static extern EntryBuffer EntryGetBuffer(Entry entry);
+	public static extern EntryBuffer* EntryGetBuffer(Entry entry);
 	[LinkName("gtk_entry_get_completion")]
-	public static extern EntryCompletion EntryGetCompletion(Entry entry);
+	public static extern EntryCompletion* EntryGetCompletion(Entry entry);
 	[LinkName("gtk_entry_get_current_icon_drag_source")]
 	public static extern c_int EntryGetCurrentIconDragSource(Entry entry);
 	[LinkName("gtk_entry_get_extra_menu")]
-	public static extern Gio.MenuModel EntryGetExtraMenu(Entry entry);
+	public static extern Gio.MenuModel* EntryGetExtraMenu(Entry entry);
 	[LinkName("gtk_entry_get_has_frame")]
 	public static extern c_int EntryGetHasFrame(Entry entry);
 	[LinkName("gtk_entry_get_icon_activatable")]
@@ -2471,19 +2471,19 @@ class Gtk
 	[LinkName("gtk_entry_get_icon_at_pos")]
 	public static extern c_int EntryGetIconAtPos(Entry entry, c_int x, c_int y);
 	[LinkName("gtk_entry_get_icon_gicon")]
-	public static extern Gio.Icon EntryGetIconGicon(Entry entry, EntryIconPosition icon_pos);
+	public static extern Gio.Icon* EntryGetIconGicon(Entry entry, EntryIconPosition icon_pos);
 	[LinkName("gtk_entry_get_icon_name")]
-	public static extern char8* EntryGetIconName(Entry entry, EntryIconPosition icon_pos);
+	public static extern char8** EntryGetIconName(Entry entry, EntryIconPosition icon_pos);
 	[LinkName("gtk_entry_get_icon_paintable")]
-	public static extern Gdk.Paintable EntryGetIconPaintable(Entry entry, EntryIconPosition icon_pos);
+	public static extern Gdk.Paintable* EntryGetIconPaintable(Entry entry, EntryIconPosition icon_pos);
 	[LinkName("gtk_entry_get_icon_sensitive")]
 	public static extern c_int EntryGetIconSensitive(Entry entry, EntryIconPosition icon_pos);
 	[LinkName("gtk_entry_get_icon_storage_type")]
 	public static extern ImageType EntryGetIconStorageType(Entry entry, EntryIconPosition icon_pos);
 	[LinkName("gtk_entry_get_icon_tooltip_markup")]
-	public static extern char8* EntryGetIconTooltipMarkup(Entry entry, EntryIconPosition icon_pos);
+	public static extern char8** EntryGetIconTooltipMarkup(Entry entry, EntryIconPosition icon_pos);
 	[LinkName("gtk_entry_get_icon_tooltip_text")]
-	public static extern char8* EntryGetIconTooltipText(Entry entry, EntryIconPosition icon_pos);
+	public static extern char8** EntryGetIconTooltipText(Entry entry, EntryIconPosition icon_pos);
 	[LinkName("gtk_entry_get_input_hints")]
 	public static extern InputHints EntryGetInputHints(Entry entry);
 	[LinkName("gtk_entry_get_input_purpose")]
@@ -2495,13 +2495,13 @@ class Gtk
 	[LinkName("gtk_entry_get_overwrite_mode")]
 	public static extern c_int EntryGetOverwriteMode(Entry entry);
 	[LinkName("gtk_entry_get_placeholder_text")]
-	public static extern char8* EntryGetPlaceholderText(Entry entry);
+	public static extern char8** EntryGetPlaceholderText(Entry entry);
 	[LinkName("gtk_entry_get_progress_fraction")]
 	public static extern double EntryGetProgressFraction(Entry entry);
 	[LinkName("gtk_entry_get_progress_pulse_step")]
 	public static extern double EntryGetProgressPulseStep(Entry entry);
 	[LinkName("gtk_entry_get_tabs")]
-	public static extern Pango.TabArray EntryGetTabs(Entry entry);
+	public static extern Pango.TabArray* EntryGetTabs(Entry entry);
 	[LinkName("gtk_entry_get_text_length")]
 	public static extern c_ushort EntryGetTextLength(Entry entry);
 	[LinkName("gtk_entry_get_visibility")]
@@ -2567,7 +2567,7 @@ class Gtk
 	[CRepr]
 	public struct EntryBuffer;
 	[LinkName("gtk_entry_buffer_new")]
-	public static extern EntryBuffer EntryBufferNew(char8* initial_chars, c_int n_initial_chars);
+	public static extern EntryBuffer* EntryBufferNew(char8* initial_chars, c_int n_initial_chars);
 	[LinkName("gtk_entry_buffer_delete_text")]
 	public static extern c_uint EntryBufferDeleteText(EntryBuffer buffer, c_uint position, c_int n_chars);
 	[LinkName("gtk_entry_buffer_emit_deleted_text")]
@@ -2581,7 +2581,7 @@ class Gtk
 	[LinkName("gtk_entry_buffer_get_max_length")]
 	public static extern c_int EntryBufferGetMaxLength(EntryBuffer buffer);
 	[LinkName("gtk_entry_buffer_get_text")]
-	public static extern char8* EntryBufferGetText(EntryBuffer buffer);
+	public static extern char8** EntryBufferGetText(EntryBuffer buffer);
 	[LinkName("gtk_entry_buffer_insert_text")]
 	public static extern c_uint EntryBufferInsertText(EntryBuffer buffer, c_uint position, char8* chars, c_int n_chars);
 	[LinkName("gtk_entry_buffer_set_max_length")]
@@ -2601,17 +2601,17 @@ class Gtk
 	[CRepr]
 	public struct EntryCompletion;
 	[LinkName("gtk_entry_completion_new")]
-	public static extern EntryCompletion EntryCompletionNew();
+	public static extern EntryCompletion* EntryCompletionNew();
 	[LinkName("gtk_entry_completion_new_with_area")]
-	public static extern EntryCompletion EntryCompletionNewWithArea(CellArea area);
+	public static extern EntryCompletion* EntryCompletionNewWithArea(CellArea area);
 	[LinkName("gtk_entry_completion_complete")]
 	public static extern void EntryCompletionComplete(EntryCompletion completion);
 	[LinkName("gtk_entry_completion_compute_prefix")]
-	public static extern char8* EntryCompletionComputePrefix(EntryCompletion completion, char8* key);
+	public static extern char8** EntryCompletionComputePrefix(EntryCompletion completion, char8* key);
 	[LinkName("gtk_entry_completion_get_completion_prefix")]
-	public static extern char8* EntryCompletionGetCompletionPrefix(EntryCompletion completion);
+	public static extern char8** EntryCompletionGetCompletionPrefix(EntryCompletion completion);
 	[LinkName("gtk_entry_completion_get_entry")]
-	public static extern Widget EntryCompletionGetEntry(EntryCompletion completion);
+	public static extern Widget* EntryCompletionGetEntry(EntryCompletion completion);
 	[LinkName("gtk_entry_completion_get_inline_completion")]
 	public static extern c_int EntryCompletionGetInlineCompletion(EntryCompletion completion);
 	[LinkName("gtk_entry_completion_get_inline_selection")]
@@ -2619,7 +2619,7 @@ class Gtk
 	[LinkName("gtk_entry_completion_get_minimum_key_length")]
 	public static extern c_int EntryCompletionGetMinimumKeyLength(EntryCompletion completion);
 	[LinkName("gtk_entry_completion_get_model")]
-	public static extern TreeModel EntryCompletionGetModel(EntryCompletion completion);
+	public static extern TreeModel* EntryCompletionGetModel(EntryCompletion completion);
 	[LinkName("gtk_entry_completion_get_popup_completion")]
 	public static extern c_int EntryCompletionGetPopupCompletion(EntryCompletion completion);
 	[LinkName("gtk_entry_completion_get_popup_set_width")]
@@ -2657,21 +2657,21 @@ class Gtk
 	[CRepr]
 	public struct EventController;
 	[LinkName("gtk_event_controller_get_current_event")]
-	public static extern Gdk.Event EventControllerGetCurrentEvent(EventController controller);
+	public static extern Gdk.Event* EventControllerGetCurrentEvent(EventController controller);
 	[LinkName("gtk_event_controller_get_current_event_device")]
-	public static extern Gdk.Device EventControllerGetCurrentEventDevice(EventController controller);
+	public static extern Gdk.Device* EventControllerGetCurrentEventDevice(EventController controller);
 	[LinkName("gtk_event_controller_get_current_event_state")]
 	public static extern Gdk.ModifierType EventControllerGetCurrentEventState(EventController controller);
 	[LinkName("gtk_event_controller_get_current_event_time")]
 	public static extern c_uint EventControllerGetCurrentEventTime(EventController controller);
 	[LinkName("gtk_event_controller_get_name")]
-	public static extern char8* EventControllerGetName(EventController controller);
+	public static extern char8** EventControllerGetName(EventController controller);
 	[LinkName("gtk_event_controller_get_propagation_limit")]
 	public static extern PropagationLimit EventControllerGetPropagationLimit(EventController controller);
 	[LinkName("gtk_event_controller_get_propagation_phase")]
 	public static extern PropagationPhase EventControllerGetPropagationPhase(EventController controller);
 	[LinkName("gtk_event_controller_get_widget")]
-	public static extern Widget EventControllerGetWidget(EventController controller);
+	public static extern Widget* EventControllerGetWidget(EventController controller);
 	[LinkName("gtk_event_controller_reset")]
 	public static extern void EventControllerReset(EventController controller);
 	[LinkName("gtk_event_controller_set_name")]
@@ -2689,7 +2689,7 @@ class Gtk
 	[CRepr]
 	public struct EventControllerFocus;
 	[LinkName("gtk_event_controller_focus_new")]
-	public static extern EventController EventControllerFocusNew();
+	public static extern EventController* EventControllerFocusNew();
 	[LinkName("gtk_event_controller_focus_contains_focus")]
 	public static extern c_int EventControllerFocusContainsFocus(EventControllerFocus self);
 	[LinkName("gtk_event_controller_focus_is_focus")]
@@ -2701,13 +2701,13 @@ class Gtk
 	[CRepr]
 	public struct EventControllerKey;
 	[LinkName("gtk_event_controller_key_new")]
-	public static extern EventController EventControllerKeyNew();
+	public static extern EventController* EventControllerKeyNew();
 	[LinkName("gtk_event_controller_key_forward")]
 	public static extern c_int EventControllerKeyForward(EventControllerKey controller, Widget widget);
 	[LinkName("gtk_event_controller_key_get_group")]
 	public static extern c_uint EventControllerKeyGetGroup(EventControllerKey controller);
 	[LinkName("gtk_event_controller_key_get_im_context")]
-	public static extern IMContext EventControllerKeyGetImContext(EventControllerKey controller);
+	public static extern IMContext* EventControllerKeyGetImContext(EventControllerKey controller);
 	[LinkName("gtk_event_controller_key_set_im_context")]
 	public static extern void EventControllerKeySetImContext(EventControllerKey controller, IMContext im_context);
 	[CRepr]
@@ -2717,7 +2717,7 @@ class Gtk
 	[CRepr]
 	public struct EventControllerLegacy;
 	[LinkName("gtk_event_controller_legacy_new")]
-	public static extern EventController EventControllerLegacyNew();
+	public static extern EventController* EventControllerLegacyNew();
 	[CRepr]
 	public struct EventControllerLegacyClass
 	{
@@ -2725,7 +2725,7 @@ class Gtk
 	[CRepr]
 	public struct EventControllerMotion;
 	[LinkName("gtk_event_controller_motion_new")]
-	public static extern EventController EventControllerMotionNew();
+	public static extern EventController* EventControllerMotionNew();
 	[LinkName("gtk_event_controller_motion_contains_pointer")]
 	public static extern c_int EventControllerMotionContainsPointer(EventControllerMotion self);
 	[LinkName("gtk_event_controller_motion_is_pointer")]
@@ -2737,7 +2737,7 @@ class Gtk
 	[CRepr]
 	public struct EventControllerScroll;
 	[LinkName("gtk_event_controller_scroll_new")]
-	public static extern EventController EventControllerScrollNew(EventControllerScrollFlags flags);
+	public static extern EventController* EventControllerScrollNew(EventControllerScrollFlags flags);
 	[LinkName("gtk_event_controller_scroll_get_flags")]
 	public static extern EventControllerScrollFlags EventControllerScrollGetFlags(EventControllerScroll scroll);
 	[LinkName("gtk_event_controller_scroll_get_unit")]
@@ -2767,7 +2767,7 @@ class Gtk
 	[CRepr]
 	public struct EveryFilter;
 	[LinkName("gtk_every_filter_new")]
-	public static extern EveryFilter EveryFilterNew();
+	public static extern EveryFilter* EveryFilterNew();
 	[CRepr]
 	public struct EveryFilterClass
 	{
@@ -2775,17 +2775,17 @@ class Gtk
 	[CRepr]
 	public struct Expander;
 	[LinkName("gtk_expander_new")]
-	public static extern Widget ExpanderNew(char8* label);
+	public static extern Widget* ExpanderNew(char8* label);
 	[LinkName("gtk_expander_new_with_mnemonic")]
-	public static extern Widget ExpanderNewWithMnemonic(char8* label);
+	public static extern Widget* ExpanderNewWithMnemonic(char8* label);
 	[LinkName("gtk_expander_get_child")]
-	public static extern Widget ExpanderGetChild(Expander expander);
+	public static extern Widget* ExpanderGetChild(Expander expander);
 	[LinkName("gtk_expander_get_expanded")]
 	public static extern c_int ExpanderGetExpanded(Expander expander);
 	[LinkName("gtk_expander_get_label")]
-	public static extern char8* ExpanderGetLabel(Expander expander);
+	public static extern char8** ExpanderGetLabel(Expander expander);
 	[LinkName("gtk_expander_get_label_widget")]
-	public static extern Widget ExpanderGetLabelWidget(Expander expander);
+	public static extern Widget* ExpanderGetLabelWidget(Expander expander);
 	[LinkName("gtk_expander_get_resize_toplevel")]
 	public static extern c_int ExpanderGetResizeToplevel(Expander expander);
 	[LinkName("gtk_expander_get_use_markup")]
@@ -2809,7 +2809,7 @@ class Gtk
 	[CRepr]
 	public struct Expression;
 	[LinkName("gtk_expression_bind")]
-	public static extern ExpressionWatch ExpressionBind(Expression self, GObject.Object target, char8* property, GObject.Object this_);
+	public static extern ExpressionWatch* ExpressionBind(Expression self, GObject.Object target, char8* property, GObject.Object this_);
 	[LinkName("gtk_expression_evaluate")]
 	public static extern c_int ExpressionEvaluate(Expression self, GObject.Object this_, GObject.Value value);
 	[LinkName("gtk_expression_get_value_type")]
@@ -2817,11 +2817,11 @@ class Gtk
 	[LinkName("gtk_expression_is_static")]
 	public static extern c_int ExpressionIsStatic(Expression self);
 	[LinkName("gtk_expression_ref")]
-	public static extern Expression ExpressionRef(Expression self);
+	public static extern Expression* ExpressionRef(Expression self);
 	[LinkName("gtk_expression_unref")]
 	public static extern void ExpressionUnref(Expression self);
 	[LinkName("gtk_expression_watch")]
-	public static extern ExpressionWatch ExpressionWatch(Expression self, GObject.Object this_, ExpressionNotify notify, void* user_data, GLib.DestroyNotify user_destroy);
+	public static extern ExpressionWatch* ExpressionWatch(Expression self, GObject.Object this_, ExpressionNotify notify, void* user_data, GLib.DestroyNotify user_destroy);
 	public function void ExpressionNotify(void* user_data);
 	[CRepr]
 	public struct ExpressionWatch
@@ -2839,7 +2839,7 @@ class Gtk
 	[CRepr]
 	public struct FileChooserDialog;
 	[LinkName("gtk_file_chooser_dialog_new")]
-	public static extern Widget FileChooserDialogNew(char8* title, Window parent, FileChooserAction action, char8* first_button_text);
+	public static extern Widget* FileChooserDialogNew(char8* title, Window parent, FileChooserAction action, char8* first_button_text);
 	public enum FileChooserError : c_int
 	{
 		GTK_FILE_CHOOSER_ERROR_NONEXISTENT,
@@ -2850,11 +2850,11 @@ class Gtk
 	[CRepr]
 	public struct FileChooserNative;
 	[LinkName("gtk_file_chooser_native_new")]
-	public static extern FileChooserNative FileChooserNativeNew(char8* title, Window parent, FileChooserAction action, char8* accept_label, char8* cancel_label);
+	public static extern FileChooserNative* FileChooserNativeNew(char8* title, Window parent, FileChooserAction action, char8* accept_label, char8* cancel_label);
 	[LinkName("gtk_file_chooser_native_get_accept_label")]
-	public static extern char8* FileChooserNativeGetAcceptLabel(FileChooserNative self);
+	public static extern char8** FileChooserNativeGetAcceptLabel(FileChooserNative self);
 	[LinkName("gtk_file_chooser_native_get_cancel_label")]
-	public static extern char8* FileChooserNativeGetCancelLabel(FileChooserNative self);
+	public static extern char8** FileChooserNativeGetCancelLabel(FileChooserNative self);
 	[LinkName("gtk_file_chooser_native_set_accept_label")]
 	public static extern void FileChooserNativeSetAcceptLabel(FileChooserNative self, char8* accept_label);
 	[LinkName("gtk_file_chooser_native_set_cancel_label")]
@@ -2867,47 +2867,47 @@ class Gtk
 	[CRepr]
 	public struct FileChooserWidget;
 	[LinkName("gtk_file_chooser_widget_new")]
-	public static extern Widget FileChooserWidgetNew(FileChooserAction action);
+	public static extern Widget* FileChooserWidgetNew(FileChooserAction action);
 	[CRepr]
 	public struct FileDialog;
 	[LinkName("gtk_file_dialog_new")]
-	public static extern FileDialog FileDialogNew();
+	public static extern FileDialog* FileDialogNew();
 	[LinkName("gtk_file_dialog_get_accept_label")]
-	public static extern char8* FileDialogGetAcceptLabel(FileDialog self);
+	public static extern char8** FileDialogGetAcceptLabel(FileDialog self);
 	[LinkName("gtk_file_dialog_get_default_filter")]
-	public static extern FileFilter FileDialogGetDefaultFilter(FileDialog self);
+	public static extern FileFilter* FileDialogGetDefaultFilter(FileDialog self);
 	[LinkName("gtk_file_dialog_get_filters")]
-	public static extern Gio.ListModel FileDialogGetFilters(FileDialog self);
+	public static extern Gio.ListModel* FileDialogGetFilters(FileDialog self);
 	[LinkName("gtk_file_dialog_get_initial_file")]
-	public static extern Gio.File FileDialogGetInitialFile(FileDialog self);
+	public static extern Gio.File* FileDialogGetInitialFile(FileDialog self);
 	[LinkName("gtk_file_dialog_get_initial_folder")]
-	public static extern Gio.File FileDialogGetInitialFolder(FileDialog self);
+	public static extern Gio.File* FileDialogGetInitialFolder(FileDialog self);
 	[LinkName("gtk_file_dialog_get_initial_name")]
-	public static extern char8* FileDialogGetInitialName(FileDialog self);
+	public static extern char8** FileDialogGetInitialName(FileDialog self);
 	[LinkName("gtk_file_dialog_get_modal")]
 	public static extern c_int FileDialogGetModal(FileDialog self);
 	[LinkName("gtk_file_dialog_get_title")]
-	public static extern char8* FileDialogGetTitle(FileDialog self);
+	public static extern char8** FileDialogGetTitle(FileDialog self);
 	[LinkName("gtk_file_dialog_open")]
 	public static extern void FileDialogOpen(FileDialog self, Window parent, Gio.Cancellable cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gtk_file_dialog_open_finish")]
-	public static extern Gio.File FileDialogOpenFinish(FileDialog self, Gio.AsyncResult result);
+	public static extern Gio.File* FileDialogOpenFinish(FileDialog self, Gio.AsyncResult result);
 	[LinkName("gtk_file_dialog_open_multiple")]
 	public static extern void FileDialogOpenMultiple(FileDialog self, Window parent, Gio.Cancellable cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gtk_file_dialog_open_multiple_finish")]
-	public static extern Gio.ListModel FileDialogOpenMultipleFinish(FileDialog self, Gio.AsyncResult result);
+	public static extern Gio.ListModel* FileDialogOpenMultipleFinish(FileDialog self, Gio.AsyncResult result);
 	[LinkName("gtk_file_dialog_save")]
 	public static extern void FileDialogSave(FileDialog self, Window parent, Gio.Cancellable cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gtk_file_dialog_save_finish")]
-	public static extern Gio.File FileDialogSaveFinish(FileDialog self, Gio.AsyncResult result);
+	public static extern Gio.File* FileDialogSaveFinish(FileDialog self, Gio.AsyncResult result);
 	[LinkName("gtk_file_dialog_select_folder")]
 	public static extern void FileDialogSelectFolder(FileDialog self, Window parent, Gio.Cancellable cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gtk_file_dialog_select_folder_finish")]
-	public static extern Gio.File FileDialogSelectFolderFinish(FileDialog self, Gio.AsyncResult result);
+	public static extern Gio.File* FileDialogSelectFolderFinish(FileDialog self, Gio.AsyncResult result);
 	[LinkName("gtk_file_dialog_select_multiple_folders")]
 	public static extern void FileDialogSelectMultipleFolders(FileDialog self, Window parent, Gio.Cancellable cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gtk_file_dialog_select_multiple_folders_finish")]
-	public static extern Gio.ListModel FileDialogSelectMultipleFoldersFinish(FileDialog self, Gio.AsyncResult result);
+	public static extern Gio.ListModel* FileDialogSelectMultipleFoldersFinish(FileDialog self, Gio.AsyncResult result);
 	[LinkName("gtk_file_dialog_set_accept_label")]
 	public static extern void FileDialogSetAcceptLabel(FileDialog self, char8* accept_label);
 	[LinkName("gtk_file_dialog_set_default_filter")]
@@ -2932,9 +2932,9 @@ class Gtk
 	[CRepr]
 	public struct FileFilter;
 	[LinkName("gtk_file_filter_new")]
-	public static extern FileFilter FileFilterNew();
+	public static extern FileFilter* FileFilterNew();
 	[LinkName("gtk_file_filter_new_from_gvariant")]
-	public static extern FileFilter FileFilterNewFromGvariant(GLib.Variant variant);
+	public static extern FileFilter* FileFilterNewFromGvariant(GLib.Variant variant);
 	[LinkName("gtk_file_filter_add_mime_type")]
 	public static extern void FileFilterAddMimeType(FileFilter filter, char8* mime_type);
 	[LinkName("gtk_file_filter_add_pattern")]
@@ -2946,17 +2946,17 @@ class Gtk
 	[LinkName("gtk_file_filter_get_attributes")]
 	public static extern char8* FileFilterGetAttributes(FileFilter filter);
 	[LinkName("gtk_file_filter_get_name")]
-	public static extern char8* FileFilterGetName(FileFilter filter);
+	public static extern char8** FileFilterGetName(FileFilter filter);
 	[LinkName("gtk_file_filter_set_name")]
 	public static extern void FileFilterSetName(FileFilter filter, char8* name);
 	[LinkName("gtk_file_filter_to_gvariant")]
-	public static extern GLib.Variant FileFilterToGvariant(FileFilter filter);
+	public static extern GLib.Variant* FileFilterToGvariant(FileFilter filter);
 	[CRepr]
 	public struct FileLauncher;
 	[LinkName("gtk_file_launcher_new")]
-	public static extern FileLauncher FileLauncherNew(Gio.File file);
+	public static extern FileLauncher* FileLauncherNew(Gio.File file);
 	[LinkName("gtk_file_launcher_get_file")]
-	public static extern Gio.File FileLauncherGetFile(FileLauncher self);
+	public static extern Gio.File* FileLauncherGetFile(FileLauncher self);
 	[LinkName("gtk_file_launcher_launch")]
 	public static extern void FileLauncherLaunch(FileLauncher self, Window parent, Gio.Cancellable cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gtk_file_launcher_launch_finish")]
@@ -2994,13 +2994,13 @@ class Gtk
 	[CRepr]
 	public struct FilterListModel;
 	[LinkName("gtk_filter_list_model_new")]
-	public static extern FilterListModel FilterListModelNew(Gio.ListModel model, Filter filter);
+	public static extern FilterListModel* FilterListModelNew(Gio.ListModel model, Filter filter);
 	[LinkName("gtk_filter_list_model_get_filter")]
-	public static extern Filter FilterListModelGetFilter(FilterListModel self);
+	public static extern Filter* FilterListModelGetFilter(FilterListModel self);
 	[LinkName("gtk_filter_list_model_get_incremental")]
 	public static extern c_int FilterListModelGetIncremental(FilterListModel self);
 	[LinkName("gtk_filter_list_model_get_model")]
-	public static extern Gio.ListModel FilterListModelGetModel(FilterListModel self);
+	public static extern Gio.ListModel* FilterListModelGetModel(FilterListModel self);
 	[LinkName("gtk_filter_list_model_get_pending")]
 	public static extern c_uint FilterListModelGetPending(FilterListModel self);
 	[LinkName("gtk_filter_list_model_set_filter")]
@@ -3023,11 +3023,11 @@ class Gtk
 	[CRepr]
 	public struct Fixed;
 	[LinkName("gtk_fixed_new")]
-	public static extern Widget FixedNew();
+	public static extern Widget* FixedNew();
 	[LinkName("gtk_fixed_get_child_position")]
 	public static extern void FixedGetChildPosition(Fixed fixed_, Widget widget, double x, double y);
 	[LinkName("gtk_fixed_get_child_transform")]
-	public static extern Gsk.Transform FixedGetChildTransform(Fixed fixed_, Widget widget);
+	public static extern Gsk.Transform* FixedGetChildTransform(Fixed fixed_, Widget widget);
 	[LinkName("gtk_fixed_move")]
 	public static extern void FixedMove(Fixed fixed_, Widget widget, double x, double y);
 	[LinkName("gtk_fixed_put")]
@@ -3044,11 +3044,11 @@ class Gtk
 	[CRepr]
 	public struct FixedLayout;
 	[LinkName("gtk_fixed_layout_new")]
-	public static extern LayoutManager FixedLayoutNew();
+	public static extern LayoutManager* FixedLayoutNew();
 	[CRepr]
 	public struct FixedLayoutChild;
 	[LinkName("gtk_fixed_layout_child_get_transform")]
-	public static extern Gsk.Transform FixedLayoutChildGetTransform(FixedLayoutChild child);
+	public static extern Gsk.Transform* FixedLayoutChildGetTransform(FixedLayoutChild child);
 	[LinkName("gtk_fixed_layout_child_set_transform")]
 	public static extern void FixedLayoutChildSetTransform(FixedLayoutChild child, Gsk.Transform transform);
 	[CRepr]
@@ -3064,11 +3064,11 @@ class Gtk
 	[CRepr]
 	public struct FlattenListModel;
 	[LinkName("gtk_flatten_list_model_new")]
-	public static extern FlattenListModel FlattenListModelNew(Gio.ListModel model);
+	public static extern FlattenListModel* FlattenListModelNew(Gio.ListModel model);
 	[LinkName("gtk_flatten_list_model_get_model")]
-	public static extern Gio.ListModel FlattenListModelGetModel(FlattenListModel self);
+	public static extern Gio.ListModel* FlattenListModelGetModel(FlattenListModel self);
 	[LinkName("gtk_flatten_list_model_get_model_for_item")]
-	public static extern Gio.ListModel FlattenListModelGetModelForItem(FlattenListModel self, c_uint position);
+	public static extern Gio.ListModel* FlattenListModelGetModelForItem(FlattenListModel self, c_uint position);
 	[LinkName("gtk_flatten_list_model_set_model")]
 	public static extern void FlattenListModelSetModel(FlattenListModel self, Gio.ListModel model);
 	[CRepr]
@@ -3079,7 +3079,7 @@ class Gtk
 	[CRepr]
 	public struct FlowBox;
 	[LinkName("gtk_flow_box_new")]
-	public static extern Widget FlowBoxNew();
+	public static extern Widget* FlowBoxNew();
 	[LinkName("gtk_flow_box_append")]
 	public static extern void FlowBoxAppend(FlowBox self, Widget child);
 	[LinkName("gtk_flow_box_bind_model")]
@@ -3087,9 +3087,9 @@ class Gtk
 	[LinkName("gtk_flow_box_get_activate_on_single_click")]
 	public static extern c_int FlowBoxGetActivateOnSingleClick(FlowBox box_);
 	[LinkName("gtk_flow_box_get_child_at_index")]
-	public static extern FlowBoxChild FlowBoxGetChildAtIndex(FlowBox box_, c_int idx);
+	public static extern FlowBoxChild* FlowBoxGetChildAtIndex(FlowBox box_, c_int idx);
 	[LinkName("gtk_flow_box_get_child_at_pos")]
-	public static extern FlowBoxChild FlowBoxGetChildAtPos(FlowBox box_, c_int x, c_int y);
+	public static extern FlowBoxChild* FlowBoxGetChildAtPos(FlowBox box_, c_int x, c_int y);
 	[LinkName("gtk_flow_box_get_column_spacing")]
 	public static extern c_uint FlowBoxGetColumnSpacing(FlowBox box_);
 	[LinkName("gtk_flow_box_get_homogeneous")]
@@ -3101,7 +3101,7 @@ class Gtk
 	[LinkName("gtk_flow_box_get_row_spacing")]
 	public static extern c_uint FlowBoxGetRowSpacing(FlowBox box_);
 	[LinkName("gtk_flow_box_get_selected_children")]
-	public static extern GLib.List FlowBoxGetSelectedChildren(FlowBox box_);
+	public static extern GLib.List* FlowBoxGetSelectedChildren(FlowBox box_);
 	[LinkName("gtk_flow_box_get_selection_mode")]
 	public static extern SelectionMode FlowBoxGetSelectionMode(FlowBox box_);
 	[LinkName("gtk_flow_box_insert")]
@@ -3151,11 +3151,11 @@ class Gtk
 	[CRepr]
 	public struct FlowBoxChild;
 	[LinkName("gtk_flow_box_child_new")]
-	public static extern Widget FlowBoxChildNew();
+	public static extern Widget* FlowBoxChildNew();
 	[LinkName("gtk_flow_box_child_changed")]
 	public static extern void FlowBoxChildChanged(FlowBoxChild child);
 	[LinkName("gtk_flow_box_child_get_child")]
-	public static extern Widget FlowBoxChildGetChild(FlowBoxChild self);
+	public static extern Widget* FlowBoxChildGetChild(FlowBoxChild self);
 	[LinkName("gtk_flow_box_child_get_index")]
 	public static extern c_int FlowBoxChildGetIndex(FlowBoxChild child);
 	[LinkName("gtk_flow_box_child_is_selected")]
@@ -3174,13 +3174,13 @@ class Gtk
 	[CRepr]
 	public struct FontButton;
 	[LinkName("gtk_font_button_new")]
-	public static extern Widget FontButtonNew();
+	public static extern Widget* FontButtonNew();
 	[LinkName("gtk_font_button_new_with_font")]
-	public static extern Widget FontButtonNewWithFont(char8* fontname);
+	public static extern Widget* FontButtonNewWithFont(char8* fontname);
 	[LinkName("gtk_font_button_get_modal")]
 	public static extern c_int FontButtonGetModal(FontButton font_button);
 	[LinkName("gtk_font_button_get_title")]
-	public static extern char8* FontButtonGetTitle(FontButton font_button);
+	public static extern char8** FontButtonGetTitle(FontButton font_button);
 	[LinkName("gtk_font_button_get_use_font")]
 	public static extern c_int FontButtonGetUseFont(FontButton font_button);
 	[LinkName("gtk_font_button_get_use_size")]
@@ -3213,7 +3213,7 @@ class Gtk
 	[CRepr]
 	public struct FontChooserDialog;
 	[LinkName("gtk_font_chooser_dialog_new")]
-	public static extern Widget FontChooserDialogNew(char8* title, Window parent);
+	public static extern Widget* FontChooserDialogNew(char8* title, Window parent);
 	[CRepr]
 	public struct FontChooserIface
 	{
@@ -3231,19 +3231,19 @@ class Gtk
 	[CRepr]
 	public struct FontChooserWidget;
 	[LinkName("gtk_font_chooser_widget_new")]
-	public static extern Widget FontChooserWidgetNew();
+	public static extern Widget* FontChooserWidgetNew();
 	[CRepr]
 	public struct FontDialog;
 	[LinkName("gtk_font_dialog_new")]
-	public static extern FontDialog FontDialogNew();
+	public static extern FontDialog* FontDialogNew();
 	[LinkName("gtk_font_dialog_choose_face")]
 	public static extern void FontDialogChooseFace(FontDialog self, Window parent, Pango.FontFace initial_value, Gio.Cancellable cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gtk_font_dialog_choose_face_finish")]
-	public static extern Pango.FontFace FontDialogChooseFaceFinish(FontDialog self, Gio.AsyncResult result);
+	public static extern Pango.FontFace* FontDialogChooseFaceFinish(FontDialog self, Gio.AsyncResult result);
 	[LinkName("gtk_font_dialog_choose_family")]
 	public static extern void FontDialogChooseFamily(FontDialog self, Window parent, Pango.FontFamily initial_value, Gio.Cancellable cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gtk_font_dialog_choose_family_finish")]
-	public static extern Pango.FontFamily FontDialogChooseFamilyFinish(FontDialog self, Gio.AsyncResult result);
+	public static extern Pango.FontFamily* FontDialogChooseFamilyFinish(FontDialog self, Gio.AsyncResult result);
 	[LinkName("gtk_font_dialog_choose_font")]
 	public static extern void FontDialogChooseFont(FontDialog self, Window parent, Pango.FontDescription initial_value, Gio.Cancellable cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gtk_font_dialog_choose_font_and_features")]
@@ -3251,17 +3251,17 @@ class Gtk
 	[LinkName("gtk_font_dialog_choose_font_and_features_finish")]
 	public static extern c_int FontDialogChooseFontAndFeaturesFinish(FontDialog self, Gio.AsyncResult result, Pango.FontDescription font_desc, char8* font_features, Pango.Language language);
 	[LinkName("gtk_font_dialog_choose_font_finish")]
-	public static extern Pango.FontDescription FontDialogChooseFontFinish(FontDialog self, Gio.AsyncResult result);
+	public static extern Pango.FontDescription* FontDialogChooseFontFinish(FontDialog self, Gio.AsyncResult result);
 	[LinkName("gtk_font_dialog_get_filter")]
-	public static extern Filter FontDialogGetFilter(FontDialog self);
+	public static extern Filter* FontDialogGetFilter(FontDialog self);
 	[LinkName("gtk_font_dialog_get_font_map")]
-	public static extern Pango.FontMap FontDialogGetFontMap(FontDialog self);
+	public static extern Pango.FontMap* FontDialogGetFontMap(FontDialog self);
 	[LinkName("gtk_font_dialog_get_language")]
-	public static extern Pango.Language FontDialogGetLanguage(FontDialog self);
+	public static extern Pango.Language* FontDialogGetLanguage(FontDialog self);
 	[LinkName("gtk_font_dialog_get_modal")]
 	public static extern c_int FontDialogGetModal(FontDialog self);
 	[LinkName("gtk_font_dialog_get_title")]
-	public static extern char8* FontDialogGetTitle(FontDialog self);
+	public static extern char8** FontDialogGetTitle(FontDialog self);
 	[LinkName("gtk_font_dialog_set_filter")]
 	public static extern void FontDialogSetFilter(FontDialog self, Filter filter);
 	[LinkName("gtk_font_dialog_set_font_map")]
@@ -3275,15 +3275,15 @@ class Gtk
 	[CRepr]
 	public struct FontDialogButton;
 	[LinkName("gtk_font_dialog_button_new")]
-	public static extern Widget FontDialogButtonNew(FontDialog dialog);
+	public static extern Widget* FontDialogButtonNew(FontDialog dialog);
 	[LinkName("gtk_font_dialog_button_get_dialog")]
-	public static extern FontDialog FontDialogButtonGetDialog(FontDialogButton self);
+	public static extern FontDialog* FontDialogButtonGetDialog(FontDialogButton self);
 	[LinkName("gtk_font_dialog_button_get_font_desc")]
-	public static extern Pango.FontDescription FontDialogButtonGetFontDesc(FontDialogButton self);
+	public static extern Pango.FontDescription* FontDialogButtonGetFontDesc(FontDialogButton self);
 	[LinkName("gtk_font_dialog_button_get_font_features")]
-	public static extern char8* FontDialogButtonGetFontFeatures(FontDialogButton self);
+	public static extern char8** FontDialogButtonGetFontFeatures(FontDialogButton self);
 	[LinkName("gtk_font_dialog_button_get_language")]
-	public static extern Pango.Language FontDialogButtonGetLanguage(FontDialogButton self);
+	public static extern Pango.Language* FontDialogButtonGetLanguage(FontDialogButton self);
 	[LinkName("gtk_font_dialog_button_get_level")]
 	public static extern FontLevel FontDialogButtonGetLevel(FontDialogButton self);
 	[LinkName("gtk_font_dialog_button_get_use_font")]
@@ -3325,15 +3325,15 @@ class Gtk
 	[CRepr]
 	public struct Frame;
 	[LinkName("gtk_frame_new")]
-	public static extern Widget FrameNew(char8* label);
+	public static extern Widget* FrameNew(char8* label);
 	[LinkName("gtk_frame_get_child")]
-	public static extern Widget FrameGetChild(Frame frame);
+	public static extern Widget* FrameGetChild(Frame frame);
 	[LinkName("gtk_frame_get_label")]
-	public static extern char8* FrameGetLabel(Frame frame);
+	public static extern char8** FrameGetLabel(Frame frame);
 	[LinkName("gtk_frame_get_label_align")]
 	public static extern float FrameGetLabelAlign(Frame frame);
 	[LinkName("gtk_frame_get_label_widget")]
-	public static extern Widget FrameGetLabelWidget(Frame frame);
+	public static extern Widget* FrameGetLabelWidget(Frame frame);
 	[LinkName("gtk_frame_set_child")]
 	public static extern void FrameSetChild(Frame frame, Widget child);
 	[LinkName("gtk_frame_set_label")]
@@ -3350,7 +3350,7 @@ class Gtk
 	[CRepr]
 	public struct GLArea;
 	[LinkName("gtk_gl_area_new")]
-	public static extern Widget GlAreaNew();
+	public static extern Widget* GlAreaNew();
 	[LinkName("gtk_gl_area_attach_buffers")]
 	public static extern void GlAreaAttachBuffers(GLArea area);
 	[LinkName("gtk_gl_area_get_allowed_apis")]
@@ -3360,9 +3360,9 @@ class Gtk
 	[LinkName("gtk_gl_area_get_auto_render")]
 	public static extern c_int GlAreaGetAutoRender(GLArea area);
 	[LinkName("gtk_gl_area_get_context")]
-	public static extern Gdk.GLContext GlAreaGetContext(GLArea area);
+	public static extern Gdk.GLContext* GlAreaGetContext(GLArea area);
 	[LinkName("gtk_gl_area_get_error")]
-	public static extern GLib.Error GlAreaGetError(GLArea area);
+	public static extern GLib.Error* GlAreaGetError(GLArea area);
 	[LinkName("gtk_gl_area_get_has_depth_buffer")]
 	public static extern c_int GlAreaGetHasDepthBuffer(GLArea area);
 	[LinkName("gtk_gl_area_get_has_stencil_buffer")]
@@ -3401,19 +3401,19 @@ class Gtk
 	[LinkName("gtk_gesture_get_bounding_box_center")]
 	public static extern c_int GestureGetBoundingBoxCenter(Gesture gesture, double x, double y);
 	[LinkName("gtk_gesture_get_device")]
-	public static extern Gdk.Device GestureGetDevice(Gesture gesture);
+	public static extern Gdk.Device* GestureGetDevice(Gesture gesture);
 	[LinkName("gtk_gesture_get_group")]
-	public static extern GLib.List GestureGetGroup(Gesture gesture);
+	public static extern GLib.List* GestureGetGroup(Gesture gesture);
 	[LinkName("gtk_gesture_get_last_event")]
-	public static extern Gdk.Event GestureGetLastEvent(Gesture gesture, Gdk.EventSequence sequence);
+	public static extern Gdk.Event* GestureGetLastEvent(Gesture gesture, Gdk.EventSequence sequence);
 	[LinkName("gtk_gesture_get_last_updated_sequence")]
-	public static extern Gdk.EventSequence GestureGetLastUpdatedSequence(Gesture gesture);
+	public static extern Gdk.EventSequence* GestureGetLastUpdatedSequence(Gesture gesture);
 	[LinkName("gtk_gesture_get_point")]
 	public static extern c_int GestureGetPoint(Gesture gesture, Gdk.EventSequence sequence, double x, double y);
 	[LinkName("gtk_gesture_get_sequence_state")]
 	public static extern EventSequenceState GestureGetSequenceState(Gesture gesture, Gdk.EventSequence sequence);
 	[LinkName("gtk_gesture_get_sequences")]
-	public static extern GLib.List GestureGetSequences(Gesture gesture);
+	public static extern GLib.List* GestureGetSequences(Gesture gesture);
 	[LinkName("gtk_gesture_group")]
 	public static extern void GestureGroup(Gesture group_gesture, Gesture gesture);
 	[LinkName("gtk_gesture_handles_sequence")]
@@ -3437,7 +3437,7 @@ class Gtk
 	[CRepr]
 	public struct GestureClick;
 	[LinkName("gtk_gesture_click_new")]
-	public static extern Gesture GestureClickNew();
+	public static extern Gesture* GestureClickNew();
 	[CRepr]
 	public struct GestureClickClass
 	{
@@ -3445,7 +3445,7 @@ class Gtk
 	[CRepr]
 	public struct GestureDrag;
 	[LinkName("gtk_gesture_drag_new")]
-	public static extern Gesture GestureDragNew();
+	public static extern Gesture* GestureDragNew();
 	[LinkName("gtk_gesture_drag_get_offset")]
 	public static extern c_int GestureDragGetOffset(GestureDrag gesture, double x, double y);
 	[LinkName("gtk_gesture_drag_get_start_point")]
@@ -3457,7 +3457,7 @@ class Gtk
 	[CRepr]
 	public struct GestureLongPress;
 	[LinkName("gtk_gesture_long_press_new")]
-	public static extern Gesture GestureLongPressNew();
+	public static extern Gesture* GestureLongPressNew();
 	[LinkName("gtk_gesture_long_press_get_delay_factor")]
 	public static extern double GestureLongPressGetDelayFactor(GestureLongPress gesture);
 	[LinkName("gtk_gesture_long_press_set_delay_factor")]
@@ -3469,7 +3469,7 @@ class Gtk
 	[CRepr]
 	public struct GesturePan;
 	[LinkName("gtk_gesture_pan_new")]
-	public static extern Gesture GesturePanNew(Orientation orientation);
+	public static extern Gesture* GesturePanNew(Orientation orientation);
 	[LinkName("gtk_gesture_pan_get_orientation")]
 	public static extern Orientation GesturePanGetOrientation(GesturePan gesture);
 	[LinkName("gtk_gesture_pan_set_orientation")]
@@ -3481,7 +3481,7 @@ class Gtk
 	[CRepr]
 	public struct GestureRotate;
 	[LinkName("gtk_gesture_rotate_new")]
-	public static extern Gesture GestureRotateNew();
+	public static extern Gesture* GestureRotateNew();
 	[LinkName("gtk_gesture_rotate_get_angle_delta")]
 	public static extern double GestureRotateGetAngleDelta(GestureRotate gesture);
 	[CRepr]
@@ -3495,7 +3495,7 @@ class Gtk
 	[LinkName("gtk_gesture_single_get_current_button")]
 	public static extern c_uint GestureSingleGetCurrentButton(GestureSingle gesture);
 	[LinkName("gtk_gesture_single_get_current_sequence")]
-	public static extern Gdk.EventSequence GestureSingleGetCurrentSequence(GestureSingle gesture);
+	public static extern Gdk.EventSequence* GestureSingleGetCurrentSequence(GestureSingle gesture);
 	[LinkName("gtk_gesture_single_get_exclusive")]
 	public static extern c_int GestureSingleGetExclusive(GestureSingle gesture);
 	[LinkName("gtk_gesture_single_get_touch_only")]
@@ -3513,7 +3513,7 @@ class Gtk
 	[CRepr]
 	public struct GestureStylus;
 	[LinkName("gtk_gesture_stylus_new")]
-	public static extern Gesture GestureStylusNew();
+	public static extern Gesture* GestureStylusNew();
 	[LinkName("gtk_gesture_stylus_get_axes")]
 	public static extern c_int GestureStylusGetAxes(GestureStylus gesture);
 	[LinkName("gtk_gesture_stylus_get_axis")]
@@ -3521,7 +3521,7 @@ class Gtk
 	[LinkName("gtk_gesture_stylus_get_backlog")]
 	public static extern c_int GestureStylusGetBacklog(GestureStylus gesture, c_uint n_elems);
 	[LinkName("gtk_gesture_stylus_get_device_tool")]
-	public static extern Gdk.DeviceTool GestureStylusGetDeviceTool(GestureStylus gesture);
+	public static extern Gdk.DeviceTool* GestureStylusGetDeviceTool(GestureStylus gesture);
 	[LinkName("gtk_gesture_stylus_get_stylus_only")]
 	public static extern c_int GestureStylusGetStylusOnly(GestureStylus gesture);
 	[LinkName("gtk_gesture_stylus_set_stylus_only")]
@@ -3533,7 +3533,7 @@ class Gtk
 	[CRepr]
 	public struct GestureSwipe;
 	[LinkName("gtk_gesture_swipe_new")]
-	public static extern Gesture GestureSwipeNew();
+	public static extern Gesture* GestureSwipeNew();
 	[LinkName("gtk_gesture_swipe_get_velocity")]
 	public static extern c_int GestureSwipeGetVelocity(GestureSwipe gesture, double velocity_x, double velocity_y);
 	[CRepr]
@@ -3543,7 +3543,7 @@ class Gtk
 	[CRepr]
 	public struct GestureZoom;
 	[LinkName("gtk_gesture_zoom_new")]
-	public static extern Gesture GestureZoomNew();
+	public static extern Gesture* GestureZoomNew();
 	[LinkName("gtk_gesture_zoom_get_scale_delta")]
 	public static extern double GestureZoomGetScaleDelta(GestureZoom gesture);
 	[CRepr]
@@ -3553,7 +3553,7 @@ class Gtk
 	[CRepr]
 	public struct Grid;
 	[LinkName("gtk_grid_new")]
-	public static extern Widget GridNew();
+	public static extern Widget* GridNew();
 	[LinkName("gtk_grid_attach")]
 	public static extern void GridAttach(Grid grid, Widget child, c_int column, c_int row, c_int width, c_int height);
 	[LinkName("gtk_grid_attach_next_to")]
@@ -3561,7 +3561,7 @@ class Gtk
 	[LinkName("gtk_grid_get_baseline_row")]
 	public static extern c_int GridGetBaselineRow(Grid grid);
 	[LinkName("gtk_grid_get_child_at")]
-	public static extern Widget GridGetChildAt(Grid grid, c_int column, c_int row);
+	public static extern Widget* GridGetChildAt(Grid grid, c_int column, c_int row);
 	[LinkName("gtk_grid_get_column_homogeneous")]
 	public static extern c_int GridGetColumnHomogeneous(Grid grid);
 	[LinkName("gtk_grid_get_column_spacing")]
@@ -3606,7 +3606,7 @@ class Gtk
 	[CRepr]
 	public struct GridLayout;
 	[LinkName("gtk_grid_layout_new")]
-	public static extern LayoutManager GridLayoutNew();
+	public static extern LayoutManager* GridLayoutNew();
 	[LinkName("gtk_grid_layout_get_baseline_row")]
 	public static extern c_int GridLayoutGetBaselineRow(GridLayout grid);
 	[LinkName("gtk_grid_layout_get_column_homogeneous")]
@@ -3662,17 +3662,17 @@ class Gtk
 	[CRepr]
 	public struct GridView;
 	[LinkName("gtk_grid_view_new")]
-	public static extern Widget GridViewNew(SelectionModel model, ListItemFactory factory);
+	public static extern Widget* GridViewNew(SelectionModel model, ListItemFactory factory);
 	[LinkName("gtk_grid_view_get_enable_rubberband")]
 	public static extern c_int GridViewGetEnableRubberband(GridView self);
 	[LinkName("gtk_grid_view_get_factory")]
-	public static extern ListItemFactory GridViewGetFactory(GridView self);
+	public static extern ListItemFactory* GridViewGetFactory(GridView self);
 	[LinkName("gtk_grid_view_get_max_columns")]
 	public static extern c_uint GridViewGetMaxColumns(GridView self);
 	[LinkName("gtk_grid_view_get_min_columns")]
 	public static extern c_uint GridViewGetMinColumns(GridView self);
 	[LinkName("gtk_grid_view_get_model")]
-	public static extern SelectionModel GridViewGetModel(GridView self);
+	public static extern SelectionModel* GridViewGetModel(GridView self);
 	[LinkName("gtk_grid_view_get_single_click_activate")]
 	public static extern c_int GridViewGetSingleClickActivate(GridView self);
 	[LinkName("gtk_grid_view_get_tab_behavior")]
@@ -3698,13 +3698,13 @@ class Gtk
 	[CRepr]
 	public struct HeaderBar;
 	[LinkName("gtk_header_bar_new")]
-	public static extern Widget HeaderBarNew();
+	public static extern Widget* HeaderBarNew();
 	[LinkName("gtk_header_bar_get_decoration_layout")]
-	public static extern char8* HeaderBarGetDecorationLayout(HeaderBar bar);
+	public static extern char8** HeaderBarGetDecorationLayout(HeaderBar bar);
 	[LinkName("gtk_header_bar_get_show_title_buttons")]
 	public static extern c_int HeaderBarGetShowTitleButtons(HeaderBar bar);
 	[LinkName("gtk_header_bar_get_title_widget")]
-	public static extern Widget HeaderBarGetTitleWidget(HeaderBar bar);
+	public static extern Widget* HeaderBarGetTitleWidget(HeaderBar bar);
 	[LinkName("gtk_header_bar_pack_end")]
 	public static extern void HeaderBarPackEnd(HeaderBar bar, Widget child);
 	[LinkName("gtk_header_bar_pack_start")]
@@ -3755,7 +3755,7 @@ class Gtk
 	[CRepr]
 	public struct IMContextSimple;
 	[LinkName("gtk_im_context_simple_new")]
-	public static extern IMContext ImContextSimpleNew();
+	public static extern IMContext* ImContextSimpleNew();
 	[LinkName("gtk_im_context_simple_add_compose_file")]
 	public static extern void ImContextSimpleAddComposeFile(IMContextSimple context_simple, char8* compose_file);
 	[LinkName("gtk_im_context_simple_add_table")]
@@ -3772,9 +3772,9 @@ class Gtk
 	[CRepr]
 	public struct IMMulticontext;
 	[LinkName("gtk_im_multicontext_new")]
-	public static extern IMContext ImMulticontextNew();
+	public static extern IMContext* ImMulticontextNew();
 	[LinkName("gtk_im_multicontext_get_context_id")]
-	public static extern char8* ImMulticontextGetContextId(IMMulticontext context);
+	public static extern char8** ImMulticontextGetContextId(IMMulticontext context);
 	[LinkName("gtk_im_multicontext_set_context_id")]
 	public static extern void ImMulticontextSetContextId(IMMulticontext context, char8* context_id);
 	[CRepr]
@@ -3796,11 +3796,11 @@ class Gtk
 	[CRepr]
 	public struct IconPaintable;
 	[LinkName("gtk_icon_paintable_new_for_file")]
-	public static extern IconPaintable IconPaintableNewForFile(Gio.File file, c_int size, c_int scale);
+	public static extern IconPaintable* IconPaintableNewForFile(Gio.File file, c_int size, c_int scale);
 	[LinkName("gtk_icon_paintable_get_file")]
-	public static extern Gio.File IconPaintableGetFile(IconPaintable self);
+	public static extern Gio.File* IconPaintableGetFile(IconPaintable self);
 	[LinkName("gtk_icon_paintable_get_icon_name")]
-	public static extern char8* IconPaintableGetIconName(IconPaintable self);
+	public static extern char8** IconPaintableGetIconName(IconPaintable self);
 	[LinkName("gtk_icon_paintable_is_symbolic")]
 	public static extern c_int IconPaintableIsSymbolic(IconPaintable self);
 	public enum IconSize : c_int
@@ -3812,13 +3812,13 @@ class Gtk
 	[CRepr]
 	public struct IconTheme;
 	[LinkName("gtk_icon_theme_new")]
-	public static extern IconTheme IconThemeNew();
+	public static extern IconTheme* IconThemeNew();
 	[LinkName("gtk_icon_theme_add_resource_path")]
 	public static extern void IconThemeAddResourcePath(IconTheme self, char8* path);
 	[LinkName("gtk_icon_theme_add_search_path")]
 	public static extern void IconThemeAddSearchPath(IconTheme self, char8* path);
 	[LinkName("gtk_icon_theme_get_display")]
-	public static extern Gdk.Display IconThemeGetDisplay(IconTheme self);
+	public static extern Gdk.Display* IconThemeGetDisplay(IconTheme self);
 	[LinkName("gtk_icon_theme_get_icon_names")]
 	public static extern char8* IconThemeGetIconNames(IconTheme self);
 	[LinkName("gtk_icon_theme_get_icon_sizes")]
@@ -3828,15 +3828,15 @@ class Gtk
 	[LinkName("gtk_icon_theme_get_search_path")]
 	public static extern char8* IconThemeGetSearchPath(IconTheme self);
 	[LinkName("gtk_icon_theme_get_theme_name")]
-	public static extern char8* IconThemeGetThemeName(IconTheme self);
+	public static extern char8** IconThemeGetThemeName(IconTheme self);
 	[LinkName("gtk_icon_theme_has_gicon")]
 	public static extern c_int IconThemeHasGicon(IconTheme self, Gio.Icon gicon);
 	[LinkName("gtk_icon_theme_has_icon")]
 	public static extern c_int IconThemeHasIcon(IconTheme self, char8* icon_name);
 	[LinkName("gtk_icon_theme_lookup_by_gicon")]
-	public static extern IconPaintable IconThemeLookupByGicon(IconTheme self, Gio.Icon icon, c_int size, c_int scale, TextDirection direction, IconLookupFlags flags);
+	public static extern IconPaintable* IconThemeLookupByGicon(IconTheme self, Gio.Icon icon, c_int size, c_int scale, TextDirection direction, IconLookupFlags flags);
 	[LinkName("gtk_icon_theme_lookup_icon")]
-	public static extern IconPaintable IconThemeLookupIcon(IconTheme self, char8* icon_name, c_int size, c_int scale, TextDirection direction, IconLookupFlags flags);
+	public static extern IconPaintable* IconThemeLookupIcon(IconTheme self, char8* icon_name, c_int size, c_int scale, TextDirection direction, IconLookupFlags flags);
 	[LinkName("gtk_icon_theme_set_resource_path")]
 	public static extern void IconThemeSetResourcePath(IconTheme self);
 	[LinkName("gtk_icon_theme_set_search_path")]
@@ -3851,13 +3851,13 @@ class Gtk
 	[CRepr]
 	public struct IconView;
 	[LinkName("gtk_icon_view_new")]
-	public static extern Widget IconViewNew();
+	public static extern Widget* IconViewNew();
 	[LinkName("gtk_icon_view_new_with_area")]
-	public static extern Widget IconViewNewWithArea(CellArea area);
+	public static extern Widget* IconViewNewWithArea(CellArea area);
 	[LinkName("gtk_icon_view_new_with_model")]
-	public static extern Widget IconViewNewWithModel(TreeModel model);
+	public static extern Widget* IconViewNewWithModel(TreeModel model);
 	[LinkName("gtk_icon_view_create_drag_icon")]
-	public static extern Gdk.Paintable IconViewCreateDragIcon(IconView icon_view, TreePath path);
+	public static extern Gdk.Paintable* IconViewCreateDragIcon(IconView icon_view, TreePath path);
 	[LinkName("gtk_icon_view_enable_model_drag_dest")]
 	public static extern void IconViewEnableModelDragDest(IconView icon_view, Gdk.ContentFormats formats, Gdk.DragAction actions);
 	[LinkName("gtk_icon_view_enable_model_drag_source")]
@@ -3893,9 +3893,9 @@ class Gtk
 	[LinkName("gtk_icon_view_get_markup_column")]
 	public static extern c_int IconViewGetMarkupColumn(IconView icon_view);
 	[LinkName("gtk_icon_view_get_model")]
-	public static extern TreeModel IconViewGetModel(IconView icon_view);
+	public static extern TreeModel* IconViewGetModel(IconView icon_view);
 	[LinkName("gtk_icon_view_get_path_at_pos")]
-	public static extern TreePath IconViewGetPathAtPos(IconView icon_view, c_int x, c_int y);
+	public static extern TreePath* IconViewGetPathAtPos(IconView icon_view, c_int x, c_int y);
 	[LinkName("gtk_icon_view_get_pixbuf_column")]
 	public static extern c_int IconViewGetPixbufColumn(IconView icon_view);
 	[LinkName("gtk_icon_view_get_reorderable")]
@@ -3903,7 +3903,7 @@ class Gtk
 	[LinkName("gtk_icon_view_get_row_spacing")]
 	public static extern c_int IconViewGetRowSpacing(IconView icon_view);
 	[LinkName("gtk_icon_view_get_selected_items")]
-	public static extern GLib.List IconViewGetSelectedItems(IconView icon_view);
+	public static extern GLib.List* IconViewGetSelectedItems(IconView icon_view);
 	[LinkName("gtk_icon_view_get_selection_mode")]
 	public static extern SelectionMode IconViewGetSelectionMode(IconView icon_view);
 	[LinkName("gtk_icon_view_get_spacing")]
@@ -3989,29 +3989,29 @@ class Gtk
 	[CRepr]
 	public struct Image;
 	[LinkName("gtk_image_new")]
-	public static extern Widget ImageNew();
+	public static extern Widget* ImageNew();
 	[LinkName("gtk_image_new_from_file")]
-	public static extern Widget ImageNewFromFile(char8* filename);
+	public static extern Widget* ImageNewFromFile(char8* filename);
 	[LinkName("gtk_image_new_from_gicon")]
-	public static extern Widget ImageNewFromGicon(Gio.Icon icon);
+	public static extern Widget* ImageNewFromGicon(Gio.Icon icon);
 	[LinkName("gtk_image_new_from_icon_name")]
-	public static extern Widget ImageNewFromIconName(char8* icon_name);
+	public static extern Widget* ImageNewFromIconName(char8* icon_name);
 	[LinkName("gtk_image_new_from_paintable")]
-	public static extern Widget ImageNewFromPaintable(Gdk.Paintable paintable);
+	public static extern Widget* ImageNewFromPaintable(Gdk.Paintable paintable);
 	[LinkName("gtk_image_new_from_pixbuf")]
-	public static extern Widget ImageNewFromPixbuf(GdkPixbuf.Pixbuf pixbuf);
+	public static extern Widget* ImageNewFromPixbuf(GdkPixbuf.Pixbuf pixbuf);
 	[LinkName("gtk_image_new_from_resource")]
-	public static extern Widget ImageNewFromResource(char8* resource_path);
+	public static extern Widget* ImageNewFromResource(char8* resource_path);
 	[LinkName("gtk_image_clear")]
 	public static extern void ImageClear(Image image);
 	[LinkName("gtk_image_get_gicon")]
-	public static extern Gio.Icon ImageGetGicon(Image image);
+	public static extern Gio.Icon* ImageGetGicon(Image image);
 	[LinkName("gtk_image_get_icon_name")]
-	public static extern char8* ImageGetIconName(Image image);
+	public static extern char8** ImageGetIconName(Image image);
 	[LinkName("gtk_image_get_icon_size")]
 	public static extern IconSize ImageGetIconSize(Image image);
 	[LinkName("gtk_image_get_paintable")]
-	public static extern Gdk.Paintable ImageGetPaintable(Image image);
+	public static extern Gdk.Paintable* ImageGetPaintable(Image image);
 	[LinkName("gtk_image_get_pixel_size")]
 	public static extern c_int ImageGetPixelSize(Image image);
 	[LinkName("gtk_image_get_storage_type")]
@@ -4042,13 +4042,13 @@ class Gtk
 	[CRepr]
 	public struct InfoBar;
 	[LinkName("gtk_info_bar_new")]
-	public static extern Widget InfoBarNew();
+	public static extern Widget* InfoBarNew();
 	[LinkName("gtk_info_bar_new_with_buttons")]
-	public static extern Widget InfoBarNewWithButtons(char8* first_button_text);
+	public static extern Widget* InfoBarNewWithButtons(char8* first_button_text);
 	[LinkName("gtk_info_bar_add_action_widget")]
 	public static extern void InfoBarAddActionWidget(InfoBar info_bar, Widget child, c_int response_id);
 	[LinkName("gtk_info_bar_add_button")]
-	public static extern Button InfoBarAddButton(InfoBar info_bar, char8* button_text, c_int response_id);
+	public static extern Button* InfoBarAddButton(InfoBar info_bar, char8* button_text, c_int response_id);
 	[LinkName("gtk_info_bar_add_buttons")]
 	public static extern void InfoBarAddButtons(InfoBar info_bar, char8* first_button_text);
 	[LinkName("gtk_info_bar_add_child")]
@@ -4109,9 +4109,9 @@ class Gtk
 	[CRepr]
 	public struct Inscription;
 	[LinkName("gtk_inscription_new")]
-	public static extern Widget InscriptionNew(char8* text);
+	public static extern Widget* InscriptionNew(char8* text);
 	[LinkName("gtk_inscription_get_attributes")]
-	public static extern Pango.AttrList InscriptionGetAttributes(Inscription self);
+	public static extern Pango.AttrList* InscriptionGetAttributes(Inscription self);
 	[LinkName("gtk_inscription_get_min_chars")]
 	public static extern c_uint InscriptionGetMinChars(Inscription self);
 	[LinkName("gtk_inscription_get_min_lines")]
@@ -4121,7 +4121,7 @@ class Gtk
 	[LinkName("gtk_inscription_get_nat_lines")]
 	public static extern c_uint InscriptionGetNatLines(Inscription self);
 	[LinkName("gtk_inscription_get_text")]
-	public static extern char8* InscriptionGetText(Inscription self);
+	public static extern char8** InscriptionGetText(Inscription self);
 	[LinkName("gtk_inscription_get_text_overflow")]
 	public static extern InscriptionOverflow InscriptionGetTextOverflow(Inscription self);
 	[LinkName("gtk_inscription_get_wrap_mode")]
@@ -4174,7 +4174,7 @@ class Gtk
 	[CRepr]
 	public struct KeyvalTrigger;
 	[LinkName("gtk_keyval_trigger_new")]
-	public static extern ShortcutTrigger KeyvalTriggerNew(c_uint keyval, Gdk.ModifierType modifiers);
+	public static extern ShortcutTrigger* KeyvalTriggerNew(c_uint keyval, Gdk.ModifierType modifiers);
 	[LinkName("gtk_keyval_trigger_get_keyval")]
 	public static extern c_uint KeyvalTriggerGetKeyval(KeyvalTrigger self);
 	[LinkName("gtk_keyval_trigger_get_modifiers")]
@@ -4186,23 +4186,23 @@ class Gtk
 	[CRepr]
 	public struct Label;
 	[LinkName("gtk_label_new")]
-	public static extern Widget LabelNew(char8* str);
+	public static extern Widget* LabelNew(char8* str);
 	[LinkName("gtk_label_new_with_mnemonic")]
-	public static extern Widget LabelNewWithMnemonic(char8* str);
+	public static extern Widget* LabelNewWithMnemonic(char8* str);
 	[LinkName("gtk_label_get_attributes")]
-	public static extern Pango.AttrList LabelGetAttributes(Label self);
+	public static extern Pango.AttrList* LabelGetAttributes(Label self);
 	[LinkName("gtk_label_get_current_uri")]
-	public static extern char8* LabelGetCurrentUri(Label self);
+	public static extern char8** LabelGetCurrentUri(Label self);
 	[LinkName("gtk_label_get_ellipsize")]
 	public static extern Pango.EllipsizeMode LabelGetEllipsize(Label self);
 	[LinkName("gtk_label_get_extra_menu")]
-	public static extern Gio.MenuModel LabelGetExtraMenu(Label self);
+	public static extern Gio.MenuModel* LabelGetExtraMenu(Label self);
 	[LinkName("gtk_label_get_justify")]
 	public static extern Justification LabelGetJustify(Label self);
 	[LinkName("gtk_label_get_label")]
-	public static extern char8* LabelGetLabel(Label self);
+	public static extern char8** LabelGetLabel(Label self);
 	[LinkName("gtk_label_get_layout")]
-	public static extern Pango.Layout LabelGetLayout(Label self);
+	public static extern Pango.Layout* LabelGetLayout(Label self);
 	[LinkName("gtk_label_get_layout_offsets")]
 	public static extern void LabelGetLayoutOffsets(Label self, c_int x, c_int y);
 	[LinkName("gtk_label_get_lines")]
@@ -4212,7 +4212,7 @@ class Gtk
 	[LinkName("gtk_label_get_mnemonic_keyval")]
 	public static extern c_uint LabelGetMnemonicKeyval(Label self);
 	[LinkName("gtk_label_get_mnemonic_widget")]
-	public static extern Widget LabelGetMnemonicWidget(Label self);
+	public static extern Widget* LabelGetMnemonicWidget(Label self);
 	[LinkName("gtk_label_get_natural_wrap_mode")]
 	public static extern NaturalWrapMode LabelGetNaturalWrapMode(Label self);
 	[LinkName("gtk_label_get_selectable")]
@@ -4222,9 +4222,9 @@ class Gtk
 	[LinkName("gtk_label_get_single_line_mode")]
 	public static extern c_int LabelGetSingleLineMode(Label self);
 	[LinkName("gtk_label_get_tabs")]
-	public static extern Pango.TabArray LabelGetTabs(Label self);
+	public static extern Pango.TabArray* LabelGetTabs(Label self);
 	[LinkName("gtk_label_get_text")]
-	public static extern char8* LabelGetText(Label self);
+	public static extern char8** LabelGetText(Label self);
 	[LinkName("gtk_label_get_use_markup")]
 	public static extern c_int LabelGetUseMarkup(Label self);
 	[LinkName("gtk_label_get_use_underline")]
@@ -4290,9 +4290,9 @@ class Gtk
 	[CRepr]
 	public struct LayoutChild;
 	[LinkName("gtk_layout_child_get_child_widget")]
-	public static extern Widget LayoutChildGetChildWidget(LayoutChild layout_child);
+	public static extern Widget* LayoutChildGetChildWidget(LayoutChild layout_child);
 	[LinkName("gtk_layout_child_get_layout_manager")]
-	public static extern LayoutManager LayoutChildGetLayoutManager(LayoutChild layout_child);
+	public static extern LayoutManager* LayoutChildGetLayoutManager(LayoutChild layout_child);
 	[CRepr]
 	public struct LayoutChildClass
 	{
@@ -4303,11 +4303,11 @@ class Gtk
 	[LinkName("gtk_layout_manager_allocate")]
 	public static extern void LayoutManagerAllocate(LayoutManager manager, Widget widget, c_int width, c_int height, c_int baseline);
 	[LinkName("gtk_layout_manager_get_layout_child")]
-	public static extern LayoutChild LayoutManagerGetLayoutChild(LayoutManager manager, Widget child);
+	public static extern LayoutChild* LayoutManagerGetLayoutChild(LayoutManager manager, Widget child);
 	[LinkName("gtk_layout_manager_get_request_mode")]
 	public static extern SizeRequestMode LayoutManagerGetRequestMode(LayoutManager manager);
 	[LinkName("gtk_layout_manager_get_widget")]
-	public static extern Widget LayoutManagerGetWidget(LayoutManager manager);
+	public static extern Widget* LayoutManagerGetWidget(LayoutManager manager);
 	[LinkName("gtk_layout_manager_layout_changed")]
 	public static extern void LayoutManagerLayoutChanged(LayoutManager manager);
 	[LinkName("gtk_layout_manager_measure")]
@@ -4321,9 +4321,9 @@ class Gtk
 	[CRepr]
 	public struct LevelBar;
 	[LinkName("gtk_level_bar_new")]
-	public static extern Widget LevelBarNew();
+	public static extern Widget* LevelBarNew();
 	[LinkName("gtk_level_bar_new_for_interval")]
-	public static extern Widget LevelBarNewForInterval(double min_value, double max_value);
+	public static extern Widget* LevelBarNewForInterval(double min_value, double max_value);
 	[LinkName("gtk_level_bar_add_offset_value")]
 	public static extern void LevelBarAddOffsetValue(LevelBar self, char8* name, double value);
 	[LinkName("gtk_level_bar_get_inverted")]
@@ -4379,11 +4379,11 @@ class Gtk
 	[CRepr]
 	public struct LinkButton;
 	[LinkName("gtk_link_button_new")]
-	public static extern Widget LinkButtonNew(char8* uri);
+	public static extern Widget* LinkButtonNew(char8* uri);
 	[LinkName("gtk_link_button_new_with_label")]
-	public static extern Widget LinkButtonNewWithLabel(char8* uri, char8* label);
+	public static extern Widget* LinkButtonNewWithLabel(char8* uri, char8* label);
 	[LinkName("gtk_link_button_get_uri")]
-	public static extern char8* LinkButtonGetUri(LinkButton link_button);
+	public static extern char8** LinkButtonGetUri(LinkButton link_button);
 	[LinkName("gtk_link_button_get_visited")]
 	public static extern c_int LinkButtonGetVisited(LinkButton link_button);
 	[LinkName("gtk_link_button_set_uri")]
@@ -4399,7 +4399,7 @@ class Gtk
 	[CRepr]
 	public struct ListBox;
 	[LinkName("gtk_list_box_new")]
-	public static extern Widget ListBoxNew();
+	public static extern Widget* ListBoxNew();
 	[LinkName("gtk_list_box_append")]
 	public static extern void ListBoxAppend(ListBox box_, Widget child);
 	[LinkName("gtk_list_box_bind_model")]
@@ -4411,15 +4411,15 @@ class Gtk
 	[LinkName("gtk_list_box_get_activate_on_single_click")]
 	public static extern c_int ListBoxGetActivateOnSingleClick(ListBox box_);
 	[LinkName("gtk_list_box_get_adjustment")]
-	public static extern Adjustment ListBoxGetAdjustment(ListBox box_);
+	public static extern Adjustment* ListBoxGetAdjustment(ListBox box_);
 	[LinkName("gtk_list_box_get_row_at_index")]
-	public static extern ListBoxRow ListBoxGetRowAtIndex(ListBox box_, c_int index_);
+	public static extern ListBoxRow* ListBoxGetRowAtIndex(ListBox box_, c_int index_);
 	[LinkName("gtk_list_box_get_row_at_y")]
-	public static extern ListBoxRow ListBoxGetRowAtY(ListBox box_, c_int y);
+	public static extern ListBoxRow* ListBoxGetRowAtY(ListBox box_, c_int y);
 	[LinkName("gtk_list_box_get_selected_row")]
-	public static extern ListBoxRow ListBoxGetSelectedRow(ListBox box_);
+	public static extern ListBoxRow* ListBoxGetSelectedRow(ListBox box_);
 	[LinkName("gtk_list_box_get_selected_rows")]
-	public static extern GLib.List ListBoxGetSelectedRows(ListBox box_);
+	public static extern GLib.List* ListBoxGetSelectedRows(ListBox box_);
 	[LinkName("gtk_list_box_get_selection_mode")]
 	public static extern SelectionMode ListBoxGetSelectionMode(ListBox box_);
 	[LinkName("gtk_list_box_get_show_separators")]
@@ -4470,15 +4470,15 @@ class Gtk
 	[CRepr]
 	public struct ListBoxRow;
 	[LinkName("gtk_list_box_row_new")]
-	public static extern Widget ListBoxRowNew();
+	public static extern Widget* ListBoxRowNew();
 	[LinkName("gtk_list_box_row_changed")]
 	public static extern void ListBoxRowChanged(ListBoxRow row);
 	[LinkName("gtk_list_box_row_get_activatable")]
 	public static extern c_int ListBoxRowGetActivatable(ListBoxRow row);
 	[LinkName("gtk_list_box_row_get_child")]
-	public static extern Widget ListBoxRowGetChild(ListBoxRow row);
+	public static extern Widget* ListBoxRowGetChild(ListBoxRow row);
 	[LinkName("gtk_list_box_row_get_header")]
-	public static extern Widget ListBoxRowGetHeader(ListBoxRow row);
+	public static extern Widget* ListBoxRowGetHeader(ListBoxRow row);
 	[LinkName("gtk_list_box_row_get_index")]
 	public static extern c_int ListBoxRowGetIndex(ListBoxRow row);
 	[LinkName("gtk_list_box_row_get_selectable")]
@@ -4503,7 +4503,7 @@ class Gtk
 	[CRepr]
 	public struct ListHeader;
 	[LinkName("gtk_list_header_get_child")]
-	public static extern Widget ListHeaderGetChild(ListHeader self);
+	public static extern Widget* ListHeaderGetChild(ListHeader self);
 	[LinkName("gtk_list_header_get_end")]
 	public static extern c_uint ListHeaderGetEnd(ListHeader self);
 	[LinkName("gtk_list_header_get_item")]
@@ -4523,7 +4523,7 @@ class Gtk
 	[LinkName("gtk_list_item_get_activatable")]
 	public static extern c_int ListItemGetActivatable(ListItem self);
 	[LinkName("gtk_list_item_get_child")]
-	public static extern Widget ListItemGetChild(ListItem self);
+	public static extern Widget* ListItemGetChild(ListItem self);
 	[LinkName("gtk_list_item_get_focusable")]
 	public static extern c_int ListItemGetFocusable(ListItem self);
 	[LinkName("gtk_list_item_get_item")]
@@ -4555,9 +4555,9 @@ class Gtk
 	[CRepr]
 	public struct ListStore;
 	[LinkName("gtk_list_store_new")]
-	public static extern ListStore ListStoreNew(c_int n_columns);
+	public static extern ListStore* ListStoreNew(c_int n_columns);
 	[LinkName("gtk_list_store_newv")]
-	public static extern ListStore ListStoreNewv(c_int n_columns);
+	public static extern ListStore* ListStoreNewv(c_int n_columns);
 	[LinkName("gtk_list_store_append")]
 	public static extern void ListStoreAppend(ListStore list_store, TreeIter iter);
 	[LinkName("gtk_list_store_clear")]
@@ -4614,15 +4614,15 @@ class Gtk
 	[CRepr]
 	public struct ListView;
 	[LinkName("gtk_list_view_new")]
-	public static extern Widget ListViewNew(SelectionModel model, ListItemFactory factory);
+	public static extern Widget* ListViewNew(SelectionModel model, ListItemFactory factory);
 	[LinkName("gtk_list_view_get_enable_rubberband")]
 	public static extern c_int ListViewGetEnableRubberband(ListView self);
 	[LinkName("gtk_list_view_get_factory")]
-	public static extern ListItemFactory ListViewGetFactory(ListView self);
+	public static extern ListItemFactory* ListViewGetFactory(ListView self);
 	[LinkName("gtk_list_view_get_header_factory")]
-	public static extern ListItemFactory ListViewGetHeaderFactory(ListView self);
+	public static extern ListItemFactory* ListViewGetHeaderFactory(ListView self);
 	[LinkName("gtk_list_view_get_model")]
-	public static extern SelectionModel ListViewGetModel(ListView self);
+	public static extern SelectionModel* ListViewGetModel(ListView self);
 	[LinkName("gtk_list_view_get_show_separators")]
 	public static extern c_int ListViewGetShowSeparators(ListView self);
 	[LinkName("gtk_list_view_get_single_click_activate")]
@@ -4650,17 +4650,17 @@ class Gtk
 	[CRepr]
 	public struct LockButton;
 	[LinkName("gtk_lock_button_new")]
-	public static extern Widget LockButtonNew(Gio.Permission permission);
+	public static extern Widget* LockButtonNew(Gio.Permission permission);
 	[LinkName("gtk_lock_button_get_permission")]
-	public static extern Gio.Permission LockButtonGetPermission(LockButton button);
+	public static extern Gio.Permission* LockButtonGetPermission(LockButton button);
 	[LinkName("gtk_lock_button_set_permission")]
 	public static extern void LockButtonSetPermission(LockButton button, Gio.Permission permission);
 	[CRepr]
 	public struct MapListModel;
 	[LinkName("gtk_map_list_model_new")]
-	public static extern MapListModel MapListModelNew(Gio.ListModel model, MapListModelMapFunc map_func, void* user_data, GLib.DestroyNotify user_destroy);
+	public static extern MapListModel* MapListModelNew(Gio.ListModel model, MapListModelMapFunc map_func, void* user_data, GLib.DestroyNotify user_destroy);
 	[LinkName("gtk_map_list_model_get_model")]
-	public static extern Gio.ListModel MapListModelGetModel(MapListModel self);
+	public static extern Gio.ListModel* MapListModelGetModel(MapListModel self);
 	[LinkName("gtk_map_list_model_has_map")]
 	public static extern c_int MapListModelHasMap(MapListModel self);
 	[LinkName("gtk_map_list_model_set_map_func")]
@@ -4676,9 +4676,9 @@ class Gtk
 	[CRepr]
 	public struct MediaControls;
 	[LinkName("gtk_media_controls_new")]
-	public static extern Widget MediaControlsNew(MediaStream stream);
+	public static extern Widget* MediaControlsNew(MediaStream stream);
 	[LinkName("gtk_media_controls_get_media_stream")]
-	public static extern MediaStream MediaControlsGetMediaStream(MediaControls controls);
+	public static extern MediaStream* MediaControlsGetMediaStream(MediaControls controls);
 	[LinkName("gtk_media_controls_set_media_stream")]
 	public static extern void MediaControlsSetMediaStream(MediaControls controls, MediaStream stream);
 	[CRepr]
@@ -4689,21 +4689,21 @@ class Gtk
 	[CRepr]
 	public struct MediaFile;
 	[LinkName("gtk_media_file_new")]
-	public static extern MediaFile MediaFileNew();
+	public static extern MediaFile* MediaFileNew();
 	[LinkName("gtk_media_file_new_for_file")]
-	public static extern MediaFile MediaFileNewForFile(Gio.File file);
+	public static extern MediaFile* MediaFileNewForFile(Gio.File file);
 	[LinkName("gtk_media_file_new_for_filename")]
-	public static extern MediaFile MediaFileNewForFilename(char8* filename);
+	public static extern MediaFile* MediaFileNewForFilename(char8* filename);
 	[LinkName("gtk_media_file_new_for_input_stream")]
-	public static extern MediaFile MediaFileNewForInputStream(Gio.InputStream stream);
+	public static extern MediaFile* MediaFileNewForInputStream(Gio.InputStream stream);
 	[LinkName("gtk_media_file_new_for_resource")]
-	public static extern MediaFile MediaFileNewForResource(char8* resource_path);
+	public static extern MediaFile* MediaFileNewForResource(char8* resource_path);
 	[LinkName("gtk_media_file_clear")]
 	public static extern void MediaFileClear(MediaFile self);
 	[LinkName("gtk_media_file_get_file")]
-	public static extern Gio.File MediaFileGetFile(MediaFile self);
+	public static extern Gio.File* MediaFileGetFile(MediaFile self);
 	[LinkName("gtk_media_file_get_input_stream")]
-	public static extern Gio.InputStream MediaFileGetInputStream(MediaFile self);
+	public static extern Gio.InputStream* MediaFileGetInputStream(MediaFile self);
 	[LinkName("gtk_media_file_set_file")]
 	public static extern void MediaFileSetFile(MediaFile self, Gio.File file);
 	[LinkName("gtk_media_file_set_filename")]
@@ -4732,7 +4732,7 @@ class Gtk
 	[LinkName("gtk_media_stream_get_ended")]
 	public static extern c_int MediaStreamGetEnded(MediaStream self);
 	[LinkName("gtk_media_stream_get_error")]
-	public static extern GLib.Error MediaStreamGetError(MediaStream self);
+	public static extern GLib.Error* MediaStreamGetError(MediaStream self);
 	[LinkName("gtk_media_stream_get_loop")]
 	public static extern c_int MediaStreamGetLoop(MediaStream self);
 	[LinkName("gtk_media_stream_get_muted")]
@@ -4795,7 +4795,7 @@ class Gtk
 	[CRepr]
 	public struct MenuButton;
 	[LinkName("gtk_menu_button_new")]
-	public static extern Widget MenuButtonNew();
+	public static extern Widget* MenuButtonNew();
 	[LinkName("gtk_menu_button_get_active")]
 	public static extern c_int MenuButtonGetActive(MenuButton menu_button);
 	[LinkName("gtk_menu_button_get_always_show_arrow")]
@@ -4803,19 +4803,19 @@ class Gtk
 	[LinkName("gtk_menu_button_get_can_shrink")]
 	public static extern c_int MenuButtonGetCanShrink(MenuButton menu_button);
 	[LinkName("gtk_menu_button_get_child")]
-	public static extern Widget MenuButtonGetChild(MenuButton menu_button);
+	public static extern Widget* MenuButtonGetChild(MenuButton menu_button);
 	[LinkName("gtk_menu_button_get_direction")]
 	public static extern ArrowType MenuButtonGetDirection(MenuButton menu_button);
 	[LinkName("gtk_menu_button_get_has_frame")]
 	public static extern c_int MenuButtonGetHasFrame(MenuButton menu_button);
 	[LinkName("gtk_menu_button_get_icon_name")]
-	public static extern char8* MenuButtonGetIconName(MenuButton menu_button);
+	public static extern char8** MenuButtonGetIconName(MenuButton menu_button);
 	[LinkName("gtk_menu_button_get_label")]
-	public static extern char8* MenuButtonGetLabel(MenuButton menu_button);
+	public static extern char8** MenuButtonGetLabel(MenuButton menu_button);
 	[LinkName("gtk_menu_button_get_menu_model")]
-	public static extern Gio.MenuModel MenuButtonGetMenuModel(MenuButton menu_button);
+	public static extern Gio.MenuModel* MenuButtonGetMenuModel(MenuButton menu_button);
 	[LinkName("gtk_menu_button_get_popover")]
-	public static extern Popover MenuButtonGetPopover(MenuButton menu_button);
+	public static extern Popover* MenuButtonGetPopover(MenuButton menu_button);
 	[LinkName("gtk_menu_button_get_primary")]
 	public static extern c_int MenuButtonGetPrimary(MenuButton menu_button);
 	[LinkName("gtk_menu_button_get_use_underline")]
@@ -4854,15 +4854,15 @@ class Gtk
 	[CRepr]
 	public struct MessageDialog;
 	[LinkName("gtk_message_dialog_new")]
-	public static extern Widget MessageDialogNew(Window parent, DialogFlags flags, MessageType type, ButtonsType buttons, char8* message_format);
+	public static extern Widget* MessageDialogNew(Window parent, DialogFlags flags, MessageType type, ButtonsType buttons, char8* message_format);
 	[LinkName("gtk_message_dialog_new_with_markup")]
-	public static extern Widget MessageDialogNewWithMarkup(Window parent, DialogFlags flags, MessageType type, ButtonsType buttons, char8* message_format);
+	public static extern Widget* MessageDialogNewWithMarkup(Window parent, DialogFlags flags, MessageType type, ButtonsType buttons, char8* message_format);
 	[LinkName("gtk_message_dialog_format_secondary_markup")]
 	public static extern void MessageDialogFormatSecondaryMarkup(MessageDialog message_dialog, char8* message_format);
 	[LinkName("gtk_message_dialog_format_secondary_text")]
 	public static extern void MessageDialogFormatSecondaryText(MessageDialog message_dialog, char8* message_format);
 	[LinkName("gtk_message_dialog_get_message_area")]
-	public static extern Widget MessageDialogGetMessageArea(MessageDialog message_dialog);
+	public static extern Widget* MessageDialogGetMessageArea(MessageDialog message_dialog);
 	[LinkName("gtk_message_dialog_set_markup")]
 	public static extern void MessageDialogSetMarkup(MessageDialog message_dialog, char8* str);
 	[CRepr]
@@ -4886,7 +4886,7 @@ class Gtk
 	[CRepr]
 	public struct MnemonicTrigger;
 	[LinkName("gtk_mnemonic_trigger_new")]
-	public static extern MnemonicTrigger MnemonicTriggerNew(c_uint keyval);
+	public static extern MnemonicTrigger* MnemonicTriggerNew(c_uint keyval);
 	[LinkName("gtk_mnemonic_trigger_get_keyval")]
 	public static extern c_uint MnemonicTriggerGetKeyval(MnemonicTrigger self);
 	[CRepr]
@@ -4896,11 +4896,11 @@ class Gtk
 	[CRepr]
 	public struct MountOperation;
 	[LinkName("gtk_mount_operation_new")]
-	public static extern Gio.MountOperation MountOperationNew(Window parent);
+	public static extern Gio.MountOperation* MountOperationNew(Window parent);
 	[LinkName("gtk_mount_operation_get_display")]
-	public static extern Gdk.Display MountOperationGetDisplay(MountOperation op);
+	public static extern Gdk.Display* MountOperationGetDisplay(MountOperation op);
 	[LinkName("gtk_mount_operation_get_parent")]
-	public static extern Window MountOperationGetParent(MountOperation op);
+	public static extern Window* MountOperationGetParent(MountOperation op);
 	[LinkName("gtk_mount_operation_is_showing")]
 	public static extern c_int MountOperationIsShowing(MountOperation op);
 	[LinkName("gtk_mount_operation_set_display")]
@@ -4942,9 +4942,9 @@ class Gtk
 	[CRepr]
 	public struct MultiSelection;
 	[LinkName("gtk_multi_selection_new")]
-	public static extern MultiSelection MultiSelectionNew(Gio.ListModel model);
+	public static extern MultiSelection* MultiSelectionNew(Gio.ListModel model);
 	[LinkName("gtk_multi_selection_get_model")]
-	public static extern Gio.ListModel MultiSelectionGetModel(MultiSelection self);
+	public static extern Gio.ListModel* MultiSelectionGetModel(MultiSelection self);
 	[LinkName("gtk_multi_selection_set_model")]
 	public static extern void MultiSelectionSetModel(MultiSelection self, Gio.ListModel model);
 	[CRepr]
@@ -4955,7 +4955,7 @@ class Gtk
 	[CRepr]
 	public struct MultiSorter;
 	[LinkName("gtk_multi_sorter_new")]
-	public static extern MultiSorter MultiSorterNew();
+	public static extern MultiSorter* MultiSorterNew();
 	[LinkName("gtk_multi_sorter_append")]
 	public static extern void MultiSorterAppend(MultiSorter self, Sorter sorter);
 	[LinkName("gtk_multi_sorter_remove")]
@@ -4968,9 +4968,9 @@ class Gtk
 	[CRepr]
 	public struct NamedAction;
 	[LinkName("gtk_named_action_new")]
-	public static extern NamedAction NamedActionNew(char8* name);
+	public static extern NamedAction* NamedActionNew(char8* name);
 	[LinkName("gtk_named_action_get_action_name")]
-	public static extern char8* NamedActionGetActionName(NamedAction self);
+	public static extern char8** NamedActionGetActionName(NamedAction self);
 	[CRepr]
 	public struct NamedActionClass
 	{
@@ -4985,9 +4985,9 @@ class Gtk
 	[LinkName("gtk_native_dialog_get_modal")]
 	public static extern c_int NativeDialogGetModal(NativeDialog self);
 	[LinkName("gtk_native_dialog_get_title")]
-	public static extern char8* NativeDialogGetTitle(NativeDialog self);
+	public static extern char8** NativeDialogGetTitle(NativeDialog self);
 	[LinkName("gtk_native_dialog_get_transient_for")]
-	public static extern Window NativeDialogGetTransientFor(NativeDialog self);
+	public static extern Window* NativeDialogGetTransientFor(NativeDialog self);
 	[LinkName("gtk_native_dialog_get_visible")]
 	public static extern c_int NativeDialogGetVisible(NativeDialog self);
 	[LinkName("gtk_native_dialog_hide")]
@@ -5024,9 +5024,9 @@ class Gtk
 	[CRepr]
 	public struct NoSelection;
 	[LinkName("gtk_no_selection_new")]
-	public static extern NoSelection NoSelectionNew(Gio.ListModel model);
+	public static extern NoSelection* NoSelectionNew(Gio.ListModel model);
 	[LinkName("gtk_no_selection_get_model")]
-	public static extern Gio.ListModel NoSelectionGetModel(NoSelection self);
+	public static extern Gio.ListModel* NoSelectionGetModel(NoSelection self);
 	[LinkName("gtk_no_selection_set_model")]
 	public static extern void NoSelectionSetModel(NoSelection self, Gio.ListModel model);
 	[CRepr]
@@ -5037,7 +5037,7 @@ class Gtk
 	[CRepr]
 	public struct Notebook;
 	[LinkName("gtk_notebook_new")]
-	public static extern Widget NotebookNew();
+	public static extern Widget* NotebookNew();
 	[LinkName("gtk_notebook_append_page")]
 	public static extern c_int NotebookAppendPage(Notebook notebook, Widget child, Widget tab_label);
 	[LinkName("gtk_notebook_append_page_menu")]
@@ -5045,23 +5045,23 @@ class Gtk
 	[LinkName("gtk_notebook_detach_tab")]
 	public static extern void NotebookDetachTab(Notebook notebook, Widget child);
 	[LinkName("gtk_notebook_get_action_widget")]
-	public static extern Widget NotebookGetActionWidget(Notebook notebook, PackType pack_type);
+	public static extern Widget* NotebookGetActionWidget(Notebook notebook, PackType pack_type);
 	[LinkName("gtk_notebook_get_current_page")]
 	public static extern c_int NotebookGetCurrentPage(Notebook notebook);
 	[LinkName("gtk_notebook_get_group_name")]
-	public static extern char8* NotebookGetGroupName(Notebook notebook);
+	public static extern char8** NotebookGetGroupName(Notebook notebook);
 	[LinkName("gtk_notebook_get_menu_label")]
-	public static extern Widget NotebookGetMenuLabel(Notebook notebook, Widget child);
+	public static extern Widget* NotebookGetMenuLabel(Notebook notebook, Widget child);
 	[LinkName("gtk_notebook_get_menu_label_text")]
-	public static extern char8* NotebookGetMenuLabelText(Notebook notebook, Widget child);
+	public static extern char8** NotebookGetMenuLabelText(Notebook notebook, Widget child);
 	[LinkName("gtk_notebook_get_n_pages")]
 	public static extern c_int NotebookGetNPages(Notebook notebook);
 	[LinkName("gtk_notebook_get_nth_page")]
-	public static extern Widget NotebookGetNthPage(Notebook notebook, c_int page_num);
+	public static extern Widget* NotebookGetNthPage(Notebook notebook, c_int page_num);
 	[LinkName("gtk_notebook_get_page")]
-	public static extern NotebookPage NotebookGetPage(Notebook notebook, Widget child);
+	public static extern NotebookPage* NotebookGetPage(Notebook notebook, Widget child);
 	[LinkName("gtk_notebook_get_pages")]
-	public static extern Gio.ListModel NotebookGetPages(Notebook notebook);
+	public static extern Gio.ListModel* NotebookGetPages(Notebook notebook);
 	[LinkName("gtk_notebook_get_scrollable")]
 	public static extern c_int NotebookGetScrollable(Notebook notebook);
 	[LinkName("gtk_notebook_get_show_border")]
@@ -5071,9 +5071,9 @@ class Gtk
 	[LinkName("gtk_notebook_get_tab_detachable")]
 	public static extern c_int NotebookGetTabDetachable(Notebook notebook, Widget child);
 	[LinkName("gtk_notebook_get_tab_label")]
-	public static extern Widget NotebookGetTabLabel(Notebook notebook, Widget child);
+	public static extern Widget* NotebookGetTabLabel(Notebook notebook, Widget child);
 	[LinkName("gtk_notebook_get_tab_label_text")]
-	public static extern char8* NotebookGetTabLabelText(Notebook notebook, Widget child);
+	public static extern char8** NotebookGetTabLabelText(Notebook notebook, Widget child);
 	[LinkName("gtk_notebook_get_tab_pos")]
 	public static extern PositionType NotebookGetTabPos(Notebook notebook);
 	[LinkName("gtk_notebook_get_tab_reorderable")]
@@ -5129,7 +5129,7 @@ class Gtk
 	[CRepr]
 	public struct NotebookPage;
 	[LinkName("gtk_notebook_page_get_child")]
-	public static extern Widget NotebookPageGetChild(NotebookPage page);
+	public static extern Widget* NotebookPageGetChild(NotebookPage page);
 	public enum NotebookTab : c_int
 	{
 		GTK_NOTEBOOK_TAB_FIRST,
@@ -5155,9 +5155,9 @@ class Gtk
 	[CRepr]
 	public struct NumericSorter;
 	[LinkName("gtk_numeric_sorter_new")]
-	public static extern NumericSorter NumericSorterNew(Expression expression);
+	public static extern NumericSorter* NumericSorterNew(Expression expression);
 	[LinkName("gtk_numeric_sorter_get_expression")]
-	public static extern Expression NumericSorterGetExpression(NumericSorter self);
+	public static extern Expression* NumericSorterGetExpression(NumericSorter self);
 	[LinkName("gtk_numeric_sorter_get_sort_order")]
 	public static extern SortType NumericSorterGetSortOrder(NumericSorter self);
 	[LinkName("gtk_numeric_sorter_set_expression")]
@@ -5172,9 +5172,9 @@ class Gtk
 	[CRepr]
 	public struct ObjectExpression;
 	[LinkName("gtk_object_expression_new")]
-	public static extern ObjectExpression ObjectExpressionNew(GObject.Object object);
+	public static extern ObjectExpression* ObjectExpressionNew(GObject.Object object);
 	[LinkName("gtk_object_expression_get_object")]
-	public static extern GObject.Object ObjectExpressionGetObject(ObjectExpression expression);
+	public static extern GObject.Object* ObjectExpressionGetObject(ObjectExpression expression);
 	public enum Ordering : c_int
 	{
 		GTK_ORDERING_SMALLER,
@@ -5202,11 +5202,11 @@ class Gtk
 	[CRepr]
 	public struct Overlay;
 	[LinkName("gtk_overlay_new")]
-	public static extern Widget OverlayNew();
+	public static extern Widget* OverlayNew();
 	[LinkName("gtk_overlay_add_overlay")]
 	public static extern void OverlayAddOverlay(Overlay overlay, Widget widget);
 	[LinkName("gtk_overlay_get_child")]
-	public static extern Widget OverlayGetChild(Overlay overlay);
+	public static extern Widget* OverlayGetChild(Overlay overlay);
 	[LinkName("gtk_overlay_get_clip_overlay")]
 	public static extern c_int OverlayGetClipOverlay(Overlay overlay, Widget widget);
 	[LinkName("gtk_overlay_get_measure_overlay")]
@@ -5222,7 +5222,7 @@ class Gtk
 	[CRepr]
 	public struct OverlayLayout;
 	[LinkName("gtk_overlay_layout_new")]
-	public static extern LayoutManager OverlayLayoutNew();
+	public static extern LayoutManager* OverlayLayoutNew();
 	[CRepr]
 	public struct OverlayLayoutChild;
 	[LinkName("gtk_overlay_layout_child_get_clip_overlay")]
@@ -5266,7 +5266,7 @@ class Gtk
 	[CRepr]
 	public struct PadController;
 	[LinkName("gtk_pad_controller_new")]
-	public static extern PadController PadControllerNew(Gio.ActionGroup group, Gdk.Device pad);
+	public static extern PadController* PadControllerNew(Gio.ActionGroup group, Gdk.Device pad);
 	[LinkName("gtk_pad_controller_set_action")]
 	public static extern void PadControllerSetAction(PadController controller, PadActionType type, c_int index, c_int mode, char8* label, char8* action_name);
 	[LinkName("gtk_pad_controller_set_action_entries")]
@@ -5297,15 +5297,15 @@ class Gtk
 	[CRepr]
 	public struct PageSetup;
 	[LinkName("gtk_page_setup_new")]
-	public static extern PageSetup PageSetupNew();
+	public static extern PageSetup* PageSetupNew();
 	[LinkName("gtk_page_setup_new_from_file")]
-	public static extern PageSetup PageSetupNewFromFile(char8* file_name);
+	public static extern PageSetup* PageSetupNewFromFile(char8* file_name);
 	[LinkName("gtk_page_setup_new_from_gvariant")]
-	public static extern PageSetup PageSetupNewFromGvariant(GLib.Variant variant);
+	public static extern PageSetup* PageSetupNewFromGvariant(GLib.Variant variant);
 	[LinkName("gtk_page_setup_new_from_key_file")]
-	public static extern PageSetup PageSetupNewFromKeyFile(GLib.KeyFile key_file, char8* group_name);
+	public static extern PageSetup* PageSetupNewFromKeyFile(GLib.KeyFile key_file, char8* group_name);
 	[LinkName("gtk_page_setup_copy")]
-	public static extern PageSetup PageSetupCopy(PageSetup other);
+	public static extern PageSetup* PageSetupCopy(PageSetup other);
 	[LinkName("gtk_page_setup_get_bottom_margin")]
 	public static extern double PageSetupGetBottomMargin(PageSetup setup, Unit unit);
 	[LinkName("gtk_page_setup_get_left_margin")]
@@ -5319,7 +5319,7 @@ class Gtk
 	[LinkName("gtk_page_setup_get_paper_height")]
 	public static extern double PageSetupGetPaperHeight(PageSetup setup, Unit unit);
 	[LinkName("gtk_page_setup_get_paper_size")]
-	public static extern PaperSize PageSetupGetPaperSize(PageSetup setup);
+	public static extern PaperSize* PageSetupGetPaperSize(PageSetup setup);
 	[LinkName("gtk_page_setup_get_paper_width")]
 	public static extern double PageSetupGetPaperWidth(PageSetup setup, Unit unit);
 	[LinkName("gtk_page_setup_get_right_margin")]
@@ -5347,18 +5347,18 @@ class Gtk
 	[LinkName("gtk_page_setup_to_file")]
 	public static extern c_int PageSetupToFile(PageSetup setup, char8* file_name);
 	[LinkName("gtk_page_setup_to_gvariant")]
-	public static extern GLib.Variant PageSetupToGvariant(PageSetup setup);
+	public static extern GLib.Variant* PageSetupToGvariant(PageSetup setup);
 	[LinkName("gtk_page_setup_to_key_file")]
 	public static extern void PageSetupToKeyFile(PageSetup setup, GLib.KeyFile key_file, char8* group_name);
 	public function void PageSetupDoneFunc(PageSetup page_setup, void* data);
 	[CRepr]
 	public struct PageSetupUnixDialog;
 	[LinkName("gtk_page_setup_unix_dialog_new")]
-	public static extern Widget PageSetupUnixDialogNew(char8* title, Window parent);
+	public static extern Widget* PageSetupUnixDialogNew(char8* title, Window parent);
 	[LinkName("gtk_page_setup_unix_dialog_get_page_setup")]
-	public static extern PageSetup PageSetupUnixDialogGetPageSetup(PageSetupUnixDialog dialog);
+	public static extern PageSetup* PageSetupUnixDialogGetPageSetup(PageSetupUnixDialog dialog);
 	[LinkName("gtk_page_setup_unix_dialog_get_print_settings")]
-	public static extern PrintSettings PageSetupUnixDialogGetPrintSettings(PageSetupUnixDialog dialog);
+	public static extern PrintSettings* PageSetupUnixDialogGetPrintSettings(PageSetupUnixDialog dialog);
 	[LinkName("gtk_page_setup_unix_dialog_set_page_setup")]
 	public static extern void PageSetupUnixDialogSetPageSetup(PageSetupUnixDialog dialog, PageSetup page_setup);
 	[LinkName("gtk_page_setup_unix_dialog_set_print_settings")]
@@ -5373,9 +5373,9 @@ class Gtk
 	[CRepr]
 	public struct Paned;
 	[LinkName("gtk_paned_new")]
-	public static extern Widget PanedNew(Orientation orientation);
+	public static extern Widget* PanedNew(Orientation orientation);
 	[LinkName("gtk_paned_get_end_child")]
-	public static extern Widget PanedGetEndChild(Paned paned);
+	public static extern Widget* PanedGetEndChild(Paned paned);
 	[LinkName("gtk_paned_get_position")]
 	public static extern c_int PanedGetPosition(Paned paned);
 	[LinkName("gtk_paned_get_resize_end_child")]
@@ -5387,7 +5387,7 @@ class Gtk
 	[LinkName("gtk_paned_get_shrink_start_child")]
 	public static extern c_int PanedGetShrinkStartChild(Paned paned);
 	[LinkName("gtk_paned_get_start_child")]
-	public static extern Widget PanedGetStartChild(Paned paned);
+	public static extern Widget* PanedGetStartChild(Paned paned);
 	[LinkName("gtk_paned_get_wide_handle")]
 	public static extern c_int PanedGetWideHandle(Paned paned);
 	[LinkName("gtk_paned_set_end_child")]
@@ -5415,9 +5415,9 @@ class Gtk
 	[CRepr]
 	public struct PasswordEntry;
 	[LinkName("gtk_password_entry_new")]
-	public static extern Widget PasswordEntryNew();
+	public static extern Widget* PasswordEntryNew();
 	[LinkName("gtk_password_entry_get_extra_menu")]
-	public static extern Gio.MenuModel PasswordEntryGetExtraMenu(PasswordEntry entry);
+	public static extern Gio.MenuModel* PasswordEntryGetExtraMenu(PasswordEntry entry);
 	[LinkName("gtk_password_entry_get_show_peek_icon")]
 	public static extern c_int PasswordEntryGetShowPeekIcon(PasswordEntry entry);
 	[LinkName("gtk_password_entry_set_extra_menu")]
@@ -5427,7 +5427,7 @@ class Gtk
 	[CRepr]
 	public struct PasswordEntryBuffer;
 	[LinkName("gtk_password_entry_buffer_new")]
-	public static extern EntryBuffer PasswordEntryBufferNew();
+	public static extern EntryBuffer* PasswordEntryBufferNew();
 	[CRepr]
 	public struct PasswordEntryBufferClass
 	{
@@ -5447,29 +5447,29 @@ class Gtk
 	[CRepr]
 	public struct Picture;
 	[LinkName("gtk_picture_new")]
-	public static extern Widget PictureNew();
+	public static extern Widget* PictureNew();
 	[LinkName("gtk_picture_new_for_file")]
-	public static extern Widget PictureNewForFile(Gio.File file);
+	public static extern Widget* PictureNewForFile(Gio.File file);
 	[LinkName("gtk_picture_new_for_filename")]
-	public static extern Widget PictureNewForFilename(char8* filename);
+	public static extern Widget* PictureNewForFilename(char8* filename);
 	[LinkName("gtk_picture_new_for_paintable")]
-	public static extern Widget PictureNewForPaintable(Gdk.Paintable paintable);
+	public static extern Widget* PictureNewForPaintable(Gdk.Paintable paintable);
 	[LinkName("gtk_picture_new_for_pixbuf")]
-	public static extern Widget PictureNewForPixbuf(GdkPixbuf.Pixbuf pixbuf);
+	public static extern Widget* PictureNewForPixbuf(GdkPixbuf.Pixbuf pixbuf);
 	[LinkName("gtk_picture_new_for_resource")]
-	public static extern Widget PictureNewForResource(char8* resource_path);
+	public static extern Widget* PictureNewForResource(char8* resource_path);
 	[LinkName("gtk_picture_get_alternative_text")]
-	public static extern char8* PictureGetAlternativeText(Picture self);
+	public static extern char8** PictureGetAlternativeText(Picture self);
 	[LinkName("gtk_picture_get_can_shrink")]
 	public static extern c_int PictureGetCanShrink(Picture self);
 	[LinkName("gtk_picture_get_content_fit")]
 	public static extern ContentFit PictureGetContentFit(Picture self);
 	[LinkName("gtk_picture_get_file")]
-	public static extern Gio.File PictureGetFile(Picture self);
+	public static extern Gio.File* PictureGetFile(Picture self);
 	[LinkName("gtk_picture_get_keep_aspect_ratio")]
 	public static extern c_int PictureGetKeepAspectRatio(Picture self);
 	[LinkName("gtk_picture_get_paintable")]
-	public static extern Gdk.Paintable PictureGetPaintable(Picture self);
+	public static extern Gdk.Paintable* PictureGetPaintable(Picture self);
 	[LinkName("gtk_picture_set_alternative_text")]
 	public static extern void PictureSetAlternativeText(Picture self, char8* alternative_text);
 	[LinkName("gtk_picture_set_can_shrink")]
@@ -5503,13 +5503,13 @@ class Gtk
 	[CRepr]
 	public struct Popover;
 	[LinkName("gtk_popover_new")]
-	public static extern Widget PopoverNew();
+	public static extern Widget* PopoverNew();
 	[LinkName("gtk_popover_get_autohide")]
 	public static extern c_int PopoverGetAutohide(Popover popover);
 	[LinkName("gtk_popover_get_cascade_popdown")]
 	public static extern c_int PopoverGetCascadePopdown(Popover popover);
 	[LinkName("gtk_popover_get_child")]
-	public static extern Widget PopoverGetChild(Popover popover);
+	public static extern Widget* PopoverGetChild(Popover popover);
 	[LinkName("gtk_popover_get_has_arrow")]
 	public static extern c_int PopoverGetHasArrow(Popover popover);
 	[LinkName("gtk_popover_get_mnemonics_visible")]
@@ -5552,13 +5552,13 @@ class Gtk
 	[CRepr]
 	public struct PopoverMenu;
 	[LinkName("gtk_popover_menu_new_from_model")]
-	public static extern Widget PopoverMenuNewFromModel(Gio.MenuModel model);
+	public static extern Widget* PopoverMenuNewFromModel(Gio.MenuModel model);
 	[LinkName("gtk_popover_menu_new_from_model_full")]
-	public static extern Widget PopoverMenuNewFromModelFull(Gio.MenuModel model, PopoverMenuFlags flags);
+	public static extern Widget* PopoverMenuNewFromModelFull(Gio.MenuModel model, PopoverMenuFlags flags);
 	[LinkName("gtk_popover_menu_add_child")]
 	public static extern c_int PopoverMenuAddChild(PopoverMenu popover, Widget child, char8* id);
 	[LinkName("gtk_popover_menu_get_menu_model")]
-	public static extern Gio.MenuModel PopoverMenuGetMenuModel(PopoverMenu popover);
+	public static extern Gio.MenuModel* PopoverMenuGetMenuModel(PopoverMenu popover);
 	[LinkName("gtk_popover_menu_remove_child")]
 	public static extern c_int PopoverMenuRemoveChild(PopoverMenu popover, Widget child);
 	[LinkName("gtk_popover_menu_set_menu_model")]
@@ -5566,11 +5566,11 @@ class Gtk
 	[CRepr]
 	public struct PopoverMenuBar;
 	[LinkName("gtk_popover_menu_bar_new_from_model")]
-	public static extern Widget PopoverMenuBarNewFromModel(Gio.MenuModel model);
+	public static extern Widget* PopoverMenuBarNewFromModel(Gio.MenuModel model);
 	[LinkName("gtk_popover_menu_bar_add_child")]
 	public static extern c_int PopoverMenuBarAddChild(PopoverMenuBar bar, Widget child, char8* id);
 	[LinkName("gtk_popover_menu_bar_get_menu_model")]
-	public static extern Gio.MenuModel PopoverMenuBarGetMenuModel(PopoverMenuBar bar);
+	public static extern Gio.MenuModel* PopoverMenuBarGetMenuModel(PopoverMenuBar bar);
 	[LinkName("gtk_popover_menu_bar_remove_child")]
 	public static extern c_int PopoverMenuBarRemoveChild(PopoverMenuBar bar, Widget child);
 	[LinkName("gtk_popover_menu_bar_set_menu_model")]
@@ -5608,11 +5608,11 @@ class Gtk
 	[CRepr]
 	public struct PrintContext;
 	[LinkName("gtk_print_context_create_pango_context")]
-	public static extern Pango.Context PrintContextCreatePangoContext(PrintContext context);
+	public static extern Pango.Context* PrintContextCreatePangoContext(PrintContext context);
 	[LinkName("gtk_print_context_create_pango_layout")]
-	public static extern Pango.Layout PrintContextCreatePangoLayout(PrintContext context);
+	public static extern Pango.Layout* PrintContextCreatePangoLayout(PrintContext context);
 	[LinkName("gtk_print_context_get_cairo_context")]
-	public static extern cairo.Context PrintContextGetCairoContext(PrintContext context);
+	public static extern cairo.Context* PrintContextGetCairoContext(PrintContext context);
 	[LinkName("gtk_print_context_get_dpi_x")]
 	public static extern double PrintContextGetDpiX(PrintContext context);
 	[LinkName("gtk_print_context_get_dpi_y")]
@@ -5622,9 +5622,9 @@ class Gtk
 	[LinkName("gtk_print_context_get_height")]
 	public static extern double PrintContextGetHeight(PrintContext context);
 	[LinkName("gtk_print_context_get_page_setup")]
-	public static extern PageSetup PrintContextGetPageSetup(PrintContext context);
+	public static extern PageSetup* PrintContextGetPageSetup(PrintContext context);
 	[LinkName("gtk_print_context_get_pango_fontmap")]
-	public static extern Pango.FontMap PrintContextGetPangoFontmap(PrintContext context);
+	public static extern Pango.FontMap* PrintContextGetPangoFontmap(PrintContext context);
 	[LinkName("gtk_print_context_get_width")]
 	public static extern double PrintContextGetWidth(PrintContext context);
 	[LinkName("gtk_print_context_set_cairo_context")]
@@ -5645,7 +5645,7 @@ class Gtk
 	[CRepr]
 	public struct PrintJob;
 	[LinkName("gtk_print_job_new")]
-	public static extern PrintJob PrintJobNew(char8* title, Printer printer, PrintSettings settings, PageSetup page_setup);
+	public static extern PrintJob* PrintJobNew(char8* title, Printer printer, PrintSettings settings, PageSetup page_setup);
 	[LinkName("gtk_print_job_get_collate")]
 	public static extern c_int PrintJobGetCollate(PrintJob job);
 	[LinkName("gtk_print_job_get_n_up")]
@@ -5661,7 +5661,7 @@ class Gtk
 	[LinkName("gtk_print_job_get_pages")]
 	public static extern PrintPages PrintJobGetPages(PrintJob job);
 	[LinkName("gtk_print_job_get_printer")]
-	public static extern Printer PrintJobGetPrinter(PrintJob job);
+	public static extern Printer* PrintJobGetPrinter(PrintJob job);
 	[LinkName("gtk_print_job_get_reverse")]
 	public static extern c_int PrintJobGetReverse(PrintJob job);
 	[LinkName("gtk_print_job_get_rotate")]
@@ -5669,13 +5669,13 @@ class Gtk
 	[LinkName("gtk_print_job_get_scale")]
 	public static extern double PrintJobGetScale(PrintJob job);
 	[LinkName("gtk_print_job_get_settings")]
-	public static extern PrintSettings PrintJobGetSettings(PrintJob job);
+	public static extern PrintSettings* PrintJobGetSettings(PrintJob job);
 	[LinkName("gtk_print_job_get_status")]
 	public static extern PrintStatus PrintJobGetStatus(PrintJob job);
 	[LinkName("gtk_print_job_get_surface")]
-	public static extern cairo.Surface PrintJobGetSurface(PrintJob job);
+	public static extern cairo.Surface* PrintJobGetSurface(PrintJob job);
 	[LinkName("gtk_print_job_get_title")]
-	public static extern char8* PrintJobGetTitle(PrintJob job);
+	public static extern char8** PrintJobGetTitle(PrintJob job);
 	[LinkName("gtk_print_job_get_track_print_status")]
 	public static extern c_int PrintJobGetTrackPrintStatus(PrintJob job);
 	[LinkName("gtk_print_job_send")]
@@ -5710,13 +5710,13 @@ class Gtk
 	[CRepr]
 	public struct PrintOperation;
 	[LinkName("gtk_print_operation_new")]
-	public static extern PrintOperation PrintOperationNew();
+	public static extern PrintOperation* PrintOperationNew();
 	[LinkName("gtk_print_operation_cancel")]
 	public static extern void PrintOperationCancel(PrintOperation op);
 	[LinkName("gtk_print_operation_draw_page_finish")]
 	public static extern void PrintOperationDrawPageFinish(PrintOperation op);
 	[LinkName("gtk_print_operation_get_default_page_setup")]
-	public static extern PageSetup PrintOperationGetDefaultPageSetup(PrintOperation op);
+	public static extern PageSetup* PrintOperationGetDefaultPageSetup(PrintOperation op);
 	[LinkName("gtk_print_operation_get_embed_page_setup")]
 	public static extern c_int PrintOperationGetEmbedPageSetup(PrintOperation op);
 	[LinkName("gtk_print_operation_get_error")]
@@ -5726,11 +5726,11 @@ class Gtk
 	[LinkName("gtk_print_operation_get_n_pages_to_print")]
 	public static extern c_int PrintOperationGetNPagesToPrint(PrintOperation op);
 	[LinkName("gtk_print_operation_get_print_settings")]
-	public static extern PrintSettings PrintOperationGetPrintSettings(PrintOperation op);
+	public static extern PrintSettings* PrintOperationGetPrintSettings(PrintOperation op);
 	[LinkName("gtk_print_operation_get_status")]
 	public static extern PrintStatus PrintOperationGetStatus(PrintOperation op);
 	[LinkName("gtk_print_operation_get_status_string")]
-	public static extern char8* PrintOperationGetStatusString(PrintOperation op);
+	public static extern char8** PrintOperationGetStatusString(PrintOperation op);
 	[LinkName("gtk_print_operation_get_support_selection")]
 	public static extern c_int PrintOperationGetSupportSelection(PrintOperation op);
 	[LinkName("gtk_print_operation_is_finished")]
@@ -5827,27 +5827,27 @@ class Gtk
 	[CRepr]
 	public struct PrintSettings;
 	[LinkName("gtk_print_settings_new")]
-	public static extern PrintSettings PrintSettingsNew();
+	public static extern PrintSettings* PrintSettingsNew();
 	[LinkName("gtk_print_settings_new_from_file")]
-	public static extern PrintSettings PrintSettingsNewFromFile(char8* file_name);
+	public static extern PrintSettings* PrintSettingsNewFromFile(char8* file_name);
 	[LinkName("gtk_print_settings_new_from_gvariant")]
-	public static extern PrintSettings PrintSettingsNewFromGvariant(GLib.Variant variant);
+	public static extern PrintSettings* PrintSettingsNewFromGvariant(GLib.Variant variant);
 	[LinkName("gtk_print_settings_new_from_key_file")]
-	public static extern PrintSettings PrintSettingsNewFromKeyFile(GLib.KeyFile key_file, char8* group_name);
+	public static extern PrintSettings* PrintSettingsNewFromKeyFile(GLib.KeyFile key_file, char8* group_name);
 	[LinkName("gtk_print_settings_copy")]
-	public static extern PrintSettings PrintSettingsCopy(PrintSettings other);
+	public static extern PrintSettings* PrintSettingsCopy(PrintSettings other);
 	[LinkName("gtk_print_settings_foreach")]
 	public static extern void PrintSettingsForeach(PrintSettings settings, PrintSettingsFunc func, void* user_data);
 	[LinkName("gtk_print_settings_get")]
-	public static extern char8* PrintSettingsGet(PrintSettings settings, char8* key);
+	public static extern char8** PrintSettingsGet(PrintSettings settings, char8* key);
 	[LinkName("gtk_print_settings_get_bool")]
 	public static extern c_int PrintSettingsGetBool(PrintSettings settings, char8* key);
 	[LinkName("gtk_print_settings_get_collate")]
 	public static extern c_int PrintSettingsGetCollate(PrintSettings settings);
 	[LinkName("gtk_print_settings_get_default_source")]
-	public static extern char8* PrintSettingsGetDefaultSource(PrintSettings settings);
+	public static extern char8** PrintSettingsGetDefaultSource(PrintSettings settings);
 	[LinkName("gtk_print_settings_get_dither")]
-	public static extern char8* PrintSettingsGetDither(PrintSettings settings);
+	public static extern char8** PrintSettingsGetDither(PrintSettings settings);
 	[LinkName("gtk_print_settings_get_double")]
 	public static extern double PrintSettingsGetDouble(PrintSettings settings, char8* key);
 	[LinkName("gtk_print_settings_get_double_with_default")]
@@ -5855,7 +5855,7 @@ class Gtk
 	[LinkName("gtk_print_settings_get_duplex")]
 	public static extern PrintDuplex PrintSettingsGetDuplex(PrintSettings settings);
 	[LinkName("gtk_print_settings_get_finishings")]
-	public static extern char8* PrintSettingsGetFinishings(PrintSettings settings);
+	public static extern char8** PrintSettingsGetFinishings(PrintSettings settings);
 	[LinkName("gtk_print_settings_get_int")]
 	public static extern c_int PrintSettingsGetInt(PrintSettings settings, char8* key);
 	[LinkName("gtk_print_settings_get_int_with_default")]
@@ -5863,7 +5863,7 @@ class Gtk
 	[LinkName("gtk_print_settings_get_length")]
 	public static extern double PrintSettingsGetLength(PrintSettings settings, char8* key, Unit unit);
 	[LinkName("gtk_print_settings_get_media_type")]
-	public static extern char8* PrintSettingsGetMediaType(PrintSettings settings);
+	public static extern char8** PrintSettingsGetMediaType(PrintSettings settings);
 	[LinkName("gtk_print_settings_get_n_copies")]
 	public static extern c_int PrintSettingsGetNCopies(PrintSettings settings);
 	[LinkName("gtk_print_settings_get_number_up")]
@@ -5873,7 +5873,7 @@ class Gtk
 	[LinkName("gtk_print_settings_get_orientation")]
 	public static extern PageOrientation PrintSettingsGetOrientation(PrintSettings settings);
 	[LinkName("gtk_print_settings_get_output_bin")]
-	public static extern char8* PrintSettingsGetOutputBin(PrintSettings settings);
+	public static extern char8** PrintSettingsGetOutputBin(PrintSettings settings);
 	[LinkName("gtk_print_settings_get_page_ranges")]
 	public static extern PageRange PrintSettingsGetPageRanges(PrintSettings settings, c_int num_ranges);
 	[LinkName("gtk_print_settings_get_page_set")]
@@ -5881,13 +5881,13 @@ class Gtk
 	[LinkName("gtk_print_settings_get_paper_height")]
 	public static extern double PrintSettingsGetPaperHeight(PrintSettings settings, Unit unit);
 	[LinkName("gtk_print_settings_get_paper_size")]
-	public static extern PaperSize PrintSettingsGetPaperSize(PrintSettings settings);
+	public static extern PaperSize* PrintSettingsGetPaperSize(PrintSettings settings);
 	[LinkName("gtk_print_settings_get_paper_width")]
 	public static extern double PrintSettingsGetPaperWidth(PrintSettings settings, Unit unit);
 	[LinkName("gtk_print_settings_get_print_pages")]
 	public static extern PrintPages PrintSettingsGetPrintPages(PrintSettings settings);
 	[LinkName("gtk_print_settings_get_printer")]
-	public static extern char8* PrintSettingsGetPrinter(PrintSettings settings);
+	public static extern char8** PrintSettingsGetPrinter(PrintSettings settings);
 	[LinkName("gtk_print_settings_get_printer_lpi")]
 	public static extern double PrintSettingsGetPrinterLpi(PrintSettings settings);
 	[LinkName("gtk_print_settings_get_quality")]
@@ -5973,7 +5973,7 @@ class Gtk
 	[LinkName("gtk_print_settings_to_file")]
 	public static extern c_int PrintSettingsToFile(PrintSettings settings, char8* file_name);
 	[LinkName("gtk_print_settings_to_gvariant")]
-	public static extern GLib.Variant PrintSettingsToGvariant(PrintSettings settings);
+	public static extern GLib.Variant* PrintSettingsToGvariant(PrintSettings settings);
 	[LinkName("gtk_print_settings_to_key_file")]
 	public static extern void PrintSettingsToKeyFile(PrintSettings settings, GLib.KeyFile key_file, char8* group_name);
 	[LinkName("gtk_print_settings_unset")]
@@ -5994,7 +5994,7 @@ class Gtk
 	[CRepr]
 	public struct PrintUnixDialog;
 	[LinkName("gtk_print_unix_dialog_new")]
-	public static extern Widget PrintUnixDialogNew(char8* title, Window parent);
+	public static extern Widget* PrintUnixDialogNew(char8* title, Window parent);
 	[LinkName("gtk_print_unix_dialog_add_custom_tab")]
 	public static extern void PrintUnixDialogAddCustomTab(PrintUnixDialog dialog, Widget child, Widget tab_label);
 	[LinkName("gtk_print_unix_dialog_get_current_page")]
@@ -6006,13 +6006,13 @@ class Gtk
 	[LinkName("gtk_print_unix_dialog_get_manual_capabilities")]
 	public static extern PrintCapabilities PrintUnixDialogGetManualCapabilities(PrintUnixDialog dialog);
 	[LinkName("gtk_print_unix_dialog_get_page_setup")]
-	public static extern PageSetup PrintUnixDialogGetPageSetup(PrintUnixDialog dialog);
+	public static extern PageSetup* PrintUnixDialogGetPageSetup(PrintUnixDialog dialog);
 	[LinkName("gtk_print_unix_dialog_get_page_setup_set")]
 	public static extern c_int PrintUnixDialogGetPageSetupSet(PrintUnixDialog dialog);
 	[LinkName("gtk_print_unix_dialog_get_selected_printer")]
-	public static extern Printer PrintUnixDialogGetSelectedPrinter(PrintUnixDialog dialog);
+	public static extern Printer* PrintUnixDialogGetSelectedPrinter(PrintUnixDialog dialog);
 	[LinkName("gtk_print_unix_dialog_get_settings")]
-	public static extern PrintSettings PrintUnixDialogGetSettings(PrintUnixDialog dialog);
+	public static extern PrintSettings* PrintUnixDialogGetSettings(PrintUnixDialog dialog);
 	[LinkName("gtk_print_unix_dialog_get_support_selection")]
 	public static extern c_int PrintUnixDialogGetSupportSelection(PrintUnixDialog dialog);
 	[LinkName("gtk_print_unix_dialog_set_current_page")]
@@ -6032,7 +6032,7 @@ class Gtk
 	[CRepr]
 	public struct Printer;
 	[LinkName("gtk_printer_new")]
-	public static extern Printer PrinterNew(char8* name, PrintBackend backend, c_int virtual_);
+	public static extern Printer* PrinterNew(char8* name, PrintBackend backend, c_int virtual_);
 	[LinkName("gtk_printer_accepts_pdf")]
 	public static extern c_int PrinterAcceptsPdf(Printer printer);
 	[LinkName("gtk_printer_accepts_ps")]
@@ -6040,27 +6040,27 @@ class Gtk
 	[LinkName("gtk_printer_compare")]
 	public static extern c_int PrinterCompare(Printer a, Printer b);
 	[LinkName("gtk_printer_get_backend")]
-	public static extern PrintBackend PrinterGetBackend(Printer printer);
+	public static extern PrintBackend* PrinterGetBackend(Printer printer);
 	[LinkName("gtk_printer_get_capabilities")]
 	public static extern PrintCapabilities PrinterGetCapabilities(Printer printer);
 	[LinkName("gtk_printer_get_default_page_size")]
-	public static extern PageSetup PrinterGetDefaultPageSize(Printer printer);
+	public static extern PageSetup* PrinterGetDefaultPageSize(Printer printer);
 	[LinkName("gtk_printer_get_description")]
-	public static extern char8* PrinterGetDescription(Printer printer);
+	public static extern char8** PrinterGetDescription(Printer printer);
 	[LinkName("gtk_printer_get_hard_margins")]
 	public static extern c_int PrinterGetHardMargins(Printer printer, double top, double bottom, double left, double right);
 	[LinkName("gtk_printer_get_hard_margins_for_paper_size")]
 	public static extern c_int PrinterGetHardMarginsForPaperSize(Printer printer, PaperSize paper_size, double top, double bottom, double left, double right);
 	[LinkName("gtk_printer_get_icon_name")]
-	public static extern char8* PrinterGetIconName(Printer printer);
+	public static extern char8** PrinterGetIconName(Printer printer);
 	[LinkName("gtk_printer_get_job_count")]
 	public static extern c_int PrinterGetJobCount(Printer printer);
 	[LinkName("gtk_printer_get_location")]
-	public static extern char8* PrinterGetLocation(Printer printer);
+	public static extern char8** PrinterGetLocation(Printer printer);
 	[LinkName("gtk_printer_get_name")]
-	public static extern char8* PrinterGetName(Printer printer);
+	public static extern char8** PrinterGetName(Printer printer);
 	[LinkName("gtk_printer_get_state_message")]
-	public static extern char8* PrinterGetStateMessage(Printer printer);
+	public static extern char8** PrinterGetStateMessage(Printer printer);
 	[LinkName("gtk_printer_has_details")]
 	public static extern c_int PrinterHasDetails(Printer printer);
 	[LinkName("gtk_printer_is_accepting_jobs")]
@@ -6074,14 +6074,14 @@ class Gtk
 	[LinkName("gtk_printer_is_virtual")]
 	public static extern c_int PrinterIsVirtual(Printer printer);
 	[LinkName("gtk_printer_list_papers")]
-	public static extern GLib.List PrinterListPapers(Printer printer);
+	public static extern GLib.List* PrinterListPapers(Printer printer);
 	[LinkName("gtk_printer_request_details")]
 	public static extern void PrinterRequestDetails(Printer printer);
 	public function c_int PrinterFunc(Printer printer, void* data);
 	[CRepr]
 	public struct ProgressBar;
 	[LinkName("gtk_progress_bar_new")]
-	public static extern Widget ProgressBarNew();
+	public static extern Widget* ProgressBarNew();
 	[LinkName("gtk_progress_bar_get_ellipsize")]
 	public static extern Pango.EllipsizeMode ProgressBarGetEllipsize(ProgressBar pbar);
 	[LinkName("gtk_progress_bar_get_fraction")]
@@ -6093,7 +6093,7 @@ class Gtk
 	[LinkName("gtk_progress_bar_get_show_text")]
 	public static extern c_int ProgressBarGetShowText(ProgressBar pbar);
 	[LinkName("gtk_progress_bar_get_text")]
-	public static extern char8* ProgressBarGetText(ProgressBar pbar);
+	public static extern char8** ProgressBarGetText(ProgressBar pbar);
 	[LinkName("gtk_progress_bar_pulse")]
 	public static extern void ProgressBarPulse(ProgressBar pbar);
 	[LinkName("gtk_progress_bar_set_ellipsize")]
@@ -6123,17 +6123,17 @@ class Gtk
 	[CRepr]
 	public struct PropertyExpression;
 	[LinkName("gtk_property_expression_new")]
-	public static extern PropertyExpression PropertyExpressionNew(GLib.Type this_type, Expression expression, char8* property_name);
+	public static extern PropertyExpression* PropertyExpressionNew(GLib.Type this_type, Expression expression, char8* property_name);
 	[LinkName("gtk_property_expression_new_for_pspec")]
-	public static extern PropertyExpression PropertyExpressionNewForPspec(Expression expression, GObject.ParamSpec pspec);
+	public static extern PropertyExpression* PropertyExpressionNewForPspec(Expression expression, GObject.ParamSpec pspec);
 	[LinkName("gtk_property_expression_get_expression")]
-	public static extern Expression PropertyExpressionGetExpression(PropertyExpression expression);
+	public static extern Expression* PropertyExpressionGetExpression(PropertyExpression expression);
 	[LinkName("gtk_property_expression_get_pspec")]
-	public static extern GObject.ParamSpec PropertyExpressionGetPspec(PropertyExpression expression);
+	public static extern GObject.ParamSpec* PropertyExpressionGetPspec(PropertyExpression expression);
 	[CRepr]
 	public struct Range;
 	[LinkName("gtk_range_get_adjustment")]
-	public static extern Adjustment RangeGetAdjustment(Range range);
+	public static extern Adjustment* RangeGetAdjustment(Range range);
 	[LinkName("gtk_range_get_fill_level")]
 	public static extern double RangeGetFillLevel(Range range);
 	[LinkName("gtk_range_get_flippable")]
@@ -6198,17 +6198,17 @@ class Gtk
 	[CRepr]
 	public struct RecentManager;
 	[LinkName("gtk_recent_manager_new")]
-	public static extern RecentManager RecentManagerNew();
+	public static extern RecentManager* RecentManagerNew();
 	[LinkName("gtk_recent_manager_add_full")]
 	public static extern c_int RecentManagerAddFull(RecentManager manager, char8* uri, RecentData recent_data);
 	[LinkName("gtk_recent_manager_add_item")]
 	public static extern c_int RecentManagerAddItem(RecentManager manager, char8* uri);
 	[LinkName("gtk_recent_manager_get_items")]
-	public static extern GLib.List RecentManagerGetItems(RecentManager manager);
+	public static extern GLib.List* RecentManagerGetItems(RecentManager manager);
 	[LinkName("gtk_recent_manager_has_item")]
 	public static extern c_int RecentManagerHasItem(RecentManager manager, char8* uri);
 	[LinkName("gtk_recent_manager_lookup_item")]
-	public static extern RecentInfo RecentManagerLookupItem(RecentManager manager, char8* uri);
+	public static extern RecentInfo* RecentManagerLookupItem(RecentManager manager, char8* uri);
 	[LinkName("gtk_recent_manager_move_item")]
 	public static extern c_int RecentManagerMoveItem(RecentManager manager, char8* uri, char8* new_uri);
 	[LinkName("gtk_recent_manager_purge_items")]
@@ -6264,9 +6264,9 @@ class Gtk
 	[CRepr]
 	public struct Revealer;
 	[LinkName("gtk_revealer_new")]
-	public static extern Widget RevealerNew();
+	public static extern Widget* RevealerNew();
 	[LinkName("gtk_revealer_get_child")]
-	public static extern Widget RevealerGetChild(Revealer revealer);
+	public static extern Widget* RevealerGetChild(Revealer revealer);
 	[LinkName("gtk_revealer_get_child_revealed")]
 	public static extern c_int RevealerGetChildRevealed(Revealer revealer);
 	[LinkName("gtk_revealer_get_reveal_child")]
@@ -6306,9 +6306,9 @@ class Gtk
 	[CRepr]
 	public struct Scale;
 	[LinkName("gtk_scale_new")]
-	public static extern Widget ScaleNew(Orientation orientation, Adjustment adjustment);
+	public static extern Widget* ScaleNew(Orientation orientation, Adjustment adjustment);
 	[LinkName("gtk_scale_new_with_range")]
-	public static extern Widget ScaleNewWithRange(Orientation orientation, double min, double max, double step);
+	public static extern Widget* ScaleNewWithRange(Orientation orientation, double min, double max, double step);
 	[LinkName("gtk_scale_add_mark")]
 	public static extern void ScaleAddMark(Scale scale, double value, PositionType position, char8* markup);
 	[LinkName("gtk_scale_clear_marks")]
@@ -6320,7 +6320,7 @@ class Gtk
 	[LinkName("gtk_scale_get_has_origin")]
 	public static extern c_int ScaleGetHasOrigin(Scale scale);
 	[LinkName("gtk_scale_get_layout")]
-	public static extern Pango.Layout ScaleGetLayout(Scale scale);
+	public static extern Pango.Layout* ScaleGetLayout(Scale scale);
 	[LinkName("gtk_scale_get_layout_offsets")]
 	public static extern void ScaleGetLayoutOffsets(Scale scale, c_int x, c_int y);
 	[LinkName("gtk_scale_get_value_pos")]
@@ -6338,17 +6338,17 @@ class Gtk
 	[CRepr]
 	public struct ScaleButton;
 	[LinkName("gtk_scale_button_new")]
-	public static extern Widget ScaleButtonNew(double min, double max, double step);
+	public static extern Widget* ScaleButtonNew(double min, double max, double step);
 	[LinkName("gtk_scale_button_get_active")]
 	public static extern c_int ScaleButtonGetActive(ScaleButton button);
 	[LinkName("gtk_scale_button_get_adjustment")]
-	public static extern Adjustment ScaleButtonGetAdjustment(ScaleButton button);
+	public static extern Adjustment* ScaleButtonGetAdjustment(ScaleButton button);
 	[LinkName("gtk_scale_button_get_minus_button")]
-	public static extern Button ScaleButtonGetMinusButton(ScaleButton button);
+	public static extern Button* ScaleButtonGetMinusButton(ScaleButton button);
 	[LinkName("gtk_scale_button_get_plus_button")]
-	public static extern Button ScaleButtonGetPlusButton(ScaleButton button);
+	public static extern Button* ScaleButtonGetPlusButton(ScaleButton button);
 	[LinkName("gtk_scale_button_get_popup")]
-	public static extern Widget ScaleButtonGetPopup(ScaleButton button);
+	public static extern Widget* ScaleButtonGetPopup(ScaleButton button);
 	[LinkName("gtk_scale_button_get_value")]
 	public static extern double ScaleButtonGetValue(ScaleButton button);
 	[LinkName("gtk_scale_button_set_adjustment")]
@@ -6414,23 +6414,23 @@ class Gtk
 	[CRepr]
 	public struct Scrollbar;
 	[LinkName("gtk_scrollbar_new")]
-	public static extern Widget ScrollbarNew(Orientation orientation, Adjustment adjustment);
+	public static extern Widget* ScrollbarNew(Orientation orientation, Adjustment adjustment);
 	[LinkName("gtk_scrollbar_get_adjustment")]
-	public static extern Adjustment ScrollbarGetAdjustment(Scrollbar self);
+	public static extern Adjustment* ScrollbarGetAdjustment(Scrollbar self);
 	[LinkName("gtk_scrollbar_set_adjustment")]
 	public static extern void ScrollbarSetAdjustment(Scrollbar self, Adjustment adjustment);
 	[CRepr]
 	public struct ScrolledWindow;
 	[LinkName("gtk_scrolled_window_new")]
-	public static extern Widget ScrolledWindowNew();
+	public static extern Widget* ScrolledWindowNew();
 	[LinkName("gtk_scrolled_window_get_child")]
-	public static extern Widget ScrolledWindowGetChild(ScrolledWindow scrolled_window);
+	public static extern Widget* ScrolledWindowGetChild(ScrolledWindow scrolled_window);
 	[LinkName("gtk_scrolled_window_get_hadjustment")]
-	public static extern Adjustment ScrolledWindowGetHadjustment(ScrolledWindow scrolled_window);
+	public static extern Adjustment* ScrolledWindowGetHadjustment(ScrolledWindow scrolled_window);
 	[LinkName("gtk_scrolled_window_get_has_frame")]
 	public static extern c_int ScrolledWindowGetHasFrame(ScrolledWindow scrolled_window);
 	[LinkName("gtk_scrolled_window_get_hscrollbar")]
-	public static extern Widget ScrolledWindowGetHscrollbar(ScrolledWindow scrolled_window);
+	public static extern Widget* ScrolledWindowGetHscrollbar(ScrolledWindow scrolled_window);
 	[LinkName("gtk_scrolled_window_get_kinetic_scrolling")]
 	public static extern c_int ScrolledWindowGetKineticScrolling(ScrolledWindow scrolled_window);
 	[LinkName("gtk_scrolled_window_get_max_content_height")]
@@ -6452,9 +6452,9 @@ class Gtk
 	[LinkName("gtk_scrolled_window_get_propagate_natural_width")]
 	public static extern c_int ScrolledWindowGetPropagateNaturalWidth(ScrolledWindow scrolled_window);
 	[LinkName("gtk_scrolled_window_get_vadjustment")]
-	public static extern Adjustment ScrolledWindowGetVadjustment(ScrolledWindow scrolled_window);
+	public static extern Adjustment* ScrolledWindowGetVadjustment(ScrolledWindow scrolled_window);
 	[LinkName("gtk_scrolled_window_get_vscrollbar")]
-	public static extern Widget ScrolledWindowGetVscrollbar(ScrolledWindow scrolled_window);
+	public static extern Widget* ScrolledWindowGetVscrollbar(ScrolledWindow scrolled_window);
 	[LinkName("gtk_scrolled_window_set_child")]
 	public static extern void ScrolledWindowSetChild(ScrolledWindow scrolled_window, Widget child);
 	[LinkName("gtk_scrolled_window_set_hadjustment")]
@@ -6488,13 +6488,13 @@ class Gtk
 	[CRepr]
 	public struct SearchBar;
 	[LinkName("gtk_search_bar_new")]
-	public static extern Widget SearchBarNew();
+	public static extern Widget* SearchBarNew();
 	[LinkName("gtk_search_bar_connect_entry")]
 	public static extern void SearchBarConnectEntry(SearchBar bar, Editable entry);
 	[LinkName("gtk_search_bar_get_child")]
-	public static extern Widget SearchBarGetChild(SearchBar bar);
+	public static extern Widget* SearchBarGetChild(SearchBar bar);
 	[LinkName("gtk_search_bar_get_key_capture_widget")]
-	public static extern Widget SearchBarGetKeyCaptureWidget(SearchBar bar);
+	public static extern Widget* SearchBarGetKeyCaptureWidget(SearchBar bar);
 	[LinkName("gtk_search_bar_get_search_mode")]
 	public static extern c_int SearchBarGetSearchMode(SearchBar bar);
 	[LinkName("gtk_search_bar_get_show_close_button")]
@@ -6510,11 +6510,11 @@ class Gtk
 	[CRepr]
 	public struct SearchEntry;
 	[LinkName("gtk_search_entry_new")]
-	public static extern Widget SearchEntryNew();
+	public static extern Widget* SearchEntryNew();
 	[LinkName("gtk_search_entry_get_key_capture_widget")]
-	public static extern Widget SearchEntryGetKeyCaptureWidget(SearchEntry entry);
+	public static extern Widget* SearchEntryGetKeyCaptureWidget(SearchEntry entry);
 	[LinkName("gtk_search_entry_get_placeholder_text")]
-	public static extern char8* SearchEntryGetPlaceholderText(SearchEntry entry);
+	public static extern char8** SearchEntryGetPlaceholderText(SearchEntry entry);
 	[LinkName("gtk_search_entry_get_search_delay")]
 	public static extern c_uint SearchEntryGetSearchDelay(SearchEntry entry);
 	[LinkName("gtk_search_entry_set_key_capture_widget")]
@@ -6536,9 +6536,9 @@ class Gtk
 	[CRepr]
 	public struct SelectionFilterModel;
 	[LinkName("gtk_selection_filter_model_new")]
-	public static extern SelectionFilterModel SelectionFilterModelNew(SelectionModel model);
+	public static extern SelectionFilterModel* SelectionFilterModelNew(SelectionModel model);
 	[LinkName("gtk_selection_filter_model_get_model")]
-	public static extern SelectionModel SelectionFilterModelGetModel(SelectionFilterModel self);
+	public static extern SelectionModel* SelectionFilterModelGetModel(SelectionFilterModel self);
 	[LinkName("gtk_selection_filter_model_set_model")]
 	public static extern void SelectionFilterModelSetModel(SelectionFilterModel self, SelectionModel model);
 	[CRepr]
@@ -6588,7 +6588,7 @@ class Gtk
 	[CRepr]
 	public struct Separator;
 	[LinkName("gtk_separator_new")]
-	public static extern Widget SeparatorNew(Orientation orientation);
+	public static extern Widget* SeparatorNew(Orientation orientation);
 	[CRepr]
 	public struct Settings;
 	[LinkName("gtk_settings_reset_property")]
@@ -6596,15 +6596,15 @@ class Gtk
 	[CRepr]
 	public struct Shortcut;
 	[LinkName("gtk_shortcut_new")]
-	public static extern Shortcut ShortcutNew(ShortcutTrigger trigger, ShortcutAction action);
+	public static extern Shortcut* ShortcutNew(ShortcutTrigger trigger, ShortcutAction action);
 	[LinkName("gtk_shortcut_new_with_arguments")]
-	public static extern Shortcut ShortcutNewWithArguments(ShortcutTrigger trigger, ShortcutAction action, char8* format_string);
+	public static extern Shortcut* ShortcutNewWithArguments(ShortcutTrigger trigger, ShortcutAction action, char8* format_string);
 	[LinkName("gtk_shortcut_get_action")]
-	public static extern ShortcutAction ShortcutGetAction(Shortcut self);
+	public static extern ShortcutAction* ShortcutGetAction(Shortcut self);
 	[LinkName("gtk_shortcut_get_arguments")]
-	public static extern GLib.Variant ShortcutGetArguments(Shortcut self);
+	public static extern GLib.Variant* ShortcutGetArguments(Shortcut self);
 	[LinkName("gtk_shortcut_get_trigger")]
-	public static extern ShortcutTrigger ShortcutGetTrigger(Shortcut self);
+	public static extern ShortcutTrigger* ShortcutGetTrigger(Shortcut self);
 	[LinkName("gtk_shortcut_set_action")]
 	public static extern void ShortcutSetAction(Shortcut self, ShortcutAction action);
 	[LinkName("gtk_shortcut_set_arguments")]
@@ -6614,13 +6614,13 @@ class Gtk
 	[CRepr]
 	public struct ShortcutAction;
 	[LinkName("gtk_shortcut_action_parse_string")]
-	public static extern ShortcutAction ShortcutActionParseString(char8* string);
+	public static extern ShortcutAction* ShortcutActionParseString(char8* string);
 	[LinkName("gtk_shortcut_action_activate")]
 	public static extern c_int ShortcutActionActivate(ShortcutAction self, ShortcutActionFlags flags, Widget widget, GLib.Variant args);
 	[LinkName("gtk_shortcut_action_print")]
 	public static extern void ShortcutActionPrint(ShortcutAction self, GLib.String string);
 	[LinkName("gtk_shortcut_action_to_string")]
-	public static extern char8* ShortcutActionToString(ShortcutAction self);
+	public static extern char8** ShortcutActionToString(ShortcutAction self);
 	[CRepr]
 	public struct ShortcutActionClass
 	{
@@ -6638,9 +6638,9 @@ class Gtk
 	[CRepr]
 	public struct ShortcutController;
 	[LinkName("gtk_shortcut_controller_new")]
-	public static extern EventController ShortcutControllerNew();
+	public static extern EventController* ShortcutControllerNew();
 	[LinkName("gtk_shortcut_controller_new_for_model")]
-	public static extern EventController ShortcutControllerNewForModel(Gio.ListModel model);
+	public static extern EventController* ShortcutControllerNewForModel(Gio.ListModel model);
 	[LinkName("gtk_shortcut_controller_add_shortcut")]
 	public static extern void ShortcutControllerAddShortcut(ShortcutController self, Shortcut shortcut);
 	[LinkName("gtk_shortcut_controller_get_mnemonics_modifiers")]
@@ -6661,11 +6661,11 @@ class Gtk
 	[CRepr]
 	public struct ShortcutLabel;
 	[LinkName("gtk_shortcut_label_new")]
-	public static extern Widget ShortcutLabelNew(char8* accelerator);
+	public static extern Widget* ShortcutLabelNew(char8* accelerator);
 	[LinkName("gtk_shortcut_label_get_accelerator")]
-	public static extern char8* ShortcutLabelGetAccelerator(ShortcutLabel self);
+	public static extern char8** ShortcutLabelGetAccelerator(ShortcutLabel self);
 	[LinkName("gtk_shortcut_label_get_disabled_text")]
-	public static extern char8* ShortcutLabelGetDisabledText(ShortcutLabel self);
+	public static extern char8** ShortcutLabelGetDisabledText(ShortcutLabel self);
 	[LinkName("gtk_shortcut_label_set_accelerator")]
 	public static extern void ShortcutLabelSetAccelerator(ShortcutLabel self, char8* accelerator);
 	[LinkName("gtk_shortcut_label_set_disabled_text")]
@@ -6695,7 +6695,7 @@ class Gtk
 	[CRepr]
 	public struct ShortcutTrigger;
 	[LinkName("gtk_shortcut_trigger_parse_string")]
-	public static extern ShortcutTrigger ShortcutTriggerParseString(char8* string);
+	public static extern ShortcutTrigger* ShortcutTriggerParseString(char8* string);
 	[LinkName("gtk_shortcut_trigger_compare")]
 	public static extern c_int ShortcutTriggerCompare(ShortcutTrigger trigger1, ShortcutTrigger trigger2);
 	[LinkName("gtk_shortcut_trigger_equal")]
@@ -6707,9 +6707,9 @@ class Gtk
 	[LinkName("gtk_shortcut_trigger_print_label")]
 	public static extern c_int ShortcutTriggerPrintLabel(ShortcutTrigger self, Gdk.Display display, GLib.String string);
 	[LinkName("gtk_shortcut_trigger_to_label")]
-	public static extern char8* ShortcutTriggerToLabel(ShortcutTrigger self, Gdk.Display display);
+	public static extern char8** ShortcutTriggerToLabel(ShortcutTrigger self, Gdk.Display display);
 	[LinkName("gtk_shortcut_trigger_to_string")]
-	public static extern char8* ShortcutTriggerToString(ShortcutTrigger self);
+	public static extern char8** ShortcutTriggerToString(ShortcutTrigger self);
 	[LinkName("gtk_shortcut_trigger_trigger")]
 	public static extern Gdk.KeyMatch ShortcutTriggerTrigger(ShortcutTrigger self, Gdk.Event event, c_int enable_mnemonics);
 	[CRepr]
@@ -6752,9 +6752,9 @@ class Gtk
 	[CRepr]
 	public struct SignalAction;
 	[LinkName("gtk_signal_action_new")]
-	public static extern SignalAction SignalActionNew(char8* signal_name);
+	public static extern SignalAction* SignalActionNew(char8* signal_name);
 	[LinkName("gtk_signal_action_get_signal_name")]
-	public static extern char8* SignalActionGetSignalName(SignalAction self);
+	public static extern char8** SignalActionGetSignalName(SignalAction self);
 	[CRepr]
 	public struct SignalActionClass
 	{
@@ -6762,7 +6762,7 @@ class Gtk
 	[CRepr]
 	public struct SignalListItemFactory;
 	[LinkName("gtk_signal_list_item_factory_new")]
-	public static extern ListItemFactory SignalListItemFactoryNew();
+	public static extern ListItemFactory* SignalListItemFactoryNew();
 	[CRepr]
 	public struct SignalListItemFactoryClass
 	{
@@ -6770,13 +6770,13 @@ class Gtk
 	[CRepr]
 	public struct SingleSelection;
 	[LinkName("gtk_single_selection_new")]
-	public static extern SingleSelection SingleSelectionNew(Gio.ListModel model);
+	public static extern SingleSelection* SingleSelectionNew(Gio.ListModel model);
 	[LinkName("gtk_single_selection_get_autoselect")]
 	public static extern c_int SingleSelectionGetAutoselect(SingleSelection self);
 	[LinkName("gtk_single_selection_get_can_unselect")]
 	public static extern c_int SingleSelectionGetCanUnselect(SingleSelection self);
 	[LinkName("gtk_single_selection_get_model")]
-	public static extern Gio.ListModel SingleSelectionGetModel(SingleSelection self);
+	public static extern Gio.ListModel* SingleSelectionGetModel(SingleSelection self);
 	[LinkName("gtk_single_selection_get_selected")]
 	public static extern c_uint SingleSelectionGetSelected(SingleSelection self);
 	[LinkName("gtk_single_selection_get_selected_item")]
@@ -6797,13 +6797,13 @@ class Gtk
 	[CRepr]
 	public struct SizeGroup;
 	[LinkName("gtk_size_group_new")]
-	public static extern SizeGroup SizeGroupNew(SizeGroupMode mode);
+	public static extern SizeGroup* SizeGroupNew(SizeGroupMode mode);
 	[LinkName("gtk_size_group_add_widget")]
 	public static extern void SizeGroupAddWidget(SizeGroup size_group, Widget widget);
 	[LinkName("gtk_size_group_get_mode")]
 	public static extern SizeGroupMode SizeGroupGetMode(SizeGroup size_group);
 	[LinkName("gtk_size_group_get_widgets")]
-	public static extern GLib.SList SizeGroupGetWidgets(SizeGroup size_group);
+	public static extern GLib.SList* SizeGroupGetWidgets(SizeGroup size_group);
 	[LinkName("gtk_size_group_remove_widget")]
 	public static extern void SizeGroupRemoveWidget(SizeGroup size_group, Widget widget);
 	[LinkName("gtk_size_group_set_mode")]
@@ -6824,9 +6824,9 @@ class Gtk
 	[CRepr]
 	public struct SliceListModel;
 	[LinkName("gtk_slice_list_model_new")]
-	public static extern SliceListModel SliceListModelNew(Gio.ListModel model, c_uint offset, c_uint size);
+	public static extern SliceListModel* SliceListModelNew(Gio.ListModel model, c_uint offset, c_uint size);
 	[LinkName("gtk_slice_list_model_get_model")]
-	public static extern Gio.ListModel SliceListModelGetModel(SliceListModel self);
+	public static extern Gio.ListModel* SliceListModelGetModel(SliceListModel self);
 	[LinkName("gtk_slice_list_model_get_offset")]
 	public static extern c_uint SliceListModelGetOffset(SliceListModel self);
 	[LinkName("gtk_slice_list_model_get_size")]
@@ -6845,11 +6845,11 @@ class Gtk
 	[CRepr]
 	public struct Snapshot;
 	[LinkName("gtk_snapshot_new")]
-	public static extern Snapshot SnapshotNew();
+	public static extern Snapshot* SnapshotNew();
 	[LinkName("gtk_snapshot_append_border")]
 	public static extern void SnapshotAppendBorder(Snapshot snapshot, Gsk.RoundedRect outline);
 	[LinkName("gtk_snapshot_append_cairo")]
-	public static extern cairo.Context SnapshotAppendCairo(Snapshot snapshot, Graphene.Rect bounds);
+	public static extern cairo.Context* SnapshotAppendCairo(Snapshot snapshot, Graphene.Rect bounds);
 	[LinkName("gtk_snapshot_append_color")]
 	public static extern void SnapshotAppendColor(Snapshot snapshot, Gdk.RGBA color, Graphene.Rect bounds);
 	[LinkName("gtk_snapshot_append_conic_gradient")]
@@ -6875,9 +6875,9 @@ class Gtk
 	[LinkName("gtk_snapshot_append_texture")]
 	public static extern void SnapshotAppendTexture(Snapshot snapshot, Gdk.Texture texture, Graphene.Rect bounds);
 	[LinkName("gtk_snapshot_free_to_node")]
-	public static extern Gsk.RenderNode SnapshotFreeToNode(Snapshot snapshot);
+	public static extern Gsk.RenderNode* SnapshotFreeToNode(Snapshot snapshot);
 	[LinkName("gtk_snapshot_free_to_paintable")]
-	public static extern Gdk.Paintable SnapshotFreeToPaintable(Snapshot snapshot, Graphene.Size size);
+	public static extern Gdk.Paintable* SnapshotFreeToPaintable(Snapshot snapshot, Graphene.Size size);
 	[LinkName("gtk_snapshot_gl_shader_pop_texture")]
 	public static extern void SnapshotGlShaderPopTexture(Snapshot snapshot);
 	[LinkName("gtk_snapshot_perspective")]
@@ -6931,9 +6931,9 @@ class Gtk
 	[LinkName("gtk_snapshot_scale_3d")]
 	public static extern void SnapshotScale3d(Snapshot snapshot, float factor_x, float factor_y, float factor_z);
 	[LinkName("gtk_snapshot_to_node")]
-	public static extern Gsk.RenderNode SnapshotToNode(Snapshot snapshot);
+	public static extern Gsk.RenderNode* SnapshotToNode(Snapshot snapshot);
 	[LinkName("gtk_snapshot_to_paintable")]
-	public static extern Gdk.Paintable SnapshotToPaintable(Snapshot snapshot, Graphene.Size size);
+	public static extern Gdk.Paintable* SnapshotToPaintable(Snapshot snapshot, Graphene.Size size);
 	[LinkName("gtk_snapshot_transform")]
 	public static extern void SnapshotTransform(Snapshot snapshot, Gsk.Transform transform);
 	[LinkName("gtk_snapshot_transform_matrix")]
@@ -6949,17 +6949,17 @@ class Gtk
 	[CRepr]
 	public struct SortListModel;
 	[LinkName("gtk_sort_list_model_new")]
-	public static extern SortListModel SortListModelNew(Gio.ListModel model, Sorter sorter);
+	public static extern SortListModel* SortListModelNew(Gio.ListModel model, Sorter sorter);
 	[LinkName("gtk_sort_list_model_get_incremental")]
 	public static extern c_int SortListModelGetIncremental(SortListModel self);
 	[LinkName("gtk_sort_list_model_get_model")]
-	public static extern Gio.ListModel SortListModelGetModel(SortListModel self);
+	public static extern Gio.ListModel* SortListModelGetModel(SortListModel self);
 	[LinkName("gtk_sort_list_model_get_pending")]
 	public static extern c_uint SortListModelGetPending(SortListModel self);
 	[LinkName("gtk_sort_list_model_get_section_sorter")]
-	public static extern Sorter SortListModelGetSectionSorter(SortListModel self);
+	public static extern Sorter* SortListModelGetSectionSorter(SortListModel self);
 	[LinkName("gtk_sort_list_model_get_sorter")]
-	public static extern Sorter SortListModelGetSorter(SortListModel self);
+	public static extern Sorter* SortListModelGetSorter(SortListModel self);
 	[LinkName("gtk_sort_list_model_set_incremental")]
 	public static extern void SortListModelSetIncremental(SortListModel self, c_int incremental);
 	[LinkName("gtk_sort_list_model_set_model")]
@@ -7007,13 +7007,13 @@ class Gtk
 	[CRepr]
 	public struct SpinButton;
 	[LinkName("gtk_spin_button_new")]
-	public static extern Widget SpinButtonNew(Adjustment adjustment, double climb_rate, c_uint digits);
+	public static extern Widget* SpinButtonNew(Adjustment adjustment, double climb_rate, c_uint digits);
 	[LinkName("gtk_spin_button_new_with_range")]
-	public static extern Widget SpinButtonNewWithRange(double min, double max, double step);
+	public static extern Widget* SpinButtonNewWithRange(double min, double max, double step);
 	[LinkName("gtk_spin_button_configure")]
 	public static extern void SpinButtonConfigure(SpinButton spin_button, Adjustment adjustment, double climb_rate, c_uint digits);
 	[LinkName("gtk_spin_button_get_adjustment")]
-	public static extern Adjustment SpinButtonGetAdjustment(SpinButton spin_button);
+	public static extern Adjustment* SpinButtonGetAdjustment(SpinButton spin_button);
 	[LinkName("gtk_spin_button_get_climb_rate")]
 	public static extern double SpinButtonGetClimbRate(SpinButton spin_button);
 	[LinkName("gtk_spin_button_get_digits")]
@@ -7076,7 +7076,7 @@ class Gtk
 	[CRepr]
 	public struct Spinner;
 	[LinkName("gtk_spinner_new")]
-	public static extern Widget SpinnerNew();
+	public static extern Widget* SpinnerNew();
 	[LinkName("gtk_spinner_get_spinning")]
 	public static extern c_int SpinnerGetSpinning(Spinner spinner);
 	[LinkName("gtk_spinner_set_spinning")]
@@ -7088,23 +7088,23 @@ class Gtk
 	[CRepr]
 	public struct Stack;
 	[LinkName("gtk_stack_new")]
-	public static extern Widget StackNew();
+	public static extern Widget* StackNew();
 	[LinkName("gtk_stack_add_child")]
-	public static extern StackPage StackAddChild(Stack stack_, Widget child);
+	public static extern StackPage* StackAddChild(Stack stack_, Widget child);
 	[LinkName("gtk_stack_add_named")]
-	public static extern StackPage StackAddNamed(Stack stack_, Widget child, char8* name);
+	public static extern StackPage* StackAddNamed(Stack stack_, Widget child, char8* name);
 	[LinkName("gtk_stack_add_titled")]
-	public static extern StackPage StackAddTitled(Stack stack_, Widget child, char8* name, char8* title);
+	public static extern StackPage* StackAddTitled(Stack stack_, Widget child, char8* name, char8* title);
 	[LinkName("gtk_stack_get_child_by_name")]
-	public static extern Widget StackGetChildByName(Stack stack_, char8* name);
+	public static extern Widget* StackGetChildByName(Stack stack_, char8* name);
 	[LinkName("gtk_stack_get_hhomogeneous")]
 	public static extern c_int StackGetHhomogeneous(Stack stack_);
 	[LinkName("gtk_stack_get_interpolate_size")]
 	public static extern c_int StackGetInterpolateSize(Stack stack_);
 	[LinkName("gtk_stack_get_page")]
-	public static extern StackPage StackGetPage(Stack stack_, Widget child);
+	public static extern StackPage* StackGetPage(Stack stack_, Widget child);
 	[LinkName("gtk_stack_get_pages")]
-	public static extern SelectionModel StackGetPages(Stack stack_);
+	public static extern SelectionModel* StackGetPages(Stack stack_);
 	[LinkName("gtk_stack_get_transition_duration")]
 	public static extern c_uint StackGetTransitionDuration(Stack stack_);
 	[LinkName("gtk_stack_get_transition_running")]
@@ -7114,9 +7114,9 @@ class Gtk
 	[LinkName("gtk_stack_get_vhomogeneous")]
 	public static extern c_int StackGetVhomogeneous(Stack stack_);
 	[LinkName("gtk_stack_get_visible_child")]
-	public static extern Widget StackGetVisibleChild(Stack stack_);
+	public static extern Widget* StackGetVisibleChild(Stack stack_);
 	[LinkName("gtk_stack_get_visible_child_name")]
-	public static extern char8* StackGetVisibleChildName(Stack stack_);
+	public static extern char8** StackGetVisibleChildName(Stack stack_);
 	[LinkName("gtk_stack_remove")]
 	public static extern void StackRemove(Stack stack_, Widget child);
 	[LinkName("gtk_stack_set_hhomogeneous")]
@@ -7138,15 +7138,15 @@ class Gtk
 	[CRepr]
 	public struct StackPage;
 	[LinkName("gtk_stack_page_get_child")]
-	public static extern Widget StackPageGetChild(StackPage self);
+	public static extern Widget* StackPageGetChild(StackPage self);
 	[LinkName("gtk_stack_page_get_icon_name")]
-	public static extern char8* StackPageGetIconName(StackPage self);
+	public static extern char8** StackPageGetIconName(StackPage self);
 	[LinkName("gtk_stack_page_get_name")]
-	public static extern char8* StackPageGetName(StackPage self);
+	public static extern char8** StackPageGetName(StackPage self);
 	[LinkName("gtk_stack_page_get_needs_attention")]
 	public static extern c_int StackPageGetNeedsAttention(StackPage self);
 	[LinkName("gtk_stack_page_get_title")]
-	public static extern char8* StackPageGetTitle(StackPage self);
+	public static extern char8** StackPageGetTitle(StackPage self);
 	[LinkName("gtk_stack_page_get_use_underline")]
 	public static extern c_int StackPageGetUseUnderline(StackPage self);
 	[LinkName("gtk_stack_page_get_visible")]
@@ -7166,17 +7166,17 @@ class Gtk
 	[CRepr]
 	public struct StackSidebar;
 	[LinkName("gtk_stack_sidebar_new")]
-	public static extern Widget StackSidebarNew();
+	public static extern Widget* StackSidebarNew();
 	[LinkName("gtk_stack_sidebar_get_stack")]
-	public static extern Stack StackSidebarGetStack(StackSidebar self);
+	public static extern Stack* StackSidebarGetStack(StackSidebar self);
 	[LinkName("gtk_stack_sidebar_set_stack")]
 	public static extern void StackSidebarSetStack(StackSidebar self, Stack stack_);
 	[CRepr]
 	public struct StackSwitcher;
 	[LinkName("gtk_stack_switcher_new")]
-	public static extern Widget StackSwitcherNew();
+	public static extern Widget* StackSwitcherNew();
 	[LinkName("gtk_stack_switcher_get_stack")]
-	public static extern Stack StackSwitcherGetStack(StackSwitcher switcher);
+	public static extern Stack* StackSwitcherGetStack(StackSwitcher switcher);
 	[LinkName("gtk_stack_switcher_set_stack")]
 	public static extern void StackSwitcherSetStack(StackSwitcher switcher, Stack stack_);
 	public enum StackTransitionType : c_int
@@ -7228,7 +7228,7 @@ class Gtk
 	[CRepr]
 	public struct Statusbar;
 	[LinkName("gtk_statusbar_new")]
-	public static extern Widget StatusbarNew();
+	public static extern Widget* StatusbarNew();
 	[LinkName("gtk_statusbar_get_context_id")]
 	public static extern c_uint StatusbarGetContextId(Statusbar statusbar, char8* context_description);
 	[LinkName("gtk_statusbar_pop")]
@@ -7242,15 +7242,15 @@ class Gtk
 	[CRepr]
 	public struct StringFilter;
 	[LinkName("gtk_string_filter_new")]
-	public static extern StringFilter StringFilterNew(Expression expression);
+	public static extern StringFilter* StringFilterNew(Expression expression);
 	[LinkName("gtk_string_filter_get_expression")]
-	public static extern Expression StringFilterGetExpression(StringFilter self);
+	public static extern Expression* StringFilterGetExpression(StringFilter self);
 	[LinkName("gtk_string_filter_get_ignore_case")]
 	public static extern c_int StringFilterGetIgnoreCase(StringFilter self);
 	[LinkName("gtk_string_filter_get_match_mode")]
 	public static extern StringFilterMatchMode StringFilterGetMatchMode(StringFilter self);
 	[LinkName("gtk_string_filter_get_search")]
-	public static extern char8* StringFilterGetSearch(StringFilter self);
+	public static extern char8** StringFilterGetSearch(StringFilter self);
 	[LinkName("gtk_string_filter_set_expression")]
 	public static extern void StringFilterSetExpression(StringFilter self, Expression expression);
 	[LinkName("gtk_string_filter_set_ignore_case")]
@@ -7273,11 +7273,11 @@ class Gtk
 	[CRepr]
 	public struct StringList;
 	[LinkName("gtk_string_list_new")]
-	public static extern StringList StringListNew();
+	public static extern StringList* StringListNew();
 	[LinkName("gtk_string_list_append")]
 	public static extern void StringListAppend(StringList self, char8* string);
 	[LinkName("gtk_string_list_get_string")]
-	public static extern char8* StringListGetString(StringList self, c_uint position);
+	public static extern char8** StringListGetString(StringList self, c_uint position);
 	[LinkName("gtk_string_list_remove")]
 	public static extern void StringListRemove(StringList self, c_uint position);
 	[LinkName("gtk_string_list_splice")]
@@ -7292,9 +7292,9 @@ class Gtk
 	[CRepr]
 	public struct StringObject;
 	[LinkName("gtk_string_object_new")]
-	public static extern StringObject StringObjectNew(char8* string);
+	public static extern StringObject* StringObjectNew(char8* string);
 	[LinkName("gtk_string_object_get_string")]
-	public static extern char8* StringObjectGetString(StringObject self);
+	public static extern char8** StringObjectGetString(StringObject self);
 	[CRepr]
 	public struct StringObjectClass
 	{
@@ -7303,11 +7303,11 @@ class Gtk
 	[CRepr]
 	public struct StringSorter;
 	[LinkName("gtk_string_sorter_new")]
-	public static extern StringSorter StringSorterNew(Expression expression);
+	public static extern StringSorter* StringSorterNew(Expression expression);
 	[LinkName("gtk_string_sorter_get_collation")]
 	public static extern Collation StringSorterGetCollation(StringSorter self);
 	[LinkName("gtk_string_sorter_get_expression")]
-	public static extern Expression StringSorterGetExpression(StringSorter self);
+	public static extern Expression* StringSorterGetExpression(StringSorter self);
 	[LinkName("gtk_string_sorter_get_ignore_case")]
 	public static extern c_int StringSorterGetIgnoreCase(StringSorter self);
 	[LinkName("gtk_string_sorter_set_collation")]
@@ -7332,7 +7332,7 @@ class Gtk
 	[LinkName("gtk_style_context_get_color")]
 	public static extern void StyleContextGetColor(StyleContext context, Gdk.RGBA color);
 	[LinkName("gtk_style_context_get_display")]
-	public static extern Gdk.Display StyleContextGetDisplay(StyleContext context);
+	public static extern Gdk.Display* StyleContextGetDisplay(StyleContext context);
 	[LinkName("gtk_style_context_get_margin")]
 	public static extern void StyleContextGetMargin(StyleContext context, Border margin);
 	[LinkName("gtk_style_context_get_padding")]
@@ -7360,7 +7360,7 @@ class Gtk
 	[LinkName("gtk_style_context_set_state")]
 	public static extern void StyleContextSetState(StyleContext context, StateFlags flags);
 	[LinkName("gtk_style_context_to_string")]
-	public static extern char8* StyleContextToString(StyleContext context, StyleContextPrintFlags flags);
+	public static extern char8** StyleContextToString(StyleContext context, StyleContextPrintFlags flags);
 	[CRepr]
 	public struct StyleContextClass
 	{
@@ -7380,7 +7380,7 @@ class Gtk
 	[CRepr]
 	public struct Switch;
 	[LinkName("gtk_switch_new")]
-	public static extern Widget SwitchNew();
+	public static extern Widget* SwitchNew();
 	[LinkName("gtk_switch_get_active")]
 	public static extern c_int SwitchGetActive(Switch self);
 	[LinkName("gtk_switch_get_state")]
@@ -7417,21 +7417,21 @@ class Gtk
 	[CRepr]
 	public struct Text;
 	[LinkName("gtk_text_new")]
-	public static extern Widget TextNew();
+	public static extern Widget* TextNew();
 	[LinkName("gtk_text_new_with_buffer")]
-	public static extern Widget TextNewWithBuffer(EntryBuffer buffer);
+	public static extern Widget* TextNewWithBuffer(EntryBuffer buffer);
 	[LinkName("gtk_text_compute_cursor_extents")]
 	public static extern void TextComputeCursorExtents(Text self, c_ulong position, Graphene.Rect strong, Graphene.Rect weak);
 	[LinkName("gtk_text_get_activates_default")]
 	public static extern c_int TextGetActivatesDefault(Text self);
 	[LinkName("gtk_text_get_attributes")]
-	public static extern Pango.AttrList TextGetAttributes(Text self);
+	public static extern Pango.AttrList* TextGetAttributes(Text self);
 	[LinkName("gtk_text_get_buffer")]
-	public static extern EntryBuffer TextGetBuffer(Text self);
+	public static extern EntryBuffer* TextGetBuffer(Text self);
 	[LinkName("gtk_text_get_enable_emoji_completion")]
 	public static extern c_int TextGetEnableEmojiCompletion(Text self);
 	[LinkName("gtk_text_get_extra_menu")]
-	public static extern Gio.MenuModel TextGetExtraMenu(Text self);
+	public static extern Gio.MenuModel* TextGetExtraMenu(Text self);
 	[LinkName("gtk_text_get_input_hints")]
 	public static extern InputHints TextGetInputHints(Text self);
 	[LinkName("gtk_text_get_input_purpose")]
@@ -7443,11 +7443,11 @@ class Gtk
 	[LinkName("gtk_text_get_overwrite_mode")]
 	public static extern c_int TextGetOverwriteMode(Text self);
 	[LinkName("gtk_text_get_placeholder_text")]
-	public static extern char8* TextGetPlaceholderText(Text self);
+	public static extern char8** TextGetPlaceholderText(Text self);
 	[LinkName("gtk_text_get_propagate_text_width")]
 	public static extern c_int TextGetPropagateTextWidth(Text self);
 	[LinkName("gtk_text_get_tabs")]
-	public static extern Pango.TabArray TextGetTabs(Text self);
+	public static extern Pango.TabArray* TextGetTabs(Text self);
 	[LinkName("gtk_text_get_text_length")]
 	public static extern c_ushort TextGetTextLength(Text self);
 	[LinkName("gtk_text_get_truncate_multiline")]
@@ -7491,7 +7491,7 @@ class Gtk
 	[CRepr]
 	public struct TextBuffer;
 	[LinkName("gtk_text_buffer_new")]
-	public static extern TextBuffer TextBufferNew(TextTagTable table);
+	public static extern TextBuffer* TextBufferNew(TextTagTable table);
 	[LinkName("gtk_text_buffer_add_mark")]
 	public static extern void TextBufferAddMark(TextBuffer buffer, TextMark mark, TextIter where_);
 	[LinkName("gtk_text_buffer_add_selection_clipboard")]
@@ -7509,11 +7509,11 @@ class Gtk
 	[LinkName("gtk_text_buffer_copy_clipboard")]
 	public static extern void TextBufferCopyClipboard(TextBuffer buffer, Gdk.Clipboard clipboard);
 	[LinkName("gtk_text_buffer_create_child_anchor")]
-	public static extern TextChildAnchor TextBufferCreateChildAnchor(TextBuffer buffer, TextIter iter);
+	public static extern TextChildAnchor* TextBufferCreateChildAnchor(TextBuffer buffer, TextIter iter);
 	[LinkName("gtk_text_buffer_create_mark")]
-	public static extern TextMark TextBufferCreateMark(TextBuffer buffer, char8* mark_name, TextIter where_, c_int left_gravity);
+	public static extern TextMark* TextBufferCreateMark(TextBuffer buffer, char8* mark_name, TextIter where_, c_int left_gravity);
 	[LinkName("gtk_text_buffer_create_tag")]
-	public static extern TextTag TextBufferCreateTag(TextBuffer buffer, char8* tag_name, char8* first_property_name);
+	public static extern TextTag* TextBufferCreateTag(TextBuffer buffer, char8* tag_name, char8* first_property_name);
 	[LinkName("gtk_text_buffer_cut_clipboard")]
 	public static extern void TextBufferCutClipboard(TextBuffer buffer, Gdk.Clipboard clipboard, c_int default_editable);
 	[LinkName("gtk_text_buffer_delete")]
@@ -7545,7 +7545,7 @@ class Gtk
 	[LinkName("gtk_text_buffer_get_has_selection")]
 	public static extern c_int TextBufferGetHasSelection(TextBuffer buffer);
 	[LinkName("gtk_text_buffer_get_insert")]
-	public static extern TextMark TextBufferGetInsert(TextBuffer buffer);
+	public static extern TextMark* TextBufferGetInsert(TextBuffer buffer);
 	[LinkName("gtk_text_buffer_get_iter_at_child_anchor")]
 	public static extern void TextBufferGetIterAtChildAnchor(TextBuffer buffer, TextIter iter, TextChildAnchor anchor);
 	[LinkName("gtk_text_buffer_get_iter_at_line")]
@@ -7561,25 +7561,25 @@ class Gtk
 	[LinkName("gtk_text_buffer_get_line_count")]
 	public static extern c_int TextBufferGetLineCount(TextBuffer buffer);
 	[LinkName("gtk_text_buffer_get_mark")]
-	public static extern TextMark TextBufferGetMark(TextBuffer buffer, char8* name);
+	public static extern TextMark* TextBufferGetMark(TextBuffer buffer, char8* name);
 	[LinkName("gtk_text_buffer_get_max_undo_levels")]
 	public static extern c_uint TextBufferGetMaxUndoLevels(TextBuffer buffer);
 	[LinkName("gtk_text_buffer_get_modified")]
 	public static extern c_int TextBufferGetModified(TextBuffer buffer);
 	[LinkName("gtk_text_buffer_get_selection_bound")]
-	public static extern TextMark TextBufferGetSelectionBound(TextBuffer buffer);
+	public static extern TextMark* TextBufferGetSelectionBound(TextBuffer buffer);
 	[LinkName("gtk_text_buffer_get_selection_bounds")]
 	public static extern c_int TextBufferGetSelectionBounds(TextBuffer buffer, TextIter start, TextIter end);
 	[LinkName("gtk_text_buffer_get_selection_content")]
-	public static extern Gdk.ContentProvider TextBufferGetSelectionContent(TextBuffer buffer);
+	public static extern Gdk.ContentProvider* TextBufferGetSelectionContent(TextBuffer buffer);
 	[LinkName("gtk_text_buffer_get_slice")]
-	public static extern char8* TextBufferGetSlice(TextBuffer buffer, TextIter start, TextIter end, c_int include_hidden_chars);
+	public static extern char8** TextBufferGetSlice(TextBuffer buffer, TextIter start, TextIter end, c_int include_hidden_chars);
 	[LinkName("gtk_text_buffer_get_start_iter")]
 	public static extern void TextBufferGetStartIter(TextBuffer buffer, TextIter iter);
 	[LinkName("gtk_text_buffer_get_tag_table")]
-	public static extern TextTagTable TextBufferGetTagTable(TextBuffer buffer);
+	public static extern TextTagTable* TextBufferGetTagTable(TextBuffer buffer);
 	[LinkName("gtk_text_buffer_get_text")]
-	public static extern char8* TextBufferGetText(TextBuffer buffer, TextIter start, TextIter end, c_int include_hidden_chars);
+	public static extern char8** TextBufferGetText(TextBuffer buffer, TextIter start, TextIter end, c_int include_hidden_chars);
 	[LinkName("gtk_text_buffer_insert")]
 	public static extern void TextBufferInsert(TextBuffer buffer, TextIter iter, char8* text, c_int len);
 	[LinkName("gtk_text_buffer_insert_at_cursor")]
@@ -7645,9 +7645,9 @@ class Gtk
 	[CRepr]
 	public struct TextChildAnchor;
 	[LinkName("gtk_text_child_anchor_new")]
-	public static extern TextChildAnchor TextChildAnchorNew();
+	public static extern TextChildAnchor* TextChildAnchorNew();
 	[LinkName("gtk_text_child_anchor_new_with_replacement")]
-	public static extern TextChildAnchor TextChildAnchorNewWithReplacement(char8* character);
+	public static extern TextChildAnchor* TextChildAnchorNewWithReplacement(char8* character);
 	[LinkName("gtk_text_child_anchor_get_deleted")]
 	public static extern c_int TextChildAnchorGetDeleted(TextChildAnchor anchor);
 	[LinkName("gtk_text_child_anchor_get_widgets")]
@@ -7689,15 +7689,15 @@ class Gtk
 	[CRepr]
 	public struct TextMark;
 	[LinkName("gtk_text_mark_new")]
-	public static extern TextMark TextMarkNew(char8* name, c_int left_gravity);
+	public static extern TextMark* TextMarkNew(char8* name, c_int left_gravity);
 	[LinkName("gtk_text_mark_get_buffer")]
-	public static extern TextBuffer TextMarkGetBuffer(TextMark mark);
+	public static extern TextBuffer* TextMarkGetBuffer(TextMark mark);
 	[LinkName("gtk_text_mark_get_deleted")]
 	public static extern c_int TextMarkGetDeleted(TextMark mark);
 	[LinkName("gtk_text_mark_get_left_gravity")]
 	public static extern c_int TextMarkGetLeftGravity(TextMark mark);
 	[LinkName("gtk_text_mark_get_name")]
-	public static extern char8* TextMarkGetName(TextMark mark);
+	public static extern char8** TextMarkGetName(TextMark mark);
 	[LinkName("gtk_text_mark_get_visible")]
 	public static extern c_int TextMarkGetVisible(TextMark mark);
 	[LinkName("gtk_text_mark_set_visible")]
@@ -7717,7 +7717,7 @@ class Gtk
 	[CRepr]
 	public struct TextTag;
 	[LinkName("gtk_text_tag_new")]
-	public static extern TextTag TextTagNew(char8* name);
+	public static extern TextTag* TextTagNew(char8* name);
 	[LinkName("gtk_text_tag_changed")]
 	public static extern void TextTagChanged(TextTag tag, c_int size_changed);
 	[LinkName("gtk_text_tag_get_priority")]
@@ -7736,7 +7736,7 @@ class Gtk
 	[CRepr]
 	public struct TextTagTable;
 	[LinkName("gtk_text_tag_table_new")]
-	public static extern TextTagTable TextTagTableNew();
+	public static extern TextTagTable* TextTagTableNew();
 	[LinkName("gtk_text_tag_table_add")]
 	public static extern c_int TextTagTableAdd(TextTagTable table, TextTag tag);
 	[LinkName("gtk_text_tag_table_foreach")]
@@ -7744,16 +7744,16 @@ class Gtk
 	[LinkName("gtk_text_tag_table_get_size")]
 	public static extern c_int TextTagTableGetSize(TextTagTable table);
 	[LinkName("gtk_text_tag_table_lookup")]
-	public static extern TextTag TextTagTableLookup(TextTagTable table, char8* name);
+	public static extern TextTag* TextTagTableLookup(TextTagTable table, char8* name);
 	[LinkName("gtk_text_tag_table_remove")]
 	public static extern void TextTagTableRemove(TextTagTable table, TextTag tag);
 	public function void TextTagTableForeach(TextTag tag, void* data);
 	[CRepr]
 	public struct TextView;
 	[LinkName("gtk_text_view_new")]
-	public static extern Widget TextViewNew();
+	public static extern Widget* TextViewNew();
 	[LinkName("gtk_text_view_new_with_buffer")]
-	public static extern Widget TextViewNewWithBuffer(TextBuffer buffer);
+	public static extern Widget* TextViewNewWithBuffer(TextBuffer buffer);
 	[LinkName("gtk_text_view_add_child_at_anchor")]
 	public static extern void TextViewAddChildAtAnchor(TextView text_view, Widget child, TextChildAnchor anchor);
 	[LinkName("gtk_text_view_add_overlay")]
@@ -7773,7 +7773,7 @@ class Gtk
 	[LinkName("gtk_text_view_get_bottom_margin")]
 	public static extern c_int TextViewGetBottomMargin(TextView text_view);
 	[LinkName("gtk_text_view_get_buffer")]
-	public static extern TextBuffer TextViewGetBuffer(TextView text_view);
+	public static extern TextBuffer* TextViewGetBuffer(TextView text_view);
 	[LinkName("gtk_text_view_get_cursor_locations")]
 	public static extern void TextViewGetCursorLocations(TextView text_view, TextIter iter, Gdk.Rectangle strong, Gdk.Rectangle weak);
 	[LinkName("gtk_text_view_get_cursor_visible")]
@@ -7781,9 +7781,9 @@ class Gtk
 	[LinkName("gtk_text_view_get_editable")]
 	public static extern c_int TextViewGetEditable(TextView text_view);
 	[LinkName("gtk_text_view_get_extra_menu")]
-	public static extern Gio.MenuModel TextViewGetExtraMenu(TextView text_view);
+	public static extern Gio.MenuModel* TextViewGetExtraMenu(TextView text_view);
 	[LinkName("gtk_text_view_get_gutter")]
-	public static extern Widget TextViewGetGutter(TextView text_view, TextWindowType win);
+	public static extern Widget* TextViewGetGutter(TextView text_view, TextWindowType win);
 	[LinkName("gtk_text_view_get_indent")]
 	public static extern c_int TextViewGetIndent(TextView text_view);
 	[LinkName("gtk_text_view_get_input_hints")]
@@ -7805,7 +7805,7 @@ class Gtk
 	[LinkName("gtk_text_view_get_line_yrange")]
 	public static extern void TextViewGetLineYrange(TextView text_view, TextIter iter, c_int y, c_int height);
 	[LinkName("gtk_text_view_get_ltr_context")]
-	public static extern Pango.Context TextViewGetLtrContext(TextView text_view);
+	public static extern Pango.Context* TextViewGetLtrContext(TextView text_view);
 	[LinkName("gtk_text_view_get_monospace")]
 	public static extern c_int TextViewGetMonospace(TextView text_view);
 	[LinkName("gtk_text_view_get_overwrite")]
@@ -7819,9 +7819,9 @@ class Gtk
 	[LinkName("gtk_text_view_get_right_margin")]
 	public static extern c_int TextViewGetRightMargin(TextView text_view);
 	[LinkName("gtk_text_view_get_rtl_context")]
-	public static extern Pango.Context TextViewGetRtlContext(TextView text_view);
+	public static extern Pango.Context* TextViewGetRtlContext(TextView text_view);
 	[LinkName("gtk_text_view_get_tabs")]
-	public static extern Pango.TabArray TextViewGetTabs(TextView text_view);
+	public static extern Pango.TabArray* TextViewGetTabs(TextView text_view);
 	[LinkName("gtk_text_view_get_top_margin")]
 	public static extern c_int TextViewGetTopMargin(TextView text_view);
 	[LinkName("gtk_text_view_get_visible_rect")]
@@ -7923,11 +7923,11 @@ class Gtk
 	[CRepr]
 	public struct ToggleButton;
 	[LinkName("gtk_toggle_button_new")]
-	public static extern Widget ToggleButtonNew();
+	public static extern Widget* ToggleButtonNew();
 	[LinkName("gtk_toggle_button_new_with_label")]
-	public static extern Widget ToggleButtonNewWithLabel(char8* label);
+	public static extern Widget* ToggleButtonNewWithLabel(char8* label);
 	[LinkName("gtk_toggle_button_new_with_mnemonic")]
-	public static extern Widget ToggleButtonNewWithMnemonic(char8* label);
+	public static extern Widget* ToggleButtonNewWithMnemonic(char8* label);
 	[LinkName("gtk_toggle_button_get_active")]
 	public static extern c_int ToggleButtonGetActive(ToggleButton toggle_button);
 	[LinkName("gtk_toggle_button_set_active")]
@@ -7987,9 +7987,9 @@ class Gtk
 	[CRepr]
 	public struct TreeExpander;
 	[LinkName("gtk_tree_expander_new")]
-	public static extern Widget TreeExpanderNew();
+	public static extern Widget* TreeExpanderNew();
 	[LinkName("gtk_tree_expander_get_child")]
-	public static extern Widget TreeExpanderGetChild(TreeExpander self);
+	public static extern Widget* TreeExpanderGetChild(TreeExpander self);
 	[LinkName("gtk_tree_expander_get_hide_expander")]
 	public static extern c_int TreeExpanderGetHideExpander(TreeExpander self);
 	[LinkName("gtk_tree_expander_get_indent_for_depth")]
@@ -7999,7 +7999,7 @@ class Gtk
 	[LinkName("gtk_tree_expander_get_item")]
 	public static extern GObject.Object TreeExpanderGetItem(TreeExpander self);
 	[LinkName("gtk_tree_expander_get_list_row")]
-	public static extern TreeListRow TreeExpanderGetListRow(TreeExpander self);
+	public static extern TreeListRow* TreeExpanderGetListRow(TreeExpander self);
 	[LinkName("gtk_tree_expander_set_child")]
 	public static extern void TreeExpanderSetChild(TreeExpander self, Widget child);
 	[LinkName("gtk_tree_expander_set_hide_expander")]
@@ -8027,17 +8027,17 @@ class Gtk
 	[CRepr]
 	public struct TreeListModel;
 	[LinkName("gtk_tree_list_model_new")]
-	public static extern TreeListModel TreeListModelNew(Gio.ListModel root, c_int passthrough, c_int autoexpand, TreeListModelCreateModelFunc create_func, void* user_data, GLib.DestroyNotify user_destroy);
+	public static extern TreeListModel* TreeListModelNew(Gio.ListModel root, c_int passthrough, c_int autoexpand, TreeListModelCreateModelFunc create_func, void* user_data, GLib.DestroyNotify user_destroy);
 	[LinkName("gtk_tree_list_model_get_autoexpand")]
 	public static extern c_int TreeListModelGetAutoexpand(TreeListModel self);
 	[LinkName("gtk_tree_list_model_get_child_row")]
-	public static extern TreeListRow TreeListModelGetChildRow(TreeListModel self, c_uint position);
+	public static extern TreeListRow* TreeListModelGetChildRow(TreeListModel self, c_uint position);
 	[LinkName("gtk_tree_list_model_get_model")]
-	public static extern Gio.ListModel TreeListModelGetModel(TreeListModel self);
+	public static extern Gio.ListModel* TreeListModelGetModel(TreeListModel self);
 	[LinkName("gtk_tree_list_model_get_passthrough")]
 	public static extern c_int TreeListModelGetPassthrough(TreeListModel self);
 	[LinkName("gtk_tree_list_model_get_row")]
-	public static extern TreeListRow TreeListModelGetRow(TreeListModel self, c_uint position);
+	public static extern TreeListRow* TreeListModelGetRow(TreeListModel self, c_uint position);
 	[LinkName("gtk_tree_list_model_set_autoexpand")]
 	public static extern void TreeListModelSetAutoexpand(TreeListModel self, c_int autoexpand);
 	[CRepr]
@@ -8049,9 +8049,9 @@ class Gtk
 	[CRepr]
 	public struct TreeListRow;
 	[LinkName("gtk_tree_list_row_get_child_row")]
-	public static extern TreeListRow TreeListRowGetChildRow(TreeListRow self, c_uint position);
+	public static extern TreeListRow* TreeListRowGetChildRow(TreeListRow self, c_uint position);
 	[LinkName("gtk_tree_list_row_get_children")]
-	public static extern Gio.ListModel TreeListRowGetChildren(TreeListRow self);
+	public static extern Gio.ListModel* TreeListRowGetChildren(TreeListRow self);
 	[LinkName("gtk_tree_list_row_get_depth")]
 	public static extern c_uint TreeListRowGetDepth(TreeListRow self);
 	[LinkName("gtk_tree_list_row_get_expanded")]
@@ -8059,7 +8059,7 @@ class Gtk
 	[LinkName("gtk_tree_list_row_get_item")]
 	public static extern GObject.Object TreeListRowGetItem(TreeListRow self);
 	[LinkName("gtk_tree_list_row_get_parent")]
-	public static extern TreeListRow TreeListRowGetParent(TreeListRow self);
+	public static extern TreeListRow* TreeListRowGetParent(TreeListRow self);
 	[LinkName("gtk_tree_list_row_get_position")]
 	public static extern c_uint TreeListRowGetPosition(TreeListRow self);
 	[LinkName("gtk_tree_list_row_is_expandable")]
@@ -8074,9 +8074,9 @@ class Gtk
 	[CRepr]
 	public struct TreeListRowSorter;
 	[LinkName("gtk_tree_list_row_sorter_new")]
-	public static extern TreeListRowSorter TreeListRowSorterNew(Sorter sorter);
+	public static extern TreeListRowSorter* TreeListRowSorterNew(Sorter sorter);
 	[LinkName("gtk_tree_list_row_sorter_get_sorter")]
-	public static extern Sorter TreeListRowSorterGetSorter(TreeListRowSorter self);
+	public static extern Sorter* TreeListRowSorterGetSorter(TreeListRowSorter self);
 	[LinkName("gtk_tree_list_row_sorter_set_sorter")]
 	public static extern void TreeListRowSorterSetSorter(TreeListRowSorter self, Sorter sorter);
 	[CRepr]
@@ -8134,13 +8134,13 @@ class Gtk
 	[LinkName("gtk_tree_model_filter_convert_child_iter_to_iter")]
 	public static extern c_int TreeModelFilterConvertChildIterToIter(TreeModelFilter filter, TreeIter filter_iter, TreeIter child_iter);
 	[LinkName("gtk_tree_model_filter_convert_child_path_to_path")]
-	public static extern TreePath TreeModelFilterConvertChildPathToPath(TreeModelFilter filter, TreePath child_path);
+	public static extern TreePath* TreeModelFilterConvertChildPathToPath(TreeModelFilter filter, TreePath child_path);
 	[LinkName("gtk_tree_model_filter_convert_iter_to_child_iter")]
 	public static extern void TreeModelFilterConvertIterToChildIter(TreeModelFilter filter, TreeIter child_iter, TreeIter filter_iter);
 	[LinkName("gtk_tree_model_filter_convert_path_to_child_path")]
-	public static extern TreePath TreeModelFilterConvertPathToChildPath(TreeModelFilter filter, TreePath filter_path);
+	public static extern TreePath* TreeModelFilterConvertPathToChildPath(TreeModelFilter filter, TreePath filter_path);
 	[LinkName("gtk_tree_model_filter_get_model")]
-	public static extern TreeModel TreeModelFilterGetModel(TreeModelFilter filter);
+	public static extern TreeModel* TreeModelFilterGetModel(TreeModelFilter filter);
 	[LinkName("gtk_tree_model_filter_refilter")]
 	public static extern void TreeModelFilterRefilter(TreeModelFilter filter);
 	[LinkName("gtk_tree_model_filter_set_modify_func")]
@@ -8175,19 +8175,19 @@ class Gtk
 	[CRepr]
 	public struct TreeModelSort;
 	[LinkName("gtk_tree_model_sort_new_with_model")]
-	public static extern TreeModelSort TreeModelSortNewWithModel(TreeModel child_model);
+	public static extern TreeModelSort* TreeModelSortNewWithModel(TreeModel child_model);
 	[LinkName("gtk_tree_model_sort_clear_cache")]
 	public static extern void TreeModelSortClearCache(TreeModelSort tree_model_sort);
 	[LinkName("gtk_tree_model_sort_convert_child_iter_to_iter")]
 	public static extern c_int TreeModelSortConvertChildIterToIter(TreeModelSort tree_model_sort, TreeIter sort_iter, TreeIter child_iter);
 	[LinkName("gtk_tree_model_sort_convert_child_path_to_path")]
-	public static extern TreePath TreeModelSortConvertChildPathToPath(TreeModelSort tree_model_sort, TreePath child_path);
+	public static extern TreePath* TreeModelSortConvertChildPathToPath(TreeModelSort tree_model_sort, TreePath child_path);
 	[LinkName("gtk_tree_model_sort_convert_iter_to_child_iter")]
 	public static extern void TreeModelSortConvertIterToChildIter(TreeModelSort tree_model_sort, TreeIter child_iter, TreeIter sorted_iter);
 	[LinkName("gtk_tree_model_sort_convert_path_to_child_path")]
-	public static extern TreePath TreeModelSortConvertPathToChildPath(TreeModelSort tree_model_sort, TreePath sorted_path);
+	public static extern TreePath* TreeModelSortConvertPathToChildPath(TreeModelSort tree_model_sort, TreePath sorted_path);
 	[LinkName("gtk_tree_model_sort_get_model")]
-	public static extern TreeModel TreeModelSortGetModel(TreeModelSort tree_model);
+	public static extern TreeModel* TreeModelSortGetModel(TreeModelSort tree_model);
 	[LinkName("gtk_tree_model_sort_iter_is_valid")]
 	public static extern c_int TreeModelSortIterIsValid(TreeModelSort tree_model_sort, TreeIter iter);
 	[LinkName("gtk_tree_model_sort_reset_default_sort_func")]
@@ -8220,9 +8220,9 @@ class Gtk
 	[LinkName("gtk_tree_selection_get_selected")]
 	public static extern c_int TreeSelectionGetSelected(TreeSelection selection, TreeModel model, TreeIter iter);
 	[LinkName("gtk_tree_selection_get_selected_rows")]
-	public static extern GLib.List TreeSelectionGetSelectedRows(TreeSelection selection, TreeModel model);
+	public static extern GLib.List* TreeSelectionGetSelectedRows(TreeSelection selection, TreeModel model);
 	[LinkName("gtk_tree_selection_get_tree_view")]
-	public static extern TreeView TreeSelectionGetTreeView(TreeSelection selection);
+	public static extern TreeView* TreeSelectionGetTreeView(TreeSelection selection);
 	[LinkName("gtk_tree_selection_get_user_data")]
 	public static extern void* TreeSelectionGetUserData(TreeSelection selection);
 	[LinkName("gtk_tree_selection_iter_is_selected")]
@@ -8276,9 +8276,9 @@ class Gtk
 	[CRepr]
 	public struct TreeStore;
 	[LinkName("gtk_tree_store_new")]
-	public static extern TreeStore TreeStoreNew(c_int n_columns);
+	public static extern TreeStore* TreeStoreNew(c_int n_columns);
 	[LinkName("gtk_tree_store_newv")]
-	public static extern TreeStore TreeStoreNewv(c_int n_columns);
+	public static extern TreeStore* TreeStoreNewv(c_int n_columns);
 	[LinkName("gtk_tree_store_append")]
 	public static extern void TreeStoreAppend(TreeStore tree_store, TreeIter iter, TreeIter parent);
 	[LinkName("gtk_tree_store_clear")]
@@ -8333,9 +8333,9 @@ class Gtk
 	[CRepr]
 	public struct TreeView;
 	[LinkName("gtk_tree_view_new")]
-	public static extern Widget TreeViewNew();
+	public static extern Widget* TreeViewNew();
 	[LinkName("gtk_tree_view_new_with_model")]
-	public static extern Widget TreeViewNewWithModel(TreeModel model);
+	public static extern Widget* TreeViewNewWithModel(TreeModel model);
 	[LinkName("gtk_tree_view_append_column")]
 	public static extern c_int TreeViewAppendColumn(TreeView tree_view, TreeViewColumn column);
 	[LinkName("gtk_tree_view_collapse_all")]
@@ -8357,7 +8357,7 @@ class Gtk
 	[LinkName("gtk_tree_view_convert_widget_to_tree_coords")]
 	public static extern void TreeViewConvertWidgetToTreeCoords(TreeView tree_view, c_int wx, c_int wy, c_int tx, c_int ty);
 	[LinkName("gtk_tree_view_create_row_drag_icon")]
-	public static extern Gdk.Paintable TreeViewCreateRowDragIcon(TreeView tree_view, TreePath path);
+	public static extern Gdk.Paintable* TreeViewCreateRowDragIcon(TreeView tree_view, TreePath path);
 	[LinkName("gtk_tree_view_enable_model_drag_dest")]
 	public static extern void TreeViewEnableModelDragDest(TreeView tree_view, Gdk.ContentFormats formats, Gdk.DragAction actions);
 	[LinkName("gtk_tree_view_enable_model_drag_source")]
@@ -8375,9 +8375,9 @@ class Gtk
 	[LinkName("gtk_tree_view_get_cell_area")]
 	public static extern void TreeViewGetCellArea(TreeView tree_view, TreePath path, TreeViewColumn column, Gdk.Rectangle rect);
 	[LinkName("gtk_tree_view_get_column")]
-	public static extern TreeViewColumn TreeViewGetColumn(TreeView tree_view, c_int n);
+	public static extern TreeViewColumn* TreeViewGetColumn(TreeView tree_view, c_int n);
 	[LinkName("gtk_tree_view_get_columns")]
-	public static extern GLib.List TreeViewGetColumns(TreeView tree_view);
+	public static extern GLib.List* TreeViewGetColumns(TreeView tree_view);
 	[LinkName("gtk_tree_view_get_cursor")]
 	public static extern void TreeViewGetCursor(TreeView tree_view, TreePath path, TreeViewColumn focus_column);
 	[LinkName("gtk_tree_view_get_dest_row_at_pos")]
@@ -8389,7 +8389,7 @@ class Gtk
 	[LinkName("gtk_tree_view_get_enable_tree_lines")]
 	public static extern c_int TreeViewGetEnableTreeLines(TreeView tree_view);
 	[LinkName("gtk_tree_view_get_expander_column")]
-	public static extern TreeViewColumn TreeViewGetExpanderColumn(TreeView tree_view);
+	public static extern TreeViewColumn* TreeViewGetExpanderColumn(TreeView tree_view);
 	[LinkName("gtk_tree_view_get_fixed_height_mode")]
 	public static extern c_int TreeViewGetFixedHeightMode(TreeView tree_view);
 	[LinkName("gtk_tree_view_get_grid_lines")]
@@ -8405,7 +8405,7 @@ class Gtk
 	[LinkName("gtk_tree_view_get_level_indentation")]
 	public static extern c_int TreeViewGetLevelIndentation(TreeView tree_view);
 	[LinkName("gtk_tree_view_get_model")]
-	public static extern TreeModel TreeViewGetModel(TreeView tree_view);
+	public static extern TreeModel* TreeViewGetModel(TreeView tree_view);
 	[LinkName("gtk_tree_view_get_n_columns")]
 	public static extern c_uint TreeViewGetNColumns(TreeView tree_view);
 	[LinkName("gtk_tree_view_get_path_at_pos")]
@@ -8419,11 +8419,11 @@ class Gtk
 	[LinkName("gtk_tree_view_get_search_column")]
 	public static extern c_int TreeViewGetSearchColumn(TreeView tree_view);
 	[LinkName("gtk_tree_view_get_search_entry")]
-	public static extern Editable TreeViewGetSearchEntry(TreeView tree_view);
+	public static extern Editable* TreeViewGetSearchEntry(TreeView tree_view);
 	[LinkName("gtk_tree_view_get_search_equal_func")]
 	public static extern TreeViewSearchEqualFunc TreeViewGetSearchEqualFunc(TreeView tree_view);
 	[LinkName("gtk_tree_view_get_selection")]
-	public static extern TreeSelection TreeViewGetSelection(TreeView tree_view);
+	public static extern TreeSelection* TreeViewGetSelection(TreeView tree_view);
 	[LinkName("gtk_tree_view_get_show_expanders")]
 	public static extern c_int TreeViewGetShowExpanders(TreeView tree_view);
 	[LinkName("gtk_tree_view_get_tooltip_column")]
@@ -8522,11 +8522,11 @@ class Gtk
 	[CRepr]
 	public struct TreeViewColumn;
 	[LinkName("gtk_tree_view_column_new")]
-	public static extern TreeViewColumn TreeViewColumnNew();
+	public static extern TreeViewColumn* TreeViewColumnNew();
 	[LinkName("gtk_tree_view_column_new_with_area")]
-	public static extern TreeViewColumn TreeViewColumnNewWithArea(CellArea area);
+	public static extern TreeViewColumn* TreeViewColumnNewWithArea(CellArea area);
 	[LinkName("gtk_tree_view_column_new_with_attributes")]
-	public static extern TreeViewColumn TreeViewColumnNewWithAttributes(char8* title, CellRenderer cell);
+	public static extern TreeViewColumn* TreeViewColumnNewWithAttributes(char8* title, CellRenderer cell);
 	[LinkName("gtk_tree_view_column_add_attribute")]
 	public static extern void TreeViewColumnAddAttribute(TreeViewColumn tree_column, CellRenderer cell_renderer, char8* attribute, c_int column);
 	[LinkName("gtk_tree_view_column_cell_get_position")]
@@ -8548,7 +8548,7 @@ class Gtk
 	[LinkName("gtk_tree_view_column_get_alignment")]
 	public static extern float TreeViewColumnGetAlignment(TreeViewColumn tree_column);
 	[LinkName("gtk_tree_view_column_get_button")]
-	public static extern Widget TreeViewColumnGetButton(TreeViewColumn tree_column);
+	public static extern Widget* TreeViewColumnGetButton(TreeViewColumn tree_column);
 	[LinkName("gtk_tree_view_column_get_clickable")]
 	public static extern c_int TreeViewColumnGetClickable(TreeViewColumn tree_column);
 	[LinkName("gtk_tree_view_column_get_expand")]
@@ -8574,13 +8574,13 @@ class Gtk
 	[LinkName("gtk_tree_view_column_get_spacing")]
 	public static extern c_int TreeViewColumnGetSpacing(TreeViewColumn tree_column);
 	[LinkName("gtk_tree_view_column_get_title")]
-	public static extern char8* TreeViewColumnGetTitle(TreeViewColumn tree_column);
+	public static extern char8** TreeViewColumnGetTitle(TreeViewColumn tree_column);
 	[LinkName("gtk_tree_view_column_get_tree_view")]
-	public static extern Widget TreeViewColumnGetTreeView(TreeViewColumn tree_column);
+	public static extern Widget* TreeViewColumnGetTreeView(TreeViewColumn tree_column);
 	[LinkName("gtk_tree_view_column_get_visible")]
 	public static extern c_int TreeViewColumnGetVisible(TreeViewColumn tree_column);
 	[LinkName("gtk_tree_view_column_get_widget")]
-	public static extern Widget TreeViewColumnGetWidget(TreeViewColumn tree_column);
+	public static extern Widget* TreeViewColumnGetWidget(TreeViewColumn tree_column);
 	[LinkName("gtk_tree_view_column_get_width")]
 	public static extern c_int TreeViewColumnGetWidth(TreeViewColumn tree_column);
 	[LinkName("gtk_tree_view_column_get_x_offset")]
@@ -8661,9 +8661,9 @@ class Gtk
 	[CRepr]
 	public struct UriLauncher;
 	[LinkName("gtk_uri_launcher_new")]
-	public static extern UriLauncher UriLauncherNew(char8* uri);
+	public static extern UriLauncher* UriLauncherNew(char8* uri);
 	[LinkName("gtk_uri_launcher_get_uri")]
-	public static extern char8* UriLauncherGetUri(UriLauncher self);
+	public static extern char8** UriLauncherGetUri(UriLauncher self);
 	[LinkName("gtk_uri_launcher_launch")]
 	public static extern void UriLauncherLaunch(UriLauncher self, Window parent, Gio.Cancellable cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gtk_uri_launcher_launch_finish")]
@@ -8678,23 +8678,23 @@ class Gtk
 	[CRepr]
 	public struct Video;
 	[LinkName("gtk_video_new")]
-	public static extern Widget VideoNew();
+	public static extern Widget* VideoNew();
 	[LinkName("gtk_video_new_for_file")]
-	public static extern Widget VideoNewForFile(Gio.File file);
+	public static extern Widget* VideoNewForFile(Gio.File file);
 	[LinkName("gtk_video_new_for_filename")]
-	public static extern Widget VideoNewForFilename(char8* filename);
+	public static extern Widget* VideoNewForFilename(char8* filename);
 	[LinkName("gtk_video_new_for_media_stream")]
-	public static extern Widget VideoNewForMediaStream(MediaStream stream);
+	public static extern Widget* VideoNewForMediaStream(MediaStream stream);
 	[LinkName("gtk_video_new_for_resource")]
-	public static extern Widget VideoNewForResource(char8* resource_path);
+	public static extern Widget* VideoNewForResource(char8* resource_path);
 	[LinkName("gtk_video_get_autoplay")]
 	public static extern c_int VideoGetAutoplay(Video self);
 	[LinkName("gtk_video_get_file")]
-	public static extern Gio.File VideoGetFile(Video self);
+	public static extern Gio.File* VideoGetFile(Video self);
 	[LinkName("gtk_video_get_loop")]
 	public static extern c_int VideoGetLoop(Video self);
 	[LinkName("gtk_video_get_media_stream")]
-	public static extern MediaStream VideoGetMediaStream(Video self);
+	public static extern MediaStream* VideoGetMediaStream(Video self);
 	[LinkName("gtk_video_set_autoplay")]
 	public static extern void VideoSetAutoplay(Video self, c_int autoplay);
 	[LinkName("gtk_video_set_file")]
@@ -8715,9 +8715,9 @@ class Gtk
 	[CRepr]
 	public struct Viewport;
 	[LinkName("gtk_viewport_new")]
-	public static extern Widget ViewportNew(Adjustment hadjustment, Adjustment vadjustment);
+	public static extern Widget* ViewportNew(Adjustment hadjustment, Adjustment vadjustment);
 	[LinkName("gtk_viewport_get_child")]
-	public static extern Widget ViewportGetChild(Viewport viewport);
+	public static extern Widget* ViewportGetChild(Viewport viewport);
 	[LinkName("gtk_viewport_get_scroll_to_focus")]
 	public static extern c_int ViewportGetScrollToFocus(Viewport viewport);
 	[LinkName("gtk_viewport_set_child")]
@@ -8727,7 +8727,7 @@ class Gtk
 	[CRepr]
 	public struct VolumeButton;
 	[LinkName("gtk_volume_button_new")]
-	public static extern Widget VolumeButtonNew();
+	public static extern Widget* VolumeButtonNew();
 	[CRepr]
 	public struct Widget;
 	[LinkName("gtk_widget_action_set_enabled")]
@@ -8763,9 +8763,9 @@ class Gtk
 	[LinkName("gtk_widget_contains")]
 	public static extern c_int WidgetContains(Widget widget, double x, double y);
 	[LinkName("gtk_widget_create_pango_context")]
-	public static extern Pango.Context WidgetCreatePangoContext(Widget widget);
+	public static extern Pango.Context* WidgetCreatePangoContext(Widget widget);
 	[LinkName("gtk_widget_create_pango_layout")]
-	public static extern Pango.Layout WidgetCreatePangoLayout(Widget widget, char8* text);
+	public static extern Pango.Layout* WidgetCreatePangoLayout(Widget widget, char8* text);
 	[LinkName("gtk_widget_dispose_template")]
 	public static extern void WidgetDisposeTemplate(Widget widget, GLib.Type widget_type);
 	[LinkName("gtk_drag_check_threshold")]
@@ -8781,7 +8781,7 @@ class Gtk
 	[LinkName("gtk_widget_get_allocation")]
 	public static extern void WidgetGetAllocation(Widget widget, Allocation allocation);
 	[LinkName("gtk_widget_get_ancestor")]
-	public static extern Widget WidgetGetAncestor(Widget widget, GLib.Type widget_type);
+	public static extern Widget* WidgetGetAncestor(Widget widget, GLib.Type widget_type);
 	[LinkName("gtk_widget_get_baseline")]
 	public static extern c_int WidgetGetBaseline(Widget widget);
 	[LinkName("gtk_widget_get_can_focus")]
@@ -8791,33 +8791,33 @@ class Gtk
 	[LinkName("gtk_widget_get_child_visible")]
 	public static extern c_int WidgetGetChildVisible(Widget widget);
 	[LinkName("gtk_widget_get_clipboard")]
-	public static extern Gdk.Clipboard WidgetGetClipboard(Widget widget);
+	public static extern Gdk.Clipboard* WidgetGetClipboard(Widget widget);
 	[LinkName("gtk_widget_get_color")]
 	public static extern void WidgetGetColor(Widget widget, Gdk.RGBA color);
 	[LinkName("gtk_widget_get_css_classes")]
 	public static extern char8* WidgetGetCssClasses(Widget widget);
 	[LinkName("gtk_widget_get_css_name")]
-	public static extern char8* WidgetGetCssName(Widget self);
+	public static extern char8** WidgetGetCssName(Widget self);
 	[LinkName("gtk_widget_get_cursor")]
-	public static extern Gdk.Cursor WidgetGetCursor(Widget widget);
+	public static extern Gdk.Cursor* WidgetGetCursor(Widget widget);
 	[LinkName("gtk_widget_get_direction")]
 	public static extern TextDirection WidgetGetDirection(Widget widget);
 	[LinkName("gtk_widget_get_display")]
-	public static extern Gdk.Display WidgetGetDisplay(Widget widget);
+	public static extern Gdk.Display* WidgetGetDisplay(Widget widget);
 	[LinkName("gtk_widget_get_first_child")]
-	public static extern Widget WidgetGetFirstChild(Widget widget);
+	public static extern Widget* WidgetGetFirstChild(Widget widget);
 	[LinkName("gtk_widget_get_focus_child")]
-	public static extern Widget WidgetGetFocusChild(Widget widget);
+	public static extern Widget* WidgetGetFocusChild(Widget widget);
 	[LinkName("gtk_widget_get_focus_on_click")]
 	public static extern c_int WidgetGetFocusOnClick(Widget widget);
 	[LinkName("gtk_widget_get_focusable")]
 	public static extern c_int WidgetGetFocusable(Widget widget);
 	[LinkName("gtk_widget_get_font_map")]
-	public static extern Pango.FontMap WidgetGetFontMap(Widget widget);
+	public static extern Pango.FontMap* WidgetGetFontMap(Widget widget);
 	[LinkName("gtk_widget_get_font_options")]
-	public static extern cairo.FontOptions WidgetGetFontOptions(Widget widget);
+	public static extern cairo.FontOptions* WidgetGetFontOptions(Widget widget);
 	[LinkName("gtk_widget_get_frame_clock")]
-	public static extern Gdk.FrameClock WidgetGetFrameClock(Widget widget);
+	public static extern Gdk.FrameClock* WidgetGetFrameClock(Widget widget);
 	[LinkName("gtk_widget_get_halign")]
 	public static extern Align WidgetGetHalign(Widget widget);
 	[LinkName("gtk_widget_get_has_tooltip")]
@@ -8829,9 +8829,9 @@ class Gtk
 	[LinkName("gtk_widget_get_hexpand_set")]
 	public static extern c_int WidgetGetHexpandSet(Widget widget);
 	[LinkName("gtk_widget_get_last_child")]
-	public static extern Widget WidgetGetLastChild(Widget widget);
+	public static extern Widget* WidgetGetLastChild(Widget widget);
 	[LinkName("gtk_widget_get_layout_manager")]
-	public static extern LayoutManager WidgetGetLayoutManager(Widget widget);
+	public static extern LayoutManager* WidgetGetLayoutManager(Widget widget);
 	[LinkName("gtk_widget_get_mapped")]
 	public static extern c_int WidgetGetMapped(Widget widget);
 	[LinkName("gtk_widget_get_margin_bottom")]
@@ -8843,25 +8843,25 @@ class Gtk
 	[LinkName("gtk_widget_get_margin_top")]
 	public static extern c_int WidgetGetMarginTop(Widget widget);
 	[LinkName("gtk_widget_get_name")]
-	public static extern char8* WidgetGetName(Widget widget);
+	public static extern char8** WidgetGetName(Widget widget);
 	[LinkName("gtk_widget_get_native")]
-	public static extern Native WidgetGetNative(Widget widget);
+	public static extern Native* WidgetGetNative(Widget widget);
 	[LinkName("gtk_widget_get_next_sibling")]
-	public static extern Widget WidgetGetNextSibling(Widget widget);
+	public static extern Widget* WidgetGetNextSibling(Widget widget);
 	[LinkName("gtk_widget_get_opacity")]
 	public static extern double WidgetGetOpacity(Widget widget);
 	[LinkName("gtk_widget_get_overflow")]
 	public static extern Overflow WidgetGetOverflow(Widget widget);
 	[LinkName("gtk_widget_get_pango_context")]
-	public static extern Pango.Context WidgetGetPangoContext(Widget widget);
+	public static extern Pango.Context* WidgetGetPangoContext(Widget widget);
 	[LinkName("gtk_widget_get_parent")]
-	public static extern Widget WidgetGetParent(Widget widget);
+	public static extern Widget* WidgetGetParent(Widget widget);
 	[LinkName("gtk_widget_get_preferred_size")]
 	public static extern void WidgetGetPreferredSize(Widget widget, Requisition minimum_size, Requisition natural_size);
 	[LinkName("gtk_widget_get_prev_sibling")]
-	public static extern Widget WidgetGetPrevSibling(Widget widget);
+	public static extern Widget* WidgetGetPrevSibling(Widget widget);
 	[LinkName("gtk_widget_get_primary_clipboard")]
-	public static extern Gdk.Clipboard WidgetGetPrimaryClipboard(Widget widget);
+	public static extern Gdk.Clipboard* WidgetGetPrimaryClipboard(Widget widget);
 	[LinkName("gtk_widget_get_realized")]
 	public static extern c_int WidgetGetRealized(Widget widget);
 	[LinkName("gtk_widget_get_receives_default")]
@@ -8869,13 +8869,13 @@ class Gtk
 	[LinkName("gtk_widget_get_request_mode")]
 	public static extern SizeRequestMode WidgetGetRequestMode(Widget widget);
 	[LinkName("gtk_widget_get_root")]
-	public static extern Root WidgetGetRoot(Widget widget);
+	public static extern Root* WidgetGetRoot(Widget widget);
 	[LinkName("gtk_widget_get_scale_factor")]
 	public static extern c_int WidgetGetScaleFactor(Widget widget);
 	[LinkName("gtk_widget_get_sensitive")]
 	public static extern c_int WidgetGetSensitive(Widget widget);
 	[LinkName("gtk_widget_get_settings")]
-	public static extern Settings WidgetGetSettings(Widget widget);
+	public static extern Settings* WidgetGetSettings(Widget widget);
 	[LinkName("gtk_widget_get_size")]
 	public static extern c_int WidgetGetSize(Widget widget, Orientation orientation);
 	[LinkName("gtk_widget_get_size_request")]
@@ -8883,13 +8883,13 @@ class Gtk
 	[LinkName("gtk_widget_get_state_flags")]
 	public static extern StateFlags WidgetGetStateFlags(Widget widget);
 	[LinkName("gtk_widget_get_style_context")]
-	public static extern StyleContext WidgetGetStyleContext(Widget widget);
+	public static extern StyleContext* WidgetGetStyleContext(Widget widget);
 	[LinkName("gtk_widget_get_template_child")]
-	public static extern GObject.Object WidgetGetTemplateChild(Widget widget, GLib.Type widget_type, char8* name);
+	public static extern GObject.Object* WidgetGetTemplateChild(Widget widget, GLib.Type widget_type, char8* name);
 	[LinkName("gtk_widget_get_tooltip_markup")]
-	public static extern char8* WidgetGetTooltipMarkup(Widget widget);
+	public static extern char8** WidgetGetTooltipMarkup(Widget widget);
 	[LinkName("gtk_widget_get_tooltip_text")]
-	public static extern char8* WidgetGetTooltipText(Widget widget);
+	public static extern char8** WidgetGetTooltipText(Widget widget);
 	[LinkName("gtk_widget_get_valign")]
 	public static extern Align WidgetGetValign(Widget widget);
 	[LinkName("gtk_widget_get_vexpand")]
@@ -8935,7 +8935,7 @@ class Gtk
 	[LinkName("gtk_widget_keynav_failed")]
 	public static extern c_int WidgetKeynavFailed(Widget widget, DirectionType direction);
 	[LinkName("gtk_widget_list_mnemonic_labels")]
-	public static extern GLib.List WidgetListMnemonicLabels(Widget widget);
+	public static extern GLib.List* WidgetListMnemonicLabels(Widget widget);
 	[LinkName("gtk_widget_map")]
 	public static extern void WidgetMap(Widget widget);
 	[LinkName("gtk_widget_measure")]
@@ -8943,11 +8943,11 @@ class Gtk
 	[LinkName("gtk_widget_mnemonic_activate")]
 	public static extern c_int WidgetMnemonicActivate(Widget widget, c_int group_cycling);
 	[LinkName("gtk_widget_observe_children")]
-	public static extern Gio.ListModel WidgetObserveChildren(Widget widget);
+	public static extern Gio.ListModel* WidgetObserveChildren(Widget widget);
 	[LinkName("gtk_widget_observe_controllers")]
-	public static extern Gio.ListModel WidgetObserveControllers(Widget widget);
+	public static extern Gio.ListModel* WidgetObserveControllers(Widget widget);
 	[LinkName("gtk_widget_pick")]
-	public static extern Widget WidgetPick(Widget widget, double x, double y, PickFlags flags);
+	public static extern Widget* WidgetPick(Widget widget, double x, double y, PickFlags flags);
 	[LinkName("gtk_widget_queue_allocate")]
 	public static extern void WidgetQueueAllocate(Widget widget);
 	[LinkName("gtk_widget_queue_draw")]
@@ -9068,9 +9068,9 @@ class Gtk
 	[CRepr]
 	public struct WidgetPaintable;
 	[LinkName("gtk_widget_paintable_new")]
-	public static extern WidgetPaintable WidgetPaintableNew(Widget widget);
+	public static extern WidgetPaintable* WidgetPaintableNew(Widget widget);
 	[LinkName("gtk_widget_paintable_get_widget")]
-	public static extern Widget WidgetPaintableGetWidget(WidgetPaintable self);
+	public static extern Widget* WidgetPaintableGetWidget(WidgetPaintable self);
 	[LinkName("gtk_widget_paintable_set_widget")]
 	public static extern void WidgetPaintableSetWidget(WidgetPaintable self, Widget widget);
 	[CRepr]
@@ -9085,7 +9085,7 @@ class Gtk
 	[CRepr]
 	public struct Window;
 	[LinkName("gtk_window_new")]
-	public static extern Widget WindowNew();
+	public static extern Widget* WindowNew();
 	[LinkName("gtk_window_close")]
 	public static extern void WindowClose(Window window);
 	[LinkName("gtk_window_destroy")]
@@ -9095,31 +9095,31 @@ class Gtk
 	[LinkName("gtk_window_fullscreen_on_monitor")]
 	public static extern void WindowFullscreenOnMonitor(Window window, Gdk.Monitor monitor);
 	[LinkName("gtk_window_get_application")]
-	public static extern Application WindowGetApplication(Window window);
+	public static extern Application* WindowGetApplication(Window window);
 	[LinkName("gtk_window_get_child")]
-	public static extern Widget WindowGetChild(Window window);
+	public static extern Widget* WindowGetChild(Window window);
 	[LinkName("gtk_window_get_decorated")]
 	public static extern c_int WindowGetDecorated(Window window);
 	[LinkName("gtk_window_get_default_size")]
 	public static extern void WindowGetDefaultSize(Window window, c_int width, c_int height);
 	[LinkName("gtk_window_get_default_widget")]
-	public static extern Widget WindowGetDefaultWidget(Window window);
+	public static extern Widget* WindowGetDefaultWidget(Window window);
 	[LinkName("gtk_window_get_deletable")]
 	public static extern c_int WindowGetDeletable(Window window);
 	[LinkName("gtk_window_get_destroy_with_parent")]
 	public static extern c_int WindowGetDestroyWithParent(Window window);
 	[LinkName("gtk_window_get_focus")]
-	public static extern Widget WindowGetFocus(Window window);
+	public static extern Widget* WindowGetFocus(Window window);
 	[LinkName("gtk_window_get_focus_visible")]
 	public static extern c_int WindowGetFocusVisible(Window window);
 	[LinkName("gtk_window_get_group")]
-	public static extern WindowGroup WindowGetGroup(Window window);
+	public static extern WindowGroup* WindowGetGroup(Window window);
 	[LinkName("gtk_window_get_handle_menubar_accel")]
 	public static extern c_int WindowGetHandleMenubarAccel(Window window);
 	[LinkName("gtk_window_get_hide_on_close")]
 	public static extern c_int WindowGetHideOnClose(Window window);
 	[LinkName("gtk_window_get_icon_name")]
-	public static extern char8* WindowGetIconName(Window window);
+	public static extern char8** WindowGetIconName(Window window);
 	[LinkName("gtk_window_get_mnemonics_visible")]
 	public static extern c_int WindowGetMnemonicsVisible(Window window);
 	[LinkName("gtk_window_get_modal")]
@@ -9127,11 +9127,11 @@ class Gtk
 	[LinkName("gtk_window_get_resizable")]
 	public static extern c_int WindowGetResizable(Window window);
 	[LinkName("gtk_window_get_title")]
-	public static extern char8* WindowGetTitle(Window window);
+	public static extern char8** WindowGetTitle(Window window);
 	[LinkName("gtk_window_get_titlebar")]
-	public static extern Widget WindowGetTitlebar(Window window);
+	public static extern Widget* WindowGetTitlebar(Window window);
 	[LinkName("gtk_window_get_transient_for")]
-	public static extern Window WindowGetTransientFor(Window window);
+	public static extern Window* WindowGetTransientFor(Window window);
 	[LinkName("gtk_window_has_group")]
 	public static extern c_int WindowHasGroup(Window window);
 	[LinkName("gtk_window_is_active")]
@@ -9202,9 +9202,9 @@ class Gtk
 	[CRepr]
 	public struct WindowControls;
 	[LinkName("gtk_window_controls_new")]
-	public static extern Widget WindowControlsNew(PackType side);
+	public static extern Widget* WindowControlsNew(PackType side);
 	[LinkName("gtk_window_controls_get_decoration_layout")]
-	public static extern char8* WindowControlsGetDecorationLayout(WindowControls self);
+	public static extern char8** WindowControlsGetDecorationLayout(WindowControls self);
 	[LinkName("gtk_window_controls_get_empty")]
 	public static extern c_int WindowControlsGetEmpty(WindowControls self);
 	[LinkName("gtk_window_controls_get_side")]
@@ -9221,11 +9221,11 @@ class Gtk
 	[CRepr]
 	public struct WindowGroup;
 	[LinkName("gtk_window_group_new")]
-	public static extern WindowGroup WindowGroupNew();
+	public static extern WindowGroup* WindowGroupNew();
 	[LinkName("gtk_window_group_add_window")]
 	public static extern void WindowGroupAddWindow(WindowGroup window_group, Window window);
 	[LinkName("gtk_window_group_list_windows")]
-	public static extern GLib.List WindowGroupListWindows(WindowGroup window_group);
+	public static extern GLib.List* WindowGroupListWindows(WindowGroup window_group);
 	[LinkName("gtk_window_group_remove_window")]
 	public static extern void WindowGroupRemoveWindow(WindowGroup window_group, Window window);
 	[CRepr]
@@ -9240,9 +9240,9 @@ class Gtk
 	[CRepr]
 	public struct WindowHandle;
 	[LinkName("gtk_window_handle_new")]
-	public static extern Widget WindowHandleNew();
+	public static extern Widget* WindowHandleNew();
 	[LinkName("gtk_window_handle_get_child")]
-	public static extern Widget WindowHandleGetChild(WindowHandle self);
+	public static extern Widget* WindowHandleGetChild(WindowHandle self);
 	[LinkName("gtk_window_handle_set_child")]
 	public static extern void WindowHandleSetChild(WindowHandle self, Widget child);
 	[CRepr]
