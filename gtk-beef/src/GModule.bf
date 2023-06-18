@@ -9,7 +9,7 @@ class GModule
 	public struct Module
 	{
 	}
-	public function char8* ModuleCheckInit(Module module);
+	public function char8* ModuleCheckInit(Module* module);
 	public enum ModuleError : c_int
 	{
 		failed = 0,
@@ -22,5 +22,5 @@ class GModule
 		local = 2,
 		mask = 3
 	}
-	public function void ModuleUnload(Module module);
+	public function void ModuleUnload(Module* module);
 }
