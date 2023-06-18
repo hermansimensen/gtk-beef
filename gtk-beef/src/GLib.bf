@@ -26,19 +26,19 @@ class GLib
 		c_uint len;
 	}
 	[CRepr]
-	public struct AsciiType
+	public enum AsciiType : int
 	{
-		public const int G_ASCII_ALNUM = 1;
-		public const int G_ASCII_ALPHA = 2;
-		public const int G_ASCII_CNTRL = 4;
-		public const int G_ASCII_DIGIT = 8;
-		public const int G_ASCII_GRAPH = 16;
-		public const int G_ASCII_LOWER = 32;
-		public const int G_ASCII_PRINT = 64;
-		public const int G_ASCII_PUNCT = 128;
-		public const int G_ASCII_SPACE = 256;
-		public const int G_ASCII_UPPER = 512;
-		public const int G_ASCII_XDIGIT = 1024;
+		alnum = 1,
+		alpha = 2,
+		cntrl = 4,
+		digit = 8,
+		graph = 16,
+		lower = 32,
+		print = 64,
+		punct = 128,
+		space = 256,
+		upper = 512,
+		xdigit = 1024
 	}
 	[CRepr]
 	public struct AsyncQueue
@@ -50,14 +50,14 @@ class GLib
 	}
 	public enum BookmarkFileError : c_int
 	{
-		G_BOOKMARK_FILE_ERROR_INVALID_URI,
-		G_BOOKMARK_FILE_ERROR_INVALID_VALUE,
-		G_BOOKMARK_FILE_ERROR_APP_NOT_REGISTERED,
-		G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND,
-		G_BOOKMARK_FILE_ERROR_READ,
-		G_BOOKMARK_FILE_ERROR_UNKNOWN_ENCODING,
-		G_BOOKMARK_FILE_ERROR_WRITE,
-		G_BOOKMARK_FILE_ERROR_FILE_NOT_FOUND
+		invalid_uri = 0,
+		invalid_value = 1,
+		app_not_registered = 2,
+		uri_not_found = 3,
+		read = 4,
+		unknown_encoding = 5,
+		write = 6,
+		file_not_found = 7
 	}
 	[CRepr]
 	public struct ByteArray
@@ -75,11 +75,11 @@ class GLib
 	}
 	public enum ChecksumType : c_int
 	{
-		G_CHECKSUM_MD5,
-		G_CHECKSUM_SHA1,
-		G_CHECKSUM_SHA256,
-		G_CHECKSUM_SHA512,
-		G_CHECKSUM_SHA384
+		md5 = 0,
+		sha1 = 1,
+		sha256 = 2,
+		sha512 = 3,
+		sha384 = 4
 	}
 	public function void ChildWatchFunc(Pid pid, c_int wait_status, void* user_data);
 	public function void ClearHandleFunc(c_uint handle_id);
@@ -92,14 +92,14 @@ class GLib
 	}
 	public enum ConvertError : c_int
 	{
-		G_CONVERT_ERROR_NO_CONVERSION,
-		G_CONVERT_ERROR_ILLEGAL_SEQUENCE,
-		G_CONVERT_ERROR_FAILED,
-		G_CONVERT_ERROR_PARTIAL_INPUT,
-		G_CONVERT_ERROR_BAD_URI,
-		G_CONVERT_ERROR_NOT_ABSOLUTE_PATH,
-		G_CONVERT_ERROR_NO_MEMORY,
-		G_CONVERT_ERROR_EMBEDDED_NUL
+		no_conversion = 0,
+		illegal_sequence = 1,
+		failed = 2,
+		partial_input = 3,
+		bad_uri = 4,
+		not_absolute_path = 5,
+		no_memory = 6,
+		embedded_nul = 7
 	}
 	public function void* CopyFunc(void* src, void* data);
 	[CRepr]
@@ -119,25 +119,25 @@ class GLib
 	}
 	public enum DateDMY : c_int
 	{
-		G_DATE_DAY,
-		G_DATE_MONTH,
-		G_DATE_YEAR
+		day = 0,
+		month = 1,
+		year = 2
 	}
 	public enum DateMonth : c_int
 	{
-		G_DATE_BAD_MONTH,
-		G_DATE_JANUARY,
-		G_DATE_FEBRUARY,
-		G_DATE_MARCH,
-		G_DATE_APRIL,
-		G_DATE_MAY,
-		G_DATE_JUNE,
-		G_DATE_JULY,
-		G_DATE_AUGUST,
-		G_DATE_SEPTEMBER,
-		G_DATE_OCTOBER,
-		G_DATE_NOVEMBER,
-		G_DATE_DECEMBER
+		bad_month = 0,
+		january = 1,
+		february = 2,
+		march = 3,
+		april = 4,
+		may = 5,
+		june = 6,
+		july = 7,
+		august = 8,
+		september = 9,
+		october = 10,
+		november = 11,
+		december = 12
 	}
 	[CRepr]
 	public struct DateTime
@@ -145,14 +145,14 @@ class GLib
 	}
 	public enum DateWeekday : c_int
 	{
-		G_DATE_BAD_WEEKDAY,
-		G_DATE_MONDAY,
-		G_DATE_TUESDAY,
-		G_DATE_WEDNESDAY,
-		G_DATE_THURSDAY,
-		G_DATE_FRIDAY,
-		G_DATE_SATURDAY,
-		G_DATE_SUNDAY
+		bad_weekday = 0,
+		monday = 1,
+		tuesday = 2,
+		wednesday = 3,
+		thursday = 4,
+		friday = 5,
+		saturday = 6,
+		sunday = 7
 	}
 	[CRepr]
 	public struct DebugKey
@@ -185,59 +185,59 @@ class GLib
 	public function void ErrorInitFunc(Error error);
 	public enum ErrorType : c_int
 	{
-		G_ERR_UNKNOWN,
-		G_ERR_UNEXP_EOF,
-		G_ERR_UNEXP_EOF_IN_STRING,
-		G_ERR_UNEXP_EOF_IN_COMMENT,
-		G_ERR_NON_DIGIT_IN_CONST,
-		G_ERR_DIGIT_RADIX,
-		G_ERR_FLOAT_RADIX,
-		G_ERR_FLOAT_MALFORMED
+		unknown = 0,
+		unexp_eof = 1,
+		unexp_eof_in_string = 2,
+		unexp_eof_in_comment = 3,
+		non_digit_in_const = 4,
+		digit_radix = 5,
+		float_radix = 6,
+		float_malformed = 7
 	}
 	public enum FileError : c_int
 	{
-		G_FILE_ERROR_EXIST,
-		G_FILE_ERROR_ISDIR,
-		G_FILE_ERROR_ACCES,
-		G_FILE_ERROR_NAMETOOLONG,
-		G_FILE_ERROR_NOENT,
-		G_FILE_ERROR_NOTDIR,
-		G_FILE_ERROR_NXIO,
-		G_FILE_ERROR_NODEV,
-		G_FILE_ERROR_ROFS,
-		G_FILE_ERROR_TXTBSY,
-		G_FILE_ERROR_FAULT,
-		G_FILE_ERROR_LOOP,
-		G_FILE_ERROR_NOSPC,
-		G_FILE_ERROR_NOMEM,
-		G_FILE_ERROR_MFILE,
-		G_FILE_ERROR_NFILE,
-		G_FILE_ERROR_BADF,
-		G_FILE_ERROR_INVAL,
-		G_FILE_ERROR_PIPE,
-		G_FILE_ERROR_AGAIN,
-		G_FILE_ERROR_INTR,
-		G_FILE_ERROR_IO,
-		G_FILE_ERROR_PERM,
-		G_FILE_ERROR_NOSYS,
-		G_FILE_ERROR_FAILED
+		exist = 0,
+		isdir = 1,
+		acces = 2,
+		nametoolong = 3,
+		noent = 4,
+		notdir = 5,
+		nxio = 6,
+		nodev = 7,
+		rofs = 8,
+		txtbsy = 9,
+		fault = 10,
+		loop = 11,
+		nospc = 12,
+		nomem = 13,
+		mfile = 14,
+		nfile = 15,
+		badf = 16,
+		inval = 17,
+		pipe = 18,
+		again = 19,
+		intr = 20,
+		io = 21,
+		perm = 22,
+		nosys = 23,
+		failed = 24
 	}
 	[CRepr]
-	public struct FileSetContentsFlags
+	public enum FileSetContentsFlags : int
 	{
-		public const int G_FILE_SET_CONTENTS_NONE = 0;
-		public const int G_FILE_SET_CONTENTS_CONSISTENT = 1;
-		public const int G_FILE_SET_CONTENTS_DURABLE = 2;
-		public const int G_FILE_SET_CONTENTS_ONLY_EXISTING = 4;
+		none = 0,
+		consistent = 1,
+		durable = 2,
+		only_existing = 4
 	}
 	[CRepr]
-	public struct FileTest
+	public enum FileTest : int
 	{
-		public const int G_FILE_TEST_IS_REGULAR = 1;
-		public const int G_FILE_TEST_IS_SYMLINK = 2;
-		public const int G_FILE_TEST_IS_DIR = 4;
-		public const int G_FILE_TEST_IS_EXECUTABLE = 8;
-		public const int G_FILE_TEST_EXISTS = 16;
+		is_regular = 1,
+		is_symlink = 2,
+		is_dir = 4,
+		is_executable = 8,
+		exists = 16
 	}
 	[Union]
 	public struct FloatIEEE754
@@ -245,14 +245,14 @@ class GLib
 		public float v_float;
 	}
 	[CRepr]
-	public struct FormatSizeFlags
+	public enum FormatSizeFlags : int
 	{
-		public const int G_FORMAT_SIZE_DEFAULT = 0;
-		public const int G_FORMAT_SIZE_LONG_FORMAT = 1;
-		public const int G_FORMAT_SIZE_IEC_UNITS = 2;
-		public const int G_FORMAT_SIZE_BITS = 4;
-		public const int G_FORMAT_SIZE_ONLY_VALUE = 8;
-		public const int G_FORMAT_SIZE_ONLY_UNIT = 16;
+		default_ = 0,
+		long_format = 1,
+		iec_units = 2,
+		bits = 4,
+		only_value = 8,
+		only_unit = 16
 	}
 	public function void FreeFunc(void* data);
 	public function void Func(void* data, void* user_data);
@@ -295,11 +295,11 @@ class GLib
 	public function void HookFinalizeFunc(HookList hook_list, Hook hook);
 	public function c_int HookFindFunc(Hook hook, void* data);
 	[CRepr]
-	public struct HookFlagMask
+	public enum HookFlagMask : int
 	{
-		public const int G_HOOK_FLAG_ACTIVE = 1;
-		public const int G_HOOK_FLAG_IN_CALL = 2;
-		public const int G_HOOK_FLAG_MASK = 15;
+		active = 1,
+		in_call = 2,
+		mask = 15
 	}
 	public function void HookFunc(void* data);
 	[CRepr]
@@ -342,46 +342,46 @@ class GLib
 	}
 	public enum IOChannelError : c_int
 	{
-		G_IO_CHANNEL_ERROR_FBIG,
-		G_IO_CHANNEL_ERROR_INVAL,
-		G_IO_CHANNEL_ERROR_IO,
-		G_IO_CHANNEL_ERROR_ISDIR,
-		G_IO_CHANNEL_ERROR_NOSPC,
-		G_IO_CHANNEL_ERROR_NXIO,
-		G_IO_CHANNEL_ERROR_OVERFLOW,
-		G_IO_CHANNEL_ERROR_PIPE,
-		G_IO_CHANNEL_ERROR_FAILED
+		fbig = 0,
+		inval = 1,
+		io = 2,
+		isdir = 3,
+		nospc = 4,
+		nxio = 5,
+		overflow = 6,
+		pipe = 7,
+		failed = 8
 	}
 	[CRepr]
-	public struct IOCondition
+	public enum IOCondition : int
 	{
-		public const int G_IO_IN = 1;
-		public const int G_IO_OUT = 4;
-		public const int G_IO_PRI = 2;
-		public const int G_IO_ERR = 8;
-		public const int G_IO_HUP = 16;
-		public const int G_IO_NVAL = 32;
+		in_ = 1,
+		out_ = 4,
+		pri = 2,
+		err = 8,
+		hup = 16,
+		nval = 32
 	}
 	public enum IOError : c_int
 	{
-		G_IO_ERROR_NONE,
-		G_IO_ERROR_AGAIN,
-		G_IO_ERROR_INVAL,
-		G_IO_ERROR_UNKNOWN
+		none = 0,
+		again = 1,
+		inval = 2,
+		unknown = 3
 	}
-	[CRepr]
-	public struct IOFlags
+	[CRepr, AllowDuplicates]
+	public enum IOFlags : int
 	{
-		public const int G_IO_FLAG_NONE = 0;
-		public const int G_IO_FLAG_APPEND = 1;
-		public const int G_IO_FLAG_NONBLOCK = 2;
-		public const int G_IO_FLAG_IS_READABLE = 4;
-		public const int G_IO_FLAG_IS_WRITABLE = 8;
-		public const int G_IO_FLAG_IS_WRITEABLE = 8;
-		public const int G_IO_FLAG_IS_SEEKABLE = 16;
-		public const int G_IO_FLAG_MASK = 31;
-		public const int G_IO_FLAG_GET_MASK = 31;
-		public const int G_IO_FLAG_SET_MASK = 3;
+		none = 0,
+		append_ = 1,
+		nonblock = 2,
+		is_readable = 4,
+		is_writable = 8,
+		is_writeable = 8,
+		is_seekable = 16,
+		mask = 31,
+		get_mask = 31,
+		set_mask = 3
 	}
 	public function c_int IOFunc(IOChannel source, IOCondition condition, void* data);
 	[CRepr]
@@ -390,10 +390,10 @@ class GLib
 	}
 	public enum IOStatus : c_int
 	{
-		G_IO_STATUS_ERROR,
-		G_IO_STATUS_NORMAL,
-		G_IO_STATUS_EOF,
-		G_IO_STATUS_AGAIN
+		error = 0,
+		normal = 1,
+		eof = 2,
+		again = 3
 	}
 	[CRepr]
 	public struct KeyFile
@@ -401,19 +401,19 @@ class GLib
 	}
 	public enum KeyFileError : c_int
 	{
-		G_KEY_FILE_ERROR_UNKNOWN_ENCODING,
-		G_KEY_FILE_ERROR_PARSE,
-		G_KEY_FILE_ERROR_NOT_FOUND,
-		G_KEY_FILE_ERROR_KEY_NOT_FOUND,
-		G_KEY_FILE_ERROR_GROUP_NOT_FOUND,
-		G_KEY_FILE_ERROR_INVALID_VALUE
+		unknown_encoding = 0,
+		parse = 1,
+		not_found = 2,
+		key_not_found = 3,
+		group_not_found = 4,
+		invalid_value = 5
 	}
 	[CRepr]
-	public struct KeyFileFlags
+	public enum KeyFileFlags : int
 	{
-		public const int G_KEY_FILE_NONE = 0;
-		public const int G_KEY_FILE_KEEP_COMMENTS = 1;
-		public const int G_KEY_FILE_KEEP_TRANSLATIONS = 2;
+		none = 0,
+		keep_comments = 1,
+		keep_translations = 2
 	}
 	[CRepr]
 	public struct List
@@ -431,33 +431,33 @@ class GLib
 	}
 	public function void LogFunc(char8* log_domain, LogLevelFlags log_level, char8* message, void* user_data);
 	[CRepr]
-	public struct LogLevelFlags
+	public enum LogLevelFlags : int
 	{
-		public const int G_LOG_FLAG_RECURSION = 1;
-		public const int G_LOG_FLAG_FATAL = 2;
-		public const int G_LOG_LEVEL_ERROR = 4;
-		public const int G_LOG_LEVEL_CRITICAL = 8;
-		public const int G_LOG_LEVEL_WARNING = 16;
-		public const int G_LOG_LEVEL_MESSAGE = 32;
-		public const int G_LOG_LEVEL_INFO = 64;
-		public const int G_LOG_LEVEL_DEBUG = 128;
-		public const int G_LOG_LEVEL_MASK = -4;
+		flag_recursion = 1,
+		flag_fatal = 2,
+		level_error = 4,
+		level_critical = 8,
+		level_warning = 16,
+		level_message = 32,
+		level_info = 64,
+		level_debug = 128,
+		level_mask = -4
 	}
 	public function LogWriterOutput LogWriterFunc(LogLevelFlags log_level, c_ulong n_fields, void* user_data);
 	public enum LogWriterOutput : c_int
 	{
-		G_LOG_WRITER_HANDLED,
-		G_LOG_WRITER_UNHANDLED
+		handled = 1,
+		unhandled = 0
 	}
 	[CRepr]
 	public struct MainContext
 	{
 	}
 	[CRepr]
-	public struct MainContextFlags
+	public enum MainContextFlags : int
 	{
-		public const int G_MAIN_CONTEXT_FLAGS_NONE = 0;
-		public const int G_MAIN_CONTEXT_FLAGS_OWNERLESS_POLLING = 1;
+		none = 0,
+		ownerless_polling = 1
 	}
 	[CRepr]
 	public struct MainLoop
@@ -468,37 +468,37 @@ class GLib
 	{
 	}
 	[CRepr]
-	public struct MarkupCollectType
+	public enum MarkupCollectType : int
 	{
-		public const int G_MARKUP_COLLECT_INVALID = 0;
-		public const int G_MARKUP_COLLECT_STRING = 1;
-		public const int G_MARKUP_COLLECT_STRDUP = 2;
-		public const int G_MARKUP_COLLECT_BOOLEAN = 3;
-		public const int G_MARKUP_COLLECT_TRISTATE = 4;
-		public const int G_MARKUP_COLLECT_OPTIONAL = 65536;
+		invalid = 0,
+		string = 1,
+		strdup = 2,
+		boolean = 3,
+		tristate = 4,
+		optional = 65536
 	}
 	public enum MarkupError : c_int
 	{
-		G_MARKUP_ERROR_BAD_UTF8,
-		G_MARKUP_ERROR_EMPTY,
-		G_MARKUP_ERROR_PARSE,
-		G_MARKUP_ERROR_UNKNOWN_ELEMENT,
-		G_MARKUP_ERROR_UNKNOWN_ATTRIBUTE,
-		G_MARKUP_ERROR_INVALID_CONTENT,
-		G_MARKUP_ERROR_MISSING_ATTRIBUTE
+		bad_utf8 = 0,
+		empty = 1,
+		parse = 2,
+		unknown_element = 3,
+		unknown_attribute = 4,
+		invalid_content = 5,
+		missing_attribute = 6
 	}
 	[CRepr]
 	public struct MarkupParseContext
 	{
 	}
 	[CRepr]
-	public struct MarkupParseFlags
+	public enum MarkupParseFlags : int
 	{
-		public const int G_MARKUP_DEFAULT_FLAGS = 0;
-		public const int G_MARKUP_DO_NOT_USE_THIS_UNSUPPORTED_FLAG = 1;
-		public const int G_MARKUP_TREAT_CDATA_AS_TEXT = 2;
-		public const int G_MARKUP_PREFIX_ERROR_POSITION = 4;
-		public const int G_MARKUP_IGNORE_QUALIFIED = 8;
+		default_flags = 0,
+		do_not_use_this_unsupported_flag = 1,
+		treat_cdata_as_text = 2,
+		prefix_error_position = 4,
+		ignore_qualified = 8
 	}
 	[CRepr]
 	public struct MarkupParser
@@ -528,21 +528,22 @@ class GLib
 	}
 	public function void NodeForeachFunc(Node node, void* data);
 	public function c_int NodeTraverseFunc(Node node, void* data);
+	[AllowDuplicates]
 	public enum NormalizeMode : c_int
 	{
-		G_NORMALIZE_DEFAULT,
-		G_NORMALIZE_NFD,
-		G_NORMALIZE_DEFAULT_COMPOSE,
-		G_NORMALIZE_NFC,
-		G_NORMALIZE_ALL,
-		G_NORMALIZE_NFKD,
-		G_NORMALIZE_ALL_COMPOSE,
-		G_NORMALIZE_NFKC
+		default_ = 0,
+		nfd = 0,
+		default_compose = 1,
+		nfc = 1,
+		all = 2,
+		nfkd = 2,
+		all_compose = 3,
+		nfkc = 3
 	}
 	public enum NumberParserError : c_int
 	{
-		G_NUMBER_PARSER_ERROR_INVALID,
-		G_NUMBER_PARSER_ERROR_OUT_OF_BOUNDS
+		invalid = 0,
+		out_of_bounds = 1
 	}
 	[CRepr]
 	public struct Once
@@ -552,21 +553,21 @@ class GLib
 	}
 	public enum OnceStatus : c_int
 	{
-		G_ONCE_STATUS_NOTCALLED,
-		G_ONCE_STATUS_PROGRESS,
-		G_ONCE_STATUS_READY
+		notcalled = 0,
+		progress = 1,
+		ready = 2
 	}
 	public enum OptionArg : c_int
 	{
-		G_OPTION_ARG_NONE,
-		G_OPTION_ARG_STRING,
-		G_OPTION_ARG_INT,
-		G_OPTION_ARG_CALLBACK,
-		G_OPTION_ARG_FILENAME,
-		G_OPTION_ARG_STRING_ARRAY,
-		G_OPTION_ARG_FILENAME_ARRAY,
-		G_OPTION_ARG_DOUBLE,
-		G_OPTION_ARG_INT64
+		none = 0,
+		string = 1,
+		int = 2,
+		callback = 3,
+		filename = 4,
+		string_array = 5,
+		filename_array = 6,
+		double = 7,
+		int64 = 8
 	}
 	public function c_int OptionArgFunc(char8* option_name, char8* value, void* data);
 	[CRepr]
@@ -586,22 +587,22 @@ class GLib
 	}
 	public enum OptionError : c_int
 	{
-		G_OPTION_ERROR_UNKNOWN_OPTION,
-		G_OPTION_ERROR_BAD_VALUE,
-		G_OPTION_ERROR_FAILED
+		unknown_option = 0,
+		bad_value = 1,
+		failed = 2
 	}
 	public function void OptionErrorFunc(OptionContext context, OptionGroup group, void* data);
 	[CRepr]
-	public struct OptionFlags
+	public enum OptionFlags : int
 	{
-		public const int G_OPTION_FLAG_NONE = 0;
-		public const int G_OPTION_FLAG_HIDDEN = 1;
-		public const int G_OPTION_FLAG_IN_MAIN = 2;
-		public const int G_OPTION_FLAG_REVERSE = 4;
-		public const int G_OPTION_FLAG_NO_ARG = 8;
-		public const int G_OPTION_FLAG_FILENAME = 16;
-		public const int G_OPTION_FLAG_OPTIONAL_ARG = 32;
-		public const int G_OPTION_FLAG_NOALIAS = 64;
+		none = 0,
+		hidden = 1,
+		in_main = 2,
+		reverse = 4,
+		no_arg = 8,
+		filename = 16,
+		optional_arg = 32,
+		noalias = 64
 	}
 	[CRepr]
 	public struct OptionGroup
@@ -663,108 +664,108 @@ class GLib
 	{
 	}
 	[CRepr]
-	public struct RegexCompileFlags
+	public enum RegexCompileFlags : int
 	{
-		public const int G_REGEX_DEFAULT = 0;
-		public const int G_REGEX_CASELESS = 1;
-		public const int G_REGEX_MULTILINE = 2;
-		public const int G_REGEX_DOTALL = 4;
-		public const int G_REGEX_EXTENDED = 8;
-		public const int G_REGEX_ANCHORED = 16;
-		public const int G_REGEX_DOLLAR_ENDONLY = 32;
-		public const int G_REGEX_UNGREEDY = 512;
-		public const int G_REGEX_RAW = 2048;
-		public const int G_REGEX_NO_AUTO_CAPTURE = 4096;
-		public const int G_REGEX_OPTIMIZE = 8192;
-		public const int G_REGEX_FIRSTLINE = 262144;
-		public const int G_REGEX_DUPNAMES = 524288;
-		public const int G_REGEX_NEWLINE_CR = 1048576;
-		public const int G_REGEX_NEWLINE_LF = 2097152;
-		public const int G_REGEX_NEWLINE_CRLF = 3145728;
-		public const int G_REGEX_NEWLINE_ANYCRLF = 5242880;
-		public const int G_REGEX_BSR_ANYCRLF = 8388608;
-		public const int G_REGEX_JAVASCRIPT_COMPAT = 33554432;
+		default_ = 0,
+		caseless = 1,
+		multiline = 2,
+		dotall = 4,
+		extended = 8,
+		anchored = 16,
+		dollar_endonly = 32,
+		ungreedy = 512,
+		raw = 2048,
+		no_auto_capture = 4096,
+		optimize = 8192,
+		firstline = 262144,
+		dupnames = 524288,
+		newline_cr = 1048576,
+		newline_lf = 2097152,
+		newline_crlf = 3145728,
+		newline_anycrlf = 5242880,
+		bsr_anycrlf = 8388608,
+		javascript_compat = 33554432
 	}
 	public enum RegexError : c_int
 	{
-		G_REGEX_ERROR_COMPILE,
-		G_REGEX_ERROR_OPTIMIZE,
-		G_REGEX_ERROR_REPLACE,
-		G_REGEX_ERROR_MATCH,
-		G_REGEX_ERROR_INTERNAL,
-		G_REGEX_ERROR_STRAY_BACKSLASH,
-		G_REGEX_ERROR_MISSING_CONTROL_CHAR,
-		G_REGEX_ERROR_UNRECOGNIZED_ESCAPE,
-		G_REGEX_ERROR_QUANTIFIERS_OUT_OF_ORDER,
-		G_REGEX_ERROR_QUANTIFIER_TOO_BIG,
-		G_REGEX_ERROR_UNTERMINATED_CHARACTER_CLASS,
-		G_REGEX_ERROR_INVALID_ESCAPE_IN_CHARACTER_CLASS,
-		G_REGEX_ERROR_RANGE_OUT_OF_ORDER,
-		G_REGEX_ERROR_NOTHING_TO_REPEAT,
-		G_REGEX_ERROR_UNRECOGNIZED_CHARACTER,
-		G_REGEX_ERROR_POSIX_NAMED_CLASS_OUTSIDE_CLASS,
-		G_REGEX_ERROR_UNMATCHED_PARENTHESIS,
-		G_REGEX_ERROR_INEXISTENT_SUBPATTERN_REFERENCE,
-		G_REGEX_ERROR_UNTERMINATED_COMMENT,
-		G_REGEX_ERROR_EXPRESSION_TOO_LARGE,
-		G_REGEX_ERROR_MEMORY_ERROR,
-		G_REGEX_ERROR_VARIABLE_LENGTH_LOOKBEHIND,
-		G_REGEX_ERROR_MALFORMED_CONDITION,
-		G_REGEX_ERROR_TOO_MANY_CONDITIONAL_BRANCHES,
-		G_REGEX_ERROR_ASSERTION_EXPECTED,
-		G_REGEX_ERROR_UNKNOWN_POSIX_CLASS_NAME,
-		G_REGEX_ERROR_POSIX_COLLATING_ELEMENTS_NOT_SUPPORTED,
-		G_REGEX_ERROR_HEX_CODE_TOO_LARGE,
-		G_REGEX_ERROR_INVALID_CONDITION,
-		G_REGEX_ERROR_SINGLE_BYTE_MATCH_IN_LOOKBEHIND,
-		G_REGEX_ERROR_INFINITE_LOOP,
-		G_REGEX_ERROR_MISSING_SUBPATTERN_NAME_TERMINATOR,
-		G_REGEX_ERROR_DUPLICATE_SUBPATTERN_NAME,
-		G_REGEX_ERROR_MALFORMED_PROPERTY,
-		G_REGEX_ERROR_UNKNOWN_PROPERTY,
-		G_REGEX_ERROR_SUBPATTERN_NAME_TOO_LONG,
-		G_REGEX_ERROR_TOO_MANY_SUBPATTERNS,
-		G_REGEX_ERROR_INVALID_OCTAL_VALUE,
-		G_REGEX_ERROR_TOO_MANY_BRANCHES_IN_DEFINE,
-		G_REGEX_ERROR_DEFINE_REPETION,
-		G_REGEX_ERROR_INCONSISTENT_NEWLINE_OPTIONS,
-		G_REGEX_ERROR_MISSING_BACK_REFERENCE,
-		G_REGEX_ERROR_INVALID_RELATIVE_REFERENCE,
-		G_REGEX_ERROR_BACKTRACKING_CONTROL_VERB_ARGUMENT_FORBIDDEN,
-		G_REGEX_ERROR_UNKNOWN_BACKTRACKING_CONTROL_VERB,
-		G_REGEX_ERROR_NUMBER_TOO_BIG,
-		G_REGEX_ERROR_MISSING_SUBPATTERN_NAME,
-		G_REGEX_ERROR_MISSING_DIGIT,
-		G_REGEX_ERROR_INVALID_DATA_CHARACTER,
-		G_REGEX_ERROR_EXTRA_SUBPATTERN_NAME,
-		G_REGEX_ERROR_BACKTRACKING_CONTROL_VERB_ARGUMENT_REQUIRED,
-		G_REGEX_ERROR_INVALID_CONTROL_CHAR,
-		G_REGEX_ERROR_MISSING_NAME,
-		G_REGEX_ERROR_NOT_SUPPORTED_IN_CLASS,
-		G_REGEX_ERROR_TOO_MANY_FORWARD_REFERENCES,
-		G_REGEX_ERROR_NAME_TOO_LONG,
-		G_REGEX_ERROR_CHARACTER_VALUE_TOO_LARGE
+		compile = 0,
+		optimize = 1,
+		replace = 2,
+		match = 3,
+		internal_ = 4,
+		stray_backslash = 101,
+		missing_control_char = 102,
+		unrecognized_escape = 103,
+		quantifiers_out_of_order = 104,
+		quantifier_too_big = 105,
+		unterminated_character_class = 106,
+		invalid_escape_in_character_class = 107,
+		range_out_of_order = 108,
+		nothing_to_repeat = 109,
+		unrecognized_character = 112,
+		posix_named_class_outside_class = 113,
+		unmatched_parenthesis = 114,
+		inexistent_subpattern_reference = 115,
+		unterminated_comment = 118,
+		expression_too_large = 120,
+		memory_error = 121,
+		variable_length_lookbehind = 125,
+		malformed_condition = 126,
+		too_many_conditional_branches = 127,
+		assertion_expected = 128,
+		unknown_posix_class_name = 130,
+		posix_collating_elements_not_supported = 131,
+		hex_code_too_large = 134,
+		invalid_condition = 135,
+		single_byte_match_in_lookbehind = 136,
+		infinite_loop = 140,
+		missing_subpattern_name_terminator = 142,
+		duplicate_subpattern_name = 143,
+		malformed_property = 146,
+		unknown_property = 147,
+		subpattern_name_too_long = 148,
+		too_many_subpatterns = 149,
+		invalid_octal_value = 151,
+		too_many_branches_in_define = 154,
+		define_repetion = 155,
+		inconsistent_newline_options = 156,
+		missing_back_reference = 157,
+		invalid_relative_reference = 158,
+		backtracking_control_verb_argument_forbidden = 159,
+		unknown_backtracking_control_verb = 160,
+		number_too_big = 161,
+		missing_subpattern_name = 162,
+		missing_digit = 163,
+		invalid_data_character = 164,
+		extra_subpattern_name = 165,
+		backtracking_control_verb_argument_required = 166,
+		invalid_control_char = 168,
+		missing_name = 169,
+		not_supported_in_class = 171,
+		too_many_forward_references = 172,
+		name_too_long = 175,
+		character_value_too_large = 176
 	}
 	public function c_int RegexEvalCallback(MatchInfo match_info, String result, void* user_data);
-	[CRepr]
-	public struct RegexMatchFlags
+	[CRepr, AllowDuplicates]
+	public enum RegexMatchFlags : int
 	{
-		public const int G_REGEX_MATCH_DEFAULT = 0;
-		public const int G_REGEX_MATCH_ANCHORED = 16;
-		public const int G_REGEX_MATCH_NOTBOL = 128;
-		public const int G_REGEX_MATCH_NOTEOL = 256;
-		public const int G_REGEX_MATCH_NOTEMPTY = 1024;
-		public const int G_REGEX_MATCH_PARTIAL = 32768;
-		public const int G_REGEX_MATCH_NEWLINE_CR = 1048576;
-		public const int G_REGEX_MATCH_NEWLINE_LF = 2097152;
-		public const int G_REGEX_MATCH_NEWLINE_CRLF = 3145728;
-		public const int G_REGEX_MATCH_NEWLINE_ANY = 4194304;
-		public const int G_REGEX_MATCH_NEWLINE_ANYCRLF = 5242880;
-		public const int G_REGEX_MATCH_BSR_ANYCRLF = 8388608;
-		public const int G_REGEX_MATCH_BSR_ANY = 16777216;
-		public const int G_REGEX_MATCH_PARTIAL_SOFT = 32768;
-		public const int G_REGEX_MATCH_PARTIAL_HARD = 134217728;
-		public const int G_REGEX_MATCH_NOTEMPTY_ATSTART = 268435456;
+		default_ = 0,
+		anchored = 16,
+		notbol = 128,
+		noteol = 256,
+		notempty = 1024,
+		partial = 32768,
+		newline_cr = 1048576,
+		newline_lf = 2097152,
+		newline_crlf = 3145728,
+		newline_any = 4194304,
+		newline_anycrlf = 5242880,
+		bsr_anycrlf = 8388608,
+		bsr_any = 16777216,
+		partial_soft = 32768,
+		partial_hard = 134217728,
+		notempty_atstart = 268435456
 	}
 	[CRepr]
 	public struct SList
@@ -831,9 +832,9 @@ class GLib
 	public function void ScannerMsgFunc(Scanner scanner, char8* message, c_int error);
 	public enum SeekType : c_int
 	{
-		G_SEEK_CUR,
-		G_SEEK_SET,
-		G_SEEK_END
+		cur = 0,
+		set = 1,
+		end = 2
 	}
 	[CRepr]
 	public struct Sequence
@@ -846,18 +847,18 @@ class GLib
 	public function c_int SequenceIterCompareFunc(SequenceIter a, SequenceIter b, void* data);
 	public enum ShellError : c_int
 	{
-		G_SHELL_ERROR_BAD_QUOTING,
-		G_SHELL_ERROR_EMPTY_STRING,
-		G_SHELL_ERROR_FAILED
+		bad_quoting = 0,
+		empty_string = 1,
+		failed = 2
 	}
 	public enum SliceConfig : c_int
 	{
-		G_SLICE_CONFIG_ALWAYS_MALLOC,
-		G_SLICE_CONFIG_BYPASS_MAGAZINES,
-		G_SLICE_CONFIG_WORKING_SET_MSECS,
-		G_SLICE_CONFIG_COLOR_INCREMENT,
-		G_SLICE_CONFIG_CHUNK_SIZES,
-		G_SLICE_CONFIG_CONTENTION_COUNTER
+		always_malloc = 1,
+		bypass_magazines = 2,
+		working_set_msecs = 3,
+		color_increment = 4,
+		chunk_sizes = 5,
+		contention_counter = 6
 	}
 	[CRepr]
 	public struct Source
@@ -895,46 +896,47 @@ class GLib
 	{
 	}
 	public function void SpawnChildSetupFunc(void* data);
+	[AllowDuplicates]
 	public enum SpawnError : c_int
 	{
-		G_SPAWN_ERROR_FORK,
-		G_SPAWN_ERROR_READ,
-		G_SPAWN_ERROR_CHDIR,
-		G_SPAWN_ERROR_ACCES,
-		G_SPAWN_ERROR_PERM,
-		G_SPAWN_ERROR_TOO_BIG,
-		G_SPAWN_ERROR_2BIG,
-		G_SPAWN_ERROR_NOEXEC,
-		G_SPAWN_ERROR_NAMETOOLONG,
-		G_SPAWN_ERROR_NOENT,
-		G_SPAWN_ERROR_NOMEM,
-		G_SPAWN_ERROR_NOTDIR,
-		G_SPAWN_ERROR_LOOP,
-		G_SPAWN_ERROR_TXTBUSY,
-		G_SPAWN_ERROR_IO,
-		G_SPAWN_ERROR_NFILE,
-		G_SPAWN_ERROR_MFILE,
-		G_SPAWN_ERROR_INVAL,
-		G_SPAWN_ERROR_ISDIR,
-		G_SPAWN_ERROR_LIBBAD,
-		G_SPAWN_ERROR_FAILED
+		fork = 0,
+		read = 1,
+		chdir = 2,
+		acces = 3,
+		perm = 4,
+		too_big = 5,
+		_2big = 5,
+		noexec = 6,
+		nametoolong = 7,
+		noent = 8,
+		nomem = 9,
+		notdir = 10,
+		loop = 11,
+		txtbusy = 12,
+		io = 13,
+		nfile = 14,
+		mfile = 15,
+		inval = 16,
+		isdir = 17,
+		libbad = 18,
+		failed = 19
 	}
 	[CRepr]
-	public struct SpawnFlags
+	public enum SpawnFlags : int
 	{
-		public const int G_SPAWN_DEFAULT = 0;
-		public const int G_SPAWN_LEAVE_DESCRIPTORS_OPEN = 1;
-		public const int G_SPAWN_DO_NOT_REAP_CHILD = 2;
-		public const int G_SPAWN_SEARCH_PATH = 4;
-		public const int G_SPAWN_STDOUT_TO_DEV_NULL = 8;
-		public const int G_SPAWN_STDERR_TO_DEV_NULL = 16;
-		public const int G_SPAWN_CHILD_INHERITS_STDIN = 32;
-		public const int G_SPAWN_FILE_AND_ARGV_ZERO = 64;
-		public const int G_SPAWN_SEARCH_PATH_FROM_ENVP = 128;
-		public const int G_SPAWN_CLOEXEC_PIPES = 256;
-		public const int G_SPAWN_CHILD_INHERITS_STDOUT = 512;
-		public const int G_SPAWN_CHILD_INHERITS_STDERR = 1024;
-		public const int G_SPAWN_STDIN_FROM_DEV_NULL = 2048;
+		default_ = 0,
+		leave_descriptors_open = 1,
+		do_not_reap_child = 2,
+		search_path = 4,
+		stdout_to_dev_null = 8,
+		stderr_to_dev_null = 16,
+		child_inherits_stdin = 32,
+		file_and_argv_zero = 64,
+		search_path_from_envp = 128,
+		cloexec_pipes = 256,
+		child_inherits_stdout = 512,
+		child_inherits_stderr = 1024,
+		stdin_from_dev_null = 2048
 	}
 	[CRepr]
 	public struct StatBuf
@@ -972,8 +974,8 @@ class GLib
 	public function void TestDataFunc(void* user_data);
 	public enum TestFileType : c_int
 	{
-		G_TEST_DIST,
-		G_TEST_BUILT
+		dist = 0,
+		built = 1
 	}
 	public function void TestFixtureFunc(void* fixture, void* user_data);
 	public function void TestFunc();
@@ -995,45 +997,45 @@ class GLib
 	}
 	public enum TestLogType : c_int
 	{
-		G_TEST_LOG_NONE,
-		G_TEST_LOG_ERROR,
-		G_TEST_LOG_START_BINARY,
-		G_TEST_LOG_LIST_CASE,
-		G_TEST_LOG_SKIP_CASE,
-		G_TEST_LOG_START_CASE,
-		G_TEST_LOG_STOP_CASE,
-		G_TEST_LOG_MIN_RESULT,
-		G_TEST_LOG_MAX_RESULT,
-		G_TEST_LOG_MESSAGE,
-		G_TEST_LOG_START_SUITE,
-		G_TEST_LOG_STOP_SUITE
+		none = 0,
+		error = 1,
+		start_binary = 2,
+		list_case = 3,
+		skip_case = 4,
+		start_case = 5,
+		stop_case = 6,
+		min_result = 7,
+		max_result = 8,
+		message = 9,
+		start_suite = 10,
+		stop_suite = 11
 	}
 	public enum TestResult : c_int
 	{
-		G_TEST_RUN_SUCCESS,
-		G_TEST_RUN_SKIPPED,
-		G_TEST_RUN_FAILURE,
-		G_TEST_RUN_INCOMPLETE
+		success = 0,
+		skipped = 1,
+		failure = 2,
+		incomplete = 3
 	}
 	[CRepr]
-	public struct TestSubprocessFlags
+	public enum TestSubprocessFlags : int
 	{
-		public const int G_TEST_SUBPROCESS_DEFAULT = 0;
-		public const int G_TEST_SUBPROCESS_INHERIT_STDIN = 1;
-		public const int G_TEST_SUBPROCESS_INHERIT_STDOUT = 2;
-		public const int G_TEST_SUBPROCESS_INHERIT_STDERR = 4;
+		default_ = 0,
+		inherit_stdin = 1,
+		inherit_stdout = 2,
+		inherit_stderr = 4
 	}
 	[CRepr]
 	public struct TestSuite
 	{
 	}
 	[CRepr]
-	public struct TestTrapFlags
+	public enum TestTrapFlags : int
 	{
-		public const int G_TEST_TRAP_DEFAULT = 0;
-		public const int G_TEST_TRAP_SILENCE_STDOUT = 128;
-		public const int G_TEST_TRAP_SILENCE_STDERR = 256;
-		public const int G_TEST_TRAP_INHERIT_STDIN = 512;
+		default_ = 0,
+		silence_stdout = 128,
+		silence_stderr = 256,
+		inherit_stdin = 512
 	}
 	[CRepr]
 	public struct Thread
@@ -1041,7 +1043,7 @@ class GLib
 	}
 	public enum ThreadError : c_int
 	{
-		G_THREAD_ERROR_AGAIN
+		thread_error_again = 0
 	}
 	public function void* ThreadFunc(void* data);
 	[CRepr]
@@ -1053,9 +1055,9 @@ class GLib
 	}
 	public enum TimeType : c_int
 	{
-		G_TIME_TYPE_STANDARD,
-		G_TIME_TYPE_DAYLIGHT,
-		G_TIME_TYPE_UNIVERSAL
+		standard = 0,
+		daylight = 1,
+		universal = 2
 	}
 	[CRepr]
 	public struct TimeVal
@@ -1073,29 +1075,29 @@ class GLib
 	}
 	public enum TokenType : c_int
 	{
-		G_TOKEN_EOF,
-		G_TOKEN_LEFT_PAREN,
-		G_TOKEN_RIGHT_PAREN,
-		G_TOKEN_LEFT_CURLY,
-		G_TOKEN_RIGHT_CURLY,
-		G_TOKEN_LEFT_BRACE,
-		G_TOKEN_RIGHT_BRACE,
-		G_TOKEN_EQUAL_SIGN,
-		G_TOKEN_COMMA,
-		G_TOKEN_NONE,
-		G_TOKEN_ERROR,
-		G_TOKEN_CHAR,
-		G_TOKEN_BINARY,
-		G_TOKEN_OCTAL,
-		G_TOKEN_INT,
-		G_TOKEN_HEX,
-		G_TOKEN_FLOAT,
-		G_TOKEN_STRING,
-		G_TOKEN_SYMBOL,
-		G_TOKEN_IDENTIFIER,
-		G_TOKEN_IDENTIFIER_NULL,
-		G_TOKEN_COMMENT_SINGLE,
-		G_TOKEN_COMMENT_MULTI
+		eof = 0,
+		left_paren = 40,
+		right_paren = 41,
+		left_curly = 123,
+		right_curly = 125,
+		left_brace = 91,
+		right_brace = 93,
+		equal_sign = 61,
+		comma = 44,
+		none = 256,
+		error = 257,
+		char = 258,
+		binary = 259,
+		octal = 260,
+		int = 261,
+		hex = 262,
+		float = 263,
+		string = 264,
+		symbol = 265,
+		identifier = 266,
+		identifier_null = 267,
+		comment_single = 268,
+		comment_multi = 269
 	}
 	[Union]
 	public struct TokenValue
@@ -1113,30 +1115,30 @@ class GLib
 		public c_uchar v_char;
 		public c_uint v_error;
 	}
-	public function  c_char* TranslateFunc(char8* str, void* data);
+	public function char8* TranslateFunc(char8* str, void* data);
 	[CRepr]
 	public struct TrashStack
 	{
 		TrashStack* next;
 	}
-	[CRepr]
-	public struct TraverseFlags
+	[CRepr, AllowDuplicates]
+	public enum TraverseFlags : int
 	{
-		public const int G_TRAVERSE_LEAVES = 1;
-		public const int G_TRAVERSE_NON_LEAVES = 2;
-		public const int G_TRAVERSE_ALL = 3;
-		public const int G_TRAVERSE_MASK = 3;
-		public const int G_TRAVERSE_LEAFS = 1;
-		public const int G_TRAVERSE_NON_LEAFS = 2;
+		leaves = 1,
+		non_leaves = 2,
+		all = 3,
+		mask = 3,
+		leafs = 1,
+		non_leafs = 2
 	}
 	public function c_int TraverseFunc(void* key, void* value, void* data);
 	public function c_int TraverseNodeFunc(TreeNode node, void* data);
 	public enum TraverseType : c_int
 	{
-		G_IN_ORDER,
-		G_PRE_ORDER,
-		G_POST_ORDER,
-		G_LEVEL_ORDER
+		in_order = 0,
+		pre_order = 1,
+		post_order = 2,
+		level_order = 3
 	}
 	[CRepr]
 	public struct Tree
@@ -1146,254 +1148,255 @@ class GLib
 	public struct TreeNode
 	{
 	}
+	[AllowDuplicates]
 	public enum UnicodeBreakType : c_int
 	{
-		G_UNICODE_BREAK_MANDATORY,
-		G_UNICODE_BREAK_CARRIAGE_RETURN,
-		G_UNICODE_BREAK_LINE_FEED,
-		G_UNICODE_BREAK_COMBINING_MARK,
-		G_UNICODE_BREAK_SURROGATE,
-		G_UNICODE_BREAK_ZERO_WIDTH_SPACE,
-		G_UNICODE_BREAK_INSEPARABLE,
-		G_UNICODE_BREAK_NON_BREAKING_GLUE,
-		G_UNICODE_BREAK_CONTINGENT,
-		G_UNICODE_BREAK_SPACE,
-		G_UNICODE_BREAK_AFTER,
-		G_UNICODE_BREAK_BEFORE,
-		G_UNICODE_BREAK_BEFORE_AND_AFTER,
-		G_UNICODE_BREAK_HYPHEN,
-		G_UNICODE_BREAK_NON_STARTER,
-		G_UNICODE_BREAK_OPEN_PUNCTUATION,
-		G_UNICODE_BREAK_CLOSE_PUNCTUATION,
-		G_UNICODE_BREAK_QUOTATION,
-		G_UNICODE_BREAK_EXCLAMATION,
-		G_UNICODE_BREAK_IDEOGRAPHIC,
-		G_UNICODE_BREAK_NUMERIC,
-		G_UNICODE_BREAK_INFIX_SEPARATOR,
-		G_UNICODE_BREAK_SYMBOL,
-		G_UNICODE_BREAK_ALPHABETIC,
-		G_UNICODE_BREAK_PREFIX,
-		G_UNICODE_BREAK_POSTFIX,
-		G_UNICODE_BREAK_COMPLEX_CONTEXT,
-		G_UNICODE_BREAK_AMBIGUOUS,
-		G_UNICODE_BREAK_UNKNOWN,
-		G_UNICODE_BREAK_NEXT_LINE,
-		G_UNICODE_BREAK_WORD_JOINER,
-		G_UNICODE_BREAK_HANGUL_L_JAMO,
-		G_UNICODE_BREAK_HANGUL_V_JAMO,
-		G_UNICODE_BREAK_HANGUL_T_JAMO,
-		G_UNICODE_BREAK_HANGUL_LV_SYLLABLE,
-		G_UNICODE_BREAK_HANGUL_LVT_SYLLABLE,
-		G_UNICODE_BREAK_CLOSE_PARANTHESIS,
-		G_UNICODE_BREAK_CLOSE_PARENTHESIS,
-		G_UNICODE_BREAK_CONDITIONAL_JAPANESE_STARTER,
-		G_UNICODE_BREAK_HEBREW_LETTER,
-		G_UNICODE_BREAK_REGIONAL_INDICATOR,
-		G_UNICODE_BREAK_EMOJI_BASE,
-		G_UNICODE_BREAK_EMOJI_MODIFIER,
-		G_UNICODE_BREAK_ZERO_WIDTH_JOINER
+		mandatory = 0,
+		carriage_return = 1,
+		line_feed = 2,
+		combining_mark = 3,
+		surrogate = 4,
+		zero_width_space = 5,
+		inseparable = 6,
+		non_breaking_glue = 7,
+		contingent = 8,
+		space = 9,
+		after = 10,
+		before = 11,
+		before_and_after = 12,
+		hyphen = 13,
+		non_starter = 14,
+		open_punctuation = 15,
+		close_punctuation = 16,
+		quotation = 17,
+		exclamation = 18,
+		ideographic = 19,
+		numeric = 20,
+		infix_separator = 21,
+		symbol = 22,
+		alphabetic = 23,
+		prefix = 24,
+		postfix = 25,
+		complex_context = 26,
+		ambiguous = 27,
+		unknown = 28,
+		next_line = 29,
+		word_joiner = 30,
+		hangul_l_jamo = 31,
+		hangul_v_jamo = 32,
+		hangul_t_jamo = 33,
+		hangul_lv_syllable = 34,
+		hangul_lvt_syllable = 35,
+		close_paranthesis = 36,
+		close_parenthesis = 36,
+		conditional_japanese_starter = 37,
+		hebrew_letter = 38,
+		regional_indicator = 39,
+		emoji_base = 40,
+		emoji_modifier = 41,
+		zero_width_joiner = 42
 	}
 	public enum UnicodeScript : c_int
 	{
-		G_UNICODE_SCRIPT_INVALID_CODE,
-		G_UNICODE_SCRIPT_COMMON,
-		G_UNICODE_SCRIPT_INHERITED,
-		G_UNICODE_SCRIPT_ARABIC,
-		G_UNICODE_SCRIPT_ARMENIAN,
-		G_UNICODE_SCRIPT_BENGALI,
-		G_UNICODE_SCRIPT_BOPOMOFO,
-		G_UNICODE_SCRIPT_CHEROKEE,
-		G_UNICODE_SCRIPT_COPTIC,
-		G_UNICODE_SCRIPT_CYRILLIC,
-		G_UNICODE_SCRIPT_DESERET,
-		G_UNICODE_SCRIPT_DEVANAGARI,
-		G_UNICODE_SCRIPT_ETHIOPIC,
-		G_UNICODE_SCRIPT_GEORGIAN,
-		G_UNICODE_SCRIPT_GOTHIC,
-		G_UNICODE_SCRIPT_GREEK,
-		G_UNICODE_SCRIPT_GUJARATI,
-		G_UNICODE_SCRIPT_GURMUKHI,
-		G_UNICODE_SCRIPT_HAN,
-		G_UNICODE_SCRIPT_HANGUL,
-		G_UNICODE_SCRIPT_HEBREW,
-		G_UNICODE_SCRIPT_HIRAGANA,
-		G_UNICODE_SCRIPT_KANNADA,
-		G_UNICODE_SCRIPT_KATAKANA,
-		G_UNICODE_SCRIPT_KHMER,
-		G_UNICODE_SCRIPT_LAO,
-		G_UNICODE_SCRIPT_LATIN,
-		G_UNICODE_SCRIPT_MALAYALAM,
-		G_UNICODE_SCRIPT_MONGOLIAN,
-		G_UNICODE_SCRIPT_MYANMAR,
-		G_UNICODE_SCRIPT_OGHAM,
-		G_UNICODE_SCRIPT_OLD_ITALIC,
-		G_UNICODE_SCRIPT_ORIYA,
-		G_UNICODE_SCRIPT_RUNIC,
-		G_UNICODE_SCRIPT_SINHALA,
-		G_UNICODE_SCRIPT_SYRIAC,
-		G_UNICODE_SCRIPT_TAMIL,
-		G_UNICODE_SCRIPT_TELUGU,
-		G_UNICODE_SCRIPT_THAANA,
-		G_UNICODE_SCRIPT_THAI,
-		G_UNICODE_SCRIPT_TIBETAN,
-		G_UNICODE_SCRIPT_CANADIAN_ABORIGINAL,
-		G_UNICODE_SCRIPT_YI,
-		G_UNICODE_SCRIPT_TAGALOG,
-		G_UNICODE_SCRIPT_HANUNOO,
-		G_UNICODE_SCRIPT_BUHID,
-		G_UNICODE_SCRIPT_TAGBANWA,
-		G_UNICODE_SCRIPT_BRAILLE,
-		G_UNICODE_SCRIPT_CYPRIOT,
-		G_UNICODE_SCRIPT_LIMBU,
-		G_UNICODE_SCRIPT_OSMANYA,
-		G_UNICODE_SCRIPT_SHAVIAN,
-		G_UNICODE_SCRIPT_LINEAR_B,
-		G_UNICODE_SCRIPT_TAI_LE,
-		G_UNICODE_SCRIPT_UGARITIC,
-		G_UNICODE_SCRIPT_NEW_TAI_LUE,
-		G_UNICODE_SCRIPT_BUGINESE,
-		G_UNICODE_SCRIPT_GLAGOLITIC,
-		G_UNICODE_SCRIPT_TIFINAGH,
-		G_UNICODE_SCRIPT_SYLOTI_NAGRI,
-		G_UNICODE_SCRIPT_OLD_PERSIAN,
-		G_UNICODE_SCRIPT_KHAROSHTHI,
-		G_UNICODE_SCRIPT_UNKNOWN,
-		G_UNICODE_SCRIPT_BALINESE,
-		G_UNICODE_SCRIPT_CUNEIFORM,
-		G_UNICODE_SCRIPT_PHOENICIAN,
-		G_UNICODE_SCRIPT_PHAGS_PA,
-		G_UNICODE_SCRIPT_NKO,
-		G_UNICODE_SCRIPT_KAYAH_LI,
-		G_UNICODE_SCRIPT_LEPCHA,
-		G_UNICODE_SCRIPT_REJANG,
-		G_UNICODE_SCRIPT_SUNDANESE,
-		G_UNICODE_SCRIPT_SAURASHTRA,
-		G_UNICODE_SCRIPT_CHAM,
-		G_UNICODE_SCRIPT_OL_CHIKI,
-		G_UNICODE_SCRIPT_VAI,
-		G_UNICODE_SCRIPT_CARIAN,
-		G_UNICODE_SCRIPT_LYCIAN,
-		G_UNICODE_SCRIPT_LYDIAN,
-		G_UNICODE_SCRIPT_AVESTAN,
-		G_UNICODE_SCRIPT_BAMUM,
-		G_UNICODE_SCRIPT_EGYPTIAN_HIEROGLYPHS,
-		G_UNICODE_SCRIPT_IMPERIAL_ARAMAIC,
-		G_UNICODE_SCRIPT_INSCRIPTIONAL_PAHLAVI,
-		G_UNICODE_SCRIPT_INSCRIPTIONAL_PARTHIAN,
-		G_UNICODE_SCRIPT_JAVANESE,
-		G_UNICODE_SCRIPT_KAITHI,
-		G_UNICODE_SCRIPT_LISU,
-		G_UNICODE_SCRIPT_MEETEI_MAYEK,
-		G_UNICODE_SCRIPT_OLD_SOUTH_ARABIAN,
-		G_UNICODE_SCRIPT_OLD_TURKIC,
-		G_UNICODE_SCRIPT_SAMARITAN,
-		G_UNICODE_SCRIPT_TAI_THAM,
-		G_UNICODE_SCRIPT_TAI_VIET,
-		G_UNICODE_SCRIPT_BATAK,
-		G_UNICODE_SCRIPT_BRAHMI,
-		G_UNICODE_SCRIPT_MANDAIC,
-		G_UNICODE_SCRIPT_CHAKMA,
-		G_UNICODE_SCRIPT_MEROITIC_CURSIVE,
-		G_UNICODE_SCRIPT_MEROITIC_HIEROGLYPHS,
-		G_UNICODE_SCRIPT_MIAO,
-		G_UNICODE_SCRIPT_SHARADA,
-		G_UNICODE_SCRIPT_SORA_SOMPENG,
-		G_UNICODE_SCRIPT_TAKRI,
-		G_UNICODE_SCRIPT_BASSA_VAH,
-		G_UNICODE_SCRIPT_CAUCASIAN_ALBANIAN,
-		G_UNICODE_SCRIPT_DUPLOYAN,
-		G_UNICODE_SCRIPT_ELBASAN,
-		G_UNICODE_SCRIPT_GRANTHA,
-		G_UNICODE_SCRIPT_KHOJKI,
-		G_UNICODE_SCRIPT_KHUDAWADI,
-		G_UNICODE_SCRIPT_LINEAR_A,
-		G_UNICODE_SCRIPT_MAHAJANI,
-		G_UNICODE_SCRIPT_MANICHAEAN,
-		G_UNICODE_SCRIPT_MENDE_KIKAKUI,
-		G_UNICODE_SCRIPT_MODI,
-		G_UNICODE_SCRIPT_MRO,
-		G_UNICODE_SCRIPT_NABATAEAN,
-		G_UNICODE_SCRIPT_OLD_NORTH_ARABIAN,
-		G_UNICODE_SCRIPT_OLD_PERMIC,
-		G_UNICODE_SCRIPT_PAHAWH_HMONG,
-		G_UNICODE_SCRIPT_PALMYRENE,
-		G_UNICODE_SCRIPT_PAU_CIN_HAU,
-		G_UNICODE_SCRIPT_PSALTER_PAHLAVI,
-		G_UNICODE_SCRIPT_SIDDHAM,
-		G_UNICODE_SCRIPT_TIRHUTA,
-		G_UNICODE_SCRIPT_WARANG_CITI,
-		G_UNICODE_SCRIPT_AHOM,
-		G_UNICODE_SCRIPT_ANATOLIAN_HIEROGLYPHS,
-		G_UNICODE_SCRIPT_HATRAN,
-		G_UNICODE_SCRIPT_MULTANI,
-		G_UNICODE_SCRIPT_OLD_HUNGARIAN,
-		G_UNICODE_SCRIPT_SIGNWRITING,
-		G_UNICODE_SCRIPT_ADLAM,
-		G_UNICODE_SCRIPT_BHAIKSUKI,
-		G_UNICODE_SCRIPT_MARCHEN,
-		G_UNICODE_SCRIPT_NEWA,
-		G_UNICODE_SCRIPT_OSAGE,
-		G_UNICODE_SCRIPT_TANGUT,
-		G_UNICODE_SCRIPT_MASARAM_GONDI,
-		G_UNICODE_SCRIPT_NUSHU,
-		G_UNICODE_SCRIPT_SOYOMBO,
-		G_UNICODE_SCRIPT_ZANABAZAR_SQUARE,
-		G_UNICODE_SCRIPT_DOGRA,
-		G_UNICODE_SCRIPT_GUNJALA_GONDI,
-		G_UNICODE_SCRIPT_HANIFI_ROHINGYA,
-		G_UNICODE_SCRIPT_MAKASAR,
-		G_UNICODE_SCRIPT_MEDEFAIDRIN,
-		G_UNICODE_SCRIPT_OLD_SOGDIAN,
-		G_UNICODE_SCRIPT_SOGDIAN,
-		G_UNICODE_SCRIPT_ELYMAIC,
-		G_UNICODE_SCRIPT_NANDINAGARI,
-		G_UNICODE_SCRIPT_NYIAKENG_PUACHUE_HMONG,
-		G_UNICODE_SCRIPT_WANCHO,
-		G_UNICODE_SCRIPT_CHORASMIAN,
-		G_UNICODE_SCRIPT_DIVES_AKURU,
-		G_UNICODE_SCRIPT_KHITAN_SMALL_SCRIPT,
-		G_UNICODE_SCRIPT_YEZIDI,
-		G_UNICODE_SCRIPT_CYPRO_MINOAN,
-		G_UNICODE_SCRIPT_OLD_UYGHUR,
-		G_UNICODE_SCRIPT_TANGSA,
-		G_UNICODE_SCRIPT_TOTO,
-		G_UNICODE_SCRIPT_VITHKUQI,
-		G_UNICODE_SCRIPT_MATH,
-		G_UNICODE_SCRIPT_KAWI,
-		G_UNICODE_SCRIPT_NAG_MUNDARI
+		invalid_code = -1,
+		common = 0,
+		inherited = 1,
+		arabic = 2,
+		armenian = 3,
+		bengali = 4,
+		bopomofo = 5,
+		cherokee = 6,
+		coptic = 7,
+		cyrillic = 8,
+		deseret = 9,
+		devanagari = 10,
+		ethiopic = 11,
+		georgian = 12,
+		gothic = 13,
+		greek = 14,
+		gujarati = 15,
+		gurmukhi = 16,
+		han = 17,
+		hangul = 18,
+		hebrew = 19,
+		hiragana = 20,
+		kannada = 21,
+		katakana = 22,
+		khmer = 23,
+		lao = 24,
+		latin = 25,
+		malayalam = 26,
+		mongolian = 27,
+		myanmar = 28,
+		ogham = 29,
+		old_italic = 30,
+		oriya = 31,
+		runic = 32,
+		sinhala = 33,
+		syriac = 34,
+		tamil = 35,
+		telugu = 36,
+		thaana = 37,
+		thai = 38,
+		tibetan = 39,
+		canadian_aboriginal = 40,
+		yi = 41,
+		tagalog = 42,
+		hanunoo = 43,
+		buhid = 44,
+		tagbanwa = 45,
+		braille = 46,
+		cypriot = 47,
+		limbu = 48,
+		osmanya = 49,
+		shavian = 50,
+		linear_b = 51,
+		tai_le = 52,
+		ugaritic = 53,
+		new_tai_lue = 54,
+		buginese = 55,
+		glagolitic = 56,
+		tifinagh = 57,
+		syloti_nagri = 58,
+		old_persian = 59,
+		kharoshthi = 60,
+		unknown = 61,
+		balinese = 62,
+		cuneiform = 63,
+		phoenician = 64,
+		phags_pa = 65,
+		nko = 66,
+		kayah_li = 67,
+		lepcha = 68,
+		rejang = 69,
+		sundanese = 70,
+		saurashtra = 71,
+		cham = 72,
+		ol_chiki = 73,
+		vai = 74,
+		carian = 75,
+		lycian = 76,
+		lydian = 77,
+		avestan = 78,
+		bamum = 79,
+		egyptian_hieroglyphs = 80,
+		imperial_aramaic = 81,
+		inscriptional_pahlavi = 82,
+		inscriptional_parthian = 83,
+		javanese = 84,
+		kaithi = 85,
+		lisu = 86,
+		meetei_mayek = 87,
+		old_south_arabian = 88,
+		old_turkic = 89,
+		samaritan = 90,
+		tai_tham = 91,
+		tai_viet = 92,
+		batak = 93,
+		brahmi = 94,
+		mandaic = 95,
+		chakma = 96,
+		meroitic_cursive = 97,
+		meroitic_hieroglyphs = 98,
+		miao = 99,
+		sharada = 100,
+		sora_sompeng = 101,
+		takri = 102,
+		bassa_vah = 103,
+		caucasian_albanian = 104,
+		duployan = 105,
+		elbasan = 106,
+		grantha = 107,
+		khojki = 108,
+		khudawadi = 109,
+		linear_a = 110,
+		mahajani = 111,
+		manichaean = 112,
+		mende_kikakui = 113,
+		modi = 114,
+		mro = 115,
+		nabataean = 116,
+		old_north_arabian = 117,
+		old_permic = 118,
+		pahawh_hmong = 119,
+		palmyrene = 120,
+		pau_cin_hau = 121,
+		psalter_pahlavi = 122,
+		siddham = 123,
+		tirhuta = 124,
+		warang_citi = 125,
+		ahom = 126,
+		anatolian_hieroglyphs = 127,
+		hatran = 128,
+		multani = 129,
+		old_hungarian = 130,
+		signwriting = 131,
+		adlam = 132,
+		bhaiksuki = 133,
+		marchen = 134,
+		newa = 135,
+		osage = 136,
+		tangut = 137,
+		masaram_gondi = 138,
+		nushu = 139,
+		soyombo = 140,
+		zanabazar_square = 141,
+		dogra = 142,
+		gunjala_gondi = 143,
+		hanifi_rohingya = 144,
+		makasar = 145,
+		medefaidrin = 146,
+		old_sogdian = 147,
+		sogdian = 148,
+		elymaic = 149,
+		nandinagari = 150,
+		nyiakeng_puachue_hmong = 151,
+		wancho = 152,
+		chorasmian = 153,
+		dives_akuru = 154,
+		khitan_small_script = 155,
+		yezidi = 156,
+		cypro_minoan = 157,
+		old_uyghur = 158,
+		tangsa = 159,
+		toto = 160,
+		vithkuqi = 161,
+		math = 162,
+		kawi = 163,
+		nag_mundari = 164
 	}
 	public enum UnicodeType : c_int
 	{
-		G_UNICODE_CONTROL,
-		G_UNICODE_FORMAT,
-		G_UNICODE_UNASSIGNED,
-		G_UNICODE_PRIVATE_USE,
-		G_UNICODE_SURROGATE,
-		G_UNICODE_LOWERCASE_LETTER,
-		G_UNICODE_MODIFIER_LETTER,
-		G_UNICODE_OTHER_LETTER,
-		G_UNICODE_TITLECASE_LETTER,
-		G_UNICODE_UPPERCASE_LETTER,
-		G_UNICODE_SPACING_MARK,
-		G_UNICODE_ENCLOSING_MARK,
-		G_UNICODE_NON_SPACING_MARK,
-		G_UNICODE_DECIMAL_NUMBER,
-		G_UNICODE_LETTER_NUMBER,
-		G_UNICODE_OTHER_NUMBER,
-		G_UNICODE_CONNECT_PUNCTUATION,
-		G_UNICODE_DASH_PUNCTUATION,
-		G_UNICODE_CLOSE_PUNCTUATION,
-		G_UNICODE_FINAL_PUNCTUATION,
-		G_UNICODE_INITIAL_PUNCTUATION,
-		G_UNICODE_OTHER_PUNCTUATION,
-		G_UNICODE_OPEN_PUNCTUATION,
-		G_UNICODE_CURRENCY_SYMBOL,
-		G_UNICODE_MODIFIER_SYMBOL,
-		G_UNICODE_MATH_SYMBOL,
-		G_UNICODE_OTHER_SYMBOL,
-		G_UNICODE_LINE_SEPARATOR,
-		G_UNICODE_PARAGRAPH_SEPARATOR,
-		G_UNICODE_SPACE_SEPARATOR
+		control = 0,
+		format = 1,
+		unassigned = 2,
+		private_use = 3,
+		surrogate = 4,
+		lowercase_letter = 5,
+		modifier_letter = 6,
+		other_letter = 7,
+		titlecase_letter = 8,
+		uppercase_letter = 9,
+		spacing_mark = 10,
+		enclosing_mark = 11,
+		non_spacing_mark = 12,
+		decimal_number = 13,
+		letter_number = 14,
+		other_number = 15,
+		connect_punctuation = 16,
+		dash_punctuation = 17,
+		close_punctuation = 18,
+		final_punctuation = 19,
+		initial_punctuation = 20,
+		other_punctuation = 21,
+		open_punctuation = 22,
+		currency_symbol = 23,
+		modifier_symbol = 24,
+		math_symbol = 25,
+		other_symbol = 26,
+		line_separator = 27,
+		paragraph_separator = 28,
+		space_separator = 29
 	}
 	public function c_int UnixFDSourceFunc(c_int fd, IOCondition condition, void* user_data);
 	[CRepr]
@@ -1402,48 +1405,48 @@ class GLib
 	}
 	public enum UriError : c_int
 	{
-		G_URI_ERROR_FAILED,
-		G_URI_ERROR_BAD_SCHEME,
-		G_URI_ERROR_BAD_USER,
-		G_URI_ERROR_BAD_PASSWORD,
-		G_URI_ERROR_BAD_AUTH_PARAMS,
-		G_URI_ERROR_BAD_HOST,
-		G_URI_ERROR_BAD_PORT,
-		G_URI_ERROR_BAD_PATH,
-		G_URI_ERROR_BAD_QUERY,
-		G_URI_ERROR_BAD_FRAGMENT
+		failed = 0,
+		bad_scheme = 1,
+		bad_user = 2,
+		bad_password = 3,
+		bad_auth_params = 4,
+		bad_host = 5,
+		bad_port = 6,
+		bad_path = 7,
+		bad_query = 8,
+		bad_fragment = 9
 	}
 	[CRepr]
-	public struct UriFlags
+	public enum UriFlags : int
 	{
-		public const int G_URI_FLAGS_NONE = 0;
-		public const int G_URI_FLAGS_PARSE_RELAXED = 1;
-		public const int G_URI_FLAGS_HAS_PASSWORD = 2;
-		public const int G_URI_FLAGS_HAS_AUTH_PARAMS = 4;
-		public const int G_URI_FLAGS_ENCODED = 8;
-		public const int G_URI_FLAGS_NON_DNS = 16;
-		public const int G_URI_FLAGS_ENCODED_QUERY = 32;
-		public const int G_URI_FLAGS_ENCODED_PATH = 64;
-		public const int G_URI_FLAGS_ENCODED_FRAGMENT = 128;
-		public const int G_URI_FLAGS_SCHEME_NORMALIZE = 256;
+		none = 0,
+		parse_relaxed = 1,
+		has_password = 2,
+		has_auth_params = 4,
+		encoded = 8,
+		non_dns = 16,
+		encoded_query = 32,
+		encoded_path = 64,
+		encoded_fragment = 128,
+		scheme_normalize = 256
 	}
 	[CRepr]
-	public struct UriHideFlags
+	public enum UriHideFlags : int
 	{
-		public const int G_URI_HIDE_NONE = 0;
-		public const int G_URI_HIDE_USERINFO = 1;
-		public const int G_URI_HIDE_PASSWORD = 2;
-		public const int G_URI_HIDE_AUTH_PARAMS = 4;
-		public const int G_URI_HIDE_QUERY = 8;
-		public const int G_URI_HIDE_FRAGMENT = 16;
+		none = 0,
+		userinfo = 1,
+		password = 2,
+		auth_params = 4,
+		query = 8,
+		fragment = 16
 	}
 	[CRepr]
-	public struct UriParamsFlags
+	public enum UriParamsFlags : int
 	{
-		public const int G_URI_PARAMS_NONE = 0;
-		public const int G_URI_PARAMS_CASE_INSENSITIVE = 1;
-		public const int G_URI_PARAMS_WWW_FORM = 2;
-		public const int G_URI_PARAMS_PARSE_RELAXED = 4;
+		none = 0,
+		case_insensitive = 1,
+		www_form = 2,
+		parse_relaxed = 4
 	}
 	[CRepr]
 	public struct UriParamsIter
@@ -1454,15 +1457,15 @@ class GLib
 	}
 	public enum UserDirectory : c_int
 	{
-		G_USER_DIRECTORY_DESKTOP,
-		G_USER_DIRECTORY_DOCUMENTS,
-		G_USER_DIRECTORY_DOWNLOAD,
-		G_USER_DIRECTORY_MUSIC,
-		G_USER_DIRECTORY_PICTURES,
-		G_USER_DIRECTORY_PUBLIC_SHARE,
-		G_USER_DIRECTORY_TEMPLATES,
-		G_USER_DIRECTORY_VIDEOS,
-		G_USER_N_DIRECTORIES
+		directory_desktop = 0,
+		directory_documents = 1,
+		directory_download = 2,
+		directory_music = 3,
+		directory_pictures = 4,
+		directory_public_share = 5,
+		directory_templates = 6,
+		directory_videos = 7,
+		n_directories = 8
 	}
 	[CRepr]
 	public struct Variant
@@ -1474,24 +1477,24 @@ class GLib
 	}
 	public enum VariantClass : c_int
 	{
-		G_VARIANT_CLASS_BOOLEAN,
-		G_VARIANT_CLASS_BYTE,
-		G_VARIANT_CLASS_INT16,
-		G_VARIANT_CLASS_UINT16,
-		G_VARIANT_CLASS_INT32,
-		G_VARIANT_CLASS_UINT32,
-		G_VARIANT_CLASS_INT64,
-		G_VARIANT_CLASS_UINT64,
-		G_VARIANT_CLASS_HANDLE,
-		G_VARIANT_CLASS_DOUBLE,
-		G_VARIANT_CLASS_STRING,
-		G_VARIANT_CLASS_OBJECT_PATH,
-		G_VARIANT_CLASS_SIGNATURE,
-		G_VARIANT_CLASS_VARIANT,
-		G_VARIANT_CLASS_MAYBE,
-		G_VARIANT_CLASS_ARRAY,
-		G_VARIANT_CLASS_TUPLE,
-		G_VARIANT_CLASS_DICT_ENTRY
+		boolean = 98,
+		byte = 121,
+		int16 = 110,
+		uint16 = 113,
+		int32 = 105,
+		uint32 = 117,
+		int64 = 120,
+		uint64 = 116,
+		handle = 104,
+		double = 100,
+		string = 115,
+		object_path = 111,
+		signature = 103,
+		variant = 118,
+		maybe = 109,
+		array = 97,
+		tuple = 40,
+		dict_entry = 123
 	}
 	[CRepr]
 	public struct VariantDict
@@ -1503,25 +1506,25 @@ class GLib
 	}
 	public enum VariantParseError : c_int
 	{
-		G_VARIANT_PARSE_ERROR_FAILED,
-		G_VARIANT_PARSE_ERROR_BASIC_TYPE_EXPECTED,
-		G_VARIANT_PARSE_ERROR_CANNOT_INFER_TYPE,
-		G_VARIANT_PARSE_ERROR_DEFINITE_TYPE_EXPECTED,
-		G_VARIANT_PARSE_ERROR_INPUT_NOT_AT_END,
-		G_VARIANT_PARSE_ERROR_INVALID_CHARACTER,
-		G_VARIANT_PARSE_ERROR_INVALID_FORMAT_STRING,
-		G_VARIANT_PARSE_ERROR_INVALID_OBJECT_PATH,
-		G_VARIANT_PARSE_ERROR_INVALID_SIGNATURE,
-		G_VARIANT_PARSE_ERROR_INVALID_TYPE_STRING,
-		G_VARIANT_PARSE_ERROR_NO_COMMON_TYPE,
-		G_VARIANT_PARSE_ERROR_NUMBER_OUT_OF_RANGE,
-		G_VARIANT_PARSE_ERROR_NUMBER_TOO_BIG,
-		G_VARIANT_PARSE_ERROR_TYPE_ERROR,
-		G_VARIANT_PARSE_ERROR_UNEXPECTED_TOKEN,
-		G_VARIANT_PARSE_ERROR_UNKNOWN_KEYWORD,
-		G_VARIANT_PARSE_ERROR_UNTERMINATED_STRING_CONSTANT,
-		G_VARIANT_PARSE_ERROR_VALUE_EXPECTED,
-		G_VARIANT_PARSE_ERROR_RECURSION
+		failed = 0,
+		basic_type_expected = 1,
+		cannot_infer_type = 2,
+		definite_type_expected = 3,
+		input_not_at_end = 4,
+		invalid_character = 5,
+		invalid_format_string = 6,
+		invalid_object_path = 7,
+		invalid_signature = 8,
+		invalid_type_string = 9,
+		no_common_type = 10,
+		number_out_of_range = 11,
+		number_too_big = 12,
+		type_error = 13,
+		unexpected_token = 14,
+		unknown_keyword = 15,
+		unterminated_string_constant = 16,
+		value_expected = 17,
+		recursion = 18
 	}
 	[CRepr]
 	public struct VariantType

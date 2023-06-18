@@ -12,17 +12,17 @@ using GdkPixbuf;
 class Gdk
 {
 	[CRepr]
-	public struct AnchorHints
+	public enum AnchorHints : int
 	{
-		public const int GDK_ANCHOR_FLIP_X = 1;
-		public const int GDK_ANCHOR_FLIP_Y = 2;
-		public const int GDK_ANCHOR_SLIDE_X = 4;
-		public const int GDK_ANCHOR_SLIDE_Y = 8;
-		public const int GDK_ANCHOR_RESIZE_X = 16;
-		public const int GDK_ANCHOR_RESIZE_Y = 32;
-		public const int GDK_ANCHOR_FLIP = 3;
-		public const int GDK_ANCHOR_SLIDE = 12;
-		public const int GDK_ANCHOR_RESIZE = 48;
+		flip_x = 1,
+		flip_y = 2,
+		slide_x = 4,
+		slide_y = 8,
+		resize_x = 16,
+		resize_y = 32,
+		flip = 3,
+		slide = 12,
+		resize = 48
 	}
 	[CRepr]
 	public struct AppLaunchContext;
@@ -37,35 +37,35 @@ class Gdk
 	[LinkName("gdk_app_launch_context_set_timestamp")]
 	public static extern void AppLaunchContextSetTimestamp(AppLaunchContext context, c_uint timestamp);
 	[CRepr]
-	public struct AxisFlags
+	public enum AxisFlags : int
 	{
-		public const int GDK_AXIS_FLAG_X = 2;
-		public const int GDK_AXIS_FLAG_Y = 4;
-		public const int GDK_AXIS_FLAG_DELTA_X = 8;
-		public const int GDK_AXIS_FLAG_DELTA_Y = 16;
-		public const int GDK_AXIS_FLAG_PRESSURE = 32;
-		public const int GDK_AXIS_FLAG_XTILT = 64;
-		public const int GDK_AXIS_FLAG_YTILT = 128;
-		public const int GDK_AXIS_FLAG_WHEEL = 256;
-		public const int GDK_AXIS_FLAG_DISTANCE = 512;
-		public const int GDK_AXIS_FLAG_ROTATION = 1024;
-		public const int GDK_AXIS_FLAG_SLIDER = 2048;
+		x = 2,
+		y = 4,
+		delta_x = 8,
+		delta_y = 16,
+		pressure = 32,
+		xtilt = 64,
+		ytilt = 128,
+		wheel = 256,
+		distance = 512,
+		rotation = 1024,
+		slider = 2048
 	}
 	public enum AxisUse : c_int
 	{
-		GDK_AXIS_IGNORE,
-		GDK_AXIS_X,
-		GDK_AXIS_Y,
-		GDK_AXIS_DELTA_X,
-		GDK_AXIS_DELTA_Y,
-		GDK_AXIS_PRESSURE,
-		GDK_AXIS_XTILT,
-		GDK_AXIS_YTILT,
-		GDK_AXIS_WHEEL,
-		GDK_AXIS_DISTANCE,
-		GDK_AXIS_ROTATION,
-		GDK_AXIS_SLIDER,
-		GDK_AXIS_LAST
+		ignore = 0,
+		x = 1,
+		y = 2,
+		delta_x = 3,
+		delta_y = 4,
+		pressure = 5,
+		xtilt = 6,
+		ytilt = 7,
+		wheel = 8,
+		distance = 9,
+		rotation = 10,
+		slider = 11,
+		last = 12
 	}
 	[CRepr]
 	public struct ButtonEvent;
@@ -212,15 +212,15 @@ class Gdk
 	public static extern CrossingMode CrossingEventGetMode(CrossingEvent event);
 	public enum CrossingMode : c_int
 	{
-		GDK_CROSSING_NORMAL,
-		GDK_CROSSING_GRAB,
-		GDK_CROSSING_UNGRAB,
-		GDK_CROSSING_GTK_GRAB,
-		GDK_CROSSING_GTK_UNGRAB,
-		GDK_CROSSING_STATE_CHANGED,
-		GDK_CROSSING_TOUCH_BEGIN,
-		GDK_CROSSING_TOUCH_END,
-		GDK_CROSSING_DEVICE_SWITCH
+		normal = 0,
+		grab = 1,
+		ungrab = 2,
+		gtk_grab = 3,
+		gtk_ungrab = 4,
+		state_changed = 5,
+		touch_begin = 6,
+		touch_end = 7,
+		device_switch = 8
 	}
 	[CRepr]
 	public struct Cursor;
@@ -285,9 +285,9 @@ class Gdk
 	{	}
 	public enum DevicePadFeature : c_int
 	{
-		GDK_DEVICE_PAD_FEATURE_BUTTON,
-		GDK_DEVICE_PAD_FEATURE_RING,
-		GDK_DEVICE_PAD_FEATURE_STRIP
+		button = 0,
+		ring = 1,
+		strip = 2
 	}
 	[CRepr]
 	public struct DevicePadInterface
@@ -305,14 +305,14 @@ class Gdk
 	public static extern DeviceToolType DeviceToolGetToolType(DeviceTool tool);
 	public enum DeviceToolType : c_int
 	{
-		GDK_DEVICE_TOOL_TYPE_UNKNOWN,
-		GDK_DEVICE_TOOL_TYPE_PEN,
-		GDK_DEVICE_TOOL_TYPE_ERASER,
-		GDK_DEVICE_TOOL_TYPE_BRUSH,
-		GDK_DEVICE_TOOL_TYPE_PENCIL,
-		GDK_DEVICE_TOOL_TYPE_AIRBRUSH,
-		GDK_DEVICE_TOOL_TYPE_MOUSE,
-		GDK_DEVICE_TOOL_TYPE_LENS
+		unknown = 0,
+		pen = 1,
+		eraser = 2,
+		brush = 3,
+		pencil = 4,
+		airbrush = 5,
+		mouse = 6,
+		lens = 7
 	}
 	[CRepr]
 	public struct Display;
@@ -401,18 +401,18 @@ class Gdk
 	[LinkName("gdk_drag_set_hotspot")]
 	public static extern void DragSetHotspot(Drag drag, c_int hot_x, c_int hot_y);
 	[CRepr]
-	public struct DragAction
+	public enum DragAction : int
 	{
-		public const int GDK_ACTION_COPY = 1;
-		public const int GDK_ACTION_MOVE = 2;
-		public const int GDK_ACTION_LINK = 4;
-		public const int GDK_ACTION_ASK = 8;
+		copy = 1,
+		move = 2,
+		link = 4,
+		ask = 8
 	}
 	public enum DragCancelReason : c_int
 	{
-		GDK_DRAG_CANCEL_NO_TARGET,
-		GDK_DRAG_CANCEL_USER_CANCELLED,
-		GDK_DRAG_CANCEL_ERROR
+		no_target = 0,
+		user_cancelled = 1,
+		error = 2
 	}
 	[CRepr]
 	public struct DragSurface
@@ -513,36 +513,36 @@ class Gdk
 	}
 	public enum EventType : c_int
 	{
-		GDK_DELETE,
-		GDK_MOTION_NOTIFY,
-		GDK_BUTTON_PRESS,
-		GDK_BUTTON_RELEASE,
-		GDK_KEY_PRESS,
-		GDK_KEY_RELEASE,
-		GDK_ENTER_NOTIFY,
-		GDK_LEAVE_NOTIFY,
-		GDK_FOCUS_CHANGE,
-		GDK_PROXIMITY_IN,
-		GDK_PROXIMITY_OUT,
-		GDK_DRAG_ENTER,
-		GDK_DRAG_LEAVE,
-		GDK_DRAG_MOTION,
-		GDK_DROP_START,
-		GDK_SCROLL,
-		GDK_GRAB_BROKEN,
-		GDK_TOUCH_BEGIN,
-		GDK_TOUCH_UPDATE,
-		GDK_TOUCH_END,
-		GDK_TOUCH_CANCEL,
-		GDK_TOUCHPAD_SWIPE,
-		GDK_TOUCHPAD_PINCH,
-		GDK_PAD_BUTTON_PRESS,
-		GDK_PAD_BUTTON_RELEASE,
-		GDK_PAD_RING,
-		GDK_PAD_STRIP,
-		GDK_PAD_GROUP_MODE,
-		GDK_TOUCHPAD_HOLD,
-		GDK_EVENT_LAST
+		delete_ = 0,
+		motion_notify = 1,
+		button_press = 2,
+		button_release = 3,
+		key_press = 4,
+		key_release = 5,
+		enter_notify = 6,
+		leave_notify = 7,
+		focus_change = 8,
+		proximity_in = 9,
+		proximity_out = 10,
+		drag_enter = 11,
+		drag_leave = 12,
+		drag_motion = 13,
+		drop_start = 14,
+		scroll = 15,
+		grab_broken = 16,
+		touch_begin = 17,
+		touch_update = 18,
+		touch_end = 19,
+		touch_cancel = 20,
+		touchpad_swipe = 21,
+		touchpad_pinch = 22,
+		pad_button_press = 23,
+		pad_button_release = 24,
+		pad_ring = 25,
+		pad_strip = 26,
+		pad_group_mode = 27,
+		touchpad_hold = 28,
+		event_last = 29
 	}
 	[CRepr]
 	public struct FileList
@@ -579,16 +579,16 @@ class Gdk
 	{
 	}
 	[CRepr]
-	public struct FrameClockPhase
+	public enum FrameClockPhase : int
 	{
-		public const int GDK_FRAME_CLOCK_PHASE_NONE = 0;
-		public const int GDK_FRAME_CLOCK_PHASE_FLUSH_EVENTS = 1;
-		public const int GDK_FRAME_CLOCK_PHASE_BEFORE_PAINT = 2;
-		public const int GDK_FRAME_CLOCK_PHASE_UPDATE = 4;
-		public const int GDK_FRAME_CLOCK_PHASE_LAYOUT = 8;
-		public const int GDK_FRAME_CLOCK_PHASE_PAINT = 16;
-		public const int GDK_FRAME_CLOCK_PHASE_RESUME_EVENTS = 32;
-		public const int GDK_FRAME_CLOCK_PHASE_AFTER_PAINT = 64;
+		none = 0,
+		flush_events = 1,
+		before_paint = 2,
+		update = 4,
+		layout = 8,
+		paint = 16,
+		resume_events = 32,
+		after_paint = 64
 	}
 	[CRepr]
 	public struct FrameClockPrivate
@@ -600,14 +600,14 @@ class Gdk
 	}
 	public enum FullscreenMode : c_int
 	{
-		GDK_FULLSCREEN_ON_CURRENT_MONITOR,
-		GDK_FULLSCREEN_ON_ALL_MONITORS
+		current_monitor = 0,
+		all_monitors = 1
 	}
 	[CRepr]
-	public struct GLAPI
+	public enum GLAPI : int
 	{
-		public const int GDK_GL_API_GL = 1;
-		public const int GDK_GL_API_GLES = 2;
+		gl = 1,
+		gles = 2
 	}
 	[CRepr]
 	public struct GLContext;
@@ -651,11 +651,11 @@ class Gdk
 	public static extern void GlContextSetUseEs(GLContext context, c_int use_es);
 	public enum GLError : c_int
 	{
-		GDK_GL_ERROR_NOT_AVAILABLE,
-		GDK_GL_ERROR_UNSUPPORTED_FORMAT,
-		GDK_GL_ERROR_UNSUPPORTED_PROFILE,
-		GDK_GL_ERROR_COMPILATION_FAILED,
-		GDK_GL_ERROR_LINK_FAILED
+		not_available = 0,
+		unsupported_format = 1,
+		unsupported_profile = 2,
+		compilation_failed = 3,
+		link_failed = 4
 	}
 	[CRepr]
 	public struct GLTexture;
@@ -721,26 +721,26 @@ class Gdk
 	public static extern c_int GrabBrokenEventGetImplicit(GrabBrokenEvent event);
 	public enum Gravity : c_int
 	{
-		GDK_GRAVITY_NORTH_WEST,
-		GDK_GRAVITY_NORTH,
-		GDK_GRAVITY_NORTH_EAST,
-		GDK_GRAVITY_WEST,
-		GDK_GRAVITY_CENTER,
-		GDK_GRAVITY_EAST,
-		GDK_GRAVITY_SOUTH_WEST,
-		GDK_GRAVITY_SOUTH,
-		GDK_GRAVITY_SOUTH_EAST,
-		GDK_GRAVITY_STATIC
+		north_west = 1,
+		north = 2,
+		north_east = 3,
+		west = 4,
+		center = 5,
+		east = 6,
+		south_west = 7,
+		south = 8,
+		south_east = 9,
+		static_ = 10
 	}
 	public enum InputSource : c_int
 	{
-		GDK_SOURCE_MOUSE,
-		GDK_SOURCE_PEN,
-		GDK_SOURCE_KEYBOARD,
-		GDK_SOURCE_TOUCHSCREEN,
-		GDK_SOURCE_TOUCHPAD,
-		GDK_SOURCE_TRACKPOINT,
-		GDK_SOURCE_TABLET_PAD
+		mouse = 0,
+		pen = 1,
+		keyboard = 2,
+		touchscreen = 3,
+		touchpad = 4,
+		trackpoint = 5,
+		tablet_pad = 6
 	}
 	[CRepr]
 	public struct KeyEvent;
@@ -762,9 +762,9 @@ class Gdk
 	public static extern KeyMatch KeyEventMatches(KeyEvent event, c_uint keyval, ModifierType modifiers);
 	public enum KeyMatch : c_int
 	{
-		GDK_KEY_MATCH_NONE,
-		GDK_KEY_MATCH_PARTIAL,
-		GDK_KEY_MATCH_EXACT
+		none = 0,
+		partial = 1,
+		exact = 2
 	}
 	[CRepr]
 	public struct KeymapKey
@@ -775,33 +775,33 @@ class Gdk
 	}
 	public enum MemoryFormat : c_int
 	{
-		GDK_MEMORY_B8G8R8A8_PREMULTIPLIED,
-		GDK_MEMORY_A8R8G8B8_PREMULTIPLIED,
-		GDK_MEMORY_R8G8B8A8_PREMULTIPLIED,
-		GDK_MEMORY_B8G8R8A8,
-		GDK_MEMORY_A8R8G8B8,
-		GDK_MEMORY_R8G8B8A8,
-		GDK_MEMORY_A8B8G8R8,
-		GDK_MEMORY_R8G8B8,
-		GDK_MEMORY_B8G8R8,
-		GDK_MEMORY_R16G16B16,
-		GDK_MEMORY_R16G16B16A16_PREMULTIPLIED,
-		GDK_MEMORY_R16G16B16A16,
-		GDK_MEMORY_R16G16B16_FLOAT,
-		GDK_MEMORY_R16G16B16A16_FLOAT_PREMULTIPLIED,
-		GDK_MEMORY_R16G16B16A16_FLOAT,
-		GDK_MEMORY_R32G32B32_FLOAT,
-		GDK_MEMORY_R32G32B32A32_FLOAT_PREMULTIPLIED,
-		GDK_MEMORY_R32G32B32A32_FLOAT,
-		GDK_MEMORY_G8A8_PREMULTIPLIED,
-		GDK_MEMORY_G8A8,
-		GDK_MEMORY_G8,
-		GDK_MEMORY_G16A16_PREMULTIPLIED,
-		GDK_MEMORY_G16A16,
-		GDK_MEMORY_G16,
-		GDK_MEMORY_A8,
-		GDK_MEMORY_A16,
-		GDK_MEMORY_N_FORMATS
+		b8g8r8a8_premultiplied = 0,
+		a8r8g8b8_premultiplied = 1,
+		r8g8b8a8_premultiplied = 2,
+		b8g8r8a8 = 3,
+		a8r8g8b8 = 4,
+		r8g8b8a8 = 5,
+		a8b8g8r8 = 6,
+		r8g8b8 = 7,
+		b8g8r8 = 8,
+		r16g16b16 = 9,
+		r16g16b16a16_premultiplied = 10,
+		r16g16b16a16 = 11,
+		r16g16b16_float = 12,
+		r16g16b16a16_float_premultiplied = 13,
+		r16g16b16a16_float = 14,
+		r32g32b32_float = 15,
+		r32g32b32a32_float_premultiplied = 16,
+		r32g32b32a32_float = 17,
+		g8a8_premultiplied = 18,
+		g8a8 = 19,
+		g8 = 20,
+		g16a16_premultiplied = 21,
+		g16a16 = 22,
+		g16 = 23,
+		a8 = 24,
+		a16 = 25,
+		n_formats = 26
 	}
 	[CRepr]
 	public struct MemoryTexture;
@@ -812,20 +812,20 @@ class Gdk
 	{
 	}
 	[CRepr]
-	public struct ModifierType
+	public enum ModifierType : int
 	{
-		public const int GDK_SHIFT_MASK = 1;
-		public const int GDK_LOCK_MASK = 2;
-		public const int GDK_CONTROL_MASK = 4;
-		public const int GDK_ALT_MASK = 8;
-		public const int GDK_BUTTON1_MASK = 256;
-		public const int GDK_BUTTON2_MASK = 512;
-		public const int GDK_BUTTON3_MASK = 1024;
-		public const int GDK_BUTTON4_MASK = 2048;
-		public const int GDK_BUTTON5_MASK = 4096;
-		public const int GDK_SUPER_MASK = 67108864;
-		public const int GDK_HYPER_MASK = 134217728;
-		public const int GDK_META_MASK = 268435456;
+		shift_mask = 1,
+		lock_mask = 2,
+		control_mask = 4,
+		alt_mask = 8,
+		button1_mask = 256,
+		button2_mask = 512,
+		button3_mask = 1024,
+		button4_mask = 2048,
+		button5_mask = 4096,
+		super_mask = 67108864,
+		hyper_mask = 134217728,
+		meta_mask = 268435456
 	}
 	[CRepr]
 	public struct Monitor;
@@ -861,12 +861,12 @@ class Gdk
 	public struct MotionEvent;
 	public enum NotifyType : c_int
 	{
-		GDK_NOTIFY_ANCESTOR,
-		GDK_NOTIFY_VIRTUAL,
-		GDK_NOTIFY_INFERIOR,
-		GDK_NOTIFY_NONLINEAR,
-		GDK_NOTIFY_NONLINEAR_VIRTUAL,
-		GDK_NOTIFY_UNKNOWN
+		ancestor = 0,
+		virtual_ = 1,
+		inferior = 2,
+		nonlinear = 3,
+		nonlinear_virtual = 4,
+		unknown = 5
 	}
 	[CRepr]
 	public struct PadEvent;
@@ -892,10 +892,10 @@ class Gdk
 		public function void(Paintable paintable, Snapshot snapshot, double width, double height) snapshot;
 	}
 	[CRepr]
-	public struct PaintableFlags
+	public enum PaintableFlags : int
 	{
-		public const int GDK_PAINTABLE_STATIC_SIZE = 1;
-		public const int GDK_PAINTABLE_STATIC_CONTENTS = 2;
+		size = 1,
+		contents = 2
 	}
 	[CRepr]
 	public struct PaintableInterface
@@ -933,11 +933,11 @@ class Gdk
 	}
 	public enum ScrollDirection : c_int
 	{
-		GDK_SCROLL_UP,
-		GDK_SCROLL_DOWN,
-		GDK_SCROLL_LEFT,
-		GDK_SCROLL_RIGHT,
-		GDK_SCROLL_SMOOTH
+		up = 0,
+		down = 1,
+		left = 2,
+		right = 3,
+		smooth = 4
 	}
 	[CRepr]
 	public struct ScrollEvent;
@@ -951,8 +951,8 @@ class Gdk
 	public static extern c_int ScrollEventIsStop(ScrollEvent event);
 	public enum ScrollUnit : c_int
 	{
-		GDK_SCROLL_UNIT_WHEEL,
-		GDK_SCROLL_UNIT_SURFACE
+		wheel = 0,
+		surface = 1
 	}
 	[CRepr]
 	public struct Seat;
@@ -969,16 +969,16 @@ class Gdk
 	[LinkName("gdk_seat_get_tools")]
 	public static extern GLib.List* SeatGetTools(Seat seat);
 	[CRepr]
-	public struct SeatCapabilities
+	public enum SeatCapabilities : int
 	{
-		public const int GDK_SEAT_CAPABILITY_NONE = 0;
-		public const int GDK_SEAT_CAPABILITY_POINTER = 1;
-		public const int GDK_SEAT_CAPABILITY_TOUCH = 2;
-		public const int GDK_SEAT_CAPABILITY_TABLET_STYLUS = 4;
-		public const int GDK_SEAT_CAPABILITY_KEYBOARD = 8;
-		public const int GDK_SEAT_CAPABILITY_TABLET_PAD = 16;
-		public const int GDK_SEAT_CAPABILITY_ALL_POINTING = 7;
-		public const int GDK_SEAT_CAPABILITY_ALL = 15;
+		none = 0,
+		pointer = 1,
+		touch = 2,
+		tablet_stylus = 4,
+		keyboard = 8,
+		tablet_pad = 16,
+		all_pointing = 7,
+		all = 15
 	}
 	[CRepr]
 	public struct Snapshot;
@@ -988,12 +988,12 @@ class Gdk
 	}
 	public enum SubpixelLayout : c_int
 	{
-		GDK_SUBPIXEL_LAYOUT_UNKNOWN,
-		GDK_SUBPIXEL_LAYOUT_NONE,
-		GDK_SUBPIXEL_LAYOUT_HORIZONTAL_RGB,
-		GDK_SUBPIXEL_LAYOUT_HORIZONTAL_BGR,
-		GDK_SUBPIXEL_LAYOUT_VERTICAL_RGB,
-		GDK_SUBPIXEL_LAYOUT_VERTICAL_BGR
+		unknown = 0,
+		none = 1,
+		horizontal_rgb = 2,
+		horizontal_bgr = 3,
+		vertical_rgb = 4,
+		vertical_bgr = 5
 	}
 	[CRepr]
 	public struct Surface;
@@ -1057,14 +1057,14 @@ class Gdk
 	}
 	public enum SurfaceEdge : c_int
 	{
-		GDK_SURFACE_EDGE_NORTH_WEST,
-		GDK_SURFACE_EDGE_NORTH,
-		GDK_SURFACE_EDGE_NORTH_EAST,
-		GDK_SURFACE_EDGE_WEST,
-		GDK_SURFACE_EDGE_EAST,
-		GDK_SURFACE_EDGE_SOUTH_WEST,
-		GDK_SURFACE_EDGE_SOUTH,
-		GDK_SURFACE_EDGE_SOUTH_EAST
+		north_west = 0,
+		north = 1,
+		north_east = 2,
+		west = 3,
+		east = 4,
+		south_west = 5,
+		south = 6,
+		south_east = 7
 	}
 	[CRepr]
 	public struct Texture;
@@ -1104,10 +1104,10 @@ class Gdk
 	}
 	public enum TextureError : c_int
 	{
-		GDK_TEXTURE_ERROR_TOO_LARGE,
-		GDK_TEXTURE_ERROR_CORRUPT_IMAGE,
-		GDK_TEXTURE_ERROR_UNSUPPORTED_CONTENT,
-		GDK_TEXTURE_ERROR_UNSUPPORTED_FORMAT
+		too_large = 0,
+		corrupt_image = 1,
+		unsupported_content = 2,
+		unsupported_format = 3
 	}
 	[CRepr]
 	public struct TimeCoord
@@ -1117,9 +1117,9 @@ class Gdk
 	}
 	public enum TitlebarGesture : c_int
 	{
-		GDK_TITLEBAR_GESTURE_DOUBLE_CLICK,
-		GDK_TITLEBAR_GESTURE_RIGHT_CLICK,
-		GDK_TITLEBAR_GESTURE_MIDDLE_CLICK
+		double_click = 1,
+		right_click = 2,
+		middle_click = 3
 	}
 	[CRepr]
 	public struct Toplevel
@@ -1137,24 +1137,24 @@ class Gdk
 	{
 	}
 	[CRepr]
-	public struct ToplevelState
+	public enum ToplevelState : int
 	{
-		public const int GDK_TOPLEVEL_STATE_MINIMIZED = 1;
-		public const int GDK_TOPLEVEL_STATE_MAXIMIZED = 2;
-		public const int GDK_TOPLEVEL_STATE_STICKY = 4;
-		public const int GDK_TOPLEVEL_STATE_FULLSCREEN = 8;
-		public const int GDK_TOPLEVEL_STATE_ABOVE = 16;
-		public const int GDK_TOPLEVEL_STATE_BELOW = 32;
-		public const int GDK_TOPLEVEL_STATE_FOCUSED = 64;
-		public const int GDK_TOPLEVEL_STATE_TILED = 128;
-		public const int GDK_TOPLEVEL_STATE_TOP_TILED = 256;
-		public const int GDK_TOPLEVEL_STATE_TOP_RESIZABLE = 512;
-		public const int GDK_TOPLEVEL_STATE_RIGHT_TILED = 1024;
-		public const int GDK_TOPLEVEL_STATE_RIGHT_RESIZABLE = 2048;
-		public const int GDK_TOPLEVEL_STATE_BOTTOM_TILED = 4096;
-		public const int GDK_TOPLEVEL_STATE_BOTTOM_RESIZABLE = 8192;
-		public const int GDK_TOPLEVEL_STATE_LEFT_TILED = 16384;
-		public const int GDK_TOPLEVEL_STATE_LEFT_RESIZABLE = 32768;
+		minimized = 1,
+		maximized = 2,
+		sticky = 4,
+		fullscreen = 8,
+		above = 16,
+		below = 32,
+		focused = 64,
+		tiled = 128,
+		top_tiled = 256,
+		top_resizable = 512,
+		right_tiled = 1024,
+		right_resizable = 2048,
+		bottom_tiled = 4096,
+		bottom_resizable = 8192,
+		left_tiled = 16384,
+		left_resizable = 32768
 	}
 	[CRepr]
 	public struct TouchEvent;
@@ -1174,16 +1174,16 @@ class Gdk
 	public static extern double TouchpadEventGetPinchScale(TouchpadEvent event);
 	public enum TouchpadGesturePhase : c_int
 	{
-		GDK_TOUCHPAD_GESTURE_PHASE_BEGIN,
-		GDK_TOUCHPAD_GESTURE_PHASE_UPDATE,
-		GDK_TOUCHPAD_GESTURE_PHASE_END,
-		GDK_TOUCHPAD_GESTURE_PHASE_CANCEL
+		begin = 0,
+		update = 1,
+		end = 2,
+		cancel = 3
 	}
 	[CRepr]
 	public struct VulkanContext;
 	public enum VulkanError : c_int
 	{
-		GDK_VULKAN_ERROR_UNSUPPORTED,
-		GDK_VULKAN_ERROR_NOT_AVAILABLE
+		unsupported = 0,
+		not_available = 1
 	}
 }

@@ -31,147 +31,147 @@ class cairo
 	}
 	public enum Status : c_int
 	{
-		CAIRO_STATUS_SUCCESS,
-		CAIRO_STATUS_NO_MEMORY,
-		CAIRO_STATUS_INVALID_RESTORE,
-		CAIRO_STATUS_INVALID_POP_GROUP,
-		CAIRO_STATUS_NO_CURRENT_POINT,
-		CAIRO_STATUS_INVALID_MATRIX,
-		CAIRO_STATUS_INVALID_STATUS,
-		CAIRO_STATUS_NULL_POINTER,
-		CAIRO_STATUS_INVALID_STRING,
-		CAIRO_STATUS_INVALID_PATH_DATA,
-		CAIRO_STATUS_READ_ERROR,
-		CAIRO_STATUS_WRITE_ERROR,
-		CAIRO_STATUS_SURFACE_FINISHED,
-		CAIRO_STATUS_SURFACE_TYPE_MISMATCH,
-		CAIRO_STATUS_PATTERN_TYPE_MISMATCH,
-		CAIRO_STATUS_INVALID_CONTENT,
-		CAIRO_STATUS_INVALID_FORMAT,
-		CAIRO_STATUS_INVALID_VISUAL,
-		CAIRO_STATUS_FILE_NOT_FOUND,
-		CAIRO_STATUS_INVALID_DASH,
-		CAIRO_STATUS_INVALID_DSC_COMMENT,
-		CAIRO_STATUS_INVALID_INDEX,
-		CAIRO_STATUS_CLIP_NOT_REPRESENTABLE,
-		CAIRO_STATUS_TEMP_FILE_ERROR,
-		CAIRO_STATUS_INVALID_STRIDE,
-		CAIRO_STATUS_FONT_TYPE_MISMATCH,
-		CAIRO_STATUS_USER_FONT_IMMUTABLE,
-		CAIRO_STATUS_USER_FONT_ERROR,
-		CAIRO_STATUS_NEGATIVE_COUNT,
-		CAIRO_STATUS_INVALID_CLUSTERS,
-		CAIRO_STATUS_INVALID_SLANT,
-		CAIRO_STATUS_INVALID_WEIGHT,
-		CAIRO_STATUS_INVALID_SIZE,
-		CAIRO_STATUS_USER_FONT_NOT_IMPLEMENTED,
-		CAIRO_STATUS_DEVICE_TYPE_MISMATCH,
-		CAIRO_STATUS_DEVICE_ERROR,
-		CAIRO_STATUS_INVALID_MESH_CONSTRUCTION,
-		CAIRO_STATUS_DEVICE_FINISHED,
-		CAIRO_STATUS_JBIG2_GLOBAL_MISSING
+		success = 0,
+		no_memory = 1,
+		invalid_restore = 2,
+		invalid_pop_group = 3,
+		no_current_point = 4,
+		invalid_matrix = 5,
+		invalid_status = 6,
+		null_pointer = 7,
+		invalid_string = 8,
+		invalid_path_data = 9,
+		read_error = 10,
+		write_error = 11,
+		surface_finished = 12,
+		surface_type_mismatch = 13,
+		pattern_type_mismatch = 14,
+		invalid_content = 15,
+		invalid_format = 16,
+		invalid_visual = 17,
+		file_not_found = 18,
+		invalid_dash = 19,
+		invalid_dsc_comment = 20,
+		invalid_index = 21,
+		clip_not_representable = 22,
+		temp_file_error = 23,
+		invalid_stride = 24,
+		font_type_mismatch = 25,
+		user_font_immutable = 26,
+		user_font_error = 27,
+		negative_count = 28,
+		invalid_clusters = 29,
+		invalid_slant = 30,
+		invalid_weight = 31,
+		invalid_size = 32,
+		user_font_not_implemented = 33,
+		device_type_mismatch = 34,
+		device_error = 35,
+		invalid_mesh_construction = 36,
+		device_finished = 37,
+		jbig2_global_missing = 38
 	}
 	public enum Content : c_int
 	{
-		CAIRO_CONTENT_COLOR,
-		CAIRO_CONTENT_ALPHA,
-		CAIRO_CONTENT_COLOR_ALPHA
+		color = 4096,
+		alpha = 8192,
+		color_alpha = 12288
 	}
 	public enum Operator : c_int
 	{
-		CAIRO_OPERATOR_CLEAR,
-		CAIRO_OPERATOR_SOURCE,
-		CAIRO_OPERATOR_OVER,
-		CAIRO_OPERATOR_IN,
-		CAIRO_OPERATOR_OUT,
-		CAIRO_OPERATOR_ATOP,
-		CAIRO_OPERATOR_DEST,
-		CAIRO_OPERATOR_DEST_OVER,
-		CAIRO_OPERATOR_DEST_IN,
-		CAIRO_OPERATOR_DEST_OUT,
-		CAIRO_OPERATOR_DEST_ATOP,
-		CAIRO_OPERATOR_XOR,
-		CAIRO_OPERATOR_ADD,
-		CAIRO_OPERATOR_SATURATE,
-		CAIRO_OPERATOR_MULTIPLY,
-		CAIRO_OPERATOR_SCREEN,
-		CAIRO_OPERATOR_OVERLAY,
-		CAIRO_OPERATOR_DARKEN,
-		CAIRO_OPERATOR_LIGHTEN,
-		CAIRO_OPERATOR_COLOR_DODGE,
-		CAIRO_OPERATOR_COLOR_BURN,
-		CAIRO_OPERATOR_HARD_LIGHT,
-		CAIRO_OPERATOR_SOFT_LIGHT,
-		CAIRO_OPERATOR_DIFFERENCE,
-		CAIRO_OPERATOR_EXCLUSION,
-		CAIRO_OPERATOR_HSL_HUE,
-		CAIRO_OPERATOR_HSL_SATURATION,
-		CAIRO_OPERATOR_HSL_COLOR,
-		CAIRO_OPERATOR_HSL_LUMINOSITY
+		clear = 0,
+		source = 1,
+		over = 2,
+		in_ = 3,
+		out_ = 4,
+		atop = 5,
+		dest = 6,
+		dest_over = 7,
+		dest_in = 8,
+		dest_out = 9,
+		dest_atop = 10,
+		xor = 11,
+		add = 12,
+		saturate = 13,
+		multiply = 14,
+		screen = 15,
+		overlay = 16,
+		darken = 17,
+		lighten = 18,
+		color_dodge = 19,
+		color_burn = 20,
+		hard_light = 21,
+		soft_light = 22,
+		difference = 23,
+		exclusion = 24,
+		hsl_hue = 25,
+		hsl_saturation = 26,
+		hsl_color = 27,
+		hsl_luminosity = 28
 	}
 	public enum Antialias : c_int
 	{
-		CAIRO_ANTIALIAS_DEFAULT,
-		CAIRO_ANTIALIAS_NONE,
-		CAIRO_ANTIALIAS_GRAY,
-		CAIRO_ANTIALIAS_SUBPIXEL,
-		CAIRO_ANTIALIAS_FAST,
-		CAIRO_ANTIALIAS_GOOD,
-		CAIRO_ANTIALIAS_BEST
+		default_ = 0,
+		none = 1,
+		gray = 2,
+		subpixel = 3,
+		fast = 4,
+		good = 5,
+		best = 6
 	}
 	public enum FillRule : c_int
 	{
-		CAIRO_FILL_RULE_WINDING,
-		CAIRO_FILL_RULE_EVEN_ODD
+		winding = 0,
+		even_odd = 1
 	}
 	public enum LineCap : c_int
 	{
-		CAIRO_LINE_CAP_BUTT,
-		CAIRO_LINE_CAP_ROUND,
-		CAIRO_LINE_CAP_SQUARE
+		butt = 0,
+		round = 1,
+		square = 2
 	}
 	public enum LineJoin : c_int
 	{
-		CAIRO_LINE_JOIN_MITER,
-		CAIRO_LINE_JOIN_ROUND,
-		CAIRO_LINE_JOIN_BEVEL
+		miter = 0,
+		round = 1,
+		bevel = 2
 	}
 	public enum TextClusterFlags : c_int
 	{
-		CAIRO_TEXT_CLUSTER_FLAG_BACKWARD
+		backward = 1
 	}
 	public enum FontSlant : c_int
 	{
-		CAIRO_FONT_SLANT_NORMAL,
-		CAIRO_FONT_SLANT_ITALIC,
-		CAIRO_FONT_SLANT_OBLIQUE
+		normal = 0,
+		italic = 1,
+		oblique = 2
 	}
 	public enum FontWeight : c_int
 	{
-		CAIRO_FONT_WEIGHT_NORMAL,
-		CAIRO_FONT_WEIGHT_BOLD
+		normal = 0,
+		bold = 1
 	}
 	public enum SubpixelOrder : c_int
 	{
-		CAIRO_SUBPIXEL_ORDER_DEFAULT,
-		CAIRO_SUBPIXEL_ORDER_RGB,
-		CAIRO_SUBPIXEL_ORDER_BGR,
-		CAIRO_SUBPIXEL_ORDER_VRGB,
-		CAIRO_SUBPIXEL_ORDER_VBGR
+		default_ = 0,
+		rgb = 1,
+		bgr = 2,
+		vrgb = 3,
+		vbgr = 4
 	}
 	public enum HintStyle : c_int
 	{
-		CAIRO_HINT_STYLE_DEFAULT,
-		CAIRO_HINT_STYLE_NONE,
-		CAIRO_HINT_STYLE_SLIGHT,
-		CAIRO_HINT_STYLE_MEDIUM,
-		CAIRO_HINT_STYLE_FULL
+		default_ = 0,
+		none = 1,
+		slight = 2,
+		medium = 3,
+		full = 4
 	}
 	public enum HintMetrics : c_int
 	{
-		CAIRO_HINT_METRICS_DEFAULT,
-		CAIRO_HINT_METRICS_OFF,
-		CAIRO_HINT_METRICS_ON
+		default_ = 0,
+		off = 1,
+		on = 2
 	}
 	[CRepr]
 	public struct FontOptions
@@ -179,99 +179,99 @@ class cairo
 	}
 	public enum FontType : c_int
 	{
-		CAIRO_FONT_TYPE_TOY,
-		CAIRO_FONT_TYPE_FT,
-		CAIRO_FONT_TYPE_WIN32,
-		CAIRO_FONT_TYPE_QUARTZ,
-		CAIRO_FONT_TYPE_USER
+		toy = 0,
+		ft = 1,
+		win32 = 2,
+		quartz = 3,
+		user = 4
 	}
 	public enum PathDataType : c_int
 	{
-		CAIRO_PATH_MOVE_TO,
-		CAIRO_PATH_LINE_TO,
-		CAIRO_PATH_CURVE_TO,
-		CAIRO_PATH_CLOSE_PATH
+		move_to = 0,
+		line_to = 1,
+		curve_to = 2,
+		close_path = 3
 	}
 	public enum DeviceType : c_int
 	{
-		CAIRO_DEVICE_TYPE_DRM,
-		CAIRO_DEVICE_TYPE_GL,
-		CAIRO_DEVICE_TYPE_SCRIPT,
-		CAIRO_DEVICE_TYPE_XCB,
-		CAIRO_DEVICE_TYPE_XLIB,
-		CAIRO_DEVICE_TYPE_XML,
-		CAIRO_DEVICE_TYPE_COGL,
-		CAIRO_DEVICE_TYPE_WIN32,
-		CAIRO_DEVICE_TYPE_INVALID
+		drm = 0,
+		gl = 1,
+		script = 2,
+		xcb = 3,
+		xlib = 4,
+		xml = 5,
+		cogl = 6,
+		win32 = 7,
+		invalid = -1
 	}
 	public enum SurfaceType : c_int
 	{
-		CAIRO_SURFACE_TYPE_IMAGE,
-		CAIRO_SURFACE_TYPE_PDF,
-		CAIRO_SURFACE_TYPE_PS,
-		CAIRO_SURFACE_TYPE_XLIB,
-		CAIRO_SURFACE_TYPE_XCB,
-		CAIRO_SURFACE_TYPE_GLITZ,
-		CAIRO_SURFACE_TYPE_QUARTZ,
-		CAIRO_SURFACE_TYPE_WIN32,
-		CAIRO_SURFACE_TYPE_BEOS,
-		CAIRO_SURFACE_TYPE_DIRECTFB,
-		CAIRO_SURFACE_TYPE_SVG,
-		CAIRO_SURFACE_TYPE_OS2,
-		CAIRO_SURFACE_TYPE_WIN32_PRINTING,
-		CAIRO_SURFACE_TYPE_QUARTZ_IMAGE,
-		CAIRO_SURFACE_TYPE_SCRIPT,
-		CAIRO_SURFACE_TYPE_QT,
-		CAIRO_SURFACE_TYPE_RECORDING,
-		CAIRO_SURFACE_TYPE_VG,
-		CAIRO_SURFACE_TYPE_GL,
-		CAIRO_SURFACE_TYPE_DRM,
-		CAIRO_SURFACE_TYPE_TEE,
-		CAIRO_SURFACE_TYPE_XML,
-		CAIRO_SURFACE_TYPE_SKIA,
-		CAIRO_SURFACE_TYPE_SUBSURFACE,
-		CAIRO_SURFACE_TYPE_COGL
+		image = 0,
+		pdf = 1,
+		ps = 2,
+		xlib = 3,
+		xcb = 4,
+		glitz = 5,
+		quartz = 6,
+		win32 = 7,
+		beos = 8,
+		directfb = 9,
+		svg = 10,
+		os2 = 11,
+		win32_printing = 12,
+		quartz_image = 13,
+		script = 14,
+		qt = 15,
+		recording = 16,
+		vg = 17,
+		gl = 18,
+		drm = 19,
+		tee = 20,
+		xml = 21,
+		skia = 22,
+		subsurface = 23,
+		cogl = 24
 	}
 	public enum Format : c_int
 	{
-		CAIRO_FORMAT_INVALID,
-		CAIRO_FORMAT_ARGB32,
-		CAIRO_FORMAT_RGB24,
-		CAIRO_FORMAT_A8,
-		CAIRO_FORMAT_A1,
-		CAIRO_FORMAT_RGB16_565,
-		CAIRO_FORMAT_RGB30
+		invalid = -1,
+		argb32 = 0,
+		rgb24 = 1,
+		a8 = 2,
+		a1 = 3,
+		rgb16_565 = 4,
+		rgb30 = 5
 	}
 	public enum PatternType : c_int
 	{
-		CAIRO_PATTERN_TYPE_SOLID,
-		CAIRO_PATTERN_TYPE_SURFACE,
-		CAIRO_PATTERN_TYPE_LINEAR,
-		CAIRO_PATTERN_TYPE_RADIAL,
-		CAIRO_PATTERN_TYPE_MESH,
-		CAIRO_PATTERN_TYPE_RASTER_SOURCE
+		solid = 0,
+		surface = 1,
+		linear = 2,
+		radial = 3,
+		mesh = 4,
+		raster_source = 5
 	}
 	public enum Extend : c_int
 	{
-		CAIRO_EXTEND_NONE,
-		CAIRO_EXTEND_REPEAT,
-		CAIRO_EXTEND_REFLECT,
-		CAIRO_EXTEND_PAD
+		none = 0,
+		repeat_ = 1,
+		reflect = 2,
+		pad = 3
 	}
 	public enum Filter : c_int
 	{
-		CAIRO_FILTER_FAST,
-		CAIRO_FILTER_GOOD,
-		CAIRO_FILTER_BEST,
-		CAIRO_FILTER_NEAREST,
-		CAIRO_FILTER_BILINEAR,
-		CAIRO_FILTER_GAUSSIAN
+		fast = 0,
+		good = 1,
+		best = 2,
+		nearest = 3,
+		bilinear = 4,
+		gaussian = 5
 	}
 	public enum RegionOverlap : c_int
 	{
-		CAIRO_REGION_OVERLAP_IN,
-		CAIRO_REGION_OVERLAP_OUT,
-		CAIRO_REGION_OVERLAP_PART
+		in_ = 0,
+		out_ = 1,
+		part = 2
 	}
 	[CRepr]
 	public struct FontFace

@@ -14,9 +14,9 @@ class Pango
 	public typealias LayoutRun = GlyphItem;
 	public enum Alignment : c_int
 	{
-		PANGO_ALIGN_LEFT,
-		PANGO_ALIGN_CENTER,
-		PANGO_ALIGN_RIGHT
+		left = 0,
+		center = 1,
+		right = 2
 	}
 	[CRepr]
 	public struct Analysis
@@ -107,44 +107,44 @@ class Pango
 	}
 	public enum AttrType : c_int
 	{
-		PANGO_ATTR_INVALID,
-		PANGO_ATTR_LANGUAGE,
-		PANGO_ATTR_FAMILY,
-		PANGO_ATTR_STYLE,
-		PANGO_ATTR_WEIGHT,
-		PANGO_ATTR_VARIANT,
-		PANGO_ATTR_STRETCH,
-		PANGO_ATTR_SIZE,
-		PANGO_ATTR_FONT_DESC,
-		PANGO_ATTR_FOREGROUND,
-		PANGO_ATTR_BACKGROUND,
-		PANGO_ATTR_UNDERLINE,
-		PANGO_ATTR_STRIKETHROUGH,
-		PANGO_ATTR_RISE,
-		PANGO_ATTR_SHAPE,
-		PANGO_ATTR_SCALE,
-		PANGO_ATTR_FALLBACK,
-		PANGO_ATTR_LETTER_SPACING,
-		PANGO_ATTR_UNDERLINE_COLOR,
-		PANGO_ATTR_STRIKETHROUGH_COLOR,
-		PANGO_ATTR_ABSOLUTE_SIZE,
-		PANGO_ATTR_GRAVITY,
-		PANGO_ATTR_GRAVITY_HINT,
-		PANGO_ATTR_FONT_FEATURES,
-		PANGO_ATTR_FOREGROUND_ALPHA,
-		PANGO_ATTR_BACKGROUND_ALPHA,
-		PANGO_ATTR_ALLOW_BREAKS,
-		PANGO_ATTR_SHOW,
-		PANGO_ATTR_INSERT_HYPHENS,
-		PANGO_ATTR_OVERLINE,
-		PANGO_ATTR_OVERLINE_COLOR,
-		PANGO_ATTR_LINE_HEIGHT,
-		PANGO_ATTR_ABSOLUTE_LINE_HEIGHT,
-		PANGO_ATTR_TEXT_TRANSFORM,
-		PANGO_ATTR_WORD,
-		PANGO_ATTR_SENTENCE,
-		PANGO_ATTR_BASELINE_SHIFT,
-		PANGO_ATTR_FONT_SCALE
+		invalid = 0,
+		language = 1,
+		family = 2,
+		style = 3,
+		weight = 4,
+		variant = 5,
+		stretch = 6,
+		size = 7,
+		font_desc = 8,
+		foreground = 9,
+		background = 10,
+		underline = 11,
+		strikethrough = 12,
+		rise = 13,
+		shape = 14,
+		scale = 15,
+		fallback = 16,
+		letter_spacing = 17,
+		underline_color = 18,
+		strikethrough_color = 19,
+		absolute_size = 20,
+		gravity = 21,
+		gravity_hint = 22,
+		font_features = 23,
+		foreground_alpha = 24,
+		background_alpha = 25,
+		allow_breaks = 26,
+		show = 27,
+		insert_hyphens = 28,
+		overline = 29,
+		overline_color = 30,
+		line_height = 31,
+		absolute_line_height = 32,
+		text_transform = 33,
+		word = 34,
+		sentence = 35,
+		baseline_shift = 36,
+		font_scale = 37
 	}
 	[CRepr]
 	public struct Attribute
@@ -155,35 +155,35 @@ class Pango
 	}
 	public enum BaselineShift : c_int
 	{
-		PANGO_BASELINE_SHIFT_NONE,
-		PANGO_BASELINE_SHIFT_SUPERSCRIPT,
-		PANGO_BASELINE_SHIFT_SUBSCRIPT
+		none = 0,
+		superscript = 1,
+		subscript = 2
 	}
 	public enum BidiType : c_int
 	{
-		PANGO_BIDI_TYPE_L,
-		PANGO_BIDI_TYPE_LRE,
-		PANGO_BIDI_TYPE_LRO,
-		PANGO_BIDI_TYPE_R,
-		PANGO_BIDI_TYPE_AL,
-		PANGO_BIDI_TYPE_RLE,
-		PANGO_BIDI_TYPE_RLO,
-		PANGO_BIDI_TYPE_PDF,
-		PANGO_BIDI_TYPE_EN,
-		PANGO_BIDI_TYPE_ES,
-		PANGO_BIDI_TYPE_ET,
-		PANGO_BIDI_TYPE_AN,
-		PANGO_BIDI_TYPE_CS,
-		PANGO_BIDI_TYPE_NSM,
-		PANGO_BIDI_TYPE_BN,
-		PANGO_BIDI_TYPE_B,
-		PANGO_BIDI_TYPE_S,
-		PANGO_BIDI_TYPE_WS,
-		PANGO_BIDI_TYPE_ON,
-		PANGO_BIDI_TYPE_LRI,
-		PANGO_BIDI_TYPE_RLI,
-		PANGO_BIDI_TYPE_FSI,
-		PANGO_BIDI_TYPE_PDI
+		l = 0,
+		lre = 1,
+		lro = 2,
+		r = 3,
+		al = 4,
+		rle = 5,
+		rlo = 6,
+		pdf = 7,
+		en = 8,
+		es = 9,
+		et = 10,
+		an = 11,
+		cs = 12,
+		nsm = 13,
+		bn = 14,
+		b = 15,
+		s = 16,
+		ws = 17,
+		on = 18,
+		lri = 19,
+		rli = 20,
+		fsi = 21,
+		pdi = 22
 	}
 	[CRepr]
 	public struct Color
@@ -266,27 +266,27 @@ class Pango
 	public static extern void CoverageUnref(Coverage coverage);
 	public enum CoverageLevel : c_int
 	{
-		PANGO_COVERAGE_NONE,
-		PANGO_COVERAGE_FALLBACK,
-		PANGO_COVERAGE_APPROXIMATE,
-		PANGO_COVERAGE_EXACT
+		none = 0,
+		fallback = 1,
+		approximate = 2,
+		exact = 3
 	}
 	public enum Direction : c_int
 	{
-		PANGO_DIRECTION_LTR,
-		PANGO_DIRECTION_RTL,
-		PANGO_DIRECTION_TTB_LTR,
-		PANGO_DIRECTION_TTB_RTL,
-		PANGO_DIRECTION_WEAK_LTR,
-		PANGO_DIRECTION_WEAK_RTL,
-		PANGO_DIRECTION_NEUTRAL
+		ltr = 0,
+		rtl = 1,
+		ttb_ltr = 2,
+		ttb_rtl = 3,
+		weak_ltr = 4,
+		weak_rtl = 5,
+		neutral = 6
 	}
 	public enum EllipsizeMode : c_int
 	{
-		PANGO_ELLIPSIZE_NONE,
-		PANGO_ELLIPSIZE_START,
-		PANGO_ELLIPSIZE_MIDDLE,
-		PANGO_ELLIPSIZE_END
+		none = 0,
+		start = 1,
+		middle = 2,
+		end = 3
 	}
 	[CRepr]
 	public struct Font;
@@ -380,16 +380,16 @@ class Pango
 		char8* shape_engine_type;
 	}
 	[CRepr]
-	public struct FontMask
+	public enum FontMask : int
 	{
-		public const int PANGO_FONT_MASK_FAMILY = 1;
-		public const int PANGO_FONT_MASK_STYLE = 2;
-		public const int PANGO_FONT_MASK_VARIANT = 4;
-		public const int PANGO_FONT_MASK_WEIGHT = 8;
-		public const int PANGO_FONT_MASK_STRETCH = 16;
-		public const int PANGO_FONT_MASK_SIZE = 32;
-		public const int PANGO_FONT_MASK_GRAVITY = 64;
-		public const int PANGO_FONT_MASK_VARIATIONS = 128;
+		family = 1,
+		style = 2,
+		variant = 4,
+		weight = 8,
+		stretch = 16,
+		size = 32,
+		gravity = 64,
+		variations = 128
 	}
 	[CRepr]
 	public struct FontMetrics
@@ -407,10 +407,10 @@ class Pango
 	}
 	public enum FontScale : c_int
 	{
-		PANGO_FONT_SCALE_NONE,
-		PANGO_FONT_SCALE_SUPERSCRIPT,
-		PANGO_FONT_SCALE_SUBSCRIPT,
-		PANGO_FONT_SCALE_SMALL_CAPS
+		none = 0,
+		superscript = 1,
+		subscript = 2,
+		small_caps = 3
 	}
 	[CRepr]
 	public struct Fontset;
@@ -487,17 +487,17 @@ class Pango
 	}
 	public enum Gravity : c_int
 	{
-		PANGO_GRAVITY_SOUTH,
-		PANGO_GRAVITY_EAST,
-		PANGO_GRAVITY_NORTH,
-		PANGO_GRAVITY_WEST,
-		PANGO_GRAVITY_AUTO
+		south = 0,
+		east = 1,
+		north = 2,
+		west = 3,
+		auto = 4
 	}
 	public enum GravityHint : c_int
 	{
-		PANGO_GRAVITY_HINT_NATURAL,
-		PANGO_GRAVITY_HINT_STRONG,
-		PANGO_GRAVITY_HINT_LINE
+		natural = 0,
+		strong = 1,
+		line = 2
 	}
 	[CRepr]
 	public struct Item
@@ -649,15 +649,15 @@ class Pango
 	}
 	public enum LayoutDeserializeError : c_int
 	{
-		PANGO_LAYOUT_DESERIALIZE_INVALID,
-		PANGO_LAYOUT_DESERIALIZE_INVALID_VALUE,
-		PANGO_LAYOUT_DESERIALIZE_MISSING_VALUE
+		invalid = 0,
+		invalid_value = 1,
+		missing_value = 2
 	}
 	[CRepr]
-	public struct LayoutDeserializeFlags
+	public enum LayoutDeserializeFlags : int
 	{
-		public const int PANGO_LAYOUT_DESERIALIZE_DEFAULT = 0;
-		public const int PANGO_LAYOUT_DESERIALIZE_CONTEXT = 1;
+		default_ = 0,
+		context = 1
 	}
 	[CRepr]
 	public struct LayoutIter
@@ -674,11 +674,11 @@ class Pango
 		c_uint resolved_dir;
 	}
 	[CRepr]
-	public struct LayoutSerializeFlags
+	public enum LayoutSerializeFlags : int
 	{
-		public const int PANGO_LAYOUT_SERIALIZE_DEFAULT = 0;
-		public const int PANGO_LAYOUT_SERIALIZE_CONTEXT = 1;
-		public const int PANGO_LAYOUT_SERIALIZE_OUTPUT = 2;
+		default_ = 0,
+		context = 1,
+		output = 2
 	}
 	[CRepr]
 	public struct LogAttr
@@ -712,8 +712,8 @@ class Pango
 	}
 	public enum Overline : c_int
 	{
-		PANGO_OVERLINE_NONE,
-		PANGO_OVERLINE_SINGLE
+		none = 0,
+		single = 1
 	}
 	[CRepr]
 	public struct Rectangle
@@ -725,11 +725,11 @@ class Pango
 	}
 	public enum RenderPart : c_int
 	{
-		PANGO_RENDER_PART_FOREGROUND,
-		PANGO_RENDER_PART_BACKGROUND,
-		PANGO_RENDER_PART_UNDERLINE,
-		PANGO_RENDER_PART_STRIKETHROUGH,
-		PANGO_RENDER_PART_OVERLINE
+		foreground = 0,
+		background = 1,
+		underline = 2,
+		strikethrough = 3,
+		overline = 4
 	}
 	[CRepr]
 	public struct Renderer;
@@ -782,167 +782,167 @@ class Pango
 	}
 	public enum Script : c_int
 	{
-		PANGO_SCRIPT_INVALID_CODE,
-		PANGO_SCRIPT_COMMON,
-		PANGO_SCRIPT_INHERITED,
-		PANGO_SCRIPT_ARABIC,
-		PANGO_SCRIPT_ARMENIAN,
-		PANGO_SCRIPT_BENGALI,
-		PANGO_SCRIPT_BOPOMOFO,
-		PANGO_SCRIPT_CHEROKEE,
-		PANGO_SCRIPT_COPTIC,
-		PANGO_SCRIPT_CYRILLIC,
-		PANGO_SCRIPT_DESERET,
-		PANGO_SCRIPT_DEVANAGARI,
-		PANGO_SCRIPT_ETHIOPIC,
-		PANGO_SCRIPT_GEORGIAN,
-		PANGO_SCRIPT_GOTHIC,
-		PANGO_SCRIPT_GREEK,
-		PANGO_SCRIPT_GUJARATI,
-		PANGO_SCRIPT_GURMUKHI,
-		PANGO_SCRIPT_HAN,
-		PANGO_SCRIPT_HANGUL,
-		PANGO_SCRIPT_HEBREW,
-		PANGO_SCRIPT_HIRAGANA,
-		PANGO_SCRIPT_KANNADA,
-		PANGO_SCRIPT_KATAKANA,
-		PANGO_SCRIPT_KHMER,
-		PANGO_SCRIPT_LAO,
-		PANGO_SCRIPT_LATIN,
-		PANGO_SCRIPT_MALAYALAM,
-		PANGO_SCRIPT_MONGOLIAN,
-		PANGO_SCRIPT_MYANMAR,
-		PANGO_SCRIPT_OGHAM,
-		PANGO_SCRIPT_OLD_ITALIC,
-		PANGO_SCRIPT_ORIYA,
-		PANGO_SCRIPT_RUNIC,
-		PANGO_SCRIPT_SINHALA,
-		PANGO_SCRIPT_SYRIAC,
-		PANGO_SCRIPT_TAMIL,
-		PANGO_SCRIPT_TELUGU,
-		PANGO_SCRIPT_THAANA,
-		PANGO_SCRIPT_THAI,
-		PANGO_SCRIPT_TIBETAN,
-		PANGO_SCRIPT_CANADIAN_ABORIGINAL,
-		PANGO_SCRIPT_YI,
-		PANGO_SCRIPT_TAGALOG,
-		PANGO_SCRIPT_HANUNOO,
-		PANGO_SCRIPT_BUHID,
-		PANGO_SCRIPT_TAGBANWA,
-		PANGO_SCRIPT_BRAILLE,
-		PANGO_SCRIPT_CYPRIOT,
-		PANGO_SCRIPT_LIMBU,
-		PANGO_SCRIPT_OSMANYA,
-		PANGO_SCRIPT_SHAVIAN,
-		PANGO_SCRIPT_LINEAR_B,
-		PANGO_SCRIPT_TAI_LE,
-		PANGO_SCRIPT_UGARITIC,
-		PANGO_SCRIPT_NEW_TAI_LUE,
-		PANGO_SCRIPT_BUGINESE,
-		PANGO_SCRIPT_GLAGOLITIC,
-		PANGO_SCRIPT_TIFINAGH,
-		PANGO_SCRIPT_SYLOTI_NAGRI,
-		PANGO_SCRIPT_OLD_PERSIAN,
-		PANGO_SCRIPT_KHAROSHTHI,
-		PANGO_SCRIPT_UNKNOWN,
-		PANGO_SCRIPT_BALINESE,
-		PANGO_SCRIPT_CUNEIFORM,
-		PANGO_SCRIPT_PHOENICIAN,
-		PANGO_SCRIPT_PHAGS_PA,
-		PANGO_SCRIPT_NKO,
-		PANGO_SCRIPT_KAYAH_LI,
-		PANGO_SCRIPT_LEPCHA,
-		PANGO_SCRIPT_REJANG,
-		PANGO_SCRIPT_SUNDANESE,
-		PANGO_SCRIPT_SAURASHTRA,
-		PANGO_SCRIPT_CHAM,
-		PANGO_SCRIPT_OL_CHIKI,
-		PANGO_SCRIPT_VAI,
-		PANGO_SCRIPT_CARIAN,
-		PANGO_SCRIPT_LYCIAN,
-		PANGO_SCRIPT_LYDIAN,
-		PANGO_SCRIPT_BATAK,
-		PANGO_SCRIPT_BRAHMI,
-		PANGO_SCRIPT_MANDAIC,
-		PANGO_SCRIPT_CHAKMA,
-		PANGO_SCRIPT_MEROITIC_CURSIVE,
-		PANGO_SCRIPT_MEROITIC_HIEROGLYPHS,
-		PANGO_SCRIPT_MIAO,
-		PANGO_SCRIPT_SHARADA,
-		PANGO_SCRIPT_SORA_SOMPENG,
-		PANGO_SCRIPT_TAKRI,
-		PANGO_SCRIPT_BASSA_VAH,
-		PANGO_SCRIPT_CAUCASIAN_ALBANIAN,
-		PANGO_SCRIPT_DUPLOYAN,
-		PANGO_SCRIPT_ELBASAN,
-		PANGO_SCRIPT_GRANTHA,
-		PANGO_SCRIPT_KHOJKI,
-		PANGO_SCRIPT_KHUDAWADI,
-		PANGO_SCRIPT_LINEAR_A,
-		PANGO_SCRIPT_MAHAJANI,
-		PANGO_SCRIPT_MANICHAEAN,
-		PANGO_SCRIPT_MENDE_KIKAKUI,
-		PANGO_SCRIPT_MODI,
-		PANGO_SCRIPT_MRO,
-		PANGO_SCRIPT_NABATAEAN,
-		PANGO_SCRIPT_OLD_NORTH_ARABIAN,
-		PANGO_SCRIPT_OLD_PERMIC,
-		PANGO_SCRIPT_PAHAWH_HMONG,
-		PANGO_SCRIPT_PALMYRENE,
-		PANGO_SCRIPT_PAU_CIN_HAU,
-		PANGO_SCRIPT_PSALTER_PAHLAVI,
-		PANGO_SCRIPT_SIDDHAM,
-		PANGO_SCRIPT_TIRHUTA,
-		PANGO_SCRIPT_WARANG_CITI,
-		PANGO_SCRIPT_AHOM,
-		PANGO_SCRIPT_ANATOLIAN_HIEROGLYPHS,
-		PANGO_SCRIPT_HATRAN,
-		PANGO_SCRIPT_MULTANI,
-		PANGO_SCRIPT_OLD_HUNGARIAN,
-		PANGO_SCRIPT_SIGNWRITING
+		invalid_code = -1,
+		common = 0,
+		inherited = 1,
+		arabic = 2,
+		armenian = 3,
+		bengali = 4,
+		bopomofo = 5,
+		cherokee = 6,
+		coptic = 7,
+		cyrillic = 8,
+		deseret = 9,
+		devanagari = 10,
+		ethiopic = 11,
+		georgian = 12,
+		gothic = 13,
+		greek = 14,
+		gujarati = 15,
+		gurmukhi = 16,
+		han = 17,
+		hangul = 18,
+		hebrew = 19,
+		hiragana = 20,
+		kannada = 21,
+		katakana = 22,
+		khmer = 23,
+		lao = 24,
+		latin = 25,
+		malayalam = 26,
+		mongolian = 27,
+		myanmar = 28,
+		ogham = 29,
+		old_italic = 30,
+		oriya = 31,
+		runic = 32,
+		sinhala = 33,
+		syriac = 34,
+		tamil = 35,
+		telugu = 36,
+		thaana = 37,
+		thai = 38,
+		tibetan = 39,
+		canadian_aboriginal = 40,
+		yi = 41,
+		tagalog = 42,
+		hanunoo = 43,
+		buhid = 44,
+		tagbanwa = 45,
+		braille = 46,
+		cypriot = 47,
+		limbu = 48,
+		osmanya = 49,
+		shavian = 50,
+		linear_b = 51,
+		tai_le = 52,
+		ugaritic = 53,
+		new_tai_lue = 54,
+		buginese = 55,
+		glagolitic = 56,
+		tifinagh = 57,
+		syloti_nagri = 58,
+		old_persian = 59,
+		kharoshthi = 60,
+		unknown = 61,
+		balinese = 62,
+		cuneiform = 63,
+		phoenician = 64,
+		phags_pa = 65,
+		nko = 66,
+		kayah_li = 67,
+		lepcha = 68,
+		rejang = 69,
+		sundanese = 70,
+		saurashtra = 71,
+		cham = 72,
+		ol_chiki = 73,
+		vai = 74,
+		carian = 75,
+		lycian = 76,
+		lydian = 77,
+		batak = 78,
+		brahmi = 79,
+		mandaic = 80,
+		chakma = 81,
+		meroitic_cursive = 82,
+		meroitic_hieroglyphs = 83,
+		miao = 84,
+		sharada = 85,
+		sora_sompeng = 86,
+		takri = 87,
+		bassa_vah = 88,
+		caucasian_albanian = 89,
+		duployan = 90,
+		elbasan = 91,
+		grantha = 92,
+		khojki = 93,
+		khudawadi = 94,
+		linear_a = 95,
+		mahajani = 96,
+		manichaean = 97,
+		mende_kikakui = 98,
+		modi = 99,
+		mro = 100,
+		nabataean = 101,
+		old_north_arabian = 102,
+		old_permic = 103,
+		pahawh_hmong = 104,
+		palmyrene = 105,
+		pau_cin_hau = 106,
+		psalter_pahlavi = 107,
+		siddham = 108,
+		tirhuta = 109,
+		warang_citi = 110,
+		ahom = 111,
+		anatolian_hieroglyphs = 112,
+		hatran = 113,
+		multani = 114,
+		old_hungarian = 115,
+		signwriting = 116
 	}
 	[CRepr]
 	public struct ScriptIter
 	{
 	}
 	[CRepr]
-	public struct ShapeFlags
+	public enum ShapeFlags : int
 	{
-		public const int PANGO_SHAPE_NONE = 0;
-		public const int PANGO_SHAPE_ROUND_POSITIONS = 1;
+		none = 0,
+		round_positions = 1
 	}
 	[CRepr]
-	public struct ShowFlags
+	public enum ShowFlags : int
 	{
-		public const int PANGO_SHOW_NONE = 0;
-		public const int PANGO_SHOW_SPACES = 1;
-		public const int PANGO_SHOW_LINE_BREAKS = 2;
-		public const int PANGO_SHOW_IGNORABLES = 4;
+		none = 0,
+		spaces = 1,
+		line_breaks = 2,
+		ignorables = 4
 	}
 	public enum Stretch : c_int
 	{
-		PANGO_STRETCH_ULTRA_CONDENSED,
-		PANGO_STRETCH_EXTRA_CONDENSED,
-		PANGO_STRETCH_CONDENSED,
-		PANGO_STRETCH_SEMI_CONDENSED,
-		PANGO_STRETCH_NORMAL,
-		PANGO_STRETCH_SEMI_EXPANDED,
-		PANGO_STRETCH_EXPANDED,
-		PANGO_STRETCH_EXTRA_EXPANDED,
-		PANGO_STRETCH_ULTRA_EXPANDED
+		ultra_condensed = 0,
+		extra_condensed = 1,
+		condensed = 2,
+		semi_condensed = 3,
+		normal = 4,
+		semi_expanded = 5,
+		expanded = 6,
+		extra_expanded = 7,
+		ultra_expanded = 8
 	}
 	public enum Style : c_int
 	{
-		PANGO_STYLE_NORMAL,
-		PANGO_STYLE_OBLIQUE,
-		PANGO_STYLE_ITALIC
+		normal = 0,
+		oblique = 1,
+		italic = 2
 	}
 	public enum TabAlign : c_int
 	{
-		PANGO_TAB_LEFT,
-		PANGO_TAB_RIGHT,
-		PANGO_TAB_CENTER,
-		PANGO_TAB_DECIMAL
+		left = 0,
+		right = 1,
+		center = 2,
+		decimal = 3
 	}
 	[CRepr]
 	public struct TabArray
@@ -950,51 +950,51 @@ class Pango
 	}
 	public enum TextTransform : c_int
 	{
-		PANGO_TEXT_TRANSFORM_NONE,
-		PANGO_TEXT_TRANSFORM_LOWERCASE,
-		PANGO_TEXT_TRANSFORM_UPPERCASE,
-		PANGO_TEXT_TRANSFORM_CAPITALIZE
+		none = 0,
+		lowercase = 1,
+		uppercase = 2,
+		capitalize = 3
 	}
 	public enum Underline : c_int
 	{
-		PANGO_UNDERLINE_NONE,
-		PANGO_UNDERLINE_SINGLE,
-		PANGO_UNDERLINE_DOUBLE,
-		PANGO_UNDERLINE_LOW,
-		PANGO_UNDERLINE_ERROR,
-		PANGO_UNDERLINE_SINGLE_LINE,
-		PANGO_UNDERLINE_DOUBLE_LINE,
-		PANGO_UNDERLINE_ERROR_LINE
+		none = 0,
+		single = 1,
+		double = 2,
+		low = 3,
+		error = 4,
+		single_line = 5,
+		double_line = 6,
+		error_line = 7
 	}
 	public enum Variant : c_int
 	{
-		PANGO_VARIANT_NORMAL,
-		PANGO_VARIANT_SMALL_CAPS,
-		PANGO_VARIANT_ALL_SMALL_CAPS,
-		PANGO_VARIANT_PETITE_CAPS,
-		PANGO_VARIANT_ALL_PETITE_CAPS,
-		PANGO_VARIANT_UNICASE,
-		PANGO_VARIANT_TITLE_CAPS
+		normal = 0,
+		small_caps = 1,
+		all_small_caps = 2,
+		petite_caps = 3,
+		all_petite_caps = 4,
+		unicase = 5,
+		title_caps = 6
 	}
 	public enum Weight : c_int
 	{
-		PANGO_WEIGHT_THIN,
-		PANGO_WEIGHT_ULTRALIGHT,
-		PANGO_WEIGHT_LIGHT,
-		PANGO_WEIGHT_SEMILIGHT,
-		PANGO_WEIGHT_BOOK,
-		PANGO_WEIGHT_NORMAL,
-		PANGO_WEIGHT_MEDIUM,
-		PANGO_WEIGHT_SEMIBOLD,
-		PANGO_WEIGHT_BOLD,
-		PANGO_WEIGHT_ULTRABOLD,
-		PANGO_WEIGHT_HEAVY,
-		PANGO_WEIGHT_ULTRAHEAVY
+		thin = 100,
+		ultralight = 200,
+		light = 300,
+		semilight = 350,
+		book = 380,
+		normal = 400,
+		medium = 500,
+		semibold = 600,
+		bold = 700,
+		ultrabold = 800,
+		heavy = 900,
+		ultraheavy = 1000
 	}
 	public enum WrapMode : c_int
 	{
-		PANGO_WRAP_WORD,
-		PANGO_WRAP_CHAR,
-		PANGO_WRAP_WORD_CHAR
+		word = 0,
+		char = 1,
+		word_char = 2
 	}
 }

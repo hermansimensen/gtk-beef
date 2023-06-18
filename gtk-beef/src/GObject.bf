@@ -30,12 +30,12 @@ class GObject
 	[LinkName("g_binding_unbind")]
 	public static extern void Bindinunbind(Binding binding);
 	[CRepr]
-	public struct BindingFlags
+	public enum BindingFlags : int
 	{
-		public const int G_BINDING_DEFAULT = 0;
-		public const int G_BINDING_BIDIRECTIONAL = 1;
-		public const int G_BINDING_SYNC_CREATE = 2;
-		public const int G_BINDING_INVERT_BOOLEAN = 4;
+		default_ = 0,
+		bidirectional = 1,
+		sync_create = 2,
+		invert_boolean = 4
 	}
 	[CRepr]
 	public struct BindingGroup;
@@ -88,11 +88,11 @@ class GObject
 		ClosureNotify notify;
 	}
 	[CRepr]
-	public struct ConnectFlags
+	public enum ConnectFlags : int
 	{
-		public const int G_CONNECT_DEFAULT = 0;
-		public const int G_CONNECT_AFTER = 1;
-		public const int G_CONNECT_SWAPPED = 2;
+		default_ = 0,
+		after = 1,
+		swapped = 2
 	}
 	[CRepr]
 	public struct EnumClass
@@ -262,21 +262,21 @@ class GObject
 	public function void ObjectFinalizeFunc(Object object);
 	public function void ObjectGetPropertyFunc(Object object, c_uint property_id, Value value, ParamSpec pspec);
 	public function void ObjectSetPropertyFunc(Object object, c_uint property_id, Value value, ParamSpec pspec);
-	[CRepr]
-	public struct ParamFlags
+	[CRepr, AllowDuplicates]
+	public enum ParamFlags : int
 	{
-		public const int G_PARAM_READABLE = 1;
-		public const int G_PARAM_WRITABLE = 2;
-		public const int G_PARAM_READWRITE = 3;
-		public const int G_PARAM_CONSTRUCT = 4;
-		public const int G_PARAM_CONSTRUCT_ONLY = 8;
-		public const int G_PARAM_LAX_VALIDATION = 16;
-		public const int G_PARAM_STATIC_NAME = 32;
-		public const int G_PARAM_PRIVATE = 32;
-		public const int G_PARAM_STATIC_NICK = 64;
-		public const int G_PARAM_STATIC_BLURB = 128;
-		public const int G_PARAM_EXPLICIT_NOTIFY = 1073741824;
-		public const int G_PARAM_DEPRECATED = 2147483648;
+		readable = 1,
+		writable = 2,
+		readwrite = 3,
+		construct = 4,
+		construct_only = 8,
+		lax_validation = 16,
+		static_name = 32,
+		private_ = 32,
+		static_nick = 64,
+		static_blurb = 128,
+		explicit_notify = 1073741824,
+		deprecated = 2147483648
 	}
 	[CRepr]
 	public struct ParamSpec;
@@ -380,18 +380,18 @@ class GObject
 	public function c_int SignalAccumulator(SignalInvocationHint ihint, Value return_accu, Value handler_return, void* data);
 	public function c_int SignalEmissionHook(SignalInvocationHint ihint, c_uint n_param_values, void* data);
 	[CRepr]
-	public struct SignalFlags
+	public enum SignalFlags : int
 	{
-		public const int G_SIGNAL_RUN_FIRST = 1;
-		public const int G_SIGNAL_RUN_LAST = 2;
-		public const int G_SIGNAL_RUN_CLEANUP = 4;
-		public const int G_SIGNAL_NO_RECURSE = 8;
-		public const int G_SIGNAL_DETAILED = 16;
-		public const int G_SIGNAL_ACTION = 32;
-		public const int G_SIGNAL_NO_HOOKS = 64;
-		public const int G_SIGNAL_MUST_COLLECT = 128;
-		public const int G_SIGNAL_DEPRECATED = 256;
-		public const int G_SIGNAL_ACCUMULATOR_FIRST_RUN = 131072;
+		run_first = 1,
+		run_last = 2,
+		run_cleanup = 4,
+		no_recurse = 8,
+		detailed = 16,
+		action = 32,
+		no_hooks = 64,
+		must_collect = 128,
+		deprecated = 256,
+		accumulator_first_run = 131072
 	}
 	[CRepr]
 	public struct SignalGroup;
@@ -425,14 +425,14 @@ class GObject
 		SignalFlags run_type;
 	}
 	[CRepr]
-	public struct SignalMatchType
+	public enum SignalMatchType : int
 	{
-		public const int G_SIGNAL_MATCH_ID = 1;
-		public const int G_SIGNAL_MATCH_DETAIL = 2;
-		public const int G_SIGNAL_MATCH_CLOSURE = 4;
-		public const int G_SIGNAL_MATCH_FUNC = 8;
-		public const int G_SIGNAL_MATCH_DATA = 16;
-		public const int G_SIGNAL_MATCH_UNBLOCKED = 32;
+		id = 1,
+		detail = 2,
+		closure = 4,
+		func = 8,
+		data = 16,
+		unblocked = 32
 	}
 	[CRepr]
 	public struct SignalQuery
@@ -456,30 +456,30 @@ class GObject
 	}
 	public function c_int TypeClassCacheFunc(void* cache_data, TypeClass g_class);
 	[CRepr]
-	public struct TypeDebugFlags
+	public enum TypeDebugFlags : int
 	{
-		public const int G_TYPE_DEBUG_NONE = 0;
-		public const int G_TYPE_DEBUG_OBJECTS = 1;
-		public const int G_TYPE_DEBUG_SIGNALS = 2;
-		public const int G_TYPE_DEBUG_INSTANCE_COUNT = 4;
-		public const int G_TYPE_DEBUG_MASK = 7;
+		none = 0,
+		objects = 1,
+		signals = 2,
+		instance_count = 4,
+		mask = 7
 	}
 	[CRepr]
-	public struct TypeFlags
+	public enum TypeFlags : int
 	{
-		public const int G_TYPE_FLAG_NONE = 0;
-		public const int G_TYPE_FLAG_ABSTRACT = 16;
-		public const int G_TYPE_FLAG_VALUE_ABSTRACT = 32;
-		public const int G_TYPE_FLAG_FINAL = 64;
-		public const int G_TYPE_FLAG_DEPRECATED = 128;
+		none = 0,
+		abstract_ = 16,
+		value_abstract = 32,
+		final = 64,
+		deprecated = 128
 	}
 	[CRepr]
-	public struct TypeFundamentalFlags
+	public enum TypeFundamentalFlags : int
 	{
-		public const int G_TYPE_FLAG_CLASSED = 1;
-		public const int G_TYPE_FLAG_INSTANTIATABLE = 2;
-		public const int G_TYPE_FLAG_DERIVABLE = 4;
-		public const int G_TYPE_FLAG_DEEP_DERIVABLE = 8;
+		classed = 1,
+		instantiatable = 2,
+		derivable = 4,
+		deep_derivable = 8
 	}
 	[CRepr]
 	public struct TypeFundamentalInfo

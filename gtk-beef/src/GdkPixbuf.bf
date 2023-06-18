@@ -11,14 +11,14 @@ class GdkPixbuf
 {
 	public enum Colorspace : c_int
 	{
-		GDK_COLORSPACE_RGB
+		rgb = 0
 	}
 	public enum InterpType : c_int
 	{
-		GDK_INTERP_NEAREST,
-		GDK_INTERP_TILES,
-		GDK_INTERP_BILINEAR,
-		GDK_INTERP_HYPER
+		nearest = 0,
+		tiles = 1,
+		bilinear = 2,
+		hyper = 3
 	}
 	[CRepr]
 	public struct Pixbuf;
@@ -136,8 +136,8 @@ class GdkPixbuf
 	public static extern void PixbufUnref(Pixbuf pixbuf);
 	public enum PixbufAlphaMode : c_int
 	{
-		GDK_PIXBUF_ALPHA_BILEVEL,
-		GDK_PIXBUF_ALPHA_FULL
+		bilevel = 0,
+		full = 1
 	}
 	[CRepr]
 	public struct PixbufAnimation;
@@ -186,13 +186,13 @@ class GdkPixbuf
 	public function void PixbufDestroyNotify(void* data);
 	public enum PixbufError : c_int
 	{
-		GDK_PIXBUF_ERROR_CORRUPT_IMAGE,
-		GDK_PIXBUF_ERROR_INSUFFICIENT_MEMORY,
-		GDK_PIXBUF_ERROR_BAD_OPTION,
-		GDK_PIXBUF_ERROR_UNKNOWN_TYPE,
-		GDK_PIXBUF_ERROR_UNSUPPORTED_OPERATION,
-		GDK_PIXBUF_ERROR_FAILED,
-		GDK_PIXBUF_ERROR_INCOMPLETE_ANIMATION
+		corrupt_image = 0,
+		insufficient_memory = 1,
+		bad_option = 2,
+		unknown_type = 3,
+		unsupported_operation = 4,
+		failed = 5,
+		incomplete_animation = 6
 	}
 	[CRepr]
 	public struct PixbufFormat
@@ -206,11 +206,11 @@ class GdkPixbuf
 		char8* license;
 	}
 	[CRepr]
-	public struct PixbufFormatFlags
+	public enum PixbufFormatFlags : int
 	{
-		public const int GDK_PIXBUF_FORMAT_WRITABLE = 1;
-		public const int GDK_PIXBUF_FORMAT_SCALABLE = 2;
-		public const int GDK_PIXBUF_FORMAT_THREADSAFE = 4;
+		writable = 1,
+		scalable = 2,
+		threadsafe = 4
 	}
 	[CRepr]
 	public struct PixbufLoader;
@@ -283,10 +283,10 @@ class GdkPixbuf
 	public static extern PixbufAnimation* PixbufNonAnimNew(Pixbuf pixbuf);
 	public enum PixbufRotation : c_int
 	{
-		GDK_PIXBUF_ROTATE_NONE,
-		GDK_PIXBUF_ROTATE_COUNTERCLOCKWISE,
-		GDK_PIXBUF_ROTATE_UPSIDEDOWN,
-		GDK_PIXBUF_ROTATE_CLOCKWISE
+		none = 0,
+		counterclockwise = 90,
+		upsidedown = 180,
+		clockwise = 270
 	}
 	public function c_int PixbufSaveFunc(c_ulong count, GLib.Error error, void* data);
 	[CRepr]

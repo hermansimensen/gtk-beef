@@ -13,22 +13,22 @@ class Gsk
 {
 	public enum BlendMode : c_int
 	{
-		GSK_BLEND_MODE_DEFAULT,
-		GSK_BLEND_MODE_MULTIPLY,
-		GSK_BLEND_MODE_SCREEN,
-		GSK_BLEND_MODE_OVERLAY,
-		GSK_BLEND_MODE_DARKEN,
-		GSK_BLEND_MODE_LIGHTEN,
-		GSK_BLEND_MODE_COLOR_DODGE,
-		GSK_BLEND_MODE_COLOR_BURN,
-		GSK_BLEND_MODE_HARD_LIGHT,
-		GSK_BLEND_MODE_SOFT_LIGHT,
-		GSK_BLEND_MODE_DIFFERENCE,
-		GSK_BLEND_MODE_EXCLUSION,
-		GSK_BLEND_MODE_COLOR,
-		GSK_BLEND_MODE_HUE,
-		GSK_BLEND_MODE_SATURATION,
-		GSK_BLEND_MODE_LUMINOSITY
+		default_ = 0,
+		multiply = 1,
+		screen = 2,
+		overlay = 3,
+		darken = 4,
+		lighten = 5,
+		color_dodge = 6,
+		color_burn = 7,
+		hard_light = 8,
+		soft_light = 9,
+		difference = 10,
+		exclusion = 11,
+		color = 12,
+		hue = 13,
+		saturation = 14,
+		luminosity = 15
 	}
 	[CRepr]
 	public struct BlendNode;
@@ -128,10 +128,10 @@ class Gsk
 	public static extern c_uint ContainerNodeGetNChildren(ContainerNode node);
 	public enum Corner : c_int
 	{
-		GSK_CORNER_TOP_LEFT,
-		GSK_CORNER_TOP_RIGHT,
-		GSK_CORNER_BOTTOM_RIGHT,
-		GSK_CORNER_BOTTOM_LEFT
+		top_left = 0,
+		top_right = 1,
+		bottom_right = 2,
+		bottom_left = 3
 	}
 	[CRepr]
 	public struct CrossFadeNode;
@@ -222,14 +222,14 @@ class Gsk
 	public static extern GLShader* GlShaderNodeGetShader(GLShaderNode node);
 	public enum GLUniformType : c_int
 	{
-		GSK_GL_UNIFORM_TYPE_NONE,
-		GSK_GL_UNIFORM_TYPE_FLOAT,
-		GSK_GL_UNIFORM_TYPE_INT,
-		GSK_GL_UNIFORM_TYPE_UINT,
-		GSK_GL_UNIFORM_TYPE_BOOL,
-		GSK_GL_UNIFORM_TYPE_VEC2,
-		GSK_GL_UNIFORM_TYPE_VEC3,
-		GSK_GL_UNIFORM_TYPE_VEC4
+		none = 0,
+		float = 1,
+		int = 2,
+		uint = 3,
+		bool = 4,
+		vec2 = 5,
+		vec3 = 6,
+		vec4 = 7
 	}
 	[CRepr]
 	public struct InsetShadowNode;
@@ -261,10 +261,10 @@ class Gsk
 	public static extern Graphene.Point* LinearGradientNodeGetStart(LinearGradientNode node);
 	public enum MaskMode : c_int
 	{
-		GSK_MASK_MODE_ALPHA,
-		GSK_MASK_MODE_INVERTED_ALPHA,
-		GSK_MASK_MODE_LUMINANCE,
-		GSK_MASK_MODE_INVERTED_LUMINANCE
+		alpha = 0,
+		inverted_alpha = 1,
+		luminance = 2,
+		inverted_luminance = 3
 	}
 	[CRepr]
 	public struct MaskNode;
@@ -350,34 +350,34 @@ class Gsk
 	public static extern c_int RenderNodeWriteToFile(RenderNode node, char8* filename);
 	public enum RenderNodeType : c_int
 	{
-		GSK_NOT_A_RENDER_NODE,
-		GSK_CONTAINER_NODE,
-		GSK_CAIRO_NODE,
-		GSK_COLOR_NODE,
-		GSK_LINEAR_GRADIENT_NODE,
-		GSK_REPEATING_LINEAR_GRADIENT_NODE,
-		GSK_RADIAL_GRADIENT_NODE,
-		GSK_REPEATING_RADIAL_GRADIENT_NODE,
-		GSK_CONIC_GRADIENT_NODE,
-		GSK_BORDER_NODE,
-		GSK_TEXTURE_NODE,
-		GSK_INSET_SHADOW_NODE,
-		GSK_OUTSET_SHADOW_NODE,
-		GSK_TRANSFORM_NODE,
-		GSK_OPACITY_NODE,
-		GSK_COLOR_MATRIX_NODE,
-		GSK_REPEAT_NODE,
-		GSK_CLIP_NODE,
-		GSK_ROUNDED_CLIP_NODE,
-		GSK_SHADOW_NODE,
-		GSK_BLEND_NODE,
-		GSK_CROSS_FADE_NODE,
-		GSK_TEXT_NODE,
-		GSK_BLUR_NODE,
-		GSK_DEBUG_NODE,
-		GSK_GL_SHADER_NODE,
-		GSK_TEXTURE_SCALE_NODE,
-		GSK_MASK_NODE
+		not_a_render_node = 0,
+		container_node = 1,
+		cairo_node = 2,
+		color_node = 3,
+		linear_gradient_node = 4,
+		repeating_linear_gradient_node = 5,
+		radial_gradient_node = 6,
+		repeating_radial_gradient_node = 7,
+		conic_gradient_node = 8,
+		border_node = 9,
+		texture_node = 10,
+		inset_shadow_node = 11,
+		outset_shadow_node = 12,
+		transform_node = 13,
+		opacity_node = 14,
+		color_matrix_node = 15,
+		repeat_node = 16,
+		clip_node = 17,
+		rounded_clip_node = 18,
+		shadow_node = 19,
+		blend_node = 20,
+		cross_fade_node = 21,
+		text_node = 22,
+		blur_node = 23,
+		debug_node = 24,
+		gl_shader_node = 25,
+		texture_scale_node = 26,
+		mask_node = 27
 	}
 	[CRepr]
 	public struct Renderer;
@@ -430,15 +430,15 @@ class Gsk
 	}
 	public enum ScalingFilter : c_int
 	{
-		GSK_SCALING_FILTER_LINEAR,
-		GSK_SCALING_FILTER_NEAREST,
-		GSK_SCALING_FILTER_TRILINEAR
+		linear = 0,
+		nearest = 1,
+		trilinear = 2
 	}
 	public enum SerializationError : c_int
 	{
-		GSK_SERIALIZATION_UNSUPPORTED_FORMAT,
-		GSK_SERIALIZATION_UNSUPPORTED_VERSION,
-		GSK_SERIALIZATION_INVALID_DATA
+		unsupported_format = 0,
+		unsupported_version = 1,
+		invalid_data = 2
 	}
 	[CRepr]
 	public struct ShaderArgsBuilder
@@ -498,13 +498,13 @@ class Gsk
 	}
 	public enum TransformCategory : c_int
 	{
-		GSK_TRANSFORM_CATEGORY_UNKNOWN,
-		GSK_TRANSFORM_CATEGORY_ANY,
-		GSK_TRANSFORM_CATEGORY_3D,
-		GSK_TRANSFORM_CATEGORY_2D,
-		GSK_TRANSFORM_CATEGORY_2D_AFFINE,
-		GSK_TRANSFORM_CATEGORY_2D_TRANSLATE,
-		GSK_TRANSFORM_CATEGORY_IDENTITY
+		unknown = 0,
+		any = 1,
+		_3d = 2,
+		_2d = 3,
+		_2d_affine = 4,
+		_2d_translate = 5,
+		identity = 6
 	}
 	[CRepr]
 	public struct TransformNode;

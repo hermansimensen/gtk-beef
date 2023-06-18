@@ -142,12 +142,12 @@ class Gio
 		public function c_int(AppInfo appinfo) supports_uris;
 	}
 	[CRepr]
-	public struct AppInfoCreateFlags
+	public enum AppInfoCreateFlags : int
 	{
-		public const int G_APP_INFO_CREATE_NONE = 0;
-		public const int G_APP_INFO_CREATE_NEEDS_TERMINAL = 1;
-		public const int G_APP_INFO_CREATE_SUPPORTS_URIS = 2;
-		public const int G_APP_INFO_CREATE_SUPPORTS_STARTUP_NOTIFICATION = 4;
+		none = 0,
+		needs_terminal = 1,
+		supports_uris = 2,
+		supports_startup_notification = 4
 	}
 	[CRepr]
 	public struct AppInfoIface
@@ -295,34 +295,34 @@ class Gio
 	public struct ApplicationCommandLinePrivate
 	{
 	}
-	[CRepr]
-	public struct ApplicationFlags
+	[CRepr, AllowDuplicates]
+	public enum ApplicationFlags : int
 	{
-		public const int G_APPLICATION_FLAGS_NONE = 0;
-		public const int G_APPLICATION_DEFAULT_FLAGS = 0;
-		public const int G_APPLICATION_IS_SERVICE = 1;
-		public const int G_APPLICATION_IS_LAUNCHER = 2;
-		public const int G_APPLICATION_HANDLES_OPEN = 4;
-		public const int G_APPLICATION_HANDLES_COMMAND_LINE = 8;
-		public const int G_APPLICATION_SEND_ENVIRONMENT = 16;
-		public const int G_APPLICATION_NON_UNIQUE = 32;
-		public const int G_APPLICATION_CAN_OVERRIDE_APP_ID = 64;
-		public const int G_APPLICATION_ALLOW_REPLACEMENT = 128;
-		public const int G_APPLICATION_REPLACE = 256;
+		flags_none = 0,
+		default_flags = 0,
+		is_service = 1,
+		is_launcher = 2,
+		handles_open = 4,
+		handles_command_line = 8,
+		send_environment = 16,
+		non_unique = 32,
+		can_override_app_id = 64,
+		allow_replacement = 128,
+		replace = 256
 	}
 	[CRepr]
 	public struct ApplicationPrivate
 	{
 	}
 	[CRepr]
-	public struct AskPasswordFlags
+	public enum AskPasswordFlags : int
 	{
-		public const int G_ASK_PASSWORD_NEED_PASSWORD = 1;
-		public const int G_ASK_PASSWORD_NEED_USERNAME = 2;
-		public const int G_ASK_PASSWORD_NEED_DOMAIN = 4;
-		public const int G_ASK_PASSWORD_SAVING_SUPPORTED = 8;
-		public const int G_ASK_PASSWORD_ANONYMOUS_SUPPORTED = 16;
-		public const int G_ASK_PASSWORD_TCRYPT = 32;
+		need_password = 1,
+		need_username = 2,
+		need_domain = 4,
+		saving_supported = 8,
+		anonymous_supported = 16,
+		tcrypt = 32
 	}
 	[CRepr]
 	public struct AsyncInitable
@@ -412,19 +412,19 @@ class Gio
 	public function void BusNameAppearedCallback(DBusConnection connection, char8* name, char8* name_owner, void* user_data);
 	public function void BusNameLostCallback(DBusConnection connection, char8* name, void* user_data);
 	[CRepr]
-	public struct BusNameOwnerFlags
+	public enum BusNameOwnerFlags : int
 	{
-		public const int G_BUS_NAME_OWNER_FLAGS_NONE = 0;
-		public const int G_BUS_NAME_OWNER_FLAGS_ALLOW_REPLACEMENT = 1;
-		public const int G_BUS_NAME_OWNER_FLAGS_REPLACE = 2;
-		public const int G_BUS_NAME_OWNER_FLAGS_DO_NOT_QUEUE = 4;
+		none = 0,
+		allow_replacement = 1,
+		replace = 2,
+		do_not_queue = 4
 	}
 	public function void BusNameVanishedCallback(DBusConnection connection, char8* name, void* user_data);
 	[CRepr]
-	public struct BusNameWatcherFlags
+	public enum BusNameWatcherFlags : int
 	{
-		public const int G_BUS_NAME_WATCHER_FLAGS_NONE = 0;
-		public const int G_BUS_NAME_WATCHER_FLAGS_AUTO_START = 1;
+		none = 0,
+		auto_start = 1
 	}
 	public enum BusType : c_int
 	{
@@ -500,11 +500,11 @@ class Gio
 		public function void(Converter converter) reset;
 	}
 	[CRepr]
-	public struct ConverterFlags
+	public enum ConverterFlags : int
 	{
-		public const int G_CONVERTER_NO_FLAGS = 0;
-		public const int G_CONVERTER_INPUT_AT_END = 1;
-		public const int G_CONVERTER_FLUSH = 2;
+		none = 0,
+		input_at_end = 1,
+		flush = 2
 	}
 	[CRepr]
 	public struct ConverterIface
@@ -606,17 +606,17 @@ class Gio
 	[LinkName("g_dbus_auth_observer_authorize_authenticated_peer")]
 	public static extern c_int DbusAuthObserverAuthorizeAuthenticatedPeer(DBusAuthObserver observer, IOStream stream, Credentials credentials);
 	[CRepr]
-	public struct DBusCallFlags
+	public enum DBusCallFlags : int
 	{
-		public const int G_DBUS_CALL_FLAGS_NONE = 0;
-		public const int G_DBUS_CALL_FLAGS_NO_AUTO_START = 1;
-		public const int G_DBUS_CALL_FLAGS_ALLOW_INTERACTIVE_AUTHORIZATION = 2;
+		none = 0,
+		no_auto_start = 1,
+		allow_interactive_authorization = 2
 	}
 	[CRepr]
-	public struct DBusCapabilityFlags
+	public enum DBusCapabilityFlags : int
 	{
-		public const int G_DBUS_CAPABILITY_FLAGS_NONE = 0;
-		public const int G_DBUS_CAPABILITY_FLAGS_UNIX_FD_PASSING = 1;
+		none = 0,
+		unix_fd_passing = 1
 	}
 	[CRepr]
 	public struct DBusConnection;
@@ -711,16 +711,16 @@ class Gio
 	[LinkName("g_dbus_connection_unregister_subtree")]
 	public static extern c_int DbusConnectionUnregisterSubtree(DBusConnection connection, c_uint registration_id);
 	[CRepr]
-	public struct DBusConnectionFlags
+	public enum DBusConnectionFlags : int
 	{
-		public const int G_DBUS_CONNECTION_FLAGS_NONE = 0;
-		public const int G_DBUS_CONNECTION_FLAGS_AUTHENTICATION_CLIENT = 1;
-		public const int G_DBUS_CONNECTION_FLAGS_AUTHENTICATION_SERVER = 2;
-		public const int G_DBUS_CONNECTION_FLAGS_AUTHENTICATION_ALLOW_ANONYMOUS = 4;
-		public const int G_DBUS_CONNECTION_FLAGS_MESSAGE_BUS_CONNECTION = 8;
-		public const int G_DBUS_CONNECTION_FLAGS_DELAY_MESSAGE_PROCESSING = 16;
-		public const int G_DBUS_CONNECTION_FLAGS_AUTHENTICATION_REQUIRE_SAME_USER = 32;
-		public const int G_DBUS_CONNECTION_FLAGS_CROSS_NAMESPACE = 64;
+		none = 0,
+		authentication_client = 1,
+		authentication_server = 2,
+		authentication_allow_anonymous = 4,
+		message_bus_connection = 8,
+		delay_message_processing = 16,
+		authentication_require_same_user = 32,
+		cross_namespace = 64
 	}
 	public enum DBusError : c_int
 	{
@@ -835,10 +835,10 @@ class Gio
 		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct DBusInterfaceSkeletonFlags
+	public enum DBusInterfaceSkeletonFlags : int
 	{
-		public const int G_DBUS_INTERFACE_SKELETON_FLAGS_NONE = 0;
-		public const int G_DBUS_INTERFACE_SKELETON_FLAGS_HANDLE_METHOD_INVOCATIONS_IN_THREAD = 1;
+		none = 0,
+		handle_method_invocations_in_thread = 1
 	}
 	[CRepr]
 	public struct DBusInterfaceSkeletonPrivate
@@ -958,12 +958,12 @@ class Gio
 	}
 	public function DBusMessage DBusMessageFilterFunction(DBusConnection connection, DBusMessage message, c_int incoming, void* user_data);
 	[CRepr]
-	public struct DBusMessageFlags
+	public enum DBusMessageFlags : int
 	{
-		public const int G_DBUS_MESSAGE_FLAGS_NONE = 0;
-		public const int G_DBUS_MESSAGE_FLAGS_NO_REPLY_EXPECTED = 1;
-		public const int G_DBUS_MESSAGE_FLAGS_NO_AUTO_START = 2;
-		public const int G_DBUS_MESSAGE_FLAGS_ALLOW_INTERACTIVE_AUTHORIZATION = 4;
+		none = 0,
+		no_reply_expected = 1,
+		no_auto_start = 2,
+		allow_interactive_authorization = 4
 	}
 	public enum DBusMessageHeaderField : c_int
 	{
@@ -1097,10 +1097,10 @@ class Gio
 		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct DBusObjectManagerClientFlags
+	public enum DBusObjectManagerClientFlags : int
 	{
-		public const int G_DBUS_OBJECT_MANAGER_CLIENT_FLAGS_NONE = 0;
-		public const int G_DBUS_OBJECT_MANAGER_CLIENT_FLAGS_DO_NOT_AUTO_START = 1;
+		none = 0,
+		do_not_auto_start = 1
 	}
 	[CRepr]
 	public struct DBusObjectManagerClientPrivate
@@ -1183,11 +1183,11 @@ class Gio
 		DBusPropertyInfoFlags flags;
 	}
 	[CRepr]
-	public struct DBusPropertyInfoFlags
+	public enum DBusPropertyInfoFlags : int
 	{
-		public const int G_DBUS_PROPERTY_INFO_FLAGS_NONE = 0;
-		public const int G_DBUS_PROPERTY_INFO_FLAGS_READABLE = 1;
-		public const int G_DBUS_PROPERTY_INFO_FLAGS_WRITABLE = 2;
+		none = 0,
+		readable = 1,
+		writable = 2
 	}
 	[CRepr]
 	public struct DBusProxy;
@@ -1243,15 +1243,15 @@ class Gio
 		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct DBusProxyFlags
+	public enum DBusProxyFlags : int
 	{
-		public const int G_DBUS_PROXY_FLAGS_NONE = 0;
-		public const int G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES = 1;
-		public const int G_DBUS_PROXY_FLAGS_DO_NOT_CONNECT_SIGNALS = 2;
-		public const int G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START = 4;
-		public const int G_DBUS_PROXY_FLAGS_GET_INVALIDATED_PROPERTIES = 8;
-		public const int G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START_AT_CONSTRUCTION = 16;
-		public const int G_DBUS_PROXY_FLAGS_NO_MATCH_RULE = 32;
+		none = 0,
+		do_not_load_properties = 1,
+		do_not_connect_signals = 2,
+		do_not_auto_start = 4,
+		get_invalidated_properties = 8,
+		do_not_auto_start_at_construction = 16,
+		no_match_rule = 32
 	}
 	[CRepr]
 	public struct DBusProxyPrivate
@@ -1259,10 +1259,10 @@ class Gio
 	}
 	public function GLib.Type DBusProxyTypeFunc(DBusObjectManagerClient manager, char8* object_path, char8* interface_name, void* data);
 	[CRepr]
-	public struct DBusSendMessageFlags
+	public enum DBusSendMessageFlags : int
 	{
-		public const int G_DBUS_SEND_MESSAGE_FLAGS_NONE = 0;
-		public const int G_DBUS_SEND_MESSAGE_FLAGS_PRESERVE_SERIAL = 1;
+		none = 0,
+		preserve_serial = 1
 	}
 	[CRepr]
 	public struct DBusServer;
@@ -1281,21 +1281,21 @@ class Gio
 	[LinkName("g_dbus_server_stop")]
 	public static extern void DbusServerStop(DBusServer server);
 	[CRepr]
-	public struct DBusServerFlags
+	public enum DBusServerFlags : int
 	{
-		public const int G_DBUS_SERVER_FLAGS_NONE = 0;
-		public const int G_DBUS_SERVER_FLAGS_RUN_IN_THREAD = 1;
-		public const int G_DBUS_SERVER_FLAGS_AUTHENTICATION_ALLOW_ANONYMOUS = 2;
-		public const int G_DBUS_SERVER_FLAGS_AUTHENTICATION_REQUIRE_SAME_USER = 4;
+		none = 0,
+		run_in_thread = 1,
+		authentication_allow_anonymous = 2,
+		authentication_require_same_user = 4
 	}
 	public function void DBusSignalCallback(DBusConnection connection, char8* sender_name, char8* object_path, char8* interface_name, char8* signal_name, GLib.Variant parameters, void* user_data);
 	[CRepr]
-	public struct DBusSignalFlags
+	public enum DBusSignalFlags : int
 	{
-		public const int G_DBUS_SIGNAL_FLAGS_NONE = 0;
-		public const int G_DBUS_SIGNAL_FLAGS_NO_MATCH_RULE = 1;
-		public const int G_DBUS_SIGNAL_FLAGS_MATCH_ARG0_NAMESPACE = 2;
-		public const int G_DBUS_SIGNAL_FLAGS_MATCH_ARG0_PATH = 4;
+		none = 0,
+		no_match_rule = 1,
+		match_arg0_namespace = 2,
+		match_arg0_path = 4
 	}
 	[CRepr]
 	public struct DBusSignalInfo
@@ -1306,10 +1306,10 @@ class Gio
 	public function DBusInterfaceVTable DBusSubtreeDispatchFunc(DBusConnection connection, char8* sender, char8* object_path, char8* interface_name, char8* node, void* out_user_data, void* user_data);
 	public function char8* DBusSubtreeEnumerateFunc(DBusConnection connection, char8* sender, char8* object_path, void* user_data);
 	[CRepr]
-	public struct DBusSubtreeFlags
+	public enum DBusSubtreeFlags : int
 	{
-		public const int G_DBUS_SUBTREE_FLAGS_NONE = 0;
-		public const int G_DBUS_SUBTREE_FLAGS_DISPATCH_TO_UNENUMERATED_NODES = 1;
+		none = 0,
+		dispatch_to_unenumerated_nodes = 1
 	}
 	public function DBusInterfaceInfo DBusSubtreeIntrospectFunc(DBusConnection connection, char8* sender, char8* object_path, char8* node, void* user_data);
 	[CRepr]
@@ -1593,9 +1593,9 @@ class Gio
 		GObject.TypeInterface g_iface;
 	}
 	[CRepr]
-	public struct DriveStartFlags
+	public enum DriveStartFlags : int
 	{
-		public const int G_DRIVE_START_NONE = 0;
+		none = 0
 	}
 	public enum DriveStartStopType : c_int
 	{
@@ -1898,11 +1898,11 @@ class Gio
 		FileAttributeInfoFlags flags;
 	}
 	[CRepr]
-	public struct FileAttributeInfoFlags
+	public enum FileAttributeInfoFlags : int
 	{
-		public const int G_FILE_ATTRIBUTE_INFO_NONE = 0;
-		public const int G_FILE_ATTRIBUTE_INFO_COPY_WITH_FILE = 1;
-		public const int G_FILE_ATTRIBUTE_INFO_COPY_WHEN_MOVED = 2;
+		none = 0,
+		copy_with_file = 1,
+		copy_when_moved = 2
 	}
 	[CRepr]
 	public struct FileAttributeInfoList
@@ -1934,22 +1934,22 @@ class Gio
 		G_FILE_ATTRIBUTE_TYPE_STRINGV
 	}
 	[CRepr]
-	public struct FileCopyFlags
+	public enum FileCopyFlags : int
 	{
-		public const int G_FILE_COPY_NONE = 0;
-		public const int G_FILE_COPY_OVERWRITE = 1;
-		public const int G_FILE_COPY_BACKUP = 2;
-		public const int G_FILE_COPY_NOFOLLOW_SYMLINKS = 4;
-		public const int G_FILE_COPY_ALL_METADATA = 8;
-		public const int G_FILE_COPY_NO_FALLBACK_FOR_MOVE = 16;
-		public const int G_FILE_COPY_TARGET_DEFAULT_PERMS = 32;
+		none = 0,
+		overwrite = 1,
+		backup = 2,
+		nofollow_symlinks = 4,
+		all_metadata = 8,
+		no_fallback_for_move = 16,
+		target_default_perms = 32
 	}
 	[CRepr]
-	public struct FileCreateFlags
+	public enum FileCreateFlags : int
 	{
-		public const int G_FILE_CREATE_NONE = 0;
-		public const int G_FILE_CREATE_PRIVATE = 1;
-		public const int G_FILE_CREATE_REPLACE_DESTINATION = 2;
+		none = 0,
+		private_ = 1,
+		replace_destination = 2
 	}
 	[CRepr]
 	public struct FileDescriptorBased
@@ -2193,12 +2193,12 @@ class Gio
 	{
 	}
 	[CRepr]
-	public struct FileMeasureFlags
+	public enum FileMeasureFlags : int
 	{
-		public const int G_FILE_MEASURE_NONE = 0;
-		public const int G_FILE_MEASURE_REPORT_ANY_ERROR = 2;
-		public const int G_FILE_MEASURE_APPARENT_SIZE = 4;
-		public const int G_FILE_MEASURE_NO_XDEV = 8;
+		none = 0,
+		report_any_error = 2,
+		apparent_size = 4,
+		no_xdev = 8
 	}
 	public function void FileMeasureProgressCallback(c_int reporting, c_ulonglong current_size, c_ulonglong num_dirs, c_ulonglong num_files, void* data);
 	[CRepr]
@@ -2231,13 +2231,13 @@ class Gio
 		G_FILE_MONITOR_EVENT_MOVED_OUT
 	}
 	[CRepr]
-	public struct FileMonitorFlags
+	public enum FileMonitorFlags : int
 	{
-		public const int G_FILE_MONITOR_NONE = 0;
-		public const int G_FILE_MONITOR_WATCH_MOUNTS = 1;
-		public const int G_FILE_MONITOR_SEND_MOVED = 2;
-		public const int G_FILE_MONITOR_WATCH_HARD_LINKS = 4;
-		public const int G_FILE_MONITOR_WATCH_MOVES = 8;
+		none = 0,
+		watch_mounts = 1,
+		send_moved = 2,
+		watch_hard_links = 4,
+		watch_moves = 8
 	}
 	[CRepr]
 	public struct FileMonitorPrivate
@@ -2264,10 +2264,10 @@ class Gio
 	}
 	public function void FileProgressCallback(c_longlong current_num_bytes, c_longlong total_num_bytes, void* data);
 	[CRepr]
-	public struct FileQueryInfoFlags
+	public enum FileQueryInfoFlags : int
 	{
-		public const int G_FILE_QUERY_INFO_NONE = 0;
-		public const int G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS = 1;
+		none = 0,
+		nofollow_symlinks = 1
 	}
 	public function c_int FileReadMoreCallback(char8* file_contents, c_longlong file_size, void* callback_data);
 	public enum FileType : c_int
@@ -2449,12 +2449,12 @@ class Gio
 	{
 	}
 	[CRepr]
-	public struct IOStreamSpliceFlags
+	public enum IOStreamSpliceFlags : int
 	{
-		public const int G_IO_STREAM_SPLICE_NONE = 0;
-		public const int G_IO_STREAM_SPLICE_CLOSE_STREAM1 = 1;
-		public const int G_IO_STREAM_SPLICE_CLOSE_STREAM2 = 2;
-		public const int G_IO_STREAM_SPLICE_WAIT_FOR_BOTH = 4;
+		none = 0,
+		close_stream1 = 1,
+		close_stream2 = 2,
+		wait_for_both = 4
 	}
 	[CRepr]
 	public struct Icon
@@ -2962,9 +2962,9 @@ class Gio
 		GObject.TypeInterface g_iface;
 	}
 	[CRepr]
-	public struct MountMountFlags
+	public enum MountMountFlags : int
 	{
-		public const int G_MOUNT_MOUNT_NONE = 0;
+		none = 0
 	}
 	[CRepr]
 	public struct MountOperation;
@@ -3024,10 +3024,10 @@ class Gio
 		G_MOUNT_OPERATION_UNHANDLED
 	}
 	[CRepr]
-	public struct MountUnmountFlags
+	public enum MountUnmountFlags : int
 	{
-		public const int G_MOUNT_UNMOUNT_NONE = 0;
-		public const int G_MOUNT_UNMOUNT_FORCE = 1;
+		none = 0,
+		force = 1
 	}
 	[CRepr]
 	public struct NativeSocketAddress;
@@ -3234,11 +3234,11 @@ class Gio
 	{
 	}
 	[CRepr]
-	public struct OutputStreamSpliceFlags
+	public enum OutputStreamSpliceFlags : int
 	{
-		public const int G_OUTPUT_STREAM_SPLICE_NONE = 0;
-		public const int G_OUTPUT_STREAM_SPLICE_CLOSE_SOURCE = 1;
-		public const int G_OUTPUT_STREAM_SPLICE_CLOSE_TARGET = 2;
+		none = 0,
+		close_source = 1,
+		close_target = 2
 	}
 	[CRepr]
 	public struct OutputVector
@@ -3465,11 +3465,11 @@ class Gio
 		G_RESOLVER_ERROR_INTERNAL
 	}
 	[CRepr]
-	public struct ResolverNameLookupFlags
+	public enum ResolverNameLookupFlags : int
 	{
-		public const int G_RESOLVER_NAME_LOOKUP_FLAGS_DEFAULT = 0;
-		public const int G_RESOLVER_NAME_LOOKUP_FLAGS_IPV4_ONLY = 1;
-		public const int G_RESOLVER_NAME_LOOKUP_FLAGS_IPV6_ONLY = 2;
+		default_ = 0,
+		ipv4_only = 1,
+		ipv6_only = 2
 	}
 	[CRepr]
 	public struct ResolverPrivate
@@ -3493,15 +3493,15 @@ class Gio
 		G_RESOURCE_ERROR_INTERNAL
 	}
 	[CRepr]
-	public struct ResourceFlags
+	public enum ResourceFlags : int
 	{
-		public const int G_RESOURCE_FLAGS_NONE = 0;
-		public const int G_RESOURCE_FLAGS_COMPRESSED = 1;
+		none = 0,
+		compressed = 1
 	}
 	[CRepr]
-	public struct ResourceLookupFlags
+	public enum ResourceLookupFlags : int
 	{
-		public const int G_RESOURCE_LOOKUP_FLAGS_NONE = 0;
+		none = 0
 	}
 	[CRepr]
 	public struct Seekable
@@ -3641,14 +3641,14 @@ class Gio
 	{
 	}
 	[CRepr]
-	public struct SettingsBindFlags
+	public enum SettingsBindFlags : int
 	{
-		public const int G_SETTINGS_BIND_DEFAULT = 0;
-		public const int G_SETTINGS_BIND_GET = 1;
-		public const int G_SETTINGS_BIND_SET = 2;
-		public const int G_SETTINGS_BIND_NO_SENSITIVITY = 4;
-		public const int G_SETTINGS_BIND_GET_NO_CHANGES = 8;
-		public const int G_SETTINGS_BIND_INVERT_BOOLEAN = 16;
+		default_ = 0,
+		get = 1,
+		set = 2,
+		no_sensitivity = 4,
+		get_no_changes = 8,
+		invert_boolean = 16
 	}
 	public function c_int SettingsBindGetMapping(GObject.Value value, GLib.Variant variant, void* user_data);
 	public function GLib.Variant SettingsBindSetMapping(GObject.Value value, GLib.VariantType expected_type, void* user_data);
@@ -4129,12 +4129,12 @@ class Gio
 	{
 	}
 	[CRepr]
-	public struct SocketMsgFlags
+	public enum SocketMsgFlags : int
 	{
-		public const int G_SOCKET_MSG_NONE = 0;
-		public const int G_SOCKET_MSG_OOB = 1;
-		public const int G_SOCKET_MSG_PEEK = 2;
-		public const int G_SOCKET_MSG_DONTROUTE = 4;
+		none = 0,
+		oob = 1,
+		peek = 2,
+		dontroute = 4
 	}
 	[CRepr]
 	public struct SocketPrivate
@@ -4243,18 +4243,18 @@ class Gio
 	[LinkName("g_subprocess_wait_finish")]
 	public static extern c_int SubprocessWaitFinish(Subprocess subprocess, AsyncResult result);
 	[CRepr]
-	public struct SubprocessFlags
+	public enum SubprocessFlags : int
 	{
-		public const int G_SUBPROCESS_FLAGS_NONE = 0;
-		public const int G_SUBPROCESS_FLAGS_STDIN_PIPE = 1;
-		public const int G_SUBPROCESS_FLAGS_STDIN_INHERIT = 2;
-		public const int G_SUBPROCESS_FLAGS_STDOUT_PIPE = 4;
-		public const int G_SUBPROCESS_FLAGS_STDOUT_SILENCE = 8;
-		public const int G_SUBPROCESS_FLAGS_STDERR_PIPE = 16;
-		public const int G_SUBPROCESS_FLAGS_STDERR_SILENCE = 32;
-		public const int G_SUBPROCESS_FLAGS_STDERR_MERGE = 64;
-		public const int G_SUBPROCESS_FLAGS_INHERIT_FDS = 128;
-		public const int G_SUBPROCESS_FLAGS_SEARCH_PATH_FROM_ENVP = 256;
+		none = 0,
+		stdin_pipe = 1,
+		stdin_inherit = 2,
+		stdout_pipe = 4,
+		stdout_silence = 8,
+		stderr_pipe = 16,
+		stderr_silence = 32,
+		stderr_merge = 64,
+		inherit_fds = 128,
+		search_path_from_envp = 256
 	}
 	[CRepr]
 	public struct SubprocessLauncher;
@@ -4414,9 +4414,9 @@ class Gio
 	[LinkName("g_test_dbus_up")]
 	public static extern void TestDbusUp(TestDBus self);
 	[CRepr]
-	public struct TestDBusFlags
+	public enum TestDBusFlags : int
 	{
-		public const int G_TEST_DBUS_NONE = 0;
+		none = 0
 	}
 	[CRepr]
 	public struct ThemedIcon;
@@ -4507,17 +4507,17 @@ class Gio
 		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct TlsCertificateFlags
+	public enum TlsCertificateFlags : int
 	{
-		public const int G_TLS_CERTIFICATE_NO_FLAGS = 0;
-		public const int G_TLS_CERTIFICATE_UNKNOWN_CA = 1;
-		public const int G_TLS_CERTIFICATE_BAD_IDENTITY = 2;
-		public const int G_TLS_CERTIFICATE_NOT_ACTIVATED = 4;
-		public const int G_TLS_CERTIFICATE_EXPIRED = 8;
-		public const int G_TLS_CERTIFICATE_REVOKED = 16;
-		public const int G_TLS_CERTIFICATE_INSECURE = 32;
-		public const int G_TLS_CERTIFICATE_GENERIC_ERROR = 64;
-		public const int G_TLS_CERTIFICATE_VALIDATE_ALL = 127;
+		no_flags = 0,
+		unknown_ca = 1,
+		bad_identity = 2,
+		not_activated = 4,
+		expired = 8,
+		revoked = 16,
+		insecure = 32,
+		generic_error = 64,
+		validate_all = 127
 	}
 	[CRepr]
 	public struct TlsCertificatePrivate
@@ -4651,9 +4651,9 @@ class Gio
 	{
 	}
 	[CRepr]
-	public struct TlsDatabaseVerifyFlags
+	public enum TlsDatabaseVerifyFlags : int
 	{
-		public const int G_TLS_DATABASE_VERIFY_NONE = 0;
+		none = 0
 	}
 	public enum TlsError : c_int
 	{
@@ -4736,15 +4736,15 @@ class Gio
 		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct TlsPasswordFlags
+	public enum TlsPasswordFlags : int
 	{
-		public const int G_TLS_PASSWORD_NONE = 0;
-		public const int G_TLS_PASSWORD_RETRY = 2;
-		public const int G_TLS_PASSWORD_MANY_TRIES = 4;
-		public const int G_TLS_PASSWORD_FINAL_TRY = 8;
-		public const int G_TLS_PASSWORD_PKCS11_USER = 16;
-		public const int G_TLS_PASSWORD_PKCS11_SECURITY_OFFICER = 32;
-		public const int G_TLS_PASSWORD_PKCS11_CONTEXT_SPECIFIC = 64;
+		none = 0,
+		retry = 2,
+		many_tries = 4,
+		final_try = 8,
+		pkcs11_user = 16,
+		pkcs11_security_officer = 32,
+		pkcs11_context_specific = 64
 	}
 	[CRepr]
 	public struct TlsPasswordPrivate

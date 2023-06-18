@@ -12,15 +12,15 @@ class GModule
 	public function char8* ModuleCheckInit(Module module);
 	public enum ModuleError : c_int
 	{
-		G_MODULE_ERROR_FAILED,
-		G_MODULE_ERROR_CHECK_FAILED
+		failed = 0,
+		check_failed = 1
 	}
 	[CRepr]
-	public struct ModuleFlags
+	public enum ModuleFlags : int
 	{
-		public const int G_MODULE_BIND_LAZY = 1;
-		public const int G_MODULE_BIND_LOCAL = 2;
-		public const int G_MODULE_BIND_MASK = 3;
+		lazy = 1,
+		local = 2,
+		mask = 3
 	}
 	public function void ModuleUnload(Module module);
 }

@@ -115,10 +115,10 @@ class Gtk
 	}
 	public enum AccessibleAutocomplete : c_int
 	{
-		GTK_ACCESSIBLE_AUTOCOMPLETE_NONE,
-		GTK_ACCESSIBLE_AUTOCOMPLETE_INLINE,
-		GTK_ACCESSIBLE_AUTOCOMPLETE_LIST,
-		GTK_ACCESSIBLE_AUTOCOMPLETE_BOTH
+		none = 0,
+		inline_ = 1,
+		list = 2,
+		both = 3
 	}
 	[CRepr]
 	public struct AccessibleInterface
@@ -127,38 +127,38 @@ class Gtk
 	}
 	public enum AccessibleInvalidState : c_int
 	{
-		GTK_ACCESSIBLE_INVALID_FALSE,
-		GTK_ACCESSIBLE_INVALID_TRUE,
-		GTK_ACCESSIBLE_INVALID_GRAMMAR,
-		GTK_ACCESSIBLE_INVALID_SPELLING
+		false_ = 0,
+		true_ = 1,
+		grammar = 2,
+		spelling = 3
 	}
 	public enum AccessiblePlatformState : c_int
 	{
-		GTK_ACCESSIBLE_PLATFORM_STATE_FOCUSABLE,
-		GTK_ACCESSIBLE_PLATFORM_STATE_FOCUSED,
-		GTK_ACCESSIBLE_PLATFORM_STATE_ACTIVE
+		focusable = 0,
+		focused = 1,
+		active = 2
 	}
 	public enum AccessibleProperty : c_int
 	{
-		GTK_ACCESSIBLE_PROPERTY_AUTOCOMPLETE,
-		GTK_ACCESSIBLE_PROPERTY_DESCRIPTION,
-		GTK_ACCESSIBLE_PROPERTY_HAS_POPUP,
-		GTK_ACCESSIBLE_PROPERTY_KEY_SHORTCUTS,
-		GTK_ACCESSIBLE_PROPERTY_LABEL,
-		GTK_ACCESSIBLE_PROPERTY_LEVEL,
-		GTK_ACCESSIBLE_PROPERTY_MODAL,
-		GTK_ACCESSIBLE_PROPERTY_MULTI_LINE,
-		GTK_ACCESSIBLE_PROPERTY_MULTI_SELECTABLE,
-		GTK_ACCESSIBLE_PROPERTY_ORIENTATION,
-		GTK_ACCESSIBLE_PROPERTY_PLACEHOLDER,
-		GTK_ACCESSIBLE_PROPERTY_READ_ONLY,
-		GTK_ACCESSIBLE_PROPERTY_REQUIRED,
-		GTK_ACCESSIBLE_PROPERTY_ROLE_DESCRIPTION,
-		GTK_ACCESSIBLE_PROPERTY_SORT,
-		GTK_ACCESSIBLE_PROPERTY_VALUE_MAX,
-		GTK_ACCESSIBLE_PROPERTY_VALUE_MIN,
-		GTK_ACCESSIBLE_PROPERTY_VALUE_NOW,
-		GTK_ACCESSIBLE_PROPERTY_VALUE_TEXT
+		autocomplete = 0,
+		description = 1,
+		has_popup = 2,
+		key_shortcuts = 3,
+		label = 4,
+		level = 5,
+		modal = 6,
+		multi_line = 7,
+		multi_selectable = 8,
+		orientation = 9,
+		placeholder = 10,
+		read_only = 11,
+		required = 12,
+		role_description = 13,
+		sort = 14,
+		value_max = 15,
+		value_min = 16,
+		value_now = 17,
+		value_text = 18
 	}
 	[CRepr]
 	public struct AccessibleRange
@@ -172,131 +172,131 @@ class Gtk
 	}
 	public enum AccessibleRelation : c_int
 	{
-		GTK_ACCESSIBLE_RELATION_ACTIVE_DESCENDANT,
-		GTK_ACCESSIBLE_RELATION_COL_COUNT,
-		GTK_ACCESSIBLE_RELATION_COL_INDEX,
-		GTK_ACCESSIBLE_RELATION_COL_INDEX_TEXT,
-		GTK_ACCESSIBLE_RELATION_COL_SPAN,
-		GTK_ACCESSIBLE_RELATION_CONTROLS,
-		GTK_ACCESSIBLE_RELATION_DESCRIBED_BY,
-		GTK_ACCESSIBLE_RELATION_DETAILS,
-		GTK_ACCESSIBLE_RELATION_ERROR_MESSAGE,
-		GTK_ACCESSIBLE_RELATION_FLOW_TO,
-		GTK_ACCESSIBLE_RELATION_LABELLED_BY,
-		GTK_ACCESSIBLE_RELATION_OWNS,
-		GTK_ACCESSIBLE_RELATION_POS_IN_SET,
-		GTK_ACCESSIBLE_RELATION_ROW_COUNT,
-		GTK_ACCESSIBLE_RELATION_ROW_INDEX,
-		GTK_ACCESSIBLE_RELATION_ROW_INDEX_TEXT,
-		GTK_ACCESSIBLE_RELATION_ROW_SPAN,
-		GTK_ACCESSIBLE_RELATION_SET_SIZE
+		active_descendant = 0,
+		col_count = 1,
+		col_index = 2,
+		col_index_text = 3,
+		col_span = 4,
+		controls = 5,
+		described_by = 6,
+		details = 7,
+		error_message = 8,
+		flow_to = 9,
+		labelled_by = 10,
+		owns = 11,
+		pos_in_set = 12,
+		row_count = 13,
+		row_index = 14,
+		row_index_text = 15,
+		row_span = 16,
+		set_size = 17
 	}
 	public enum AccessibleRole : c_int
 	{
-		GTK_ACCESSIBLE_ROLE_ALERT,
-		GTK_ACCESSIBLE_ROLE_ALERT_DIALOG,
-		GTK_ACCESSIBLE_ROLE_BANNER,
-		GTK_ACCESSIBLE_ROLE_BUTTON,
-		GTK_ACCESSIBLE_ROLE_CAPTION,
-		GTK_ACCESSIBLE_ROLE_CELL,
-		GTK_ACCESSIBLE_ROLE_CHECKBOX,
-		GTK_ACCESSIBLE_ROLE_COLUMN_HEADER,
-		GTK_ACCESSIBLE_ROLE_COMBO_BOX,
-		GTK_ACCESSIBLE_ROLE_COMMAND,
-		GTK_ACCESSIBLE_ROLE_COMPOSITE,
-		GTK_ACCESSIBLE_ROLE_DIALOG,
-		GTK_ACCESSIBLE_ROLE_DOCUMENT,
-		GTK_ACCESSIBLE_ROLE_FEED,
-		GTK_ACCESSIBLE_ROLE_FORM,
-		GTK_ACCESSIBLE_ROLE_GENERIC,
-		GTK_ACCESSIBLE_ROLE_GRID,
-		GTK_ACCESSIBLE_ROLE_GRID_CELL,
-		GTK_ACCESSIBLE_ROLE_GROUP,
-		GTK_ACCESSIBLE_ROLE_HEADING,
-		GTK_ACCESSIBLE_ROLE_IMG,
-		GTK_ACCESSIBLE_ROLE_INPUT,
-		GTK_ACCESSIBLE_ROLE_LABEL,
-		GTK_ACCESSIBLE_ROLE_LANDMARK,
-		GTK_ACCESSIBLE_ROLE_LEGEND,
-		GTK_ACCESSIBLE_ROLE_LINK,
-		GTK_ACCESSIBLE_ROLE_LIST,
-		GTK_ACCESSIBLE_ROLE_LIST_BOX,
-		GTK_ACCESSIBLE_ROLE_LIST_ITEM,
-		GTK_ACCESSIBLE_ROLE_LOG,
-		GTK_ACCESSIBLE_ROLE_MAIN,
-		GTK_ACCESSIBLE_ROLE_MARQUEE,
-		GTK_ACCESSIBLE_ROLE_MATH,
-		GTK_ACCESSIBLE_ROLE_METER,
-		GTK_ACCESSIBLE_ROLE_MENU,
-		GTK_ACCESSIBLE_ROLE_MENU_BAR,
-		GTK_ACCESSIBLE_ROLE_MENU_ITEM,
-		GTK_ACCESSIBLE_ROLE_MENU_ITEM_CHECKBOX,
-		GTK_ACCESSIBLE_ROLE_MENU_ITEM_RADIO,
-		GTK_ACCESSIBLE_ROLE_NAVIGATION,
-		GTK_ACCESSIBLE_ROLE_NONE,
-		GTK_ACCESSIBLE_ROLE_NOTE,
-		GTK_ACCESSIBLE_ROLE_OPTION,
-		GTK_ACCESSIBLE_ROLE_PRESENTATION,
-		GTK_ACCESSIBLE_ROLE_PROGRESS_BAR,
-		GTK_ACCESSIBLE_ROLE_RADIO,
-		GTK_ACCESSIBLE_ROLE_RADIO_GROUP,
-		GTK_ACCESSIBLE_ROLE_RANGE,
-		GTK_ACCESSIBLE_ROLE_REGION,
-		GTK_ACCESSIBLE_ROLE_ROW,
-		GTK_ACCESSIBLE_ROLE_ROW_GROUP,
-		GTK_ACCESSIBLE_ROLE_ROW_HEADER,
-		GTK_ACCESSIBLE_ROLE_SCROLLBAR,
-		GTK_ACCESSIBLE_ROLE_SEARCH,
-		GTK_ACCESSIBLE_ROLE_SEARCH_BOX,
-		GTK_ACCESSIBLE_ROLE_SECTION,
-		GTK_ACCESSIBLE_ROLE_SECTION_HEAD,
-		GTK_ACCESSIBLE_ROLE_SELECT,
-		GTK_ACCESSIBLE_ROLE_SEPARATOR,
-		GTK_ACCESSIBLE_ROLE_SLIDER,
-		GTK_ACCESSIBLE_ROLE_SPIN_BUTTON,
-		GTK_ACCESSIBLE_ROLE_STATUS,
-		GTK_ACCESSIBLE_ROLE_STRUCTURE,
-		GTK_ACCESSIBLE_ROLE_SWITCH,
-		GTK_ACCESSIBLE_ROLE_TAB,
-		GTK_ACCESSIBLE_ROLE_TABLE,
-		GTK_ACCESSIBLE_ROLE_TAB_LIST,
-		GTK_ACCESSIBLE_ROLE_TAB_PANEL,
-		GTK_ACCESSIBLE_ROLE_TEXT_BOX,
-		GTK_ACCESSIBLE_ROLE_TIME,
-		GTK_ACCESSIBLE_ROLE_TIMER,
-		GTK_ACCESSIBLE_ROLE_TOOLBAR,
-		GTK_ACCESSIBLE_ROLE_TOOLTIP,
-		GTK_ACCESSIBLE_ROLE_TREE,
-		GTK_ACCESSIBLE_ROLE_TREE_GRID,
-		GTK_ACCESSIBLE_ROLE_TREE_ITEM,
-		GTK_ACCESSIBLE_ROLE_WIDGET,
-		GTK_ACCESSIBLE_ROLE_WINDOW,
-		GTK_ACCESSIBLE_ROLE_TOGGLE_BUTTON
+		alert = 0,
+		alert_dialog = 1,
+		banner = 2,
+		button = 3,
+		caption = 4,
+		cell = 5,
+		checkbox = 6,
+		column_header = 7,
+		combo_box = 8,
+		command = 9,
+		composite = 10,
+		dialog = 11,
+		document = 12,
+		feed = 13,
+		form = 14,
+		generic = 15,
+		grid = 16,
+		grid_cell = 17,
+		group = 18,
+		heading = 19,
+		img = 20,
+		input = 21,
+		label = 22,
+		landmark = 23,
+		legend = 24,
+		link = 25,
+		list = 26,
+		list_box = 27,
+		list_item = 28,
+		log = 29,
+		main = 30,
+		marquee = 31,
+		math = 32,
+		meter = 33,
+		menu = 34,
+		menu_bar = 35,
+		menu_item = 36,
+		menu_item_checkbox = 37,
+		menu_item_radio = 38,
+		navigation = 39,
+		none = 40,
+		note = 41,
+		option = 42,
+		presentation = 43,
+		progress_bar = 44,
+		radio = 45,
+		radio_group = 46,
+		range = 47,
+		region = 48,
+		row = 49,
+		row_group = 50,
+		row_header = 51,
+		scrollbar = 52,
+		search = 53,
+		search_box = 54,
+		section = 55,
+		section_head = 56,
+		select = 57,
+		separator = 58,
+		slider = 59,
+		spin_button = 60,
+		status = 61,
+		structure = 62,
+		switch_ = 63,
+		tab = 64,
+		table = 65,
+		tab_list = 66,
+		tab_panel = 67,
+		text_box = 68,
+		time = 69,
+		timer = 70,
+		toolbar = 71,
+		tooltip = 72,
+		tree = 73,
+		tree_grid = 74,
+		tree_item = 75,
+		widget = 76,
+		window = 77,
+		toggle_button = 78
 	}
 	public enum AccessibleSort : c_int
 	{
-		GTK_ACCESSIBLE_SORT_NONE,
-		GTK_ACCESSIBLE_SORT_ASCENDING,
-		GTK_ACCESSIBLE_SORT_DESCENDING,
-		GTK_ACCESSIBLE_SORT_OTHER
+		none = 0,
+		ascending = 1,
+		descending = 2,
+		other = 3
 	}
 	public enum AccessibleState : c_int
 	{
-		GTK_ACCESSIBLE_STATE_BUSY,
-		GTK_ACCESSIBLE_STATE_CHECKED,
-		GTK_ACCESSIBLE_STATE_DISABLED,
-		GTK_ACCESSIBLE_STATE_EXPANDED,
-		GTK_ACCESSIBLE_STATE_HIDDEN,
-		GTK_ACCESSIBLE_STATE_INVALID,
-		GTK_ACCESSIBLE_STATE_PRESSED,
-		GTK_ACCESSIBLE_STATE_SELECTED,
-		GTK_ACCESSIBLE_STATE_VISITED
+		busy = 0,
+		checked_ = 1,
+		disabled = 2,
+		expanded = 3,
+		hidden = 4,
+		invalid = 5,
+		pressed = 6,
+		selected = 7,
+		visited = 8
 	}
 	public enum AccessibleTristate : c_int
 	{
-		GTK_ACCESSIBLE_TRISTATE_FALSE,
-		GTK_ACCESSIBLE_TRISTATE_TRUE,
-		GTK_ACCESSIBLE_TRISTATE_MIXED
+		false_ = 0,
+		true_ = 1,
+		mixed = 2
 	}
 	[CRepr]
 	public struct ActionBar;
@@ -416,15 +416,16 @@ class Gtk
 	{
 		GObject.ObjectClass parent_class;
 	}
+	[AllowDuplicates]
 	public enum Align : c_int
 	{
-		GTK_ALIGN_FILL,
-		GTK_ALIGN_START,
-		GTK_ALIGN_END,
-		GTK_ALIGN_CENTER,
-		GTK_ALIGN_BASELINE_FILL,
-		GTK_ALIGN_BASELINE,
-		GTK_ALIGN_BASELINE_CENTER
+		fill = 0,
+		start = 1,
+		end = 2,
+		center = 3,
+		baseline_fill = 4,
+		baseline = 4,
+		baseline_center = 5
 	}
 	[CRepr]
 	public struct AlternativeTrigger;
@@ -553,12 +554,12 @@ class Gtk
 		Gio.ApplicationClass parent_class;
 	}
 	[CRepr]
-	public struct ApplicationInhibitFlags
+	public enum ApplicationInhibitFlags : int
 	{
-		public const int GTK_APPLICATION_INHIBIT_LOGOUT = 1;
-		public const int GTK_APPLICATION_INHIBIT_SWITCH = 2;
-		public const int GTK_APPLICATION_INHIBIT_SUSPEND = 4;
-		public const int GTK_APPLICATION_INHIBIT_IDLE = 8;
+		logout = 1,
+		switch_ = 2,
+		suspend = 4,
+		idle = 8
 	}
 	[CRepr]
 	public struct ApplicationWindow;
@@ -581,11 +582,11 @@ class Gtk
 	}
 	public enum ArrowType : c_int
 	{
-		GTK_ARROW_UP,
-		GTK_ARROW_DOWN,
-		GTK_ARROW_LEFT,
-		GTK_ARROW_RIGHT,
-		GTK_ARROW_NONE
+		up = 0,
+		down = 1,
+		left = 2,
+		right = 3,
+		none = 4
 	}
 	[CRepr]
 	public struct AspectFrame;
@@ -668,18 +669,18 @@ class Gtk
 	public function c_int AssistantPageFunc(c_int current_page, void* data);
 	public enum AssistantPageType : c_int
 	{
-		GTK_ASSISTANT_PAGE_CONTENT,
-		GTK_ASSISTANT_PAGE_INTRO,
-		GTK_ASSISTANT_PAGE_CONFIRM,
-		GTK_ASSISTANT_PAGE_SUMMARY,
-		GTK_ASSISTANT_PAGE_PROGRESS,
-		GTK_ASSISTANT_PAGE_CUSTOM
+		content = 0,
+		intro = 1,
+		confirm = 2,
+		summary = 3,
+		progress = 4,
+		custom = 5
 	}
 	public enum BaselinePosition : c_int
 	{
-		GTK_BASELINE_POSITION_TOP,
-		GTK_BASELINE_POSITION_CENTER,
-		GTK_BASELINE_POSITION_BOTTOM
+		top = 0,
+		center = 1,
+		bottom = 2
 	}
 	[CRepr]
 	public struct BinLayout;
@@ -746,16 +747,16 @@ class Gtk
 	}
 	public enum BorderStyle : c_int
 	{
-		GTK_BORDER_STYLE_NONE,
-		GTK_BORDER_STYLE_HIDDEN,
-		GTK_BORDER_STYLE_SOLID,
-		GTK_BORDER_STYLE_INSET,
-		GTK_BORDER_STYLE_OUTSET,
-		GTK_BORDER_STYLE_DOTTED,
-		GTK_BORDER_STYLE_DASHED,
-		GTK_BORDER_STYLE_DOUBLE,
-		GTK_BORDER_STYLE_GROOVE,
-		GTK_BORDER_STYLE_RIDGE
+		none = 0,
+		hidden = 1,
+		solid = 2,
+		inset = 3,
+		outset = 4,
+		dotted = 5,
+		dashed = 6,
+		double = 7,
+		groove = 8,
+		ridge = 9
 	}
 	[CRepr]
 	public struct Box;
@@ -923,27 +924,27 @@ class Gtk
 	{
 	}
 	[CRepr]
-	public struct BuilderClosureFlags
+	public enum BuilderClosureFlags : int
 	{
-		public const int GTK_BUILDER_CLOSURE_SWAPPED = 1;
+		swapped = 1
 	}
 	public enum BuilderError : c_int
 	{
-		GTK_BUILDER_ERROR_INVALID_TYPE_FUNCTION,
-		GTK_BUILDER_ERROR_UNHANDLED_TAG,
-		GTK_BUILDER_ERROR_MISSING_ATTRIBUTE,
-		GTK_BUILDER_ERROR_INVALID_ATTRIBUTE,
-		GTK_BUILDER_ERROR_INVALID_TAG,
-		GTK_BUILDER_ERROR_MISSING_PROPERTY_VALUE,
-		GTK_BUILDER_ERROR_INVALID_VALUE,
-		GTK_BUILDER_ERROR_VERSION_MISMATCH,
-		GTK_BUILDER_ERROR_DUPLICATE_ID,
-		GTK_BUILDER_ERROR_OBJECT_TYPE_REFUSED,
-		GTK_BUILDER_ERROR_TEMPLATE_MISMATCH,
-		GTK_BUILDER_ERROR_INVALID_PROPERTY,
-		GTK_BUILDER_ERROR_INVALID_SIGNAL,
-		GTK_BUILDER_ERROR_INVALID_ID,
-		GTK_BUILDER_ERROR_INVALID_FUNCTION
+		invalid_type_function = 0,
+		unhandled_tag = 1,
+		missing_attribute = 2,
+		invalid_attribute = 3,
+		invalid_tag = 4,
+		missing_property_value = 5,
+		invalid_value = 6,
+		version_mismatch = 7,
+		duplicate_id = 8,
+		object_type_refused = 9,
+		template_mismatch = 10,
+		invalid_property = 11,
+		invalid_signal = 12,
+		invalid_id = 13,
+		invalid_function = 14
 	}
 	[CRepr]
 	public struct BuilderListItemFactory;
@@ -1020,12 +1021,12 @@ class Gtk
 	}
 	public enum ButtonsType : c_int
 	{
-		GTK_BUTTONS_NONE,
-		GTK_BUTTONS_OK,
-		GTK_BUTTONS_CLOSE,
-		GTK_BUTTONS_CANCEL,
-		GTK_BUTTONS_YES_NO,
-		GTK_BUTTONS_OK_CANCEL
+		none = 0,
+		ok = 1,
+		close = 2,
+		cancel = 3,
+		yes_no = 4,
+		ok_cancel = 5
 	}
 	[CRepr]
 	public struct CClosureExpression;
@@ -1310,8 +1311,8 @@ class Gtk
 	public static extern CellRenderer* CellRendererAccelNew();
 	public enum CellRendererAccelMode : c_int
 	{
-		GTK_CELL_RENDERER_ACCEL_MODE_GTK,
-		GTK_CELL_RENDERER_ACCEL_MODE_OTHER
+		gtk = 0,
+		other = 1
 	}
 	[CRepr]
 	public struct CellRendererClass
@@ -1328,9 +1329,9 @@ class Gtk
 	public static extern CellRenderer* CellRendererComboNew();
 	public enum CellRendererMode : c_int
 	{
-		GTK_CELL_RENDERER_MODE_INERT,
-		GTK_CELL_RENDERER_MODE_ACTIVATABLE,
-		GTK_CELL_RENDERER_MODE_EDITABLE
+		inert = 0,
+		activatable = 1,
+		editable = 2
 	}
 	[CRepr]
 	public struct CellRendererPixbuf;
@@ -1353,15 +1354,15 @@ class Gtk
 	[LinkName("gtk_cell_renderer_spinner_new")]
 	public static extern CellRenderer* CellRendererSpinnerNew();
 	[CRepr]
-	public struct CellRendererState
+	public enum CellRendererState : int
 	{
-		public const int GTK_CELL_RENDERER_SELECTED = 1;
-		public const int GTK_CELL_RENDERER_PRELIT = 2;
-		public const int GTK_CELL_RENDERER_INSENSITIVE = 4;
-		public const int GTK_CELL_RENDERER_SORTED = 8;
-		public const int GTK_CELL_RENDERER_FOCUSED = 16;
-		public const int GTK_CELL_RENDERER_EXPANDABLE = 32;
-		public const int GTK_CELL_RENDERER_EXPANDED = 64;
+		selected = 1,
+		prelit = 2,
+		insensitive = 4,
+		sorted = 8,
+		focused = 16,
+		expandable = 32,
+		expanded = 64
 	}
 	[CRepr]
 	public struct CellRendererText;
@@ -1520,9 +1521,9 @@ class Gtk
 	public static extern ClosureExpression* ClosureExpressionNew(GLib.Type value_type, GObject.Closure closure, c_uint n_params);
 	public enum Collation : c_int
 	{
-		GTK_COLLATION_NONE,
-		GTK_COLLATION_UNICODE,
-		GTK_COLLATION_FILENAME
+		none = 0,
+		unicode = 1,
+		filename = 2
 	}
 	[CRepr]
 	public struct ColorButton;
@@ -1890,18 +1891,18 @@ class Gtk
 	public static extern c_int ConstraintIsRequired(Constraint constraint);
 	public enum ConstraintAttribute : c_int
 	{
-		GTK_CONSTRAINT_ATTRIBUTE_NONE,
-		GTK_CONSTRAINT_ATTRIBUTE_LEFT,
-		GTK_CONSTRAINT_ATTRIBUTE_RIGHT,
-		GTK_CONSTRAINT_ATTRIBUTE_TOP,
-		GTK_CONSTRAINT_ATTRIBUTE_BOTTOM,
-		GTK_CONSTRAINT_ATTRIBUTE_START,
-		GTK_CONSTRAINT_ATTRIBUTE_END,
-		GTK_CONSTRAINT_ATTRIBUTE_WIDTH,
-		GTK_CONSTRAINT_ATTRIBUTE_HEIGHT,
-		GTK_CONSTRAINT_ATTRIBUTE_CENTER_X,
-		GTK_CONSTRAINT_ATTRIBUTE_CENTER_Y,
-		GTK_CONSTRAINT_ATTRIBUTE_BASELINE
+		none = 0,
+		left = 1,
+		right = 2,
+		top = 3,
+		bottom = 4,
+		start = 5,
+		end = 6,
+		width = 7,
+		height = 8,
+		center_x = 9,
+		center_y = 10,
+		baseline = 11
 	}
 	[CRepr]
 	public struct ConstraintClass
@@ -1973,16 +1974,16 @@ class Gtk
 	}
 	public enum ConstraintRelation : c_int
 	{
-		GTK_CONSTRAINT_RELATION_LE,
-		GTK_CONSTRAINT_RELATION_EQ,
-		GTK_CONSTRAINT_RELATION_GE
+		le = -1,
+		eq = 0,
+		ge = 1
 	}
 	public enum ConstraintStrength : c_int
 	{
-		GTK_CONSTRAINT_STRENGTH_REQUIRED,
-		GTK_CONSTRAINT_STRENGTH_STRONG,
-		GTK_CONSTRAINT_STRENGTH_MEDIUM,
-		GTK_CONSTRAINT_STRENGTH_WEAK
+		required = 1001001000,
+		strong = 1000000000,
+		medium = 1000,
+		weak = 1
 	}
 	[CRepr]
 	public struct ConstraintTarget
@@ -1993,26 +1994,26 @@ class Gtk
 	}
 	public enum ConstraintVflParserError : c_int
 	{
-		GTK_CONSTRAINT_VFL_PARSER_ERROR_INVALID_SYMBOL,
-		GTK_CONSTRAINT_VFL_PARSER_ERROR_INVALID_ATTRIBUTE,
-		GTK_CONSTRAINT_VFL_PARSER_ERROR_INVALID_VIEW,
-		GTK_CONSTRAINT_VFL_PARSER_ERROR_INVALID_METRIC,
-		GTK_CONSTRAINT_VFL_PARSER_ERROR_INVALID_PRIORITY,
-		GTK_CONSTRAINT_VFL_PARSER_ERROR_INVALID_RELATION
+		symbol = 0,
+		attribute = 1,
+		view = 2,
+		metric = 3,
+		priority = 4,
+		relation = 5
 	}
 	public enum ContentFit : c_int
 	{
-		GTK_CONTENT_FIT_FILL,
-		GTK_CONTENT_FIT_CONTAIN,
-		GTK_CONTENT_FIT_COVER,
-		GTK_CONTENT_FIT_SCALE_DOWN
+		fill = 0,
+		contain = 1,
+		cover = 2,
+		scale_down = 3
 	}
 	public enum CornerType : c_int
 	{
-		GTK_CORNER_TOP_LEFT,
-		GTK_CORNER_BOTTOM_LEFT,
-		GTK_CORNER_TOP_RIGHT,
-		GTK_CORNER_BOTTOM_RIGHT
+		top_left = 0,
+		bottom_left = 1,
+		top_right = 2,
+		bottom_right = 3
 	}
 	[CRepr]
 	public struct CssLocation
@@ -2025,17 +2026,17 @@ class Gtk
 	}
 	public enum CssParserError : c_int
 	{
-		GTK_CSS_PARSER_ERROR_FAILED,
-		GTK_CSS_PARSER_ERROR_SYNTAX,
-		GTK_CSS_PARSER_ERROR_IMPORT,
-		GTK_CSS_PARSER_ERROR_NAME,
-		GTK_CSS_PARSER_ERROR_UNKNOWN_VALUE
+		failed = 0,
+		syntax = 1,
+		import = 2,
+		name = 3,
+		unknown_value = 4
 	}
 	public enum CssParserWarning : c_int
 	{
-		GTK_CSS_PARSER_WARNING_DEPRECATED,
-		GTK_CSS_PARSER_WARNING_SYNTAX,
-		GTK_CSS_PARSER_WARNING_UNIMPLEMENTED
+		deprecated = 0,
+		syntax = 1,
+		unimplemented = 2
 	}
 	[CRepr]
 	public struct CssProvider;
@@ -2109,39 +2110,39 @@ class Gtk
 		SorterClass parent_class;
 	}
 	[CRepr]
-	public struct DebugFlags
+	public enum DebugFlags : int
 	{
-		public const int GTK_DEBUG_TEXT = 1;
-		public const int GTK_DEBUG_TREE = 2;
-		public const int GTK_DEBUG_KEYBINDINGS = 4;
-		public const int GTK_DEBUG_MODULES = 8;
-		public const int GTK_DEBUG_GEOMETRY = 16;
-		public const int GTK_DEBUG_ICONTHEME = 32;
-		public const int GTK_DEBUG_PRINTING = 64;
-		public const int GTK_DEBUG_BUILDER = 128;
-		public const int GTK_DEBUG_SIZE_REQUEST = 256;
-		public const int GTK_DEBUG_NO_CSS_CACHE = 512;
-		public const int GTK_DEBUG_INTERACTIVE = 1024;
-		public const int GTK_DEBUG_TOUCHSCREEN = 2048;
-		public const int GTK_DEBUG_ACTIONS = 4096;
-		public const int GTK_DEBUG_LAYOUT = 8192;
-		public const int GTK_DEBUG_SNAPSHOT = 16384;
-		public const int GTK_DEBUG_CONSTRAINTS = 32768;
-		public const int GTK_DEBUG_BUILDER_OBJECTS = 65536;
-		public const int GTK_DEBUG_A11Y = 131072;
-		public const int GTK_DEBUG_ICONFALLBACK = 262144;
-		public const int GTK_DEBUG_INVERT_TEXT_DIR = 524288;
+		text = 1,
+		tree = 2,
+		keybindings = 4,
+		modules = 8,
+		geometry = 16,
+		icontheme = 32,
+		printing = 64,
+		builder = 128,
+		size_request = 256,
+		no_css_cache = 512,
+		interactive = 1024,
+		touchscreen = 2048,
+		actions = 4096,
+		layout = 8192,
+		snapshot = 16384,
+		constraints = 32768,
+		builder_objects = 65536,
+		a11y = 131072,
+		iconfallback = 262144,
+		invert_text_dir = 524288
 	}
 	public enum DeleteType : c_int
 	{
-		GTK_DELETE_CHARS,
-		GTK_DELETE_WORD_ENDS,
-		GTK_DELETE_WORDS,
-		GTK_DELETE_DISPLAY_LINES,
-		GTK_DELETE_DISPLAY_LINE_ENDS,
-		GTK_DELETE_PARAGRAPH_ENDS,
-		GTK_DELETE_PARAGRAPHS,
-		GTK_DELETE_WHITESPACE
+		chars = 0,
+		word_ends = 1,
+		words = 2,
+		display_lines = 3,
+		display_line_ends = 4,
+		paragraph_ends = 5,
+		paragraphs = 6,
+		whitespace = 7
 	}
 	[CRepr]
 	public struct Dialog;
@@ -2176,25 +2177,25 @@ class Gtk
 	}
 	public enum DialogError : c_int
 	{
-		GTK_DIALOG_ERROR_FAILED,
-		GTK_DIALOG_ERROR_CANCELLED,
-		GTK_DIALOG_ERROR_DISMISSED
+		failed = 0,
+		cancelled = 1,
+		dismissed = 2
 	}
 	[CRepr]
-	public struct DialogFlags
+	public enum DialogFlags : int
 	{
-		public const int GTK_DIALOG_MODAL = 1;
-		public const int GTK_DIALOG_DESTROY_WITH_PARENT = 2;
-		public const int GTK_DIALOG_USE_HEADER_BAR = 4;
+		modal = 1,
+		destroy_with_parent = 2,
+		use_header_bar = 4
 	}
 	public enum DirectionType : c_int
 	{
-		GTK_DIR_TAB_FORWARD,
-		GTK_DIR_TAB_BACKWARD,
-		GTK_DIR_UP,
-		GTK_DIR_DOWN,
-		GTK_DIR_LEFT,
-		GTK_DIR_RIGHT
+		tab_forward = 0,
+		tab_backward = 1,
+		up = 2,
+		down = 3,
+		left = 4,
+		right = 5
 	}
 	[CRepr]
 	public struct DirectoryList;
@@ -2424,15 +2425,15 @@ class Gtk
 	}
 	public enum EditableProperties : c_int
 	{
-		GTK_EDITABLE_PROP_TEXT,
-		GTK_EDITABLE_PROP_CURSOR_POSITION,
-		GTK_EDITABLE_PROP_SELECTION_BOUND,
-		GTK_EDITABLE_PROP_EDITABLE,
-		GTK_EDITABLE_PROP_WIDTH_CHARS,
-		GTK_EDITABLE_PROP_MAX_WIDTH_CHARS,
-		GTK_EDITABLE_PROP_XALIGN,
-		GTK_EDITABLE_PROP_ENABLE_UNDO,
-		GTK_EDITABLE_NUM_PROPERTIES
+		prop_text = 0,
+		prop_cursor_position = 1,
+		prop_selection_bound = 2,
+		prop_editable = 3,
+		prop_width_chars = 4,
+		prop_max_width_chars = 5,
+		prop_xalign = 6,
+		prop_enable_undo = 7,
+		num_properties = 8
 	}
 	[CRepr]
 	public struct EmojiChooser;
@@ -2651,8 +2652,8 @@ class Gtk
 	public function c_int EntryCompletionMatchFunc(EntryCompletion completion, char8* key, TreeIter iter, void* user_data);
 	public enum EntryIconPosition : c_int
 	{
-		GTK_ENTRY_ICON_PRIMARY,
-		GTK_ENTRY_ICON_SECONDARY
+		primary = 0,
+		secondary = 1
 	}
 	[CRepr]
 	public struct EventController;
@@ -2749,20 +2750,20 @@ class Gtk
 	{
 	}
 	[CRepr]
-	public struct EventControllerScrollFlags
+	public enum EventControllerScrollFlags : int
 	{
-		public const int GTK_EVENT_CONTROLLER_SCROLL_NONE = 0;
-		public const int GTK_EVENT_CONTROLLER_SCROLL_VERTICAL = 1;
-		public const int GTK_EVENT_CONTROLLER_SCROLL_HORIZONTAL = 2;
-		public const int GTK_EVENT_CONTROLLER_SCROLL_DISCRETE = 4;
-		public const int GTK_EVENT_CONTROLLER_SCROLL_KINETIC = 8;
-		public const int GTK_EVENT_CONTROLLER_SCROLL_BOTH_AXES = 3;
+		none = 0,
+		vertical = 1,
+		horizontal = 2,
+		discrete = 4,
+		kinetic = 8,
+		both_axes = 3
 	}
 	public enum EventSequenceState : c_int
 	{
-		GTK_EVENT_SEQUENCE_NONE,
-		GTK_EVENT_SEQUENCE_CLAIMED,
-		GTK_EVENT_SEQUENCE_DENIED
+		none = 0,
+		claimed = 1,
+		denied = 2
 	}
 	[CRepr]
 	public struct EveryFilter;
@@ -2832,9 +2833,9 @@ class Gtk
 	{	}
 	public enum FileChooserAction : c_int
 	{
-		GTK_FILE_CHOOSER_ACTION_OPEN,
-		GTK_FILE_CHOOSER_ACTION_SAVE,
-		GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER
+		open = 0,
+		save = 1,
+		select_folder = 2
 	}
 	[CRepr]
 	public struct FileChooserDialog;
@@ -2842,10 +2843,10 @@ class Gtk
 	public static extern Widget* FileChooserDialogNew(char8* title, Window parent, FileChooserAction action, char8* first_button_text);
 	public enum FileChooserError : c_int
 	{
-		GTK_FILE_CHOOSER_ERROR_NONEXISTENT,
-		GTK_FILE_CHOOSER_ERROR_BAD_FILENAME,
-		GTK_FILE_CHOOSER_ERROR_ALREADY_EXISTS,
-		GTK_FILE_CHOOSER_ERROR_INCOMPLETE_HOSTNAME
+		nonexistent = 0,
+		bad_filename = 1,
+		already_exists = 2,
+		incomplete_hostname = 3
 	}
 	[CRepr]
 	public struct FileChooserNative;
@@ -2982,9 +2983,9 @@ class Gtk
 	public static extern c_int FilterMatch(Filter self, GObject.Object item);
 	public enum FilterChange : c_int
 	{
-		GTK_FILTER_CHANGE_DIFFERENT,
-		GTK_FILTER_CHANGE_LESS_STRICT,
-		GTK_FILTER_CHANGE_MORE_STRICT
+		different = 0,
+		less_strict = 1,
+		more_strict = 2
 	}
 	[CRepr]
 	public struct FilterClass
@@ -3016,9 +3017,9 @@ class Gtk
 	}
 	public enum FilterMatch : c_int
 	{
-		GTK_FILTER_MATCH_SOME,
-		GTK_FILTER_MATCH_NONE,
-		GTK_FILTER_MATCH_ALL
+		some = 0,
+		none = 1,
+		all = 2
 	}
 	[CRepr]
 	public struct Fixed;
@@ -3220,13 +3221,13 @@ class Gtk
 		GObject.TypeInterface base_iface;
 	}
 	[CRepr]
-	public struct FontChooserLevel
+	public enum FontChooserLevel : int
 	{
-		public const int GTK_FONT_CHOOSER_LEVEL_FAMILY = 0;
-		public const int GTK_FONT_CHOOSER_LEVEL_STYLE = 1;
-		public const int GTK_FONT_CHOOSER_LEVEL_SIZE = 2;
-		public const int GTK_FONT_CHOOSER_LEVEL_VARIATIONS = 4;
-		public const int GTK_FONT_CHOOSER_LEVEL_FEATURES = 8;
+		family = 0,
+		style = 1,
+		size = 2,
+		variations = 4,
+		features = 8
 	}
 	[CRepr]
 	public struct FontChooserWidget;
@@ -3317,10 +3318,10 @@ class Gtk
 	public function c_int FontFilterFunc(Pango.FontFamily family, Pango.FontFace face, void* data);
 	public enum FontLevel : c_int
 	{
-		GTK_FONT_LEVEL_FAMILY,
-		GTK_FONT_LEVEL_FACE,
-		GTK_FONT_LEVEL_FONT,
-		GTK_FONT_LEVEL_FEATURES
+		family = 0,
+		face = 1,
+		font = 2,
+		features = 3
 	}
 	[CRepr]
 	public struct Frame;
@@ -3787,11 +3788,11 @@ class Gtk
 	{
 	}
 	[CRepr]
-	public struct IconLookupFlags
+	public enum IconLookupFlags : int
 	{
-		public const int GTK_ICON_LOOKUP_FORCE_REGULAR = 1;
-		public const int GTK_ICON_LOOKUP_FORCE_SYMBOLIC = 2;
-		public const int GTK_ICON_LOOKUP_PRELOAD = 4;
+		force_regular = 1,
+		force_symbolic = 2,
+		preload = 4
 	}
 	[CRepr]
 	public struct IconPaintable;
@@ -3805,9 +3806,9 @@ class Gtk
 	public static extern c_int IconPaintableIsSymbolic(IconPaintable self);
 	public enum IconSize : c_int
 	{
-		GTK_ICON_SIZE_INHERIT,
-		GTK_ICON_SIZE_NORMAL,
-		GTK_ICON_SIZE_LARGE
+		inherit = 0,
+		normal = 1,
+		large = 2
 	}
 	[CRepr]
 	public struct IconTheme;
@@ -3845,8 +3846,8 @@ class Gtk
 	public static extern void IconThemeSetThemeName(IconTheme self, char8* theme_name);
 	public enum IconThemeError : c_int
 	{
-		GTK_ICON_THEME_NOT_FOUND,
-		GTK_ICON_THEME_FAILED
+		not_found = 0,
+		failed = 1
 	}
 	[CRepr]
 	public struct IconView;
@@ -3978,12 +3979,12 @@ class Gtk
 	public static extern void IconViewUnsetModelDragSource(IconView icon_view);
 	public enum IconViewDropPosition : c_int
 	{
-		GTK_ICON_VIEW_NO_DROP,
-		GTK_ICON_VIEW_DROP_INTO,
-		GTK_ICON_VIEW_DROP_LEFT,
-		GTK_ICON_VIEW_DROP_RIGHT,
-		GTK_ICON_VIEW_DROP_ABOVE,
-		GTK_ICON_VIEW_DROP_BELOW
+		no_drop = 0,
+		drop_into = 1,
+		drop_left = 2,
+		drop_right = 3,
+		drop_above = 4,
+		drop_below = 5
 	}
 	public function void IconViewForeachFunc(IconView icon_view, TreePath path, void* data);
 	[CRepr]
@@ -4034,10 +4035,10 @@ class Gtk
 	public static extern void ImageSetPixelSize(Image image, c_int pixel_size);
 	public enum ImageType : c_int
 	{
-		GTK_IMAGE_EMPTY,
-		GTK_IMAGE_ICON_NAME,
-		GTK_IMAGE_GICON,
-		GTK_IMAGE_PAINTABLE
+		empty = 0,
+		icon_name = 1,
+		gicon = 2,
+		paintable = 3
 	}
 	[CRepr]
 	public struct InfoBar;
@@ -4076,35 +4077,35 @@ class Gtk
 	[LinkName("gtk_info_bar_set_show_close_button")]
 	public static extern void InfoBarSetShowCloseButton(InfoBar info_bar, c_int setting);
 	[CRepr]
-	public struct InputHints
+	public enum InputHints : int
 	{
-		public const int GTK_INPUT_HINT_NONE = 0;
-		public const int GTK_INPUT_HINT_SPELLCHECK = 1;
-		public const int GTK_INPUT_HINT_NO_SPELLCHECK = 2;
-		public const int GTK_INPUT_HINT_WORD_COMPLETION = 4;
-		public const int GTK_INPUT_HINT_LOWERCASE = 8;
-		public const int GTK_INPUT_HINT_UPPERCASE_CHARS = 16;
-		public const int GTK_INPUT_HINT_UPPERCASE_WORDS = 32;
-		public const int GTK_INPUT_HINT_UPPERCASE_SENTENCES = 64;
-		public const int GTK_INPUT_HINT_INHIBIT_OSK = 128;
-		public const int GTK_INPUT_HINT_VERTICAL_WRITING = 256;
-		public const int GTK_INPUT_HINT_EMOJI = 512;
-		public const int GTK_INPUT_HINT_NO_EMOJI = 1024;
-		public const int GTK_INPUT_HINT_PRIVATE = 2048;
+		none = 0,
+		spellcheck = 1,
+		no_spellcheck = 2,
+		word_completion = 4,
+		lowercase = 8,
+		uppercase_chars = 16,
+		uppercase_words = 32,
+		uppercase_sentences = 64,
+		inhibit_osk = 128,
+		vertical_writing = 256,
+		emoji = 512,
+		no_emoji = 1024,
+		private_ = 2048
 	}
 	public enum InputPurpose : c_int
 	{
-		GTK_INPUT_PURPOSE_FREE_FORM,
-		GTK_INPUT_PURPOSE_ALPHA,
-		GTK_INPUT_PURPOSE_DIGITS,
-		GTK_INPUT_PURPOSE_NUMBER,
-		GTK_INPUT_PURPOSE_PHONE,
-		GTK_INPUT_PURPOSE_URL,
-		GTK_INPUT_PURPOSE_EMAIL,
-		GTK_INPUT_PURPOSE_NAME,
-		GTK_INPUT_PURPOSE_PASSWORD,
-		GTK_INPUT_PURPOSE_PIN,
-		GTK_INPUT_PURPOSE_TERMINAL
+		free_form = 0,
+		alpha = 1,
+		digits = 2,
+		number = 3,
+		phone = 4,
+		url = 5,
+		email = 6,
+		name = 7,
+		password = 8,
+		pin = 9,
+		terminal = 10
 	}
 	[CRepr]
 	public struct Inscription;
@@ -4159,17 +4160,17 @@ class Gtk
 	}
 	public enum InscriptionOverflow : c_int
 	{
-		GTK_INSCRIPTION_OVERFLOW_CLIP,
-		GTK_INSCRIPTION_OVERFLOW_ELLIPSIZE_START,
-		GTK_INSCRIPTION_OVERFLOW_ELLIPSIZE_MIDDLE,
-		GTK_INSCRIPTION_OVERFLOW_ELLIPSIZE_END
+		clip = 0,
+		ellipsize_start = 1,
+		ellipsize_middle = 2,
+		ellipsize_end = 3
 	}
 	public enum Justification : c_int
 	{
-		GTK_JUSTIFY_LEFT,
-		GTK_JUSTIFY_RIGHT,
-		GTK_JUSTIFY_CENTER,
-		GTK_JUSTIFY_FILL
+		left = 0,
+		right = 1,
+		center = 2,
+		fill = 3
 	}
 	[CRepr]
 	public struct KeyvalTrigger;
@@ -4352,29 +4353,29 @@ class Gtk
 	public static extern void LevelBarSetValue(LevelBar self, double value);
 	public enum LevelBarMode : c_int
 	{
-		GTK_LEVEL_BAR_MODE_CONTINUOUS,
-		GTK_LEVEL_BAR_MODE_DISCRETE
+		continuous = 0,
+		discrete = 1
 	}
 	public enum License : c_int
 	{
-		GTK_LICENSE_UNKNOWN,
-		GTK_LICENSE_CUSTOM,
-		GTK_LICENSE_GPL_2_0,
-		GTK_LICENSE_GPL_3_0,
-		GTK_LICENSE_LGPL_2_1,
-		GTK_LICENSE_LGPL_3_0,
-		GTK_LICENSE_BSD,
-		GTK_LICENSE_MIT_X11,
-		GTK_LICENSE_ARTISTIC,
-		GTK_LICENSE_GPL_2_0_ONLY,
-		GTK_LICENSE_GPL_3_0_ONLY,
-		GTK_LICENSE_LGPL_2_1_ONLY,
-		GTK_LICENSE_LGPL_3_0_ONLY,
-		GTK_LICENSE_AGPL_3_0,
-		GTK_LICENSE_AGPL_3_0_ONLY,
-		GTK_LICENSE_BSD_3,
-		GTK_LICENSE_APACHE_2_0,
-		GTK_LICENSE_MPL_2_0
+		unknown = 0,
+		custom = 1,
+		gpl_2_0 = 2,
+		gpl_3_0 = 3,
+		lgpl_2_1 = 4,
+		lgpl_3_0 = 5,
+		bsd = 6,
+		mit_x11 = 7,
+		artistic = 8,
+		gpl_2_0_only = 9,
+		gpl_3_0_only = 10,
+		lgpl_2_1_only = 11,
+		lgpl_3_0_only = 12,
+		agpl_3_0 = 13,
+		agpl_3_0_only = 14,
+		bsd_3 = 15,
+		apache_2_0 = 16,
+		mpl_2_0 = 17
 	}
 	[CRepr]
 	public struct LinkButton;
@@ -4607,9 +4608,9 @@ class Gtk
 	}
 	public enum ListTabBehavior : c_int
 	{
-		GTK_LIST_TAB_ALL,
-		GTK_LIST_TAB_ITEM,
-		GTK_LIST_TAB_CELL
+		all = 0,
+		item = 1,
+		cell = 2
 	}
 	[CRepr]
 	public struct ListView;
@@ -4871,11 +4872,11 @@ class Gtk
 	}
 	public enum MessageType : c_int
 	{
-		GTK_MESSAGE_INFO,
-		GTK_MESSAGE_WARNING,
-		GTK_MESSAGE_QUESTION,
-		GTK_MESSAGE_ERROR,
-		GTK_MESSAGE_OTHER
+		info = 0,
+		warning = 1,
+		question = 2,
+		error = 3,
+		other = 4
 	}
 	[CRepr]
 	public struct MnemonicAction;
@@ -4918,16 +4919,16 @@ class Gtk
 	}
 	public enum MovementStep : c_int
 	{
-		GTK_MOVEMENT_LOGICAL_POSITIONS,
-		GTK_MOVEMENT_VISUAL_POSITIONS,
-		GTK_MOVEMENT_WORDS,
-		GTK_MOVEMENT_DISPLAY_LINES,
-		GTK_MOVEMENT_DISPLAY_LINE_ENDS,
-		GTK_MOVEMENT_PARAGRAPHS,
-		GTK_MOVEMENT_PARAGRAPH_ENDS,
-		GTK_MOVEMENT_PAGES,
-		GTK_MOVEMENT_BUFFER_ENDS,
-		GTK_MOVEMENT_HORIZONTAL_PAGES
+		logical_positions = 0,
+		visual_positions = 1,
+		words = 2,
+		display_lines = 3,
+		display_line_ends = 4,
+		paragraphs = 5,
+		paragraph_ends = 6,
+		pages = 7,
+		buffer_ends = 8,
+		horizontal_pages = 9
 	}
 	[CRepr]
 	public struct MultiFilter;
@@ -5011,9 +5012,9 @@ class Gtk
 	}
 	public enum NaturalWrapMode : c_int
 	{
-		GTK_NATURAL_WRAP_INHERIT,
-		GTK_NATURAL_WRAP_NONE,
-		GTK_NATURAL_WRAP_WORD
+		inherit = 0,
+		none = 1,
+		word = 2
 	}
 	[CRepr]
 	public struct NeverTrigger;
@@ -5132,8 +5133,8 @@ class Gtk
 	public static extern Widget* NotebookPageGetChild(NotebookPage page);
 	public enum NotebookTab : c_int
 	{
-		GTK_NOTEBOOK_TAB_FIRST,
-		GTK_NOTEBOOK_TAB_LAST
+		first = 0,
+		last = 1
 	}
 	[CRepr]
 	public struct NothingAction;
@@ -5143,14 +5144,14 @@ class Gtk
 	}
 	public enum NumberUpLayout : c_int
 	{
-		GTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_TOP_TO_BOTTOM,
-		GTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_BOTTOM_TO_TOP,
-		GTK_NUMBER_UP_LAYOUT_RIGHT_TO_LEFT_TOP_TO_BOTTOM,
-		GTK_NUMBER_UP_LAYOUT_RIGHT_TO_LEFT_BOTTOM_TO_TOP,
-		GTK_NUMBER_UP_LAYOUT_TOP_TO_BOTTOM_LEFT_TO_RIGHT,
-		GTK_NUMBER_UP_LAYOUT_TOP_TO_BOTTOM_RIGHT_TO_LEFT,
-		GTK_NUMBER_UP_LAYOUT_BOTTOM_TO_TOP_LEFT_TO_RIGHT,
-		GTK_NUMBER_UP_LAYOUT_BOTTOM_TO_TOP_RIGHT_TO_LEFT
+		lrtb = 0,
+		lrbt = 1,
+		rltb = 2,
+		rlbt = 3,
+		tblr = 4,
+		tbrl = 5,
+		btlr = 6,
+		btrl = 7
 	}
 	[CRepr]
 	public struct NumericSorter;
@@ -5177,9 +5178,9 @@ class Gtk
 	public static extern GObject.Object* ObjectExpressionGetObject(ObjectExpression expression);
 	public enum Ordering : c_int
 	{
-		GTK_ORDERING_SMALLER,
-		GTK_ORDERING_EQUAL,
-		GTK_ORDERING_LARGER
+		smaller = -1,
+		equal = 0,
+		larger = 1
 	}
 	[CRepr]
 	public struct Orientable
@@ -5191,13 +5192,13 @@ class Gtk
 	}
 	public enum Orientation : c_int
 	{
-		GTK_ORIENTATION_HORIZONTAL,
-		GTK_ORIENTATION_VERTICAL
+		horizontal = 0,
+		vertical = 1
 	}
 	public enum Overflow : c_int
 	{
-		GTK_OVERFLOW_VISIBLE,
-		GTK_OVERFLOW_HIDDEN
+		visible = 0,
+		hidden = 1
 	}
 	[CRepr]
 	public struct Overlay;
@@ -5245,8 +5246,8 @@ class Gtk
 	}
 	public enum PackType : c_int
 	{
-		GTK_PACK_START,
-		GTK_PACK_END
+		start = 0,
+		end = 1
 	}
 	[CRepr]
 	public struct PadActionEntry
@@ -5259,9 +5260,9 @@ class Gtk
 	}
 	public enum PadActionType : c_int
 	{
-		GTK_PAD_ACTION_BUTTON,
-		GTK_PAD_ACTION_RING,
-		GTK_PAD_ACTION_STRIP
+		button = 0,
+		ring = 1,
+		strip = 2
 	}
 	[CRepr]
 	public struct PadController;
@@ -5277,10 +5278,10 @@ class Gtk
 	}
 	public enum PageOrientation : c_int
 	{
-		GTK_PAGE_ORIENTATION_PORTRAIT,
-		GTK_PAGE_ORIENTATION_LANDSCAPE,
-		GTK_PAGE_ORIENTATION_REVERSE_PORTRAIT,
-		GTK_PAGE_ORIENTATION_REVERSE_LANDSCAPE
+		portrait = 0,
+		landscape = 1,
+		reverse_portrait = 2,
+		reverse_landscape = 3
 	}
 	[CRepr]
 	public struct PageRange
@@ -5290,9 +5291,9 @@ class Gtk
 	}
 	public enum PageSet : c_int
 	{
-		GTK_PAGE_SET_ALL,
-		GTK_PAGE_SET_EVEN,
-		GTK_PAGE_SET_ODD
+		all = 0,
+		even = 1,
+		odd = 2
 	}
 	[CRepr]
 	public struct PageSetup;
@@ -5365,10 +5366,10 @@ class Gtk
 	public static extern void PageSetupUnixDialogSetPrintSettings(PageSetupUnixDialog dialog, PrintSettings print_settings);
 	public enum PanDirection : c_int
 	{
-		GTK_PAN_DIRECTION_LEFT,
-		GTK_PAN_DIRECTION_RIGHT,
-		GTK_PAN_DIRECTION_UP,
-		GTK_PAN_DIRECTION_DOWN
+		left = 0,
+		right = 1,
+		up = 2,
+		down = 3
 	}
 	[CRepr]
 	public struct Paned;
@@ -5438,11 +5439,11 @@ class Gtk
 	{
 	}
 	[CRepr]
-	public struct PickFlags
+	public enum PickFlags : int
 	{
-		public const int GTK_PICK_DEFAULT = 0;
-		public const int GTK_PICK_INSENSITIVE = 1;
-		public const int GTK_PICK_NON_TARGETABLE = 2;
+		default_ = 0,
+		insensitive = 1,
+		non_targetable = 2
 	}
 	[CRepr]
 	public struct Picture;
@@ -5495,10 +5496,10 @@ class Gtk
 	}
 	public enum PolicyType : c_int
 	{
-		GTK_POLICY_ALWAYS,
-		GTK_POLICY_AUTOMATIC,
-		GTK_POLICY_NEVER,
-		GTK_POLICY_EXTERNAL
+		always = 0,
+		automatic = 1,
+		never = 2,
+		external = 3
 	}
 	[CRepr]
 	public struct Popover;
@@ -5576,34 +5577,34 @@ class Gtk
 	[LinkName("gtk_popover_menu_bar_set_menu_model")]
 	public static extern void PopoverMenuBarSetMenuModel(PopoverMenuBar bar, Gio.MenuModel model);
 	[CRepr]
-	public struct PopoverMenuFlags
+	public enum PopoverMenuFlags : int
 	{
-		public const int GTK_POPOVER_MENU_NESTED = 1;
+		nested = 1
 	}
 	public enum PositionType : c_int
 	{
-		GTK_POS_LEFT,
-		GTK_POS_RIGHT,
-		GTK_POS_TOP,
-		GTK_POS_BOTTOM
+		left = 0,
+		right = 1,
+		top = 2,
+		bottom = 3
 	}
 	[CRepr]
 	public struct PrintBackend
 	{
 	}
 	[CRepr]
-	public struct PrintCapabilities
+	public enum PrintCapabilities : int
 	{
-		public const int GTK_PRINT_CAPABILITY_PAGE_SET = 1;
-		public const int GTK_PRINT_CAPABILITY_COPIES = 2;
-		public const int GTK_PRINT_CAPABILITY_COLLATE = 4;
-		public const int GTK_PRINT_CAPABILITY_REVERSE = 8;
-		public const int GTK_PRINT_CAPABILITY_SCALE = 16;
-		public const int GTK_PRINT_CAPABILITY_GENERATE_PDF = 32;
-		public const int GTK_PRINT_CAPABILITY_GENERATE_PS = 64;
-		public const int GTK_PRINT_CAPABILITY_PREVIEW = 128;
-		public const int GTK_PRINT_CAPABILITY_NUMBER_UP = 256;
-		public const int GTK_PRINT_CAPABILITY_NUMBER_UP_LAYOUT = 512;
+		page_set = 1,
+		copies = 2,
+		collate = 4,
+		reverse = 8,
+		scale = 16,
+		generate_pdf = 32,
+		generate_ps = 64,
+		preview = 128,
+		number_up = 256,
+		number_up_layout = 512
 	}
 	[CRepr]
 	public struct PrintContext;
@@ -5631,16 +5632,16 @@ class Gtk
 	public static extern void PrintContextSetCairoContext(PrintContext context, cairo.Context cr, double dpi_x, double dpi_y);
 	public enum PrintDuplex : c_int
 	{
-		GTK_PRINT_DUPLEX_SIMPLEX,
-		GTK_PRINT_DUPLEX_HORIZONTAL,
-		GTK_PRINT_DUPLEX_VERTICAL
+		simplex = 0,
+		horizontal = 1,
+		vertical = 2
 	}
 	public enum PrintError : c_int
 	{
-		GTK_PRINT_ERROR_GENERAL,
-		GTK_PRINT_ERROR_INTERNAL_ERROR,
-		GTK_PRINT_ERROR_NOMEM,
-		GTK_PRINT_ERROR_INVALID_FILE
+		general = 0,
+		internal_error = 1,
+		nomem = 2,
+		invalid_file = 3
 	}
 	[CRepr]
 	public struct PrintJob;
@@ -5771,10 +5772,10 @@ class Gtk
 	public static extern void PrintOperationSetUseFullPage(PrintOperation op, c_int full_page);
 	public enum PrintOperationAction : c_int
 	{
-		GTK_PRINT_OPERATION_ACTION_PRINT_DIALOG,
-		GTK_PRINT_OPERATION_ACTION_PRINT,
-		GTK_PRINT_OPERATION_ACTION_PREVIEW,
-		GTK_PRINT_OPERATION_ACTION_EXPORT
+		print_dialog = 0,
+		print = 1,
+		preview = 2,
+		export = 3
 	}
 	[CRepr]
 	public struct PrintOperationClass
@@ -5805,24 +5806,24 @@ class Gtk
 	}
 	public enum PrintOperationResult : c_int
 	{
-		GTK_PRINT_OPERATION_RESULT_ERROR,
-		GTK_PRINT_OPERATION_RESULT_APPLY,
-		GTK_PRINT_OPERATION_RESULT_CANCEL,
-		GTK_PRINT_OPERATION_RESULT_IN_PROGRESS
+		error = 0,
+		apply = 1,
+		cancel = 2,
+		in_progress = 3
 	}
 	public enum PrintPages : c_int
 	{
-		GTK_PRINT_PAGES_ALL,
-		GTK_PRINT_PAGES_CURRENT,
-		GTK_PRINT_PAGES_RANGES,
-		GTK_PRINT_PAGES_SELECTION
+		all = 0,
+		current = 1,
+		ranges = 2,
+		selection = 3
 	}
 	public enum PrintQuality : c_int
 	{
-		GTK_PRINT_QUALITY_LOW,
-		GTK_PRINT_QUALITY_NORMAL,
-		GTK_PRINT_QUALITY_HIGH,
-		GTK_PRINT_QUALITY_DRAFT
+		low = 0,
+		normal = 1,
+		high = 2,
+		draft = 3
 	}
 	[CRepr]
 	public struct PrintSettings;
@@ -5981,15 +5982,15 @@ class Gtk
 	public function void PrintSettingsFunc(char8* key, char8* value, void* user_data);
 	public enum PrintStatus : c_int
 	{
-		GTK_PRINT_STATUS_INITIAL,
-		GTK_PRINT_STATUS_PREPARING,
-		GTK_PRINT_STATUS_GENERATING_DATA,
-		GTK_PRINT_STATUS_SENDING_DATA,
-		GTK_PRINT_STATUS_PENDING,
-		GTK_PRINT_STATUS_PENDING_ISSUE,
-		GTK_PRINT_STATUS_PRINTING,
-		GTK_PRINT_STATUS_FINISHED,
-		GTK_PRINT_STATUS_FINISHED_ABORTED
+		initial = 0,
+		preparing = 1,
+		generating_data = 2,
+		sending_data = 3,
+		pending = 4,
+		pending_issue = 5,
+		printing = 6,
+		finished = 7,
+		finished_aborted = 8
 	}
 	[CRepr]
 	public struct PrintUnixDialog;
@@ -6110,15 +6111,15 @@ class Gtk
 	public static extern void ProgressBarSetText(ProgressBar pbar, char8* text);
 	public enum PropagationLimit : c_int
 	{
-		GTK_LIMIT_NONE,
-		GTK_LIMIT_SAME_NATIVE
+		none = 0,
+		same_native = 1
 	}
 	public enum PropagationPhase : c_int
 	{
-		GTK_PHASE_NONE,
-		GTK_PHASE_CAPTURE,
-		GTK_PHASE_BUBBLE,
-		GTK_PHASE_TARGET
+		none = 0,
+		capture = 1,
+		bubble = 2,
+		target = 3
 	}
 	[CRepr]
 	public struct PropertyExpression;
@@ -6222,13 +6223,13 @@ class Gtk
 	}
 	public enum RecentManagerError : c_int
 	{
-		GTK_RECENT_MANAGER_ERROR_NOT_FOUND,
-		GTK_RECENT_MANAGER_ERROR_INVALID_URI,
-		GTK_RECENT_MANAGER_ERROR_INVALID_ENCODING,
-		GTK_RECENT_MANAGER_ERROR_NOT_REGISTERED,
-		GTK_RECENT_MANAGER_ERROR_READ,
-		GTK_RECENT_MANAGER_ERROR_WRITE,
-		GTK_RECENT_MANAGER_ERROR_UNKNOWN
+		not_found = 0,
+		invalid_uri = 1,
+		invalid_encoding = 2,
+		not_registered = 3,
+		read = 4,
+		write = 5,
+		unknown = 6
 	}
 	[CRepr]
 	public struct RecentManagerPrivate
@@ -6249,17 +6250,17 @@ class Gtk
 	}
 	public enum ResponseType : c_int
 	{
-		GTK_RESPONSE_NONE,
-		GTK_RESPONSE_REJECT,
-		GTK_RESPONSE_ACCEPT,
-		GTK_RESPONSE_DELETE_EVENT,
-		GTK_RESPONSE_OK,
-		GTK_RESPONSE_CANCEL,
-		GTK_RESPONSE_CLOSE,
-		GTK_RESPONSE_YES,
-		GTK_RESPONSE_NO,
-		GTK_RESPONSE_APPLY,
-		GTK_RESPONSE_HELP
+		none = -1,
+		reject = -2,
+		accept = -3,
+		delete_event = -4,
+		ok = -5,
+		cancel = -6,
+		close = -7,
+		yes = -8,
+		no = -9,
+		apply = -10,
+		help = -11
 	}
 	[CRepr]
 	public struct Revealer;
@@ -6285,16 +6286,16 @@ class Gtk
 	public static extern void RevealerSetTransitionType(Revealer revealer, RevealerTransitionType transition);
 	public enum RevealerTransitionType : c_int
 	{
-		GTK_REVEALER_TRANSITION_TYPE_NONE,
-		GTK_REVEALER_TRANSITION_TYPE_CROSSFADE,
-		GTK_REVEALER_TRANSITION_TYPE_SLIDE_RIGHT,
-		GTK_REVEALER_TRANSITION_TYPE_SLIDE_LEFT,
-		GTK_REVEALER_TRANSITION_TYPE_SLIDE_UP,
-		GTK_REVEALER_TRANSITION_TYPE_SLIDE_DOWN,
-		GTK_REVEALER_TRANSITION_TYPE_SWING_RIGHT,
-		GTK_REVEALER_TRANSITION_TYPE_SWING_LEFT,
-		GTK_REVEALER_TRANSITION_TYPE_SWING_UP,
-		GTK_REVEALER_TRANSITION_TYPE_SWING_DOWN
+		none = 0,
+		crossfade = 1,
+		slide_right = 2,
+		slide_left = 3,
+		slide_up = 4,
+		slide_down = 5,
+		swing_right = 6,
+		swing_left = 7,
+		swing_up = 8,
+		swing_down = 9
 	}
 	[CRepr]
 	public struct Root
@@ -6370,31 +6371,31 @@ class Gtk
 	public function char8* ScaleFormatValueFunc(Scale scale, double value, void* user_data);
 	public enum ScrollStep : c_int
 	{
-		GTK_SCROLL_STEPS,
-		GTK_SCROLL_PAGES,
-		GTK_SCROLL_ENDS,
-		GTK_SCROLL_HORIZONTAL_STEPS,
-		GTK_SCROLL_HORIZONTAL_PAGES,
-		GTK_SCROLL_HORIZONTAL_ENDS
+		steps = 0,
+		pages = 1,
+		ends = 2,
+		horizontal_steps = 3,
+		horizontal_pages = 4,
+		horizontal_ends = 5
 	}
 	public enum ScrollType : c_int
 	{
-		GTK_SCROLL_NONE,
-		GTK_SCROLL_JUMP,
-		GTK_SCROLL_STEP_BACKWARD,
-		GTK_SCROLL_STEP_FORWARD,
-		GTK_SCROLL_PAGE_BACKWARD,
-		GTK_SCROLL_PAGE_FORWARD,
-		GTK_SCROLL_STEP_UP,
-		GTK_SCROLL_STEP_DOWN,
-		GTK_SCROLL_PAGE_UP,
-		GTK_SCROLL_PAGE_DOWN,
-		GTK_SCROLL_STEP_LEFT,
-		GTK_SCROLL_STEP_RIGHT,
-		GTK_SCROLL_PAGE_LEFT,
-		GTK_SCROLL_PAGE_RIGHT,
-		GTK_SCROLL_START,
-		GTK_SCROLL_END
+		none = 0,
+		jump = 1,
+		step_backward = 2,
+		step_forward = 3,
+		page_backward = 4,
+		page_forward = 5,
+		step_up = 6,
+		step_down = 7,
+		page_up = 8,
+		page_down = 9,
+		step_left = 10,
+		step_right = 11,
+		page_left = 12,
+		page_right = 13,
+		start = 14,
+		end = 15
 	}
 	[CRepr]
 	public struct Scrollable
@@ -6408,8 +6409,8 @@ class Gtk
 	}
 	public enum ScrollablePolicy : c_int
 	{
-		GTK_SCROLL_MINIMUM,
-		GTK_SCROLL_NATURAL
+		minimum = 0,
+		natural = 1
 	}
 	[CRepr]
 	public struct Scrollbar;
@@ -6548,10 +6549,10 @@ class Gtk
 	}
 	public enum SelectionMode : c_int
 	{
-		GTK_SELECTION_NONE,
-		GTK_SELECTION_SINGLE,
-		GTK_SELECTION_BROWSE,
-		GTK_SELECTION_MULTIPLE
+		none = 0,
+		single = 1,
+		browse = 2,
+		multiple = 3
 	}
 	[CRepr]
 	public struct SelectionModel
@@ -6581,9 +6582,9 @@ class Gtk
 	}
 	public enum SensitivityType : c_int
 	{
-		GTK_SENSITIVITY_AUTO,
-		GTK_SENSITIVITY_ON,
-		GTK_SENSITIVITY_OFF
+		auto = 0,
+		on = 1,
+		off = 2
 	}
 	[CRepr]
 	public struct Separator;
@@ -6626,9 +6627,9 @@ class Gtk
 	{
 	}
 	[CRepr]
-	public struct ShortcutActionFlags
+	public enum ShortcutActionFlags : int
 	{
-		public const int GTK_SHORTCUT_ACTION_EXCLUSIVE = 1;
+		exclusive = 1
 	}
 	[CRepr]
 	public struct ShortcutClass
@@ -6688,9 +6689,9 @@ class Gtk
 	}
 	public enum ShortcutScope : c_int
 	{
-		GTK_SHORTCUT_SCOPE_LOCAL,
-		GTK_SHORTCUT_SCOPE_MANAGED,
-		GTK_SHORTCUT_SCOPE_GLOBAL
+		local = 0,
+		managed = 1,
+		global = 2
 	}
 	[CRepr]
 	public struct ShortcutTrigger;
@@ -6718,16 +6719,16 @@ class Gtk
 	}
 	public enum ShortcutType : c_int
 	{
-		GTK_SHORTCUT_ACCELERATOR,
-		GTK_SHORTCUT_GESTURE_PINCH,
-		GTK_SHORTCUT_GESTURE_STRETCH,
-		GTK_SHORTCUT_GESTURE_ROTATE_CLOCKWISE,
-		GTK_SHORTCUT_GESTURE_ROTATE_COUNTERCLOCKWISE,
-		GTK_SHORTCUT_GESTURE_TWO_FINGER_SWIPE_LEFT,
-		GTK_SHORTCUT_GESTURE_TWO_FINGER_SWIPE_RIGHT,
-		GTK_SHORTCUT_GESTURE,
-		GTK_SHORTCUT_GESTURE_SWIPE_LEFT,
-		GTK_SHORTCUT_GESTURE_SWIPE_RIGHT
+		accelerator = 0,
+		gesture_pinch = 1,
+		gesture_stretch = 2,
+		gesture_rotate_clockwise = 3,
+		gesture_rotate_counterclockwise = 4,
+		gesture_two_finger_swipe_left = 5,
+		gesture_two_finger_swipe_right = 6,
+		gesture = 7,
+		gesture_swipe_left = 8,
+		gesture_swipe_right = 9
 	}
 	[CRepr]
 	public struct ShortcutsGroup;
@@ -6810,16 +6811,16 @@ class Gtk
 	public static extern void SizeGroupSetMode(SizeGroup size_group, SizeGroupMode mode);
 	public enum SizeGroupMode : c_int
 	{
-		GTK_SIZE_GROUP_NONE,
-		GTK_SIZE_GROUP_HORIZONTAL,
-		GTK_SIZE_GROUP_VERTICAL,
-		GTK_SIZE_GROUP_BOTH
+		none = 0,
+		horizontal = 1,
+		vertical = 2,
+		both = 3
 	}
 	public enum SizeRequestMode : c_int
 	{
-		GTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH,
-		GTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT,
-		GTK_SIZE_REQUEST_CONSTANT_SIZE
+		height_for_width = 0,
+		width_for_height = 1,
+		constant_size = 2
 	}
 	[CRepr]
 	public struct SliceListModel;
@@ -6975,8 +6976,8 @@ class Gtk
 	}
 	public enum SortType : c_int
 	{
-		GTK_SORT_ASCENDING,
-		GTK_SORT_DESCENDING
+		ascending = 0,
+		descending = 1
 	}
 	[CRepr]
 	public struct Sorter;
@@ -6988,10 +6989,10 @@ class Gtk
 	public static extern SorterOrder SorterGetOrder(Sorter self);
 	public enum SorterChange : c_int
 	{
-		GTK_SORTER_CHANGE_DIFFERENT,
-		GTK_SORTER_CHANGE_INVERTED,
-		GTK_SORTER_CHANGE_LESS_STRICT,
-		GTK_SORTER_CHANGE_MORE_STRICT
+		different = 0,
+		inverted = 1,
+		less_strict = 2,
+		more_strict = 3
 	}
 	[CRepr]
 	public struct SorterClass
@@ -7000,9 +7001,9 @@ class Gtk
 	}
 	public enum SorterOrder : c_int
 	{
-		GTK_SORTER_ORDER_PARTIAL,
-		GTK_SORTER_ORDER_NONE,
-		GTK_SORTER_ORDER_TOTAL
+		partial = 0,
+		none = 1,
+		total = 2
 	}
 	[CRepr]
 	public struct SpinButton;
@@ -7060,18 +7061,18 @@ class Gtk
 	public static extern void SpinButtonUpdate(SpinButton spin_button);
 	public enum SpinButtonUpdatePolicy : c_int
 	{
-		GTK_UPDATE_ALWAYS,
-		GTK_UPDATE_IF_VALID
+		always = 0,
+		if_valid = 1
 	}
 	public enum SpinType : c_int
 	{
-		GTK_SPIN_STEP_FORWARD,
-		GTK_SPIN_STEP_BACKWARD,
-		GTK_SPIN_PAGE_FORWARD,
-		GTK_SPIN_PAGE_BACKWARD,
-		GTK_SPIN_HOME,
-		GTK_SPIN_END,
-		GTK_SPIN_USER_DEFINED
+		step_forward = 0,
+		step_backward = 1,
+		page_forward = 2,
+		page_backward = 3,
+		home = 4,
+		end = 5,
+		user_defined = 6
 	}
 	[CRepr]
 	public struct Spinner;
@@ -7181,49 +7182,49 @@ class Gtk
 	public static extern void StackSwitcherSetStack(StackSwitcher switcher, Stack stack_);
 	public enum StackTransitionType : c_int
 	{
-		GTK_STACK_TRANSITION_TYPE_NONE,
-		GTK_STACK_TRANSITION_TYPE_CROSSFADE,
-		GTK_STACK_TRANSITION_TYPE_SLIDE_RIGHT,
-		GTK_STACK_TRANSITION_TYPE_SLIDE_LEFT,
-		GTK_STACK_TRANSITION_TYPE_SLIDE_UP,
-		GTK_STACK_TRANSITION_TYPE_SLIDE_DOWN,
-		GTK_STACK_TRANSITION_TYPE_SLIDE_LEFT_RIGHT,
-		GTK_STACK_TRANSITION_TYPE_SLIDE_UP_DOWN,
-		GTK_STACK_TRANSITION_TYPE_OVER_UP,
-		GTK_STACK_TRANSITION_TYPE_OVER_DOWN,
-		GTK_STACK_TRANSITION_TYPE_OVER_LEFT,
-		GTK_STACK_TRANSITION_TYPE_OVER_RIGHT,
-		GTK_STACK_TRANSITION_TYPE_UNDER_UP,
-		GTK_STACK_TRANSITION_TYPE_UNDER_DOWN,
-		GTK_STACK_TRANSITION_TYPE_UNDER_LEFT,
-		GTK_STACK_TRANSITION_TYPE_UNDER_RIGHT,
-		GTK_STACK_TRANSITION_TYPE_OVER_UP_DOWN,
-		GTK_STACK_TRANSITION_TYPE_OVER_DOWN_UP,
-		GTK_STACK_TRANSITION_TYPE_OVER_LEFT_RIGHT,
-		GTK_STACK_TRANSITION_TYPE_OVER_RIGHT_LEFT,
-		GTK_STACK_TRANSITION_TYPE_ROTATE_LEFT,
-		GTK_STACK_TRANSITION_TYPE_ROTATE_RIGHT,
-		GTK_STACK_TRANSITION_TYPE_ROTATE_LEFT_RIGHT
+		none = 0,
+		crossfade = 1,
+		slide_right = 2,
+		slide_left = 3,
+		slide_up = 4,
+		slide_down = 5,
+		slide_left_right = 6,
+		slide_up_down = 7,
+		over_up = 8,
+		over_down = 9,
+		over_left = 10,
+		over_right = 11,
+		under_up = 12,
+		under_down = 13,
+		under_left = 14,
+		under_right = 15,
+		over_up_down = 16,
+		over_down_up = 17,
+		over_left_right = 18,
+		over_right_left = 19,
+		rotate_left = 20,
+		rotate_right = 21,
+		rotate_left_right = 22
 	}
 	[CRepr]
-	public struct StateFlags
+	public enum StateFlags : int
 	{
-		public const int GTK_STATE_FLAG_NORMAL = 0;
-		public const int GTK_STATE_FLAG_ACTIVE = 1;
-		public const int GTK_STATE_FLAG_PRELIGHT = 2;
-		public const int GTK_STATE_FLAG_SELECTED = 4;
-		public const int GTK_STATE_FLAG_INSENSITIVE = 8;
-		public const int GTK_STATE_FLAG_INCONSISTENT = 16;
-		public const int GTK_STATE_FLAG_FOCUSED = 32;
-		public const int GTK_STATE_FLAG_BACKDROP = 64;
-		public const int GTK_STATE_FLAG_DIR_LTR = 128;
-		public const int GTK_STATE_FLAG_DIR_RTL = 256;
-		public const int GTK_STATE_FLAG_LINK = 512;
-		public const int GTK_STATE_FLAG_VISITED = 1024;
-		public const int GTK_STATE_FLAG_CHECKED = 2048;
-		public const int GTK_STATE_FLAG_DROP_ACTIVE = 4096;
-		public const int GTK_STATE_FLAG_FOCUS_VISIBLE = 8192;
-		public const int GTK_STATE_FLAG_FOCUS_WITHIN = 16384;
+		normal = 0,
+		active = 1,
+		prelight = 2,
+		selected = 4,
+		insensitive = 8,
+		inconsistent = 16,
+		focused = 32,
+		backdrop = 64,
+		dir_ltr = 128,
+		dir_rtl = 256,
+		link = 512,
+		visited = 1024,
+		checked_ = 2048,
+		drop_active = 4096,
+		focus_visible = 8192,
+		focus_within = 16384
 	}
 	[CRepr]
 	public struct Statusbar;
@@ -7266,9 +7267,9 @@ class Gtk
 	}
 	public enum StringFilterMatchMode : c_int
 	{
-		GTK_STRING_FILTER_MATCH_MODE_EXACT,
-		GTK_STRING_FILTER_MATCH_MODE_SUBSTRING,
-		GTK_STRING_FILTER_MATCH_MODE_PREFIX
+		exact = 0,
+		substring = 1,
+		prefix = 2
 	}
 	[CRepr]
 	public struct StringList;
@@ -7367,12 +7368,12 @@ class Gtk
 		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct StyleContextPrintFlags
+	public enum StyleContextPrintFlags : int
 	{
-		public const int GTK_STYLE_CONTEXT_PRINT_NONE = 0;
-		public const int GTK_STYLE_CONTEXT_PRINT_RECURSE = 1;
-		public const int GTK_STYLE_CONTEXT_PRINT_SHOW_STYLE = 2;
-		public const int GTK_STYLE_CONTEXT_PRINT_SHOW_CHANGE = 4;
+		none = 0,
+		recurse = 1,
+		show_style = 2,
+		show_change = 4
 	}
 	[CRepr]
 	public struct StyleProvider
@@ -7391,10 +7392,10 @@ class Gtk
 	public static extern void SwitchSetState(Switch self, c_int state);
 	public enum SymbolicColor : c_int
 	{
-		GTK_SYMBOLIC_COLOR_FOREGROUND,
-		GTK_SYMBOLIC_COLOR_ERROR,
-		GTK_SYMBOLIC_COLOR_WARNING,
-		GTK_SYMBOLIC_COLOR_SUCCESS
+		foreground = 0,
+		error = 1,
+		warning = 2,
+		success = 3
 	}
 	[CRepr]
 	public struct SymbolicPaintable
@@ -7408,11 +7409,11 @@ class Gtk
 	}
 	public enum SystemSetting : c_int
 	{
-		GTK_SYSTEM_SETTING_DPI,
-		GTK_SYSTEM_SETTING_FONT_NAME,
-		GTK_SYSTEM_SETTING_FONT_CONFIG,
-		GTK_SYSTEM_SETTING_DISPLAY,
-		GTK_SYSTEM_SETTING_ICON_THEME
+		dpi = 0,
+		font_name = 1,
+		font_config = 2,
+		display = 3,
+		icon_theme = 4
 	}
 	[CRepr]
 	public struct Text;
@@ -7659,14 +7660,14 @@ class Gtk
 	}
 	public enum TextDirection : c_int
 	{
-		GTK_TEXT_DIR_NONE,
-		GTK_TEXT_DIR_LTR,
-		GTK_TEXT_DIR_RTL
+		none = 0,
+		ltr = 1,
+		rtl = 2
 	}
 	public enum TextExtendSelection : c_int
 	{
-		GTK_TEXT_EXTEND_SELECTION_WORD,
-		GTK_TEXT_EXTEND_SELECTION_LINE
+		word = 0,
+		line = 1
 	}
 	[CRepr]
 	public struct TextIter
@@ -7708,11 +7709,11 @@ class Gtk
 		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct TextSearchFlags
+	public enum TextSearchFlags : int
 	{
-		public const int GTK_TEXT_SEARCH_VISIBLE_ONLY = 1;
-		public const int GTK_TEXT_SEARCH_TEXT_ONLY = 2;
-		public const int GTK_TEXT_SEARCH_CASE_INSENSITIVE = 4;
+		visible_only = 1,
+		text_only = 2,
+		case_insensitive = 4
 	}
 	[CRepr]
 	public struct TextTag;
@@ -7903,8 +7904,8 @@ class Gtk
 	}
 	public enum TextViewLayer : c_int
 	{
-		GTK_TEXT_VIEW_LAYER_BELOW_TEXT,
-		GTK_TEXT_VIEW_LAYER_ABOVE_TEXT
+		below_text = 0,
+		above_text = 1
 	}
 	[CRepr]
 	public struct TextViewPrivate
@@ -7912,12 +7913,12 @@ class Gtk
 	}
 	public enum TextWindowType : c_int
 	{
-		GTK_TEXT_WINDOW_WIDGET,
-		GTK_TEXT_WINDOW_TEXT,
-		GTK_TEXT_WINDOW_LEFT,
-		GTK_TEXT_WINDOW_RIGHT,
-		GTK_TEXT_WINDOW_TOP,
-		GTK_TEXT_WINDOW_BOTTOM
+		widget = 1,
+		text = 2,
+		left = 3,
+		right = 4,
+		top = 5,
+		bottom = 6
 	}
 	public function c_int TickCallback(Widget widget, Gdk.FrameClock frame_clock, void* user_data);
 	[CRepr]
@@ -8161,10 +8162,10 @@ class Gtk
 	}
 	public function c_int TreeModelFilterVisibleFunc(TreeModel model, TreeIter iter, void* data);
 	[CRepr]
-	public struct TreeModelFlags
+	public enum TreeModelFlags : int
 	{
-		public const int GTK_TREE_MODEL_ITERS_PERSIST = 1;
-		public const int GTK_TREE_MODEL_LIST_ONLY = 2;
+		iters_persist = 1,
+		list_only = 2
 	}
 	public function c_int TreeModelForeachFunc(TreeModel model, TreePath path, TreeIter iter, void* data);
 	[CRepr]
@@ -8630,33 +8631,33 @@ class Gtk
 	public function c_int TreeViewColumnDropFunc(TreeView tree_view, TreeViewColumn column, TreeViewColumn prev_column, TreeViewColumn next_column, void* data);
 	public enum TreeViewColumnSizing : c_int
 	{
-		GTK_TREE_VIEW_COLUMN_GROW_ONLY,
-		GTK_TREE_VIEW_COLUMN_AUTOSIZE,
-		GTK_TREE_VIEW_COLUMN_FIXED
+		grow_only = 0,
+		autosize = 1,
+		fixed_ = 2
 	}
 	public enum TreeViewDropPosition : c_int
 	{
-		GTK_TREE_VIEW_DROP_BEFORE,
-		GTK_TREE_VIEW_DROP_AFTER,
-		GTK_TREE_VIEW_DROP_INTO_OR_BEFORE,
-		GTK_TREE_VIEW_DROP_INTO_OR_AFTER
+		before = 0,
+		after = 1,
+		into_or_before = 2,
+		into_or_after = 3
 	}
 	public enum TreeViewGridLines : c_int
 	{
-		GTK_TREE_VIEW_GRID_LINES_NONE,
-		GTK_TREE_VIEW_GRID_LINES_HORIZONTAL,
-		GTK_TREE_VIEW_GRID_LINES_VERTICAL,
-		GTK_TREE_VIEW_GRID_LINES_BOTH
+		none = 0,
+		horizontal = 1,
+		vertical = 2,
+		both = 3
 	}
 	public function void TreeViewMappingFunc(TreeView tree_view, TreePath path, void* user_data);
 	public function c_int TreeViewRowSeparatorFunc(TreeModel model, TreeIter iter, void* data);
 	public function c_int TreeViewSearchEqualFunc(TreeModel model, c_int column, char8* key, TreeIter iter, void* search_data);
 	public enum Unit : c_int
 	{
-		GTK_UNIT_NONE,
-		GTK_UNIT_POINTS,
-		GTK_UNIT_INCH,
-		GTK_UNIT_MM
+		none = 0,
+		points = 1,
+		inch = 2,
+		mm = 3
 	}
 	[CRepr]
 	public struct UriLauncher;
@@ -9252,9 +9253,9 @@ class Gtk
 	}
 	public enum WrapMode : c_int
 	{
-		GTK_WRAP_NONE,
-		GTK_WRAP_CHAR,
-		GTK_WRAP_WORD,
-		GTK_WRAP_WORD_CHAR
+		none = 0,
+		char = 1,
+		word = 2,
+		word_char = 3
 	}
 }

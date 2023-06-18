@@ -19,37 +19,37 @@ class Graphene
 	}
 	public enum EulerOrder : c_int
 	{
-		GRAPHENE_EULER_ORDER_DEFAULT,
-		GRAPHENE_EULER_ORDER_XYZ,
-		GRAPHENE_EULER_ORDER_YZX,
-		GRAPHENE_EULER_ORDER_ZXY,
-		GRAPHENE_EULER_ORDER_XZY,
-		GRAPHENE_EULER_ORDER_YXZ,
-		GRAPHENE_EULER_ORDER_ZYX,
-		GRAPHENE_EULER_ORDER_SXYZ,
-		GRAPHENE_EULER_ORDER_SXYX,
-		GRAPHENE_EULER_ORDER_SXZY,
-		GRAPHENE_EULER_ORDER_SXZX,
-		GRAPHENE_EULER_ORDER_SYZX,
-		GRAPHENE_EULER_ORDER_SYZY,
-		GRAPHENE_EULER_ORDER_SYXZ,
-		GRAPHENE_EULER_ORDER_SYXY,
-		GRAPHENE_EULER_ORDER_SZXY,
-		GRAPHENE_EULER_ORDER_SZXZ,
-		GRAPHENE_EULER_ORDER_SZYX,
-		GRAPHENE_EULER_ORDER_SZYZ,
-		GRAPHENE_EULER_ORDER_RZYX,
-		GRAPHENE_EULER_ORDER_RXYX,
-		GRAPHENE_EULER_ORDER_RYZX,
-		GRAPHENE_EULER_ORDER_RXZX,
-		GRAPHENE_EULER_ORDER_RXZY,
-		GRAPHENE_EULER_ORDER_RYZY,
-		GRAPHENE_EULER_ORDER_RZXY,
-		GRAPHENE_EULER_ORDER_RYXY,
-		GRAPHENE_EULER_ORDER_RYXZ,
-		GRAPHENE_EULER_ORDER_RZXZ,
-		GRAPHENE_EULER_ORDER_RXYZ,
-		GRAPHENE_EULER_ORDER_RZYZ
+		default_ = -1,
+		xyz = 0,
+		yzx = 1,
+		zxy = 2,
+		xzy = 3,
+		yxz = 4,
+		zyx = 5,
+		sxyz = 6,
+		sxyx = 7,
+		sxzy = 8,
+		sxzx = 9,
+		syzx = 10,
+		syzy = 11,
+		syxz = 12,
+		syxy = 13,
+		szxy = 14,
+		szxz = 15,
+		szyx = 16,
+		szyz = 17,
+		rzyx = 18,
+		rxyx = 19,
+		ryzx = 20,
+		rxzx = 21,
+		rxzy = 22,
+		ryzy = 23,
+		rzxy = 24,
+		ryxy = 25,
+		ryxz = 26,
+		rzxz = 27,
+		rxyz = 28,
+		rzyz = 29
 	}
 	[CRepr]
 	public struct Frustum
@@ -99,9 +99,9 @@ class Graphene
 	}
 	public enum RayIntersectionKind : c_int
 	{
-		GRAPHENE_RAY_INTERSECTION_KIND_NONE,
-		GRAPHENE_RAY_INTERSECTION_KIND_ENTER,
-		GRAPHENE_RAY_INTERSECTION_KIND_LEAVE
+		none = 0,
+		enter = 1,
+		leave = 2
 	}
 	[CRepr]
 	public struct Rect
