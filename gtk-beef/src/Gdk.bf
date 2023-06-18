@@ -101,16 +101,8 @@ class Gdk
 	public static extern void ClipboardReadValueAsync(Clipboard* clipboard, GLib.Type type, c_int io_priority, Gio.Cancellable* cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gdk_clipboard_read_value_finish")]
 	public static extern GObject.Value* ClipboardReadValueFinish(Clipboard* clipboard, Gio.AsyncResult* result);
-	[LinkName("gdk_clipboard_set")]
-	public static extern void ClipboardSet(Clipboard* clipboard, GLib.Type type);
 	[LinkName("gdk_clipboard_set_content")]
 	public static extern c_int ClipboardSetContent(Clipboard* clipboard, ContentProvider* provider);
-	[LinkName("gdk_clipboard_set_text")]
-	public static extern void ClipboardSetText(Clipboard* clipboard, char8* text);
-	[LinkName("gdk_clipboard_set_texture")]
-	public static extern void ClipboardSetTexture(Clipboard* clipboard, Texture* texture);
-	[LinkName("gdk_clipboard_set_valist")]
-	public static extern void ClipboardSetValist(Clipboard* clipboard, GLib.Type type, VarArgs args);
 	[LinkName("gdk_clipboard_set_value")]
 	public static extern void ClipboardSetValue(Clipboard* clipboard, GObject.Value* value);
 	[LinkName("gdk_clipboard_store_async")]
@@ -156,8 +148,6 @@ class Gdk
 	public static extern ContentProvider* ContentProviderNewForBytes(char8* mime_type, GLib.Bytes* bytes);
 	[LinkName("gdk_content_provider_new_for_value")]
 	public static extern ContentProvider* ContentProviderNewForValue(GObject.Value* value);
-	[LinkName("gdk_content_provider_new_typed")]
-	public static extern ContentProvider* ContentProviderNewTyped(GLib.Type type);
 	[LinkName("gdk_content_provider_new_union")]
 	public static extern ContentProvider* ContentProviderNewUnion(c_ulong n_providers);
 	[LinkName("gdk_content_provider_content_changed")]
@@ -316,6 +306,10 @@ class Gdk
 	}
 	[CRepr]
 	public struct Display;
+	[LinkName("gdk_display_get_default")]
+	public static extern Display* DisplayGetDefault();
+	[LinkName("gdk_display_open")]
+	public static extern Display* DisplayOpen(char8* display_name);
 	[LinkName("gdk_display_beep")]
 	public static extern void DisplayBeep(Display* display);
 	[LinkName("gdk_display_close")]
@@ -370,6 +364,8 @@ class Gdk
 	public static extern c_int DisplayTranslateKey(Display* display, c_uint keycode, ModifierType state, c_int group, c_uint* keyval, c_int* effective_group, c_int* level, ModifierType* consumed);
 	[CRepr]
 	public struct DisplayManager;
+	[LinkName("gdk_display_manager_get")]
+	public static extern DisplayManager* DisplayManagerGet();
 	[LinkName("gdk_display_manager_get_default_display")]
 	public static extern Display* DisplayManagerGetDefaultDisplay(DisplayManager* manager);
 	[LinkName("gdk_display_manager_list_displays")]
@@ -380,6 +376,8 @@ class Gdk
 	public static extern void DisplayManagerSetDefaultDisplay(DisplayManager* manager, Display* display);
 	[CRepr]
 	public struct Drag;
+	[LinkName("gdk_drag_begin")]
+	public static extern Drag* DragBegin(Surface* surface, Device* device, ContentProvider* content, DragAction actions, double dx, double dy);
 	[LinkName("gdk_drag_drop_done")]
 	public static extern void DragDropDone(Drag* drag, c_int success);
 	[LinkName("gdk_drag_get_actions")]
@@ -611,6 +609,10 @@ class Gdk
 	}
 	[CRepr]
 	public struct GLContext;
+	[LinkName("gdk_gl_context_clear_current")]
+	public static extern void GlContextClearCurrent();
+	[LinkName("gdk_gl_context_get_current")]
+	public static extern GLContext* GlContextGetCurrent();
 	[LinkName("gdk_gl_context_get_allowed_apis")]
 	public static extern GLAPI GlContextGetAllowedApis(GLContext* self);
 	[LinkName("gdk_gl_context_get_api")]
@@ -1186,4 +1188,70 @@ class Gdk
 		unsupported = 0,
 		not_available = 1
 	}
+	[LinkName("gdk_cairo_draw_from_gl")]
+	public static extern void CairoDrawFromGl(cairo.Context* cr, Surface* surface, c_int source, c_int source_type, c_int buffer_scale, c_int x, c_int y, c_int width, c_int height);
+	[LinkName("gdk_cairo_rectangle")]
+	public static extern void CairoRectangle(cairo.Context* cr, Rectangle* rectangle);
+	[LinkName("gdk_cairo_region")]
+	public static extern void CairoRegion(cairo.Context* cr, cairo.Region* region);
+	[LinkName("gdk_cairo_region_create_from_surface")]
+	public static extern cairo.Region* CairoRegionCreateFromSurface(cairo.Surface* surface);
+	[LinkName("gdk_cairo_set_source_pixbuf")]
+	public static extern void CairoSetSourcePixbuf(cairo.Context* cr, GdkPixbuf.Pixbuf* pixbuf, double pixbuf_x, double pixbuf_y);
+	[LinkName("gdk_cairo_set_source_rgba")]
+	public static extern void CairoSetSourceRgba(cairo.Context* cr, RGBA* rgba);
+	[LinkName("gdk_content_deserialize_async")]
+	public static extern void ContentDeserializeAsync(Gio.InputStream* stream, char8* mime_type, GLib.Type type, c_int io_priority, Gio.Cancellable* cancellable, Gio.AsyncReadyCallback callback, void* user_data);
+	[LinkName("gdk_content_deserialize_finish")]
+	public static extern c_int ContentDeserializeFinish(Gio.AsyncResult* result, GObject.Value* value);
+	[LinkName("gdk_content_formats_parse")]
+	public static extern ContentFormats* ContentFormatsParse(char8* string);
+	[LinkName("gdk_content_register_deserializer")]
+	public static extern void ContentRegisterDeserializer(char8* mime_type, GLib.Type type, ContentDeserializeFunc deserialize, void* data, GLib.DestroyNotify notify);
+	[LinkName("gdk_content_register_serializer")]
+	public static extern void ContentRegisterSerializer(GLib.Type type, char8* mime_type, ContentSerializeFunc serialize, void* data, GLib.DestroyNotify notify);
+	[LinkName("gdk_content_serialize_async")]
+	public static extern void ContentSerializeAsync(Gio.OutputStream* stream, char8* mime_type, GObject.Value* value, c_int io_priority, Gio.Cancellable* cancellable, Gio.AsyncReadyCallback callback, void* user_data);
+	[LinkName("gdk_content_serialize_finish")]
+	public static extern c_int ContentSerializeFinish(Gio.AsyncResult* result);
+	[LinkName("gdk_drag_action_is_unique")]
+	public static extern c_int DragActionIsUnique(DragAction action);
+	[LinkName("gdk_drag_surface_size_get_type")]
+	public static extern GLib.Type DragSurfaceSizeGetType();
+	[LinkName("gdk_gl_error_quark")]
+	public static extern GLib.Quark GlErrorQuark();
+	[LinkName("gdk_intern_mime_type")]
+	public static extern char8* InternMimeType(char8* string);
+	[LinkName("gdk_keyval_convert_case")]
+	public static extern void KeyvalConvertCase(c_uint symbol, c_uint* lower, c_uint* upper);
+	[LinkName("gdk_keyval_from_name")]
+	public static extern c_uint KeyvalFromName(char8* keyval_name);
+	[LinkName("gdk_keyval_is_lower")]
+	public static extern c_int KeyvalIsLower(c_uint keyval);
+	[LinkName("gdk_keyval_is_upper")]
+	public static extern c_int KeyvalIsUpper(c_uint keyval);
+	[LinkName("gdk_keyval_name")]
+	public static extern char8* KeyvalName(c_uint keyval);
+	[LinkName("gdk_keyval_to_lower")]
+	public static extern c_uint KeyvalToLower(c_uint keyval);
+	[LinkName("gdk_keyval_to_unicode")]
+	public static extern c_uint KeyvalToUnicode(c_uint keyval);
+	[LinkName("gdk_keyval_to_upper")]
+	public static extern c_uint KeyvalToUpper(c_uint keyval);
+	[LinkName("gdk_paintable_new_empty")]
+	public static extern Paintable* PaintableNewEmpty(c_int intrinsic_width, c_int intrinsic_height);
+	[LinkName("gdk_pixbuf_get_from_surface")]
+	public static extern GdkPixbuf.Pixbuf* PixbufGetFromSurface(cairo.Surface* surface, c_int src_x, c_int src_y, c_int width, c_int height);
+	[LinkName("gdk_pixbuf_get_from_texture")]
+	public static extern GdkPixbuf.Pixbuf* PixbufGetFromTexture(Texture* texture);
+	[LinkName("gdk_set_allowed_backends")]
+	public static extern void SetAllowedBackends(char8* backends);
+	[LinkName("gdk_texture_error_quark")]
+	public static extern GLib.Quark TextureErrorQuark();
+	[LinkName("gdk_toplevel_size_get_type")]
+	public static extern GLib.Type ToplevelSizeGetType();
+	[LinkName("gdk_unicode_to_keyval")]
+	public static extern c_uint UnicodeToKeyval(c_uint wc);
+	[LinkName("gdk_vulkan_error_quark")]
+	public static extern GLib.Quark VulkanErrorQuark();
 }

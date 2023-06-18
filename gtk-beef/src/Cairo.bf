@@ -301,4 +301,6 @@ class cairo
 		c_int width;
 		c_int height;
 	}
+	[LinkName("cairo_image_surface_create")]
+	public static extern void ImageSurfaceCreate();
 }

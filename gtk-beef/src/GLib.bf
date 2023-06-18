@@ -1531,4 +1531,1040 @@ class GLib
 	{
 	}
 	public function void VoidFunc();
+	[LinkName("g_access")]
+	public static extern c_int GAccess(char8* filename, c_int mode);
+	[LinkName("g_aligned_alloc")]
+	public static extern void* GAlignedAlloc(c_ulong n_blocks, c_ulong n_block_bytes, c_ulong alignment);
+	[LinkName("g_aligned_alloc0")]
+	public static extern void* GAlignedAlloc0(c_ulong n_blocks, c_ulong n_block_bytes, c_ulong alignment);
+	[LinkName("g_aligned_free")]
+	public static extern void GAlignedFree(void* mem);
+	[LinkName("g_aligned_free_sized")]
+	public static extern void GAlignedFreeSized(void* mem, c_ulong alignment, c_ulong size);
+	[LinkName("g_ascii_digit_value")]
+	public static extern c_int GAsciiDigitValue(c_char c);
+	[LinkName("g_ascii_dtostr")]
+	public static extern char8* GAsciiDtostr(char8* buffer, c_int buf_len, double d);
+	[LinkName("g_ascii_formatd")]
+	public static extern char8* GAsciiFormatd(char8* buffer, c_int buf_len, char8* format, double d);
+	[LinkName("g_ascii_strcasecmp")]
+	public static extern c_int GAsciiStrcasecmp(char8* s1, char8* s2);
+	[LinkName("g_ascii_strdown")]
+	public static extern char8* GAsciiStrdown(char8* str, c_long len);
+	[LinkName("g_ascii_string_to_signed")]
+	public static extern c_int GAsciiStringToSigned(char8* str, c_uint base_, c_longlong min, c_longlong max, c_longlong* out_num);
+	[LinkName("g_ascii_string_to_unsigned")]
+	public static extern c_int GAsciiStringToUnsigned(char8* str, c_uint base_, c_ulonglong min, c_ulonglong max, c_ulonglong* out_num);
+	[LinkName("g_ascii_strncasecmp")]
+	public static extern c_int GAsciiStrncasecmp(char8* s1, char8* s2, c_ulong n);
+	[LinkName("g_ascii_strtod")]
+	public static extern double GAsciiStrtod(char8* nptr, char8* endptr);
+	[LinkName("g_ascii_strtoll")]
+	public static extern c_longlong GAsciiStrtoll(char8* nptr, char8* endptr, c_uint base_);
+	[LinkName("g_ascii_strtoull")]
+	public static extern c_ulonglong GAsciiStrtoull(char8* nptr, char8* endptr, c_uint base_);
+	[LinkName("g_ascii_strup")]
+	public static extern char8* GAsciiStrup(char8* str, c_long len);
+	[LinkName("g_ascii_tolower")]
+	public static extern c_char GAsciiTolower(c_char c);
+	[LinkName("g_ascii_toupper")]
+	public static extern c_char GAsciiToupper(c_char c);
+	[LinkName("g_ascii_xdigit_value")]
+	public static extern c_int GAsciiXdigitValue(c_char c);
+	[LinkName("g_assert_warning")]
+	public static extern void GAssertWarning(char8* log_domain, char8* file, c_int line, char8* pretty_function, char8* expression);
+	[LinkName("g_assertion_message")]
+	public static extern void GAssertionMessage(char8* domain, char8* file, c_int line, char8* func, char8* message);
+	[LinkName("g_assertion_message_cmpstr")]
+	public static extern void GAssertionMessageCmpstr(char8* domain, char8* file, c_int line, char8* func, char8* expr, char8* arg1, char8* cmp, char8* arg2);
+	[LinkName("g_assertion_message_cmpstrv")]
+	public static extern void GAssertionMessageCmpstrv(char8* domain, char8* file, c_int line, char8* func, char8* expr, char8* arg1, char8* arg2, c_ulong first_wrong_idx);
+	[LinkName("g_assertion_message_error")]
+	public static extern void GAssertionMessageError(char8* domain, char8* file, c_int line, char8* func, char8* expr, Error* error, Quark error_domain, c_int error_code);
+	[LinkName("g_atexit")]
+	public static extern void GAtexit(VoidFunc func);
+	[LinkName("g_atomic_int_add")]
+	public static extern c_int GAtomicIntAdd(c_int* atomic, c_int val);
+	[LinkName("g_atomic_int_and")]
+	public static extern c_uint GAtomicIntAnd(c_uint* atomic, c_uint val);
+	[LinkName("g_atomic_int_compare_and_exchange")]
+	public static extern c_int GAtomicIntCompareAndExchange(c_int* atomic, c_int oldval, c_int newval);
+	[LinkName("g_atomic_int_compare_and_exchange_full")]
+	public static extern c_int GAtomicIntCompareAndExchangeFull(c_int* atomic, c_int oldval, c_int newval, c_int* preval);
+	[LinkName("g_atomic_int_dec_and_test")]
+	public static extern c_int GAtomicIntDecAndTest(c_int* atomic);
+	[LinkName("g_atomic_int_exchange")]
+	public static extern c_int GAtomicIntExchange(c_int* atomic, c_int newval);
+	[LinkName("g_atomic_int_exchange_and_add")]
+	public static extern c_int GAtomicIntExchangeAndAdd(c_int* atomic, c_int val);
+	[LinkName("g_atomic_int_get")]
+	public static extern c_int GAtomicIntGet(c_int* atomic);
+	[LinkName("g_atomic_int_inc")]
+	public static extern void GAtomicIntInc(c_int* atomic);
+	[LinkName("g_atomic_int_or")]
+	public static extern c_uint GAtomicIntOr(c_uint* atomic, c_uint val);
+	[LinkName("g_atomic_int_set")]
+	public static extern void GAtomicIntSet(c_int* atomic, c_int newval);
+	[LinkName("g_atomic_int_xor")]
+	public static extern c_uint GAtomicIntXor(c_uint* atomic, c_uint val);
+	[LinkName("g_atomic_pointer_add")]
+	public static extern c_long GAtomicPointerAdd(void* atomic, c_long val);
+	[LinkName("g_atomic_pointer_and")]
+	public static extern c_ulong GAtomicPointerAnd(void* atomic, c_ulong val);
+	[LinkName("g_atomic_pointer_compare_and_exchange")]
+	public static extern c_int GAtomicPointerCompareAndExchange(void* atomic, void* oldval, void* newval);
+	[LinkName("g_atomic_pointer_compare_and_exchange_full")]
+	public static extern c_int GAtomicPointerCompareAndExchangeFull(void* atomic, void* oldval, void* newval, void* preval);
+	[LinkName("g_atomic_pointer_exchange")]
+	public static extern void* GAtomicPointerExchange(void* atomic, void* newval);
+	[LinkName("g_atomic_pointer_get")]
+	public static extern void* GAtomicPointerGet(void* atomic);
+	[LinkName("g_atomic_pointer_or")]
+	public static extern c_ulong GAtomicPointerOr(void* atomic, c_ulong val);
+	[LinkName("g_atomic_pointer_set")]
+	public static extern void GAtomicPointerSet(void* atomic, void* newval);
+	[LinkName("g_atomic_pointer_xor")]
+	public static extern c_ulong GAtomicPointerXor(void* atomic, c_ulong val);
+	[LinkName("g_atomic_rc_box_acquire")]
+	public static extern void* GAtomicRcBoxAcquire(void* mem_block);
+	[LinkName("g_atomic_rc_box_alloc")]
+	public static extern void* GAtomicRcBoxAlloc(c_ulong block_size);
+	[LinkName("g_atomic_rc_box_alloc0")]
+	public static extern void* GAtomicRcBoxAlloc0(c_ulong block_size);
+	[LinkName("g_atomic_rc_box_dup")]
+	public static extern void* GAtomicRcBoxDup(c_ulong block_size, void* mem_block);
+	[LinkName("g_atomic_rc_box_get_size")]
+	public static extern c_ulong GAtomicRcBoxGetSize(void* mem_block);
+	[LinkName("g_atomic_rc_box_release")]
+	public static extern void GAtomicRcBoxRelease(void* mem_block);
+	[LinkName("g_atomic_rc_box_release_full")]
+	public static extern void GAtomicRcBoxReleaseFull(void* mem_block, DestroyNotify clear_func);
+	[LinkName("g_atomic_ref_count_compare")]
+	public static extern c_int GAtomicRefCountCompare(c_int* arc, c_int val);
+	[LinkName("g_atomic_ref_count_dec")]
+	public static extern c_int GAtomicRefCountDec(c_int* arc);
+	[LinkName("g_atomic_ref_count_inc")]
+	public static extern void GAtomicRefCountInc(c_int* arc);
+	[LinkName("g_atomic_ref_count_init")]
+	public static extern void GAtomicRefCountInit(c_int* arc);
+	[LinkName("g_base64_decode")]
+	public static extern c_uchar GBase64Decode(char8* text, c_ulong* out_len);
+	[LinkName("g_base64_decode_inplace")]
+	public static extern c_uchar* GBase64DecodeInplace(c_ulong* out_len);
+	[LinkName("g_base64_encode")]
+	public static extern char8* GBase64Encode(c_ulong len);
+	[LinkName("g_base64_encode_close")]
+	public static extern c_ulong GBase64EncodeClose(c_int break_lines, c_int* state, c_int* save);
+	[LinkName("g_base64_encode_step")]
+	public static extern c_ulong GBase64EncodeStep(c_ulong len, c_int break_lines, c_int* state, c_int* save);
+	[LinkName("g_basename")]
+	public static extern char8* GBasename(char8* file_name);
+	[LinkName("g_bit_lock")]
+	public static extern void GBitLock(c_int* address, c_int lock_bit);
+	[LinkName("g_bit_nth_lsf")]
+	public static extern c_int GBitNthLsf(c_ulong mask, c_int nth_bit);
+	[LinkName("g_bit_nth_msf")]
+	public static extern c_int GBitNthMsf(c_ulong mask, c_int nth_bit);
+	[LinkName("g_bit_storage")]
+	public static extern c_uint GBitStorage(c_ulong number);
+	[LinkName("g_bit_trylock")]
+	public static extern c_int GBitTrylock(c_int* address, c_int lock_bit);
+	[LinkName("g_bit_unlock")]
+	public static extern void GBitUnlock(c_int* address, c_int lock_bit);
+	[LinkName("g_bookmark_file_error_quark")]
+	public static extern Quark GBookmarkFileErrorQuark();
+	[LinkName("g_build_filenamev")]
+	public static extern char8* GBuildFilenamev();
+	[LinkName("g_build_pathv")]
+	public static extern char8* GBuildPathv(char8* separator);
+	[LinkName("g_byte_array_free")]
+	public static extern c_uchar* GByteArrayFree(c_int free_segment);
+	[LinkName("g_byte_array_free_to_bytes")]
+	public static extern Bytes* GByteArrayFreeToBytes();
+	[LinkName("g_byte_array_new")]
+	public static extern c_uchar GByteArrayNew();
+	[LinkName("g_byte_array_new_take")]
+	public static extern c_uchar GByteArrayNewTake(c_ulong len);
+	[LinkName("g_byte_array_steal")]
+	public static extern c_uchar* GByteArraySteal(c_ulong* len);
+	[LinkName("g_byte_array_unref")]
+	public static extern void GByteArrayUnref();
+	[LinkName("g_canonicalize_filename")]
+	public static extern char8* GCanonicalizeFilename(char8* filename, char8* relative_to);
+	[LinkName("g_chdir")]
+	public static extern c_int GChdir(char8* path);
+	[LinkName("glib_check_version")]
+	public static extern char8* GlibCheckVersion(c_uint required_major, c_uint required_minor, c_uint required_micro);
+	[LinkName("g_checksum_type_get_length")]
+	public static extern c_long GChecksumTypeGetLength(ChecksumType checksum_type);
+	[LinkName("g_child_watch_add_full")]
+	public static extern c_uint GChildWatchAddFull(c_int priority, Pid pid, ChildWatchFunc function_, void* data, DestroyNotify notify);
+	[LinkName("g_child_watch_source_new")]
+	public static extern Source* GChildWatchSourceNew(Pid pid);
+	[LinkName("g_clear_error")]
+	public static extern void GClearError();
+	[LinkName("g_close")]
+	public static extern c_int GClose(c_int fd);
+	[LinkName("g_compute_checksum_for_bytes")]
+	public static extern char8* GComputeChecksumForBytes(ChecksumType checksum_type, Bytes* data);
+	[LinkName("g_compute_checksum_for_data")]
+	public static extern char8* GComputeChecksumForData(ChecksumType checksum_type, c_ulong length);
+	[LinkName("g_compute_checksum_for_string")]
+	public static extern char8* GComputeChecksumForString(ChecksumType checksum_type, char8* str, c_long length);
+	[LinkName("g_compute_hmac_for_bytes")]
+	public static extern char8* GComputeHmacForBytes(ChecksumType digest_type, Bytes* key, Bytes* data);
+	[LinkName("g_compute_hmac_for_data")]
+	public static extern char8* GComputeHmacForData(ChecksumType digest_type, c_ulong key_len, c_ulong length);
+	[LinkName("g_compute_hmac_for_string")]
+	public static extern char8* GComputeHmacForString(ChecksumType digest_type, c_ulong key_len, char8* str, c_long length);
+	[LinkName("g_convert")]
+	public static extern c_uchar GConvert(c_long len, char8* to_codeset, char8* from_codeset, c_ulong* bytes_read, c_ulong* bytes_written);
+	[LinkName("g_convert_error_quark")]
+	public static extern Quark GConvertErrorQuark();
+	[LinkName("g_convert_with_fallback")]
+	public static extern c_uchar GConvertWithFallback(c_long len, char8* to_codeset, char8* from_codeset, char8* fallback, c_ulong* bytes_read, c_ulong* bytes_written);
+	[LinkName("g_datalist_foreach")]
+	public static extern void GDatalistForeach(Data* datalist, DataForeachFunc func, void* user_data);
+	[LinkName("g_datalist_get_data")]
+	public static extern void* GDatalistGetData(Data* datalist, char8* key);
+	[LinkName("g_datalist_get_flags")]
+	public static extern c_uint GDatalistGetFlags(Data* datalist);
+	[LinkName("g_datalist_id_get_data")]
+	public static extern void* GDatalistIdGetData(Data* datalist, Quark key_id);
+	[LinkName("g_datalist_id_remove_multiple")]
+	public static extern void GDatalistIdRemoveMultiple(Data* datalist, c_ulong n_keys);
+	[LinkName("g_datalist_set_flags")]
+	public static extern void GDatalistSetFlags(Data* datalist, c_uint flags);
+	[LinkName("g_datalist_unset_flags")]
+	public static extern void GDatalistUnsetFlags(Data* datalist, c_uint flags);
+	[LinkName("g_dataset_destroy")]
+	public static extern void GDatasetDestroy(void* dataset_location);
+	[LinkName("g_dataset_foreach")]
+	public static extern void GDatasetForeach(void* dataset_location, DataForeachFunc func, void* user_data);
+	[LinkName("g_dataset_id_get_data")]
+	public static extern void* GDatasetIdGetData(void* dataset_location, Quark key_id);
+	[LinkName("g_date_get_days_in_month")]
+	public static extern c_uchar GDateGetDaysInMonth(DateMonth month, DateYear year);
+	[LinkName("g_date_get_monday_weeks_in_year")]
+	public static extern c_uchar GDateGetMondayWeeksInYear(DateYear year);
+	[LinkName("g_date_get_sunday_weeks_in_year")]
+	public static extern c_uchar GDateGetSundayWeeksInYear(DateYear year);
+	[LinkName("g_date_is_leap_year")]
+	public static extern c_int GDateIsLeapYear(DateYear year);
+	[LinkName("g_date_strftime")]
+	public static extern c_ulong GDateStrftime(char8* s, c_ulong slen, char8* format, Date* date);
+	[LinkName("g_date_valid_day")]
+	public static extern c_int GDateValidDay(DateDay day);
+	[LinkName("g_date_valid_dmy")]
+	public static extern c_int GDateValidDmy(DateDay day, DateMonth month, DateYear year);
+	[LinkName("g_date_valid_julian")]
+	public static extern c_int GDateValidJulian(c_uint julian_date);
+	[LinkName("g_date_valid_month")]
+	public static extern c_int GDateValidMonth(DateMonth month);
+	[LinkName("g_date_valid_weekday")]
+	public static extern c_int GDateValidWeekday(DateWeekday weekday);
+	[LinkName("g_date_valid_year")]
+	public static extern c_int GDateValidYear(DateYear year);
+	[LinkName("g_dcgettext")]
+	public static extern char8* GDcgettext(char8* domain, char8* msgid, c_int category);
+	[LinkName("g_dgettext")]
+	public static extern char8* GDgettext(char8* domain, char8* msgid);
+	[LinkName("g_dir_make_tmp")]
+	public static extern char8* GDirMakeTmp(char8* tmpl);
+	[LinkName("g_direct_equal")]
+	public static extern c_int GDirectEqual(void* v1, void* v2);
+	[LinkName("g_direct_hash")]
+	public static extern c_uint GDirectHash(void* v);
+	[LinkName("g_dngettext")]
+	public static extern char8* GDngettext(char8* domain, char8* msgid, char8* msgid_plural, c_ulong n);
+	[LinkName("g_double_equal")]
+	public static extern c_int GDoubleEqual(void* v1, void* v2);
+	[LinkName("g_double_hash")]
+	public static extern c_uint GDoubleHash(void* v);
+	[LinkName("g_dpgettext")]
+	public static extern char8* GDpgettext(char8* domain, char8* msgctxtid, c_ulong msgidoffset);
+	[LinkName("g_dpgettext2")]
+	public static extern char8* GDpgettext2(char8* domain, char8* context, char8* msgid);
+	[LinkName("g_environ_getenv")]
+	public static extern char8* GEnvironGetenv(char8* variable);
+	[LinkName("g_environ_setenv")]
+	public static extern char8* GEnvironSetenv(char8* variable, char8* value, c_int overwrite);
+	[LinkName("g_environ_unsetenv")]
+	public static extern char8* GEnvironUnsetenv(char8* variable);
+	[LinkName("g_file_error_from_errno")]
+	public static extern FileError GFileErrorFromErrno(c_int err_no);
+	[LinkName("g_file_error_quark")]
+	public static extern Quark GFileErrorQuark();
+	[LinkName("g_file_get_contents")]
+	public static extern c_int GFileGetContents(char8* filename, c_ulong* length);
+	[LinkName("g_file_open_tmp")]
+	public static extern c_int GFileOpenTmp(char8* tmpl, char8* name_used);
+	[LinkName("g_file_read_link")]
+	public static extern char8* GFileReadLink(char8* filename);
+	[LinkName("g_file_set_contents")]
+	public static extern c_int GFileSetContents(char8* filename, c_long length);
+	[LinkName("g_file_set_contents_full")]
+	public static extern c_int GFileSetContentsFull(char8* filename, c_long length, FileSetContentsFlags flags, c_int mode);
+	[LinkName("g_file_test")]
+	public static extern c_int GFileTest(char8* filename, FileTest test);
+	[LinkName("g_filename_display_basename")]
+	public static extern char8* GFilenameDisplayBasename(char8* filename);
+	[LinkName("g_filename_display_name")]
+	public static extern char8* GFilenameDisplayName(char8* filename);
+	[LinkName("g_filename_from_uri")]
+	public static extern char8* GFilenameFromUri(char8* uri, char8* hostname);
+	[LinkName("g_filename_from_utf8")]
+	public static extern char8* GFilenameFromUtf8(char8* utf8string, c_long len, c_ulong* bytes_read, c_ulong* bytes_written);
+	[LinkName("g_filename_to_uri")]
+	public static extern char8* GFilenameToUri(char8* filename, char8* hostname);
+	[LinkName("g_filename_to_utf8")]
+	public static extern char8* GFilenameToUtf8(char8* opsysstring, c_long len, c_ulong* bytes_read, c_ulong* bytes_written);
+	[LinkName("g_find_program_in_path")]
+	public static extern char8* GFindProgramInPath(char8* program);
+	[LinkName("g_format_size")]
+	public static extern char8* GFormatSize(c_ulonglong size);
+	[LinkName("g_format_size_for_display")]
+	public static extern char8* GFormatSizeForDisplay(c_longlong size);
+	[LinkName("g_format_size_full")]
+	public static extern char8* GFormatSizeFull(c_ulonglong size, FormatSizeFlags flags);
+	[LinkName("g_free")]
+	public static extern void GFree(void* mem);
+	[LinkName("g_free_sized")]
+	public static extern void GFreeSized(void* mem, c_ulong size);
+	[LinkName("g_get_application_name")]
+	public static extern char8* GGetApplicationName();
+	[LinkName("g_get_charset")]
+	public static extern c_int GGetCharset(char8* charset);
+	[LinkName("g_get_codeset")]
+	public static extern char8* GGetCodeset();
+	[LinkName("g_get_console_charset")]
+	public static extern c_int GGetConsoleCharset(char8* charset);
+	[LinkName("g_get_current_dir")]
+	public static extern char8* GGetCurrentDir();
+	[LinkName("g_get_current_time")]
+	public static extern void GGetCurrentTime(TimeVal* result);
+	[LinkName("g_get_environ")]
+	public static extern char8* GGetEnviron();
+	[LinkName("g_get_filename_charsets")]
+	public static extern c_int GGetFilenameCharsets();
+	[LinkName("g_get_home_dir")]
+	public static extern char8* GGetHomeDir();
+	[LinkName("g_get_host_name")]
+	public static extern char8* GGetHostName();
+	[LinkName("g_get_language_names")]
+	public static extern char8* GGetLanguageNames();
+	[LinkName("g_get_language_names_with_category")]
+	public static extern char8* GGetLanguageNamesWithCategory(char8* category_name);
+	[LinkName("g_get_locale_variants")]
+	public static extern char8* GGetLocaleVariants(char8* locale);
+	[LinkName("g_get_monotonic_time")]
+	public static extern c_longlong GGetMonotonicTime();
+	[LinkName("g_get_num_processors")]
+	public static extern c_uint GGetNumProcessors();
+	[LinkName("g_get_os_info")]
+	public static extern char8* GGetOsInfo(char8* key_name);
+	[LinkName("g_get_prgname")]
+	public static extern char8* GGetPrgname();
+	[LinkName("g_get_real_name")]
+	public static extern char8* GGetRealName();
+	[LinkName("g_get_real_time")]
+	public static extern c_longlong GGetRealTime();
+	[LinkName("g_get_system_config_dirs")]
+	public static extern char8* GGetSystemConfigDirs();
+	[LinkName("g_get_system_data_dirs")]
+	public static extern char8* GGetSystemDataDirs();
+	[LinkName("g_get_tmp_dir")]
+	public static extern char8* GGetTmpDir();
+	[LinkName("g_get_user_cache_dir")]
+	public static extern char8* GGetUserCacheDir();
+	[LinkName("g_get_user_config_dir")]
+	public static extern char8* GGetUserConfigDir();
+	[LinkName("g_get_user_data_dir")]
+	public static extern char8* GGetUserDataDir();
+	[LinkName("g_get_user_name")]
+	public static extern char8* GGetUserName();
+	[LinkName("g_get_user_runtime_dir")]
+	public static extern char8* GGetUserRuntimeDir();
+	[LinkName("g_get_user_special_dir")]
+	public static extern char8* GGetUserSpecialDir(UserDirectory directory);
+	[LinkName("g_get_user_state_dir")]
+	public static extern char8* GGetUserStateDir();
+	[LinkName("g_getenv")]
+	public static extern char8* GGetenv(char8* variable);
+	[LinkName("g_hash_table_add")]
+	public static extern c_int GHashTableAdd(GLib.HashTable* hash_table, void* key);
+	[LinkName("g_hash_table_contains")]
+	public static extern c_int GHashTableContains(GLib.HashTable* hash_table, void* key);
+	[LinkName("g_hash_table_destroy")]
+	public static extern void GHashTableDestroy(GLib.HashTable* hash_table);
+	[LinkName("g_hash_table_insert")]
+	public static extern c_int GHashTableInsert(GLib.HashTable* hash_table, void* key, void* value);
+	[LinkName("g_hash_table_lookup")]
+	public static extern void* GHashTableLookup(GLib.HashTable* hash_table, void* key);
+	[LinkName("g_hash_table_lookup_extended")]
+	public static extern c_int GHashTableLookupExtended(GLib.HashTable* hash_table, void* lookup_key, void* orig_key, void* value);
+	[LinkName("g_hash_table_new_similar")]
+	public static extern GLib.HashTable* GHashTableNewSimilar(GLib.HashTable* other_hash_table);
+	[LinkName("g_hash_table_remove")]
+	public static extern c_int GHashTableRemove(GLib.HashTable* hash_table, void* key);
+	[LinkName("g_hash_table_remove_all")]
+	public static extern void GHashTableRemoveAll(GLib.HashTable* hash_table);
+	[LinkName("g_hash_table_replace")]
+	public static extern c_int GHashTableReplace(GLib.HashTable* hash_table, void* key, void* value);
+	[LinkName("g_hash_table_size")]
+	public static extern c_uint GHashTableSize(GLib.HashTable* hash_table);
+	[LinkName("g_hash_table_steal")]
+	public static extern c_int GHashTableSteal(GLib.HashTable* hash_table, void* key);
+	[LinkName("g_hash_table_steal_all")]
+	public static extern void GHashTableStealAll(GLib.HashTable* hash_table);
+	[LinkName("g_hash_table_steal_extended")]
+	public static extern c_int GHashTableStealExtended(GLib.HashTable* hash_table, void* lookup_key, void* stolen_key, void* stolen_value);
+	[LinkName("g_hash_table_unref")]
+	public static extern void GHashTableUnref(GLib.HashTable* hash_table);
+	[LinkName("g_hook_destroy")]
+	public static extern c_int GHookDestroy(HookList* hook_list, c_ulong hook_id);
+	[LinkName("g_hook_destroy_link")]
+	public static extern void GHookDestroyLink(HookList* hook_list, Hook* hook);
+	[LinkName("g_hook_free")]
+	public static extern void GHookFree(HookList* hook_list, Hook* hook);
+	[LinkName("g_hook_insert_before")]
+	public static extern void GHookInsertBefore(HookList* hook_list, Hook* sibling, Hook* hook);
+	[LinkName("g_hook_prepend")]
+	public static extern void GHookPrepend(HookList* hook_list, Hook* hook);
+	[LinkName("g_hook_unref")]
+	public static extern void GHookUnref(HookList* hook_list, Hook* hook);
+	[LinkName("g_hostname_is_ascii_encoded")]
+	public static extern c_int GHostnameIsAsciiEncoded(char8* hostname);
+	[LinkName("g_hostname_is_ip_address")]
+	public static extern c_int GHostnameIsIpAddress(char8* hostname);
+	[LinkName("g_hostname_is_non_ascii")]
+	public static extern c_int GHostnameIsNonAscii(char8* hostname);
+	[LinkName("g_hostname_to_ascii")]
+	public static extern char8* GHostnameToAscii(char8* hostname);
+	[LinkName("g_hostname_to_unicode")]
+	public static extern char8* GHostnameToUnicode(char8* hostname);
+	[LinkName("g_idle_add_full")]
+	public static extern c_uint GIdleAddFull(c_int priority, SourceFunc function_, void* data, DestroyNotify notify);
+	[LinkName("g_idle_remove_by_data")]
+	public static extern c_int GIdleRemoveByData(void* data);
+	[LinkName("g_idle_source_new")]
+	public static extern Source* GIdleSourceNew();
+	[LinkName("g_int64_equal")]
+	public static extern c_int GInt64Equal(void* v1, void* v2);
+	[LinkName("g_int64_hash")]
+	public static extern c_uint GInt64Hash(void* v);
+	[LinkName("g_int_equal")]
+	public static extern c_int GIntEqual(void* v1, void* v2);
+	[LinkName("g_int_hash")]
+	public static extern c_uint GIntHash(void* v);
+	[LinkName("g_intern_static_string")]
+	public static extern char8* GInternStaticString(char8* string);
+	[LinkName("g_intern_string")]
+	public static extern char8* GInternString(char8* string);
+	[LinkName("g_io_add_watch_full")]
+	public static extern c_uint GIoAddWatchFull(IOChannel* channel, c_int priority, IOCondition condition, IOFunc func, void* user_data, DestroyNotify notify);
+	[LinkName("g_io_channel_error_from_errno")]
+	public static extern IOChannelError GIoChannelErrorFromErrno(c_int en);
+	[LinkName("g_io_channel_error_quark")]
+	public static extern Quark GIoChannelErrorQuark();
+	[LinkName("g_io_create_watch")]
+	public static extern Source* GIoCreateWatch(IOChannel* channel, IOCondition condition);
+	[LinkName("g_key_file_error_quark")]
+	public static extern Quark GKeyFileErrorQuark();
+	[LinkName("g_listenv")]
+	public static extern char8* GListenv();
+	[LinkName("g_locale_from_utf8")]
+	public static extern c_uchar GLocaleFromUtf8(char8* utf8string, c_long len, c_ulong* bytes_read, c_ulong* bytes_written);
+	[LinkName("g_locale_to_utf8")]
+	public static extern char8* GLocaleToUtf8(c_long len, c_ulong* bytes_read, c_ulong* bytes_written);
+	[LinkName("g_log_default_handler")]
+	public static extern void GLogDefaultHandler(char8* log_domain, LogLevelFlags log_level, char8* message, void* unused_data);
+	[LinkName("g_log_get_debug_enabled")]
+	public static extern c_int GLogGetDebugEnabled();
+	[LinkName("g_log_remove_handler")]
+	public static extern void GLogRemoveHandler(char8* log_domain, c_uint handler_id);
+	[LinkName("g_log_set_always_fatal")]
+	public static extern LogLevelFlags GLogSetAlwaysFatal(LogLevelFlags fatal_mask);
+	[LinkName("g_log_set_debug_enabled")]
+	public static extern void GLogSetDebugEnabled(c_int enabled);
+	[LinkName("g_log_set_fatal_mask")]
+	public static extern LogLevelFlags GLogSetFatalMask(char8* log_domain, LogLevelFlags fatal_mask);
+	[LinkName("g_log_set_handler_full")]
+	public static extern c_uint GLogSetHandlerFull(char8* log_domain, LogLevelFlags log_levels, LogFunc log_func, void* user_data, DestroyNotify destroy);
+	[LinkName("g_log_set_writer_func")]
+	public static extern void GLogSetWriterFunc(LogWriterFunc func, void* user_data, DestroyNotify user_data_free);
+	[LinkName("g_log_structured_array")]
+	public static extern void GLogStructuredArray(LogLevelFlags log_level, c_ulong n_fields);
+	[LinkName("g_log_variant")]
+	public static extern void GLogVariant(char8* log_domain, LogLevelFlags log_level, Variant* fields);
+	[LinkName("g_log_writer_default")]
+	public static extern LogWriterOutput GLogWriterDefault(LogLevelFlags log_level, c_ulong n_fields, void* user_data);
+	[LinkName("g_log_writer_default_set_use_stderr")]
+	public static extern void GLogWriterDefaultSetUseStderr(c_int use_stderr);
+	[LinkName("g_log_writer_default_would_drop")]
+	public static extern c_int GLogWriterDefaultWouldDrop(LogLevelFlags log_level, char8* log_domain);
+	[LinkName("g_log_writer_format_fields")]
+	public static extern char8* GLogWriterFormatFields(LogLevelFlags log_level, c_ulong n_fields, c_int use_color);
+	[LinkName("g_log_writer_is_journald")]
+	public static extern c_int GLogWriterIsJournald(c_int output_fd);
+	[LinkName("g_log_writer_journald")]
+	public static extern LogWriterOutput GLogWriterJournald(LogLevelFlags log_level, c_ulong n_fields, void* user_data);
+	[LinkName("g_log_writer_standard_streams")]
+	public static extern LogWriterOutput GLogWriterStandardStreams(LogLevelFlags log_level, c_ulong n_fields, void* user_data);
+	[LinkName("g_log_writer_supports_color")]
+	public static extern c_int GLogWriterSupportsColor(c_int output_fd);
+	[LinkName("g_main_context_default")]
+	public static extern MainContext* GMainContextDefault();
+	[LinkName("g_main_context_get_thread_default")]
+	public static extern MainContext* GMainContextGetThreadDefault();
+	[LinkName("g_main_context_ref_thread_default")]
+	public static extern MainContext* GMainContextRefThreadDefault();
+	[LinkName("g_main_current_source")]
+	public static extern Source* GMainCurrentSource();
+	[LinkName("g_main_depth")]
+	public static extern c_int GMainDepth();
+	[LinkName("g_malloc")]
+	public static extern void* GMalloc(c_ulong n_bytes);
+	[LinkName("g_malloc0")]
+	public static extern void* GMalloc0(c_ulong n_bytes);
+	[LinkName("g_malloc0_n")]
+	public static extern void* GMalloc0N(c_ulong n_blocks, c_ulong n_block_bytes);
+	[LinkName("g_malloc_n")]
+	public static extern void* GMallocN(c_ulong n_blocks, c_ulong n_block_bytes);
+	[LinkName("g_markup_error_quark")]
+	public static extern Quark GMarkupErrorQuark();
+	[LinkName("g_markup_escape_text")]
+	public static extern char8* GMarkupEscapeText(char8* text, c_long length);
+	[LinkName("g_mem_is_system_malloc")]
+	public static extern c_int GMemIsSystemMalloc();
+	[LinkName("g_mem_profile")]
+	public static extern void GMemProfile();
+	[LinkName("g_mem_set_vtable")]
+	public static extern void GMemSetVtable(MemVTable* vtable);
+	[LinkName("g_memdup")]
+	public static extern void* GMemdup(void* mem, c_uint byte_size);
+	[LinkName("g_memdup2")]
+	public static extern void* GMemdup2(void* mem, c_ulong byte_size);
+	[LinkName("g_mkdir_with_parents")]
+	public static extern c_int GMkdirWithParents(char8* pathname, c_int mode);
+	[LinkName("g_nullify_pointer")]
+	public static extern void GNullifyPointer(void* nullify_location);
+	[LinkName("g_number_parser_error_quark")]
+	public static extern Quark GNumberParserErrorQuark();
+	[LinkName("g_on_error_query")]
+	public static extern void GOnErrorQuery(char8* prg_name);
+	[LinkName("g_on_error_stack_trace")]
+	public static extern void GOnErrorStackTrace(char8* prg_name);
+	[LinkName("g_once_init_enter")]
+	public static extern c_int GOnceInitEnter(void* location);
+	[LinkName("g_once_init_leave")]
+	public static extern void GOnceInitLeave(void* location, c_ulong result);
+	[LinkName("g_option_error_quark")]
+	public static extern Quark GOptionErrorQuark();
+	[LinkName("g_parse_debug_string")]
+	public static extern c_uint GParseDebugString(char8* string, c_uint nkeys);
+	[LinkName("g_path_buf_equal")]
+	public static extern c_int GPathBufEqual(void* v1, void* v2);
+	[LinkName("g_path_get_basename")]
+	public static extern char8* GPathGetBasename(char8* file_name);
+	[LinkName("g_path_get_dirname")]
+	public static extern char8* GPathGetDirname(char8* file_name);
+	[LinkName("g_path_is_absolute")]
+	public static extern c_int GPathIsAbsolute(char8* file_name);
+	[LinkName("g_path_skip_root")]
+	public static extern char8* GPathSkipRoot(char8* file_name);
+	[LinkName("g_pattern_match_simple")]
+	public static extern c_int GPatternMatchSimple(char8* pattern, char8* string);
+	[LinkName("g_pointer_bit_lock")]
+	public static extern void GPointerBitLock(void* address, c_int lock_bit);
+	[LinkName("g_pointer_bit_trylock")]
+	public static extern c_int GPointerBitTrylock(void* address, c_int lock_bit);
+	[LinkName("g_pointer_bit_unlock")]
+	public static extern void GPointerBitUnlock(void* address, c_int lock_bit);
+	[LinkName("g_poll")]
+	public static extern c_int GPoll(PollFD* fds, c_uint nfds, c_int timeout);
+	[LinkName("g_prefix_error_literal")]
+	public static extern void GPrefixErrorLiteral(Error* err, char8* prefix);
+	[LinkName("g_propagate_error")]
+	public static extern void GPropagateError(Error* dest, Error* src);
+	[LinkName("g_quark_from_static_string")]
+	public static extern Quark GQuarkFromStaticString(char8* string);
+	[LinkName("g_quark_from_string")]
+	public static extern Quark GQuarkFromString(char8* string);
+	[LinkName("g_quark_to_string")]
+	public static extern char8* GQuarkToString(Quark quark);
+	[LinkName("g_quark_try_string")]
+	public static extern Quark GQuarkTryString(char8* string);
+	[LinkName("g_random_double")]
+	public static extern double GRandomDouble();
+	[LinkName("g_random_double_range")]
+	public static extern double GRandomDoubleRange(double begin, double end);
+	[LinkName("g_random_int")]
+	public static extern c_uint GRandomInt();
+	[LinkName("g_random_int_range")]
+	public static extern c_int GRandomIntRange(c_int begin, c_int end);
+	[LinkName("g_random_set_seed")]
+	public static extern void GRandomSetSeed(c_uint seed);
+	[LinkName("g_rc_box_acquire")]
+	public static extern void* GRcBoxAcquire(void* mem_block);
+	[LinkName("g_rc_box_alloc")]
+	public static extern void* GRcBoxAlloc(c_ulong block_size);
+	[LinkName("g_rc_box_alloc0")]
+	public static extern void* GRcBoxAlloc0(c_ulong block_size);
+	[LinkName("g_rc_box_dup")]
+	public static extern void* GRcBoxDup(c_ulong block_size, void* mem_block);
+	[LinkName("g_rc_box_get_size")]
+	public static extern c_ulong GRcBoxGetSize(void* mem_block);
+	[LinkName("g_rc_box_release")]
+	public static extern void GRcBoxRelease(void* mem_block);
+	[LinkName("g_rc_box_release_full")]
+	public static extern void GRcBoxReleaseFull(void* mem_block, DestroyNotify clear_func);
+	[LinkName("g_realloc")]
+	public static extern void* GRealloc(void* mem, c_ulong n_bytes);
+	[LinkName("g_realloc_n")]
+	public static extern void* GReallocN(void* mem, c_ulong n_blocks, c_ulong n_block_bytes);
+	[LinkName("g_ref_count_compare")]
+	public static extern c_int GRefCountCompare(c_int* rc, c_int val);
+	[LinkName("g_ref_count_dec")]
+	public static extern c_int GRefCountDec(c_int* rc);
+	[LinkName("g_ref_count_inc")]
+	public static extern void GRefCountInc(c_int* rc);
+	[LinkName("g_ref_count_init")]
+	public static extern void GRefCountInit(c_int* rc);
+	[LinkName("g_ref_string_acquire")]
+	public static extern char8* GRefStringAcquire(char8* str);
+	[LinkName("g_ref_string_length")]
+	public static extern c_ulong GRefStringLength(char8* str);
+	[LinkName("g_ref_string_new")]
+	public static extern char8* GRefStringNew(char8* str);
+	[LinkName("g_ref_string_new_intern")]
+	public static extern char8* GRefStringNewIntern(char8* str);
+	[LinkName("g_ref_string_new_len")]
+	public static extern char8* GRefStringNewLen(char8* str, c_long len);
+	[LinkName("g_ref_string_release")]
+	public static extern void GRefStringRelease(char8* str);
+	[LinkName("g_regex_check_replacement")]
+	public static extern c_int GRegexCheckReplacement(char8* replacement, c_int* has_references);
+	[LinkName("g_regex_error_quark")]
+	public static extern Quark GRegexErrorQuark();
+	[LinkName("g_regex_escape_nul")]
+	public static extern char8* GRegexEscapeNul(char8* string, c_int length);
+	[LinkName("g_regex_escape_string")]
+	public static extern char8* GRegexEscapeString(char8* string, c_int length);
+	[LinkName("g_regex_match_simple")]
+	public static extern c_int GRegexMatchSimple(char8* pattern, char8* string, RegexCompileFlags compile_options, RegexMatchFlags match_options);
+	[LinkName("g_regex_split_simple")]
+	public static extern char8* GRegexSplitSimple(char8* pattern, char8* string, RegexCompileFlags compile_options, RegexMatchFlags match_options);
+	[LinkName("g_reload_user_special_dirs_cache")]
+	public static extern void GReloadUserSpecialDirsCache();
+	[LinkName("g_rmdir")]
+	public static extern c_int GRmdir(char8* filename);
+	[LinkName("g_sequence_get")]
+	public static extern void* GSequenceGet(SequenceIter* iter);
+	[LinkName("g_sequence_insert_before")]
+	public static extern SequenceIter* GSequenceInsertBefore(SequenceIter* iter, void* data);
+	[LinkName("g_sequence_move")]
+	public static extern void GSequenceMove(SequenceIter* src, SequenceIter* dest);
+	[LinkName("g_sequence_move_range")]
+	public static extern void GSequenceMoveRange(SequenceIter* dest, SequenceIter* begin, SequenceIter* end);
+	[LinkName("g_sequence_range_get_midpoint")]
+	public static extern SequenceIter* GSequenceRangeGetMidpoint(SequenceIter* begin, SequenceIter* end);
+	[LinkName("g_sequence_remove")]
+	public static extern void GSequenceRemove(SequenceIter* iter);
+	[LinkName("g_sequence_remove_range")]
+	public static extern void GSequenceRemoveRange(SequenceIter* begin, SequenceIter* end);
+	[LinkName("g_sequence_set")]
+	public static extern void GSequenceSet(SequenceIter* iter, void* data);
+	[LinkName("g_sequence_swap")]
+	public static extern void GSequenceSwap(SequenceIter* a, SequenceIter* b);
+	[LinkName("g_set_application_name")]
+	public static extern void GSetApplicationName(char8* application_name);
+	[LinkName("g_set_error_literal")]
+	public static extern void GSetErrorLiteral(Error* err, Quark domain, c_int code, char8* message);
+	[LinkName("g_set_prgname")]
+	public static extern void GSetPrgname(char8* prgname);
+	[LinkName("g_setenv")]
+	public static extern c_int GSetenv(char8* variable, char8* value, c_int overwrite);
+	[LinkName("g_shell_error_quark")]
+	public static extern Quark GShellErrorQuark();
+	[LinkName("g_shell_parse_argv")]
+	public static extern c_int GShellParseArgv(char8* command_line, c_int* argcp);
+	[LinkName("g_shell_quote")]
+	public static extern char8* GShellQuote(char8* unquoted_string);
+	[LinkName("g_shell_unquote")]
+	public static extern char8* GShellUnquote(char8* source, char8* exceptions);
+	[LinkName("g_strfreev")]
+	public static extern void GStrfreev(char8* str_array);
+	[LinkName("g_strip_context")]
+	public static extern char8* GStripContext(char8* msgid, char8* msgval);
+	[LinkName("g_strjoinv")]
+	public static extern char8* GStrjoinv(char8* separator, char8* str_array);
+	[LinkName("g_strlcat")]
+	public static extern c_ulong GStrlcat(char8* dest, char8* src, c_ulong dest_size);
+	[LinkName("g_strlcpy")]
+	public static extern c_ulong GStrlcpy(char8* dest, char8* src, c_ulong dest_size);
+	[LinkName("g_strncasecmp")]
+	public static extern c_int GStrncasecmp(char8* s1, char8* s2, c_uint n);
+	[LinkName("g_strndup")]
+	public static extern char8* GStrndup(char8* str, c_ulong n);
+	[LinkName("g_strnfill")]
+	public static extern char8* GStrnfill(c_ulong length, c_char fill_char);
+	[LinkName("g_strreverse")]
+	public static extern char8* GStrreverse(char8* string);
+	[LinkName("g_strrstr")]
+	public static extern char8* GStrrstr(char8* haystack, char8* needle);
+	[LinkName("g_strrstr_len")]
+	public static extern char8* GStrrstrLen(char8* haystack, c_long haystack_len, char8* needle);
+	[LinkName("g_strsignal")]
+	public static extern char8* GStrsignal(c_int signum);
+	[LinkName("g_strstr_len")]
+	public static extern char8* GStrstrLen(char8* haystack, c_long haystack_len, char8* needle);
+	[LinkName("g_strtod")]
+	public static extern double GStrtod(char8* nptr, char8* endptr);
+	[LinkName("g_strup")]
+	public static extern char8* GStrup(char8* string);
+	[LinkName("g_strv_contains")]
+	public static extern c_int GStrvContains(char8* strv, char8* str);
+	[LinkName("g_strv_equal")]
+	public static extern c_int GStrvEqual(char8* strv1, char8* strv2);
+	[LinkName("g_strv_get_type")]
+	public static extern GLib.Type GStrvGetType();
+	[LinkName("g_strv_length")]
+	public static extern c_uint GStrvLength(char8* str_array);
+	[LinkName("g_test_add_data_func")]
+	public static extern void GTestAddDataFunc(char8* testpath, void* test_data, TestDataFunc test_func);
+	[LinkName("g_test_add_data_func_full")]
+	public static extern void GTestAddDataFuncFull(char8* testpath, void* test_data, TestDataFunc test_func, DestroyNotify data_free_func);
+	[LinkName("g_test_add_func")]
+	public static extern void GTestAddFunc(char8* testpath, TestFunc test_func);
+	[LinkName("g_test_assert_expected_messages_internal")]
+	public static extern void GTestAssertExpectedMessagesInternal(char8* domain, char8* file, c_int line, char8* func);
+	[LinkName("g_test_bug")]
+	public static extern void GTestBug(char8* bug_uri_snippet);
+	[LinkName("g_test_bug_base")]
+	public static extern void GTestBugBase(char8* uri_pattern);
+	[LinkName("g_test_expect_message")]
+	public static extern void GTestExpectMessage(char8* log_domain, LogLevelFlags log_level, char8* pattern);
+	[LinkName("g_test_fail")]
+	public static extern void GTestFail();
+	[LinkName("g_test_failed")]
+	public static extern c_int GTestFailed();
+	[LinkName("g_test_get_dir")]
+	public static extern char8* GTestGetDir(TestFileType file_type);
+	[LinkName("g_test_get_path")]
+	public static extern char8* GTestGetPath();
+	[LinkName("g_test_incomplete")]
+	public static extern void GTestIncomplete(char8* msg);
+	[LinkName("g_test_log_type_name")]
+	public static extern char8* GTestLogTypeName(TestLogType log_type);
+	[LinkName("g_test_queue_destroy")]
+	public static extern void GTestQueueDestroy(DestroyNotify destroy_func, void* destroy_data);
+	[LinkName("g_test_queue_free")]
+	public static extern void GTestQueueFree(void* gfree_pointer);
+	[LinkName("g_test_rand_double")]
+	public static extern double GTestRandDouble();
+	[LinkName("g_test_rand_double_range")]
+	public static extern double GTestRandDoubleRange(double range_start, double range_end);
+	[LinkName("g_test_rand_int")]
+	public static extern c_int GTestRandInt();
+	[LinkName("g_test_rand_int_range")]
+	public static extern c_int GTestRandIntRange(c_int begin, c_int end);
+	[LinkName("g_test_run")]
+	public static extern c_int GTestRun();
+	[LinkName("g_test_run_suite")]
+	public static extern c_int GTestRunSuite(TestSuite* suite);
+	[LinkName("g_test_set_nonfatal_assertions")]
+	public static extern void GTestSetNonfatalAssertions();
+	[LinkName("g_test_skip")]
+	public static extern void GTestSkip(char8* msg);
+	[LinkName("g_test_subprocess")]
+	public static extern c_int GTestSubprocess();
+	[LinkName("g_test_summary")]
+	public static extern void GTestSummary(char8* summary);
+	[LinkName("g_test_timer_elapsed")]
+	public static extern double GTestTimerElapsed();
+	[LinkName("g_test_timer_last")]
+	public static extern double GTestTimerLast();
+	[LinkName("g_test_timer_start")]
+	public static extern void GTestTimerStart();
+	[LinkName("g_test_trap_assertions")]
+	public static extern void GTestTrapAssertions(char8* domain, char8* file, c_int line, char8* func, c_ulonglong assertion_flags, char8* pattern);
+	[LinkName("g_test_trap_fork")]
+	public static extern c_int GTestTrapFork(c_ulonglong usec_timeout, TestTrapFlags test_trap_flags);
+	[LinkName("g_test_trap_has_passed")]
+	public static extern c_int GTestTrapHasPassed();
+	[LinkName("g_test_trap_reached_timeout")]
+	public static extern c_int GTestTrapReachedTimeout();
+	[LinkName("g_test_trap_subprocess")]
+	public static extern void GTestTrapSubprocess(char8* test_path, c_ulonglong usec_timeout, TestSubprocessFlags test_flags);
+	[LinkName("g_thread_error_quark")]
+	public static extern Quark GThreadErrorQuark();
+	[LinkName("g_thread_exit")]
+	public static extern void GThreadExit(void* retval);
+	[LinkName("g_thread_pool_get_max_idle_time")]
+	public static extern c_uint GThreadPoolGetMaxIdleTime();
+	[LinkName("g_thread_pool_get_max_unused_threads")]
+	public static extern c_int GThreadPoolGetMaxUnusedThreads();
+	[LinkName("g_thread_pool_get_num_unused_threads")]
+	public static extern c_uint GThreadPoolGetNumUnusedThreads();
+	[LinkName("g_thread_pool_set_max_idle_time")]
+	public static extern void GThreadPoolSetMaxIdleTime(c_uint interval);
+	[LinkName("g_thread_pool_set_max_unused_threads")]
+	public static extern void GThreadPoolSetMaxUnusedThreads(c_int max_threads);
+	[LinkName("g_thread_pool_stop_unused_threads")]
+	public static extern void GThreadPoolStopUnusedThreads();
+	[LinkName("g_thread_self")]
+	public static extern Thread* GThreadSelf();
+	[LinkName("g_thread_yield")]
+	public static extern void GThreadYield();
+	[LinkName("g_time_val_from_iso8601")]
+	public static extern c_int GTimeValFromIso8601(char8* iso_date, TimeVal* time_);
+	[LinkName("g_timeout_add_full")]
+	public static extern c_uint GTimeoutAddFull(c_int priority, c_uint interval, SourceFunc function_, void* data, DestroyNotify notify);
+	[LinkName("g_timeout_add_seconds_full")]
+	public static extern c_uint GTimeoutAddSecondsFull(c_int priority, c_uint interval, SourceFunc function_, void* data, DestroyNotify notify);
+	[LinkName("g_timeout_source_new")]
+	public static extern Source* GTimeoutSourceNew(c_uint interval);
+	[LinkName("g_timeout_source_new_seconds")]
+	public static extern Source* GTimeoutSourceNewSeconds(c_uint interval);
+	[LinkName("g_trash_stack_height")]
+	public static extern c_uint GTrashStackHeight(TrashStack* stack_p);
+	[LinkName("g_trash_stack_peek")]
+	public static extern void* GTrashStackPeek(TrashStack* stack_p);
+	[LinkName("g_trash_stack_pop")]
+	public static extern void* GTrashStackPop(TrashStack* stack_p);
+	[LinkName("g_trash_stack_push")]
+	public static extern void GTrashStackPush(TrashStack* stack_p, void* data_p);
+	[LinkName("g_try_malloc")]
+	public static extern void* GTryMalloc(c_ulong n_bytes);
+	[LinkName("g_try_malloc0")]
+	public static extern void* GTryMalloc0(c_ulong n_bytes);
+	[LinkName("g_try_malloc0_n")]
+	public static extern void* GTryMalloc0N(c_ulong n_blocks, c_ulong n_block_bytes);
+	[LinkName("g_try_malloc_n")]
+	public static extern void* GTryMallocN(c_ulong n_blocks, c_ulong n_block_bytes);
+	[LinkName("g_try_realloc")]
+	public static extern void* GTryRealloc(void* mem, c_ulong n_bytes);
+	[LinkName("g_try_realloc_n")]
+	public static extern void* GTryReallocN(void* mem, c_ulong n_blocks, c_ulong n_block_bytes);
+	[LinkName("g_ucs4_to_utf16")]
+	public static extern c_ushort* GUcs4ToUtf16(c_long len, c_long* items_read, c_long* items_written);
+	[LinkName("g_ucs4_to_utf8")]
+	public static extern char8* GUcs4ToUtf8(c_long len, c_long* items_read, c_long* items_written);
+	[LinkName("g_unichar_break_type")]
+	public static extern UnicodeBreakType GUnicharBreakType(c_uint c);
+	[LinkName("g_unichar_combining_class")]
+	public static extern c_int GUnicharCombiningClass(c_uint uc);
+	[LinkName("g_unichar_compose")]
+	public static extern c_int GUnicharCompose(c_uint a, c_uint b, c_uint* ch);
+	[LinkName("g_unichar_decompose")]
+	public static extern c_int GUnicharDecompose(c_uint ch, c_uint* a, c_uint* b);
+	[LinkName("g_unichar_digit_value")]
+	public static extern c_int GUnicharDigitValue(c_uint c);
+	[LinkName("g_unichar_fully_decompose")]
+	public static extern c_ulong GUnicharFullyDecompose(c_uint ch, c_int compat, c_uint* result, c_ulong result_len);
+	[LinkName("g_unichar_get_mirror_char")]
+	public static extern c_int GUnicharGetMirrorChar(c_uint ch, c_uint* mirrored_ch);
+	[LinkName("g_unichar_get_script")]
+	public static extern UnicodeScript GUnicharGetScript(c_uint ch);
+	[LinkName("g_unichar_isalnum")]
+	public static extern c_int GUnicharIsalnum(c_uint c);
+	[LinkName("g_unichar_isalpha")]
+	public static extern c_int GUnicharIsalpha(c_uint c);
+	[LinkName("g_unichar_iscntrl")]
+	public static extern c_int GUnicharIscntrl(c_uint c);
+	[LinkName("g_unichar_isdefined")]
+	public static extern c_int GUnicharIsdefined(c_uint c);
+	[LinkName("g_unichar_isdigit")]
+	public static extern c_int GUnicharIsdigit(c_uint c);
+	[LinkName("g_unichar_isgraph")]
+	public static extern c_int GUnicharIsgraph(c_uint c);
+	[LinkName("g_unichar_islower")]
+	public static extern c_int GUnicharIslower(c_uint c);
+	[LinkName("g_unichar_ismark")]
+	public static extern c_int GUnicharIsmark(c_uint c);
+	[LinkName("g_unichar_isprint")]
+	public static extern c_int GUnicharIsprint(c_uint c);
+	[LinkName("g_unichar_ispunct")]
+	public static extern c_int GUnicharIspunct(c_uint c);
+	[LinkName("g_unichar_isspace")]
+	public static extern c_int GUnicharIsspace(c_uint c);
+	[LinkName("g_unichar_istitle")]
+	public static extern c_int GUnicharIstitle(c_uint c);
+	[LinkName("g_unichar_isupper")]
+	public static extern c_int GUnicharIsupper(c_uint c);
+	[LinkName("g_unichar_iswide")]
+	public static extern c_int GUnicharIswide(c_uint c);
+	[LinkName("g_unichar_iswide_cjk")]
+	public static extern c_int GUnicharIswideCjk(c_uint c);
+	[LinkName("g_unichar_isxdigit")]
+	public static extern c_int GUnicharIsxdigit(c_uint c);
+	[LinkName("g_unichar_iszerowidth")]
+	public static extern c_int GUnicharIszerowidth(c_uint c);
+	[LinkName("g_unichar_to_utf8")]
+	public static extern c_int GUnicharToUtf8(c_uint c, char8* outbuf);
+	[LinkName("g_unichar_tolower")]
+	public static extern c_uint GUnicharTolower(c_uint c);
+	[LinkName("g_unichar_totitle")]
+	public static extern c_uint GUnicharTotitle(c_uint c);
+	[LinkName("g_unichar_toupper")]
+	public static extern c_uint GUnicharToupper(c_uint c);
+	[LinkName("g_unichar_type")]
+	public static extern UnicodeType GUnicharType(c_uint c);
+	[LinkName("g_unichar_validate")]
+	public static extern c_int GUnicharValidate(c_uint ch);
+	[LinkName("g_unichar_xdigit_value")]
+	public static extern c_int GUnicharXdigitValue(c_uint c);
+	[LinkName("g_unicode_canonical_decomposition")]
+	public static extern c_uint* GUnicodeCanonicalDecomposition(c_uint ch, c_ulong* result_len);
+	[LinkName("g_unicode_canonical_ordering")]
+	public static extern void GUnicodeCanonicalOrdering(c_ulong len);
+	[LinkName("g_unicode_script_from_iso15924")]
+	public static extern UnicodeScript GUnicodeScriptFromIso15924(c_uint iso15924);
+	[LinkName("g_unicode_script_to_iso15924")]
+	public static extern c_uint GUnicodeScriptToIso15924(UnicodeScript script);
+	[LinkName("g_unix_error_quark")]
+	public static extern Quark GUnixErrorQuark();
+	[LinkName("g_unix_fd_add_full")]
+	public static extern c_uint GUnixFdAddFull(c_int priority, c_int fd, IOCondition condition, UnixFDSourceFunc function_, void* user_data, DestroyNotify notify);
+	[LinkName("g_unix_fd_source_new")]
+	public static extern Source* GUnixFdSourceNew(c_int fd, IOCondition condition);
+	[LinkName("g_unix_get_passwd_entry")]
+	public static extern void* GUnixGetPasswdEntry(char8* user_name);
+	[LinkName("g_unix_open_pipe")]
+	public static extern c_int GUnixOpenPipe(c_int flags);
+	[LinkName("g_unix_set_fd_nonblocking")]
+	public static extern c_int GUnixSetFdNonblocking(c_int fd, c_int nonblock);
+	[LinkName("g_unix_signal_add_full")]
+	public static extern c_uint GUnixSignalAddFull(c_int priority, c_int signum, SourceFunc handler, void* user_data, DestroyNotify notify);
+	[LinkName("g_unix_signal_source_new")]
+	public static extern Source* GUnixSignalSourceNew(c_int signum);
+	[LinkName("g_unlink")]
+	public static extern c_int GUnlink(char8* filename);
+	[LinkName("g_unsetenv")]
+	public static extern void GUnsetenv(char8* variable);
+	[LinkName("g_uri_build")]
+	public static extern Uri* GUriBuild(UriFlags flags, char8* scheme, char8* userinfo, char8* host, c_int port, char8* path, char8* query, char8* fragment);
+	[LinkName("g_uri_build_with_user")]
+	public static extern Uri* GUriBuildWithUser(UriFlags flags, char8* scheme, char8* user, char8* password, char8* auth_params, char8* host, c_int port, char8* path, char8* query, char8* fragment);
+	[LinkName("g_uri_error_quark")]
+	public static extern Quark GUriErrorQuark();
+	[LinkName("g_uri_escape_bytes")]
+	public static extern char8* GUriEscapeBytes(c_ulong length, char8* reserved_chars_allowed);
+	[LinkName("g_uri_escape_string")]
+	public static extern char8* GUriEscapeString(char8* unescaped, char8* reserved_chars_allowed, c_int allow_utf8);
+	[LinkName("g_uri_is_valid")]
+	public static extern c_int GUriIsValid(char8* uri_string, UriFlags flags);
+	[LinkName("g_uri_join")]
+	public static extern char8* GUriJoin(UriFlags flags, char8* scheme, char8* userinfo, char8* host, c_int port, char8* path, char8* query, char8* fragment);
+	[LinkName("g_uri_join_with_user")]
+	public static extern char8* GUriJoinWithUser(UriFlags flags, char8* scheme, char8* user, char8* password, char8* auth_params, char8* host, c_int port, char8* path, char8* query, char8* fragment);
+	[LinkName("g_uri_list_extract_uris")]
+	public static extern char8* GUriListExtractUris(char8* uri_list);
+	[LinkName("g_uri_parse")]
+	public static extern Uri* GUriParse(char8* uri_string, UriFlags flags);
+	[LinkName("g_uri_parse_params")]
+	public static extern GLib.HashTable* GUriParseParams(char8* params_, c_long length, char8* separators, UriParamsFlags flags);
+	[LinkName("g_uri_parse_scheme")]
+	public static extern char8* GUriParseScheme(char8* uri);
+	[LinkName("g_uri_peek_scheme")]
+	public static extern char8* GUriPeekScheme(char8* uri);
+	[LinkName("g_uri_resolve_relative")]
+	public static extern char8* GUriResolveRelative(char8* base_uri_string, char8* uri_ref, UriFlags flags);
+	[LinkName("g_uri_split")]
+	public static extern c_int GUriSplit(char8* uri_ref, UriFlags flags, char8* scheme, char8* userinfo, char8* host, c_int* port, char8* path, char8* query, char8* fragment);
+	[LinkName("g_uri_split_network")]
+	public static extern c_int GUriSplitNetwork(char8* uri_string, UriFlags flags, char8* scheme, char8* host, c_int* port);
+	[LinkName("g_uri_split_with_user")]
+	public static extern c_int GUriSplitWithUser(char8* uri_ref, UriFlags flags, char8* scheme, char8* user, char8* password, char8* auth_params, char8* host, c_int* port, char8* path, char8* query, char8* fragment);
+	[LinkName("g_uri_unescape_bytes")]
+	public static extern Bytes* GUriUnescapeBytes(char8* escaped_string, c_long length, char8* illegal_characters);
+	[LinkName("g_uri_unescape_segment")]
+	public static extern char8* GUriUnescapeSegment(char8* escaped_string, char8* escaped_string_end, char8* illegal_characters);
+	[LinkName("g_uri_unescape_string")]
+	public static extern char8* GUriUnescapeString(char8* escaped_string, char8* illegal_characters);
+	[LinkName("g_usleep")]
+	public static extern void GUsleep(c_ulong microseconds);
+	[LinkName("g_utf16_to_ucs4")]
+	public static extern c_uint* GUtf16ToUcs4(c_long len, c_long* items_read, c_long* items_written);
+	[LinkName("g_utf16_to_utf8")]
+	public static extern char8* GUtf16ToUtf8(c_long len, c_long* items_read, c_long* items_written);
+	[LinkName("g_utf8_casefold")]
+	public static extern char8* GUtf8Casefold(char8* str, c_long len);
+	[LinkName("g_utf8_collate")]
+	public static extern c_int GUtf8Collate(char8* str1, char8* str2);
+	[LinkName("g_utf8_collate_key")]
+	public static extern char8* GUtf8CollateKey(char8* str, c_long len);
+	[LinkName("g_utf8_collate_key_for_filename")]
+	public static extern char8* GUtf8CollateKeyForFilename(char8* str, c_long len);
+	[LinkName("g_utf8_find_next_char")]
+	public static extern char8* GUtf8FindNextChar(char8* p, char8* end);
+	[LinkName("g_utf8_find_prev_char")]
+	public static extern char8* GUtf8FindPrevChar(char8* str, char8* p);
+	[LinkName("g_utf8_get_char")]
+	public static extern c_uint GUtf8GetChar(char8* p);
+	[LinkName("g_utf8_get_char_validated")]
+	public static extern c_uint GUtf8GetCharValidated(char8* p, c_long max_len);
+	[LinkName("g_utf8_make_valid")]
+	public static extern char8* GUtf8MakeValid(char8* str, c_long len);
+	[LinkName("g_utf8_normalize")]
+	public static extern char8* GUtf8Normalize(char8* str, c_long len, NormalizeMode mode);
+	[LinkName("g_utf8_offset_to_pointer")]
+	public static extern char8* GUtf8OffsetToPointer(char8* str, c_long offset);
+	[LinkName("g_utf8_pointer_to_offset")]
+	public static extern c_long GUtf8PointerToOffset(char8* str, char8* pos);
+	[LinkName("g_utf8_prev_char")]
+	public static extern char8* GUtf8PrevChar(char8* p);
+	[LinkName("g_utf8_strchr")]
+	public static extern char8* GUtf8Strchr(char8* p, c_long len, c_uint c);
+	[LinkName("g_utf8_strdown")]
+	public static extern char8* GUtf8Strdown(char8* str, c_long len);
+	[LinkName("g_utf8_strlen")]
+	public static extern c_long GUtf8Strlen(char8* p, c_long max);
+	[LinkName("g_utf8_strncpy")]
+	public static extern char8* GUtf8Strncpy(char8* dest, char8* src, c_ulong n);
+	[LinkName("g_utf8_strrchr")]
+	public static extern char8* GUtf8Strrchr(char8* p, c_long len, c_uint c);
+	[LinkName("g_utf8_strreverse")]
+	public static extern char8* GUtf8Strreverse(char8* str, c_long len);
+	[LinkName("g_utf8_strup")]
+	public static extern char8* GUtf8Strup(char8* str, c_long len);
+	[LinkName("g_utf8_substring")]
+	public static extern char8* GUtf8Substring(char8* str, c_long start_pos, c_long end_pos);
+	[LinkName("g_utf8_to_ucs4")]
+	public static extern c_uint* GUtf8ToUcs4(char8* str, c_long len, c_long* items_read, c_long* items_written);
+	[LinkName("g_utf8_to_ucs4_fast")]
+	public static extern c_uint* GUtf8ToUcs4Fast(char8* str, c_long len, c_long* items_written);
+	[LinkName("g_utf8_to_utf16")]
+	public static extern c_ushort* GUtf8ToUtf16(char8* str, c_long len, c_long* items_read, c_long* items_written);
+	[LinkName("g_utf8_validate")]
+	public static extern c_int GUtf8Validate(c_long max_len, char8* end);
+	[LinkName("g_utf8_validate_len")]
+	public static extern c_int GUtf8ValidateLen(c_ulong max_len, char8* end);
+	[LinkName("g_uuid_string_is_valid")]
+	public static extern c_int GUuidStringIsValid(char8* str);
+	[LinkName("g_uuid_string_random")]
+	public static extern char8* GUuidStringRandom();
+	[LinkName("g_variant_get_gtype")]
+	public static extern GLib.Type GVariantGetGtype();
+	[LinkName("g_variant_is_object_path")]
+	public static extern c_int GVariantIsObjectPath(char8* string);
+	[LinkName("g_variant_is_signature")]
+	public static extern c_int GVariantIsSignature(char8* string);
+	[LinkName("g_variant_parse")]
+	public static extern Variant* GVariantParse(VariantType* type, char8* text, char8* limit, char8* endptr);
+	[LinkName("g_variant_parse_error_print_context")]
+	public static extern char8* GVariantParseErrorPrintContext(Error* error, char8* source_str);
+	[LinkName("g_variant_parse_error_quark")]
+	public static extern Quark GVariantParseErrorQuark();
+	[LinkName("g_variant_parser_get_error_quark")]
+	public static extern Quark GVariantParserGetErrorQuark();
+	[LinkName("g_variant_type_checked_")]
+	public static extern VariantType* GVariantTypeChecked(char8* arg0);
+	[LinkName("g_variant_type_string_get_depth_")]
+	public static extern c_ulong GVariantTypeStringGetDepth(char8* type_string);
+	[LinkName("g_variant_type_string_is_valid")]
+	public static extern c_int GVariantTypeStringIsValid(char8* type_string);
+	[LinkName("g_variant_type_string_scan")]
+	public static extern c_int GVariantTypeStringScan(char8* string, char8* limit, char8* endptr);
 }

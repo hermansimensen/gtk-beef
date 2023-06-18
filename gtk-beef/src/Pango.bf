@@ -250,6 +250,8 @@ class Pango
 	public struct Coverage;
 	[LinkName("pango_coverage_new")]
 	public static extern Coverage* CoverageNew();
+	[LinkName("pango_coverage_from_bytes")]
+	public static extern Coverage* CoverageFromBytes(c_int n_bytes);
 	[LinkName("pango_coverage_copy")]
 	public static extern Coverage* CoverageCopy(Coverage* coverage);
 	[LinkName("pango_coverage_get")]
@@ -290,6 +292,10 @@ class Pango
 	}
 	[CRepr]
 	public struct Font;
+	[LinkName("pango_font_descriptions_free")]
+	public static extern void FontDescriptionsFree(c_int n_descs);
+	[LinkName("pango_font_deserialize")]
+	public static extern Font* FontDeserialize(Context* context, GLib.Bytes* bytes);
 	[LinkName("pango_font_describe")]
 	public static extern FontDescription* FontDescribe(Font* font);
 	[LinkName("pango_font_describe_with_absolute_size")]
@@ -304,8 +310,6 @@ class Pango
 	public static extern FontMap* FontGetFontMap(Font* font);
 	[LinkName("pango_font_get_glyph_extents")]
 	public static extern void FontGetGlyphExtents(Font* font, Glyph glyph, Rectangle* ink_rect, Rectangle* logical_rect);
-	[LinkName("pango_font_get_hb_font")]
-	public static extern HarfBuzz.font_t FontGetHbFont(Font* font);
 	[LinkName("pango_font_get_languages")]
 	public static extern Language FontGetLanguages(Font* font);
 	[LinkName("pango_font_get_metrics")]
@@ -515,6 +519,8 @@ class Pango
 	public struct Layout;
 	[LinkName("pango_layout_new")]
 	public static extern Layout* LayoutNew(Context* context);
+	[LinkName("pango_layout_deserialize")]
+	public static extern Layout* LayoutDeserialize(Context* context, GLib.Bytes* bytes, LayoutDeserializeFlags flags);
 	[LinkName("pango_layout_context_changed")]
 	public static extern void LayoutContextChanged(Layout* layout);
 	[LinkName("pango_layout_copy")]
@@ -997,4 +1003,192 @@ class Pango
 		char = 1,
 		word_char = 2
 	}
+	[LinkName("pango_attr_allow_breaks_new")]
+	public static extern Attribute* AttrAllowBreaksNew(c_int allow_breaks);
+	[LinkName("pango_attr_background_alpha_new")]
+	public static extern Attribute* AttrBackgroundAlphaNew(c_ushort alpha);
+	[LinkName("pango_attr_background_new")]
+	public static extern Attribute* AttrBackgroundNew(c_ushort red, c_ushort green, c_ushort blue);
+	[LinkName("pango_attr_baseline_shift_new")]
+	public static extern Attribute* AttrBaselineShiftNew(c_int shift);
+	[LinkName("pango_attr_break")]
+	public static extern void AttrBreak(char8* text, c_int length, AttrList* attr_list, c_int offset, c_int attrs_len);
+	[LinkName("pango_attr_fallback_new")]
+	public static extern Attribute* AttrFallbackNew(c_int enable_fallback);
+	[LinkName("pango_attr_family_new")]
+	public static extern Attribute* AttrFamilyNew(char8* family);
+	[LinkName("pango_attr_font_desc_new")]
+	public static extern Attribute* AttrFontDescNew(FontDescription* desc);
+	[LinkName("pango_attr_font_features_new")]
+	public static extern Attribute* AttrFontFeaturesNew(char8* features);
+	[LinkName("pango_attr_font_scale_new")]
+	public static extern Attribute* AttrFontScaleNew(FontScale scale);
+	[LinkName("pango_attr_foreground_alpha_new")]
+	public static extern Attribute* AttrForegroundAlphaNew(c_ushort alpha);
+	[LinkName("pango_attr_foreground_new")]
+	public static extern Attribute* AttrForegroundNew(c_ushort red, c_ushort green, c_ushort blue);
+	[LinkName("pango_attr_gravity_hint_new")]
+	public static extern Attribute* AttrGravityHintNew(GravityHint hint);
+	[LinkName("pango_attr_gravity_new")]
+	public static extern Attribute* AttrGravityNew(Gravity gravity);
+	[LinkName("pango_attr_insert_hyphens_new")]
+	public static extern Attribute* AttrInsertHyphensNew(c_int insert_hyphens);
+	[LinkName("pango_attr_language_new")]
+	public static extern Attribute* AttrLanguageNew(Language* language);
+	[LinkName("pango_attr_letter_spacing_new")]
+	public static extern Attribute* AttrLetterSpacingNew(c_int letter_spacing);
+	[LinkName("pango_attr_line_height_new")]
+	public static extern Attribute* AttrLineHeightNew(double factor);
+	[LinkName("pango_attr_line_height_new_absolute")]
+	public static extern Attribute* AttrLineHeightNewAbsolute(c_int height);
+	[LinkName("pango_attr_list_from_string")]
+	public static extern AttrList* AttrListFromString(char8* text);
+	[LinkName("pango_attr_overline_color_new")]
+	public static extern Attribute* AttrOverlineColorNew(c_ushort red, c_ushort green, c_ushort blue);
+	[LinkName("pango_attr_overline_new")]
+	public static extern Attribute* AttrOverlineNew(Overline overline);
+	[LinkName("pango_attr_rise_new")]
+	public static extern Attribute* AttrRiseNew(c_int rise);
+	[LinkName("pango_attr_scale_new")]
+	public static extern Attribute* AttrScaleNew(double scale_factor);
+	[LinkName("pango_attr_sentence_new")]
+	public static extern Attribute* AttrSentenceNew();
+	[LinkName("pango_attr_shape_new")]
+	public static extern Attribute* AttrShapeNew(Rectangle* ink_rect, Rectangle* logical_rect);
+	[LinkName("pango_attr_shape_new_with_data")]
+	public static extern Attribute* AttrShapeNewWithData(Rectangle* ink_rect, Rectangle* logical_rect, void* data, AttrDataCopyFunc copy_func, GLib.DestroyNotify destroy_func);
+	[LinkName("pango_attr_show_new")]
+	public static extern Attribute* AttrShowNew(ShowFlags flags);
+	[LinkName("pango_attr_size_new")]
+	public static extern Attribute* AttrSizeNew(c_int size);
+	[LinkName("pango_attr_size_new_absolute")]
+	public static extern Attribute* AttrSizeNewAbsolute(c_int size);
+	[LinkName("pango_attr_stretch_new")]
+	public static extern Attribute* AttrStretchNew(Stretch stretch);
+	[LinkName("pango_attr_strikethrough_color_new")]
+	public static extern Attribute* AttrStrikethroughColorNew(c_ushort red, c_ushort green, c_ushort blue);
+	[LinkName("pango_attr_strikethrough_new")]
+	public static extern Attribute* AttrStrikethroughNew(c_int strikethrough);
+	[LinkName("pango_attr_style_new")]
+	public static extern Attribute* AttrStyleNew(Style style);
+	[LinkName("pango_attr_text_transform_new")]
+	public static extern Attribute* AttrTextTransformNew(TextTransform transform);
+	[LinkName("pango_attr_type_get_name")]
+	public static extern char8* AttrTypeGetName(AttrType type);
+	[LinkName("pango_attr_type_register")]
+	public static extern AttrType AttrTypeRegister(char8* name);
+	[LinkName("pango_attr_underline_color_new")]
+	public static extern Attribute* AttrUnderlineColorNew(c_ushort red, c_ushort green, c_ushort blue);
+	[LinkName("pango_attr_underline_new")]
+	public static extern Attribute* AttrUnderlineNew(Underline underline);
+	[LinkName("pango_attr_variant_new")]
+	public static extern Attribute* AttrVariantNew(Variant variant);
+	[LinkName("pango_attr_weight_new")]
+	public static extern Attribute* AttrWeightNew(Weight weight);
+	[LinkName("pango_attr_word_new")]
+	public static extern Attribute* AttrWordNew();
+	[LinkName("pango_bidi_type_for_unichar")]
+	public static extern BidiType BidiTypeForUnichar(c_uint ch);
+	[LinkName("pango_break")]
+	public static extern void Break(char8* text, c_int length, Analysis* analysis, c_int attrs_len);
+	[LinkName("pango_default_break")]
+	public static extern void DefaultBreak(char8* text, c_int length, Analysis* analysis, LogAttr* attrs, c_int attrs_len);
+	[LinkName("pango_extents_to_pixels")]
+	public static extern void ExtentsToPixels(Rectangle* inclusive, Rectangle* nearest);
+	[LinkName("pango_find_base_dir")]
+	public static extern Direction FindBaseDir(char8* text, c_int length);
+	[LinkName("pango_find_paragraph_boundary")]
+	public static extern void FindParagraphBoundary(char8* text, c_int length, c_int* paragraph_delimiter_index, c_int* next_paragraph_start);
+	[LinkName("pango_font_description_from_string")]
+	public static extern FontDescription* FontDescriptionFromString(char8* str);
+	[LinkName("pango_get_log_attrs")]
+	public static extern void GetLogAttrs(char8* text, c_int length, c_int level, Language* language, c_int attrs_len);
+	[LinkName("pango_get_mirror_char")]
+	public static extern c_int GetMirrorChar(c_uint ch, c_uint* mirrored_ch);
+	[LinkName("pango_gravity_get_for_matrix")]
+	public static extern Gravity GravityGetForMatrix(Matrix* matrix);
+	[LinkName("pango_gravity_get_for_script")]
+	public static extern Gravity GravityGetForScript(Script script, Gravity base_gravity, GravityHint hint);
+	[LinkName("pango_gravity_get_for_script_and_width")]
+	public static extern Gravity GravityGetForScriptAndWidth(Script script, c_int wide, Gravity base_gravity, GravityHint hint);
+	[LinkName("pango_gravity_to_rotation")]
+	public static extern double GravityToRotation(Gravity gravity);
+	[LinkName("pango_is_zero_width")]
+	public static extern c_int IsZeroWidth(c_uint ch);
+	[LinkName("pango_itemize")]
+	public static extern GLib.List* Itemize(Context* context, char8* text, c_int start_index, c_int length, AttrList* attrs, AttrIterator* cached_iter);
+	[LinkName("pango_itemize_with_base_dir")]
+	public static extern GLib.List* ItemizeWithBaseDir(Context* context, Direction base_dir, char8* text, c_int start_index, c_int length, AttrList* attrs, AttrIterator* cached_iter);
+	[LinkName("pango_language_from_string")]
+	public static extern Language* LanguageFromString(char8* language);
+	[LinkName("pango_language_get_default")]
+	public static extern Language* LanguageGetDefault();
+	[LinkName("pango_language_get_preferred")]
+	public static extern Language LanguageGetPreferred();
+	[LinkName("pango_layout_deserialize_error_quark")]
+	public static extern GLib.Quark LayoutDeserializeErrorQuark();
+	[LinkName("pango_log2vis_get_embedding_levels")]
+	public static extern c_uchar* Log2visGetEmbeddingLevels(char8* text, c_int length, Direction* pbase_dir);
+	[LinkName("pango_markup_parser_finish")]
+	public static extern c_int MarkupParserFinish(GLib.MarkupParseContext* context, AttrList* attr_list, char8* text, c_uint* accel_char);
+	[LinkName("pango_markup_parser_new")]
+	public static extern GLib.MarkupParseContext* MarkupParserNew(c_uint accel_marker);
+	[LinkName("pango_parse_enum")]
+	public static extern c_int ParseEnum(GLib.Type type, char8* str, c_int* value, c_int warn, char8* possible_values);
+	[LinkName("pango_parse_markup")]
+	public static extern c_int ParseMarkup(char8* markup_text, c_int length, c_uint accel_marker, AttrList* attr_list, char8* text, c_uint* accel_char);
+	[LinkName("pango_parse_stretch")]
+	public static extern c_int ParseStretch(char8* str, Stretch* stretch, c_int warn);
+	[LinkName("pango_parse_style")]
+	public static extern c_int ParseStyle(char8* str, Style* style, c_int warn);
+	[LinkName("pango_parse_variant")]
+	public static extern c_int ParseVariant(char8* str, Variant* variant, c_int warn);
+	[LinkName("pango_parse_weight")]
+	public static extern c_int ParseWeight(char8* str, Weight* weight, c_int warn);
+	[LinkName("pango_quantize_line_geometry")]
+	public static extern void QuantizeLineGeometry(c_int* thickness, c_int* position);
+	[LinkName("pango_read_line")]
+	public static extern c_int ReadLine(void* stream, GLib.String* str);
+	[LinkName("pango_reorder_items")]
+	public static extern GLib.List* ReorderItems(GLib.List* items);
+	[LinkName("pango_scan_int")]
+	public static extern c_int ScanInt(char8* pos, c_int* out_);
+	[LinkName("pango_scan_string")]
+	public static extern c_int ScanString(char8* pos, GLib.String* out_);
+	[LinkName("pango_scan_word")]
+	public static extern c_int ScanWord(char8* pos, GLib.String* out_);
+	[LinkName("pango_script_for_unichar")]
+	public static extern Script ScriptForUnichar(c_uint ch);
+	[LinkName("pango_script_get_sample_language")]
+	public static extern Language* ScriptGetSampleLanguage(Script script);
+	[LinkName("pango_shape")]
+	public static extern void Shape(char8* text, c_int length, Analysis* analysis, GlyphString* glyphs);
+	[LinkName("pango_shape_full")]
+	public static extern void ShapeFull(char8* item_text, c_int item_length, char8* paragraph_text, c_int paragraph_length, Analysis* analysis, GlyphString* glyphs);
+	[LinkName("pango_shape_item")]
+	public static extern void ShapeItem(Item* item, char8* paragraph_text, c_int paragraph_length, LogAttr* log_attrs, GlyphString* glyphs, ShapeFlags flags);
+	[LinkName("pango_shape_with_flags")]
+	public static extern void ShapeWithFlags(char8* item_text, c_int item_length, char8* paragraph_text, c_int paragraph_length, Analysis* analysis, GlyphString* glyphs, ShapeFlags flags);
+	[LinkName("pango_skip_space")]
+	public static extern c_int SkipSpace(char8* pos);
+	[LinkName("pango_split_file_list")]
+	public static extern char8* SplitFileList(char8* str);
+	[LinkName("pango_tab_array_from_string")]
+	public static extern TabArray* TabArrayFromString(char8* text);
+	[LinkName("pango_tailor_break")]
+	public static extern void TailorBreak(char8* text, c_int length, Analysis* analysis, c_int offset, c_int attrs_len);
+	[LinkName("pango_trim_string")]
+	public static extern char8* TrimString(char8* str);
+	[LinkName("pango_unichar_direction")]
+	public static extern Direction UnicharDirection(c_uint ch);
+	[LinkName("pango_units_from_double")]
+	public static extern c_int UnitsFromDouble(double d);
+	[LinkName("pango_units_to_double")]
+	public static extern double UnitsToDouble(c_int i);
+	[LinkName("pango_version")]
+	public static extern c_int Version();
+	[LinkName("pango_version_check")]
+	public static extern char8* VersionCheck(c_int required_major, c_int required_minor, c_int required_micro);
+	[LinkName("pango_version_string")]
+	public static extern char8* VersionString();
 }

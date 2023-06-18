@@ -48,6 +48,24 @@ class GdkPixbuf
 	public static extern Pixbuf* PixbufNewFromStreamFinish(Gio.AsyncResult* async_result);
 	[LinkName("gdk_pixbuf_new_from_xpm_data")]
 	public static extern Pixbuf* PixbufNewFromXpmData();
+	[LinkName("gdk_pixbuf_calculate_rowstride")]
+	public static extern c_int PixbufCalculateRowstride(Colorspace colorspace, c_int has_alpha, c_int bits_per_sample, c_int width, c_int height);
+	[LinkName("gdk_pixbuf_get_file_info")]
+	public static extern PixbufFormat* PixbufGetFileInfo(char8* filename, c_int* width, c_int* height);
+	[LinkName("gdk_pixbuf_get_file_info_async")]
+	public static extern void PixbufGetFileInfoAsync(char8* filename, Gio.Cancellable* cancellable, Gio.AsyncReadyCallback callback, void* user_data);
+	[LinkName("gdk_pixbuf_get_file_info_finish")]
+	public static extern PixbufFormat* PixbufGetFileInfoFinish(Gio.AsyncResult* async_result, c_int* width, c_int* height);
+	[LinkName("gdk_pixbuf_get_formats")]
+	public static extern GLib.SList* PixbufGetFormats();
+	[LinkName("gdk_pixbuf_init_modules")]
+	public static extern c_int PixbufInitModules(char8* path);
+	[LinkName("gdk_pixbuf_new_from_stream_async")]
+	public static extern void PixbufNewFromStreamAsync(Gio.InputStream* stream, Gio.Cancellable* cancellable, Gio.AsyncReadyCallback callback, void* user_data);
+	[LinkName("gdk_pixbuf_new_from_stream_at_scale_async")]
+	public static extern void PixbufNewFromStreamAtScaleAsync(Gio.InputStream* stream, c_int width, c_int height, c_int preserve_aspect_ratio, Gio.Cancellable* cancellable, Gio.AsyncReadyCallback callback, void* user_data);
+	[LinkName("gdk_pixbuf_save_to_stream_finish")]
+	public static extern c_int PixbufSaveToStreamFinish(Gio.AsyncResult* async_result);
 	[LinkName("gdk_pixbuf_add_alpha")]
 	public static extern Pixbuf* PixbufAddAlpha(Pixbuf* pixbuf, c_int substitute_color, c_uchar r, c_uchar g, c_uchar b);
 	[LinkName("gdk_pixbuf_apply_embedded_orientation")]
@@ -98,28 +116,16 @@ class GdkPixbuf
 	public static extern GLib.Bytes* PixbufReadPixelBytes(Pixbuf* pixbuf);
 	[LinkName("gdk_pixbuf_read_pixels")]
 	public static extern c_uchar* PixbufReadPixels(Pixbuf* pixbuf);
-	[LinkName("gdk_pixbuf_ref")]
-	public static extern Pixbuf* PixbufRef(Pixbuf* pixbuf);
 	[LinkName("gdk_pixbuf_remove_option")]
 	public static extern c_int PixbufRemoveOption(Pixbuf* pixbuf, char8* key);
 	[LinkName("gdk_pixbuf_rotate_simple")]
 	public static extern Pixbuf* PixbufRotateSimple(Pixbuf* src, PixbufRotation angle);
 	[LinkName("gdk_pixbuf_saturate_and_pixelate")]
 	public static extern void PixbufSaturateAndPixelate(Pixbuf* src, Pixbuf* dest, float saturation, c_int pixelate);
-	[LinkName("gdk_pixbuf_save")]
-	public static extern c_int PixbufSave(Pixbuf* pixbuf, char8* filename, char8* type, GLib.Error* error);
-	[LinkName("gdk_pixbuf_save_to_buffer")]
-	public static extern c_int PixbufSaveToBuffer(Pixbuf* pixbuf, c_ulong* buffer_size, char8* type, GLib.Error* error);
 	[LinkName("gdk_pixbuf_save_to_bufferv")]
 	public static extern c_int PixbufSaveToBufferv(Pixbuf* pixbuf, c_ulong* buffer_size, char8* type);
-	[LinkName("gdk_pixbuf_save_to_callback")]
-	public static extern c_int PixbufSaveToCallback(Pixbuf* pixbuf, PixbufSaveFunc save_func, void* user_data, char8* type, GLib.Error* error);
 	[LinkName("gdk_pixbuf_save_to_callbackv")]
 	public static extern c_int PixbufSaveToCallbackv(Pixbuf* pixbuf, PixbufSaveFunc save_func, void* user_data, char8* type);
-	[LinkName("gdk_pixbuf_save_to_stream")]
-	public static extern c_int PixbufSaveToStream(Pixbuf* pixbuf, Gio.OutputStream* stream, char8* type, Gio.Cancellable* cancellable, GLib.Error* error);
-	[LinkName("gdk_pixbuf_save_to_stream_async")]
-	public static extern void PixbufSaveToStreamAsync(Pixbuf* pixbuf, Gio.OutputStream* stream, char8* type, Gio.Cancellable* cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gdk_pixbuf_save_to_streamv")]
 	public static extern c_int PixbufSaveToStreamv(Pixbuf* pixbuf, Gio.OutputStream* stream, char8* type, Gio.Cancellable* cancellable);
 	[LinkName("gdk_pixbuf_save_to_streamv_async")]
@@ -132,8 +138,6 @@ class GdkPixbuf
 	public static extern Pixbuf* PixbufScaleSimple(Pixbuf* src, c_int dest_width, c_int dest_height, InterpType interp_type);
 	[LinkName("gdk_pixbuf_set_option")]
 	public static extern c_int PixbufSetOption(Pixbuf* pixbuf, char8* key, char8* value);
-	[LinkName("gdk_pixbuf_unref")]
-	public static extern void PixbufUnref(Pixbuf* pixbuf);
 	public enum PixbufAlphaMode : c_int
 	{
 		bilevel = 0,
@@ -149,6 +153,8 @@ class GdkPixbuf
 	public static extern PixbufAnimation* PixbufAnimationNewFromStream(Gio.InputStream* stream, Gio.Cancellable* cancellable);
 	[LinkName("gdk_pixbuf_animation_new_from_stream_finish")]
 	public static extern PixbufAnimation* PixbufAnimationNewFromStreamFinish(Gio.AsyncResult* async_result);
+	[LinkName("gdk_pixbuf_animation_new_from_stream_async")]
+	public static extern void PixbufAnimationNewFromStreamAsync(Gio.InputStream* stream, Gio.Cancellable* cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gdk_pixbuf_animation_get_height")]
 	public static extern c_int PixbufAnimationGetHeight(PixbufAnimation* animation);
 	[LinkName("gdk_pixbuf_animation_get_iter")]
@@ -159,10 +165,6 @@ class GdkPixbuf
 	public static extern c_int PixbufAnimationGetWidth(PixbufAnimation* animation);
 	[LinkName("gdk_pixbuf_animation_is_static_image")]
 	public static extern c_int PixbufAnimationIsStaticImage(PixbufAnimation* animation);
-	[LinkName("gdk_pixbuf_animation_ref")]
-	public static extern PixbufAnimation* PixbufAnimationRef(PixbufAnimation* animation);
-	[LinkName("gdk_pixbuf_animation_unref")]
-	public static extern void PixbufAnimationUnref(PixbufAnimation* animation);
 	[CRepr]
 	public struct PixbufAnimationClass
 	{
@@ -305,4 +307,6 @@ class GdkPixbuf
 	}
 	[CRepr]
 	public struct PixbufSimpleAnimIter;
+	[LinkName("gdk_pixbuf_error_quark")]
+	public static extern GLib.Quark PixbufErrorQuark();
 }

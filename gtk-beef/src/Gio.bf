@@ -156,6 +156,8 @@ class Gio
 	}
 	[CRepr]
 	public struct AppInfoMonitor;
+	[LinkName("g_app_info_monitor_get")]
+	public static extern AppInfoMonitor* AppInfoMonitorGet();
 	[CRepr]
 	public struct AppLaunchContext;
 	[LinkName("g_app_launch_context_new")]
@@ -185,6 +187,10 @@ class Gio
 	public struct Application;
 	[LinkName("g_application_new")]
 	public static extern Application* ApplicationNew(char8* application_id, ApplicationFlags flags);
+	[LinkName("g_application_get_default")]
+	public static extern Application* ApplicationGetDefault();
+	[LinkName("g_application_id_is_valid")]
+	public static extern c_int ApplicationIdIsValid(char8* application_id);
 	[LinkName("g_application_activate")]
 	public static extern void ApplicationActivate(Application* application);
 	[LinkName("g_application_add_main_option")]
@@ -280,10 +286,6 @@ class Gio
 	public static extern InputStream* ApplicationCommandLineGetStdin(ApplicationCommandLine* cmdline);
 	[LinkName("g_application_command_line_getenv")]
 	public static extern char8* ApplicationCommandLineGetenv(ApplicationCommandLine* cmdline, char8* name);
-	[LinkName("g_application_command_line_print")]
-	public static extern void ApplicationCommandLinePrint(ApplicationCommandLine* cmdline, char8* format);
-	[LinkName("g_application_command_line_printerr")]
-	public static extern void ApplicationCommandLinePrinterr(ApplicationCommandLine* cmdline, char8* format);
 	[LinkName("g_application_command_line_set_exit_status")]
 	public static extern void ApplicationCommandLineSetExitStatus(ApplicationCommandLine* cmdline, c_int exit_status);
 	[CRepr]
@@ -443,6 +445,8 @@ class Gio
 	public struct Cancellable;
 	[LinkName("g_cancellable_new")]
 	public static extern Cancellable* CancellableNew();
+	[LinkName("g_cancellable_get_current")]
+	public static extern Cancellable* CancellableGetCurrent();
 	[LinkName("g_cancellable_cancel")]
 	public static extern void CancellableCancel(Cancellable* cancellable);
 	[LinkName("g_cancellable_connect")]
@@ -552,8 +556,6 @@ class Gio
 	public struct Credentials;
 	[LinkName("g_credentials_new")]
 	public static extern Credentials* CredentialsNew();
-	[LinkName("g_credentials_get_native")]
-	public static extern void* CredentialsGetNative(Credentials* credentials, CredentialsType native_type);
 	[LinkName("g_credentials_get_unix_pid")]
 	public static extern c_int CredentialsGetUnixPid(Credentials* credentials);
 	[LinkName("g_credentials_get_unix_user")]
@@ -583,6 +585,8 @@ class Gio
 	}
 	[CRepr]
 	public struct DBusActionGroup;
+	[LinkName("g_dbus_action_group_get")]
+	public static extern DBusActionGroup* DbusActionGroupGet(DBusConnection* connection, char8* bus_name, char8* object_path);
 	[CRepr]
 	public struct DBusAnnotationInfo
 	{
@@ -628,6 +632,10 @@ class Gio
 	public static extern DBusConnection* DbusConnectionNewForAddressSync(char8* address, DBusConnectionFlags flags, DBusAuthObserver* observer, Cancellable* cancellable);
 	[LinkName("g_dbus_connection_new_sync")]
 	public static extern DBusConnection* DbusConnectionNewSync(IOStream* stream, char8* guid, DBusConnectionFlags flags, DBusAuthObserver* observer, Cancellable* cancellable);
+	[LinkName("g_dbus_connection_new")]
+	public static extern void DbusConnectionNew(IOStream* stream, char8* guid, DBusConnectionFlags flags, DBusAuthObserver* observer, Cancellable* cancellable, AsyncReadyCallback callback, void* user_data);
+	[LinkName("g_dbus_connection_new_for_address")]
+	public static extern void DbusConnectionNewForAddress(char8* address, DBusConnectionFlags flags, DBusAuthObserver* observer, Cancellable* cancellable, AsyncReadyCallback callback, void* user_data);
 	[LinkName("g_dbus_connection_add_filter")]
 	public static extern c_uint DbusConnectionAddFilter(DBusConnection* connection, DBusMessageFilterFunction filter_function, void* user_data, GLib.DestroyNotify user_data_free_func);
 	[LinkName("g_dbus_connection_call")]
@@ -819,8 +827,6 @@ class Gio
 	public static extern char8* DbusInterfaceSkeletonGetObjectPath(DBusInterfaceSkeleton* interface_);
 	[LinkName("g_dbus_interface_skeleton_get_properties")]
 	public static extern GLib.Variant* DbusInterfaceSkeletonGetProperties(DBusInterfaceSkeleton* interface_);
-	[LinkName("g_dbus_interface_skeleton_get_vtable")]
-	public static extern DBusInterfaceVTable* DbusInterfaceSkeletonGetVtable(DBusInterfaceSkeleton* interface_);
 	[LinkName("g_dbus_interface_skeleton_has_connection")]
 	public static extern c_int DbusInterfaceSkeletonHasConnection(DBusInterfaceSkeleton* interface_, DBusConnection* connection);
 	[LinkName("g_dbus_interface_skeleton_set_flags")]
@@ -853,6 +859,8 @@ class Gio
 	}
 	[CRepr]
 	public struct DBusMenuModel;
+	[LinkName("g_dbus_menu_model_get")]
+	public static extern DBusMenuModel* DbusMenuModelGet(DBusConnection* connection, char8* bus_name, char8* object_path);
 	[CRepr]
 	public struct DBusMessage;
 	[LinkName("g_dbus_message_new")]
@@ -863,6 +871,8 @@ class Gio
 	public static extern DBusMessage* DbusMessageNewMethodCall(char8* name, char8* path, char8* interface_, char8* method);
 	[LinkName("g_dbus_message_new_signal")]
 	public static extern DBusMessage* DbusMessageNewSignal(char8* path, char8* interface_, char8* signal);
+	[LinkName("g_dbus_message_bytes_needed")]
+	public static extern c_long DbusMessageBytesNeeded(c_ulong blob_len);
 	[LinkName("g_dbus_message_copy")]
 	public static extern DBusMessage* DbusMessageCopy(DBusMessage* message);
 	[LinkName("g_dbus_message_get_arg0")]
@@ -905,12 +915,8 @@ class Gio
 	public static extern UnixFDList* DbusMessageGetUnixFdList(DBusMessage* message);
 	[LinkName("g_dbus_message_lock")]
 	public static extern void DbusMessageLock(DBusMessage* message);
-	[LinkName("g_dbus_message_new_method_error")]
-	public static extern DBusMessage* DbusMessageNewMethodError(DBusMessage* method_call_message, char8* error_name, char8* error_message_format);
 	[LinkName("g_dbus_message_new_method_error_literal")]
 	public static extern DBusMessage* DbusMessageNewMethodErrorLiteral(DBusMessage* method_call_message, char8* error_name, char8* error_message);
-	[LinkName("g_dbus_message_new_method_error_valist")]
-	public static extern DBusMessage* DbusMessageNewMethodErrorValist(DBusMessage* method_call_message, char8* error_name, char8* error_message_format, VarArgs var_args);
 	[LinkName("g_dbus_message_new_method_reply")]
 	public static extern DBusMessage* DbusMessageNewMethodReply(DBusMessage* method_call_message);
 	[LinkName("g_dbus_message_print")]
@@ -1012,24 +1018,16 @@ class Gio
 	public static extern DBusPropertyInfo* DbusMethodInvocationGetPropertyInfo(DBusMethodInvocation* invocation);
 	[LinkName("g_dbus_method_invocation_get_sender")]
 	public static extern char8* DbusMethodInvocationGetSender(DBusMethodInvocation* invocation);
-	[LinkName("g_dbus_method_invocation_get_user_data")]
-	public static extern void* DbusMethodInvocationGetUserData(DBusMethodInvocation* invocation);
 	[LinkName("g_dbus_method_invocation_return_dbus_error")]
 	public static extern void DbusMethodInvocationReturnDbusError(DBusMethodInvocation* invocation, char8* error_name, char8* error_message);
-	[LinkName("g_dbus_method_invocation_return_error")]
-	public static extern void DbusMethodInvocationReturnError(DBusMethodInvocation* invocation, GLib.Quark domain, c_int code, char8* format);
 	[LinkName("g_dbus_method_invocation_return_error_literal")]
 	public static extern void DbusMethodInvocationReturnErrorLiteral(DBusMethodInvocation* invocation, GLib.Quark domain, c_int code, char8* message);
-	[LinkName("g_dbus_method_invocation_return_error_valist")]
-	public static extern void DbusMethodInvocationReturnErrorValist(DBusMethodInvocation* invocation, GLib.Quark domain, c_int code, char8* format, VarArgs var_args);
 	[LinkName("g_dbus_method_invocation_return_gerror")]
 	public static extern void DbusMethodInvocationReturnGerror(DBusMethodInvocation* invocation, GLib.Error* error);
 	[LinkName("g_dbus_method_invocation_return_value")]
 	public static extern void DbusMethodInvocationReturnValue(DBusMethodInvocation* invocation, GLib.Variant* parameters);
 	[LinkName("g_dbus_method_invocation_return_value_with_unix_fd_list")]
 	public static extern void DbusMethodInvocationReturnValueWithUnixFdList(DBusMethodInvocation* invocation, GLib.Variant* parameters, UnixFDList* fd_list);
-	[LinkName("g_dbus_method_invocation_take_error")]
-	public static extern void DbusMethodInvocationTakeError(DBusMethodInvocation* invocation, GLib.Error* error);
 	[CRepr]
 	public struct DBusNodeInfo
 	{
@@ -1083,6 +1081,10 @@ class Gio
 	public static extern DBusObjectManagerClient* DbusObjectManagerClientNewForBusSync(BusType bus_type, DBusObjectManagerClientFlags flags, char8* name, char8* object_path, DBusProxyTypeFunc get_proxy_type_func, void* get_proxy_type_user_data, GLib.DestroyNotify get_proxy_type_destroy_notify, Cancellable* cancellable);
 	[LinkName("g_dbus_object_manager_client_new_sync")]
 	public static extern DBusObjectManagerClient* DbusObjectManagerClientNewSync(DBusConnection* connection, DBusObjectManagerClientFlags flags, char8* name, char8* object_path, DBusProxyTypeFunc get_proxy_type_func, void* get_proxy_type_user_data, GLib.DestroyNotify get_proxy_type_destroy_notify, Cancellable* cancellable);
+	[LinkName("g_dbus_object_manager_client_new")]
+	public static extern void DbusObjectManagerClientNew(DBusConnection* connection, DBusObjectManagerClientFlags flags, char8* name, char8* object_path, DBusProxyTypeFunc get_proxy_type_func, void* get_proxy_type_user_data, GLib.DestroyNotify get_proxy_type_destroy_notify, Cancellable* cancellable, AsyncReadyCallback callback, void* user_data);
+	[LinkName("g_dbus_object_manager_client_new_for_bus")]
+	public static extern void DbusObjectManagerClientNewForBus(BusType bus_type, DBusObjectManagerClientFlags flags, char8* name, char8* object_path, DBusProxyTypeFunc get_proxy_type_func, void* get_proxy_type_user_data, GLib.DestroyNotify get_proxy_type_destroy_notify, Cancellable* cancellable, AsyncReadyCallback callback, void* user_data);
 	[LinkName("g_dbus_object_manager_client_get_connection")]
 	public static extern DBusConnection* DbusObjectManagerClientGetConnection(DBusObjectManagerClient* manager);
 	[LinkName("g_dbus_object_manager_client_get_flags")]
@@ -1199,6 +1201,10 @@ class Gio
 	public static extern DBusProxy* DbusProxyNewForBusSync(BusType bus_type, DBusProxyFlags flags, DBusInterfaceInfo* info, char8* name, char8* object_path, char8* interface_name, Cancellable* cancellable);
 	[LinkName("g_dbus_proxy_new_sync")]
 	public static extern DBusProxy* DbusProxyNewSync(DBusConnection* connection, DBusProxyFlags flags, DBusInterfaceInfo* info, char8* name, char8* object_path, char8* interface_name, Cancellable* cancellable);
+	[LinkName("g_dbus_proxy_new")]
+	public static extern void DbusProxyNew(DBusConnection* connection, DBusProxyFlags flags, DBusInterfaceInfo* info, char8* name, char8* object_path, char8* interface_name, Cancellable* cancellable, AsyncReadyCallback callback, void* user_data);
+	[LinkName("g_dbus_proxy_new_for_bus")]
+	public static extern void DbusProxyNewForBus(BusType bus_type, DBusProxyFlags flags, DBusInterfaceInfo* info, char8* name, char8* object_path, char8* interface_name, Cancellable* cancellable, AsyncReadyCallback callback, void* user_data);
 	[LinkName("g_dbus_proxy_call")]
 	public static extern void DbusProxyCall(DBusProxy* proxy, char8* method_name, GLib.Variant* parameters, DBusCallFlags flags, c_int timeout_msec, Cancellable* cancellable, AsyncReadyCallback callback, void* user_data);
 	[LinkName("g_dbus_proxy_call_finish")]
@@ -1468,6 +1474,12 @@ class Gio
 	public static extern DesktopAppInfo* DesktopAppInfoNewFromFilename(char8* filename);
 	[LinkName("g_desktop_app_info_new_from_keyfile")]
 	public static extern DesktopAppInfo* DesktopAppInfoNewFromKeyfile(GLib.KeyFile* key_file);
+	[LinkName("g_desktop_app_info_get_implementations")]
+	public static extern GLib.List* DesktopAppInfoGetImplementations(char8* interface_);
+	[LinkName("g_desktop_app_info_search")]
+	public static extern c_char*** DesktopAppInfoSearch(char8* search_string);
+	[LinkName("g_desktop_app_info_set_desktop_env")]
+	public static extern void DesktopAppInfoSetDesktopEnv(char8* desktop_env);
 	[LinkName("g_desktop_app_info_get_action_name")]
 	public static extern char8* DesktopAppInfoGetActionName(DesktopAppInfo* info, char8* action_name);
 	[LinkName("g_desktop_app_info_get_boolean")]
@@ -2392,10 +2404,8 @@ class Gio
 	public struct IOModule;
 	[LinkName("g_io_module_new")]
 	public static extern IOModule* IoModuleNew(char8* filename);
-	[LinkName("g_io_module_load")]
-	public static extern void IoModuleLoad(IOModule* module);
-	[LinkName("g_io_module_unload")]
-	public static extern void IoModuleUnload(IOModule* module);
+	[LinkName("g_io_module_query")]
+	public static extern char8* IoModuleQuery();
 	[CRepr]
 	public struct IOModuleClass
 	{
@@ -2416,6 +2426,8 @@ class Gio
 	public function c_int IOSchedulerJobFunc(IOSchedulerJob job, Cancellable cancellable, void* data);
 	[CRepr]
 	public struct IOStream;
+	[LinkName("g_io_stream_splice_finish")]
+	public static extern c_int IoStreamSpliceFinish(AsyncResult* result);
 	[LinkName("g_io_stream_clear_pending")]
 	public static extern void IoStreamClearPending(IOStream* stream);
 	[LinkName("g_io_stream_close")]
@@ -2509,8 +2521,6 @@ class Gio
 	public static extern c_int InetAddressGetIsSiteLocal(InetAddress* address);
 	[LinkName("g_inet_address_get_native_size")]
 	public static extern c_ulong InetAddressGetNativeSize(InetAddress* address);
-	[LinkName("g_inet_address_to_bytes")]
-	public static extern c_uchar* InetAddressToBytes(InetAddress* address);
 	[LinkName("g_inet_address_to_string")]
 	public static extern char8* InetAddressToString(InetAddress* address);
 	[CRepr]
@@ -2742,8 +2752,6 @@ class Gio
 	}
 	[CRepr]
 	public struct MemoryOutputStream;
-	[LinkName("g_memory_output_stream_new")]
-	public static extern OutputStream* MemoryOutputStreamNew(void* data, c_ulong size, ReallocFunc realloc_function, GLib.DestroyNotify destroy_function);
 	[LinkName("g_memory_output_stream_new_resizable")]
 	public static extern OutputStream* MemoryOutputStreamNewResizable();
 	[LinkName("g_memory_output_stream_get_data")]
@@ -2828,18 +2836,12 @@ class Gio
 	public static extern MenuItem* MenuItemNewSection(char8* label, MenuModel* section);
 	[LinkName("g_menu_item_new_submenu")]
 	public static extern MenuItem* MenuItemNewSubmenu(char8* label, MenuModel* submenu);
-	[LinkName("g_menu_item_get_attribute")]
-	public static extern c_int MenuItemGetAttribute(MenuItem* menu_item, char8* attribute, char8* format_string);
 	[LinkName("g_menu_item_get_attribute_value")]
 	public static extern GLib.Variant* MenuItemGetAttributeValue(MenuItem* menu_item, char8* attribute, GLib.VariantType* expected_type);
 	[LinkName("g_menu_item_get_link")]
 	public static extern MenuModel* MenuItemGetLink(MenuItem* menu_item, char8* link);
-	[LinkName("g_menu_item_set_action_and_target")]
-	public static extern void MenuItemSetActionAndTarget(MenuItem* menu_item, char8* action, char8* format_string);
 	[LinkName("g_menu_item_set_action_and_target_value")]
 	public static extern void MenuItemSetActionAndTargetValue(MenuItem* menu_item, char8* action, GLib.Variant* target_value);
-	[LinkName("g_menu_item_set_attribute")]
-	public static extern void MenuItemSetAttribute(MenuItem* menu_item, char8* attribute, char8* format_string);
 	[LinkName("g_menu_item_set_attribute_value")]
 	public static extern void MenuItemSetAttributeValue(MenuItem* menu_item, char8* attribute, GLib.Variant* value);
 	[LinkName("g_menu_item_set_detailed_action")]
@@ -2875,8 +2877,6 @@ class Gio
 	}
 	[CRepr]
 	public struct MenuModel;
-	[LinkName("g_menu_model_get_item_attribute")]
-	public static extern c_int MenuModelGetItemAttribute(MenuModel* model, c_int item_index, char8* attribute, char8* format_string);
 	[LinkName("g_menu_model_get_item_attribute_value")]
 	public static extern GLib.Variant* MenuModelGetItemAttributeValue(MenuModel* model, c_int item_index, char8* attribute, GLib.VariantType* expected_type);
 	[LinkName("g_menu_model_get_item_link")]
@@ -3056,6 +3056,10 @@ class Gio
 	public static extern NetworkAddress* NetworkAddressNew(char8* hostname, c_ushort port);
 	[LinkName("g_network_address_new_loopback")]
 	public static extern NetworkAddress* NetworkAddressNewLoopback(c_ushort port);
+	[LinkName("g_network_address_parse")]
+	public static extern NetworkAddress* NetworkAddressParse(char8* host_and_port, c_ushort default_port);
+	[LinkName("g_network_address_parse_uri")]
+	public static extern NetworkAddress* NetworkAddressParseUri(char8* uri, c_ushort default_port);
 	[LinkName("g_network_address_get_hostname")]
 	public static extern char8* NetworkAddressGetHostname(NetworkAddress* addr);
 	[LinkName("g_network_address_get_port")]
@@ -3123,8 +3127,6 @@ class Gio
 	public static extern Notification* NotificationNew(char8* title);
 	[LinkName("g_notification_add_button")]
 	public static extern void NotificationAddButton(Notification* notification, char8* label, char8* detailed_action);
-	[LinkName("g_notification_add_button_with_target")]
-	public static extern void NotificationAddButtonWithTarget(Notification* notification, char8* label, char8* action, char8* target_format);
 	[LinkName("g_notification_add_button_with_target_value")]
 	public static extern void NotificationAddButtonWithTargetValue(Notification* notification, char8* label, char8* action, GLib.Variant* target);
 	[LinkName("g_notification_set_body")]
@@ -3133,8 +3135,6 @@ class Gio
 	public static extern void NotificationSetCategory(Notification* notification, char8* category);
 	[LinkName("g_notification_set_default_action")]
 	public static extern void NotificationSetDefaultAction(Notification* notification, char8* detailed_action);
-	[LinkName("g_notification_set_default_action_and_target")]
-	public static extern void NotificationSetDefaultActionAndTarget(Notification* notification, char8* action, char8* target_format);
 	[LinkName("g_notification_set_default_action_and_target_value")]
 	public static extern void NotificationSetDefaultActionAndTargetValue(Notification* notification, char8* action, GLib.Variant* target);
 	[LinkName("g_notification_set_icon")]
@@ -3183,8 +3183,6 @@ class Gio
 	public static extern c_int OutputStreamIsClosed(OutputStream* stream);
 	[LinkName("g_output_stream_is_closing")]
 	public static extern c_int OutputStreamIsClosing(OutputStream* stream);
-	[LinkName("g_output_stream_printf")]
-	public static extern c_int OutputStreamPrintf(OutputStream* stream, c_ulong* bytes_written, Cancellable* cancellable, GLib.Error* error, char8* format);
 	[LinkName("g_output_stream_set_pending")]
 	public static extern c_int OutputStreamSetPending(OutputStream* stream);
 	[LinkName("g_output_stream_splice")]
@@ -3193,8 +3191,6 @@ class Gio
 	public static extern void OutputStreamSpliceAsync(OutputStream* stream, InputStream* source, OutputStreamSpliceFlags flags, c_int io_priority, Cancellable* cancellable, AsyncReadyCallback callback, void* user_data);
 	[LinkName("g_output_stream_splice_finish")]
 	public static extern c_long OutputStreamSpliceFinish(OutputStream* stream, AsyncResult* result);
-	[LinkName("g_output_stream_vprintf")]
-	public static extern c_int OutputStreamVprintf(OutputStream* stream, c_ulong* bytes_written, Cancellable* cancellable, GLib.Error* error, char8* format, VarArgs args);
 	[LinkName("g_output_stream_write")]
 	public static extern c_long OutputStreamWrite(OutputStream* stream, c_ulong count, Cancellable* cancellable);
 	[LinkName("g_output_stream_write_all")]
@@ -3422,6 +3418,8 @@ class Gio
 	}
 	[CRepr]
 	public struct Resolver;
+	[LinkName("g_resolver_get_default")]
+	public static extern Resolver* ResolverGetDefault();
 	[LinkName("g_resolver_lookup_by_address")]
 	public static extern char8* ResolverLookupByAddress(Resolver* resolver, InetAddress* address, Cancellable* cancellable);
 	[LinkName("g_resolver_lookup_by_address_async")]
@@ -3534,20 +3532,24 @@ class Gio
 	public static extern Settings* SettingsNewWithBackendAndPath(char8* schema_id, SettingsBackend* backend, char8* path);
 	[LinkName("g_settings_new_with_path")]
 	public static extern Settings* SettingsNewWithPath(char8* schema_id, char8* path);
+	[LinkName("g_settings_list_relocatable_schemas")]
+	public static extern char8* SettingsListRelocatableSchemas();
+	[LinkName("g_settings_list_schemas")]
+	public static extern char8* SettingsListSchemas();
+	[LinkName("g_settings_sync")]
+	public static extern void SettingsSync();
+	[LinkName("g_settings_unbind")]
+	public static extern void SettingsUnbind(GObject.Object object, char8* property);
 	[LinkName("g_settings_apply")]
 	public static extern void SettingsApply(Settings* settings);
 	[LinkName("g_settings_bind")]
 	public static extern void SettingsBind(Settings* settings, char8* key, GObject.Object object, char8* property, SettingsBindFlags flags);
-	[LinkName("g_settings_bind_with_mapping")]
-	public static extern void SettingsBindWithMapping(Settings* settings, char8* key, GObject.Object object, char8* property, SettingsBindFlags flags, SettingsBindGetMapping get_mapping, SettingsBindSetMapping set_mapping, void* user_data, GLib.DestroyNotify destroy);
 	[LinkName("g_settings_bind_writable")]
 	public static extern void SettingsBindWritable(Settings* settings, char8* key, GObject.Object object, char8* property, c_int inverted);
 	[LinkName("g_settings_create_action")]
 	public static extern Action* SettingsCreateAction(Settings* settings, char8* key);
 	[LinkName("g_settings_delay")]
 	public static extern void SettingsDelay(Settings* settings);
-	[LinkName("g_settings_get")]
-	public static extern void SettingsGet(Settings* settings, char8* key, char8* format);
 	[LinkName("g_settings_get_boolean")]
 	public static extern c_int SettingsGetBoolean(Settings* settings, char8* key);
 	[LinkName("g_settings_get_child")]
@@ -3594,8 +3596,6 @@ class Gio
 	public static extern void SettingsReset(Settings* settings, char8* key);
 	[LinkName("g_settings_revert")]
 	public static extern void SettingsRevert(Settings* settings);
-	[LinkName("g_settings_set")]
-	public static extern c_int SettingsSet(Settings* settings, char8* key, char8* format);
 	[LinkName("g_settings_set_boolean")]
 	public static extern c_int SettingsSetBoolean(Settings* settings, char8* key, c_int value);
 	[LinkName("g_settings_set_double")]
@@ -3620,6 +3620,10 @@ class Gio
 	public static extern c_int SettingsSetValue(Settings* settings, char8* key, GLib.Variant* value);
 	[CRepr]
 	public struct SettingsBackend;
+	[LinkName("g_settings_backend_flatten_tree")]
+	public static extern void SettingsBackendFlattenTree(GLib.Tree* tree, char8* path);
+	[LinkName("g_settings_backend_get_default")]
+	public static extern SettingsBackend* SettingsBackendGetDefault();
 	[LinkName("g_settings_backend_changed")]
 	public static extern void SettingsBackendChanged(SettingsBackend* backend, char8* key, void* origin_tag);
 	[LinkName("g_settings_backend_changed_tree")]
@@ -3712,46 +3716,30 @@ class Gio
 	public struct SimpleAsyncResult;
 	[LinkName("g_simple_async_result_new")]
 	public static extern SimpleAsyncResult* SimpleAsyncResultNew(GObject.Object* source_object, AsyncReadyCallback callback, void* user_data, void* source_tag);
-	[LinkName("g_simple_async_result_new_error")]
-	public static extern SimpleAsyncResult* SimpleAsyncResultNewError(GObject.Object* source_object, AsyncReadyCallback callback, void* user_data, GLib.Quark domain, c_int code, char8* format);
 	[LinkName("g_simple_async_result_new_from_error")]
 	public static extern SimpleAsyncResult* SimpleAsyncResultNewFromError(GObject.Object* source_object, AsyncReadyCallback callback, void* user_data, GLib.Error* error);
-	[LinkName("g_simple_async_result_new_take_error")]
-	public static extern SimpleAsyncResult* SimpleAsyncResultNewTakeError(GObject.Object* source_object, AsyncReadyCallback callback, void* user_data, GLib.Error* error);
+	[LinkName("g_simple_async_result_is_valid")]
+	public static extern c_int SimpleAsyncResultIsValid(AsyncResult* result, GObject.Object* source, void* source_tag);
 	[LinkName("g_simple_async_result_complete")]
 	public static extern void SimpleAsyncResultComplete(SimpleAsyncResult* simple);
 	[LinkName("g_simple_async_result_complete_in_idle")]
 	public static extern void SimpleAsyncResultCompleteInIdle(SimpleAsyncResult* simple);
 	[LinkName("g_simple_async_result_get_op_res_gboolean")]
 	public static extern c_int SimpleAsyncResultGetOpResGboolean(SimpleAsyncResult* simple);
-	[LinkName("g_simple_async_result_get_op_res_gpointer")]
-	public static extern void* SimpleAsyncResultGetOpResGpointer(SimpleAsyncResult* simple);
 	[LinkName("g_simple_async_result_get_op_res_gssize")]
 	public static extern c_long SimpleAsyncResultGetOpResGssize(SimpleAsyncResult* simple);
-	[LinkName("g_simple_async_result_get_source_tag")]
-	public static extern void* SimpleAsyncResultGetSourceTag(SimpleAsyncResult* simple);
 	[LinkName("g_simple_async_result_propagate_error")]
 	public static extern c_int SimpleAsyncResultPropagateError(SimpleAsyncResult* simple);
-	[LinkName("g_simple_async_result_run_in_thread")]
-	public static extern void SimpleAsyncResultRunInThread(SimpleAsyncResult* simple, SimpleAsyncThreadFunc func, c_int io_priority, Cancellable* cancellable);
 	[LinkName("g_simple_async_result_set_check_cancellable")]
 	public static extern void SimpleAsyncResultSetCheckCancellable(SimpleAsyncResult* simple, Cancellable* check_cancellable);
-	[LinkName("g_simple_async_result_set_error")]
-	public static extern void SimpleAsyncResultSetError(SimpleAsyncResult* simple, GLib.Quark domain, c_int code, char8* format);
-	[LinkName("g_simple_async_result_set_error_va")]
-	public static extern void SimpleAsyncResultSetErrorVa(SimpleAsyncResult* simple, GLib.Quark domain, c_int code, char8* format, VarArgs args);
 	[LinkName("g_simple_async_result_set_from_error")]
 	public static extern void SimpleAsyncResultSetFromError(SimpleAsyncResult* simple, GLib.Error* error);
 	[LinkName("g_simple_async_result_set_handle_cancellation")]
 	public static extern void SimpleAsyncResultSetHandleCancellation(SimpleAsyncResult* simple, c_int handle_cancellation);
 	[LinkName("g_simple_async_result_set_op_res_gboolean")]
 	public static extern void SimpleAsyncResultSetOpResGboolean(SimpleAsyncResult* simple, c_int op_res);
-	[LinkName("g_simple_async_result_set_op_res_gpointer")]
-	public static extern void SimpleAsyncResultSetOpResGpointer(SimpleAsyncResult* simple, void* op_res, GLib.DestroyNotify destroy_op_res);
 	[LinkName("g_simple_async_result_set_op_res_gssize")]
 	public static extern void SimpleAsyncResultSetOpResGssize(SimpleAsyncResult* simple, c_long op_res);
-	[LinkName("g_simple_async_result_take_error")]
-	public static extern void SimpleAsyncResultTakeError(SimpleAsyncResult* simple, GLib.Error* error);
 	[CRepr]
 	public struct SimpleAsyncResultClass
 	{
@@ -3767,6 +3755,8 @@ class Gio
 	public static extern Permission* SimplePermissionNew(c_int allowed);
 	[CRepr]
 	public struct SimpleProxyResolver;
+	[LinkName("g_simple_proxy_resolver_new")]
+	public static extern ProxyResolver* SimpleProxyResolverNew(char8* default_proxy);
 	[LinkName("g_simple_proxy_resolver_set_default_proxy")]
 	public static extern void SimpleProxyResolverSetDefaultProxy(SimpleProxyResolver* resolver, char8* default_proxy);
 	[LinkName("g_simple_proxy_resolver_set_ignore_hosts")]
@@ -3806,8 +3796,6 @@ class Gio
 	public static extern c_int SocketConnect(Socket* socket, SocketAddress* address, Cancellable* cancellable);
 	[LinkName("g_socket_connection_factory_create_connection")]
 	public static extern SocketConnection* SocketConnectionFactoryCreateConnection(Socket* socket);
-	[LinkName("g_socket_create_source")]
-	public static extern GLib.Source* SocketCreateSource(Socket* socket, GLib.IOCondition condition, Cancellable* cancellable);
 	[LinkName("g_socket_get_available_bytes")]
 	public static extern c_long SocketGetAvailableBytes(Socket* socket);
 	[LinkName("g_socket_get_blocking")]
@@ -4036,6 +4024,10 @@ class Gio
 	}
 	[CRepr]
 	public struct SocketConnection;
+	[LinkName("g_socket_connection_factory_lookup_type")]
+	public static extern GLib.Type SocketConnectionFactoryLookupType(SocketFamily family, SocketType type, c_int protocol_id);
+	[LinkName("g_socket_connection_factory_register_type")]
+	public static extern void SocketConnectionFactoryRegisterType(GLib.Type g_type, SocketFamily family, SocketType type, c_int protocol);
 	[LinkName("g_socket_connection_connect")]
 	public static extern c_int SocketConnectionConnect(SocketConnection* connection, SocketAddress* address, Cancellable* cancellable);
 	[LinkName("g_socket_connection_connect_async")]
@@ -4061,6 +4053,8 @@ class Gio
 	}
 	[CRepr]
 	public struct SocketControlMessage;
+	[LinkName("g_socket_control_message_deserialize")]
+	public static extern SocketControlMessage* SocketControlMessageDeserialize(c_int level, c_int type, c_ulong size);
 	[LinkName("g_socket_control_message_get_level")]
 	public static extern c_int SocketControlMessageGetLevel(SocketControlMessage* message);
 	[LinkName("g_socket_control_message_get_msg_type")]
@@ -4191,8 +4185,6 @@ class Gio
 	}
 	[CRepr]
 	public struct Subprocess;
-	[LinkName("g_subprocess_new")]
-	public static extern Subprocess* SubprocessNew(SubprocessFlags flags, GLib.Error* error, char8* argv0);
 	[LinkName("g_subprocess_newv")]
 	public static extern Subprocess* SubprocessNewv(SubprocessFlags flags);
 	[LinkName("g_subprocess_communicate")]
@@ -4265,8 +4257,6 @@ class Gio
 	public static extern void SubprocessLauncherClose(SubprocessLauncher* self);
 	[LinkName("g_subprocess_launcher_getenv")]
 	public static extern char8* SubprocessLauncherGetenv(SubprocessLauncher* self, char8* variable);
-	[LinkName("g_subprocess_launcher_set_child_setup")]
-	public static extern void SubprocessLauncherSetChildSetup(SubprocessLauncher* self, GLib.SpawnChildSetupFunc child_setup, void* user_data, GLib.DestroyNotify destroy_notify);
 	[LinkName("g_subprocess_launcher_set_cwd")]
 	public static extern void SubprocessLauncherSetCwd(SubprocessLauncher* self, char8* cwd);
 	[LinkName("g_subprocess_launcher_set_environ")]
@@ -4281,8 +4271,6 @@ class Gio
 	public static extern void SubprocessLauncherSetStdoutFilePath(SubprocessLauncher* self, char8* path);
 	[LinkName("g_subprocess_launcher_setenv")]
 	public static extern void SubprocessLauncherSetenv(SubprocessLauncher* self, char8* variable, char8* value, c_int overwrite);
-	[LinkName("g_subprocess_launcher_spawn")]
-	public static extern Subprocess* SubprocessLauncherSpawn(SubprocessLauncher* self, GLib.Error* error, char8* argv0);
 	[LinkName("g_subprocess_launcher_spawnv")]
 	public static extern Subprocess* SubprocessLauncherSpawnv(SubprocessLauncher* self);
 	[LinkName("g_subprocess_launcher_take_fd")]
@@ -4299,8 +4287,10 @@ class Gio
 	public struct Task;
 	[LinkName("g_task_new")]
 	public static extern Task* TaskNew(GObject.Object source_object, Cancellable* cancellable, AsyncReadyCallback callback, void* callback_data);
-	[LinkName("g_task_attach_source")]
-	public static extern void TaskAttachSource(Task* task, GLib.Source* source, GLib.SourceFunc callback);
+	[LinkName("g_task_is_valid")]
+	public static extern c_int TaskIsValid(AsyncResult result, GObject.Object source_object);
+	[LinkName("g_task_report_error")]
+	public static extern void TaskReportError(GObject.Object source_object, AsyncReadyCallback callback, void* callback_data, void* source_tag, GLib.Error* error);
 	[LinkName("g_task_get_cancellable")]
 	public static extern Cancellable* TaskGetCancellable(Task* task);
 	[LinkName("g_task_get_check_cancellable")]
@@ -4339,8 +4329,6 @@ class Gio
 	public static extern c_int TaskReturnErrorIfCancelled(Task* task);
 	[LinkName("g_task_return_int")]
 	public static extern void TaskReturnInt(Task* task, c_long result);
-	[LinkName("g_task_return_new_error")]
-	public static extern void TaskReturnNewError(Task* task, GLib.Quark domain, c_int code, char8* format);
 	[LinkName("g_task_return_pointer")]
 	public static extern void TaskReturnPointer(Task* task, void* result, GLib.DestroyNotify result_destroy);
 	[LinkName("g_task_return_value")]
@@ -4402,6 +4390,8 @@ class Gio
 	public struct TestDBus;
 	[LinkName("g_test_dbus_new")]
 	public static extern TestDBus* TestDbusNew(TestDBusFlags flags);
+	[LinkName("g_test_dbus_unset")]
+	public static extern void TestDbusUnset();
 	[LinkName("g_test_dbus_add_service_dir")]
 	public static extern void TestDbusAddServiceDir(TestDBus* self, char8* path);
 	[LinkName("g_test_dbus_down")]
@@ -4484,6 +4474,8 @@ class Gio
 	public static extern TlsCertificate* TlsCertificateNewFromPkcs11Uris(char8* pkcs11_uri, char8* private_key_pkcs11_uri);
 	[LinkName("g_tls_certificate_new_from_pkcs12")]
 	public static extern TlsCertificate* TlsCertificateNewFromPkcs12(c_ulong length, char8* password);
+	[LinkName("g_tls_certificate_list_new_from_file")]
+	public static extern GLib.List* TlsCertificateListNewFromFile(char8* file);
 	[LinkName("g_tls_certificate_get_dns_names")]
 	public static extern GLib.Bytes TlsCertificateGetDnsNames(TlsCertificate* cert);
 	[LinkName("g_tls_certificate_get_ip_addresses")]
@@ -4809,6 +4801,8 @@ class Gio
 	public static extern SocketControlMessage* UnixCredentialsMessageNew();
 	[LinkName("g_unix_credentials_message_new_with_credentials")]
 	public static extern SocketControlMessage* UnixCredentialsMessageNewWithCredentials(Credentials* credentials);
+	[LinkName("g_unix_credentials_message_is_supported")]
+	public static extern c_int UnixCredentialsMessageIsSupported();
 	[LinkName("g_unix_credentials_message_get_credentials")]
 	public static extern Credentials* UnixCredentialsMessageGetCredentials(UnixCredentialsMessage* message);
 	[CRepr]
@@ -4893,6 +4887,8 @@ class Gio
 	public struct UnixMountMonitor;
 	[LinkName("g_unix_mount_monitor_new")]
 	public static extern UnixMountMonitor* UnixMountMonitorNew();
+	[LinkName("g_unix_mount_monitor_get")]
+	public static extern UnixMountMonitor* UnixMountMonitorGet();
 	[LinkName("g_unix_mount_monitor_set_rate_limit")]
 	public static extern void UnixMountMonitorSetRateLimit(UnixMountMonitor* mount_monitor, c_int limit_msec);
 	[CRepr]
@@ -4930,6 +4926,8 @@ class Gio
 	public static extern SocketAddress* UnixSocketAddressNewAbstract(c_int path_len);
 	[LinkName("g_unix_socket_address_new_with_type")]
 	public static extern SocketAddress* UnixSocketAddressNewWithType(c_int path_len, UnixSocketAddressType type);
+	[LinkName("g_unix_socket_address_abstract_names_supported")]
+	public static extern c_int UnixSocketAddressAbstractNamesSupported();
 	[LinkName("g_unix_socket_address_get_address_type")]
 	public static extern UnixSocketAddressType UnixSocketAddressGetAddressType(UnixSocketAddress* address);
 	[LinkName("g_unix_socket_address_get_is_abstract")]
@@ -4957,6 +4955,10 @@ class Gio
 	}
 	[CRepr]
 	public struct Vfs;
+	[LinkName("g_vfs_get_default")]
+	public static extern Vfs* VfsGetDefault();
+	[LinkName("g_vfs_get_local")]
+	public static extern Vfs* VfsGetLocal();
 	[LinkName("g_vfs_get_file_for_path")]
 	public static extern File* VfsGetFileForPath(Vfs* vfs, char8* path);
 	[LinkName("g_vfs_get_file_for_uri")]
@@ -5029,6 +5031,10 @@ class Gio
 	}
 	[CRepr]
 	public struct VolumeMonitor;
+	[LinkName("g_volume_monitor_adopt_orphan_mount")]
+	public static extern Volume* VolumeMonitorAdoptOrphanMount(Mount* mount);
+	[LinkName("g_volume_monitor_get")]
+	public static extern VolumeMonitor* VolumeMonitorGet();
 	[LinkName("g_volume_monitor_get_connected_drives")]
 	public static extern GLib.List* VolumeMonitorGetConnectedDrives(VolumeMonitor* volume_monitor);
 	[LinkName("g_volume_monitor_get_mount_for_uuid")]
@@ -5074,4 +5080,174 @@ class Gio
 	{
 		GObject.ObjectClass parent_class;
 	}
+	[LinkName("g_action_name_is_valid")]
+	public static extern c_int ActionNameIsValid(char8* action_name);
+	[LinkName("g_action_parse_detailed_name")]
+	public static extern c_int ActionParseDetailedName(char8* detailed_name, char8* action_name, GLib.Variant* target_value);
+	[LinkName("g_action_print_detailed_name")]
+	public static extern char8* ActionPrintDetailedName(char8* action_name, GLib.Variant* target_value);
+	[LinkName("g_app_info_create_from_commandline")]
+	public static extern AppInfo* AppInfoCreateFromCommandline(char8* commandline, char8* application_name, AppInfoCreateFlags flags);
+	[LinkName("g_app_info_get_all")]
+	public static extern GLib.List* AppInfoGetAll();
+	[LinkName("g_app_info_get_all_for_type")]
+	public static extern GLib.List* AppInfoGetAllForType(char8* content_type);
+	[LinkName("g_app_info_get_default_for_type")]
+	public static extern AppInfo* AppInfoGetDefaultForType(char8* content_type, c_int must_support_uris);
+	[LinkName("g_app_info_get_default_for_type_async")]
+	public static extern void AppInfoGetDefaultForTypeAsync(char8* content_type, c_int must_support_uris, Cancellable* cancellable, AsyncReadyCallback callback, void* user_data);
+	[LinkName("g_app_info_get_default_for_type_finish")]
+	public static extern AppInfo* AppInfoGetDefaultForTypeFinish(AsyncResult* result);
+	[LinkName("g_app_info_get_default_for_uri_scheme")]
+	public static extern AppInfo* AppInfoGetDefaultForUriScheme(char8* uri_scheme);
+	[LinkName("g_app_info_get_default_for_uri_scheme_async")]
+	public static extern void AppInfoGetDefaultForUriSchemeAsync(char8* uri_scheme, Cancellable* cancellable, AsyncReadyCallback callback, void* user_data);
+	[LinkName("g_app_info_get_default_for_uri_scheme_finish")]
+	public static extern AppInfo* AppInfoGetDefaultForUriSchemeFinish(AsyncResult* result);
+	[LinkName("g_app_info_get_fallback_for_type")]
+	public static extern GLib.List* AppInfoGetFallbackForType(char8* content_type);
+	[LinkName("g_app_info_get_recommended_for_type")]
+	public static extern GLib.List* AppInfoGetRecommendedForType(char8* content_type);
+	[LinkName("g_app_info_launch_default_for_uri")]
+	public static extern c_int AppInfoLaunchDefaultForUri(char8* uri, AppLaunchContext* context);
+	[LinkName("g_app_info_launch_default_for_uri_async")]
+	public static extern void AppInfoLaunchDefaultForUriAsync(char8* uri, AppLaunchContext* context, Cancellable* cancellable, AsyncReadyCallback callback, void* user_data);
+	[LinkName("g_app_info_launch_default_for_uri_finish")]
+	public static extern c_int AppInfoLaunchDefaultForUriFinish(AsyncResult* result);
+	[LinkName("g_app_info_reset_type_associations")]
+	public static extern void AppInfoResetTypeAssociations(char8* content_type);
+	[LinkName("g_async_initable_newv_async")]
+	public static extern void AsyncInitableNewvAsync(GLib.Type object_type, c_uint n_parameters, GObject.Parameter* parameters, c_int io_priority, Cancellable* cancellable, AsyncReadyCallback callback, void* user_data);
+	[LinkName("g_bus_get")]
+	public static extern void BusGet(BusType bus_type, Cancellable* cancellable, AsyncReadyCallback callback, void* user_data);
+	[LinkName("g_bus_get_finish")]
+	public static extern DBusConnection* BusGetFinish(AsyncResult* res);
+	[LinkName("g_bus_get_sync")]
+	public static extern DBusConnection* BusGetSync(BusType bus_type, Cancellable* cancellable);
+	[LinkName("g_bus_own_name_on_connection_with_closures")]
+	public static extern c_uint BusOwnNameOnConnectionWithClosures(DBusConnection* connection, char8* name, BusNameOwnerFlags flags, GObject.Closure* name_acquired_closure, GObject.Closure* name_lost_closure);
+	[LinkName("g_bus_own_name_with_closures")]
+	public static extern c_uint BusOwnNameWithClosures(BusType bus_type, char8* name, BusNameOwnerFlags flags, GObject.Closure* bus_acquired_closure, GObject.Closure* name_acquired_closure, GObject.Closure* name_lost_closure);
+	[LinkName("g_bus_unown_name")]
+	public static extern void BusUnownName(c_uint owner_id);
+	[LinkName("g_bus_unwatch_name")]
+	public static extern void BusUnwatchName(c_uint watcher_id);
+	[LinkName("g_bus_watch_name_on_connection_with_closures")]
+	public static extern c_uint BusWatchNameOnConnectionWithClosures(DBusConnection* connection, char8* name, BusNameWatcherFlags flags, GObject.Closure* name_appeared_closure, GObject.Closure* name_vanished_closure);
+	[LinkName("g_bus_watch_name_with_closures")]
+	public static extern c_uint BusWatchNameWithClosures(BusType bus_type, char8* name, BusNameWatcherFlags flags, GObject.Closure* name_appeared_closure, GObject.Closure* name_vanished_closure);
+	[LinkName("g_content_type_can_be_executable")]
+	public static extern c_int ContentTypeCanBeExecutable(char8* type);
+	[LinkName("g_content_type_equals")]
+	public static extern c_int ContentTypeEquals(char8* type1, char8* type2);
+	[LinkName("g_content_type_from_mime_type")]
+	public static extern char8* ContentTypeFromMimeType(char8* mime_type);
+	[LinkName("g_content_type_get_description")]
+	public static extern char8* ContentTypeGetDescription(char8* type);
+	[LinkName("g_content_type_get_generic_icon_name")]
+	public static extern char8* ContentTypeGetGenericIconName(char8* type);
+	[LinkName("g_content_type_get_icon")]
+	public static extern Icon* ContentTypeGetIcon(char8* type);
+	[LinkName("g_content_type_get_mime_dirs")]
+	public static extern char8* ContentTypeGetMimeDirs();
+	[LinkName("g_content_type_get_mime_type")]
+	public static extern char8* ContentTypeGetMimeType(char8* type);
+	[LinkName("g_content_type_get_symbolic_icon")]
+	public static extern Icon* ContentTypeGetSymbolicIcon(char8* type);
+	[LinkName("g_content_type_guess")]
+	public static extern char8* ContentTypeGuess(char8* filename, c_ulong data_size, c_int* result_uncertain);
+	[LinkName("g_content_type_guess_for_tree")]
+	public static extern char8* ContentTypeGuessForTree(File* root);
+	[LinkName("g_content_type_is_a")]
+	public static extern c_int ContentTypeIsA(char8* type, char8* supertype);
+	[LinkName("g_content_type_is_mime_type")]
+	public static extern c_int ContentTypeIsMimeType(char8* type, char8* mime_type);
+	[LinkName("g_content_type_is_unknown")]
+	public static extern c_int ContentTypeIsUnknown(char8* type);
+	[LinkName("g_content_type_set_mime_dirs")]
+	public static extern void ContentTypeSetMimeDirs();
+	[LinkName("g_content_types_get_registered")]
+	public static extern GLib.List* ContentTypesGetRegistered();
+	[LinkName("g_dbus_address_escape_value")]
+	public static extern char8* DbusAddressEscapeValue(char8* string);
+	[LinkName("g_dbus_address_get_for_bus_sync")]
+	public static extern char8* DbusAddressGetForBusSync(BusType bus_type, Cancellable* cancellable);
+	[LinkName("g_dbus_address_get_stream")]
+	public static extern void DbusAddressGetStream(char8* address, Cancellable* cancellable, AsyncReadyCallback callback, void* user_data);
+	[LinkName("g_dbus_address_get_stream_finish")]
+	public static extern IOStream* DbusAddressGetStreamFinish(AsyncResult* res, char8* out_guid);
+	[LinkName("g_dbus_address_get_stream_sync")]
+	public static extern IOStream* DbusAddressGetStreamSync(char8* address, char8* out_guid, Cancellable* cancellable);
+	[LinkName("g_dbus_annotation_info_lookup")]
+	public static extern char8* DbusAnnotationInfoLookup(char8* name);
+	[LinkName("g_dbus_error_encode_gerror")]
+	public static extern char8* DbusErrorEncodeGerror(GLib.Error* error);
+	[LinkName("g_dbus_error_get_remote_error")]
+	public static extern char8* DbusErrorGetRemoteError(GLib.Error* error);
+	[LinkName("g_dbus_error_is_remote_error")]
+	public static extern c_int DbusErrorIsRemoteError(GLib.Error* error);
+	[LinkName("g_dbus_error_new_for_dbus_error")]
+	public static extern GLib.Error* DbusErrorNewForDbusError(char8* dbus_error_name, char8* dbus_error_message);
+	[LinkName("g_dbus_error_quark")]
+	public static extern GLib.Quark DbusErrorQuark();
+	[LinkName("g_dbus_error_register_error")]
+	public static extern c_int DbusErrorRegisterError(GLib.Quark error_domain, c_int error_code, char8* dbus_error_name);
+	[LinkName("g_dbus_error_register_error_domain")]
+	public static extern void DbusErrorRegisterErrorDomain(char8* error_domain_quark_name, c_ulong* quark_volatile, c_uint num_entries);
+	[LinkName("g_dbus_error_strip_remote_error")]
+	public static extern c_int DbusErrorStripRemoteError(GLib.Error* error);
+	[LinkName("g_dbus_error_unregister_error")]
+	public static extern c_int DbusErrorUnregisterError(GLib.Quark error_domain, c_int error_code, char8* dbus_error_name);
+	[LinkName("g_dbus_escape_object_path")]
+	public static extern char8* DbusEscapeObjectPath(char8* s);
+	[LinkName("g_dbus_escape_object_path_bytestring")]
+	public static extern char8* DbusEscapeObjectPathBytestring();
+	[LinkName("g_dbus_generate_guid")]
+	public static extern char8* DbusGenerateGuid();
+	[LinkName("g_dbus_gvalue_to_gvariant")]
+	public static extern GLib.Variant* DbusGvalueToGvariant(GObject.Value* gvalue, GLib.VariantType* type);
+	[LinkName("g_dbus_gvariant_to_gvalue")]
+	public static extern void DbusGvariantToGvalue(GLib.Variant* value, GObject.Value* out_gvalue);
+	[LinkName("g_dbus_is_address")]
+	public static extern c_int DbusIsAddress(char8* string);
+	[LinkName("g_dbus_is_error_name")]
+	public static extern c_int DbusIsErrorName(char8* string);
+	[LinkName("g_dbus_is_guid")]
+	public static extern c_int DbusIsGuid(char8* string);
+	[LinkName("g_dbus_is_interface_name")]
+	public static extern c_int DbusIsInterfaceName(char8* string);
+	[LinkName("g_dbus_is_member_name")]
+	public static extern c_int DbusIsMemberName(char8* string);
+	[LinkName("g_dbus_is_name")]
+	public static extern c_int DbusIsName(char8* string);
+	[LinkName("g_dbus_is_supported_address")]
+	public static extern c_int DbusIsSupportedAddress(char8* string);
+	[LinkName("g_dbus_is_unique_name")]
+	public static extern c_int DbusIsUniqueName(char8* string);
+	[LinkName("g_dbus_unescape_object_path")]
+	public static extern c_uchar DbusUnescapeObjectPath(char8* s);
+	[LinkName("g_dtls_client_connection_new")]
+	public static extern DtlsClientConnection* DtlsClientConnectionNew(DatagramBased* base_socket, SocketConnectable* server_identity);
+	[LinkName("g_dtls_server_connection_new")]
+	public static extern DtlsServerConnection* DtlsServerConnectionNew(DatagramBased* base_socket, TlsCertificate* certificate);
+	[LinkName("g_file_new_for_commandline_arg")]
+	public static extern File* FileNewForCommandlineArg(char8* arg);
+	[LinkName("g_file_new_for_commandline_arg_and_cwd")]
+	public static extern File* FileNewForCommandlineArandCwd(char8* arg, char8* cwd);
+	[LinkName("g_file_new_for_path")]
+	public static extern File* FileNewForPath(char8* path);
+	[LinkName("g_file_new_for_uri")]
+	public static extern File* FileNewForUri(char8* uri);
+	[LinkName("g_file_new_tmp")]
+	public static extern File* FileNewTmp(char8* tmpl, FileIOStream* iostream);
+	[LinkName("g_file_new_tmp_async")]
+	public static extern void FileNewTmpAsync(char8* tmpl, c_int io_priority, Cancellable* cancellable, AsyncReadyCallback callback, void* user_data);
+	[LinkName("g_file_new_tmp_dir_async")]
+	public static extern void FileNewTmpDirAsync(char8* tmpl, c_int io_priority, Cancellable* cancellable, AsyncReadyCallback callback, void* user_data);
+	[LinkName("g_file_new_tmp_dir_finish")]
+	public static extern File* FileNewTmpDirFinish(AsyncResult* result);
+	[LinkName("g_file_new_tmp_finish")]
+	public static extern File* FileNewTmpFinish(AsyncResult* result, FileIOStream* iostream);
+	[LinkName("g_file_parse_name")]
+	public static extern File* FileParseName(char8* parse_name);
 }

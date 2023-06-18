@@ -169,10 +169,6 @@ class Gsk
 	public static extern c_int GlShaderCompile(GLShader* shader, Renderer* renderer);
 	[LinkName("gsk_gl_shader_find_uniform_by_name")]
 	public static extern c_int GlShaderFindUniformByName(GLShader* shader, char8* name);
-	[LinkName("gsk_gl_shader_format_args")]
-	public static extern GLib.Bytes* GlShaderFormatArgs(GLShader* shader);
-	[LinkName("gsk_gl_shader_format_args_va")]
-	public static extern GLib.Bytes* GlShaderFormatArgsVa(GLShader* shader, VarArgs uniforms);
 	[LinkName("gsk_gl_shader_get_arg_bool")]
 	public static extern c_int GlShaderGetArgBool(GLShader* shader, GLib.Bytes* args, c_int idx);
 	[LinkName("gsk_gl_shader_get_arg_float")]
@@ -334,6 +330,8 @@ class Gsk
 	public static extern float RadialGradientNodeGetVradius(RadialGradientNode* node);
 	[CRepr]
 	public struct RenderNode;
+	[LinkName("gsk_render_node_deserialize")]
+	public static extern RenderNode* RenderNodeDeserialize(GLib.Bytes* bytes, ParseErrorFunc error_func, void* user_data);
 	[LinkName("gsk_render_node_draw")]
 	public static extern void RenderNodeDraw(RenderNode* node, cairo.Context* cr);
 	[LinkName("gsk_render_node_get_bounds")]
@@ -514,4 +512,16 @@ class Gsk
 	public static extern RenderNode* TransformNodeGetChild(TransformNode* node);
 	[LinkName("gsk_transform_node_get_transform")]
 	public static extern Transform* TransformNodeGetTransform(TransformNode* node);
+	[LinkName("gsk_serialization_error_quark")]
+	public static extern GLib.Quark SerializationErrorQuark();
+	[LinkName("gsk_transform_parse")]
+	public static extern c_int TransformParse(char8* string, Transform* out_transform);
+	[LinkName("gsk_value_dup_render_node")]
+	public static extern RenderNode* ValueDupRenderNode(GObject.Value* value);
+	[LinkName("gsk_value_get_render_node")]
+	public static extern RenderNode* ValueGetRenderNode(GObject.Value* value);
+	[LinkName("gsk_value_set_render_node")]
+	public static extern void ValueSetRenderNode(GObject.Value* value, RenderNode* node);
+	[LinkName("gsk_value_take_render_node")]
+	public static extern void ValueTakeRenderNode(GObject.Value* value, RenderNode* node);
 }

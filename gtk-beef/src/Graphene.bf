@@ -159,4 +159,56 @@ class Graphene
 	{
 		Simd4F value;
 	}
+	[LinkName("graphene_box_empty")]
+	public static extern Box* BoxEmpty();
+	[LinkName("graphene_box_infinite")]
+	public static extern Box* BoxInfinite();
+	[LinkName("graphene_box_minus_one")]
+	public static extern Box* BoxMinusOne();
+	[LinkName("graphene_box_one")]
+	public static extern Box* BoxOne();
+	[LinkName("graphene_box_one_minus_one")]
+	public static extern Box* BoxOneMinusOne();
+	[LinkName("graphene_box_zero")]
+	public static extern Box* BoxZero();
+	[LinkName("graphene_point3d_zero")]
+	public static extern Point3D* Point3dZero();
+	[LinkName("graphene_point_zero")]
+	public static extern Point* PointZero();
+	[LinkName("graphene_rect_alloc")]
+	public static extern Rect* RectAlloc();
+	[LinkName("graphene_rect_zero")]
+	public static extern Rect* RectZero();
+	[LinkName("graphene_size_zero")]
+	public static extern Size* SizeZero();
+	[LinkName("graphene_vec2_one")]
+	public static extern Vec2* Vec2One();
+	[LinkName("graphene_vec2_x_axis")]
+	public static extern Vec2* Vec2XAxis();
+	[LinkName("graphene_vec2_y_axis")]
+	public static extern Vec2* Vec2YAxis();
+	[LinkName("graphene_vec2_zero")]
+	public static extern Vec2* Vec2Zero();
+	[LinkName("graphene_vec3_one")]
+	public static extern Vec3* Vec3One();
+	[LinkName("graphene_vec3_x_axis")]
+	public static extern Vec3* Vec3XAxis();
+	[LinkName("graphene_vec3_y_axis")]
+	public static extern Vec3* Vec3YAxis();
+	[LinkName("graphene_vec3_z_axis")]
+	public static extern Vec3* Vec3ZAxis();
+	[LinkName("graphene_vec3_zero")]
+	public static extern Vec3* Vec3Zero();
+	[LinkName("graphene_vec4_one")]
+	public static extern Vec4* Vec4One();
+	[LinkName("graphene_vec4_w_axis")]
+	public static extern Vec4* Vec4WAxis();
+	[LinkName("graphene_vec4_x_axis")]
+	public static extern Vec4* Vec4XAxis();
+	[LinkName("graphene_vec4_y_axis")]
+	public static extern Vec4* Vec4YAxis();
+	[LinkName("graphene_vec4_z_axis")]
+	public static extern Vec4* Vec4ZAxis();
+	[LinkName("graphene_vec4_zero")]
+	public static extern Vec4* Vec4Zero();
 }
