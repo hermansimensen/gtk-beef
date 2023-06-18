@@ -4,3 +4,7 @@ FileVersion = 1
 Name = "gtk-beef"
 TargetType = "BeefLib"
 StartupObject = "gtk_beef.Program"
+
+[Configs.Debug.Linux64]
+BuildKind = "StaticLib"
+OtherLinkFlags = "$(LinkFlags) -lgtk-4"
