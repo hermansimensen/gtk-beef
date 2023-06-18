@@ -1,35 +1,35 @@
-namespace Cairo;
+namespace cairo;
 
 using System;
 using System.Interop;
 
-class Cairo
+class cairo
 {
 	[CRepr]
-	public struct cairo_t
+	public struct Context
 	{
 	}
 	[CRepr]
-	public struct cairo_device_t
+	public struct Device
 	{
 	}
 	[CRepr]
-	public struct cairo_surface_t
+	public struct Surface
 	{
 	}
 	[CRepr]
-	public struct cairo_matrix_t
+	public struct Matrix
 	{
 	}
 	[CRepr]
-	public struct cairo_pattern_t
+	public struct Pattern
 	{
 	}
 	[CRepr]
-	public struct cairo_region_t
+	public struct Region
 	{
 	}
-	public enum cairo_status_t : c_int
+	public enum Status : c_int
 	{
 		CAIRO_STATUS_SUCCESS,
 		CAIRO_STATUS_NO_MEMORY,
@@ -71,13 +71,13 @@ class Cairo
 		CAIRO_STATUS_DEVICE_FINISHED,
 		CAIRO_STATUS_JBIG2_GLOBAL_MISSING
 	}
-	public enum cairo_content_t : c_int
+	public enum Content : c_int
 	{
 		CAIRO_CONTENT_COLOR,
 		CAIRO_CONTENT_ALPHA,
 		CAIRO_CONTENT_COLOR_ALPHA
 	}
-	public enum cairo_operator_t : c_int
+	public enum Operator : c_int
 	{
 		CAIRO_OPERATOR_CLEAR,
 		CAIRO_OPERATOR_SOURCE,
@@ -109,7 +109,7 @@ class Cairo
 		CAIRO_OPERATOR_HSL_COLOR,
 		CAIRO_OPERATOR_HSL_LUMINOSITY
 	}
-	public enum cairo_antialias_t : c_int
+	public enum Antialias : c_int
 	{
 		CAIRO_ANTIALIAS_DEFAULT,
 		CAIRO_ANTIALIAS_NONE,
@@ -119,39 +119,39 @@ class Cairo
 		CAIRO_ANTIALIAS_GOOD,
 		CAIRO_ANTIALIAS_BEST
 	}
-	public enum cairo_fill_rule_t : c_int
+	public enum FillRule : c_int
 	{
 		CAIRO_FILL_RULE_WINDING,
 		CAIRO_FILL_RULE_EVEN_ODD
 	}
-	public enum cairo_line_cap_t : c_int
+	public enum LineCap : c_int
 	{
 		CAIRO_LINE_CAP_BUTT,
 		CAIRO_LINE_CAP_ROUND,
 		CAIRO_LINE_CAP_SQUARE
 	}
-	public enum cairo_line_join_t : c_int
+	public enum LineJoin : c_int
 	{
 		CAIRO_LINE_JOIN_MITER,
 		CAIRO_LINE_JOIN_ROUND,
 		CAIRO_LINE_JOIN_BEVEL
 	}
-	public enum cairo_text_cluster_flags_t : c_int
+	public enum TextClusterFlags : c_int
 	{
 		CAIRO_TEXT_CLUSTER_FLAG_BACKWARD
 	}
-	public enum cairo_font_slant_t : c_int
+	public enum FontSlant : c_int
 	{
 		CAIRO_FONT_SLANT_NORMAL,
 		CAIRO_FONT_SLANT_ITALIC,
 		CAIRO_FONT_SLANT_OBLIQUE
 	}
-	public enum cairo_font_weight_t : c_int
+	public enum FontWeight : c_int
 	{
 		CAIRO_FONT_WEIGHT_NORMAL,
 		CAIRO_FONT_WEIGHT_BOLD
 	}
-	public enum cairo_subpixel_order_t : c_int
+	public enum SubpixelOrder : c_int
 	{
 		CAIRO_SUBPIXEL_ORDER_DEFAULT,
 		CAIRO_SUBPIXEL_ORDER_RGB,
@@ -159,7 +159,7 @@ class Cairo
 		CAIRO_SUBPIXEL_ORDER_VRGB,
 		CAIRO_SUBPIXEL_ORDER_VBGR
 	}
-	public enum cairo_hint_style_t : c_int
+	public enum HintStyle : c_int
 	{
 		CAIRO_HINT_STYLE_DEFAULT,
 		CAIRO_HINT_STYLE_NONE,
@@ -167,17 +167,17 @@ class Cairo
 		CAIRO_HINT_STYLE_MEDIUM,
 		CAIRO_HINT_STYLE_FULL
 	}
-	public enum cairo_hint_metrics_t : c_int
+	public enum HintMetrics : c_int
 	{
 		CAIRO_HINT_METRICS_DEFAULT,
 		CAIRO_HINT_METRICS_OFF,
 		CAIRO_HINT_METRICS_ON
 	}
 	[CRepr]
-	public struct cairo_font_options_t
+	public struct FontOptions
 	{
 	}
-	public enum cairo_font_type_t : c_int
+	public enum FontType : c_int
 	{
 		CAIRO_FONT_TYPE_TOY,
 		CAIRO_FONT_TYPE_FT,
@@ -185,14 +185,14 @@ class Cairo
 		CAIRO_FONT_TYPE_QUARTZ,
 		CAIRO_FONT_TYPE_USER
 	}
-	public enum cairo_path_data_type_t : c_int
+	public enum PathDataType : c_int
 	{
 		CAIRO_PATH_MOVE_TO,
 		CAIRO_PATH_LINE_TO,
 		CAIRO_PATH_CURVE_TO,
 		CAIRO_PATH_CLOSE_PATH
 	}
-	public enum cairo_device_type_t : c_int
+	public enum DeviceType : c_int
 	{
 		CAIRO_DEVICE_TYPE_DRM,
 		CAIRO_DEVICE_TYPE_GL,
@@ -204,7 +204,7 @@ class Cairo
 		CAIRO_DEVICE_TYPE_WIN32,
 		CAIRO_DEVICE_TYPE_INVALID
 	}
-	public enum cairo_surface_type_t : c_int
+	public enum SurfaceType : c_int
 	{
 		CAIRO_SURFACE_TYPE_IMAGE,
 		CAIRO_SURFACE_TYPE_PDF,
@@ -232,7 +232,7 @@ class Cairo
 		CAIRO_SURFACE_TYPE_SUBSURFACE,
 		CAIRO_SURFACE_TYPE_COGL
 	}
-	public enum cairo_format_t : c_int
+	public enum Format : c_int
 	{
 		CAIRO_FORMAT_INVALID,
 		CAIRO_FORMAT_ARGB32,
@@ -242,7 +242,7 @@ class Cairo
 		CAIRO_FORMAT_RGB16_565,
 		CAIRO_FORMAT_RGB30
 	}
-	public enum cairo_pattern_type_t : c_int
+	public enum PatternType : c_int
 	{
 		CAIRO_PATTERN_TYPE_SOLID,
 		CAIRO_PATTERN_TYPE_SURFACE,
@@ -251,14 +251,14 @@ class Cairo
 		CAIRO_PATTERN_TYPE_MESH,
 		CAIRO_PATTERN_TYPE_RASTER_SOURCE
 	}
-	public enum cairo_extend_t : c_int
+	public enum Extend : c_int
 	{
 		CAIRO_EXTEND_NONE,
 		CAIRO_EXTEND_REPEAT,
 		CAIRO_EXTEND_REFLECT,
 		CAIRO_EXTEND_PAD
 	}
-	public enum cairo_filter_t : c_int
+	public enum Filter : c_int
 	{
 		CAIRO_FILTER_FAST,
 		CAIRO_FILTER_GOOD,
@@ -267,26 +267,26 @@ class Cairo
 		CAIRO_FILTER_BILINEAR,
 		CAIRO_FILTER_GAUSSIAN
 	}
-	public enum cairo_region_overlap_t : c_int
+	public enum RegionOverlap : c_int
 	{
 		CAIRO_REGION_OVERLAP_IN,
 		CAIRO_REGION_OVERLAP_OUT,
 		CAIRO_REGION_OVERLAP_PART
 	}
 	[CRepr]
-	public struct cairo_font_face_t
+	public struct FontFace
 	{
 	}
 	[CRepr]
-	public struct cairo_scaled_font_t
+	public struct ScaledFont
 	{
 	}
 	[CRepr]
-	public struct cairo_path_t
+	public struct Path
 	{
 	}
 	[CRepr]
-	public struct cairo_rectangle_t
+	public struct Rectangle
 	{
 		double x;
 		double y;
@@ -294,7 +294,7 @@ class Cairo
 		double height;
 	}
 	[CRepr]
-	public struct cairo_rectangle_int_t
+	public struct RectangleInt
 	{
 		c_int x;
 		c_int y;

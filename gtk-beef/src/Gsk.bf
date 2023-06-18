@@ -2,18 +2,16 @@ namespace Gsk;
 
 using System;
 using System.Interop;
-
-using static Gio.Gio;
-using static GLib.GLib;
-using static GObject.GObject;
-using static Gdk.Gdk;
-using static Graphene.Graphene;
-using static Pango.Pango;
-using static Cairo.Cairo;
+using GLib;
+using Graphene;
+using GObject;
+using Gdk;
+using Pango;
+using cairo;
 
 class Gsk
 {
-	public enum GskBlendMode : c_int
+	public enum BlendMode : c_int
 	{
 		GSK_BLEND_MODE_DEFAULT,
 		GSK_BLEND_MODE_MULTIPLY,
@@ -33,102 +31,102 @@ class Gsk
 		GSK_BLEND_MODE_LUMINOSITY
 	}
 	[CRepr]
-	public struct GskBlendNode;
+	public struct BlendNode;
 	[LinkName("gsk_blend_node_new")]
-	public static extern GskRenderNode* blend_node_new(GskRenderNode* bottom, GskRenderNode* top, GskBlendMode blend_mode);
+	public static extern BlendNode BlendNodeNew(RenderNode bottom, RenderNode top, BlendMode blend_mode);
 	[LinkName("gsk_blend_node_get_blend_mode")]
-	public static extern GskBlendMode blend_node_get_blend_mode( GskRenderNode* node);
+	public static extern BlendMode BlendNodeGetBlendMode(BlendNode node);
 	[LinkName("gsk_blend_node_get_bottom_child")]
-	public static extern GskRenderNode* blend_node_get_bottom_child( GskRenderNode* node);
+	public static extern RenderNode BlendNodeGetBottomChild(BlendNode node);
 	[LinkName("gsk_blend_node_get_top_child")]
-	public static extern GskRenderNode* blend_node_get_top_child( GskRenderNode* node);
+	public static extern RenderNode BlendNodeGetTopChild(BlendNode node);
 	[CRepr]
-	public struct GskBlurNode;
+	public struct BlurNode;
 	[LinkName("gsk_blur_node_new")]
-	public static extern GskRenderNode* blur_node_new(GskRenderNode* child, float radius);
+	public static extern BlurNode BlurNodeNew(RenderNode child, float radius);
 	[LinkName("gsk_blur_node_get_child")]
-	public static extern GskRenderNode* blur_node_get_child( GskRenderNode* node);
+	public static extern RenderNode BlurNodeGetChild(BlurNode node);
 	[LinkName("gsk_blur_node_get_radius")]
-	public static extern float blur_node_get_radius( GskRenderNode* node);
+	public static extern float BlurNodeGetRadius(BlurNode node);
 	[CRepr]
-	public struct GskBorderNode;
+	public struct BorderNode;
 	[LinkName("gsk_border_node_new")]
-	public static extern GskRenderNode* border_node_new( GskRoundedRect* outline);
+	public static extern BorderNode BorderNodeNew(RoundedRect outline);
 	[LinkName("gsk_border_node_get_colors")]
-	public static extern  GdkRGBA* border_node_get_colors( GskRenderNode* node);
+	public static extern Gdk.RGBA BorderNodeGetColors(BorderNode node);
 	[LinkName("gsk_border_node_get_outline")]
-	public static extern  GskRoundedRect* border_node_get_outline( GskRenderNode* node);
+	public static extern RoundedRect BorderNodeGetOutline(BorderNode node);
 	[LinkName("gsk_border_node_get_widths")]
-	public static extern  float* border_node_get_widths( GskRenderNode* node);
+	public static extern float BorderNodeGetWidths(BorderNode node);
 	[CRepr]
-	public struct GskCairoNode;
+	public struct CairoNode;
 	[LinkName("gsk_cairo_node_new")]
-	public static extern GskRenderNode* cairo_node_new( graphene_rect_t* bounds);
+	public static extern CairoNode CairoNodeNew(Graphene.Rect bounds);
 	[LinkName("gsk_cairo_node_get_draw_context")]
-	public static extern cairo_t* cairo_node_get_draw_context(GskRenderNode* node);
+	public static extern cairo.Context CairoNodeGetDrawContext(CairoNode node);
 	[LinkName("gsk_cairo_node_get_surface")]
-	public static extern cairo_surface_t* cairo_node_get_surface(GskRenderNode* node);
+	public static extern cairo.Surface CairoNodeGetSurface(CairoNode node);
 	[CRepr]
-	public struct GskCairoRenderer;
+	public struct CairoRenderer;
 	[LinkName("gsk_cairo_renderer_new")]
-	public static extern GskRenderer* cairo_renderer_new();
+	public static extern Renderer CairoRendererNew();
 	[CRepr]
-	public struct GskCairoRendererClass
+	public struct CairoRendererClass
 	{
 	}
 	[CRepr]
-	public struct GskClipNode;
+	public struct ClipNode;
 	[LinkName("gsk_clip_node_new")]
-	public static extern GskRenderNode* clip_node_new(GskRenderNode* child,  graphene_rect_t* clip);
+	public static extern ClipNode ClipNodeNew(RenderNode child, Graphene.Rect clip);
 	[LinkName("gsk_clip_node_get_child")]
-	public static extern GskRenderNode* clip_node_get_child( GskRenderNode* node);
+	public static extern RenderNode ClipNodeGetChild(ClipNode node);
 	[LinkName("gsk_clip_node_get_clip")]
-	public static extern  graphene_rect_t* clip_node_get_clip( GskRenderNode* node);
+	public static extern Graphene.Rect ClipNodeGetClip(ClipNode node);
 	[CRepr]
-	public struct GskColorMatrixNode;
+	public struct ColorMatrixNode;
 	[LinkName("gsk_color_matrix_node_new")]
-	public static extern GskRenderNode* color_matrix_node_new(GskRenderNode* child,  graphene_matrix_t* color_matrix,  graphene_vec4_t* color_offset);
+	public static extern ColorMatrixNode ColorMatrixNodeNew(RenderNode child, Graphene.Matrix color_matrix, Graphene.Vec4 color_offset);
 	[LinkName("gsk_color_matrix_node_get_child")]
-	public static extern GskRenderNode* color_matrix_node_get_child( GskRenderNode* node);
+	public static extern RenderNode ColorMatrixNodeGetChild(ColorMatrixNode node);
 	[LinkName("gsk_color_matrix_node_get_color_matrix")]
-	public static extern  graphene_matrix_t* color_matrix_node_get_color_matrix( GskRenderNode* node);
+	public static extern Graphene.Matrix ColorMatrixNodeGetColorMatrix(ColorMatrixNode node);
 	[LinkName("gsk_color_matrix_node_get_color_offset")]
-	public static extern  graphene_vec4_t* color_matrix_node_get_color_offset( GskRenderNode* node);
+	public static extern Graphene.Vec4 ColorMatrixNodeGetColorOffset(ColorMatrixNode node);
 	[CRepr]
-	public struct GskColorNode;
+	public struct ColorNode;
 	[LinkName("gsk_color_node_new")]
-	public static extern GskRenderNode* color_node_new( GdkRGBA* rgba,  graphene_rect_t* bounds);
+	public static extern ColorNode ColorNodeNew(Gdk.RGBA rgba, Graphene.Rect bounds);
 	[LinkName("gsk_color_node_get_color")]
-	public static extern  GdkRGBA* color_node_get_color( GskRenderNode* node);
+	public static extern Gdk.RGBA ColorNodeGetColor(ColorNode node);
 	[CRepr]
-	public struct GskColorStop
+	public struct ColorStop
 	{
 		float offset;
-		GdkRGBA color;
+		Gdk.RGBA color;
 	}
 	[CRepr]
-	public struct GskConicGradientNode;
+	public struct ConicGradientNode;
 	[LinkName("gsk_conic_gradient_node_new")]
-	public static extern GskRenderNode* conic_gradient_node_new( graphene_rect_t* bounds,  graphene_point_t* center, float rotation, c_ulong n_color_stops);
+	public static extern ConicGradientNode ConicGradientNodeNew(Graphene.Rect bounds, Graphene.Point center, float rotation, c_ulong n_color_stops);
 	[LinkName("gsk_conic_gradient_node_get_angle")]
-	public static extern float conic_gradient_node_get_angle( GskRenderNode* node);
+	public static extern float ConicGradientNodeGetAngle(ConicGradientNode node);
 	[LinkName("gsk_conic_gradient_node_get_center")]
-	public static extern  graphene_point_t* conic_gradient_node_get_center( GskRenderNode* node);
+	public static extern Graphene.Point ConicGradientNodeGetCenter(ConicGradientNode node);
 	[LinkName("gsk_conic_gradient_node_get_color_stops")]
-	public static extern  GskColorStop* conic_gradient_node_get_color_stops( GskRenderNode* node, c_ulong* n_stops);
+	public static extern ColorStop ConicGradientNodeGetColorStops(ConicGradientNode node, c_ulong n_stops);
 	[LinkName("gsk_conic_gradient_node_get_n_color_stops")]
-	public static extern c_ulong conic_gradient_node_get_n_color_stops( GskRenderNode* node);
+	public static extern c_ulong ConicGradientNodeGetNColorStops(ConicGradientNode node);
 	[LinkName("gsk_conic_gradient_node_get_rotation")]
-	public static extern float conic_gradient_node_get_rotation( GskRenderNode* node);
+	public static extern float ConicGradientNodeGetRotation(ConicGradientNode node);
 	[CRepr]
-	public struct GskContainerNode;
+	public struct ContainerNode;
 	[LinkName("gsk_container_node_new")]
-	public static extern GskRenderNode* container_node_new(c_uint n_children);
+	public static extern ContainerNode ContainerNodeNew(c_uint n_children);
 	[LinkName("gsk_container_node_get_child")]
-	public static extern GskRenderNode* container_node_get_child( GskRenderNode* node, c_uint idx);
+	public static extern RenderNode ContainerNodeGetChild(ContainerNode node, c_uint idx);
 	[LinkName("gsk_container_node_get_n_children")]
-	public static extern c_uint container_node_get_n_children( GskRenderNode* node);
-	public enum GskCorner : c_int
+	public static extern c_uint ContainerNodeGetNChildren(ContainerNode node);
+	public enum Corner : c_int
 	{
 		GSK_CORNER_TOP_LEFT,
 		GSK_CORNER_TOP_RIGHT,
@@ -136,93 +134,93 @@ class Gsk
 		GSK_CORNER_BOTTOM_LEFT
 	}
 	[CRepr]
-	public struct GskCrossFadeNode;
+	public struct CrossFadeNode;
 	[LinkName("gsk_cross_fade_node_new")]
-	public static extern GskRenderNode* cross_fade_node_new(GskRenderNode* start, GskRenderNode* end, float progress);
+	public static extern CrossFadeNode CrossFadeNodeNew(RenderNode start, RenderNode end, float progress);
 	[LinkName("gsk_cross_fade_node_get_end_child")]
-	public static extern GskRenderNode* cross_fade_node_get_end_child( GskRenderNode* node);
+	public static extern RenderNode CrossFadeNodeGetEndChild(CrossFadeNode node);
 	[LinkName("gsk_cross_fade_node_get_progress")]
-	public static extern float cross_fade_node_get_progress( GskRenderNode* node);
+	public static extern float CrossFadeNodeGetProgress(CrossFadeNode node);
 	[LinkName("gsk_cross_fade_node_get_start_child")]
-	public static extern GskRenderNode* cross_fade_node_get_start_child( GskRenderNode* node);
+	public static extern RenderNode CrossFadeNodeGetStartChild(CrossFadeNode node);
 	[CRepr]
-	public struct GskDebugNode;
+	public struct DebugNode;
 	[LinkName("gsk_debug_node_new")]
-	public static extern GskRenderNode* debug_node_new(GskRenderNode* child, c_char* message);
+	public static extern DebugNode DebugNodeNew(RenderNode child, char8* message);
 	[LinkName("gsk_debug_node_get_child")]
-	public static extern GskRenderNode* debug_node_get_child( GskRenderNode* node);
+	public static extern RenderNode DebugNodeGetChild(DebugNode node);
 	[LinkName("gsk_debug_node_get_message")]
-	public static extern  c_char* debug_node_get_message( GskRenderNode* node);
+	public static extern char8* DebugNodeGetMessage(DebugNode node);
 	[CRepr]
-	public struct GskGLRenderer;
+	public struct GLRenderer;
 	[LinkName("gsk_gl_renderer_new")]
-	public static extern GskRenderer* gl_renderer_new();
+	public static extern Renderer GlRendererNew();
 	[CRepr]
-	public struct GskGLRendererClass
+	public struct GLRendererClass
 	{
 	}
 	[CRepr]
-	public struct GskGLShader;
+	public struct GLShader;
 	[LinkName("gsk_gl_shader_new_from_bytes")]
-	public static extern GskGLShader* gl_shader_new_from_bytes(GBytes* sourcecode);
+	public static extern GLShader GlShaderNewFromBytes(GLib.Bytes sourcecode);
 	[LinkName("gsk_gl_shader_new_from_resource")]
-	public static extern GskGLShader* gl_shader_new_from_resource( c_char* resource_path);
+	public static extern GLShader GlShaderNewFromResource(char8* resource_path);
 	[LinkName("gsk_gl_shader_compile")]
-	public static extern c_int gl_shader_compile(GskGLShader* shader, GskRenderer* renderer);
+	public static extern c_int GlShaderCompile(GLShader shader, Renderer renderer);
 	[LinkName("gsk_gl_shader_find_uniform_by_name")]
-	public static extern c_int gl_shader_find_uniform_by_name(GskGLShader* shader,  c_char* name);
+	public static extern c_int GlShaderFindUniformByName(GLShader shader, char8* name);
 	[LinkName("gsk_gl_shader_format_args")]
-	public static extern GBytes* gl_shader_format_args(GskGLShader* shader);
+	public static extern GLib.Bytes GlShaderFormatArgs(GLShader shader);
 	[LinkName("gsk_gl_shader_format_args_va")]
-	public static extern GBytes* gl_shader_format_args_va(GskGLShader* shader, VarArgs uniforms);
+	public static extern GLib.Bytes GlShaderFormatArgsVa(GLShader shader, VarArgs uniforms);
 	[LinkName("gsk_gl_shader_get_arg_bool")]
-	public static extern c_int gl_shader_get_arg_bool(GskGLShader* shader, GBytes* args, c_int idx);
+	public static extern c_int GlShaderGetArgBool(GLShader shader, GLib.Bytes args, c_int idx);
 	[LinkName("gsk_gl_shader_get_arg_float")]
-	public static extern float gl_shader_get_arg_float(GskGLShader* shader, GBytes* args, c_int idx);
+	public static extern float GlShaderGetArgFloat(GLShader shader, GLib.Bytes args, c_int idx);
 	[LinkName("gsk_gl_shader_get_arg_int")]
-	public static extern c_int gl_shader_get_arg_int(GskGLShader* shader, GBytes* args, c_int idx);
+	public static extern c_int GlShaderGetArgInt(GLShader shader, GLib.Bytes args, c_int idx);
 	[LinkName("gsk_gl_shader_get_arg_uint")]
-	public static extern c_uint gl_shader_get_arg_uint(GskGLShader* shader, GBytes* args, c_int idx);
+	public static extern c_uint GlShaderGetArgUint(GLShader shader, GLib.Bytes args, c_int idx);
 	[LinkName("gsk_gl_shader_get_arg_vec2")]
-	public static extern void gl_shader_get_arg_vec2(GskGLShader* shader, GBytes* args, c_int idx, graphene_vec2_t* out_value);
+	public static extern void GlShaderGetArgVec2(GLShader shader, GLib.Bytes args, c_int idx, Graphene.Vec2 out_value);
 	[LinkName("gsk_gl_shader_get_arg_vec3")]
-	public static extern void gl_shader_get_arg_vec3(GskGLShader* shader, GBytes* args, c_int idx, graphene_vec3_t* out_value);
+	public static extern void GlShaderGetArgVec3(GLShader shader, GLib.Bytes args, c_int idx, Graphene.Vec3 out_value);
 	[LinkName("gsk_gl_shader_get_arg_vec4")]
-	public static extern void gl_shader_get_arg_vec4(GskGLShader* shader, GBytes* args, c_int idx, graphene_vec4_t* out_value);
+	public static extern void GlShaderGetArgVec4(GLShader shader, GLib.Bytes args, c_int idx, Graphene.Vec4 out_value);
 	[LinkName("gsk_gl_shader_get_args_size")]
-	public static extern c_ulong gl_shader_get_args_size(GskGLShader* shader);
+	public static extern c_ulong GlShaderGetArgsSize(GLShader shader);
 	[LinkName("gsk_gl_shader_get_n_textures")]
-	public static extern c_int gl_shader_get_n_textures(GskGLShader* shader);
+	public static extern c_int GlShaderGetNTextures(GLShader shader);
 	[LinkName("gsk_gl_shader_get_n_uniforms")]
-	public static extern c_int gl_shader_get_n_uniforms(GskGLShader* shader);
+	public static extern c_int GlShaderGetNUniforms(GLShader shader);
 	[LinkName("gsk_gl_shader_get_resource")]
-	public static extern  c_char* gl_shader_get_resource(GskGLShader* shader);
+	public static extern char8* GlShaderGetResource(GLShader shader);
 	[LinkName("gsk_gl_shader_get_source")]
-	public static extern GBytes* gl_shader_get_source(GskGLShader* shader);
+	public static extern GLib.Bytes GlShaderGetSource(GLShader shader);
 	[LinkName("gsk_gl_shader_get_uniform_name")]
-	public static extern  c_char* gl_shader_get_uniform_name(GskGLShader* shader, c_int idx);
+	public static extern char8* GlShaderGetUniformName(GLShader shader, c_int idx);
 	[LinkName("gsk_gl_shader_get_uniform_offset")]
-	public static extern c_int gl_shader_get_uniform_offset(GskGLShader* shader, c_int idx);
+	public static extern c_int GlShaderGetUniformOffset(GLShader shader, c_int idx);
 	[LinkName("gsk_gl_shader_get_uniform_type")]
-	public static extern GskGLUniformType gl_shader_get_uniform_type(GskGLShader* shader, c_int idx);
+	public static extern GLUniformType GlShaderGetUniformType(GLShader shader, c_int idx);
 	[CRepr]
-	public struct GskGLShaderClass
+	public struct GLShaderClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GskGLShaderNode;
+	public struct GLShaderNode;
 	[LinkName("gsk_gl_shader_node_new")]
-	public static extern GskRenderNode* gl_shader_node_new(GskGLShader* shader,  graphene_rect_t* bounds, GBytes* args, c_uint n_children);
+	public static extern GLShaderNode GlShaderNodeNew(GLShader shader, Graphene.Rect bounds, GLib.Bytes args, c_uint n_children);
 	[LinkName("gsk_gl_shader_node_get_args")]
-	public static extern GBytes* gl_shader_node_get_args( GskRenderNode* node);
+	public static extern GLib.Bytes GlShaderNodeGetArgs(GLShaderNode node);
 	[LinkName("gsk_gl_shader_node_get_child")]
-	public static extern GskRenderNode* gl_shader_node_get_child( GskRenderNode* node, c_uint idx);
+	public static extern RenderNode GlShaderNodeGetChild(GLShaderNode node, c_uint idx);
 	[LinkName("gsk_gl_shader_node_get_n_children")]
-	public static extern c_uint gl_shader_node_get_n_children( GskRenderNode* node);
+	public static extern c_uint GlShaderNodeGetNChildren(GLShaderNode node);
 	[LinkName("gsk_gl_shader_node_get_shader")]
-	public static extern GskGLShader* gl_shader_node_get_shader( GskRenderNode* node);
-	public enum GskGLUniformType : c_int
+	public static extern GLShader GlShaderNodeGetShader(GLShaderNode node);
+	public enum GLUniformType : c_int
 	{
 		GSK_GL_UNIFORM_TYPE_NONE,
 		GSK_GL_UNIFORM_TYPE_FLOAT,
@@ -234,34 +232,34 @@ class Gsk
 		GSK_GL_UNIFORM_TYPE_VEC4
 	}
 	[CRepr]
-	public struct GskInsetShadowNode;
+	public struct InsetShadowNode;
 	[LinkName("gsk_inset_shadow_node_new")]
-	public static extern GskRenderNode* inset_shadow_node_new( GskRoundedRect* outline,  GdkRGBA* color, float dx, float dy, float spread, float blur_radius);
+	public static extern InsetShadowNode InsetShadowNodeNew(RoundedRect outline, Gdk.RGBA color, float dx, float dy, float spread, float blur_radius);
 	[LinkName("gsk_inset_shadow_node_get_blur_radius")]
-	public static extern float inset_shadow_node_get_blur_radius( GskRenderNode* node);
+	public static extern float InsetShadowNodeGetBlurRadius(InsetShadowNode node);
 	[LinkName("gsk_inset_shadow_node_get_color")]
-	public static extern  GdkRGBA* inset_shadow_node_get_color( GskRenderNode* node);
+	public static extern Gdk.RGBA InsetShadowNodeGetColor(InsetShadowNode node);
 	[LinkName("gsk_inset_shadow_node_get_dx")]
-	public static extern float inset_shadow_node_get_dx( GskRenderNode* node);
+	public static extern float InsetShadowNodeGetDx(InsetShadowNode node);
 	[LinkName("gsk_inset_shadow_node_get_dy")]
-	public static extern float inset_shadow_node_get_dy( GskRenderNode* node);
+	public static extern float InsetShadowNodeGetDy(InsetShadowNode node);
 	[LinkName("gsk_inset_shadow_node_get_outline")]
-	public static extern  GskRoundedRect* inset_shadow_node_get_outline( GskRenderNode* node);
+	public static extern RoundedRect InsetShadowNodeGetOutline(InsetShadowNode node);
 	[LinkName("gsk_inset_shadow_node_get_spread")]
-	public static extern float inset_shadow_node_get_spread( GskRenderNode* node);
+	public static extern float InsetShadowNodeGetSpread(InsetShadowNode node);
 	[CRepr]
-	public struct GskLinearGradientNode;
+	public struct LinearGradientNode;
 	[LinkName("gsk_linear_gradient_node_new")]
-	public static extern GskRenderNode* linear_gradient_node_new( graphene_rect_t* bounds,  graphene_point_t* start,  graphene_point_t* end, c_ulong n_color_stops);
+	public static extern LinearGradientNode LinearGradientNodeNew(Graphene.Rect bounds, Graphene.Point start, Graphene.Point end, c_ulong n_color_stops);
 	[LinkName("gsk_linear_gradient_node_get_color_stops")]
-	public static extern  GskColorStop* linear_gradient_node_get_color_stops( GskRenderNode* node, c_ulong* n_stops);
+	public static extern ColorStop LinearGradientNodeGetColorStops(LinearGradientNode node, c_ulong n_stops);
 	[LinkName("gsk_linear_gradient_node_get_end")]
-	public static extern  graphene_point_t* linear_gradient_node_get_end( GskRenderNode* node);
+	public static extern Graphene.Point LinearGradientNodeGetEnd(LinearGradientNode node);
 	[LinkName("gsk_linear_gradient_node_get_n_color_stops")]
-	public static extern c_ulong linear_gradient_node_get_n_color_stops( GskRenderNode* node);
+	public static extern c_ulong LinearGradientNodeGetNColorStops(LinearGradientNode node);
 	[LinkName("gsk_linear_gradient_node_get_start")]
-	public static extern  graphene_point_t* linear_gradient_node_get_start( GskRenderNode* node);
-	public enum GskMaskMode : c_int
+	public static extern Graphene.Point LinearGradientNodeGetStart(LinearGradientNode node);
+	public enum MaskMode : c_int
 	{
 		GSK_MASK_MODE_ALPHA,
 		GSK_MASK_MODE_INVERTED_ALPHA,
@@ -269,46 +267,46 @@ class Gsk
 		GSK_MASK_MODE_INVERTED_LUMINANCE
 	}
 	[CRepr]
-	public struct GskMaskNode;
+	public struct MaskNode;
 	[LinkName("gsk_mask_node_new")]
-	public static extern GskRenderNode* mask_node_new(GskRenderNode* source, GskRenderNode* mask, GskMaskMode mask_mode);
+	public static extern MaskNode MaskNodeNew(RenderNode source, RenderNode mask, MaskMode mask_mode);
 	[LinkName("gsk_mask_node_get_mask")]
-	public static extern GskRenderNode* mask_node_get_mask( GskRenderNode* node);
+	public static extern RenderNode MaskNodeGetMask(MaskNode node);
 	[LinkName("gsk_mask_node_get_mask_mode")]
-	public static extern GskMaskMode mask_node_get_mask_mode( GskRenderNode* node);
+	public static extern MaskMode MaskNodeGetMaskMode(MaskNode node);
 	[LinkName("gsk_mask_node_get_source")]
-	public static extern GskRenderNode* mask_node_get_source( GskRenderNode* node);
+	public static extern RenderNode MaskNodeGetSource(MaskNode node);
 	[CRepr]
-	public struct GskNglRenderer;
+	public struct NglRenderer;
 	[LinkName("gsk_ngl_renderer_new")]
-	public static extern GskRenderer* ngl_renderer_new();
+	public static extern Renderer NglRendererNew();
 	[CRepr]
-	public struct GskOpacityNode;
+	public struct OpacityNode;
 	[LinkName("gsk_opacity_node_new")]
-	public static extern GskRenderNode* opacity_node_new(GskRenderNode* child, float opacity);
+	public static extern OpacityNode OpacityNodeNew(RenderNode child, float opacity);
 	[LinkName("gsk_opacity_node_get_child")]
-	public static extern GskRenderNode* opacity_node_get_child( GskRenderNode* node);
+	public static extern RenderNode OpacityNodeGetChild(OpacityNode node);
 	[LinkName("gsk_opacity_node_get_opacity")]
-	public static extern float opacity_node_get_opacity( GskRenderNode* node);
+	public static extern float OpacityNodeGetOpacity(OpacityNode node);
 	[CRepr]
-	public struct GskOutsetShadowNode;
+	public struct OutsetShadowNode;
 	[LinkName("gsk_outset_shadow_node_new")]
-	public static extern GskRenderNode* outset_shadow_node_new( GskRoundedRect* outline,  GdkRGBA* color, float dx, float dy, float spread, float blur_radius);
+	public static extern OutsetShadowNode OutsetShadowNodeNew(RoundedRect outline, Gdk.RGBA color, float dx, float dy, float spread, float blur_radius);
 	[LinkName("gsk_outset_shadow_node_get_blur_radius")]
-	public static extern float outset_shadow_node_get_blur_radius( GskRenderNode* node);
+	public static extern float OutsetShadowNodeGetBlurRadius(OutsetShadowNode node);
 	[LinkName("gsk_outset_shadow_node_get_color")]
-	public static extern  GdkRGBA* outset_shadow_node_get_color( GskRenderNode* node);
+	public static extern Gdk.RGBA OutsetShadowNodeGetColor(OutsetShadowNode node);
 	[LinkName("gsk_outset_shadow_node_get_dx")]
-	public static extern float outset_shadow_node_get_dx( GskRenderNode* node);
+	public static extern float OutsetShadowNodeGetDx(OutsetShadowNode node);
 	[LinkName("gsk_outset_shadow_node_get_dy")]
-	public static extern float outset_shadow_node_get_dy( GskRenderNode* node);
+	public static extern float OutsetShadowNodeGetDy(OutsetShadowNode node);
 	[LinkName("gsk_outset_shadow_node_get_outline")]
-	public static extern  GskRoundedRect* outset_shadow_node_get_outline( GskRenderNode* node);
+	public static extern RoundedRect OutsetShadowNodeGetOutline(OutsetShadowNode node);
 	[LinkName("gsk_outset_shadow_node_get_spread")]
-	public static extern float outset_shadow_node_get_spread( GskRenderNode* node);
-	public function void GskParseErrorFunc( GskParseLocation* start,  GskParseLocation* end,  GError* error, void* user_data);
+	public static extern float OutsetShadowNodeGetSpread(OutsetShadowNode node);
+	public function void ParseErrorFunc(ParseLocation start, ParseLocation end, GLib.Error error, void* user_data);
 	[CRepr]
-	public struct GskParseLocation
+	public struct ParseLocation
 	{
 		c_ulong bytes;
 		c_ulong chars;
@@ -317,40 +315,40 @@ class Gsk
 		c_ulong line_chars;
 	}
 	[CRepr]
-	public struct GskRadialGradientNode;
+	public struct RadialGradientNode;
 	[LinkName("gsk_radial_gradient_node_new")]
-	public static extern GskRenderNode* radial_gradient_node_new( graphene_rect_t* bounds,  graphene_point_t* center, float hradius, float vradius, float start, float end, c_ulong n_color_stops);
+	public static extern RadialGradientNode RadialGradientNodeNew(Graphene.Rect bounds, Graphene.Point center, float hradius, float vradius, float start, float end, c_ulong n_color_stops);
 	[LinkName("gsk_radial_gradient_node_get_center")]
-	public static extern  graphene_point_t* radial_gradient_node_get_center( GskRenderNode* node);
+	public static extern Graphene.Point RadialGradientNodeGetCenter(RadialGradientNode node);
 	[LinkName("gsk_radial_gradient_node_get_color_stops")]
-	public static extern  GskColorStop* radial_gradient_node_get_color_stops( GskRenderNode* node, c_ulong* n_stops);
+	public static extern ColorStop RadialGradientNodeGetColorStops(RadialGradientNode node, c_ulong n_stops);
 	[LinkName("gsk_radial_gradient_node_get_end")]
-	public static extern float radial_gradient_node_get_end( GskRenderNode* node);
+	public static extern float RadialGradientNodeGetEnd(RadialGradientNode node);
 	[LinkName("gsk_radial_gradient_node_get_hradius")]
-	public static extern float radial_gradient_node_get_hradius( GskRenderNode* node);
+	public static extern float RadialGradientNodeGetHradius(RadialGradientNode node);
 	[LinkName("gsk_radial_gradient_node_get_n_color_stops")]
-	public static extern c_ulong radial_gradient_node_get_n_color_stops( GskRenderNode* node);
+	public static extern c_ulong RadialGradientNodeGetNColorStops(RadialGradientNode node);
 	[LinkName("gsk_radial_gradient_node_get_start")]
-	public static extern float radial_gradient_node_get_start( GskRenderNode* node);
+	public static extern float RadialGradientNodeGetStart(RadialGradientNode node);
 	[LinkName("gsk_radial_gradient_node_get_vradius")]
-	public static extern float radial_gradient_node_get_vradius( GskRenderNode* node);
+	public static extern float RadialGradientNodeGetVradius(RadialGradientNode node);
 	[CRepr]
-	public struct GskRenderNode;
+	public struct RenderNode;
 	[LinkName("gsk_render_node_draw")]
-	public static extern void render_node_draw(GskRenderNode* node, cairo_t* cr);
+	public static extern void RenderNodeDraw(RenderNode node, cairo.Context cr);
 	[LinkName("gsk_render_node_get_bounds")]
-	public static extern void render_node_get_bounds(GskRenderNode* node, graphene_rect_t* bounds);
+	public static extern void RenderNodeGetBounds(RenderNode node, Graphene.Rect bounds);
 	[LinkName("gsk_render_node_get_node_type")]
-	public static extern GskRenderNodeType render_node_get_node_type( GskRenderNode* node);
+	public static extern RenderNodeType RenderNodeGetNodeType(RenderNode node);
 	[LinkName("gsk_render_node_ref")]
-	public static extern GskRenderNode* render_node_ref(GskRenderNode* node);
+	public static extern RenderNode RenderNodeRef(RenderNode node);
 	[LinkName("gsk_render_node_serialize")]
-	public static extern GBytes* render_node_serialize(GskRenderNode* node);
+	public static extern GLib.Bytes RenderNodeSerialize(RenderNode node);
 	[LinkName("gsk_render_node_unref")]
-	public static extern void render_node_unref(GskRenderNode* node);
+	public static extern void RenderNodeUnref(RenderNode node);
 	[LinkName("gsk_render_node_write_to_file")]
-	public static extern c_int render_node_write_to_file(GskRenderNode* node,  c_char* filename);
-	public enum GskRenderNodeType : c_int
+	public static extern c_int RenderNodeWriteToFile(RenderNode node, char8* filename);
+	public enum RenderNodeType : c_int
 	{
 		GSK_NOT_A_RENDER_NODE,
 		GSK_CONTAINER_NODE,
@@ -382,123 +380,123 @@ class Gsk
 		GSK_MASK_NODE
 	}
 	[CRepr]
-	public struct GskRenderer;
+	public struct Renderer;
 	[LinkName("gsk_renderer_new_for_surface")]
-	public static extern GskRenderer* renderer_new_for_surface(GdkSurface* surface);
+	public static extern Renderer RendererNewForSurface(Gdk.Surface surface);
 	[LinkName("gsk_renderer_get_surface")]
-	public static extern GdkSurface* renderer_get_surface(GskRenderer* renderer);
+	public static extern Gdk.Surface RendererGetSurface(Renderer renderer);
 	[LinkName("gsk_renderer_is_realized")]
-	public static extern c_int renderer_is_realized(GskRenderer* renderer);
+	public static extern c_int RendererIsRealized(Renderer renderer);
 	[LinkName("gsk_renderer_realize")]
-	public static extern c_int renderer_realize(GskRenderer* renderer, GdkSurface* surface);
+	public static extern c_int RendererRealize(Renderer renderer, Gdk.Surface surface);
 	[LinkName("gsk_renderer_render")]
-	public static extern void renderer_render(GskRenderer* renderer, GskRenderNode* root,  cairo_region_t* region);
+	public static extern void RendererRender(Renderer renderer, RenderNode root, cairo.Region region);
 	[LinkName("gsk_renderer_render_texture")]
-	public static extern GdkTexture* renderer_render_texture(GskRenderer* renderer, GskRenderNode* root,  graphene_rect_t* viewport);
+	public static extern Gdk.Texture RendererRenderTexture(Renderer renderer, RenderNode root, Graphene.Rect viewport);
 	[LinkName("gsk_renderer_unrealize")]
-	public static extern void renderer_unrealize(GskRenderer* renderer);
+	public static extern void RendererUnrealize(Renderer renderer);
 	[CRepr]
-	public struct GskRendererClass
+	public struct RendererClass
 	{
 	}
 	[CRepr]
-	public struct GskRepeatNode;
+	public struct RepeatNode;
 	[LinkName("gsk_repeat_node_new")]
-	public static extern GskRenderNode* repeat_node_new( graphene_rect_t* bounds, GskRenderNode* child,  graphene_rect_t* child_bounds);
+	public static extern RepeatNode RepeatNodeNew(Graphene.Rect bounds, RenderNode child, Graphene.Rect child_bounds);
 	[LinkName("gsk_repeat_node_get_child")]
-	public static extern GskRenderNode* repeat_node_get_child( GskRenderNode* node);
+	public static extern RenderNode RepeatNodeGetChild(RepeatNode node);
 	[LinkName("gsk_repeat_node_get_child_bounds")]
-	public static extern  graphene_rect_t* repeat_node_get_child_bounds( GskRenderNode* node);
+	public static extern Graphene.Rect RepeatNodeGetChildBounds(RepeatNode node);
 	[CRepr]
-	public struct GskRepeatingLinearGradientNode;
+	public struct RepeatingLinearGradientNode;
 	[LinkName("gsk_repeating_linear_gradient_node_new")]
-	public static extern GskRenderNode* repeating_linear_gradient_node_new( graphene_rect_t* bounds,  graphene_point_t* start,  graphene_point_t* end, c_ulong n_color_stops);
+	public static extern RepeatingLinearGradientNode RepeatingLinearGradientNodeNew(Graphene.Rect bounds, Graphene.Point start, Graphene.Point end, c_ulong n_color_stops);
 	[CRepr]
-	public struct GskRepeatingRadialGradientNode;
+	public struct RepeatingRadialGradientNode;
 	[LinkName("gsk_repeating_radial_gradient_node_new")]
-	public static extern GskRenderNode* repeating_radial_gradient_node_new( graphene_rect_t* bounds,  graphene_point_t* center, float hradius, float vradius, float start, float end, c_ulong n_color_stops);
+	public static extern RepeatingRadialGradientNode RepeatingRadialGradientNodeNew(Graphene.Rect bounds, Graphene.Point center, float hradius, float vradius, float start, float end, c_ulong n_color_stops);
 	[CRepr]
-	public struct GskRoundedClipNode;
+	public struct RoundedClipNode;
 	[LinkName("gsk_rounded_clip_node_new")]
-	public static extern GskRenderNode* rounded_clip_node_new(GskRenderNode* child,  GskRoundedRect* clip);
+	public static extern RoundedClipNode RoundedClipNodeNew(RenderNode child, RoundedRect clip);
 	[LinkName("gsk_rounded_clip_node_get_child")]
-	public static extern GskRenderNode* rounded_clip_node_get_child( GskRenderNode* node);
+	public static extern RenderNode RoundedClipNodeGetChild(RoundedClipNode node);
 	[LinkName("gsk_rounded_clip_node_get_clip")]
-	public static extern  GskRoundedRect* rounded_clip_node_get_clip( GskRenderNode* node);
+	public static extern RoundedRect RoundedClipNodeGetClip(RoundedClipNode node);
 	[CRepr]
-	public struct GskRoundedRect
+	public struct RoundedRect
 	{
-		graphene_rect_t bounds;
+		Graphene.Rect bounds;
 	}
-	public enum GskScalingFilter : c_int
+	public enum ScalingFilter : c_int
 	{
 		GSK_SCALING_FILTER_LINEAR,
 		GSK_SCALING_FILTER_NEAREST,
 		GSK_SCALING_FILTER_TRILINEAR
 	}
-	public enum GskSerializationError : c_int
+	public enum SerializationError : c_int
 	{
 		GSK_SERIALIZATION_UNSUPPORTED_FORMAT,
 		GSK_SERIALIZATION_UNSUPPORTED_VERSION,
 		GSK_SERIALIZATION_INVALID_DATA
 	}
 	[CRepr]
-	public struct GskShaderArgsBuilder
+	public struct ShaderArgsBuilder
 	{
 	}
 	[CRepr]
-	public struct GskShadow
+	public struct Shadow
 	{
-		GdkRGBA color;
+		Gdk.RGBA color;
 		float dx;
 		float dy;
 		float radius;
 	}
 	[CRepr]
-	public struct GskShadowNode;
+	public struct ShadowNode;
 	[LinkName("gsk_shadow_node_new")]
-	public static extern GskRenderNode* shadow_node_new(GskRenderNode* child, c_ulong n_shadows);
+	public static extern ShadowNode ShadowNodeNew(RenderNode child, c_ulong n_shadows);
 	[LinkName("gsk_shadow_node_get_child")]
-	public static extern GskRenderNode* shadow_node_get_child( GskRenderNode* node);
+	public static extern RenderNode ShadowNodeGetChild(ShadowNode node);
 	[LinkName("gsk_shadow_node_get_n_shadows")]
-	public static extern c_ulong shadow_node_get_n_shadows( GskRenderNode* node);
+	public static extern c_ulong ShadowNodeGetNShadows(ShadowNode node);
 	[LinkName("gsk_shadow_node_get_shadow")]
-	public static extern  GskShadow* shadow_node_get_shadow( GskRenderNode* node, c_ulong i);
+	public static extern Shadow ShadowNodeGetShadow(ShadowNode node, c_ulong i);
 	[CRepr]
-	public struct GskTextNode;
+	public struct TextNode;
 	[LinkName("gsk_text_node_new")]
-	public static extern GskRenderNode* text_node_new(PangoFont* font, PangoGlyphString* glyphs,  GdkRGBA* color,  graphene_point_t* offset);
+	public static extern TextNode TextNodeNew(Pango.Font font, Pango.GlyphString glyphs, Gdk.RGBA color, Graphene.Point offset);
 	[LinkName("gsk_text_node_get_color")]
-	public static extern  GdkRGBA* text_node_get_color( GskRenderNode* node);
+	public static extern Gdk.RGBA TextNodeGetColor(TextNode node);
 	[LinkName("gsk_text_node_get_font")]
-	public static extern PangoFont* text_node_get_font( GskRenderNode* node);
+	public static extern Pango.Font TextNodeGetFont(TextNode node);
 	[LinkName("gsk_text_node_get_glyphs")]
-	public static extern  PangoGlyphInfo* text_node_get_glyphs( GskRenderNode* node, c_uint* n_glyphs);
+	public static extern Pango.GlyphInfo TextNodeGetGlyphs(TextNode node, c_uint n_glyphs);
 	[LinkName("gsk_text_node_get_num_glyphs")]
-	public static extern c_uint text_node_get_num_glyphs( GskRenderNode* node);
+	public static extern c_uint TextNodeGetNumGlyphs(TextNode node);
 	[LinkName("gsk_text_node_get_offset")]
-	public static extern  graphene_point_t* text_node_get_offset( GskRenderNode* node);
+	public static extern Graphene.Point TextNodeGetOffset(TextNode node);
 	[LinkName("gsk_text_node_has_color_glyphs")]
-	public static extern c_int text_node_has_color_glyphs( GskRenderNode* node);
+	public static extern c_int TextNodeHasColorGlyphs(TextNode node);
 	[CRepr]
-	public struct GskTextureNode;
+	public struct TextureNode;
 	[LinkName("gsk_texture_node_new")]
-	public static extern GskRenderNode* texture_node_new(GdkTexture* texture,  graphene_rect_t* bounds);
+	public static extern TextureNode TextureNodeNew(Gdk.Texture texture, Graphene.Rect bounds);
 	[LinkName("gsk_texture_node_get_texture")]
-	public static extern GdkTexture* texture_node_get_texture( GskRenderNode* node);
+	public static extern Gdk.Texture TextureNodeGetTexture(TextureNode node);
 	[CRepr]
-	public struct GskTextureScaleNode;
+	public struct TextureScaleNode;
 	[LinkName("gsk_texture_scale_node_new")]
-	public static extern GskRenderNode* texture_scale_node_new(GdkTexture* texture,  graphene_rect_t* bounds, GskScalingFilter filter);
+	public static extern TextureScaleNode TextureScaleNodeNew(Gdk.Texture texture, Graphene.Rect bounds, ScalingFilter filter);
 	[LinkName("gsk_texture_scale_node_get_filter")]
-	public static extern GskScalingFilter texture_scale_node_get_filter( GskRenderNode* node);
+	public static extern ScalingFilter TextureScaleNodeGetFilter(TextureScaleNode node);
 	[LinkName("gsk_texture_scale_node_get_texture")]
-	public static extern GdkTexture* texture_scale_node_get_texture( GskRenderNode* node);
+	public static extern Gdk.Texture TextureScaleNodeGetTexture(TextureScaleNode node);
 	[CRepr]
-	public struct GskTransform
+	public struct Transform
 	{
 	}
-	public enum GskTransformCategory : c_int
+	public enum TransformCategory : c_int
 	{
 		GSK_TRANSFORM_CATEGORY_UNKNOWN,
 		GSK_TRANSFORM_CATEGORY_ANY,
@@ -509,11 +507,11 @@ class Gsk
 		GSK_TRANSFORM_CATEGORY_IDENTITY
 	}
 	[CRepr]
-	public struct GskTransformNode;
+	public struct TransformNode;
 	[LinkName("gsk_transform_node_new")]
-	public static extern GskRenderNode* transform_node_new(GskRenderNode* child, GskTransform* transform);
+	public static extern TransformNode TransformNodeNew(RenderNode child, Transform transform);
 	[LinkName("gsk_transform_node_get_child")]
-	public static extern GskRenderNode* transform_node_get_child( GskRenderNode* node);
+	public static extern RenderNode TransformNodeGetChild(TransformNode node);
 	[LinkName("gsk_transform_node_get_transform")]
-	public static extern GskTransform* transform_node_get_transform( GskRenderNode* node);
+	public static extern Transform TransformNodeGetTransform(TransformNode node);
 }

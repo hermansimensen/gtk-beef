@@ -5,28 +5,28 @@ using System.Interop;
 
 class GLib
 {
-	public typealias GDateDay = c_uchar;
-	public typealias GDateYear = c_ushort;
-	public typealias GMainContextPusher = void;
-	public typealias GMutexLocker = void;
-	public typealias GPid = c_int;
-	public typealias GQuark = c_uint;
-	public typealias GRWLockReaderLocker = void;
-	public typealias GRWLockWriterLocker = void;
-	public typealias GRecMutexLocker = void;
-	public typealias GRefString = c_char;
-	public typealias GStrv = c_char*;
-	public typealias GTime = c_int;
-	public typealias GTimeSpan = c_longlong;
-	public typealias GType = c_ulong;
+	public typealias DateDay = c_uchar;
+	public typealias DateYear = c_ushort;
+	public typealias MainContextPusher = void;
+	public typealias MutexLocker = void;
+	public typealias Pid = c_int;
+	public typealias Quark = c_uint;
+	public typealias RWLockReaderLocker = void;
+	public typealias RWLockWriterLocker = void;
+	public typealias RecMutexLocker = void;
+	public typealias RefString = c_char;
+	public typealias Strv = char8*;
+	public typealias Time = c_int;
+	public typealias TimeSpan = c_longlong;
+	public typealias Type = c_ulong;
 	[CRepr]
-	public struct GArray
+	public struct Array
 	{
-		c_char* data;
+		char8* data;
 		c_uint len;
 	}
 	[CRepr]
-	public struct GAsciiType
+	public struct AsciiType
 	{
 		public const int G_ASCII_ALNUM = 1;
 		public const int G_ASCII_ALPHA = 2;
@@ -41,14 +41,14 @@ class GLib
 		public const int G_ASCII_XDIGIT = 1024;
 	}
 	[CRepr]
-	public struct GAsyncQueue
+	public struct AsyncQueue
 	{
 	}
 	[CRepr]
-	public struct GBookmarkFile
+	public struct BookmarkFile
 	{
 	}
-	public enum GBookmarkFileError : c_int
+	public enum BookmarkFileError : c_int
 	{
 		G_BOOKMARK_FILE_ERROR_INVALID_URI,
 		G_BOOKMARK_FILE_ERROR_INVALID_VALUE,
@@ -60,20 +60,20 @@ class GLib
 		G_BOOKMARK_FILE_ERROR_FILE_NOT_FOUND
 	}
 	[CRepr]
-	public struct GByteArray
+	public struct ByteArray
 	{
-		c_uchar* data;
+		c_uchar data;
 		c_uint len;
 	}
 	[CRepr]
-	public struct GBytes
+	public struct Bytes
 	{
 	}
 	[CRepr]
-	public struct GChecksum
+	public struct Checksum
 	{
 	}
-	public enum GChecksumType : c_int
+	public enum ChecksumType : c_int
 	{
 		G_CHECKSUM_MD5,
 		G_CHECKSUM_SHA1,
@@ -81,16 +81,16 @@ class GLib
 		G_CHECKSUM_SHA512,
 		G_CHECKSUM_SHA384
 	}
-	public function void GChildWatchFunc(GPid pid, c_int wait_status, void* user_data);
-	public function void GClearHandleFunc(c_uint handle_id);
-	public function c_int GCompareDataFunc(void* a, void* b, void* user_data);
-	public function c_int GCompareFunc(void* a, void* b);
+	public function void ChildWatchFunc(Pid pid, c_int wait_status, void* user_data);
+	public function void ClearHandleFunc(c_uint handle_id);
+	public function c_int CompareDataFunc(void* a, void* b, void* user_data);
+	public function c_int CompareFunc(void* a, void* b);
 	[CRepr]
-	public struct GCond
+	public struct Cond
 	{
 		void* p;
 	}
-	public enum GConvertError : c_int
+	public enum ConvertError : c_int
 	{
 		G_CONVERT_ERROR_NO_CONVERSION,
 		G_CONVERT_ERROR_ILLEGAL_SEQUENCE,
@@ -101,14 +101,14 @@ class GLib
 		G_CONVERT_ERROR_NO_MEMORY,
 		G_CONVERT_ERROR_EMBEDDED_NUL
 	}
-	public function void* GCopyFunc(void* src, void* data);
+	public function void* CopyFunc(void* src, void* data);
 	[CRepr]
-	public struct GData
+	public struct Data
 	{
 	}
-	public function void GDataForeachFunc(GQuark key_id, void* data, void* user_data);
+	public function void DataForeachFunc(Quark key_id, void* data, void* user_data);
 	[CRepr]
-	public struct GDate
+	public struct Date
 	{
 		c_uint julian_days;
 		c_uint julian;
@@ -117,13 +117,13 @@ class GLib
 		c_uint month;
 		c_uint year;
 	}
-	public enum GDateDMY : c_int
+	public enum DateDMY : c_int
 	{
 		G_DATE_DAY,
 		G_DATE_MONTH,
 		G_DATE_YEAR
 	}
-	public enum GDateMonth : c_int
+	public enum DateMonth : c_int
 	{
 		G_DATE_BAD_MONTH,
 		G_DATE_JANUARY,
@@ -140,10 +140,10 @@ class GLib
 		G_DATE_DECEMBER
 	}
 	[CRepr]
-	public struct GDateTime
+	public struct DateTime
 	{
 	}
-	public enum GDateWeekday : c_int
+	public enum DateWeekday : c_int
 	{
 		G_DATE_BAD_WEEKDAY,
 		G_DATE_MONDAY,
@@ -155,35 +155,35 @@ class GLib
 		G_DATE_SUNDAY
 	}
 	[CRepr]
-	public struct GDebugKey
+	public struct DebugKey
 	{
-		 c_char* key;
+		char8* key;
 		c_uint value;
 	}
-	public function void GDestroyNotify(void* data);
+	public function void DestroyNotify(void* data);
 	[CRepr]
-	public struct GDir
+	public struct Dir
 	{
 	}
 	[Union]
-	public struct GDoubleIEEE754
+	public struct DoubleIEEE754
 	{
 		public double v_double;
 	}
-	public function void* GDuplicateFunc(void* data, void* user_data);
-	public function c_int GEqualFunc(void* a, void* b);
-	public function c_int GEqualFuncFull(void* a, void* b, void* user_data);
+	public function void* DuplicateFunc(void* data, void* user_data);
+	public function c_int EqualFunc(void* a, void* b);
+	public function c_int EqualFuncFull(void* a, void* b, void* user_data);
 	[CRepr]
-	public struct GError
+	public struct Error
 	{
-		GQuark domain;
+		Quark domain;
 		c_int code;
-		c_char* message;
+		char8* message;
 	}
-	public function void GErrorClearFunc(GError* error);
-	public function void GErrorCopyFunc( GError* src_error, GError* dest_error);
-	public function void GErrorInitFunc(GError* error);
-	public enum GErrorType : c_int
+	public function void ErrorClearFunc(Error error);
+	public function void ErrorCopyFunc(Error src_error, Error dest_error);
+	public function void ErrorInitFunc(Error error);
+	public enum ErrorType : c_int
 	{
 		G_ERR_UNKNOWN,
 		G_ERR_UNEXP_EOF,
@@ -194,7 +194,7 @@ class GLib
 		G_ERR_FLOAT_RADIX,
 		G_ERR_FLOAT_MALFORMED
 	}
-	public enum GFileError : c_int
+	public enum FileError : c_int
 	{
 		G_FILE_ERROR_EXIST,
 		G_FILE_ERROR_ISDIR,
@@ -223,7 +223,7 @@ class GLib
 		G_FILE_ERROR_FAILED
 	}
 	[CRepr]
-	public struct GFileSetContentsFlags
+	public struct FileSetContentsFlags
 	{
 		public const int G_FILE_SET_CONTENTS_NONE = 0;
 		public const int G_FILE_SET_CONTENTS_CONSISTENT = 1;
@@ -231,7 +231,7 @@ class GLib
 		public const int G_FILE_SET_CONTENTS_ONLY_EXISTING = 4;
 	}
 	[CRepr]
-	public struct GFileTest
+	public struct FileTest
 	{
 		public const int G_FILE_TEST_IS_REGULAR = 1;
 		public const int G_FILE_TEST_IS_SYMLINK = 2;
@@ -240,12 +240,12 @@ class GLib
 		public const int G_FILE_TEST_EXISTS = 16;
 	}
 	[Union]
-	public struct GFloatIEEE754
+	public struct FloatIEEE754
 	{
 		public float v_float;
 	}
 	[CRepr]
-	public struct GFormatSizeFlags
+	public struct FormatSizeFlags
 	{
 		public const int G_FORMAT_SIZE_DEFAULT = 0;
 		public const int G_FORMAT_SIZE_LONG_FORMAT = 1;
@@ -254,17 +254,17 @@ class GLib
 		public const int G_FORMAT_SIZE_ONLY_VALUE = 8;
 		public const int G_FORMAT_SIZE_ONLY_UNIT = 16;
 	}
-	public function void GFreeFunc(void* data);
-	public function void GFunc(void* data, void* user_data);
-	public function void GHFunc(void* key, void* value, void* user_data);
-	public function c_int GHRFunc(void* key, void* value, void* user_data);
-	public function c_uint GHashFunc(void* key);
+	public function void FreeFunc(void* data);
+	public function void Func(void* data, void* user_data);
+	public function void HFunc(void* key, void* value, void* user_data);
+	public function c_int HRFunc(void* key, void* value, void* user_data);
+	public function c_uint HashFunc(void* key);
 	[CRepr]
-	public struct GHashTable
+	public struct HashTable
 	{
 	}
 	[CRepr]
-	public struct GHashTableIter
+	public struct HashTableIter
 	{
 		void* dummy1;
 		void* dummy2;
@@ -274,63 +274,63 @@ class GLib
 		void* dummy6;
 	}
 	[CRepr]
-	public struct GHmac
+	public struct Hmac
 	{
 	}
 	[CRepr]
-	public struct GHook
+	public struct Hook
 	{
 		void* data;
-		GHook* next;
-		GHook* prev;
+		Hook* next;
+		Hook* prev;
 		c_uint ref_count;
 		c_ulong hook_id;
 		c_uint flags;
 		void* func;
-		GDestroyNotify destroy;
+		DestroyNotify destroy;
 	}
-	public function c_int GHookCheckFunc(void* data);
-	public function c_int GHookCheckMarshaller(GHook* hook, void* marshal_data);
-	public function c_int GHookCompareFunc(GHook* new_hook, GHook* sibling);
-	public function void GHookFinalizeFunc(GHookList* hook_list, GHook* hook);
-	public function c_int GHookFindFunc(GHook* hook, void* data);
+	public function c_int HookCheckFunc(void* data);
+	public function c_int HookCheckMarshaller(Hook hook, void* marshal_data);
+	public function c_int HookCompareFunc(Hook new_hook, Hook sibling);
+	public function void HookFinalizeFunc(HookList hook_list, Hook hook);
+	public function c_int HookFindFunc(Hook hook, void* data);
 	[CRepr]
-	public struct GHookFlagMask
+	public struct HookFlagMask
 	{
 		public const int G_HOOK_FLAG_ACTIVE = 1;
 		public const int G_HOOK_FLAG_IN_CALL = 2;
 		public const int G_HOOK_FLAG_MASK = 15;
 	}
-	public function void GHookFunc(void* data);
+	public function void HookFunc(void* data);
 	[CRepr]
-	public struct GHookList
+	public struct HookList
 	{
 		c_ulong seq_id;
 		c_uint hook_size;
 		c_uint is_setup;
-		GHook* hooks;
+		Hook hooks;
 		void* dummy3;
-		GHookFinalizeFunc finalize_hook;
+		HookFinalizeFunc finalize_hook;
 	}
-	public function void GHookMarshaller(GHook* hook, void* marshal_data);
+	public function void HookMarshaller(Hook hook, void* marshal_data);
 	[CRepr]
-	public struct GIConv
+	public struct IConv
 	{
 	}
 	[CRepr]
-	public struct GIOChannel
+	public struct IOChannel
 	{
 		c_int ref_count;
-		GIOFuncs* funcs;
-		c_char* encoding;
-		GIConv read_cd;
-		GIConv write_cd;
-		c_char* line_term;
+		IOFuncs funcs;
+		char8* encoding;
+		IConv read_cd;
+		IConv write_cd;
+		char8* line_term;
 		c_uint line_term_len;
 		c_ulong buf_size;
-		GString* read_buf;
-		GString* encoded_read_buf;
-		GString* write_buf;
+		String read_buf;
+		String encoded_read_buf;
+		String write_buf;
 		c_uint use_buffer;
 		c_uint do_encode;
 		c_uint close_on_unref;
@@ -340,7 +340,7 @@ class GLib
 		void* reserved1;
 		void* reserved2;
 	}
-	public enum GIOChannelError : c_int
+	public enum IOChannelError : c_int
 	{
 		G_IO_CHANNEL_ERROR_FBIG,
 		G_IO_CHANNEL_ERROR_INVAL,
@@ -353,7 +353,7 @@ class GLib
 		G_IO_CHANNEL_ERROR_FAILED
 	}
 	[CRepr]
-	public struct GIOCondition
+	public struct IOCondition
 	{
 		public const int G_IO_IN = 1;
 		public const int G_IO_OUT = 4;
@@ -362,7 +362,7 @@ class GLib
 		public const int G_IO_HUP = 16;
 		public const int G_IO_NVAL = 32;
 	}
-	public enum GIOError : c_int
+	public enum IOError : c_int
 	{
 		G_IO_ERROR_NONE,
 		G_IO_ERROR_AGAIN,
@@ -370,7 +370,7 @@ class GLib
 		G_IO_ERROR_UNKNOWN
 	}
 	[CRepr]
-	public struct GIOFlags
+	public struct IOFlags
 	{
 		public const int G_IO_FLAG_NONE = 0;
 		public const int G_IO_FLAG_APPEND = 1;
@@ -383,12 +383,12 @@ class GLib
 		public const int G_IO_FLAG_GET_MASK = 31;
 		public const int G_IO_FLAG_SET_MASK = 3;
 	}
-	public function c_int GIOFunc(GIOChannel* source, GIOCondition condition, void* data);
+	public function c_int IOFunc(IOChannel source, IOCondition condition, void* data);
 	[CRepr]
-	public struct GIOFuncs
+	public struct IOFuncs
 	{
 	}
-	public enum GIOStatus : c_int
+	public enum IOStatus : c_int
 	{
 		G_IO_STATUS_ERROR,
 		G_IO_STATUS_NORMAL,
@@ -396,10 +396,10 @@ class GLib
 		G_IO_STATUS_AGAIN
 	}
 	[CRepr]
-	public struct GKeyFile
+	public struct KeyFile
 	{
 	}
-	public enum GKeyFileError : c_int
+	public enum KeyFileError : c_int
 	{
 		G_KEY_FILE_ERROR_UNKNOWN_ENCODING,
 		G_KEY_FILE_ERROR_PARSE,
@@ -409,29 +409,29 @@ class GLib
 		G_KEY_FILE_ERROR_INVALID_VALUE
 	}
 	[CRepr]
-	public struct GKeyFileFlags
+	public struct KeyFileFlags
 	{
 		public const int G_KEY_FILE_NONE = 0;
 		public const int G_KEY_FILE_KEEP_COMMENTS = 1;
 		public const int G_KEY_FILE_KEEP_TRANSLATIONS = 2;
 	}
 	[CRepr]
-	public struct GList
+	public struct List
 	{
 		void* data;
-		GList* next;
-		GList* prev;
+		GLib.List* next;
+		GLib.List* prev;
 	}
 	[CRepr]
-	public struct GLogField
+	public struct LogField
 	{
-		 c_char* key;
+		char8* key;
 		void* value;
 		c_long length;
 	}
-	public function void GLogFunc( c_char* log_domain, GLogLevelFlags log_level,  c_char* message, void* user_data);
+	public function void LogFunc(char8* log_domain, LogLevelFlags log_level, char8* message, void* user_data);
 	[CRepr]
-	public struct GLogLevelFlags
+	public struct LogLevelFlags
 	{
 		public const int G_LOG_FLAG_RECURSION = 1;
 		public const int G_LOG_FLAG_FATAL = 2;
@@ -443,32 +443,32 @@ class GLib
 		public const int G_LOG_LEVEL_DEBUG = 128;
 		public const int G_LOG_LEVEL_MASK = -4;
 	}
-	public function GLogWriterOutput GLogWriterFunc(GLogLevelFlags log_level, c_ulong n_fields, void* user_data);
-	public enum GLogWriterOutput : c_int
+	public function LogWriterOutput LogWriterFunc(LogLevelFlags log_level, c_ulong n_fields, void* user_data);
+	public enum LogWriterOutput : c_int
 	{
 		G_LOG_WRITER_HANDLED,
 		G_LOG_WRITER_UNHANDLED
 	}
 	[CRepr]
-	public struct GMainContext
+	public struct MainContext
 	{
 	}
 	[CRepr]
-	public struct GMainContextFlags
+	public struct MainContextFlags
 	{
 		public const int G_MAIN_CONTEXT_FLAGS_NONE = 0;
 		public const int G_MAIN_CONTEXT_FLAGS_OWNERLESS_POLLING = 1;
 	}
 	[CRepr]
-	public struct GMainLoop
+	public struct MainLoop
 	{
 	}
 	[CRepr]
-	public struct GMappedFile
+	public struct MappedFile
 	{
 	}
 	[CRepr]
-	public struct GMarkupCollectType
+	public struct MarkupCollectType
 	{
 		public const int G_MARKUP_COLLECT_INVALID = 0;
 		public const int G_MARKUP_COLLECT_STRING = 1;
@@ -477,7 +477,7 @@ class GLib
 		public const int G_MARKUP_COLLECT_TRISTATE = 4;
 		public const int G_MARKUP_COLLECT_OPTIONAL = 65536;
 	}
-	public enum GMarkupError : c_int
+	public enum MarkupError : c_int
 	{
 		G_MARKUP_ERROR_BAD_UTF8,
 		G_MARKUP_ERROR_EMPTY,
@@ -488,11 +488,11 @@ class GLib
 		G_MARKUP_ERROR_MISSING_ATTRIBUTE
 	}
 	[CRepr]
-	public struct GMarkupParseContext
+	public struct MarkupParseContext
 	{
 	}
 	[CRepr]
-	public struct GMarkupParseFlags
+	public struct MarkupParseFlags
 	{
 		public const int G_MARKUP_DEFAULT_FLAGS = 0;
 		public const int G_MARKUP_DO_NOT_USE_THIS_UNSUPPORTED_FLAG = 1;
@@ -501,34 +501,34 @@ class GLib
 		public const int G_MARKUP_IGNORE_QUALIFIED = 8;
 	}
 	[CRepr]
-	public struct GMarkupParser
+	public struct MarkupParser
 	{
 	}
 	[CRepr]
-	public struct GMatchInfo
+	public struct MatchInfo
 	{
 	}
 	[CRepr]
-	public struct GMemVTable
+	public struct MemVTable
 	{
 	}
 	[Union]
-	public struct GMutex
+	public struct Mutex
 	{
 		public void* p;
 	}
 	[CRepr]
-	public struct GNode
+	public struct Node
 	{
 		void* data;
-		GNode* next;
-		GNode* prev;
-		GNode* parent;
-		GNode* children;
+		Node* next;
+		Node* prev;
+		Node* parent;
+		Node* children;
 	}
-	public function void GNodeForeachFunc(GNode* node, void* data);
-	public function c_int GNodeTraverseFunc(GNode* node, void* data);
-	public enum GNormalizeMode : c_int
+	public function void NodeForeachFunc(Node node, void* data);
+	public function c_int NodeTraverseFunc(Node node, void* data);
+	public enum NormalizeMode : c_int
 	{
 		G_NORMALIZE_DEFAULT,
 		G_NORMALIZE_NFD,
@@ -539,24 +539,24 @@ class GLib
 		G_NORMALIZE_ALL_COMPOSE,
 		G_NORMALIZE_NFKC
 	}
-	public enum GNumberParserError : c_int
+	public enum NumberParserError : c_int
 	{
 		G_NUMBER_PARSER_ERROR_INVALID,
 		G_NUMBER_PARSER_ERROR_OUT_OF_BOUNDS
 	}
 	[CRepr]
-	public struct GOnce
+	public struct Once
 	{
-		 GOnceStatus status;
-		 void* retval;
+		OnceStatus status;
+		void* retval;
 	}
-	public enum GOnceStatus : c_int
+	public enum OnceStatus : c_int
 	{
 		G_ONCE_STATUS_NOTCALLED,
 		G_ONCE_STATUS_PROGRESS,
 		G_ONCE_STATUS_READY
 	}
-	public enum GOptionArg : c_int
+	public enum OptionArg : c_int
 	{
 		G_OPTION_ARG_NONE,
 		G_OPTION_ARG_STRING,
@@ -568,31 +568,31 @@ class GLib
 		G_OPTION_ARG_DOUBLE,
 		G_OPTION_ARG_INT64
 	}
-	public function c_int GOptionArgFunc( c_char* option_name,  c_char* value, void* data);
+	public function c_int OptionArgFunc(char8* option_name, char8* value, void* data);
 	[CRepr]
-	public struct GOptionContext
+	public struct OptionContext
 	{
 	}
 	[CRepr]
-	public struct GOptionEntry
+	public struct OptionEntry
 	{
-		 c_char* long_name;
+		char8* long_name;
 		c_char short_name;
 		c_int flags;
-		GOptionArg arg;
+		OptionArg arg;
 		void* arg_data;
-		 c_char* description;
-		 c_char* arg_description;
+		char8* description;
+		char8* arg_description;
 	}
-	public enum GOptionError : c_int
+	public enum OptionError : c_int
 	{
 		G_OPTION_ERROR_UNKNOWN_OPTION,
 		G_OPTION_ERROR_BAD_VALUE,
 		G_OPTION_ERROR_FAILED
 	}
-	public function void GOptionErrorFunc(GOptionContext* context, GOptionGroup* group, void* data);
+	public function void OptionErrorFunc(OptionContext context, OptionGroup group, void* data);
 	[CRepr]
-	public struct GOptionFlags
+	public struct OptionFlags
 	{
 		public const int G_OPTION_FLAG_NONE = 0;
 		public const int G_OPTION_FLAG_HIDDEN = 1;
@@ -604,66 +604,66 @@ class GLib
 		public const int G_OPTION_FLAG_NOALIAS = 64;
 	}
 	[CRepr]
-	public struct GOptionGroup
+	public struct OptionGroup
 	{
 	}
-	public function c_int GOptionParseFunc(GOptionContext* context, GOptionGroup* group, void* data);
+	public function c_int OptionParseFunc(OptionContext context, OptionGroup group, void* data);
 	[CRepr]
-	public struct GPathBuf
-	{
-	}
-	[CRepr]
-	public struct GPatternSpec
+	public struct PathBuf
 	{
 	}
 	[CRepr]
-	public struct GPollFD
+	public struct PatternSpec
+	{
+	}
+	[CRepr]
+	public struct PollFD
 	{
 		c_int fd;
 		c_ushort events;
 		c_ushort revents;
 	}
-	public function c_int GPollFunc(GPollFD* ufds, c_uint nfsd, c_int timeout_);
-	public function void GPrintFunc( c_char* string);
+	public function c_int PollFunc(PollFD ufds, c_uint nfsd, c_int timeout_);
+	public function void PrintFunc(char8* string);
 	[CRepr]
-	public struct GPrivate
+	public struct Private
 	{
 		void* p;
-		GDestroyNotify notify;
+		DestroyNotify notify;
 	}
 	[CRepr]
-	public struct GPtrArray
+	public struct PtrArray
 	{
-		void** pdata;
+		void* pdata;
 		c_uint len;
 	}
 	[CRepr]
-	public struct GQueue
+	public struct Queue
 	{
-		GList* head;
-		GList* tail;
+		GLib.List head;
+		GLib.List tail;
 		c_uint length;
 	}
 	[CRepr]
-	public struct GRWLock
+	public struct RWLock
 	{
 		void* p;
 	}
 	[CRepr]
-	public struct GRand
+	public struct Rand
 	{
 	}
 	[CRepr]
-	public struct GRecMutex
+	public struct RecMutex
 	{
 		void* p;
 	}
 	[CRepr]
-	public struct GRegex
+	public struct Regex
 	{
 	}
 	[CRepr]
-	public struct GRegexCompileFlags
+	public struct RegexCompileFlags
 	{
 		public const int G_REGEX_DEFAULT = 0;
 		public const int G_REGEX_CASELESS = 1;
@@ -685,7 +685,7 @@ class GLib
 		public const int G_REGEX_BSR_ANYCRLF = 8388608;
 		public const int G_REGEX_JAVASCRIPT_COMPAT = 33554432;
 	}
-	public enum GRegexError : c_int
+	public enum RegexError : c_int
 	{
 		G_REGEX_ERROR_COMPILE,
 		G_REGEX_ERROR_OPTIMIZE,
@@ -745,9 +745,9 @@ class GLib
 		G_REGEX_ERROR_NAME_TOO_LONG,
 		G_REGEX_ERROR_CHARACTER_VALUE_TOO_LARGE
 	}
-	public function c_int GRegexEvalCallback( GMatchInfo* match_info, GString* result, void* user_data);
+	public function c_int RegexEvalCallback(MatchInfo match_info, String result, void* user_data);
 	[CRepr]
-	public struct GRegexMatchFlags
+	public struct RegexMatchFlags
 	{
 		public const int G_REGEX_MATCH_DEFAULT = 0;
 		public const int G_REGEX_MATCH_ANCHORED = 16;
@@ -767,43 +767,43 @@ class GLib
 		public const int G_REGEX_MATCH_NOTEMPTY_ATSTART = 268435456;
 	}
 	[CRepr]
-	public struct GSList
+	public struct SList
 	{
 		void* data;
-		GSList* next;
+		GLib.SList* next;
 	}
 	[CRepr]
-	public struct GScanner
+	public struct Scanner
 	{
 		void* user_data;
 		c_uint max_parse_errors;
 		c_uint parse_errors;
-		 c_char* input_name;
-		GData* qdata;
-		GScannerConfig* config;
-		GTokenType token;
-		GTokenValue value;
+		char8* input_name;
+		Data qdata;
+		ScannerConfig config;
+		TokenType token;
+		TokenValue value;
 		c_uint line;
 		c_uint position;
-		GTokenType next_token;
-		GTokenValue next_value;
+		TokenType next_token;
+		TokenValue next_value;
 		c_uint next_line;
 		c_uint next_position;
-		GHashTable* symbol_table;
+		GLib.HashTable symbol_table;
 		c_int input_fd;
-		 c_char* text;
-		 c_char* text_end;
-		c_char* buffer;
+		char8* text;
+		char8* text_end;
+		char8* buffer;
 		c_uint scope_id;
-		GScannerMsgFunc msg_handler;
+		ScannerMsgFunc msg_handler;
 	}
 	[CRepr]
-	public struct GScannerConfig
+	public struct ScannerConfig
 	{
-		c_char* cset_skip_characters;
-		c_char* cset_identifier_first;
-		c_char* cset_identifier_nth;
-		c_char* cpair_comment_single;
+		char8* cset_skip_characters;
+		char8* cset_identifier_first;
+		char8* cset_identifier_nth;
+		char8* cpair_comment_single;
 		c_uint case_sensitive;
 		c_uint skip_comment_multi;
 		c_uint skip_comment_single;
@@ -828,29 +828,29 @@ class GLib
 		c_uint store_int64;
 		c_uint padding_dummy;
 	}
-	public function void GScannerMsgFunc(GScanner* scanner, c_char* message, c_int error);
-	public enum GSeekType : c_int
+	public function void ScannerMsgFunc(Scanner scanner, char8* message, c_int error);
+	public enum SeekType : c_int
 	{
 		G_SEEK_CUR,
 		G_SEEK_SET,
 		G_SEEK_END
 	}
 	[CRepr]
-	public struct GSequence
+	public struct Sequence
 	{
 	}
 	[CRepr]
-	public struct GSequenceIter
+	public struct SequenceIter
 	{
 	}
-	public function c_int GSequenceIterCompareFunc(GSequenceIter* a, GSequenceIter* b, void* data);
-	public enum GShellError : c_int
+	public function c_int SequenceIterCompareFunc(SequenceIter a, SequenceIter b, void* data);
+	public enum ShellError : c_int
 	{
 		G_SHELL_ERROR_BAD_QUOTING,
 		G_SHELL_ERROR_EMPTY_STRING,
 		G_SHELL_ERROR_FAILED
 	}
-	public enum GSliceConfig : c_int
+	public enum SliceConfig : c_int
 	{
 		G_SLICE_CONFIG_ALWAYS_MALLOC,
 		G_SLICE_CONFIG_BYPASS_MAGAZINES,
@@ -860,42 +860,42 @@ class GLib
 		G_SLICE_CONFIG_CONTENTION_COUNTER
 	}
 	[CRepr]
-	public struct GSource
+	public struct Source
 	{
 		void* callback_data;
-		GSourceCallbackFuncs* callback_funcs;
-		 GSourceFuncs* source_funcs;
+		SourceCallbackFuncs callback_funcs;
+		SourceFuncs source_funcs;
 		c_uint ref_count;
-		GMainContext* context;
+		MainContext context;
 		c_int priority;
 		c_uint flags;
 		c_uint source_id;
-		GSList* poll_fds;
-		GSource* prev;
-		GSource* next;
-		c_char* name;
-		GSourcePrivate* priv;
+		GLib.SList poll_fds;
+		Source* prev;
+		Source* next;
+		char8* name;
+		SourcePrivate priv;
 	}
 	[CRepr]
-	public struct GSourceCallbackFuncs
+	public struct SourceCallbackFuncs
 	{
 	}
-	public function void GSourceDisposeFunc(GSource* source);
-	public function void GSourceDummyMarshal();
-	public function c_int GSourceFunc(void* user_data);
+	public function void SourceDisposeFunc(Source source);
+	public function void SourceDummyMarshal();
+	public function c_int SourceFunc(void* user_data);
 	[CRepr]
-	public struct GSourceFuncs
+	public struct SourceFuncs
 	{
-		GSourceFunc closure_callback;
-		GSourceDummyMarshal closure_marshal;
+		SourceFunc closure_callback;
+		SourceDummyMarshal closure_marshal;
 	}
-	public function void GSourceOnceFunc(void* user_data);
+	public function void SourceOnceFunc(void* user_data);
 	[CRepr]
-	public struct GSourcePrivate
+	public struct SourcePrivate
 	{
 	}
-	public function void GSpawnChildSetupFunc(void* data);
-	public enum GSpawnError : c_int
+	public function void SpawnChildSetupFunc(void* data);
+	public enum SpawnError : c_int
 	{
 		G_SPAWN_ERROR_FORK,
 		G_SPAWN_ERROR_READ,
@@ -920,7 +920,7 @@ class GLib
 		G_SPAWN_ERROR_FAILED
 	}
 	[CRepr]
-	public struct GSpawnFlags
+	public struct SpawnFlags
 	{
 		public const int G_SPAWN_DEFAULT = 0;
 		public const int G_SPAWN_LEAVE_DESCRIPTORS_OPEN = 1;
@@ -937,30 +937,30 @@ class GLib
 		public const int G_SPAWN_STDIN_FROM_DEV_NULL = 2048;
 	}
 	[CRepr]
-	public struct GStatBuf
+	public struct StatBuf
 	{
 	}
 	[CRepr]
-	public struct GString
+	public struct String
 	{
-		c_char* str;
+		char8* str;
 		c_ulong len;
 		c_ulong allocated_len;
 	}
 	[CRepr]
-	public struct GStringChunk
+	public struct StringChunk
 	{
 	}
 	[CRepr]
-	public struct GStrvBuilder
+	public struct StrvBuilder
 	{
 	}
 	[CRepr]
-	public struct GTestCase
+	public struct TestCase
 	{
 	}
 	[CRepr]
-	public struct GTestConfig
+	public struct TestConfig
 	{
 		c_int test_initialized;
 		c_int test_quick;
@@ -969,31 +969,31 @@ class GLib
 		c_int test_quiet;
 		c_int test_undefined;
 	}
-	public function void GTestDataFunc(void* user_data);
-	public enum GTestFileType : c_int
+	public function void TestDataFunc(void* user_data);
+	public enum TestFileType : c_int
 	{
 		G_TEST_DIST,
 		G_TEST_BUILT
 	}
-	public function void GTestFixtureFunc(void* fixture, void* user_data);
-	public function void GTestFunc();
+	public function void TestFixtureFunc(void* fixture, void* user_data);
+	public function void TestFunc();
 	[CRepr]
-	public struct GTestLogBuffer
+	public struct TestLogBuffer
 	{
-		GString* data;
-		GSList* msgs;
+		String data;
+		GLib.SList msgs;
 	}
-	public function c_int GTestLogFatalFunc( c_char* log_domain, GLogLevelFlags log_level,  c_char* message, void* user_data);
+	public function c_int TestLogFatalFunc(char8* log_domain, LogLevelFlags log_level, char8* message, void* user_data);
 	[CRepr]
-	public struct GTestLogMsg
+	public struct TestLogMsg
 	{
-		GTestLogType log_type;
+		TestLogType log_type;
 		c_uint n_strings;
-		c_char** strings;
+		char8* strings;
 		c_uint n_nums;
-		double* nums;
+		double nums;
 	}
-	public enum GTestLogType : c_int
+	public enum TestLogType : c_int
 	{
 		G_TEST_LOG_NONE,
 		G_TEST_LOG_ERROR,
@@ -1008,7 +1008,7 @@ class GLib
 		G_TEST_LOG_START_SUITE,
 		G_TEST_LOG_STOP_SUITE
 	}
-	public enum GTestResult : c_int
+	public enum TestResult : c_int
 	{
 		G_TEST_RUN_SUCCESS,
 		G_TEST_RUN_SKIPPED,
@@ -1016,7 +1016,7 @@ class GLib
 		G_TEST_RUN_INCOMPLETE
 	}
 	[CRepr]
-	public struct GTestSubprocessFlags
+	public struct TestSubprocessFlags
 	{
 		public const int G_TEST_SUBPROCESS_DEFAULT = 0;
 		public const int G_TEST_SUBPROCESS_INHERIT_STDIN = 1;
@@ -1024,11 +1024,11 @@ class GLib
 		public const int G_TEST_SUBPROCESS_INHERIT_STDERR = 4;
 	}
 	[CRepr]
-	public struct GTestSuite
+	public struct TestSuite
 	{
 	}
 	[CRepr]
-	public struct GTestTrapFlags
+	public struct TestTrapFlags
 	{
 		public const int G_TEST_TRAP_DEFAULT = 0;
 		public const int G_TEST_TRAP_SILENCE_STDOUT = 128;
@@ -1036,42 +1036,42 @@ class GLib
 		public const int G_TEST_TRAP_INHERIT_STDIN = 512;
 	}
 	[CRepr]
-	public struct GThread
+	public struct Thread
 	{
 	}
-	public enum GThreadError : c_int
+	public enum ThreadError : c_int
 	{
 		G_THREAD_ERROR_AGAIN
 	}
-	public function void* GThreadFunc(void* data);
+	public function void* ThreadFunc(void* data);
 	[CRepr]
-	public struct GThreadPool
+	public struct ThreadPool
 	{
-		GFunc func;
+		Func func;
 		void* user_data;
 		c_int exclusive;
 	}
-	public enum GTimeType : c_int
+	public enum TimeType : c_int
 	{
 		G_TIME_TYPE_STANDARD,
 		G_TIME_TYPE_DAYLIGHT,
 		G_TIME_TYPE_UNIVERSAL
 	}
 	[CRepr]
-	public struct GTimeVal
+	public struct TimeVal
 	{
 		c_long tv_sec;
 		c_long tv_usec;
 	}
 	[CRepr]
-	public struct GTimeZone
+	public struct TimeZone
 	{
 	}
 	[CRepr]
-	public struct GTimer
+	public struct Timer
 	{
 	}
-	public enum GTokenType : c_int
+	public enum TokenType : c_int
 	{
 		G_TOKEN_EOF,
 		G_TOKEN_LEFT_PAREN,
@@ -1098,7 +1098,7 @@ class GLib
 		G_TOKEN_COMMENT_MULTI
 	}
 	[Union]
-	public struct GTokenValue
+	public struct TokenValue
 	{
 		public void* v_symbol;
 		public c_char* v_identifier;
@@ -1113,14 +1113,14 @@ class GLib
 		public c_uchar v_char;
 		public c_uint v_error;
 	}
-	public function  c_char* GTranslateFunc( c_char* str, void* data);
+	public function  c_char* TranslateFunc(char8* str, void* data);
 	[CRepr]
-	public struct GTrashStack
+	public struct TrashStack
 	{
-		GTrashStack* next;
+		TrashStack* next;
 	}
 	[CRepr]
-	public struct GTraverseFlags
+	public struct TraverseFlags
 	{
 		public const int G_TRAVERSE_LEAVES = 1;
 		public const int G_TRAVERSE_NON_LEAVES = 2;
@@ -1129,9 +1129,9 @@ class GLib
 		public const int G_TRAVERSE_LEAFS = 1;
 		public const int G_TRAVERSE_NON_LEAFS = 2;
 	}
-	public function c_int GTraverseFunc(void* key, void* value, void* data);
-	public function c_int GTraverseNodeFunc(GTreeNode* node, void* data);
-	public enum GTraverseType : c_int
+	public function c_int TraverseFunc(void* key, void* value, void* data);
+	public function c_int TraverseNodeFunc(TreeNode node, void* data);
+	public enum TraverseType : c_int
 	{
 		G_IN_ORDER,
 		G_PRE_ORDER,
@@ -1139,14 +1139,14 @@ class GLib
 		G_LEVEL_ORDER
 	}
 	[CRepr]
-	public struct GTree
+	public struct Tree
 	{
 	}
 	[CRepr]
-	public struct GTreeNode
+	public struct TreeNode
 	{
 	}
-	public enum GUnicodeBreakType : c_int
+	public enum UnicodeBreakType : c_int
 	{
 		G_UNICODE_BREAK_MANDATORY,
 		G_UNICODE_BREAK_CARRIAGE_RETURN,
@@ -1193,7 +1193,7 @@ class GLib
 		G_UNICODE_BREAK_EMOJI_MODIFIER,
 		G_UNICODE_BREAK_ZERO_WIDTH_JOINER
 	}
-	public enum GUnicodeScript : c_int
+	public enum UnicodeScript : c_int
 	{
 		G_UNICODE_SCRIPT_INVALID_CODE,
 		G_UNICODE_SCRIPT_COMMON,
@@ -1362,7 +1362,7 @@ class GLib
 		G_UNICODE_SCRIPT_KAWI,
 		G_UNICODE_SCRIPT_NAG_MUNDARI
 	}
-	public enum GUnicodeType : c_int
+	public enum UnicodeType : c_int
 	{
 		G_UNICODE_CONTROL,
 		G_UNICODE_FORMAT,
@@ -1395,12 +1395,12 @@ class GLib
 		G_UNICODE_PARAGRAPH_SEPARATOR,
 		G_UNICODE_SPACE_SEPARATOR
 	}
-	public function c_int GUnixFDSourceFunc(c_int fd, GIOCondition condition, void* user_data);
+	public function c_int UnixFDSourceFunc(c_int fd, IOCondition condition, void* user_data);
 	[CRepr]
-	public struct GUri
+	public struct Uri
 	{
 	}
-	public enum GUriError : c_int
+	public enum UriError : c_int
 	{
 		G_URI_ERROR_FAILED,
 		G_URI_ERROR_BAD_SCHEME,
@@ -1414,7 +1414,7 @@ class GLib
 		G_URI_ERROR_BAD_FRAGMENT
 	}
 	[CRepr]
-	public struct GUriFlags
+	public struct UriFlags
 	{
 		public const int G_URI_FLAGS_NONE = 0;
 		public const int G_URI_FLAGS_PARSE_RELAXED = 1;
@@ -1428,7 +1428,7 @@ class GLib
 		public const int G_URI_FLAGS_SCHEME_NORMALIZE = 256;
 	}
 	[CRepr]
-	public struct GUriHideFlags
+	public struct UriHideFlags
 	{
 		public const int G_URI_HIDE_NONE = 0;
 		public const int G_URI_HIDE_USERINFO = 1;
@@ -1438,7 +1438,7 @@ class GLib
 		public const int G_URI_HIDE_FRAGMENT = 16;
 	}
 	[CRepr]
-	public struct GUriParamsFlags
+	public struct UriParamsFlags
 	{
 		public const int G_URI_PARAMS_NONE = 0;
 		public const int G_URI_PARAMS_CASE_INSENSITIVE = 1;
@@ -1446,13 +1446,13 @@ class GLib
 		public const int G_URI_PARAMS_PARSE_RELAXED = 4;
 	}
 	[CRepr]
-	public struct GUriParamsIter
+	public struct UriParamsIter
 	{
 		c_int dummy0;
 		void* dummy1;
 		void* dummy2;
 	}
-	public enum GUserDirectory : c_int
+	public enum UserDirectory : c_int
 	{
 		G_USER_DIRECTORY_DESKTOP,
 		G_USER_DIRECTORY_DOCUMENTS,
@@ -1465,14 +1465,14 @@ class GLib
 		G_USER_N_DIRECTORIES
 	}
 	[CRepr]
-	public struct GVariant
+	public struct Variant
 	{
 	}
 	[CRepr]
-	public struct GVariantBuilder
+	public struct VariantBuilder
 	{
 	}
-	public enum GVariantClass : c_int
+	public enum VariantClass : c_int
 	{
 		G_VARIANT_CLASS_BOOLEAN,
 		G_VARIANT_CLASS_BYTE,
@@ -1494,14 +1494,14 @@ class GLib
 		G_VARIANT_CLASS_DICT_ENTRY
 	}
 	[CRepr]
-	public struct GVariantDict
+	public struct VariantDict
 	{
 	}
 	[CRepr]
-	public struct GVariantIter
+	public struct VariantIter
 	{
 	}
-	public enum GVariantParseError : c_int
+	public enum VariantParseError : c_int
 	{
 		G_VARIANT_PARSE_ERROR_FAILED,
 		G_VARIANT_PARSE_ERROR_BASIC_TYPE_EXPECTED,
@@ -1524,8 +1524,8 @@ class GLib
 		G_VARIANT_PARSE_ERROR_RECURSION
 	}
 	[CRepr]
-	public struct GVariantType
+	public struct VariantType
 	{
 	}
-	public function void GVoidFunc();
+	public function void VoidFunc();
 }

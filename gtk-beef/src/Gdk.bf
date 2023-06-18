@@ -2,18 +2,17 @@ namespace Gdk;
 
 using System;
 using System.Interop;
-
-using static Gio.Gio;
-using static GLib.GLib;
-using static GdkPixbuf.GdkPixbuf;
-using static Cairo.Cairo;
-using static GObject.GObject;
-using static Pango.Pango;
+using Gio;
+using GLib;
+using GObject;
+using cairo;
+using Pango;
+using GdkPixbuf;
 
 class Gdk
 {
 	[CRepr]
-	public struct GdkAnchorHints
+	public struct AnchorHints
 	{
 		public const int GDK_ANCHOR_FLIP_X = 1;
 		public const int GDK_ANCHOR_FLIP_Y = 2;
@@ -26,19 +25,19 @@ class Gdk
 		public const int GDK_ANCHOR_RESIZE = 48;
 	}
 	[CRepr]
-	public struct GdkAppLaunchContext;
+	public struct AppLaunchContext;
 	[LinkName("gdk_app_launch_context_get_display")]
-	public static extern GdkDisplay* app_launch_context_get_display(GdkAppLaunchContext* context);
+	public static extern Display AppLaunchContextGetDisplay(AppLaunchContext context);
 	[LinkName("gdk_app_launch_context_set_desktop")]
-	public static extern void app_launch_context_set_desktop(GdkAppLaunchContext* context, c_int desktop);
+	public static extern void AppLaunchContextSetDesktop(AppLaunchContext context, c_int desktop);
 	[LinkName("gdk_app_launch_context_set_icon")]
-	public static extern void app_launch_context_set_icon(GdkAppLaunchContext* context, GIcon* icon);
+	public static extern void AppLaunchContextSetIcon(AppLaunchContext context, Gio.Icon icon);
 	[LinkName("gdk_app_launch_context_set_icon_name")]
-	public static extern void app_launch_context_set_icon_name(GdkAppLaunchContext* context,  c_char* icon_name);
+	public static extern void AppLaunchContextSetIconName(AppLaunchContext context, char8* icon_name);
 	[LinkName("gdk_app_launch_context_set_timestamp")]
-	public static extern void app_launch_context_set_timestamp(GdkAppLaunchContext* context, c_uint timestamp);
+	public static extern void AppLaunchContextSetTimestamp(AppLaunchContext context, c_uint timestamp);
 	[CRepr]
-	public struct GdkAxisFlags
+	public struct AxisFlags
 	{
 		public const int GDK_AXIS_FLAG_X = 2;
 		public const int GDK_AXIS_FLAG_Y = 4;
@@ -52,7 +51,7 @@ class Gdk
 		public const int GDK_AXIS_FLAG_ROTATION = 1024;
 		public const int GDK_AXIS_FLAG_SLIDER = 2048;
 	}
-	public enum GdkAxisUse : c_int
+	public enum AxisUse : c_int
 	{
 		GDK_AXIS_IGNORE,
 		GDK_AXIS_X,
@@ -69,149 +68,149 @@ class Gdk
 		GDK_AXIS_LAST
 	}
 	[CRepr]
-	public struct GdkButtonEvent;
+	public struct ButtonEvent;
 	[LinkName("gdk_button_event_get_button")]
-	public static extern c_uint button_event_get_button(GdkEvent* event);
+	public static extern c_uint ButtonEventGetButton(ButtonEvent event);
 	[CRepr]
-	public struct GdkCairoContext;
+	public struct CairoContext;
 	[LinkName("gdk_cairo_context_cairo_create")]
-	public static extern cairo_t* cairo_context_cairo_create(GdkCairoContext* self);
+	public static extern cairo.Context CairoContextCairoCreate(CairoContext self);
 	[CRepr]
-	public struct GdkClipboard;
+	public struct Clipboard;
 	[LinkName("gdk_clipboard_get_content")]
-	public static extern GdkContentProvider* clipboard_get_content(GdkClipboard* clipboard);
+	public static extern ContentProvider ClipboardGetContent(Clipboard clipboard);
 	[LinkName("gdk_clipboard_get_display")]
-	public static extern GdkDisplay* clipboard_get_display(GdkClipboard* clipboard);
+	public static extern Display ClipboardGetDisplay(Clipboard clipboard);
 	[LinkName("gdk_clipboard_get_formats")]
-	public static extern GdkContentFormats* clipboard_get_formats(GdkClipboard* clipboard);
+	public static extern ContentFormats ClipboardGetFormats(Clipboard clipboard);
 	[LinkName("gdk_clipboard_is_local")]
-	public static extern c_int clipboard_is_local(GdkClipboard* clipboard);
+	public static extern c_int ClipboardIsLocal(Clipboard clipboard);
 	[LinkName("gdk_clipboard_read_async")]
-	public static extern void clipboard_read_async(GdkClipboard* clipboard, c_int io_priority, GCancellable* cancellable, GAsyncReadyCallback callback, void* user_data);
+	public static extern void ClipboardReadAsync(Clipboard clipboard, c_int io_priority, Gio.Cancellable cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gdk_clipboard_read_finish")]
-	public static extern GInputStream* clipboard_read_finish(GdkClipboard* clipboard, GAsyncResult* result,  c_char** out_mime_type);
+	public static extern Gio.InputStream ClipboardReadFinish(Clipboard clipboard, Gio.AsyncResult result, char8* out_mime_type);
 	[LinkName("gdk_clipboard_read_text_async")]
-	public static extern void clipboard_read_text_async(GdkClipboard* clipboard, GCancellable* cancellable, GAsyncReadyCallback callback, void* user_data);
+	public static extern void ClipboardReadTextAsync(Clipboard clipboard, Gio.Cancellable cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gdk_clipboard_read_text_finish")]
-	public static extern c_char* clipboard_read_text_finish(GdkClipboard* clipboard, GAsyncResult* result);
+	public static extern char8* ClipboardReadTextFinish(Clipboard clipboard, Gio.AsyncResult result);
 	[LinkName("gdk_clipboard_read_texture_async")]
-	public static extern void clipboard_read_texture_async(GdkClipboard* clipboard, GCancellable* cancellable, GAsyncReadyCallback callback, void* user_data);
+	public static extern void ClipboardReadTextureAsync(Clipboard clipboard, Gio.Cancellable cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gdk_clipboard_read_texture_finish")]
-	public static extern GdkTexture* clipboard_read_texture_finish(GdkClipboard* clipboard, GAsyncResult* result);
+	public static extern Texture ClipboardReadTextureFinish(Clipboard clipboard, Gio.AsyncResult result);
 	[LinkName("gdk_clipboard_read_value_async")]
-	public static extern void clipboard_read_value_async(GdkClipboard* clipboard, GType type, c_int io_priority, GCancellable* cancellable, GAsyncReadyCallback callback, void* user_data);
+	public static extern void ClipboardReadValueAsync(Clipboard clipboard, GLib.Type type, c_int io_priority, Gio.Cancellable cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gdk_clipboard_read_value_finish")]
-	public static extern  GValue* clipboard_read_value_finish(GdkClipboard* clipboard, GAsyncResult* result);
+	public static extern GObject.Value ClipboardReadValueFinish(Clipboard clipboard, Gio.AsyncResult result);
 	[LinkName("gdk_clipboard_set")]
-	public static extern void clipboard_set(GdkClipboard* clipboard, GType type);
+	public static extern void ClipboardSet(Clipboard clipboard, GLib.Type type);
 	[LinkName("gdk_clipboard_set_content")]
-	public static extern c_int clipboard_set_content(GdkClipboard* clipboard, GdkContentProvider* provider);
+	public static extern c_int ClipboardSetContent(Clipboard clipboard, ContentProvider provider);
 	[LinkName("gdk_clipboard_set_text")]
-	public static extern void clipboard_set_text(GdkClipboard* clipboard,  c_char* text);
+	public static extern void ClipboardSetText(Clipboard clipboard, char8* text);
 	[LinkName("gdk_clipboard_set_texture")]
-	public static extern void clipboard_set_texture(GdkClipboard* clipboard, GdkTexture* texture);
+	public static extern void ClipboardSetTexture(Clipboard clipboard, Texture texture);
 	[LinkName("gdk_clipboard_set_valist")]
-	public static extern void clipboard_set_valist(GdkClipboard* clipboard, GType type, VarArgs args);
+	public static extern void ClipboardSetValist(Clipboard clipboard, GLib.Type type, VarArgs args);
 	[LinkName("gdk_clipboard_set_value")]
-	public static extern void clipboard_set_value(GdkClipboard* clipboard,  GValue* value);
+	public static extern void ClipboardSetValue(Clipboard clipboard, GObject.Value value);
 	[LinkName("gdk_clipboard_store_async")]
-	public static extern void clipboard_store_async(GdkClipboard* clipboard, c_int io_priority, GCancellable* cancellable, GAsyncReadyCallback callback, void* user_data);
+	public static extern void ClipboardStoreAsync(Clipboard clipboard, c_int io_priority, Gio.Cancellable cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gdk_clipboard_store_finish")]
-	public static extern c_int clipboard_store_finish(GdkClipboard* clipboard, GAsyncResult* result);
-	public function void GdkContentDeserializeFunc(GdkContentDeserializer* deserializer);
+	public static extern c_int ClipboardStoreFinish(Clipboard clipboard, Gio.AsyncResult result);
+	public function void ContentDeserializeFunc(ContentDeserializer deserializer);
 	[CRepr]
-	public struct GdkContentDeserializer;
+	public struct ContentDeserializer;
 	[LinkName("gdk_content_deserializer_get_cancellable")]
-	public static extern GCancellable* content_deserializer_get_cancellable(GdkContentDeserializer* deserializer);
+	public static extern Gio.Cancellable ContentDeserializerGetCancellable(ContentDeserializer deserializer);
 	[LinkName("gdk_content_deserializer_get_gtype")]
-	public static extern GType content_deserializer_get_gtype(GdkContentDeserializer* deserializer);
+	public static extern GLib.Type ContentDeserializerGetGtype(ContentDeserializer deserializer);
 	[LinkName("gdk_content_deserializer_get_input_stream")]
-	public static extern GInputStream* content_deserializer_get_input_stream(GdkContentDeserializer* deserializer);
+	public static extern Gio.InputStream ContentDeserializerGetInputStream(ContentDeserializer deserializer);
 	[LinkName("gdk_content_deserializer_get_mime_type")]
-	public static extern  c_char* content_deserializer_get_mime_type(GdkContentDeserializer* deserializer);
+	public static extern char8* ContentDeserializerGetMimeType(ContentDeserializer deserializer);
 	[LinkName("gdk_content_deserializer_get_priority")]
-	public static extern c_int content_deserializer_get_priority(GdkContentDeserializer* deserializer);
+	public static extern c_int ContentDeserializerGetPriority(ContentDeserializer deserializer);
 	[LinkName("gdk_content_deserializer_get_task_data")]
-	public static extern void* content_deserializer_get_task_data(GdkContentDeserializer* deserializer);
+	public static extern void* ContentDeserializerGetTaskData(ContentDeserializer deserializer);
 	[LinkName("gdk_content_deserializer_get_user_data")]
-	public static extern void* content_deserializer_get_user_data(GdkContentDeserializer* deserializer);
+	public static extern void* ContentDeserializerGetUserData(ContentDeserializer deserializer);
 	[LinkName("gdk_content_deserializer_get_value")]
-	public static extern GValue* content_deserializer_get_value(GdkContentDeserializer* deserializer);
+	public static extern GObject.Value ContentDeserializerGetValue(ContentDeserializer deserializer);
 	[LinkName("gdk_content_deserializer_return_error")]
-	public static extern void content_deserializer_return_error(GdkContentDeserializer* deserializer, GError* error);
+	public static extern void ContentDeserializerReturnError(ContentDeserializer deserializer, GLib.Error error);
 	[LinkName("gdk_content_deserializer_return_success")]
-	public static extern void content_deserializer_return_success(GdkContentDeserializer* deserializer);
+	public static extern void ContentDeserializerReturnSuccess(ContentDeserializer deserializer);
 	[LinkName("gdk_content_deserializer_set_task_data")]
-	public static extern void content_deserializer_set_task_data(GdkContentDeserializer* deserializer, void* data, GDestroyNotify notify);
+	public static extern void ContentDeserializerSetTaskData(ContentDeserializer deserializer, void* data, GLib.DestroyNotify notify);
 	[CRepr]
-	public struct GdkContentFormats
+	public struct ContentFormats
 	{
 	}
 	[CRepr]
-	public struct GdkContentFormatsBuilder
+	public struct ContentFormatsBuilder
 	{
 	}
 	[CRepr]
-	public struct GdkContentProvider;
+	public struct ContentProvider;
 	[LinkName("gdk_content_provider_new_for_bytes")]
-	public static extern GdkContentProvider* content_provider_new_for_bytes( c_char* mime_type, GBytes* bytes);
+	public static extern ContentProvider ContentProviderNewForBytes(char8* mime_type, GLib.Bytes bytes);
 	[LinkName("gdk_content_provider_new_for_value")]
-	public static extern GdkContentProvider* content_provider_new_for_value( GValue* value);
+	public static extern ContentProvider ContentProviderNewForValue(GObject.Value value);
 	[LinkName("gdk_content_provider_new_typed")]
-	public static extern GdkContentProvider* content_provider_new_typed(GType type);
+	public static extern ContentProvider ContentProviderNewTyped(GLib.Type type);
 	[LinkName("gdk_content_provider_new_union")]
-	public static extern GdkContentProvider* content_provider_new_union(c_ulong n_providers);
+	public static extern ContentProvider ContentProviderNewUnion(c_ulong n_providers);
 	[LinkName("gdk_content_provider_content_changed")]
-	public static extern void content_provider_content_changed(GdkContentProvider* provider);
+	public static extern void ContentProviderContentChanged(ContentProvider provider);
 	[LinkName("gdk_content_provider_get_value")]
-	public static extern c_int content_provider_get_value(GdkContentProvider* provider, GValue* value);
+	public static extern c_int ContentProviderGetValue(ContentProvider provider, GObject.Value value);
 	[LinkName("gdk_content_provider_ref_formats")]
-	public static extern GdkContentFormats* content_provider_ref_formats(GdkContentProvider* provider);
+	public static extern ContentFormats ContentProviderRefFormats(ContentProvider provider);
 	[LinkName("gdk_content_provider_ref_storable_formats")]
-	public static extern GdkContentFormats* content_provider_ref_storable_formats(GdkContentProvider* provider);
+	public static extern ContentFormats ContentProviderRefStorableFormats(ContentProvider provider);
 	[LinkName("gdk_content_provider_write_mime_type_async")]
-	public static extern void content_provider_write_mime_type_async(GdkContentProvider* provider,  c_char* mime_type, GOutputStream* stream, c_int io_priority, GCancellable* cancellable, GAsyncReadyCallback callback, void* user_data);
+	public static extern void ContentProviderWriteMimeTypeAsync(ContentProvider provider, char8* mime_type, Gio.OutputStream stream, c_int io_priority, Gio.Cancellable cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gdk_content_provider_write_mime_type_finish")]
-	public static extern c_int content_provider_write_mime_type_finish(GdkContentProvider* provider, GAsyncResult* result);
+	public static extern c_int ContentProviderWriteMimeTypeFinish(ContentProvider provider, Gio.AsyncResult result);
 	[CRepr]
-	public struct GdkContentProviderClass
+	public struct ContentProviderClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
-	public function void GdkContentSerializeFunc(GdkContentSerializer* serializer);
+	public function void ContentSerializeFunc(ContentSerializer serializer);
 	[CRepr]
-	public struct GdkContentSerializer;
+	public struct ContentSerializer;
 	[LinkName("gdk_content_serializer_get_cancellable")]
-	public static extern GCancellable* content_serializer_get_cancellable(GdkContentSerializer* serializer);
+	public static extern Gio.Cancellable ContentSerializerGetCancellable(ContentSerializer serializer);
 	[LinkName("gdk_content_serializer_get_gtype")]
-	public static extern GType content_serializer_get_gtype(GdkContentSerializer* serializer);
+	public static extern GLib.Type ContentSerializerGetGtype(ContentSerializer serializer);
 	[LinkName("gdk_content_serializer_get_mime_type")]
-	public static extern  c_char* content_serializer_get_mime_type(GdkContentSerializer* serializer);
+	public static extern char8* ContentSerializerGetMimeType(ContentSerializer serializer);
 	[LinkName("gdk_content_serializer_get_output_stream")]
-	public static extern GOutputStream* content_serializer_get_output_stream(GdkContentSerializer* serializer);
+	public static extern Gio.OutputStream ContentSerializerGetOutputStream(ContentSerializer serializer);
 	[LinkName("gdk_content_serializer_get_priority")]
-	public static extern c_int content_serializer_get_priority(GdkContentSerializer* serializer);
+	public static extern c_int ContentSerializerGetPriority(ContentSerializer serializer);
 	[LinkName("gdk_content_serializer_get_task_data")]
-	public static extern void* content_serializer_get_task_data(GdkContentSerializer* serializer);
+	public static extern void* ContentSerializerGetTaskData(ContentSerializer serializer);
 	[LinkName("gdk_content_serializer_get_user_data")]
-	public static extern void* content_serializer_get_user_data(GdkContentSerializer* serializer);
+	public static extern void* ContentSerializerGetUserData(ContentSerializer serializer);
 	[LinkName("gdk_content_serializer_get_value")]
-	public static extern  GValue* content_serializer_get_value(GdkContentSerializer* serializer);
+	public static extern GObject.Value ContentSerializerGetValue(ContentSerializer serializer);
 	[LinkName("gdk_content_serializer_return_error")]
-	public static extern void content_serializer_return_error(GdkContentSerializer* serializer, GError* error);
+	public static extern void ContentSerializerReturnError(ContentSerializer serializer, GLib.Error error);
 	[LinkName("gdk_content_serializer_return_success")]
-	public static extern void content_serializer_return_success(GdkContentSerializer* serializer);
+	public static extern void ContentSerializerReturnSuccess(ContentSerializer serializer);
 	[LinkName("gdk_content_serializer_set_task_data")]
-	public static extern void content_serializer_set_task_data(GdkContentSerializer* serializer, void* data, GDestroyNotify notify);
+	public static extern void ContentSerializerSetTaskData(ContentSerializer serializer, void* data, GLib.DestroyNotify notify);
 	[CRepr]
-	public struct GdkCrossingEvent;
+	public struct CrossingEvent;
 	[LinkName("gdk_crossing_event_get_detail")]
-	public static extern GdkNotifyType crossing_event_get_detail(GdkEvent* event);
+	public static extern NotifyType CrossingEventGetDetail(CrossingEvent event);
 	[LinkName("gdk_crossing_event_get_focus")]
-	public static extern c_int crossing_event_get_focus(GdkEvent* event);
+	public static extern c_int CrossingEventGetFocus(CrossingEvent event);
 	[LinkName("gdk_crossing_event_get_mode")]
-	public static extern GdkCrossingMode crossing_event_get_mode(GdkEvent* event);
-	public enum GdkCrossingMode : c_int
+	public static extern CrossingMode CrossingEventGetMode(CrossingEvent event);
+	public enum CrossingMode : c_int
 	{
 		GDK_CROSSING_NORMAL,
 		GDK_CROSSING_GRAB,
@@ -224,87 +223,87 @@ class Gdk
 		GDK_CROSSING_DEVICE_SWITCH
 	}
 	[CRepr]
-	public struct GdkCursor;
+	public struct Cursor;
 	[LinkName("gdk_cursor_new_from_name")]
-	public static extern GdkCursor* cursor_new_from_name( c_char* name, GdkCursor* fallback);
+	public static extern Cursor CursorNewFromName(char8* name, Cursor fallback);
 	[LinkName("gdk_cursor_new_from_texture")]
-	public static extern GdkCursor* cursor_new_from_texture(GdkTexture* texture, c_int hotspot_x, c_int hotspot_y, GdkCursor* fallback);
+	public static extern Cursor CursorNewFromTexture(Texture texture, c_int hotspot_x, c_int hotspot_y, Cursor fallback);
 	[LinkName("gdk_cursor_get_fallback")]
-	public static extern GdkCursor* cursor_get_fallback(GdkCursor* cursor);
+	public static extern Cursor CursorGetFallback(Cursor cursor);
 	[LinkName("gdk_cursor_get_hotspot_x")]
-	public static extern c_int cursor_get_hotspot_x(GdkCursor* cursor);
+	public static extern c_int CursorGetHotspotX(Cursor cursor);
 	[LinkName("gdk_cursor_get_hotspot_y")]
-	public static extern c_int cursor_get_hotspot_y(GdkCursor* cursor);
+	public static extern c_int CursorGetHotspotY(Cursor cursor);
 	[LinkName("gdk_cursor_get_name")]
-	public static extern  c_char* cursor_get_name(GdkCursor* cursor);
+	public static extern char8* CursorGetName(Cursor cursor);
 	[LinkName("gdk_cursor_get_texture")]
-	public static extern GdkTexture* cursor_get_texture(GdkCursor* cursor);
+	public static extern Texture CursorGetTexture(Cursor cursor);
 	[CRepr]
-	public struct GdkDNDEvent;
+	public struct DNDEvent;
 	[LinkName("gdk_dnd_event_get_drop")]
-	public static extern GdkDrop* dnd_event_get_drop(GdkEvent* event);
+	public static extern Drop DndEventGetDrop(DNDEvent event);
 	[CRepr]
-	public struct GdkDeleteEvent;
+	public struct DeleteEvent;
 	[CRepr]
-	public struct GdkDevice;
+	public struct Device;
 	[LinkName("gdk_device_get_caps_lock_state")]
-	public static extern c_int device_get_caps_lock_state(GdkDevice* device);
+	public static extern c_int DeviceGetCapsLockState(Device device);
 	[LinkName("gdk_device_get_device_tool")]
-	public static extern GdkDeviceTool* device_get_device_tool(GdkDevice* device);
+	public static extern DeviceTool DeviceGetDeviceTool(Device device);
 	[LinkName("gdk_device_get_direction")]
-	public static extern PangoDirection device_get_direction(GdkDevice* device);
+	public static extern Pango.Direction DeviceGetDirection(Device device);
 	[LinkName("gdk_device_get_display")]
-	public static extern GdkDisplay* device_get_display(GdkDevice* device);
+	public static extern Display DeviceGetDisplay(Device device);
 	[LinkName("gdk_device_get_has_cursor")]
-	public static extern c_int device_get_has_cursor(GdkDevice* device);
+	public static extern c_int DeviceGetHasCursor(Device device);
 	[LinkName("gdk_device_get_modifier_state")]
-	public static extern GdkModifierType device_get_modifier_state(GdkDevice* device);
+	public static extern ModifierType DeviceGetModifierState(Device device);
 	[LinkName("gdk_device_get_name")]
-	public static extern  c_char* device_get_name(GdkDevice* device);
+	public static extern char8* DeviceGetName(Device device);
 	[LinkName("gdk_device_get_num_lock_state")]
-	public static extern c_int device_get_num_lock_state(GdkDevice* device);
+	public static extern c_int DeviceGetNumLockState(Device device);
 	[LinkName("gdk_device_get_num_touches")]
-	public static extern c_uint device_get_num_touches(GdkDevice* device);
+	public static extern c_uint DeviceGetNumTouches(Device device);
 	[LinkName("gdk_device_get_product_id")]
-	public static extern  c_char* device_get_product_id(GdkDevice* device);
+	public static extern char8* DeviceGetProductId(Device device);
 	[LinkName("gdk_device_get_scroll_lock_state")]
-	public static extern c_int device_get_scroll_lock_state(GdkDevice* device);
+	public static extern c_int DeviceGetScrollLockState(Device device);
 	[LinkName("gdk_device_get_seat")]
-	public static extern GdkSeat* device_get_seat(GdkDevice* device);
+	public static extern Seat DeviceGetSeat(Device device);
 	[LinkName("gdk_device_get_source")]
-	public static extern GdkInputSource device_get_source(GdkDevice* device);
+	public static extern InputSource DeviceGetSource(Device device);
 	[LinkName("gdk_device_get_surface_at_position")]
-	public static extern GdkSurface* device_get_surface_at_position(GdkDevice* device, double* win_x, double* win_y);
+	public static extern Surface DeviceGetSurfaceAtPosition(Device device, double win_x, double win_y);
 	[LinkName("gdk_device_get_timestamp")]
-	public static extern c_uint device_get_timestamp(GdkDevice* device);
+	public static extern c_uint DeviceGetTimestamp(Device device);
 	[LinkName("gdk_device_get_vendor_id")]
-	public static extern  c_char* device_get_vendor_id(GdkDevice* device);
+	public static extern char8* DeviceGetVendorId(Device device);
 	[LinkName("gdk_device_has_bidi_layouts")]
-	public static extern c_int device_has_bidi_layouts(GdkDevice* device);
+	public static extern c_int DeviceHasBidiLayouts(Device device);
 	[CRepr]
-	public struct GdkDevicePad
+	public struct DevicePad
 	{	}
-	public enum GdkDevicePadFeature : c_int
+	public enum DevicePadFeature : c_int
 	{
 		GDK_DEVICE_PAD_FEATURE_BUTTON,
 		GDK_DEVICE_PAD_FEATURE_RING,
 		GDK_DEVICE_PAD_FEATURE_STRIP
 	}
 	[CRepr]
-	public struct GdkDevicePadInterface
+	public struct DevicePadInterface
 	{
 	}
 	[CRepr]
-	public struct GdkDeviceTool;
+	public struct DeviceTool;
 	[LinkName("gdk_device_tool_get_axes")]
-	public static extern GdkAxisFlags device_tool_get_axes(GdkDeviceTool* tool);
+	public static extern AxisFlags DeviceToolGetAxes(DeviceTool tool);
 	[LinkName("gdk_device_tool_get_hardware_id")]
-	public static extern c_ulonglong device_tool_get_hardware_id(GdkDeviceTool* tool);
+	public static extern c_ulonglong DeviceToolGetHardwareId(DeviceTool tool);
 	[LinkName("gdk_device_tool_get_serial")]
-	public static extern c_ulonglong device_tool_get_serial(GdkDeviceTool* tool);
+	public static extern c_ulonglong DeviceToolGetSerial(DeviceTool tool);
 	[LinkName("gdk_device_tool_get_tool_type")]
-	public static extern GdkDeviceToolType device_tool_get_tool_type(GdkDeviceTool* tool);
-	public enum GdkDeviceToolType : c_int
+	public static extern DeviceToolType DeviceToolGetToolType(DeviceTool tool);
+	public enum DeviceToolType : c_int
 	{
 		GDK_DEVICE_TOOL_TYPE_UNKNOWN,
 		GDK_DEVICE_TOOL_TYPE_PEN,
@@ -316,203 +315,203 @@ class Gdk
 		GDK_DEVICE_TOOL_TYPE_LENS
 	}
 	[CRepr]
-	public struct GdkDisplay;
+	public struct Display;
 	[LinkName("gdk_display_beep")]
-	public static extern void display_beep(GdkDisplay* display);
+	public static extern void DisplayBeep(Display display);
 	[LinkName("gdk_display_close")]
-	public static extern void display_close(GdkDisplay* display);
+	public static extern void DisplayClose(Display display);
 	[LinkName("gdk_display_create_gl_context")]
-	public static extern GdkGLContext* display_create_gl_context(GdkDisplay* self);
+	public static extern GLContext DisplayCreateGlContext(Display self);
 	[LinkName("gdk_display_device_is_grabbed")]
-	public static extern c_int display_device_is_grabbed(GdkDisplay* display, GdkDevice* device);
+	public static extern c_int DisplayDeviceIsGrabbed(Display display, Device device);
 	[LinkName("gdk_display_flush")]
-	public static extern void display_flush(GdkDisplay* display);
+	public static extern void DisplayFlush(Display display);
 	[LinkName("gdk_display_get_app_launch_context")]
-	public static extern GdkAppLaunchContext* display_get_app_launch_context(GdkDisplay* display);
+	public static extern AppLaunchContext DisplayGetAppLaunchContext(Display display);
 	[LinkName("gdk_display_get_clipboard")]
-	public static extern GdkClipboard* display_get_clipboard(GdkDisplay* display);
+	public static extern Clipboard DisplayGetClipboard(Display display);
 	[LinkName("gdk_display_get_default_seat")]
-	public static extern GdkSeat* display_get_default_seat(GdkDisplay* display);
+	public static extern Seat DisplayGetDefaultSeat(Display display);
 	[LinkName("gdk_display_get_monitor_at_surface")]
-	public static extern GdkMonitor* display_get_monitor_at_surface(GdkDisplay* display, GdkSurface* surface);
+	public static extern Monitor DisplayGetMonitorAtSurface(Display display, Surface surface);
 	[LinkName("gdk_display_get_monitors")]
-	public static extern GListModel* display_get_monitors(GdkDisplay* self);
+	public static extern Gio.ListModel DisplayGetMonitors(Display self);
 	[LinkName("gdk_display_get_name")]
-	public static extern  c_char* display_get_name(GdkDisplay* display);
+	public static extern char8* DisplayGetName(Display display);
 	[LinkName("gdk_display_get_primary_clipboard")]
-	public static extern GdkClipboard* display_get_primary_clipboard(GdkDisplay* display);
+	public static extern Clipboard DisplayGetPrimaryClipboard(Display display);
 	[LinkName("gdk_display_get_setting")]
-	public static extern c_int display_get_setting(GdkDisplay* display,  c_char* name, GValue* value);
+	public static extern c_int DisplayGetSetting(Display display, char8* name, GObject.Value value);
 	[LinkName("gdk_display_get_startup_notification_id")]
-	public static extern  c_char* display_get_startup_notification_id(GdkDisplay* display);
+	public static extern char8* DisplayGetStartupNotificationId(Display display);
 	[LinkName("gdk_display_is_closed")]
-	public static extern c_int display_is_closed(GdkDisplay* display);
+	public static extern c_int DisplayIsClosed(Display display);
 	[LinkName("gdk_display_is_composited")]
-	public static extern c_int display_is_composited(GdkDisplay* display);
+	public static extern c_int DisplayIsComposited(Display display);
 	[LinkName("gdk_display_is_rgba")]
-	public static extern c_int display_is_rgba(GdkDisplay* display);
+	public static extern c_int DisplayIsRgba(Display display);
 	[LinkName("gdk_display_list_seats")]
-	public static extern GList* display_list_seats(GdkDisplay* display);
+	public static extern GLib.List DisplayListSeats(Display display);
 	[LinkName("gdk_display_map_keycode")]
-	public static extern c_int display_map_keycode(GdkDisplay* display, c_uint keycode, c_int* n_entries);
+	public static extern c_int DisplayMapKeycode(Display display, c_uint keycode, c_int n_entries);
 	[LinkName("gdk_display_map_keyval")]
-	public static extern c_int display_map_keyval(GdkDisplay* display, c_uint keyval, c_int* n_keys);
+	public static extern c_int DisplayMapKeyval(Display display, c_uint keyval, c_int n_keys);
 	[LinkName("gdk_display_notify_startup_complete")]
-	public static extern void display_notify_startup_complete(GdkDisplay* display,  c_char* startup_id);
+	public static extern void DisplayNotifyStartupComplete(Display display, char8* startup_id);
 	[LinkName("gdk_display_prepare_gl")]
-	public static extern c_int display_prepare_gl(GdkDisplay* self);
+	public static extern c_int DisplayPrepareGl(Display self);
 	[LinkName("gdk_display_put_event")]
-	public static extern void display_put_event(GdkDisplay* display, GdkEvent* event);
+	public static extern void DisplayPutEvent(Display display, Event event);
 	[LinkName("gdk_display_supports_input_shapes")]
-	public static extern c_int display_supports_input_shapes(GdkDisplay* display);
+	public static extern c_int DisplaySupportsInputShapes(Display display);
 	[LinkName("gdk_display_sync")]
-	public static extern void display_sync(GdkDisplay* display);
+	public static extern void DisplaySync(Display display);
 	[LinkName("gdk_display_translate_key")]
-	public static extern c_int display_translate_key(GdkDisplay* display, c_uint keycode, GdkModifierType state, c_int group, c_uint* keyval, c_int* effective_group, c_int* level, GdkModifierType* consumed);
+	public static extern c_int DisplayTranslateKey(Display display, c_uint keycode, ModifierType state, c_int group, c_uint keyval, c_int effective_group, c_int level, ModifierType consumed);
 	[CRepr]
-	public struct GdkDisplayManager;
+	public struct DisplayManager;
 	[LinkName("gdk_display_manager_get_default_display")]
-	public static extern GdkDisplay* display_manager_get_default_display(GdkDisplayManager* manager);
+	public static extern Display DisplayManagerGetDefaultDisplay(DisplayManager manager);
 	[LinkName("gdk_display_manager_list_displays")]
-	public static extern GSList* display_manager_list_displays(GdkDisplayManager* manager);
+	public static extern GLib.SList DisplayManagerListDisplays(DisplayManager manager);
 	[LinkName("gdk_display_manager_open_display")]
-	public static extern GdkDisplay* display_manager_open_display(GdkDisplayManager* manager,  c_char* name);
+	public static extern Display DisplayManagerOpenDisplay(DisplayManager manager, char8* name);
 	[LinkName("gdk_display_manager_set_default_display")]
-	public static extern void display_manager_set_default_display(GdkDisplayManager* manager, GdkDisplay* display);
+	public static extern void DisplayManagerSetDefaultDisplay(DisplayManager manager, Display display);
 	[CRepr]
-	public struct GdkDrag;
+	public struct Drag;
 	[LinkName("gdk_drag_drop_done")]
-	public static extern void drag_drop_done(GdkDrag* drag, c_int success);
+	public static extern void DragDropDone(Drag drag, c_int success);
 	[LinkName("gdk_drag_get_actions")]
-	public static extern GdkDragAction drag_get_actions(GdkDrag* drag);
+	public static extern DragAction DragGetActions(Drag drag);
 	[LinkName("gdk_drag_get_content")]
-	public static extern GdkContentProvider* drag_get_content(GdkDrag* drag);
+	public static extern ContentProvider DragGetContent(Drag drag);
 	[LinkName("gdk_drag_get_device")]
-	public static extern GdkDevice* drag_get_device(GdkDrag* drag);
+	public static extern Device DragGetDevice(Drag drag);
 	[LinkName("gdk_drag_get_display")]
-	public static extern GdkDisplay* drag_get_display(GdkDrag* drag);
+	public static extern Display DragGetDisplay(Drag drag);
 	[LinkName("gdk_drag_get_drag_surface")]
-	public static extern GdkSurface* drag_get_drag_surface(GdkDrag* drag);
+	public static extern Surface DragGetDragSurface(Drag drag);
 	[LinkName("gdk_drag_get_formats")]
-	public static extern GdkContentFormats* drag_get_formats(GdkDrag* drag);
+	public static extern ContentFormats DragGetFormats(Drag drag);
 	[LinkName("gdk_drag_get_selected_action")]
-	public static extern GdkDragAction drag_get_selected_action(GdkDrag* drag);
+	public static extern DragAction DragGetSelectedAction(Drag drag);
 	[LinkName("gdk_drag_get_surface")]
-	public static extern GdkSurface* drag_get_surface(GdkDrag* drag);
+	public static extern Surface DragGetSurface(Drag drag);
 	[LinkName("gdk_drag_set_hotspot")]
-	public static extern void drag_set_hotspot(GdkDrag* drag, c_int hot_x, c_int hot_y);
+	public static extern void DragSetHotspot(Drag drag, c_int hot_x, c_int hot_y);
 	[CRepr]
-	public struct GdkDragAction
+	public struct DragAction
 	{
 		public const int GDK_ACTION_COPY = 1;
 		public const int GDK_ACTION_MOVE = 2;
 		public const int GDK_ACTION_LINK = 4;
 		public const int GDK_ACTION_ASK = 8;
 	}
-	public enum GdkDragCancelReason : c_int
+	public enum DragCancelReason : c_int
 	{
 		GDK_DRAG_CANCEL_NO_TARGET,
 		GDK_DRAG_CANCEL_USER_CANCELLED,
 		GDK_DRAG_CANCEL_ERROR
 	}
 	[CRepr]
-	public struct GdkDragSurface
+	public struct DragSurface
 	{	}
 	[CRepr]
-	public struct GdkDragSurfaceInterface
+	public struct DragSurfaceInterface
 	{
 	}
 	[CRepr]
-	public struct GdkDragSurfaceSize
+	public struct DragSurfaceSize
 	{
 	}
 	[CRepr]
-	public struct GdkDrawContext;
+	public struct DrawContext;
 	[LinkName("gdk_draw_context_begin_frame")]
-	public static extern void draw_context_begin_frame(GdkDrawContext* context,  cairo_region_t* region);
+	public static extern void DrawContextBeginFrame(DrawContext context, cairo.Region region);
 	[LinkName("gdk_draw_context_end_frame")]
-	public static extern void draw_context_end_frame(GdkDrawContext* context);
+	public static extern void DrawContextEndFrame(DrawContext context);
 	[LinkName("gdk_draw_context_get_display")]
-	public static extern GdkDisplay* draw_context_get_display(GdkDrawContext* context);
+	public static extern Display DrawContextGetDisplay(DrawContext context);
 	[LinkName("gdk_draw_context_get_frame_region")]
-	public static extern  cairo_region_t* draw_context_get_frame_region(GdkDrawContext* context);
+	public static extern cairo.Region DrawContextGetFrameRegion(DrawContext context);
 	[LinkName("gdk_draw_context_get_surface")]
-	public static extern GdkSurface* draw_context_get_surface(GdkDrawContext* context);
+	public static extern Surface DrawContextGetSurface(DrawContext context);
 	[LinkName("gdk_draw_context_is_in_frame")]
-	public static extern c_int draw_context_is_in_frame(GdkDrawContext* context);
+	public static extern c_int DrawContextIsInFrame(DrawContext context);
 	[CRepr]
-	public struct GdkDrop;
+	public struct Drop;
 	[LinkName("gdk_drop_finish")]
-	public static extern void drop_finish(GdkDrop* self, GdkDragAction action);
+	public static extern void DropFinish(Drop self, DragAction action);
 	[LinkName("gdk_drop_get_actions")]
-	public static extern GdkDragAction drop_get_actions(GdkDrop* self);
+	public static extern DragAction DropGetActions(Drop self);
 	[LinkName("gdk_drop_get_device")]
-	public static extern GdkDevice* drop_get_device(GdkDrop* self);
+	public static extern Device DropGetDevice(Drop self);
 	[LinkName("gdk_drop_get_display")]
-	public static extern GdkDisplay* drop_get_display(GdkDrop* self);
+	public static extern Display DropGetDisplay(Drop self);
 	[LinkName("gdk_drop_get_drag")]
-	public static extern GdkDrag* drop_get_drag(GdkDrop* self);
+	public static extern Drag DropGetDrag(Drop self);
 	[LinkName("gdk_drop_get_formats")]
-	public static extern GdkContentFormats* drop_get_formats(GdkDrop* self);
+	public static extern ContentFormats DropGetFormats(Drop self);
 	[LinkName("gdk_drop_get_surface")]
-	public static extern GdkSurface* drop_get_surface(GdkDrop* self);
+	public static extern Surface DropGetSurface(Drop self);
 	[LinkName("gdk_drop_read_async")]
-	public static extern void drop_read_async(GdkDrop* self, c_int io_priority, GCancellable* cancellable, GAsyncReadyCallback callback, void* user_data);
+	public static extern void DropReadAsync(Drop self, c_int io_priority, Gio.Cancellable cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gdk_drop_read_finish")]
-	public static extern GInputStream* drop_read_finish(GdkDrop* self, GAsyncResult* result,  c_char** out_mime_type);
+	public static extern Gio.InputStream DropReadFinish(Drop self, Gio.AsyncResult result, char8* out_mime_type);
 	[LinkName("gdk_drop_read_value_async")]
-	public static extern void drop_read_value_async(GdkDrop* self, GType type, c_int io_priority, GCancellable* cancellable, GAsyncReadyCallback callback, void* user_data);
+	public static extern void DropReadValueAsync(Drop self, GLib.Type type, c_int io_priority, Gio.Cancellable cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gdk_drop_read_value_finish")]
-	public static extern  GValue* drop_read_value_finish(GdkDrop* self, GAsyncResult* result);
+	public static extern GObject.Value DropReadValueFinish(Drop self, Gio.AsyncResult result);
 	[LinkName("gdk_drop_status")]
-	public static extern void drop_status(GdkDrop* self, GdkDragAction actions, GdkDragAction preferred);
+	public static extern void DropStatus(Drop self, DragAction actions, DragAction preferred);
 	[CRepr]
-	public struct GdkEvent;
+	public struct Event;
 	[LinkName("gdk_events_get_angle")]
-	public static extern c_int events_get_angle(GdkEvent* event1, GdkEvent* event2, double* angle);
+	public static extern c_int EventsGetAngle(Event event1, Event event2, double angle);
 	[LinkName("gdk_events_get_center")]
-	public static extern c_int events_get_center(GdkEvent* event1, GdkEvent* event2, double* x, double* y);
+	public static extern c_int EventsGetCenter(Event event1, Event event2, double x, double y);
 	[LinkName("gdk_events_get_distance")]
-	public static extern c_int events_get_distance(GdkEvent* event1, GdkEvent* event2, double* distance);
+	public static extern c_int EventsGetDistance(Event event1, Event event2, double distance);
 	[LinkName("gdk_event_get_axes")]
-	public static extern c_int event_get_axes(GdkEvent* event, c_uint* n_axes);
+	public static extern c_int EventGetAxes(Event event, c_uint n_axes);
 	[LinkName("gdk_event_get_axis")]
-	public static extern c_int event_get_axis(GdkEvent* event, GdkAxisUse axis_use, double* value);
+	public static extern c_int EventGetAxis(Event event, AxisUse axis_use, double value);
 	[LinkName("gdk_event_get_device")]
-	public static extern GdkDevice* event_get_device(GdkEvent* event);
+	public static extern Device EventGetDevice(Event event);
 	[LinkName("gdk_event_get_device_tool")]
-	public static extern GdkDeviceTool* event_get_device_tool(GdkEvent* event);
+	public static extern DeviceTool EventGetDeviceTool(Event event);
 	[LinkName("gdk_event_get_display")]
-	public static extern GdkDisplay* event_get_display(GdkEvent* event);
+	public static extern Display EventGetDisplay(Event event);
 	[LinkName("gdk_event_get_event_sequence")]
-	public static extern GdkEventSequence* event_get_event_sequence(GdkEvent* event);
+	public static extern EventSequence EventGetEventSequence(Event event);
 	[LinkName("gdk_event_get_event_type")]
-	public static extern GdkEventType event_get_event_type(GdkEvent* event);
+	public static extern EventType EventGetEventType(Event event);
 	[LinkName("gdk_event_get_history")]
-	public static extern GdkTimeCoord* event_get_history(GdkEvent* event, c_uint* out_n_coords);
+	public static extern TimeCoord EventGetHistory(Event event, c_uint out_n_coords);
 	[LinkName("gdk_event_get_modifier_state")]
-	public static extern GdkModifierType event_get_modifier_state(GdkEvent* event);
+	public static extern ModifierType EventGetModifierState(Event event);
 	[LinkName("gdk_event_get_pointer_emulated")]
-	public static extern c_int event_get_pointer_emulated(GdkEvent* event);
+	public static extern c_int EventGetPointerEmulated(Event event);
 	[LinkName("gdk_event_get_position")]
-	public static extern c_int event_get_position(GdkEvent* event, double* x, double* y);
+	public static extern c_int EventGetPosition(Event event, double x, double y);
 	[LinkName("gdk_event_get_seat")]
-	public static extern GdkSeat* event_get_seat(GdkEvent* event);
+	public static extern Seat EventGetSeat(Event event);
 	[LinkName("gdk_event_get_surface")]
-	public static extern GdkSurface* event_get_surface(GdkEvent* event);
+	public static extern Surface EventGetSurface(Event event);
 	[LinkName("gdk_event_get_time")]
-	public static extern c_uint event_get_time(GdkEvent* event);
+	public static extern c_uint EventGetTime(Event event);
 	[LinkName("gdk_event_ref")]
-	public static extern GdkEvent* event_ref(GdkEvent* event);
+	public static extern Event EventRef(Event event);
 	[LinkName("gdk_event_triggers_context_menu")]
-	public static extern c_int event_triggers_context_menu(GdkEvent* event);
+	public static extern c_int EventTriggersContextMenu(Event event);
 	[LinkName("gdk_event_unref")]
-	public static extern void event_unref(GdkEvent* event);
+	public static extern void EventUnref(Event event);
 	[CRepr]
-	public struct GdkEventSequence
+	public struct EventSequence
 	{
 	}
-	public enum GdkEventType : c_int
+	public enum EventType : c_int
 	{
 		GDK_DELETE,
 		GDK_MOTION_NOTIFY,
@@ -546,41 +545,41 @@ class Gdk
 		GDK_EVENT_LAST
 	}
 	[CRepr]
-	public struct GdkFileList
+	public struct FileList
 	{
 	}
 	[CRepr]
-	public struct GdkFocusEvent;
+	public struct FocusEvent;
 	[LinkName("gdk_focus_event_get_in")]
-	public static extern c_int focus_event_get_in(GdkEvent* event);
+	public static extern c_int FocusEventGetIn(FocusEvent event);
 	[CRepr]
-	public struct GdkFrameClock;
+	public struct FrameClock;
 	[LinkName("gdk_frame_clock_begin_updating")]
-	public static extern void frame_clock_begin_updating(GdkFrameClock* frame_clock);
+	public static extern void FrameClockBeginUpdating(FrameClock frame_clock);
 	[LinkName("gdk_frame_clock_end_updating")]
-	public static extern void frame_clock_end_updating(GdkFrameClock* frame_clock);
+	public static extern void FrameClockEndUpdating(FrameClock frame_clock);
 	[LinkName("gdk_frame_clock_get_current_timings")]
-	public static extern GdkFrameTimings* frame_clock_get_current_timings(GdkFrameClock* frame_clock);
+	public static extern FrameTimings FrameClockGetCurrentTimings(FrameClock frame_clock);
 	[LinkName("gdk_frame_clock_get_fps")]
-	public static extern double frame_clock_get_fps(GdkFrameClock* frame_clock);
+	public static extern double FrameClockGetFps(FrameClock frame_clock);
 	[LinkName("gdk_frame_clock_get_frame_counter")]
-	public static extern c_longlong frame_clock_get_frame_counter(GdkFrameClock* frame_clock);
+	public static extern c_longlong FrameClockGetFrameCounter(FrameClock frame_clock);
 	[LinkName("gdk_frame_clock_get_frame_time")]
-	public static extern c_longlong frame_clock_get_frame_time(GdkFrameClock* frame_clock);
+	public static extern c_longlong FrameClockGetFrameTime(FrameClock frame_clock);
 	[LinkName("gdk_frame_clock_get_history_start")]
-	public static extern c_longlong frame_clock_get_history_start(GdkFrameClock* frame_clock);
+	public static extern c_longlong FrameClockGetHistoryStart(FrameClock frame_clock);
 	[LinkName("gdk_frame_clock_get_refresh_info")]
-	public static extern void frame_clock_get_refresh_info(GdkFrameClock* frame_clock, c_longlong base_time, c_longlong* refresh_interval_return, c_longlong* presentation_time_return);
+	public static extern void FrameClockGetRefreshInfo(FrameClock frame_clock, c_longlong base_time, c_longlong refresh_interval_return, c_longlong presentation_time_return);
 	[LinkName("gdk_frame_clock_get_timings")]
-	public static extern GdkFrameTimings* frame_clock_get_timings(GdkFrameClock* frame_clock, c_longlong frame_counter);
+	public static extern FrameTimings FrameClockGetTimings(FrameClock frame_clock, c_longlong frame_counter);
 	[LinkName("gdk_frame_clock_request_phase")]
-	public static extern void frame_clock_request_phase(GdkFrameClock* frame_clock, GdkFrameClockPhase phase);
+	public static extern void FrameClockRequestPhase(FrameClock frame_clock, FrameClockPhase phase);
 	[CRepr]
-	public struct GdkFrameClockClass
+	public struct FrameClockClass
 	{
 	}
 	[CRepr]
-	public struct GdkFrameClockPhase
+	public struct FrameClockPhase
 	{
 		public const int GDK_FRAME_CLOCK_PHASE_NONE = 0;
 		public const int GDK_FRAME_CLOCK_PHASE_FLUSH_EVENTS = 1;
@@ -592,65 +591,65 @@ class Gdk
 		public const int GDK_FRAME_CLOCK_PHASE_AFTER_PAINT = 64;
 	}
 	[CRepr]
-	public struct GdkFrameClockPrivate
+	public struct FrameClockPrivate
 	{
 	}
 	[CRepr]
-	public struct GdkFrameTimings
+	public struct FrameTimings
 	{
 	}
-	public enum GdkFullscreenMode : c_int
+	public enum FullscreenMode : c_int
 	{
 		GDK_FULLSCREEN_ON_CURRENT_MONITOR,
 		GDK_FULLSCREEN_ON_ALL_MONITORS
 	}
 	[CRepr]
-	public struct GdkGLAPI
+	public struct GLAPI
 	{
 		public const int GDK_GL_API_GL = 1;
 		public const int GDK_GL_API_GLES = 2;
 	}
 	[CRepr]
-	public struct GdkGLContext;
+	public struct GLContext;
 	[LinkName("gdk_gl_context_get_allowed_apis")]
-	public static extern GdkGLAPI gl_context_get_allowed_apis(GdkGLContext* self);
+	public static extern GLAPI GlContextGetAllowedApis(GLContext self);
 	[LinkName("gdk_gl_context_get_api")]
-	public static extern GdkGLAPI gl_context_get_api(GdkGLContext* self);
+	public static extern GLAPI GlContextGetApi(GLContext self);
 	[LinkName("gdk_gl_context_get_debug_enabled")]
-	public static extern c_int gl_context_get_debug_enabled(GdkGLContext* context);
+	public static extern c_int GlContextGetDebugEnabled(GLContext context);
 	[LinkName("gdk_gl_context_get_display")]
-	public static extern GdkDisplay* gl_context_get_display(GdkGLContext* context);
+	public static extern Display GlContextGetDisplay(GLContext context);
 	[LinkName("gdk_gl_context_get_forward_compatible")]
-	public static extern c_int gl_context_get_forward_compatible(GdkGLContext* context);
+	public static extern c_int GlContextGetForwardCompatible(GLContext context);
 	[LinkName("gdk_gl_context_get_required_version")]
-	public static extern void gl_context_get_required_version(GdkGLContext* context, c_int* major, c_int* minor);
+	public static extern void GlContextGetRequiredVersion(GLContext context, c_int major, c_int minor);
 	[LinkName("gdk_gl_context_get_shared_context")]
-	public static extern GdkGLContext* gl_context_get_shared_context(GdkGLContext* context);
+	public static extern GLContext GlContextGetSharedContext(GLContext context);
 	[LinkName("gdk_gl_context_get_surface")]
-	public static extern GdkSurface* gl_context_get_surface(GdkGLContext* context);
+	public static extern Surface GlContextGetSurface(GLContext context);
 	[LinkName("gdk_gl_context_get_use_es")]
-	public static extern c_int gl_context_get_use_es(GdkGLContext* context);
+	public static extern c_int GlContextGetUseEs(GLContext context);
 	[LinkName("gdk_gl_context_get_version")]
-	public static extern void gl_context_get_version(GdkGLContext* context, c_int* major, c_int* minor);
+	public static extern void GlContextGetVersion(GLContext context, c_int major, c_int minor);
 	[LinkName("gdk_gl_context_is_legacy")]
-	public static extern c_int gl_context_is_legacy(GdkGLContext* context);
+	public static extern c_int GlContextIsLegacy(GLContext context);
 	[LinkName("gdk_gl_context_is_shared")]
-	public static extern c_int gl_context_is_shared(GdkGLContext* self, GdkGLContext* other);
+	public static extern c_int GlContextIsShared(GLContext self, GLContext other);
 	[LinkName("gdk_gl_context_make_current")]
-	public static extern void gl_context_make_current(GdkGLContext* context);
+	public static extern void GlContextMakeCurrent(GLContext context);
 	[LinkName("gdk_gl_context_realize")]
-	public static extern c_int gl_context_realize(GdkGLContext* context);
+	public static extern c_int GlContextRealize(GLContext context);
 	[LinkName("gdk_gl_context_set_allowed_apis")]
-	public static extern void gl_context_set_allowed_apis(GdkGLContext* self, GdkGLAPI apis);
+	public static extern void GlContextSetAllowedApis(GLContext self, GLAPI apis);
 	[LinkName("gdk_gl_context_set_debug_enabled")]
-	public static extern void gl_context_set_debug_enabled(GdkGLContext* context, c_int enabled);
+	public static extern void GlContextSetDebugEnabled(GLContext context, c_int enabled);
 	[LinkName("gdk_gl_context_set_forward_compatible")]
-	public static extern void gl_context_set_forward_compatible(GdkGLContext* context, c_int compatible);
+	public static extern void GlContextSetForwardCompatible(GLContext context, c_int compatible);
 	[LinkName("gdk_gl_context_set_required_version")]
-	public static extern void gl_context_set_required_version(GdkGLContext* context, c_int major, c_int minor);
+	public static extern void GlContextSetRequiredVersion(GLContext context, c_int major, c_int minor);
 	[LinkName("gdk_gl_context_set_use_es")]
-	public static extern void gl_context_set_use_es(GdkGLContext* context, c_int use_es);
-	public enum GdkGLError : c_int
+	public static extern void GlContextSetUseEs(GLContext context, c_int use_es);
+	public enum GLError : c_int
 	{
 		GDK_GL_ERROR_NOT_AVAILABLE,
 		GDK_GL_ERROR_UNSUPPORTED_FORMAT,
@@ -659,68 +658,68 @@ class Gdk
 		GDK_GL_ERROR_LINK_FAILED
 	}
 	[CRepr]
-	public struct GdkGLTexture;
+	public struct GLTexture;
 	[LinkName("gdk_gl_texture_new")]
-	public static extern GdkTexture* gl_texture_new(GdkGLContext* context, c_uint id, c_int width, c_int height, GDestroyNotify destroy, void* data);
+	public static extern GLTexture GlTextureNew(GLContext context, c_uint id, c_int width, c_int height, GLib.DestroyNotify destroy, void* data);
 	[LinkName("gdk_gl_texture_release")]
-	public static extern void gl_texture_release(GdkGLTexture* self);
+	public static extern void GlTextureRelease(GLTexture self);
 	[CRepr]
-	public struct GdkGLTextureBuilder;
+	public struct GLTextureBuilder;
 	[LinkName("gdk_gl_texture_builder_new")]
-	public static extern GdkGLTextureBuilder* gl_texture_builder_new();
+	public static extern GLTextureBuilder GlTextureBuilderNew();
 	[LinkName("gdk_gl_texture_builder_build")]
-	public static extern GdkTexture* gl_texture_builder_build(GdkGLTextureBuilder* self, GDestroyNotify destroy, void* data);
+	public static extern Texture GlTextureBuilderBuild(GLTextureBuilder self, GLib.DestroyNotify destroy, void* data);
 	[LinkName("gdk_gl_texture_builder_get_context")]
-	public static extern GdkGLContext* gl_texture_builder_get_context(GdkGLTextureBuilder* self);
+	public static extern GLContext GlTextureBuilderGetContext(GLTextureBuilder self);
 	[LinkName("gdk_gl_texture_builder_get_format")]
-	public static extern GdkMemoryFormat gl_texture_builder_get_format(GdkGLTextureBuilder* self);
+	public static extern MemoryFormat GlTextureBuilderGetFormat(GLTextureBuilder self);
 	[LinkName("gdk_gl_texture_builder_get_has_mipmap")]
-	public static extern c_int gl_texture_builder_get_has_mipmap(GdkGLTextureBuilder* self);
+	public static extern c_int GlTextureBuilderGetHasMipmap(GLTextureBuilder self);
 	[LinkName("gdk_gl_texture_builder_get_height")]
-	public static extern c_int gl_texture_builder_get_height(GdkGLTextureBuilder* self);
+	public static extern c_int GlTextureBuilderGetHeight(GLTextureBuilder self);
 	[LinkName("gdk_gl_texture_builder_get_id")]
-	public static extern c_uint gl_texture_builder_get_id(GdkGLTextureBuilder* self);
+	public static extern c_uint GlTextureBuilderGetId(GLTextureBuilder self);
 	[LinkName("gdk_gl_texture_builder_get_sync")]
-	public static extern void* gl_texture_builder_get_sync(GdkGLTextureBuilder* self);
+	public static extern void* GlTextureBuilderGetSync(GLTextureBuilder self);
 	[LinkName("gdk_gl_texture_builder_get_update_region")]
-	public static extern cairo_region_t* gl_texture_builder_get_update_region(GdkGLTextureBuilder* self);
+	public static extern cairo.Region GlTextureBuilderGetUpdateRegion(GLTextureBuilder self);
 	[LinkName("gdk_gl_texture_builder_get_update_texture")]
-	public static extern GdkTexture* gl_texture_builder_get_update_texture(GdkGLTextureBuilder* self);
+	public static extern Texture GlTextureBuilderGetUpdateTexture(GLTextureBuilder self);
 	[LinkName("gdk_gl_texture_builder_get_width")]
-	public static extern c_int gl_texture_builder_get_width(GdkGLTextureBuilder* self);
+	public static extern c_int GlTextureBuilderGetWidth(GLTextureBuilder self);
 	[LinkName("gdk_gl_texture_builder_set_context")]
-	public static extern void gl_texture_builder_set_context(GdkGLTextureBuilder* self, GdkGLContext* context);
+	public static extern void GlTextureBuilderSetContext(GLTextureBuilder self, GLContext context);
 	[LinkName("gdk_gl_texture_builder_set_format")]
-	public static extern void gl_texture_builder_set_format(GdkGLTextureBuilder* self, GdkMemoryFormat format);
+	public static extern void GlTextureBuilderSetFormat(GLTextureBuilder self, MemoryFormat format);
 	[LinkName("gdk_gl_texture_builder_set_has_mipmap")]
-	public static extern void gl_texture_builder_set_has_mipmap(GdkGLTextureBuilder* self, c_int has_mipmap);
+	public static extern void GlTextureBuilderSetHasMipmap(GLTextureBuilder self, c_int has_mipmap);
 	[LinkName("gdk_gl_texture_builder_set_height")]
-	public static extern void gl_texture_builder_set_height(GdkGLTextureBuilder* self, c_int height);
+	public static extern void GlTextureBuilderSetHeight(GLTextureBuilder self, c_int height);
 	[LinkName("gdk_gl_texture_builder_set_id")]
-	public static extern void gl_texture_builder_set_id(GdkGLTextureBuilder* self, c_uint id);
+	public static extern void GlTextureBuilderSetId(GLTextureBuilder self, c_uint id);
 	[LinkName("gdk_gl_texture_builder_set_sync")]
-	public static extern void gl_texture_builder_set_sync(GdkGLTextureBuilder* self, void* sync);
+	public static extern void GlTextureBuilderSetSync(GLTextureBuilder self, void* sync);
 	[LinkName("gdk_gl_texture_builder_set_update_region")]
-	public static extern void gl_texture_builder_set_update_region(GdkGLTextureBuilder* self, cairo_region_t* region);
+	public static extern void GlTextureBuilderSetUpdateRegion(GLTextureBuilder self, cairo.Region region);
 	[LinkName("gdk_gl_texture_builder_set_update_texture")]
-	public static extern void gl_texture_builder_set_update_texture(GdkGLTextureBuilder* self, GdkTexture* texture);
+	public static extern void GlTextureBuilderSetUpdateTexture(GLTextureBuilder self, Texture texture);
 	[LinkName("gdk_gl_texture_builder_set_width")]
-	public static extern void gl_texture_builder_set_width(GdkGLTextureBuilder* self, c_int width);
+	public static extern void GlTextureBuilderSetWidth(GLTextureBuilder self, c_int width);
 	[CRepr]
-	public struct GdkGLTextureBuilderClass
+	public struct GLTextureBuilderClass
 	{
 	}
 	[CRepr]
-	public struct GdkGLTextureClass
+	public struct GLTextureClass
 	{
 	}
 	[CRepr]
-	public struct GdkGrabBrokenEvent;
+	public struct GrabBrokenEvent;
 	[LinkName("gdk_grab_broken_event_get_grab_surface")]
-	public static extern GdkSurface* grab_broken_event_get_grab_surface(GdkEvent* event);
+	public static extern Surface GrabBrokenEventGetGrabSurface(GrabBrokenEvent event);
 	[LinkName("gdk_grab_broken_event_get_implicit")]
-	public static extern c_int grab_broken_event_get_implicit(GdkEvent* event);
-	public enum GdkGravity : c_int
+	public static extern c_int GrabBrokenEventGetImplicit(GrabBrokenEvent event);
+	public enum Gravity : c_int
 	{
 		GDK_GRAVITY_NORTH_WEST,
 		GDK_GRAVITY_NORTH,
@@ -733,7 +732,7 @@ class Gdk
 		GDK_GRAVITY_SOUTH_EAST,
 		GDK_GRAVITY_STATIC
 	}
-	public enum GdkInputSource : c_int
+	public enum InputSource : c_int
 	{
 		GDK_SOURCE_MOUSE,
 		GDK_SOURCE_PEN,
@@ -744,37 +743,37 @@ class Gdk
 		GDK_SOURCE_TABLET_PAD
 	}
 	[CRepr]
-	public struct GdkKeyEvent;
+	public struct KeyEvent;
 	[LinkName("gdk_key_event_get_consumed_modifiers")]
-	public static extern GdkModifierType key_event_get_consumed_modifiers(GdkEvent* event);
+	public static extern ModifierType KeyEventGetConsumedModifiers(KeyEvent event);
 	[LinkName("gdk_key_event_get_keycode")]
-	public static extern c_uint key_event_get_keycode(GdkEvent* event);
+	public static extern c_uint KeyEventGetKeycode(KeyEvent event);
 	[LinkName("gdk_key_event_get_keyval")]
-	public static extern c_uint key_event_get_keyval(GdkEvent* event);
+	public static extern c_uint KeyEventGetKeyval(KeyEvent event);
 	[LinkName("gdk_key_event_get_layout")]
-	public static extern c_uint key_event_get_layout(GdkEvent* event);
+	public static extern c_uint KeyEventGetLayout(KeyEvent event);
 	[LinkName("gdk_key_event_get_level")]
-	public static extern c_uint key_event_get_level(GdkEvent* event);
+	public static extern c_uint KeyEventGetLevel(KeyEvent event);
 	[LinkName("gdk_key_event_get_match")]
-	public static extern c_int key_event_get_match(GdkEvent* event, c_uint* keyval, GdkModifierType* modifiers);
+	public static extern c_int KeyEventGetMatch(KeyEvent event, c_uint keyval, ModifierType modifiers);
 	[LinkName("gdk_key_event_is_modifier")]
-	public static extern c_int key_event_is_modifier(GdkEvent* event);
+	public static extern c_int KeyEventIsModifier(KeyEvent event);
 	[LinkName("gdk_key_event_matches")]
-	public static extern GdkKeyMatch key_event_matches(GdkEvent* event, c_uint keyval, GdkModifierType modifiers);
-	public enum GdkKeyMatch : c_int
+	public static extern KeyMatch KeyEventMatches(KeyEvent event, c_uint keyval, ModifierType modifiers);
+	public enum KeyMatch : c_int
 	{
 		GDK_KEY_MATCH_NONE,
 		GDK_KEY_MATCH_PARTIAL,
 		GDK_KEY_MATCH_EXACT
 	}
 	[CRepr]
-	public struct GdkKeymapKey
+	public struct KeymapKey
 	{
 		c_uint keycode;
 		c_int group;
 		c_int level;
 	}
-	public enum GdkMemoryFormat : c_int
+	public enum MemoryFormat : c_int
 	{
 		GDK_MEMORY_B8G8R8A8_PREMULTIPLIED,
 		GDK_MEMORY_A8R8G8B8_PREMULTIPLIED,
@@ -805,15 +804,15 @@ class Gdk
 		GDK_MEMORY_N_FORMATS
 	}
 	[CRepr]
-	public struct GdkMemoryTexture;
+	public struct MemoryTexture;
 	[LinkName("gdk_memory_texture_new")]
-	public static extern GdkTexture* memory_texture_new(c_int width, c_int height, GdkMemoryFormat format, GBytes* bytes, c_ulong stride);
+	public static extern MemoryTexture MemoryTextureNew(c_int width, c_int height, MemoryFormat format, GLib.Bytes bytes, c_ulong stride);
 	[CRepr]
-	public struct GdkMemoryTextureClass
+	public struct MemoryTextureClass
 	{
 	}
 	[CRepr]
-	public struct GdkModifierType
+	public struct ModifierType
 	{
 		public const int GDK_SHIFT_MASK = 1;
 		public const int GDK_LOCK_MASK = 2;
@@ -829,38 +828,38 @@ class Gdk
 		public const int GDK_META_MASK = 268435456;
 	}
 	[CRepr]
-	public struct GdkMonitor;
+	public struct Monitor;
 	[LinkName("gdk_monitor_get_connector")]
-	public static extern  c_char* monitor_get_connector(GdkMonitor* monitor);
+	public static extern char8* MonitorGetConnector(Monitor monitor);
 	[LinkName("gdk_monitor_get_description")]
-	public static extern  c_char* monitor_get_description(GdkMonitor* monitor);
+	public static extern char8* MonitorGetDescription(Monitor monitor);
 	[LinkName("gdk_monitor_get_display")]
-	public static extern GdkDisplay* monitor_get_display(GdkMonitor* monitor);
+	public static extern Display MonitorGetDisplay(Monitor monitor);
 	[LinkName("gdk_monitor_get_geometry")]
-	public static extern void monitor_get_geometry(GdkMonitor* monitor, GdkRectangle* geometry);
+	public static extern void MonitorGetGeometry(Monitor monitor, Rectangle geometry);
 	[LinkName("gdk_monitor_get_height_mm")]
-	public static extern c_int monitor_get_height_mm(GdkMonitor* monitor);
+	public static extern c_int MonitorGetHeightMm(Monitor monitor);
 	[LinkName("gdk_monitor_get_manufacturer")]
-	public static extern  c_char* monitor_get_manufacturer(GdkMonitor* monitor);
+	public static extern char8* MonitorGetManufacturer(Monitor monitor);
 	[LinkName("gdk_monitor_get_model")]
-	public static extern  c_char* monitor_get_model(GdkMonitor* monitor);
+	public static extern char8* MonitorGetModel(Monitor monitor);
 	[LinkName("gdk_monitor_get_refresh_rate")]
-	public static extern c_int monitor_get_refresh_rate(GdkMonitor* monitor);
+	public static extern c_int MonitorGetRefreshRate(Monitor monitor);
 	[LinkName("gdk_monitor_get_scale_factor")]
-	public static extern c_int monitor_get_scale_factor(GdkMonitor* monitor);
+	public static extern c_int MonitorGetScaleFactor(Monitor monitor);
 	[LinkName("gdk_monitor_get_subpixel_layout")]
-	public static extern GdkSubpixelLayout monitor_get_subpixel_layout(GdkMonitor* monitor);
+	public static extern SubpixelLayout MonitorGetSubpixelLayout(Monitor monitor);
 	[LinkName("gdk_monitor_get_width_mm")]
-	public static extern c_int monitor_get_width_mm(GdkMonitor* monitor);
+	public static extern c_int MonitorGetWidthMm(Monitor monitor);
 	[LinkName("gdk_monitor_is_valid")]
-	public static extern c_int monitor_is_valid(GdkMonitor* monitor);
+	public static extern c_int MonitorIsValid(Monitor monitor);
 	[CRepr]
-	public struct GdkMonitorClass
+	public struct MonitorClass
 	{
 	}
 	[CRepr]
-	public struct GdkMotionEvent;
-	public enum GdkNotifyType : c_int
+	public struct MotionEvent;
+	public enum NotifyType : c_int
 	{
 		GDK_NOTIFY_ANCESTOR,
 		GDK_NOTIFY_VIRTUAL,
@@ -870,54 +869,54 @@ class Gdk
 		GDK_NOTIFY_UNKNOWN
 	}
 	[CRepr]
-	public struct GdkPadEvent;
+	public struct PadEvent;
 	[LinkName("gdk_pad_event_get_axis_value")]
-	public static extern void pad_event_get_axis_value(GdkEvent* event, c_uint* index, double* value);
+	public static extern void PadEventGetAxisValue(PadEvent event, c_uint index, double value);
 	[LinkName("gdk_pad_event_get_button")]
-	public static extern c_uint pad_event_get_button(GdkEvent* event);
+	public static extern c_uint PadEventGetButton(PadEvent event);
 	[LinkName("gdk_pad_event_get_group_mode")]
-	public static extern void pad_event_get_group_mode(GdkEvent* event, c_uint* group, c_uint* mode);
+	public static extern void PadEventGetGroupMode(PadEvent event, c_uint group, c_uint mode);
 	[CRepr]
-	public struct GdkPaintable
+	public struct Paintable
 	{
-		public function GdkPaintable*(GdkPaintable* paintable) get_current_image;
+		public function Paintable(Paintable paintable) get_current_image;
 
-		public function GdkPaintableFlags(GdkPaintable* paintable) get_flags;
+		public function PaintableFlags(Paintable paintable) get_flags;
 
-		public function double(GdkPaintable* paintable) get_intrinsic_aspect_ratio;
+		public function double(Paintable paintable) get_intrinsic_aspect_ratio;
 
-		public function c_int(GdkPaintable* paintable) get_intrinsic_height;
+		public function c_int(Paintable paintable) get_intrinsic_height;
 
-		public function c_int(GdkPaintable* paintable) get_intrinsic_width;
+		public function c_int(Paintable paintable) get_intrinsic_width;
 
-		public function void(GdkPaintable* paintable, GdkSnapshot* snapshot, double width, double height) snapshot;
+		public function void(Paintable paintable, Snapshot snapshot, double width, double height) snapshot;
 	}
 	[CRepr]
-	public struct GdkPaintableFlags
+	public struct PaintableFlags
 	{
 		public const int GDK_PAINTABLE_STATIC_SIZE = 1;
 		public const int GDK_PAINTABLE_STATIC_CONTENTS = 2;
 	}
 	[CRepr]
-	public struct GdkPaintableInterface
+	public struct PaintableInterface
 	{
-		GTypeInterface g_iface;
+		GObject.TypeInterface g_iface;
 	}
 	[CRepr]
-	public struct GdkPopup
+	public struct Popup
 	{	}
 	[CRepr]
-	public struct GdkPopupInterface
+	public struct PopupInterface
 	{
 	}
 	[CRepr]
-	public struct GdkPopupLayout
+	public struct PopupLayout
 	{
 	}
 	[CRepr]
-	public struct GdkProximityEvent;
+	public struct ProximityEvent;
 	[CRepr]
-	public struct GdkRGBA
+	public struct RGBA
 	{
 		float red;
 		float green;
@@ -925,14 +924,14 @@ class Gdk
 		float alpha;
 	}
 	[CRepr]
-	public struct GdkRectangle
+	public struct Rectangle
 	{
 		c_int x;
 		c_int y;
 		c_int width;
 		c_int height;
 	}
-	public enum GdkScrollDirection : c_int
+	public enum ScrollDirection : c_int
 	{
 		GDK_SCROLL_UP,
 		GDK_SCROLL_DOWN,
@@ -941,36 +940,36 @@ class Gdk
 		GDK_SCROLL_SMOOTH
 	}
 	[CRepr]
-	public struct GdkScrollEvent;
+	public struct ScrollEvent;
 	[LinkName("gdk_scroll_event_get_deltas")]
-	public static extern void scroll_event_get_deltas(GdkEvent* event, double* delta_x, double* delta_y);
+	public static extern void ScrollEventGetDeltas(ScrollEvent event, double delta_x, double delta_y);
 	[LinkName("gdk_scroll_event_get_direction")]
-	public static extern GdkScrollDirection scroll_event_get_direction(GdkEvent* event);
+	public static extern ScrollDirection ScrollEventGetDirection(ScrollEvent event);
 	[LinkName("gdk_scroll_event_get_unit")]
-	public static extern GdkScrollUnit scroll_event_get_unit(GdkEvent* event);
+	public static extern ScrollUnit ScrollEventGetUnit(ScrollEvent event);
 	[LinkName("gdk_scroll_event_is_stop")]
-	public static extern c_int scroll_event_is_stop(GdkEvent* event);
-	public enum GdkScrollUnit : c_int
+	public static extern c_int ScrollEventIsStop(ScrollEvent event);
+	public enum ScrollUnit : c_int
 	{
 		GDK_SCROLL_UNIT_WHEEL,
 		GDK_SCROLL_UNIT_SURFACE
 	}
 	[CRepr]
-	public struct GdkSeat;
+	public struct Seat;
 	[LinkName("gdk_seat_get_capabilities")]
-	public static extern GdkSeatCapabilities seat_get_capabilities(GdkSeat* seat);
+	public static extern SeatCapabilities SeatGetCapabilities(Seat seat);
 	[LinkName("gdk_seat_get_devices")]
-	public static extern GList* seat_get_devices(GdkSeat* seat, GdkSeatCapabilities capabilities);
+	public static extern GLib.List SeatGetDevices(Seat seat, SeatCapabilities capabilities);
 	[LinkName("gdk_seat_get_display")]
-	public static extern GdkDisplay* seat_get_display(GdkSeat* seat);
+	public static extern Display SeatGetDisplay(Seat seat);
 	[LinkName("gdk_seat_get_keyboard")]
-	public static extern GdkDevice* seat_get_keyboard(GdkSeat* seat);
+	public static extern Device SeatGetKeyboard(Seat seat);
 	[LinkName("gdk_seat_get_pointer")]
-	public static extern GdkDevice* seat_get_pointer(GdkSeat* seat);
+	public static extern Device SeatGetPointer(Seat seat);
 	[LinkName("gdk_seat_get_tools")]
-	public static extern GList* seat_get_tools(GdkSeat* seat);
+	public static extern GLib.List SeatGetTools(Seat seat);
 	[CRepr]
-	public struct GdkSeatCapabilities
+	public struct SeatCapabilities
 	{
 		public const int GDK_SEAT_CAPABILITY_NONE = 0;
 		public const int GDK_SEAT_CAPABILITY_POINTER = 1;
@@ -982,12 +981,12 @@ class Gdk
 		public const int GDK_SEAT_CAPABILITY_ALL = 15;
 	}
 	[CRepr]
-	public struct GdkSnapshot;
+	public struct Snapshot;
 	[CRepr]
-	public struct GdkSnapshotClass
+	public struct SnapshotClass
 	{
 	}
-	public enum GdkSubpixelLayout : c_int
+	public enum SubpixelLayout : c_int
 	{
 		GDK_SUBPIXEL_LAYOUT_UNKNOWN,
 		GDK_SUBPIXEL_LAYOUT_NONE,
@@ -997,66 +996,66 @@ class Gdk
 		GDK_SUBPIXEL_LAYOUT_VERTICAL_BGR
 	}
 	[CRepr]
-	public struct GdkSurface;
+	public struct Surface;
 	[LinkName("gdk_surface_new_popup")]
-	public static extern GdkSurface* surface_new_popup(GdkSurface* parent, c_int autohide);
+	public static extern Surface SurfaceNewPopup(Surface parent, c_int autohide);
 	[LinkName("gdk_surface_new_toplevel")]
-	public static extern GdkSurface* surface_new_toplevel(GdkDisplay* display);
+	public static extern Surface SurfaceNewToplevel(Display display);
 	[LinkName("gdk_surface_beep")]
-	public static extern void surface_beep(GdkSurface* surface);
+	public static extern void SurfaceBeep(Surface surface);
 	[LinkName("gdk_surface_create_cairo_context")]
-	public static extern GdkCairoContext* surface_create_cairo_context(GdkSurface* surface);
+	public static extern CairoContext SurfaceCreateCairoContext(Surface surface);
 	[LinkName("gdk_surface_create_gl_context")]
-	public static extern GdkGLContext* surface_create_gl_context(GdkSurface* surface);
+	public static extern GLContext SurfaceCreateGlContext(Surface surface);
 	[LinkName("gdk_surface_create_similar_surface")]
-	public static extern cairo_surface_t* surface_create_similar_surface(GdkSurface* surface, cairo_content_t content, c_int width, c_int height);
+	public static extern cairo.Surface SurfaceCreateSimilarSurface(Surface surface, cairo.Content content, c_int width, c_int height);
 	[LinkName("gdk_surface_create_vulkan_context")]
-	public static extern GdkVulkanContext* surface_create_vulkan_context(GdkSurface* surface);
+	public static extern VulkanContext SurfaceCreateVulkanContext(Surface surface);
 	[LinkName("gdk_surface_destroy")]
-	public static extern void surface_destroy(GdkSurface* surface);
+	public static extern void SurfaceDestroy(Surface surface);
 	[LinkName("gdk_surface_get_cursor")]
-	public static extern GdkCursor* surface_get_cursor(GdkSurface* surface);
+	public static extern Cursor SurfaceGetCursor(Surface surface);
 	[LinkName("gdk_surface_get_device_cursor")]
-	public static extern GdkCursor* surface_get_device_cursor(GdkSurface* surface, GdkDevice* device);
+	public static extern Cursor SurfaceGetDeviceCursor(Surface surface, Device device);
 	[LinkName("gdk_surface_get_device_position")]
-	public static extern c_int surface_get_device_position(GdkSurface* surface, GdkDevice* device, double* x, double* y, GdkModifierType* mask);
+	public static extern c_int SurfaceGetDevicePosition(Surface surface, Device device, double x, double y, ModifierType mask);
 	[LinkName("gdk_surface_get_display")]
-	public static extern GdkDisplay* surface_get_display(GdkSurface* surface);
+	public static extern Display SurfaceGetDisplay(Surface surface);
 	[LinkName("gdk_surface_get_frame_clock")]
-	public static extern GdkFrameClock* surface_get_frame_clock(GdkSurface* surface);
+	public static extern FrameClock SurfaceGetFrameClock(Surface surface);
 	[LinkName("gdk_surface_get_height")]
-	public static extern c_int surface_get_height(GdkSurface* surface);
+	public static extern c_int SurfaceGetHeight(Surface surface);
 	[LinkName("gdk_surface_get_mapped")]
-	public static extern c_int surface_get_mapped(GdkSurface* surface);
+	public static extern c_int SurfaceGetMapped(Surface surface);
 	[LinkName("gdk_surface_get_scale")]
-	public static extern double surface_get_scale(GdkSurface* surface);
+	public static extern double SurfaceGetScale(Surface surface);
 	[LinkName("gdk_surface_get_scale_factor")]
-	public static extern c_int surface_get_scale_factor(GdkSurface* surface);
+	public static extern c_int SurfaceGetScaleFactor(Surface surface);
 	[LinkName("gdk_surface_get_width")]
-	public static extern c_int surface_get_width(GdkSurface* surface);
+	public static extern c_int SurfaceGetWidth(Surface surface);
 	[LinkName("gdk_surface_hide")]
-	public static extern void surface_hide(GdkSurface* surface);
+	public static extern void SurfaceHide(Surface surface);
 	[LinkName("gdk_surface_is_destroyed")]
-	public static extern c_int surface_is_destroyed(GdkSurface* surface);
+	public static extern c_int SurfaceIsDestroyed(Surface surface);
 	[LinkName("gdk_surface_queue_render")]
-	public static extern void surface_queue_render(GdkSurface* surface);
+	public static extern void SurfaceQueueRender(Surface surface);
 	[LinkName("gdk_surface_request_layout")]
-	public static extern void surface_request_layout(GdkSurface* surface);
+	public static extern void SurfaceRequestLayout(Surface surface);
 	[LinkName("gdk_surface_set_cursor")]
-	public static extern void surface_set_cursor(GdkSurface* surface, GdkCursor* cursor);
+	public static extern void SurfaceSetCursor(Surface surface, Cursor cursor);
 	[LinkName("gdk_surface_set_device_cursor")]
-	public static extern void surface_set_device_cursor(GdkSurface* surface, GdkDevice* device, GdkCursor* cursor);
+	public static extern void SurfaceSetDeviceCursor(Surface surface, Device device, Cursor cursor);
 	[LinkName("gdk_surface_set_input_region")]
-	public static extern void surface_set_input_region(GdkSurface* surface, cairo_region_t* region);
+	public static extern void SurfaceSetInputRegion(Surface surface, cairo.Region region);
 	[LinkName("gdk_surface_set_opaque_region")]
-	public static extern void surface_set_opaque_region(GdkSurface* surface, cairo_region_t* region);
+	public static extern void SurfaceSetOpaqueRegion(Surface surface, cairo.Region region);
 	[LinkName("gdk_surface_translate_coordinates")]
-	public static extern c_int surface_translate_coordinates(GdkSurface* from, GdkSurface* to, double* x, double* y);
+	public static extern c_int SurfaceTranslateCoordinates(Surface from, Surface to, double x, double y);
 	[CRepr]
-	public struct GdkSurfaceClass
+	public struct SurfaceClass
 	{
 	}
-	public enum GdkSurfaceEdge : c_int
+	public enum SurfaceEdge : c_int
 	{
 		GDK_SURFACE_EDGE_NORTH_WEST,
 		GDK_SURFACE_EDGE_NORTH,
@@ -1068,42 +1067,42 @@ class Gdk
 		GDK_SURFACE_EDGE_SOUTH_EAST
 	}
 	[CRepr]
-	public struct GdkTexture;
+	public struct Texture;
 	[LinkName("gdk_texture_new_for_pixbuf")]
-	public static extern GdkTexture* texture_new_for_pixbuf(GdkPixbuf* pixbuf);
+	public static extern Texture TextureNewForPixbuf(GdkPixbuf.Pixbuf pixbuf);
 	[LinkName("gdk_texture_new_from_bytes")]
-	public static extern GdkTexture* texture_new_from_bytes(GBytes* bytes);
+	public static extern Texture TextureNewFromBytes(GLib.Bytes bytes);
 	[LinkName("gdk_texture_new_from_file")]
-	public static extern GdkTexture* texture_new_from_file(GFile* file);
+	public static extern Texture TextureNewFromFile(Gio.File file);
 	[LinkName("gdk_texture_new_from_filename")]
-	public static extern GdkTexture* texture_new_from_filename( c_char* path);
+	public static extern Texture TextureNewFromFilename(char8* path);
 	[LinkName("gdk_texture_new_from_resource")]
-	public static extern GdkTexture* texture_new_from_resource( c_char* resource_path);
+	public static extern Texture TextureNewFromResource(char8* resource_path);
 	[LinkName("gdk_texture_download")]
-	public static extern void texture_download(GdkTexture* texture, c_ulong stride);
+	public static extern void TextureDownload(Texture texture, c_ulong stride);
 	[LinkName("gdk_texture_get_format")]
-	public static extern GdkMemoryFormat texture_get_format(GdkTexture* self);
+	public static extern MemoryFormat TextureGetFormat(Texture self);
 	[LinkName("gdk_texture_get_height")]
-	public static extern c_int texture_get_height(GdkTexture* texture);
+	public static extern c_int TextureGetHeight(Texture texture);
 	[LinkName("gdk_texture_get_width")]
-	public static extern c_int texture_get_width(GdkTexture* texture);
+	public static extern c_int TextureGetWidth(Texture texture);
 	[LinkName("gdk_texture_save_to_png")]
-	public static extern c_int texture_save_to_png(GdkTexture* texture,  c_char* filename);
+	public static extern c_int TextureSaveToPng(Texture texture, char8* filename);
 	[LinkName("gdk_texture_save_to_png_bytes")]
-	public static extern GBytes* texture_save_to_png_bytes(GdkTexture* texture);
+	public static extern GLib.Bytes TextureSaveToPngBytes(Texture texture);
 	[LinkName("gdk_texture_save_to_tiff")]
-	public static extern c_int texture_save_to_tiff(GdkTexture* texture,  c_char* filename);
+	public static extern c_int TextureSaveToTiff(Texture texture, char8* filename);
 	[LinkName("gdk_texture_save_to_tiff_bytes")]
-	public static extern GBytes* texture_save_to_tiff_bytes(GdkTexture* texture);
+	public static extern GLib.Bytes TextureSaveToTiffBytes(Texture texture);
 	[CRepr]
-	public struct GdkTextureClass
+	public struct TextureClass
 	{
 	}
 	[CRepr]
-	public struct GdkTextureDownloader
+	public struct TextureDownloader
 	{
 	}
-	public enum GdkTextureError : c_int
+	public enum TextureError : c_int
 	{
 		GDK_TEXTURE_ERROR_TOO_LARGE,
 		GDK_TEXTURE_ERROR_CORRUPT_IMAGE,
@@ -1111,34 +1110,34 @@ class Gdk
 		GDK_TEXTURE_ERROR_UNSUPPORTED_FORMAT
 	}
 	[CRepr]
-	public struct GdkTimeCoord
+	public struct TimeCoord
 	{
 		c_uint time;
-		GdkAxisFlags flags;
+		AxisFlags flags;
 	}
-	public enum GdkTitlebarGesture : c_int
+	public enum TitlebarGesture : c_int
 	{
 		GDK_TITLEBAR_GESTURE_DOUBLE_CLICK,
 		GDK_TITLEBAR_GESTURE_RIGHT_CLICK,
 		GDK_TITLEBAR_GESTURE_MIDDLE_CLICK
 	}
 	[CRepr]
-	public struct GdkToplevel
+	public struct Toplevel
 	{	}
 	[CRepr]
-	public struct GdkToplevelInterface
+	public struct ToplevelInterface
 	{
 	}
 	[CRepr]
-	public struct GdkToplevelLayout
+	public struct ToplevelLayout
 	{
 	}
 	[CRepr]
-	public struct GdkToplevelSize
+	public struct ToplevelSize
 	{
 	}
 	[CRepr]
-	public struct GdkToplevelState
+	public struct ToplevelState
 	{
 		public const int GDK_TOPLEVEL_STATE_MINIMIZED = 1;
 		public const int GDK_TOPLEVEL_STATE_MAXIMIZED = 2;
@@ -1158,22 +1157,22 @@ class Gdk
 		public const int GDK_TOPLEVEL_STATE_LEFT_RESIZABLE = 32768;
 	}
 	[CRepr]
-	public struct GdkTouchEvent;
+	public struct TouchEvent;
 	[LinkName("gdk_touch_event_get_emulating_pointer")]
-	public static extern c_int touch_event_get_emulating_pointer(GdkEvent* event);
+	public static extern c_int TouchEventGetEmulatingPointer(TouchEvent event);
 	[CRepr]
-	public struct GdkTouchpadEvent;
+	public struct TouchpadEvent;
 	[LinkName("gdk_touchpad_event_get_deltas")]
-	public static extern void touchpad_event_get_deltas(GdkEvent* event, double* dx, double* dy);
+	public static extern void TouchpadEventGetDeltas(TouchpadEvent event, double dx, double dy);
 	[LinkName("gdk_touchpad_event_get_gesture_phase")]
-	public static extern GdkTouchpadGesturePhase touchpad_event_get_gesture_phase(GdkEvent* event);
+	public static extern TouchpadGesturePhase TouchpadEventGetGesturePhase(TouchpadEvent event);
 	[LinkName("gdk_touchpad_event_get_n_fingers")]
-	public static extern c_uint touchpad_event_get_n_fingers(GdkEvent* event);
+	public static extern c_uint TouchpadEventGetNFingers(TouchpadEvent event);
 	[LinkName("gdk_touchpad_event_get_pinch_angle_delta")]
-	public static extern double touchpad_event_get_pinch_angle_delta(GdkEvent* event);
+	public static extern double TouchpadEventGetPinchAngleDelta(TouchpadEvent event);
 	[LinkName("gdk_touchpad_event_get_pinch_scale")]
-	public static extern double touchpad_event_get_pinch_scale(GdkEvent* event);
-	public enum GdkTouchpadGesturePhase : c_int
+	public static extern double TouchpadEventGetPinchScale(TouchpadEvent event);
+	public enum TouchpadGesturePhase : c_int
 	{
 		GDK_TOUCHPAD_GESTURE_PHASE_BEGIN,
 		GDK_TOUCHPAD_GESTURE_PHASE_UPDATE,
@@ -1181,8 +1180,8 @@ class Gdk
 		GDK_TOUCHPAD_GESTURE_PHASE_CANCEL
 	}
 	[CRepr]
-	public struct GdkVulkanContext;
-	public enum GdkVulkanError : c_int
+	public struct VulkanContext;
+	public enum VulkanError : c_int
 	{
 		GDK_VULKAN_ERROR_UNSUPPORTED,
 		GDK_VULKAN_ERROR_NOT_AVAILABLE

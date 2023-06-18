@@ -2,35 +2,35 @@ namespace GObject;
 
 using System;
 using System.Interop;
-using static GLib.GLib;
+using GLib;
 
 class GObject
 {
-	public typealias GSignalCMarshaller = GClosureMarshal;
-	public typealias GSignalCVaMarshaller = GVaClosureMarshal;
-	public typealias GType = c_ulong;
-	public function void GBaseFinalizeFunc(void* g_class);
-	public function void GBaseInitFunc(void* g_class);
+	public typealias SignalCMarshaller = ClosureMarshal;
+	public typealias SignalCVaMarshaller = VaClosureMarshal;
+	public typealias Type = c_ulong;
+	public function void BaseFinalizeFunc(TypeClass g_class);
+	public function void BaseInitFunc(TypeClass g_class);
 	[CRepr]
-	public struct GBinding;
+	public struct Binding;
 	[LinkName("g_binding_dup_source")]
-	public static extern GObject* bindindup_source(GBinding* binding);
+	public static extern Object BindindupSource(Binding binding);
 	[LinkName("g_binding_dup_target")]
-	public static extern GObject* bindindup_target(GBinding* binding);
+	public static extern Object BindindupTarget(Binding binding);
 	[LinkName("g_binding_get_flags")]
-	public static extern GBindingFlags bindinget_flags(GBinding* binding);
+	public static extern BindingFlags BindingetFlags(Binding binding);
 	[LinkName("g_binding_get_source")]
-	public static extern GObject* bindinget_source(GBinding* binding);
+	public static extern Object BindingetSource(Binding binding);
 	[LinkName("g_binding_get_source_property")]
-	public static extern  c_char* bindinget_source_property(GBinding* binding);
+	public static extern char8* BindingetSourceProperty(Binding binding);
 	[LinkName("g_binding_get_target")]
-	public static extern GObject* bindinget_target(GBinding* binding);
+	public static extern Object BindingetTarget(Binding binding);
 	[LinkName("g_binding_get_target_property")]
-	public static extern  c_char* bindinget_target_property(GBinding* binding);
+	public static extern char8* BindingetTargetProperty(Binding binding);
 	[LinkName("g_binding_unbind")]
-	public static extern void bindinunbind(GBinding* binding);
+	public static extern void Bindinunbind(Binding binding);
 	[CRepr]
-	public struct GBindingFlags
+	public struct BindingFlags
 	{
 		public const int G_BINDING_DEFAULT = 0;
 		public const int G_BINDING_BIDIRECTIONAL = 1;
@@ -38,33 +38,33 @@ class GObject
 		public const int G_BINDING_INVERT_BOOLEAN = 4;
 	}
 	[CRepr]
-	public struct GBindingGroup;
+	public struct BindingGroup;
 	[LinkName("g_binding_group_new")]
-	public static extern GBindingGroup* bindingroup_new();
+	public static extern BindingGroup BindingroupNew();
 	[LinkName("g_binding_group_bind")]
-	public static extern void bindingroup_bind(GBindingGroup* self,  c_char* source_property, void* target,  c_char* target_property, GBindingFlags flags);
+	public static extern void BindingroupBind(BindingGroup self, char8* source_property, Object target, char8* target_property, BindingFlags flags);
 	[LinkName("g_binding_group_bind_full")]
-	public static extern void bindingroup_bind_full(GBindingGroup* self,  c_char* source_property, void* target,  c_char* target_property, GBindingFlags flags, GBindingTransformFunc transform_to, GBindingTransformFunc transform_from, void* user_data, GDestroyNotify user_data_destroy);
+	public static extern void BindingroupBindFull(BindingGroup self, char8* source_property, Object target, char8* target_property, BindingFlags flags, BindingTransformFunc transform_to, BindingTransformFunc transform_from, void* user_data, GLib.DestroyNotify user_data_destroy);
 	[LinkName("g_binding_group_bind_with_closures")]
-	public static extern void bindingroup_bind_with_closures(GBindingGroup* self,  c_char* source_property, void* target,  c_char* target_property, GBindingFlags flags, GClosure* transform_to, GClosure* transform_from);
+	public static extern void BindingroupBindWithClosures(BindingGroup self, char8* source_property, Object target, char8* target_property, BindingFlags flags, Closure transform_to, Closure transform_from);
 	[LinkName("g_binding_group_dup_source")]
-	public static extern void* bindingroup_dup_source(GBindingGroup* self);
+	public static extern Object BindingroupDupSource(BindingGroup self);
 	[LinkName("g_binding_group_set_source")]
-	public static extern void bindingroup_set_source(GBindingGroup* self, void* source);
-	public function c_int GBindingTransformFunc(GBinding* binding,  GValue* from_value, GValue* to_value, void* user_data);
-	public function void* GBoxedCopyFunc(void* boxed);
-	public function void GBoxedFreeFunc(void* boxed);
+	public static extern void BindingroupSetSource(BindingGroup self, Object source);
+	public function c_int BindingTransformFunc(Binding binding, Value from_value, Value to_value, void* user_data);
+	public function void* BoxedCopyFunc(void* boxed);
+	public function void BoxedFreeFunc(void* boxed);
 	[CRepr]
-	public struct GCClosure
+	public struct CClosure
 	{
-		GClosure closure;
+		Closure closure;
 		void* callback;
 	}
-	public function void GCallback();
-	public function void GClassFinalizeFunc(void* g_class, void* class_data);
-	public function void GClassInitFunc(void* g_class, void* class_data);
+	public function void Callback();
+	public function void ClassFinalizeFunc(TypeClass g_class, void* class_data);
+	public function void ClassInitFunc(TypeClass g_class, void* class_data);
 	[CRepr]
-	public struct GClosure
+	public struct Closure
 	{
 		c_uint ref_count;
 		c_uint meta_marshal_nouse;
@@ -77,193 +77,193 @@ class GObject
 		c_uint in_marshal;
 		c_uint is_invalid;
 		void* data;
-		GClosureNotifyData* notifiers;
+		ClosureNotifyData notifiers;
 	}
-	public function void GClosureMarshal(GClosure* closure, GValue* return_value, c_uint n_param_values, void* invocation_hint, void* marshal_data);
-	public function void GClosureNotify(void* data, GClosure* closure);
+	public function void ClosureMarshal(Closure closure, Value return_value, c_uint n_param_values, void* invocation_hint, void* marshal_data);
+	public function void ClosureNotify(void* data, Closure closure);
 	[CRepr]
-	public struct GClosureNotifyData
+	public struct ClosureNotifyData
 	{
 		void* data;
-		GClosureNotify notify;
+		ClosureNotify notify;
 	}
 	[CRepr]
-	public struct GConnectFlags
+	public struct ConnectFlags
 	{
 		public const int G_CONNECT_DEFAULT = 0;
 		public const int G_CONNECT_AFTER = 1;
 		public const int G_CONNECT_SWAPPED = 2;
 	}
 	[CRepr]
-	public struct GEnumClass
+	public struct EnumClass
 	{
-		GTypeClass g_type_class;
+		TypeClass g_type_class;
 		c_int minimum;
 		c_int maximum;
 		c_uint n_values;
-		GEnumValue* values;
+		EnumValue values;
 	}
 	[CRepr]
-	public struct GEnumValue
+	public struct EnumValue
 	{
 		c_int value;
-		 c_char* value_name;
-		 c_char* value_nick;
+		char8* value_name;
+		char8* value_nick;
 	}
 	[CRepr]
-	public struct GFlagsClass
+	public struct FlagsClass
 	{
-		GTypeClass g_type_class;
+		TypeClass g_type_class;
 		c_uint mask;
 		c_uint n_values;
-		GFlagsValue* values;
+		FlagsValue values;
 	}
 	[CRepr]
-	public struct GFlagsValue
+	public struct FlagsValue
 	{
 		c_uint value;
-		 c_char* value_name;
-		 c_char* value_nick;
+		char8* value_name;
+		char8* value_nick;
 	}
 	[CRepr]
-	public struct GInitiallyUnowned;
+	public struct InitiallyUnowned;
 	[CRepr]
-	public struct GInitiallyUnownedClass
+	public struct InitiallyUnownedClass
 	{
-		GTypeClass g_type_class;
-		GSList* construct_properties;
+		TypeClass g_type_class;
+		GLib.SList construct_properties;
 		c_ulong flags;
 		c_ulong n_construct_properties;
 		void* pspecs;
 		c_ulong n_pspecs;
 	}
-	public function void GInstanceInitFunc(GTypeInstance* instance, void* g_class);
-	public function void GInterfaceFinalizeFunc(void* g_iface, void* iface_data);
+	public function void InstanceInitFunc(TypeInstance instance, TypeClass g_class);
+	public function void InterfaceFinalizeFunc(TypeInterface g_iface, void* iface_data);
 	[CRepr]
-	public struct GInterfaceInfo
+	public struct InterfaceInfo
 	{
-		GInterfaceInitFunc interface_init;
-		GInterfaceFinalizeFunc interface_finalize;
+		InterfaceInitFunc interface_init;
+		InterfaceFinalizeFunc interface_finalize;
 		void* interface_data;
 	}
-	public function void GInterfaceInitFunc(void* g_iface, void* iface_data);
+	public function void InterfaceInitFunc(TypeInterface g_iface, void* iface_data);
 	[CRepr]
-	public struct GObject;
+	public struct Object;
 	[LinkName("g_object_new")]
-	public static extern void* object_new(GType object_type,  c_char* first_property_name);
+	public static extern Object ObjectNew(GLib.Type object_type, char8* first_property_name);
 	[LinkName("g_object_new_valist")]
-	public static extern GObject* object_new_valist(GType object_type,  c_char* first_property_name, VarArgs var_args);
+	public static extern Object ObjectNewValist(GLib.Type object_type, char8* first_property_name, VarArgs var_args);
 	[LinkName("g_object_new_with_properties")]
-	public static extern GObject* object_new_with_properties(GType object_type, c_uint n_properties);
+	public static extern Object ObjectNewWithProperties(GLib.Type object_type, c_uint n_properties);
 	[LinkName("g_object_newv")]
-	public static extern void* object_newv(GType object_type, c_uint n_parameters);
+	public static extern Object ObjectNewv(GLib.Type object_type, c_uint n_parameters);
 	[LinkName("g_object_add_toggle_ref")]
-	public static extern void object_add_toggle_ref(GObject* object, GToggleNotify notify, void* data);
+	public static extern void ObjectAddToggleRef(Object object, ToggleNotify notify, void* data);
 	[LinkName("g_object_add_weak_pointer")]
-	public static extern void object_add_weak_pointer(GObject* object, void** weak_pointer_location);
+	public static extern void ObjectAddWeakPointer(Object object, void* weak_pointer_location);
 	[LinkName("g_object_bind_property")]
-	public static extern GBinding* object_bind_property(void* source,  c_char* source_property, void* target,  c_char* target_property, GBindingFlags flags);
+	public static extern Binding ObjectBindProperty(Object source, char8* source_property, Object target, char8* target_property, BindingFlags flags);
 	[LinkName("g_object_bind_property_full")]
-	public static extern GBinding* object_bind_property_full(void* source,  c_char* source_property, void* target,  c_char* target_property, GBindingFlags flags, GBindingTransformFunc transform_to, GBindingTransformFunc transform_from, void* user_data, GDestroyNotify notify);
+	public static extern Binding ObjectBindPropertyFull(Object source, char8* source_property, Object target, char8* target_property, BindingFlags flags, BindingTransformFunc transform_to, BindingTransformFunc transform_from, void* user_data, GLib.DestroyNotify notify);
 	[LinkName("g_object_bind_property_with_closures")]
-	public static extern GBinding* object_bind_property_with_closures(void* source,  c_char* source_property, void* target,  c_char* target_property, GBindingFlags flags, GClosure* transform_to, GClosure* transform_from);
+	public static extern Binding ObjectBindPropertyWithClosures(Object source, char8* source_property, Object target, char8* target_property, BindingFlags flags, Closure transform_to, Closure transform_from);
 	[LinkName("g_object_connect")]
-	public static extern void* object_connect(void* object,  c_char* signal_spec);
+	public static extern Object ObjectConnect(Object object, char8* signal_spec);
 	[LinkName("g_object_disconnect")]
-	public static extern void object_disconnect(void* object,  c_char* signal_spec);
+	public static extern void ObjectDisconnect(Object object, char8* signal_spec);
 	[LinkName("g_object_dup_data")]
-	public static extern void* object_dup_data(GObject* object,  c_char* key, GDuplicateFunc dup_func, void* user_data);
+	public static extern void* ObjectDupData(Object object, char8* key, GLib.DuplicateFunc dup_func, void* user_data);
 	[LinkName("g_object_dup_qdata")]
-	public static extern void* object_dup_qdata(GObject* object, GQuark quark, GDuplicateFunc dup_func, void* user_data);
+	public static extern void* ObjectDupQdata(Object object, GLib.Quark quark, GLib.DuplicateFunc dup_func, void* user_data);
 	[LinkName("g_object_force_floating")]
-	public static extern void object_force_floating(GObject* object);
+	public static extern void ObjectForceFloating(Object object);
 	[LinkName("g_object_freeze_notify")]
-	public static extern void object_freeze_notify(GObject* object);
+	public static extern void ObjectFreezeNotify(Object object);
 	[LinkName("g_object_get")]
-	public static extern void object_get(void* object,  c_char* first_property_name);
+	public static extern void ObjectGet(Object object, char8* first_property_name);
 	[LinkName("g_object_get_data")]
-	public static extern void* object_get_data(GObject* object,  c_char* key);
+	public static extern void* ObjectGetData(Object object, char8* key);
 	[LinkName("g_object_get_property")]
-	public static extern void object_get_property(GObject* object,  c_char* property_name, GValue* value);
+	public static extern void ObjectGetProperty(Object object, char8* property_name, Value value);
 	[LinkName("g_object_get_qdata")]
-	public static extern void* object_get_qdata(GObject* object, GQuark quark);
+	public static extern void* ObjectGetQdata(Object object, GLib.Quark quark);
 	[LinkName("g_object_get_valist")]
-	public static extern void object_get_valist(GObject* object,  c_char* first_property_name, VarArgs var_args);
+	public static extern void ObjectGetValist(Object object, char8* first_property_name, VarArgs var_args);
 	[LinkName("g_object_getv")]
-	public static extern void object_getv(GObject* object, c_uint n_properties);
+	public static extern void ObjectGetv(Object object, c_uint n_properties);
 	[LinkName("g_object_is_floating")]
-	public static extern c_int object_is_floating(void* object);
+	public static extern c_int ObjectIsFloating(Object object);
 	[LinkName("g_object_notify")]
-	public static extern void object_notify(GObject* object,  c_char* property_name);
+	public static extern void ObjectNotify(Object object, char8* property_name);
 	[LinkName("g_object_notify_by_pspec")]
-	public static extern void object_notify_by_pspec(GObject* object, GParamSpec* pspec);
+	public static extern void ObjectNotifyByPspec(Object object, ParamSpec pspec);
 	[LinkName("g_object_ref")]
-	public static extern void* object_ref(void* object);
+	public static extern Object ObjectRef(Object object);
 	[LinkName("g_object_ref_sink")]
-	public static extern void* object_ref_sink(void* object);
+	public static extern Object ObjectRefSink(Object object);
 	[LinkName("g_object_remove_toggle_ref")]
-	public static extern void object_remove_toggle_ref(GObject* object, GToggleNotify notify, void* data);
+	public static extern void ObjectRemoveToggleRef(Object object, ToggleNotify notify, void* data);
 	[LinkName("g_object_remove_weak_pointer")]
-	public static extern void object_remove_weak_pointer(GObject* object, void** weak_pointer_location);
+	public static extern void ObjectRemoveWeakPointer(Object object, void* weak_pointer_location);
 	[LinkName("g_object_replace_data")]
-	public static extern c_int object_replace_data(GObject* object,  c_char* key, void* oldval, void* newval, GDestroyNotify destroy, GDestroyNotify* old_destroy);
+	public static extern c_int ObjectReplaceData(Object object, char8* key, void* oldval, void* newval, GLib.DestroyNotify destroy, GLib.DestroyNotify old_destroy);
 	[LinkName("g_object_replace_qdata")]
-	public static extern c_int object_replace_qdata(GObject* object, GQuark quark, void* oldval, void* newval, GDestroyNotify destroy, GDestroyNotify* old_destroy);
+	public static extern c_int ObjectReplaceQdata(Object object, GLib.Quark quark, void* oldval, void* newval, GLib.DestroyNotify destroy, GLib.DestroyNotify old_destroy);
 	[LinkName("g_object_run_dispose")]
-	public static extern void object_run_dispose(GObject* object);
+	public static extern void ObjectRunDispose(Object object);
 	[LinkName("g_object_set")]
-	public static extern void object_set(void* object,  c_char* first_property_name);
+	public static extern void ObjectSet(Object object, char8* first_property_name);
 	[LinkName("g_object_set_data")]
-	public static extern void object_set_data(GObject* object,  c_char* key, void* data);
+	public static extern void ObjectSetData(Object object, char8* key, void* data);
 	[LinkName("g_object_set_data_full")]
-	public static extern void object_set_data_full(GObject* object,  c_char* key, void* data, GDestroyNotify destroy);
+	public static extern void ObjectSetDataFull(Object object, char8* key, void* data, GLib.DestroyNotify destroy);
 	[LinkName("g_object_set_property")]
-	public static extern void object_set_property(GObject* object,  c_char* property_name,  GValue* value);
+	public static extern void ObjectSetProperty(Object object, char8* property_name, Value value);
 	[LinkName("g_object_set_qdata")]
-	public static extern void object_set_qdata(GObject* object, GQuark quark, void* data);
+	public static extern void ObjectSetQdata(Object object, GLib.Quark quark, void* data);
 	[LinkName("g_object_set_qdata_full")]
-	public static extern void object_set_qdata_full(GObject* object, GQuark quark, void* data, GDestroyNotify destroy);
+	public static extern void ObjectSetQdataFull(Object object, GLib.Quark quark, void* data, GLib.DestroyNotify destroy);
 	[LinkName("g_object_set_valist")]
-	public static extern void object_set_valist(GObject* object,  c_char* first_property_name, VarArgs var_args);
+	public static extern void ObjectSetValist(Object object, char8* first_property_name, VarArgs var_args);
 	[LinkName("g_object_setv")]
-	public static extern void object_setv(GObject* object, c_uint n_properties);
+	public static extern void ObjectSetv(Object object, c_uint n_properties);
 	[LinkName("g_object_steal_data")]
-	public static extern void* object_steal_data(GObject* object,  c_char* key);
+	public static extern void* ObjectStealData(Object object, char8* key);
 	[LinkName("g_object_steal_qdata")]
-	public static extern void* object_steal_qdata(GObject* object, GQuark quark);
+	public static extern void* ObjectStealQdata(Object object, GLib.Quark quark);
 	[LinkName("g_object_take_ref")]
-	public static extern void* object_take_ref(void* object);
+	public static extern Object ObjectTakeRef(Object object);
 	[LinkName("g_object_thaw_notify")]
-	public static extern void object_thaw_notify(GObject* object);
+	public static extern void ObjectThawNotify(Object object);
 	[LinkName("g_object_unref")]
-	public static extern void object_unref(void* object);
+	public static extern void ObjectUnref(Object object);
 	[LinkName("g_object_watch_closure")]
-	public static extern void object_watch_closure(GObject* object, GClosure* closure);
+	public static extern void ObjectWatchClosure(Object object, Closure closure);
 	[LinkName("g_object_weak_ref")]
-	public static extern void object_weak_ref(GObject* object, GWeakNotify notify, void* data);
+	public static extern void ObjectWeakRef(Object object, WeakNotify notify, void* data);
 	[LinkName("g_object_weak_unref")]
-	public static extern void object_weak_unref(GObject* object, GWeakNotify notify, void* data);
+	public static extern void ObjectWeakUnref(Object object, WeakNotify notify, void* data);
 	[CRepr]
-	public struct GObjectClass
+	public struct ObjectClass
 	{
-		GTypeClass g_type_class;
-		GSList* construct_properties;
+		TypeClass g_type_class;
+		GLib.SList construct_properties;
 		c_ulong flags;
 		c_ulong n_construct_properties;
 		void* pspecs;
 		c_ulong n_pspecs;
 	}
 	[CRepr]
-	public struct GObjectConstructParam
+	public struct ObjectConstructParam
 	{
-		GParamSpec* pspec;
-		GValue* value;
+		ParamSpec pspec;
+		Value value;
 	}
-	public function void GObjectFinalizeFunc(GObject* object);
-	public function void GObjectGetPropertyFunc(GObject* object, c_uint property_id, GValue* value, GParamSpec* pspec);
-	public function void GObjectSetPropertyFunc(GObject* object, c_uint property_id,  GValue* value, GParamSpec* pspec);
+	public function void ObjectFinalizeFunc(Object object);
+	public function void ObjectGetPropertyFunc(Object object, c_uint property_id, Value value, ParamSpec pspec);
+	public function void ObjectSetPropertyFunc(Object object, c_uint property_id, Value value, ParamSpec pspec);
 	[CRepr]
-	public struct GParamFlags
+	public struct ParamFlags
 	{
 		public const int G_PARAM_READABLE = 1;
 		public const int G_PARAM_WRITABLE = 2;
@@ -279,108 +279,108 @@ class GObject
 		public const int G_PARAM_DEPRECATED = 2147483648;
 	}
 	[CRepr]
-	public struct GParamSpec;
+	public struct ParamSpec;
 	[LinkName("g_param_spec_get_blurb")]
-	public static extern  c_char* param_spec_get_blurb(GParamSpec* pspec);
+	public static extern char8* ParamSpecGetBlurb(ParamSpec pspec);
 	[LinkName("g_param_spec_get_default_value")]
-	public static extern  GValue* param_spec_get_default_value(GParamSpec* pspec);
+	public static extern Value ParamSpecGetDefaultValue(ParamSpec pspec);
 	[LinkName("g_param_spec_get_name")]
-	public static extern  c_char* param_spec_get_name(GParamSpec* pspec);
+	public static extern char8* ParamSpecGetName(ParamSpec pspec);
 	[LinkName("g_param_spec_get_name_quark")]
-	public static extern GQuark param_spec_get_name_quark(GParamSpec* pspec);
+	public static extern GLib.Quark ParamSpecGetNameQuark(ParamSpec pspec);
 	[LinkName("g_param_spec_get_nick")]
-	public static extern  c_char* param_spec_get_nick(GParamSpec* pspec);
+	public static extern char8* ParamSpecGetNick(ParamSpec pspec);
 	[LinkName("g_param_spec_get_qdata")]
-	public static extern void* param_spec_get_qdata(GParamSpec* pspec, GQuark quark);
+	public static extern void* ParamSpecGetQdata(ParamSpec pspec, GLib.Quark quark);
 	[LinkName("g_param_spec_get_redirect_target")]
-	public static extern GParamSpec* param_spec_get_redirect_target(GParamSpec* pspec);
+	public static extern ParamSpec ParamSpecGetRedirectTarget(ParamSpec pspec);
 	[LinkName("g_param_spec_ref")]
-	public static extern GParamSpec* param_spec_ref(GParamSpec* pspec);
+	public static extern ParamSpec ParamSpecRef(ParamSpec pspec);
 	[LinkName("g_param_spec_ref_sink")]
-	public static extern GParamSpec* param_spec_ref_sink(GParamSpec* pspec);
+	public static extern ParamSpec ParamSpecRefSink(ParamSpec pspec);
 	[LinkName("g_param_spec_set_qdata")]
-	public static extern void param_spec_set_qdata(GParamSpec* pspec, GQuark quark, void* data);
+	public static extern void ParamSpecSetQdata(ParamSpec pspec, GLib.Quark quark, void* data);
 	[LinkName("g_param_spec_set_qdata_full")]
-	public static extern void param_spec_set_qdata_full(GParamSpec* pspec, GQuark quark, void* data, GDestroyNotify destroy);
+	public static extern void ParamSpecSetQdataFull(ParamSpec pspec, GLib.Quark quark, void* data, GLib.DestroyNotify destroy);
 	[LinkName("g_param_spec_sink")]
-	public static extern void param_spec_sink(GParamSpec* pspec);
+	public static extern void ParamSpecSink(ParamSpec pspec);
 	[LinkName("g_param_spec_steal_qdata")]
-	public static extern void* param_spec_steal_qdata(GParamSpec* pspec, GQuark quark);
+	public static extern void* ParamSpecStealQdata(ParamSpec pspec, GLib.Quark quark);
 	[LinkName("g_param_spec_unref")]
-	public static extern void param_spec_unref(GParamSpec* pspec);
+	public static extern void ParamSpecUnref(ParamSpec pspec);
 	[CRepr]
-	public struct GParamSpecBoolean;
+	public struct ParamSpecBoolean;
 	[CRepr]
-	public struct GParamSpecBoxed;
+	public struct ParamSpecBoxed;
 	[CRepr]
-	public struct GParamSpecChar;
+	public struct ParamSpecChar;
 	[CRepr]
-	public struct GParamSpecClass
+	public struct ParamSpecClass
 	{
-		GTypeClass g_type_class;
-		GType value_type;
+		TypeClass g_type_class;
+		GLib.Type value_type;
 	}
 	[CRepr]
-	public struct GParamSpecDouble;
+	public struct ParamSpecDouble;
 	[CRepr]
-	public struct GParamSpecEnum;
+	public struct ParamSpecEnum;
 	[CRepr]
-	public struct GParamSpecFlags;
+	public struct ParamSpecFlags;
 	[CRepr]
-	public struct GParamSpecFloat;
+	public struct ParamSpecFloat;
 	[CRepr]
-	public struct GParamSpecGType;
+	public struct ParamSpecGType;
 	[CRepr]
-	public struct GParamSpecInt;
+	public struct ParamSpecInt;
 	[CRepr]
-	public struct GParamSpecInt64;
+	public struct ParamSpecInt64;
 	[CRepr]
-	public struct GParamSpecLong;
+	public struct ParamSpecLong;
 	[CRepr]
-	public struct GParamSpecObject;
+	public struct ParamSpecObject;
 	[CRepr]
-	public struct GParamSpecOverride;
+	public struct ParamSpecOverride;
 	[CRepr]
-	public struct GParamSpecParam;
+	public struct ParamSpecParam;
 	[CRepr]
-	public struct GParamSpecPointer;
+	public struct ParamSpecPointer;
 	[CRepr]
-	public struct GParamSpecPool
+	public struct ParamSpecPool
 	{
 	}
 	[CRepr]
-	public struct GParamSpecString;
+	public struct ParamSpecString;
 	[CRepr]
-	public struct GParamSpecTypeInfo
+	public struct ParamSpecTypeInfo
 	{
 		c_ushort instance_size;
 		c_ushort n_preallocs;
-		GType value_type;
+		GLib.Type value_type;
 	}
 	[CRepr]
-	public struct GParamSpecUChar;
+	public struct ParamSpecUChar;
 	[CRepr]
-	public struct GParamSpecUInt;
+	public struct ParamSpecUInt;
 	[CRepr]
-	public struct GParamSpecUInt64;
+	public struct ParamSpecUInt64;
 	[CRepr]
-	public struct GParamSpecULong;
+	public struct ParamSpecULong;
 	[CRepr]
-	public struct GParamSpecUnichar;
+	public struct ParamSpecUnichar;
 	[CRepr]
-	public struct GParamSpecValueArray;
+	public struct ParamSpecValueArray;
 	[CRepr]
-	public struct GParamSpecVariant;
+	public struct ParamSpecVariant;
 	[CRepr]
-	public struct GParameter
+	public struct Parameter
 	{
-		 c_char* name;
-		GValue value;
+		char8* name;
+		Value value;
 	}
-	public function c_int GSignalAccumulator(GSignalInvocationHint* ihint, GValue* return_accu,  GValue* handler_return, void* data);
-	public function c_int GSignalEmissionHook(GSignalInvocationHint* ihint, c_uint n_param_values, void* data);
+	public function c_int SignalAccumulator(SignalInvocationHint ihint, Value return_accu, Value handler_return, void* data);
+	public function c_int SignalEmissionHook(SignalInvocationHint ihint, c_uint n_param_values, void* data);
 	[CRepr]
-	public struct GSignalFlags
+	public struct SignalFlags
 	{
 		public const int G_SIGNAL_RUN_FIRST = 1;
 		public const int G_SIGNAL_RUN_LAST = 2;
@@ -394,38 +394,38 @@ class GObject
 		public const int G_SIGNAL_ACCUMULATOR_FIRST_RUN = 131072;
 	}
 	[CRepr]
-	public struct GSignalGroup;
+	public struct SignalGroup;
 	[LinkName("g_signal_group_new")]
-	public static extern GSignalGroup* signal_group_new(GType target_type);
+	public static extern SignalGroup SignalGroupNew(GLib.Type target_type);
 	[LinkName("g_signal_group_block")]
-	public static extern void signal_group_block(GSignalGroup* self);
+	public static extern void SignalGroupBlock(SignalGroup self);
 	[LinkName("g_signal_group_connect")]
-	public static extern void signal_group_connect(GSignalGroup* self,  c_char* detailed_signal, GCallback c_handler, void* data);
+	public static extern void SignalGroupConnect(SignalGroup self, char8* detailed_signal, Callback c_handler, void* data);
 	[LinkName("g_signal_group_connect_after")]
-	public static extern void signal_group_connect_after(GSignalGroup* self,  c_char* detailed_signal, GCallback c_handler, void* data);
+	public static extern void SignalGroupConnectAfter(SignalGroup self, char8* detailed_signal, Callback c_handler, void* data);
 	[LinkName("g_signal_group_connect_closure")]
-	public static extern void signal_group_connect_closure(GSignalGroup* self,  c_char* detailed_signal, GClosure* closure, c_int after);
+	public static extern void SignalGroupConnectClosure(SignalGroup self, char8* detailed_signal, Closure closure, c_int after);
 	[LinkName("g_signal_group_connect_data")]
-	public static extern void signal_group_connect_data(GSignalGroup* self,  c_char* detailed_signal, GCallback c_handler, void* data, GClosureNotify notify, GConnectFlags flags);
+	public static extern void SignalGroupConnectData(SignalGroup self, char8* detailed_signal, Callback c_handler, void* data, ClosureNotify notify, ConnectFlags flags);
 	[LinkName("g_signal_group_connect_object")]
-	public static extern void signal_group_connect_object(GSignalGroup* self,  c_char* detailed_signal, GCallback c_handler, void* object, GConnectFlags flags);
+	public static extern void SignalGroupConnectObject(SignalGroup self, char8* detailed_signal, Callback c_handler, void* object, ConnectFlags flags);
 	[LinkName("g_signal_group_connect_swapped")]
-	public static extern void signal_group_connect_swapped(GSignalGroup* self,  c_char* detailed_signal, GCallback c_handler, void* data);
+	public static extern void SignalGroupConnectSwapped(SignalGroup self, char8* detailed_signal, Callback c_handler, void* data);
 	[LinkName("g_signal_group_dup_target")]
-	public static extern void* signal_group_dup_target(GSignalGroup* self);
+	public static extern Object SignalGroupDupTarget(SignalGroup self);
 	[LinkName("g_signal_group_set_target")]
-	public static extern void signal_group_set_target(GSignalGroup* self, void* target);
+	public static extern void SignalGroupSetTarget(SignalGroup self, Object target);
 	[LinkName("g_signal_group_unblock")]
-	public static extern void signal_group_unblock(GSignalGroup* self);
+	public static extern void SignalGroupUnblock(SignalGroup self);
 	[CRepr]
-	public struct GSignalInvocationHint
+	public struct SignalInvocationHint
 	{
 		c_uint signal_id;
-		GQuark detail;
-		GSignalFlags run_type;
+		GLib.Quark detail;
+		SignalFlags run_type;
 	}
 	[CRepr]
-	public struct GSignalMatchType
+	public struct SignalMatchType
 	{
 		public const int G_SIGNAL_MATCH_ID = 1;
 		public const int G_SIGNAL_MATCH_DETAIL = 2;
@@ -435,28 +435,28 @@ class GObject
 		public const int G_SIGNAL_MATCH_UNBLOCKED = 32;
 	}
 	[CRepr]
-	public struct GSignalQuery
+	public struct SignalQuery
 	{
 		c_uint signal_id;
-		 c_char* signal_name;
-		GType itype;
-		GSignalFlags signal_flags;
-		GType return_type;
+		char8* signal_name;
+		GLib.Type itype;
+		SignalFlags signal_flags;
+		GLib.Type return_type;
 		c_uint n_params;
 	}
-	public function void GToggleNotify(void* data, GObject* object, c_int is_last_ref);
+	public function void ToggleNotify(void* data, Object object, c_int is_last_ref);
 	[Union]
-	public struct GTypeCValue
+	public struct TypeCValue
 	{
 	}
 	[CRepr]
-	public struct GTypeClass
+	public struct TypeClass
 	{
-		GType g_type;
+		GLib.Type g_type;
 	}
-	public function c_int GTypeClassCacheFunc(void* cache_data, GTypeClass* g_class);
+	public function c_int TypeClassCacheFunc(void* cache_data, TypeClass g_class);
 	[CRepr]
-	public struct GTypeDebugFlags
+	public struct TypeDebugFlags
 	{
 		public const int G_TYPE_DEBUG_NONE = 0;
 		public const int G_TYPE_DEBUG_OBJECTS = 1;
@@ -465,7 +465,7 @@ class GObject
 		public const int G_TYPE_DEBUG_MASK = 7;
 	}
 	[CRepr]
-	public struct GTypeFlags
+	public struct TypeFlags
 	{
 		public const int G_TYPE_FLAG_NONE = 0;
 		public const int G_TYPE_FLAG_ABSTRACT = 16;
@@ -474,7 +474,7 @@ class GObject
 		public const int G_TYPE_FLAG_DEPRECATED = 128;
 	}
 	[CRepr]
-	public struct GTypeFundamentalFlags
+	public struct TypeFundamentalFlags
 	{
 		public const int G_TYPE_FLAG_CLASSED = 1;
 		public const int G_TYPE_FLAG_INSTANTIATABLE = 2;
@@ -482,104 +482,104 @@ class GObject
 		public const int G_TYPE_FLAG_DEEP_DERIVABLE = 8;
 	}
 	[CRepr]
-	public struct GTypeFundamentalInfo
+	public struct TypeFundamentalInfo
 	{
-		GTypeFundamentalFlags type_flags;
+		TypeFundamentalFlags type_flags;
 	}
 	[CRepr]
-	public struct GTypeInfo
+	public struct TypeInfo
 	{
 		c_ushort class_size;
-		GBaseInitFunc base_init;
-		GBaseFinalizeFunc base_finalize;
-		GClassInitFunc class_init;
-		GClassFinalizeFunc class_finalize;
+		BaseInitFunc base_init;
+		BaseFinalizeFunc base_finalize;
+		ClassInitFunc class_init;
+		ClassFinalizeFunc class_finalize;
 		void* class_data;
 		c_ushort instance_size;
 		c_ushort n_preallocs;
-		GInstanceInitFunc instance_init;
-		 GTypeValueTable* value_table;
+		InstanceInitFunc instance_init;
+		TypeValueTable value_table;
 	}
 	[CRepr]
-	public struct GTypeInstance
+	public struct TypeInstance
 	{
-		GTypeClass* g_class;
+		TypeClass g_class;
 	}
 	[CRepr]
-	public struct GTypeInterface
+	public struct TypeInterface
 	{
-		GType g_type;
-		GType g_instance_type;
+		GLib.Type g_type;
+		GLib.Type g_instance_type;
 	}
-	public function void GTypeInterfaceCheckFunc(void* check_data, void* g_iface);
+	public function void TypeInterfaceCheckFunc(void* check_data, TypeInterface g_iface);
 	[CRepr]
-	public struct GTypeModule;
+	public struct TypeModule;
 	[LinkName("g_type_module_add_interface")]
-	public static extern void type_module_add_interface(GTypeModule* module, GType instance_type, GType interface_type,  GInterfaceInfo* interface_info);
+	public static extern void TypeModuleAddInterface(TypeModule module, GLib.Type instance_type, GLib.Type interface_type, InterfaceInfo interface_info);
 	[LinkName("g_type_module_register_enum")]
-	public static extern GType type_module_register_enum(GTypeModule* module,  c_char* name,  GEnumValue* const_static_values);
+	public static extern GLib.Type TypeModuleRegisterEnum(TypeModule module, char8* name, EnumValue const_static_values);
 	[LinkName("g_type_module_register_flags")]
-	public static extern GType type_module_register_flags(GTypeModule* module,  c_char* name,  GFlagsValue* const_static_values);
+	public static extern GLib.Type TypeModuleRegisterFlags(TypeModule module, char8* name, FlagsValue const_static_values);
 	[LinkName("g_type_module_register_type")]
-	public static extern GType type_module_register_type(GTypeModule* module, GType parent_type,  c_char* type_name,  GTypeInfo* type_info, GTypeFlags flags);
+	public static extern GLib.Type TypeModuleRegisterType(TypeModule module, GLib.Type parent_type, char8* type_name, TypeInfo type_info, TypeFlags flags);
 	[LinkName("g_type_module_set_name")]
-	public static extern void type_module_set_name(GTypeModule* module,  c_char* name);
+	public static extern void TypeModuleSetName(TypeModule module, char8* name);
 	[LinkName("g_type_module_unuse")]
-	public static extern void type_module_unuse(GTypeModule* module);
+	public static extern void TypeModuleUnuse(TypeModule module);
 	[LinkName("g_type_module_use")]
-	public static extern c_int type_module_use(GTypeModule* module);
+	public static extern c_int TypeModuleUse(TypeModule module);
 	[CRepr]
-	public struct GTypeModuleClass
+	public struct TypeModuleClass
 	{
-		GObjectClass parent_class;
+		ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GTypePlugin
+	public struct TypePlugin
 	{	}
 	[CRepr]
-	public struct GTypePluginClass
+	public struct TypePluginClass
 	{
-		GTypeInterface base_iface;
-		GTypePluginUse use_plugin;
-		GTypePluginUnuse unuse_plugin;
-		GTypePluginCompleteTypeInfo complete_type_info;
-		GTypePluginCompleteInterfaceInfo complete_interface_info;
+		TypeInterface base_iface;
+		TypePluginUse use_plugin;
+		TypePluginUnuse unuse_plugin;
+		TypePluginCompleteTypeInfo complete_type_info;
+		TypePluginCompleteInterfaceInfo complete_interface_info;
 	}
-	public function void GTypePluginCompleteInterfaceInfo(GTypePlugin* plugin, GType instance_type, GType interface_type, GInterfaceInfo* info);
-	public function void GTypePluginCompleteTypeInfo(GTypePlugin* plugin, GType g_type, GTypeInfo* info, GTypeValueTable* value_table);
-	public function void GTypePluginUnuse(GTypePlugin* plugin);
-	public function void GTypePluginUse(GTypePlugin* plugin);
+	public function void TypePluginCompleteInterfaceInfo(TypePlugin plugin, GLib.Type instance_type, GLib.Type interface_type, InterfaceInfo info);
+	public function void TypePluginCompleteTypeInfo(TypePlugin plugin, GLib.Type g_type, TypeInfo info, TypeValueTable value_table);
+	public function void TypePluginUnuse(TypePlugin plugin);
+	public function void TypePluginUse(TypePlugin plugin);
 	[CRepr]
-	public struct GTypeQuery
+	public struct TypeQuery
 	{
-		GType type;
-		 c_char* type_name;
+		GLib.Type type;
+		char8* type_name;
 		c_uint class_size;
 		c_uint instance_size;
 	}
 	[CRepr]
-	public struct GTypeValueTable
+	public struct TypeValueTable
 	{
-		 c_char* collect_format;
-		 c_char* lcopy_format;
+		char8* collect_format;
+		char8* lcopy_format;
 	}
-	public function void GVaClosureMarshal(GClosure* closure, GValue* return_value, void* instance, VarArgs args, void* marshal_data, c_int n_params);
+	public function void VaClosureMarshal(Closure closure, Value return_value, TypeInstance instance, VarArgs args, void* marshal_data, c_int n_params);
 	[CRepr]
-	public struct GValue
+	public struct Value
 	{
-		GType g_type;
+		GLib.Type g_type;
 	}
 	[CRepr]
-	public struct GValueArray
+	public struct ValueArray
 	{
 		c_uint n_values;
-		GValue* values;
+		Value values;
 		c_uint n_prealloced;
 	}
-	public function void GValueTransform( GValue* src_value, GValue* dest_value);
-	public function void GWeakNotify(void* data, GObject* where_the_object_was);
+	public function void ValueTransform(Value src_value, Value dest_value);
+	public function void WeakNotify(void* data, Object where_the_object_was);
 	[CRepr]
-	public struct GWeakRef
+	public struct WeakRef
 	{
 	}
 	[Union]

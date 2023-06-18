@@ -1,5 +1,3 @@
-namespace gtk_beef;
-
 namespace Graphene;
 
 using System;
@@ -8,18 +6,18 @@ using System.Interop;
 class Graphene
 {
 	[CRepr]
-	public struct graphene_box_t
+	public struct Box
 	{
-		graphene_vec3_t min;
-		graphene_vec3_t max;
+		Vec3 min;
+		Vec3 max;
 	}
 	[CRepr]
-	public struct graphene_euler_t
+	public struct Euler
 	{
-		graphene_vec3_t angles;
-		graphene_euler_order_t order;
+		Vec3 angles;
+		EulerOrder order;
 	}
-	public enum graphene_euler_order_t : c_int
+	public enum EulerOrder : c_int
 	{
 		GRAPHENE_EULER_ORDER_DEFAULT,
 		GRAPHENE_EULER_ORDER_XYZ,
@@ -54,39 +52,39 @@ class Graphene
 		GRAPHENE_EULER_ORDER_RZYZ
 	}
 	[CRepr]
-	public struct graphene_frustum_t
+	public struct Frustum
 	{
 	}
 	[CRepr]
-	public struct graphene_matrix_t
+	public struct Matrix
 	{
-		graphene_simd4x4f_t value;
+		Simd4X4F value;
 	}
 	[CRepr]
-	public struct graphene_plane_t
+	public struct Plane
 	{
-		graphene_vec3_t normal;
+		Vec3 normal;
 		float constant;
 	}
 	[CRepr]
-	public struct graphene_point_t
+	public struct Point
 	{
 		float x;
 		float y;
 	}
 	[CRepr]
-	public struct graphene_point3d_t
+	public struct Point3D
 	{
 		float x;
 		float y;
 		float z;
 	}
 	[CRepr]
-	public struct graphene_quad_t
+	public struct Quad
 	{
 	}
 	[CRepr]
-	public struct graphene_quaternion_t
+	public struct Quaternion
 	{
 		float x;
 		float y;
@@ -94,25 +92,25 @@ class Graphene
 		float w;
 	}
 	[CRepr]
-	public struct graphene_ray_t
+	public struct Ray
 	{
-		graphene_vec3_t origin;
-		graphene_vec3_t direction;
+		Vec3 origin;
+		Vec3 direction;
 	}
-	public enum graphene_ray_intersection_kind_t : c_int
+	public enum RayIntersectionKind : c_int
 	{
 		GRAPHENE_RAY_INTERSECTION_KIND_NONE,
 		GRAPHENE_RAY_INTERSECTION_KIND_ENTER,
 		GRAPHENE_RAY_INTERSECTION_KIND_LEAVE
 	}
 	[CRepr]
-	public struct graphene_rect_t
+	public struct Rect
 	{
-		graphene_point_t origin;
-		graphene_size_t size;
+		Point origin;
+		Size size;
 	}
 	[CRepr]
-	public struct graphene_simd4f_t
+	public struct Simd4F
 	{
 		float x;
 		float y;
@@ -120,45 +118,45 @@ class Graphene
 		float w;
 	}
 	[CRepr]
-	public struct graphene_simd4x4f_t
+	public struct Simd4X4F
 	{
-		graphene_simd4f_t x;
-		graphene_simd4f_t y;
-		graphene_simd4f_t z;
-		graphene_simd4f_t w;
+		Simd4F x;
+		Simd4F y;
+		Simd4F z;
+		Simd4F w;
 	}
 	[CRepr]
-	public struct graphene_size_t
+	public struct Size
 	{
 		float width;
 		float height;
 	}
 	[CRepr]
-	public struct graphene_sphere_t
+	public struct Sphere
 	{
-		graphene_vec3_t center;
+		Vec3 center;
 		float radius;
 	}
 	[CRepr]
-	public struct graphene_triangle_t
+	public struct Triangle
 	{
-		graphene_vec3_t a;
-		graphene_vec3_t b;
-		graphene_vec3_t c;
+		Vec3 a;
+		Vec3 b;
+		Vec3 c;
 	}
 	[CRepr]
-	public struct graphene_vec2_t
+	public struct Vec2
 	{
-		graphene_simd4f_t value;
+		Simd4F value;
 	}
 	[CRepr]
-	public struct graphene_vec3_t
+	public struct Vec3
 	{
-		graphene_simd4f_t value;
+		Simd4F value;
 	}
 	[CRepr]
-	public struct graphene_vec4_t
+	public struct Vec4
 	{
-		graphene_simd4f_t value;
+		Simd4F value;
 	}
 }

@@ -2,118 +2,118 @@ namespace Gtk;
 
 using System;
 using System.Interop;
-
-using static Gio.Gio;
-using static GLib.GLib;
-using static GObject.GObject;
-using static Gdk.Gdk;
-using static Graphene.Graphene;
-using static Pango.Pango;
-using static Cairo.Cairo;
-using static Gsk.Gsk;
-using static GdkPixbuf.GdkPixbuf;
+using Gdk;
+using GObject;
+using GLib;
+using Gio;
+using Gsk;
+using Gdk;
+using Pango;
+using cairo;
+using Graphene;
+using GdkPixbuf;
 
 class Gtk
 {
-	public typealias GtkAllocation = GdkRectangle;
+	public typealias Allocation = Gdk.Rectangle;
 	[CRepr]
-	public struct GtkATContext;
+	public struct ATContext;
 	[LinkName("gtk_at_context_create")]
-	public static extern GtkATContext* at_context_create(GtkAccessibleRole accessible_role, GtkAccessible* accessible, GdkDisplay* display);
+	public static extern ATContext AtContextCreate(AccessibleRole accessible_role, Accessible accessible, Gdk.Display display);
 	[LinkName("gtk_at_context_get_accessible")]
-	public static extern GtkAccessible* at_context_get_accessible(GtkATContext* self);
+	public static extern Accessible AtContextGetAccessible(ATContext self);
 	[LinkName("gtk_at_context_get_accessible_role")]
-	public static extern GtkAccessibleRole at_context_get_accessible_role(GtkATContext* self);
+	public static extern AccessibleRole AtContextGetAccessibleRole(ATContext self);
 	[CRepr]
-	public struct GtkATContextClass
+	public struct ATContextClass
 	{
 	}
 	[CRepr]
-	public struct GtkAboutDialog;
+	public struct AboutDialog;
 	[LinkName("gtk_about_dialog_new")]
-	public static extern GtkWidget* about_dialog_new();
+	public static extern Widget AboutDialogNew();
 	[LinkName("gtk_about_dialog_add_credit_section")]
-	public static extern void about_dialog_add_credit_section(GtkAboutDialog* about,  c_char* section_name);
+	public static extern void AboutDialogAddCreditSection(AboutDialog about, char8* section_name);
 	[LinkName("gtk_about_dialog_get_artists")]
-	public static extern  c_char* * about_dialog_get_artists(GtkAboutDialog* about);
+	public static extern char8* AboutDialogGetArtists(AboutDialog about);
 	[LinkName("gtk_about_dialog_get_authors")]
-	public static extern  c_char* * about_dialog_get_authors(GtkAboutDialog* about);
+	public static extern char8* AboutDialogGetAuthors(AboutDialog about);
 	[LinkName("gtk_about_dialog_get_comments")]
-	public static extern  c_char* about_dialog_get_comments(GtkAboutDialog* about);
+	public static extern char8* AboutDialogGetComments(AboutDialog about);
 	[LinkName("gtk_about_dialog_get_copyright")]
-	public static extern  c_char* about_dialog_get_copyright(GtkAboutDialog* about);
+	public static extern char8* AboutDialogGetCopyright(AboutDialog about);
 	[LinkName("gtk_about_dialog_get_documenters")]
-	public static extern  c_char* * about_dialog_get_documenters(GtkAboutDialog* about);
+	public static extern char8* AboutDialogGetDocumenters(AboutDialog about);
 	[LinkName("gtk_about_dialog_get_license")]
-	public static extern  c_char* about_dialog_get_license(GtkAboutDialog* about);
+	public static extern char8* AboutDialogGetLicense(AboutDialog about);
 	[LinkName("gtk_about_dialog_get_license_type")]
-	public static extern GtkLicense about_dialog_get_license_type(GtkAboutDialog* about);
+	public static extern License AboutDialogGetLicenseType(AboutDialog about);
 	[LinkName("gtk_about_dialog_get_logo")]
-	public static extern GdkPaintable* about_dialog_get_logo(GtkAboutDialog* about);
+	public static extern Gdk.Paintable AboutDialogGetLogo(AboutDialog about);
 	[LinkName("gtk_about_dialog_get_logo_icon_name")]
-	public static extern  c_char* about_dialog_get_logo_icon_name(GtkAboutDialog* about);
+	public static extern char8* AboutDialogGetLogoIconName(AboutDialog about);
 	[LinkName("gtk_about_dialog_get_program_name")]
-	public static extern  c_char* about_dialog_get_program_name(GtkAboutDialog* about);
+	public static extern char8* AboutDialogGetProgramName(AboutDialog about);
 	[LinkName("gtk_about_dialog_get_system_information")]
-	public static extern  c_char* about_dialog_get_system_information(GtkAboutDialog* about);
+	public static extern char8* AboutDialogGetSystemInformation(AboutDialog about);
 	[LinkName("gtk_about_dialog_get_translator_credits")]
-	public static extern  c_char* about_dialog_get_translator_credits(GtkAboutDialog* about);
+	public static extern char8* AboutDialogGetTranslatorCredits(AboutDialog about);
 	[LinkName("gtk_about_dialog_get_version")]
-	public static extern  c_char* about_dialog_get_version(GtkAboutDialog* about);
+	public static extern char8* AboutDialogGetVersion(AboutDialog about);
 	[LinkName("gtk_about_dialog_get_website")]
-	public static extern  c_char* about_dialog_get_website(GtkAboutDialog* about);
+	public static extern char8* AboutDialogGetWebsite(AboutDialog about);
 	[LinkName("gtk_about_dialog_get_website_label")]
-	public static extern  c_char* about_dialog_get_website_label(GtkAboutDialog* about);
+	public static extern char8* AboutDialogGetWebsiteLabel(AboutDialog about);
 	[LinkName("gtk_about_dialog_get_wrap_license")]
-	public static extern c_int about_dialog_get_wrap_license(GtkAboutDialog* about);
+	public static extern c_int AboutDialogGetWrapLicense(AboutDialog about);
 	[LinkName("gtk_about_dialog_set_artists")]
-	public static extern void about_dialog_set_artists(GtkAboutDialog* about);
+	public static extern void AboutDialogSetArtists(AboutDialog about);
 	[LinkName("gtk_about_dialog_set_authors")]
-	public static extern void about_dialog_set_authors(GtkAboutDialog* about);
+	public static extern void AboutDialogSetAuthors(AboutDialog about);
 	[LinkName("gtk_about_dialog_set_comments")]
-	public static extern void about_dialog_set_comments(GtkAboutDialog* about,  c_char* comments);
+	public static extern void AboutDialogSetComments(AboutDialog about, char8* comments);
 	[LinkName("gtk_about_dialog_set_copyright")]
-	public static extern void about_dialog_set_copyright(GtkAboutDialog* about,  c_char* copyright);
+	public static extern void AboutDialogSetCopyright(AboutDialog about, char8* copyright);
 	[LinkName("gtk_about_dialog_set_documenters")]
-	public static extern void about_dialog_set_documenters(GtkAboutDialog* about);
+	public static extern void AboutDialogSetDocumenters(AboutDialog about);
 	[LinkName("gtk_about_dialog_set_license")]
-	public static extern void about_dialog_set_license(GtkAboutDialog* about,  c_char* license);
+	public static extern void AboutDialogSetLicense(AboutDialog about, char8* license);
 	[LinkName("gtk_about_dialog_set_license_type")]
-	public static extern void about_dialog_set_license_type(GtkAboutDialog* about, GtkLicense license_type);
+	public static extern void AboutDialogSetLicenseType(AboutDialog about, License license_type);
 	[LinkName("gtk_about_dialog_set_logo")]
-	public static extern void about_dialog_set_logo(GtkAboutDialog* about, GdkPaintable* logo);
+	public static extern void AboutDialogSetLogo(AboutDialog about, Gdk.Paintable logo);
 	[LinkName("gtk_about_dialog_set_logo_icon_name")]
-	public static extern void about_dialog_set_logo_icon_name(GtkAboutDialog* about,  c_char* icon_name);
+	public static extern void AboutDialogSetLogoIconName(AboutDialog about, char8* icon_name);
 	[LinkName("gtk_about_dialog_set_program_name")]
-	public static extern void about_dialog_set_program_name(GtkAboutDialog* about,  c_char* name);
+	public static extern void AboutDialogSetProgramName(AboutDialog about, char8* name);
 	[LinkName("gtk_about_dialog_set_system_information")]
-	public static extern void about_dialog_set_system_information(GtkAboutDialog* about,  c_char* system_information);
+	public static extern void AboutDialogSetSystemInformation(AboutDialog about, char8* system_information);
 	[LinkName("gtk_about_dialog_set_translator_credits")]
-	public static extern void about_dialog_set_translator_credits(GtkAboutDialog* about,  c_char* translator_credits);
+	public static extern void AboutDialogSetTranslatorCredits(AboutDialog about, char8* translator_credits);
 	[LinkName("gtk_about_dialog_set_version")]
-	public static extern void about_dialog_set_version(GtkAboutDialog* about,  c_char* version);
+	public static extern void AboutDialogSetVersion(AboutDialog about, char8* version);
 	[LinkName("gtk_about_dialog_set_website")]
-	public static extern void about_dialog_set_website(GtkAboutDialog* about,  c_char* website);
+	public static extern void AboutDialogSetWebsite(AboutDialog about, char8* website);
 	[LinkName("gtk_about_dialog_set_website_label")]
-	public static extern void about_dialog_set_website_label(GtkAboutDialog* about,  c_char* website_label);
+	public static extern void AboutDialogSetWebsiteLabel(AboutDialog about, char8* website_label);
 	[LinkName("gtk_about_dialog_set_wrap_license")]
-	public static extern void about_dialog_set_wrap_license(GtkAboutDialog* about, c_int wrap_license);
+	public static extern void AboutDialogSetWrapLicense(AboutDialog about, c_int wrap_license);
 	[CRepr]
-	public struct GtkAccessible
+	public struct Accessible
 	{
-		public function GtkAccessible*(GtkAccessible this) get_accessible_parent;
+		public function Accessible(Accessible this) get_accessible_parent;
 
-		public function GtkATContext*(GtkAccessible this) get_at_context;
+		public function ATContext(Accessible this) get_at_context;
 
-		public function c_int(GtkAccessible this, c_int* x, c_int* y, c_int* width, c_int* height) get_bounds;
+		public function c_int(Accessible this, c_int x, c_int y, c_int width, c_int height) get_bounds;
 
-		public function GtkAccessible*(GtkAccessible this) get_first_accessible_child;
+		public function Accessible(Accessible this) get_first_accessible_child;
 
-		public function GtkAccessible*(GtkAccessible this) get_next_accessible_sibling;
+		public function Accessible(Accessible this) get_next_accessible_sibling;
 
-		public function c_int(GtkAccessible this, GtkAccessiblePlatformState state) get_platform_state;
+		public function c_int(Accessible this, AccessiblePlatformState state) get_platform_state;
 	}
-	public enum GtkAccessibleAutocomplete : c_int
+	public enum AccessibleAutocomplete : c_int
 	{
 		GTK_ACCESSIBLE_AUTOCOMPLETE_NONE,
 		GTK_ACCESSIBLE_AUTOCOMPLETE_INLINE,
@@ -121,24 +121,24 @@ class Gtk
 		GTK_ACCESSIBLE_AUTOCOMPLETE_BOTH
 	}
 	[CRepr]
-	public struct GtkAccessibleInterface
+	public struct AccessibleInterface
 	{
-		GTypeInterface g_iface;
+		GObject.TypeInterface g_iface;
 	}
-	public enum GtkAccessibleInvalidState : c_int
+	public enum AccessibleInvalidState : c_int
 	{
 		GTK_ACCESSIBLE_INVALID_FALSE,
 		GTK_ACCESSIBLE_INVALID_TRUE,
 		GTK_ACCESSIBLE_INVALID_GRAMMAR,
 		GTK_ACCESSIBLE_INVALID_SPELLING
 	}
-	public enum GtkAccessiblePlatformState : c_int
+	public enum AccessiblePlatformState : c_int
 	{
 		GTK_ACCESSIBLE_PLATFORM_STATE_FOCUSABLE,
 		GTK_ACCESSIBLE_PLATFORM_STATE_FOCUSED,
 		GTK_ACCESSIBLE_PLATFORM_STATE_ACTIVE
 	}
-	public enum GtkAccessibleProperty : c_int
+	public enum AccessibleProperty : c_int
 	{
 		GTK_ACCESSIBLE_PROPERTY_AUTOCOMPLETE,
 		GTK_ACCESSIBLE_PROPERTY_DESCRIPTION,
@@ -161,16 +161,16 @@ class Gtk
 		GTK_ACCESSIBLE_PROPERTY_VALUE_TEXT
 	}
 	[CRepr]
-	public struct GtkAccessibleRange
+	public struct AccessibleRange
 	{
-		public function c_int(GtkAccessibleRange this, double value) set_current_value;
+		public function c_int(AccessibleRange this, double value) set_current_value;
 	}
 	[CRepr]
-	public struct GtkAccessibleRangeInterface
+	public struct AccessibleRangeInterface
 	{
-		GTypeInterface g_iface;
+		GObject.TypeInterface g_iface;
 	}
-	public enum GtkAccessibleRelation : c_int
+	public enum AccessibleRelation : c_int
 	{
 		GTK_ACCESSIBLE_RELATION_ACTIVE_DESCENDANT,
 		GTK_ACCESSIBLE_RELATION_COL_COUNT,
@@ -191,7 +191,7 @@ class Gtk
 		GTK_ACCESSIBLE_RELATION_ROW_SPAN,
 		GTK_ACCESSIBLE_RELATION_SET_SIZE
 	}
-	public enum GtkAccessibleRole : c_int
+	public enum AccessibleRole : c_int
 	{
 		GTK_ACCESSIBLE_ROLE_ALERT,
 		GTK_ACCESSIBLE_ROLE_ALERT_DIALOG,
@@ -273,14 +273,14 @@ class Gtk
 		GTK_ACCESSIBLE_ROLE_WINDOW,
 		GTK_ACCESSIBLE_ROLE_TOGGLE_BUTTON
 	}
-	public enum GtkAccessibleSort : c_int
+	public enum AccessibleSort : c_int
 	{
 		GTK_ACCESSIBLE_SORT_NONE,
 		GTK_ACCESSIBLE_SORT_ASCENDING,
 		GTK_ACCESSIBLE_SORT_DESCENDING,
 		GTK_ACCESSIBLE_SORT_OTHER
 	}
-	public enum GtkAccessibleState : c_int
+	public enum AccessibleState : c_int
 	{
 		GTK_ACCESSIBLE_STATE_BUSY,
 		GTK_ACCESSIBLE_STATE_CHECKED,
@@ -292,131 +292,131 @@ class Gtk
 		GTK_ACCESSIBLE_STATE_SELECTED,
 		GTK_ACCESSIBLE_STATE_VISITED
 	}
-	public enum GtkAccessibleTristate : c_int
+	public enum AccessibleTristate : c_int
 	{
 		GTK_ACCESSIBLE_TRISTATE_FALSE,
 		GTK_ACCESSIBLE_TRISTATE_TRUE,
 		GTK_ACCESSIBLE_TRISTATE_MIXED
 	}
 	[CRepr]
-	public struct GtkActionBar;
+	public struct ActionBar;
 	[LinkName("gtk_action_bar_new")]
-	public static extern GtkWidget* action_bar_new();
+	public static extern Widget ActionBarNew();
 	[LinkName("gtk_action_bar_get_center_widget")]
-	public static extern GtkWidget* action_bar_get_center_widget(GtkActionBar* action_bar);
+	public static extern Widget ActionBarGetCenterWidget(ActionBar action_bar);
 	[LinkName("gtk_action_bar_get_revealed")]
-	public static extern c_int action_bar_get_revealed(GtkActionBar* action_bar);
+	public static extern c_int ActionBarGetRevealed(ActionBar action_bar);
 	[LinkName("gtk_action_bar_pack_end")]
-	public static extern void action_bar_pack_end(GtkActionBar* action_bar, GtkWidget* child);
+	public static extern void ActionBarPackEnd(ActionBar action_bar, Widget child);
 	[LinkName("gtk_action_bar_pack_start")]
-	public static extern void action_bar_pack_start(GtkActionBar* action_bar, GtkWidget* child);
+	public static extern void ActionBarPackStart(ActionBar action_bar, Widget child);
 	[LinkName("gtk_action_bar_remove")]
-	public static extern void action_bar_remove(GtkActionBar* action_bar, GtkWidget* child);
+	public static extern void ActionBarRemove(ActionBar action_bar, Widget child);
 	[LinkName("gtk_action_bar_set_center_widget")]
-	public static extern void action_bar_set_center_widget(GtkActionBar* action_bar, GtkWidget* center_widget);
+	public static extern void ActionBarSetCenterWidget(ActionBar action_bar, Widget center_widget);
 	[LinkName("gtk_action_bar_set_revealed")]
-	public static extern void action_bar_set_revealed(GtkActionBar* action_bar, c_int revealed);
+	public static extern void ActionBarSetRevealed(ActionBar action_bar, c_int revealed);
 	[CRepr]
-	public struct GtkActionable
+	public struct Actionable
 	{
-		public function  c_char*(GtkActionable* actionable) get_action_name;
+		public function char8*(Actionable actionable) get_action_name;
 
-		public function GVariant*(GtkActionable* actionable) get_action_target_value;
+		public function GLib.Variant(Actionable actionable) get_action_target_value;
 
-		public function void(GtkActionable* actionable,  c_char* action_name) set_action_name;
+		public function void(Actionable actionable, char8* action_name) set_action_name;
 
-		public function void(GtkActionable* actionable, GVariant* target_value) set_action_target_value;
+		public function void(Actionable actionable, GLib.Variant target_value) set_action_target_value;
 	}
 	[CRepr]
-	public struct GtkActionableInterface
+	public struct ActionableInterface
 	{
-		GTypeInterface g_iface;
+		GObject.TypeInterface g_iface;
 	}
 	[CRepr]
-	public struct GtkActivateAction;
+	public struct ActivateAction;
 	[CRepr]
-	public struct GtkActivateActionClass
+	public struct ActivateActionClass
 	{
 	}
 	[CRepr]
-	public struct GtkAdjustment;
+	public struct Adjustment;
 	[LinkName("gtk_adjustment_new")]
-	public static extern GtkAdjustment* adjustment_new(double value, double lower, double upper, double step_increment, double page_increment, double page_size);
+	public static extern Adjustment AdjustmentNew(double value, double lower, double upper, double step_increment, double page_increment, double page_size);
 	[LinkName("gtk_adjustment_clamp_page")]
-	public static extern void adjustment_clamp_page(GtkAdjustment* adjustment, double lower, double upper);
+	public static extern void AdjustmentClampPage(Adjustment adjustment, double lower, double upper);
 	[LinkName("gtk_adjustment_configure")]
-	public static extern void adjustment_configure(GtkAdjustment* adjustment, double value, double lower, double upper, double step_increment, double page_increment, double page_size);
+	public static extern void AdjustmentConfigure(Adjustment adjustment, double value, double lower, double upper, double step_increment, double page_increment, double page_size);
 	[LinkName("gtk_adjustment_get_lower")]
-	public static extern double adjustment_get_lower(GtkAdjustment* adjustment);
+	public static extern double AdjustmentGetLower(Adjustment adjustment);
 	[LinkName("gtk_adjustment_get_minimum_increment")]
-	public static extern double adjustment_get_minimum_increment(GtkAdjustment* adjustment);
+	public static extern double AdjustmentGetMinimumIncrement(Adjustment adjustment);
 	[LinkName("gtk_adjustment_get_page_increment")]
-	public static extern double adjustment_get_page_increment(GtkAdjustment* adjustment);
+	public static extern double AdjustmentGetPageIncrement(Adjustment adjustment);
 	[LinkName("gtk_adjustment_get_page_size")]
-	public static extern double adjustment_get_page_size(GtkAdjustment* adjustment);
+	public static extern double AdjustmentGetPageSize(Adjustment adjustment);
 	[LinkName("gtk_adjustment_get_step_increment")]
-	public static extern double adjustment_get_step_increment(GtkAdjustment* adjustment);
+	public static extern double AdjustmentGetStepIncrement(Adjustment adjustment);
 	[LinkName("gtk_adjustment_get_upper")]
-	public static extern double adjustment_get_upper(GtkAdjustment* adjustment);
+	public static extern double AdjustmentGetUpper(Adjustment adjustment);
 	[LinkName("gtk_adjustment_get_value")]
-	public static extern double adjustment_get_value(GtkAdjustment* adjustment);
+	public static extern double AdjustmentGetValue(Adjustment adjustment);
 	[LinkName("gtk_adjustment_set_lower")]
-	public static extern void adjustment_set_lower(GtkAdjustment* adjustment, double lower);
+	public static extern void AdjustmentSetLower(Adjustment adjustment, double lower);
 	[LinkName("gtk_adjustment_set_page_increment")]
-	public static extern void adjustment_set_page_increment(GtkAdjustment* adjustment, double page_increment);
+	public static extern void AdjustmentSetPageIncrement(Adjustment adjustment, double page_increment);
 	[LinkName("gtk_adjustment_set_page_size")]
-	public static extern void adjustment_set_page_size(GtkAdjustment* adjustment, double page_size);
+	public static extern void AdjustmentSetPageSize(Adjustment adjustment, double page_size);
 	[LinkName("gtk_adjustment_set_step_increment")]
-	public static extern void adjustment_set_step_increment(GtkAdjustment* adjustment, double step_increment);
+	public static extern void AdjustmentSetStepIncrement(Adjustment adjustment, double step_increment);
 	[LinkName("gtk_adjustment_set_upper")]
-	public static extern void adjustment_set_upper(GtkAdjustment* adjustment, double upper);
+	public static extern void AdjustmentSetUpper(Adjustment adjustment, double upper);
 	[LinkName("gtk_adjustment_set_value")]
-	public static extern void adjustment_set_value(GtkAdjustment* adjustment, double value);
+	public static extern void AdjustmentSetValue(Adjustment adjustment, double value);
 	[CRepr]
-	public struct GtkAdjustmentClass
+	public struct AdjustmentClass
 	{
-		GInitiallyUnownedClass parent_class;
+		GObject.InitiallyUnownedClass parent_class;
 	}
 	[CRepr]
-	public struct GtkAlertDialog;
+	public struct AlertDialog;
 	[LinkName("gtk_alert_dialog_new")]
-	public static extern GtkAlertDialog* alert_dialog_new( c_char* format);
+	public static extern AlertDialog AlertDialogNew(char8* format);
 	[LinkName("gtk_alert_dialog_choose")]
-	public static extern void alert_dialog_choose(GtkAlertDialog* self, GtkWindow* parent, GCancellable* cancellable, GAsyncReadyCallback callback, void* user_data);
+	public static extern void AlertDialogChoose(AlertDialog self, Window parent, Gio.Cancellable cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gtk_alert_dialog_choose_finish")]
-	public static extern c_int alert_dialog_choose_finish(GtkAlertDialog* self, GAsyncResult* result);
+	public static extern c_int AlertDialogChooseFinish(AlertDialog self, Gio.AsyncResult result);
 	[LinkName("gtk_alert_dialog_get_buttons")]
-	public static extern  c_char* * alert_dialog_get_buttons(GtkAlertDialog* self);
+	public static extern char8* AlertDialogGetButtons(AlertDialog self);
 	[LinkName("gtk_alert_dialog_get_cancel_button")]
-	public static extern c_int alert_dialog_get_cancel_button(GtkAlertDialog* self);
+	public static extern c_int AlertDialogGetCancelButton(AlertDialog self);
 	[LinkName("gtk_alert_dialog_get_default_button")]
-	public static extern c_int alert_dialog_get_default_button(GtkAlertDialog* self);
+	public static extern c_int AlertDialogGetDefaultButton(AlertDialog self);
 	[LinkName("gtk_alert_dialog_get_detail")]
-	public static extern  c_char* alert_dialog_get_detail(GtkAlertDialog* self);
+	public static extern char8* AlertDialogGetDetail(AlertDialog self);
 	[LinkName("gtk_alert_dialog_get_message")]
-	public static extern  c_char* alert_dialog_get_message(GtkAlertDialog* self);
+	public static extern char8* AlertDialogGetMessage(AlertDialog self);
 	[LinkName("gtk_alert_dialog_get_modal")]
-	public static extern c_int alert_dialog_get_modal(GtkAlertDialog* self);
+	public static extern c_int AlertDialogGetModal(AlertDialog self);
 	[LinkName("gtk_alert_dialog_set_buttons")]
-	public static extern void alert_dialog_set_buttons(GtkAlertDialog* self);
+	public static extern void AlertDialogSetButtons(AlertDialog self);
 	[LinkName("gtk_alert_dialog_set_cancel_button")]
-	public static extern void alert_dialog_set_cancel_button(GtkAlertDialog* self, c_int button);
+	public static extern void AlertDialogSetCancelButton(AlertDialog self, c_int button);
 	[LinkName("gtk_alert_dialog_set_default_button")]
-	public static extern void alert_dialog_set_default_button(GtkAlertDialog* self, c_int button);
+	public static extern void AlertDialogSetDefaultButton(AlertDialog self, c_int button);
 	[LinkName("gtk_alert_dialog_set_detail")]
-	public static extern void alert_dialog_set_detail(GtkAlertDialog* self,  c_char* detail);
+	public static extern void AlertDialogSetDetail(AlertDialog self, char8* detail);
 	[LinkName("gtk_alert_dialog_set_message")]
-	public static extern void alert_dialog_set_message(GtkAlertDialog* self,  c_char* message);
+	public static extern void AlertDialogSetMessage(AlertDialog self, char8* message);
 	[LinkName("gtk_alert_dialog_set_modal")]
-	public static extern void alert_dialog_set_modal(GtkAlertDialog* self, c_int modal);
+	public static extern void AlertDialogSetModal(AlertDialog self, c_int modal);
 	[LinkName("gtk_alert_dialog_show")]
-	public static extern void alert_dialog_show(GtkAlertDialog* self, GtkWindow* parent);
+	public static extern void AlertDialogShow(AlertDialog self, Window parent);
 	[CRepr]
-	public struct GtkAlertDialogClass
+	public struct AlertDialogClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
-	public enum GtkAlign : c_int
+	public enum Align : c_int
 	{
 		GTK_ALIGN_FILL,
 		GTK_ALIGN_START,
@@ -427,133 +427,133 @@ class Gtk
 		GTK_ALIGN_BASELINE_CENTER
 	}
 	[CRepr]
-	public struct GtkAlternativeTrigger;
+	public struct AlternativeTrigger;
 	[LinkName("gtk_alternative_trigger_new")]
-	public static extern GtkShortcutTrigger* alternative_trigger_new(GtkShortcutTrigger* first, GtkShortcutTrigger* second);
+	public static extern ShortcutTrigger AlternativeTriggerNew(ShortcutTrigger first, ShortcutTrigger second);
 	[LinkName("gtk_alternative_trigger_get_first")]
-	public static extern GtkShortcutTrigger* alternative_trigger_get_first(GtkAlternativeTrigger* self);
+	public static extern ShortcutTrigger AlternativeTriggerGetFirst(AlternativeTrigger self);
 	[LinkName("gtk_alternative_trigger_get_second")]
-	public static extern GtkShortcutTrigger* alternative_trigger_get_second(GtkAlternativeTrigger* self);
+	public static extern ShortcutTrigger AlternativeTriggerGetSecond(AlternativeTrigger self);
 	[CRepr]
-	public struct GtkAlternativeTriggerClass
+	public struct AlternativeTriggerClass
 	{
 	}
 	[CRepr]
-	public struct GtkAnyFilter;
+	public struct AnyFilter;
 	[LinkName("gtk_any_filter_new")]
-	public static extern GtkAnyFilter* any_filter_new();
+	public static extern AnyFilter AnyFilterNew();
 	[CRepr]
-	public struct GtkAnyFilterClass
+	public struct AnyFilterClass
 	{
 	}
 	[CRepr]
-	public struct GtkAppChooser
+	public struct AppChooser
 	{	}
 	[CRepr]
-	public struct GtkAppChooserButton;
+	public struct AppChooserButton;
 	[LinkName("gtk_app_chooser_button_new")]
-	public static extern GtkWidget* app_chooser_button_new( c_char* content_type);
+	public static extern Widget AppChooserButtonNew(char8* content_type);
 	[LinkName("gtk_app_chooser_button_append_custom_item")]
-	public static extern void app_chooser_button_append_custom_item(GtkAppChooserButton* self,  c_char* name,  c_char* label, GIcon* icon);
+	public static extern void AppChooserButtonAppendCustomItem(AppChooserButton self, char8* name, char8* label, Gio.Icon icon);
 	[LinkName("gtk_app_chooser_button_append_separator")]
-	public static extern void app_chooser_button_append_separator(GtkAppChooserButton* self);
+	public static extern void AppChooserButtonAppendSeparator(AppChooserButton self);
 	[LinkName("gtk_app_chooser_button_get_heading")]
-	public static extern  c_char* app_chooser_button_get_heading(GtkAppChooserButton* self);
+	public static extern char8* AppChooserButtonGetHeading(AppChooserButton self);
 	[LinkName("gtk_app_chooser_button_get_modal")]
-	public static extern c_int app_chooser_button_get_modal(GtkAppChooserButton* self);
+	public static extern c_int AppChooserButtonGetModal(AppChooserButton self);
 	[LinkName("gtk_app_chooser_button_get_show_default_item")]
-	public static extern c_int app_chooser_button_get_show_default_item(GtkAppChooserButton* self);
+	public static extern c_int AppChooserButtonGetShowDefaultItem(AppChooserButton self);
 	[LinkName("gtk_app_chooser_button_get_show_dialog_item")]
-	public static extern c_int app_chooser_button_get_show_dialog_item(GtkAppChooserButton* self);
+	public static extern c_int AppChooserButtonGetShowDialogItem(AppChooserButton self);
 	[LinkName("gtk_app_chooser_button_set_active_custom_item")]
-	public static extern void app_chooser_button_set_active_custom_item(GtkAppChooserButton* self,  c_char* name);
+	public static extern void AppChooserButtonSetActiveCustomItem(AppChooserButton self, char8* name);
 	[LinkName("gtk_app_chooser_button_set_heading")]
-	public static extern void app_chooser_button_set_heading(GtkAppChooserButton* self,  c_char* heading);
+	public static extern void AppChooserButtonSetHeading(AppChooserButton self, char8* heading);
 	[LinkName("gtk_app_chooser_button_set_modal")]
-	public static extern void app_chooser_button_set_modal(GtkAppChooserButton* self, c_int modal);
+	public static extern void AppChooserButtonSetModal(AppChooserButton self, c_int modal);
 	[LinkName("gtk_app_chooser_button_set_show_default_item")]
-	public static extern void app_chooser_button_set_show_default_item(GtkAppChooserButton* self, c_int setting);
+	public static extern void AppChooserButtonSetShowDefaultItem(AppChooserButton self, c_int setting);
 	[LinkName("gtk_app_chooser_button_set_show_dialog_item")]
-	public static extern void app_chooser_button_set_show_dialog_item(GtkAppChooserButton* self, c_int setting);
+	public static extern void AppChooserButtonSetShowDialogItem(AppChooserButton self, c_int setting);
 	[CRepr]
-	public struct GtkAppChooserDialog;
+	public struct AppChooserDialog;
 	[LinkName("gtk_app_chooser_dialog_new")]
-	public static extern GtkWidget* app_chooser_dialog_new(GtkWindow* parent, GtkDialogFlags flags, GFile* file);
+	public static extern Widget AppChooserDialogNew(Window parent, DialogFlags flags, Gio.File file);
 	[LinkName("gtk_app_chooser_dialog_new_for_content_type")]
-	public static extern GtkWidget* app_chooser_dialog_new_for_content_type(GtkWindow* parent, GtkDialogFlags flags,  c_char* content_type);
+	public static extern Widget AppChooserDialogNewForContentType(Window parent, DialogFlags flags, char8* content_type);
 	[LinkName("gtk_app_chooser_dialog_get_heading")]
-	public static extern  c_char* app_chooser_dialog_get_heading(GtkAppChooserDialog* self);
+	public static extern char8* AppChooserDialogGetHeading(AppChooserDialog self);
 	[LinkName("gtk_app_chooser_dialog_get_widget")]
-	public static extern GtkWidget* app_chooser_dialog_get_widget(GtkAppChooserDialog* self);
+	public static extern Widget AppChooserDialogGetWidget(AppChooserDialog self);
 	[LinkName("gtk_app_chooser_dialog_set_heading")]
-	public static extern void app_chooser_dialog_set_heading(GtkAppChooserDialog* self,  c_char* heading);
+	public static extern void AppChooserDialogSetHeading(AppChooserDialog self, char8* heading);
 	[CRepr]
-	public struct GtkAppChooserWidget;
+	public struct AppChooserWidget;
 	[LinkName("gtk_app_chooser_widget_new")]
-	public static extern GtkWidget* app_chooser_widget_new( c_char* content_type);
+	public static extern Widget AppChooserWidgetNew(char8* content_type);
 	[LinkName("gtk_app_chooser_widget_get_default_text")]
-	public static extern  c_char* app_chooser_widget_get_default_text(GtkAppChooserWidget* self);
+	public static extern char8* AppChooserWidgetGetDefaultText(AppChooserWidget self);
 	[LinkName("gtk_app_chooser_widget_get_show_all")]
-	public static extern c_int app_chooser_widget_get_show_all(GtkAppChooserWidget* self);
+	public static extern c_int AppChooserWidgetGetShowAll(AppChooserWidget self);
 	[LinkName("gtk_app_chooser_widget_get_show_default")]
-	public static extern c_int app_chooser_widget_get_show_default(GtkAppChooserWidget* self);
+	public static extern c_int AppChooserWidgetGetShowDefault(AppChooserWidget self);
 	[LinkName("gtk_app_chooser_widget_get_show_fallback")]
-	public static extern c_int app_chooser_widget_get_show_fallback(GtkAppChooserWidget* self);
+	public static extern c_int AppChooserWidgetGetShowFallback(AppChooserWidget self);
 	[LinkName("gtk_app_chooser_widget_get_show_other")]
-	public static extern c_int app_chooser_widget_get_show_other(GtkAppChooserWidget* self);
+	public static extern c_int AppChooserWidgetGetShowOther(AppChooserWidget self);
 	[LinkName("gtk_app_chooser_widget_get_show_recommended")]
-	public static extern c_int app_chooser_widget_get_show_recommended(GtkAppChooserWidget* self);
+	public static extern c_int AppChooserWidgetGetShowRecommended(AppChooserWidget self);
 	[LinkName("gtk_app_chooser_widget_set_default_text")]
-	public static extern void app_chooser_widget_set_default_text(GtkAppChooserWidget* self,  c_char* text);
+	public static extern void AppChooserWidgetSetDefaultText(AppChooserWidget self, char8* text);
 	[LinkName("gtk_app_chooser_widget_set_show_all")]
-	public static extern void app_chooser_widget_set_show_all(GtkAppChooserWidget* self, c_int setting);
+	public static extern void AppChooserWidgetSetShowAll(AppChooserWidget self, c_int setting);
 	[LinkName("gtk_app_chooser_widget_set_show_default")]
-	public static extern void app_chooser_widget_set_show_default(GtkAppChooserWidget* self, c_int setting);
+	public static extern void AppChooserWidgetSetShowDefault(AppChooserWidget self, c_int setting);
 	[LinkName("gtk_app_chooser_widget_set_show_fallback")]
-	public static extern void app_chooser_widget_set_show_fallback(GtkAppChooserWidget* self, c_int setting);
+	public static extern void AppChooserWidgetSetShowFallback(AppChooserWidget self, c_int setting);
 	[LinkName("gtk_app_chooser_widget_set_show_other")]
-	public static extern void app_chooser_widget_set_show_other(GtkAppChooserWidget* self, c_int setting);
+	public static extern void AppChooserWidgetSetShowOther(AppChooserWidget self, c_int setting);
 	[LinkName("gtk_app_chooser_widget_set_show_recommended")]
-	public static extern void app_chooser_widget_set_show_recommended(GtkAppChooserWidget* self, c_int setting);
+	public static extern void AppChooserWidgetSetShowRecommended(AppChooserWidget self, c_int setting);
 	[CRepr]
-	public struct GtkApplication;
+	public struct Application;
 	[LinkName("gtk_application_new")]
-	public static extern GtkApplication* application_new( c_char* application_id, GApplicationFlags flags);
+	public static extern Application ApplicationNew(char8* application_id, Gio.ApplicationFlags flags);
 	[LinkName("gtk_application_add_window")]
-	public static extern void application_add_window(GtkApplication* application, GtkWindow* window);
+	public static extern void ApplicationAddWindow(Application application, Window window);
 	[LinkName("gtk_application_get_accels_for_action")]
-	public static extern c_char** application_get_accels_for_action(GtkApplication* application,  c_char* detailed_action_name);
+	public static extern char8* ApplicationGetAccelsForAction(Application application, char8* detailed_action_name);
 	[LinkName("gtk_application_get_actions_for_accel")]
-	public static extern c_char** application_get_actions_for_accel(GtkApplication* application,  c_char* accel);
+	public static extern char8* ApplicationGetActionsForAccel(Application application, char8* accel);
 	[LinkName("gtk_application_get_active_window")]
-	public static extern GtkWindow* application_get_active_window(GtkApplication* application);
+	public static extern Window ApplicationGetActiveWindow(Application application);
 	[LinkName("gtk_application_get_menu_by_id")]
-	public static extern GMenu* application_get_menu_by_id(GtkApplication* application,  c_char* id);
+	public static extern Gio.Menu ApplicationGetMenuById(Application application, char8* id);
 	[LinkName("gtk_application_get_menubar")]
-	public static extern GMenuModel* application_get_menubar(GtkApplication* application);
+	public static extern Gio.MenuModel ApplicationGetMenubar(Application application);
 	[LinkName("gtk_application_get_window_by_id")]
-	public static extern GtkWindow* application_get_window_by_id(GtkApplication* application, c_uint id);
+	public static extern Window ApplicationGetWindowById(Application application, c_uint id);
 	[LinkName("gtk_application_get_windows")]
-	public static extern GList* application_get_windows(GtkApplication* application);
+	public static extern GLib.List ApplicationGetWindows(Application application);
 	[LinkName("gtk_application_inhibit")]
-	public static extern c_uint application_inhibit(GtkApplication* application, GtkWindow* window, GtkApplicationInhibitFlags flags,  c_char* reason);
+	public static extern c_uint ApplicationInhibit(Application application, Window window, ApplicationInhibitFlags flags, char8* reason);
 	[LinkName("gtk_application_list_action_descriptions")]
-	public static extern c_char** application_list_action_descriptions(GtkApplication* application);
+	public static extern char8* ApplicationListActionDescriptions(Application application);
 	[LinkName("gtk_application_remove_window")]
-	public static extern void application_remove_window(GtkApplication* application, GtkWindow* window);
+	public static extern void ApplicationRemoveWindow(Application application, Window window);
 	[LinkName("gtk_application_set_accels_for_action")]
-	public static extern void application_set_accels_for_action(GtkApplication* application,  c_char* detailed_action_name);
+	public static extern void ApplicationSetAccelsForAction(Application application, char8* detailed_action_name);
 	[LinkName("gtk_application_set_menubar")]
-	public static extern void application_set_menubar(GtkApplication* application, GMenuModel* menubar);
+	public static extern void ApplicationSetMenubar(Application application, Gio.MenuModel menubar);
 	[LinkName("gtk_application_uninhibit")]
-	public static extern void application_uninhibit(GtkApplication* application, c_uint cookie);
+	public static extern void ApplicationUninhibit(Application application, c_uint cookie);
 	[CRepr]
-	public struct GtkApplicationClass
+	public struct ApplicationClass
 	{
-		GApplicationClass parent_class;
+		Gio.ApplicationClass parent_class;
 	}
 	[CRepr]
-	public struct GtkApplicationInhibitFlags
+	public struct ApplicationInhibitFlags
 	{
 		public const int GTK_APPLICATION_INHIBIT_LOGOUT = 1;
 		public const int GTK_APPLICATION_INHIBIT_SWITCH = 2;
@@ -561,25 +561,25 @@ class Gtk
 		public const int GTK_APPLICATION_INHIBIT_IDLE = 8;
 	}
 	[CRepr]
-	public struct GtkApplicationWindow;
+	public struct ApplicationWindow;
 	[LinkName("gtk_application_window_new")]
-	public static extern GtkWidget* application_window_new(GtkApplication* application);
+	public static extern Widget ApplicationWindowNew(Application application);
 	[LinkName("gtk_application_window_get_help_overlay")]
-	public static extern GtkShortcutsWindow* application_window_get_help_overlay(GtkApplicationWindow* window);
+	public static extern ShortcutsWindow ApplicationWindowGetHelpOverlay(ApplicationWindow window);
 	[LinkName("gtk_application_window_get_id")]
-	public static extern c_uint application_window_get_id(GtkApplicationWindow* window);
+	public static extern c_uint ApplicationWindowGetId(ApplicationWindow window);
 	[LinkName("gtk_application_window_get_show_menubar")]
-	public static extern c_int application_window_get_show_menubar(GtkApplicationWindow* window);
+	public static extern c_int ApplicationWindowGetShowMenubar(ApplicationWindow window);
 	[LinkName("gtk_application_window_set_help_overlay")]
-	public static extern void application_window_set_help_overlay(GtkApplicationWindow* window, GtkShortcutsWindow* help_overlay);
+	public static extern void ApplicationWindowSetHelpOverlay(ApplicationWindow window, ShortcutsWindow help_overlay);
 	[LinkName("gtk_application_window_set_show_menubar")]
-	public static extern void application_window_set_show_menubar(GtkApplicationWindow* window, c_int show_menubar);
+	public static extern void ApplicationWindowSetShowMenubar(ApplicationWindow window, c_int show_menubar);
 	[CRepr]
-	public struct GtkApplicationWindowClass
+	public struct ApplicationWindowClass
 	{
-		GtkWindowClass parent_class;
+		WindowClass parent_class;
 	}
-	public enum GtkArrowType : c_int
+	public enum ArrowType : c_int
 	{
 		GTK_ARROW_UP,
 		GTK_ARROW_DOWN,
@@ -588,85 +588,85 @@ class Gtk
 		GTK_ARROW_NONE
 	}
 	[CRepr]
-	public struct GtkAspectFrame;
+	public struct AspectFrame;
 	[LinkName("gtk_aspect_frame_new")]
-	public static extern GtkWidget* aspect_frame_new(float xalign, float yalign, float ratio, c_int obey_child);
+	public static extern Widget AspectFrameNew(float xalign, float yalign, float ratio, c_int obey_child);
 	[LinkName("gtk_aspect_frame_get_child")]
-	public static extern GtkWidget* aspect_frame_get_child(GtkAspectFrame* self);
+	public static extern Widget AspectFrameGetChild(AspectFrame self);
 	[LinkName("gtk_aspect_frame_get_obey_child")]
-	public static extern c_int aspect_frame_get_obey_child(GtkAspectFrame* self);
+	public static extern c_int AspectFrameGetObeyChild(AspectFrame self);
 	[LinkName("gtk_aspect_frame_get_ratio")]
-	public static extern float aspect_frame_get_ratio(GtkAspectFrame* self);
+	public static extern float AspectFrameGetRatio(AspectFrame self);
 	[LinkName("gtk_aspect_frame_get_xalign")]
-	public static extern float aspect_frame_get_xalign(GtkAspectFrame* self);
+	public static extern float AspectFrameGetXalign(AspectFrame self);
 	[LinkName("gtk_aspect_frame_get_yalign")]
-	public static extern float aspect_frame_get_yalign(GtkAspectFrame* self);
+	public static extern float AspectFrameGetYalign(AspectFrame self);
 	[LinkName("gtk_aspect_frame_set_child")]
-	public static extern void aspect_frame_set_child(GtkAspectFrame* self, GtkWidget* child);
+	public static extern void AspectFrameSetChild(AspectFrame self, Widget child);
 	[LinkName("gtk_aspect_frame_set_obey_child")]
-	public static extern void aspect_frame_set_obey_child(GtkAspectFrame* self, c_int obey_child);
+	public static extern void AspectFrameSetObeyChild(AspectFrame self, c_int obey_child);
 	[LinkName("gtk_aspect_frame_set_ratio")]
-	public static extern void aspect_frame_set_ratio(GtkAspectFrame* self, float ratio);
+	public static extern void AspectFrameSetRatio(AspectFrame self, float ratio);
 	[LinkName("gtk_aspect_frame_set_xalign")]
-	public static extern void aspect_frame_set_xalign(GtkAspectFrame* self, float xalign);
+	public static extern void AspectFrameSetXalign(AspectFrame self, float xalign);
 	[LinkName("gtk_aspect_frame_set_yalign")]
-	public static extern void aspect_frame_set_yalign(GtkAspectFrame* self, float yalign);
+	public static extern void AspectFrameSetYalign(AspectFrame self, float yalign);
 	[CRepr]
-	public struct GtkAssistant;
+	public struct Assistant;
 	[LinkName("gtk_assistant_new")]
-	public static extern GtkWidget* assistant_new();
+	public static extern Widget AssistantNew();
 	[LinkName("gtk_assistant_add_action_widget")]
-	public static extern void assistant_add_action_widget(GtkAssistant* assistant, GtkWidget* child);
+	public static extern void AssistantAddActionWidget(Assistant assistant, Widget child);
 	[LinkName("gtk_assistant_append_page")]
-	public static extern c_int assistant_append_page(GtkAssistant* assistant, GtkWidget* page);
+	public static extern c_int AssistantAppendPage(Assistant assistant, Widget page);
 	[LinkName("gtk_assistant_commit")]
-	public static extern void assistant_commit(GtkAssistant* assistant);
+	public static extern void AssistantCommit(Assistant assistant);
 	[LinkName("gtk_assistant_get_current_page")]
-	public static extern c_int assistant_get_current_page(GtkAssistant* assistant);
+	public static extern c_int AssistantGetCurrentPage(Assistant assistant);
 	[LinkName("gtk_assistant_get_n_pages")]
-	public static extern c_int assistant_get_n_pages(GtkAssistant* assistant);
+	public static extern c_int AssistantGetNPages(Assistant assistant);
 	[LinkName("gtk_assistant_get_nth_page")]
-	public static extern GtkWidget* assistant_get_nth_page(GtkAssistant* assistant, c_int page_num);
+	public static extern Widget AssistantGetNthPage(Assistant assistant, c_int page_num);
 	[LinkName("gtk_assistant_get_page")]
-	public static extern GtkAssistantPage* assistant_get_page(GtkAssistant* assistant, GtkWidget* child);
+	public static extern AssistantPage AssistantGetPage(Assistant assistant, Widget child);
 	[LinkName("gtk_assistant_get_page_complete")]
-	public static extern c_int assistant_get_page_complete(GtkAssistant* assistant, GtkWidget* page);
+	public static extern c_int AssistantGetPageComplete(Assistant assistant, Widget page);
 	[LinkName("gtk_assistant_get_page_title")]
-	public static extern  c_char* assistant_get_page_title(GtkAssistant* assistant, GtkWidget* page);
+	public static extern char8* AssistantGetPageTitle(Assistant assistant, Widget page);
 	[LinkName("gtk_assistant_get_page_type")]
-	public static extern GtkAssistantPageType assistant_get_page_type(GtkAssistant* assistant, GtkWidget* page);
+	public static extern AssistantPageType AssistantGetPageType(Assistant assistant, Widget page);
 	[LinkName("gtk_assistant_get_pages")]
-	public static extern GListModel* assistant_get_pages(GtkAssistant* assistant);
+	public static extern Gio.ListModel AssistantGetPages(Assistant assistant);
 	[LinkName("gtk_assistant_insert_page")]
-	public static extern c_int assistant_insert_page(GtkAssistant* assistant, GtkWidget* page, c_int position);
+	public static extern c_int AssistantInsertPage(Assistant assistant, Widget page, c_int position);
 	[LinkName("gtk_assistant_next_page")]
-	public static extern void assistant_next_page(GtkAssistant* assistant);
+	public static extern void AssistantNextPage(Assistant assistant);
 	[LinkName("gtk_assistant_prepend_page")]
-	public static extern c_int assistant_prepend_page(GtkAssistant* assistant, GtkWidget* page);
+	public static extern c_int AssistantPrependPage(Assistant assistant, Widget page);
 	[LinkName("gtk_assistant_previous_page")]
-	public static extern void assistant_previous_page(GtkAssistant* assistant);
+	public static extern void AssistantPreviousPage(Assistant assistant);
 	[LinkName("gtk_assistant_remove_action_widget")]
-	public static extern void assistant_remove_action_widget(GtkAssistant* assistant, GtkWidget* child);
+	public static extern void AssistantRemoveActionWidget(Assistant assistant, Widget child);
 	[LinkName("gtk_assistant_remove_page")]
-	public static extern void assistant_remove_page(GtkAssistant* assistant, c_int page_num);
+	public static extern void AssistantRemovePage(Assistant assistant, c_int page_num);
 	[LinkName("gtk_assistant_set_current_page")]
-	public static extern void assistant_set_current_page(GtkAssistant* assistant, c_int page_num);
+	public static extern void AssistantSetCurrentPage(Assistant assistant, c_int page_num);
 	[LinkName("gtk_assistant_set_forward_page_func")]
-	public static extern void assistant_set_forward_page_func(GtkAssistant* assistant, GtkAssistantPageFunc page_func, void* data, GDestroyNotify destroy);
+	public static extern void AssistantSetForwardPageFunc(Assistant assistant, AssistantPageFunc page_func, void* data, GLib.DestroyNotify destroy);
 	[LinkName("gtk_assistant_set_page_complete")]
-	public static extern void assistant_set_page_complete(GtkAssistant* assistant, GtkWidget* page, c_int complete);
+	public static extern void AssistantSetPageComplete(Assistant assistant, Widget page, c_int complete);
 	[LinkName("gtk_assistant_set_page_title")]
-	public static extern void assistant_set_page_title(GtkAssistant* assistant, GtkWidget* page,  c_char* title);
+	public static extern void AssistantSetPageTitle(Assistant assistant, Widget page, char8* title);
 	[LinkName("gtk_assistant_set_page_type")]
-	public static extern void assistant_set_page_type(GtkAssistant* assistant, GtkWidget* page, GtkAssistantPageType type);
+	public static extern void AssistantSetPageType(Assistant assistant, Widget page, AssistantPageType type);
 	[LinkName("gtk_assistant_update_buttons_state")]
-	public static extern void assistant_update_buttons_state(GtkAssistant* assistant);
+	public static extern void AssistantUpdateButtonsState(Assistant assistant);
 	[CRepr]
-	public struct GtkAssistantPage;
+	public struct AssistantPage;
 	[LinkName("gtk_assistant_page_get_child")]
-	public static extern GtkWidget* assistant_page_get_child(GtkAssistantPage* page);
-	public function c_int GtkAssistantPageFunc(c_int current_page, void* data);
-	public enum GtkAssistantPageType : c_int
+	public static extern Widget AssistantPageGetChild(AssistantPage page);
+	public function c_int AssistantPageFunc(c_int current_page, void* data);
+	public enum AssistantPageType : c_int
 	{
 		GTK_ASSISTANT_PAGE_CONTENT,
 		GTK_ASSISTANT_PAGE_INTRO,
@@ -675,76 +675,76 @@ class Gtk
 		GTK_ASSISTANT_PAGE_PROGRESS,
 		GTK_ASSISTANT_PAGE_CUSTOM
 	}
-	public enum GtkBaselinePosition : c_int
+	public enum BaselinePosition : c_int
 	{
 		GTK_BASELINE_POSITION_TOP,
 		GTK_BASELINE_POSITION_CENTER,
 		GTK_BASELINE_POSITION_BOTTOM
 	}
 	[CRepr]
-	public struct GtkBinLayout;
+	public struct BinLayout;
 	[LinkName("gtk_bin_layout_new")]
-	public static extern GtkLayoutManager* bin_layout_new();
+	public static extern LayoutManager BinLayoutNew();
 	[CRepr]
-	public struct GtkBinLayoutClass
+	public struct BinLayoutClass
 	{
-		GtkLayoutManagerClass parent_class;
+		LayoutManagerClass parent_class;
 	}
 	[CRepr]
-	public struct GtkBitset
-	{
-	}
-	[CRepr]
-	public struct GtkBitsetIter
+	public struct Bitset
 	{
 	}
 	[CRepr]
-	public struct GtkBookmarkList;
+	public struct BitsetIter
+	{
+	}
+	[CRepr]
+	public struct BookmarkList;
 	[LinkName("gtk_bookmark_list_new")]
-	public static extern GtkBookmarkList* bookmark_list_new( c_char* filename,  c_char* attributes);
+	public static extern BookmarkList BookmarkListNew(char8* filename, char8* attributes);
 	[LinkName("gtk_bookmark_list_get_attributes")]
-	public static extern  c_char* bookmark_list_get_attributes(GtkBookmarkList* self);
+	public static extern char8* BookmarkListGetAttributes(BookmarkList self);
 	[LinkName("gtk_bookmark_list_get_filename")]
-	public static extern  c_char* bookmark_list_get_filename(GtkBookmarkList* self);
+	public static extern char8* BookmarkListGetFilename(BookmarkList self);
 	[LinkName("gtk_bookmark_list_get_io_priority")]
-	public static extern c_int bookmark_list_get_io_priority(GtkBookmarkList* self);
+	public static extern c_int BookmarkListGetIoPriority(BookmarkList self);
 	[LinkName("gtk_bookmark_list_is_loading")]
-	public static extern c_int bookmark_list_is_loading(GtkBookmarkList* self);
+	public static extern c_int BookmarkListIsLoading(BookmarkList self);
 	[LinkName("gtk_bookmark_list_set_attributes")]
-	public static extern void bookmark_list_set_attributes(GtkBookmarkList* self,  c_char* attributes);
+	public static extern void BookmarkListSetAttributes(BookmarkList self, char8* attributes);
 	[LinkName("gtk_bookmark_list_set_io_priority")]
-	public static extern void bookmark_list_set_io_priority(GtkBookmarkList* self, c_int io_priority);
+	public static extern void BookmarkListSetIoPriority(BookmarkList self, c_int io_priority);
 	[CRepr]
-	public struct GtkBookmarkListClass
+	public struct BookmarkListClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GtkBoolFilter;
+	public struct BoolFilter;
 	[LinkName("gtk_bool_filter_new")]
-	public static extern GtkBoolFilter* bool_filter_new(GtkExpression* expression);
+	public static extern BoolFilter BoolFilterNew(Expression expression);
 	[LinkName("gtk_bool_filter_get_expression")]
-	public static extern GtkExpression* bool_filter_get_expression(GtkBoolFilter* self);
+	public static extern Expression BoolFilterGetExpression(BoolFilter self);
 	[LinkName("gtk_bool_filter_get_invert")]
-	public static extern c_int bool_filter_get_invert(GtkBoolFilter* self);
+	public static extern c_int BoolFilterGetInvert(BoolFilter self);
 	[LinkName("gtk_bool_filter_set_expression")]
-	public static extern void bool_filter_set_expression(GtkBoolFilter* self, GtkExpression* expression);
+	public static extern void BoolFilterSetExpression(BoolFilter self, Expression expression);
 	[LinkName("gtk_bool_filter_set_invert")]
-	public static extern void bool_filter_set_invert(GtkBoolFilter* self, c_int invert);
+	public static extern void BoolFilterSetInvert(BoolFilter self, c_int invert);
 	[CRepr]
-	public struct GtkBoolFilterClass
+	public struct BoolFilterClass
 	{
-		GtkFilterClass parent_class;
+		FilterClass parent_class;
 	}
 	[CRepr]
-	public struct GtkBorder
+	public struct Border
 	{
 		c_short left;
 		c_short right;
 		c_short top;
 		c_short bottom;
 	}
-	public enum GtkBorderStyle : c_int
+	public enum BorderStyle : c_int
 	{
 		GTK_BORDER_STYLE_NONE,
 		GTK_BORDER_STYLE_HIDDEN,
@@ -758,176 +758,176 @@ class Gtk
 		GTK_BORDER_STYLE_RIDGE
 	}
 	[CRepr]
-	public struct GtkBox;
+	public struct Box;
 	[LinkName("gtk_box_new")]
-	public static extern GtkWidget* box_new(GtkOrientation orientation, c_int spacing);
+	public static extern Widget BoxNew(Orientation orientation, c_int spacing);
 	[LinkName("gtk_box_append")]
-	public static extern void box_append(GtkBox* box_, GtkWidget* child);
+	public static extern void BoxAppend(Box box_, Widget child);
 	[LinkName("gtk_box_get_baseline_child")]
-	public static extern c_int box_get_baseline_child(GtkBox* box_);
+	public static extern c_int BoxGetBaselineChild(Box box_);
 	[LinkName("gtk_box_get_baseline_position")]
-	public static extern GtkBaselinePosition box_get_baseline_position(GtkBox* box_);
+	public static extern BaselinePosition BoxGetBaselinePosition(Box box_);
 	[LinkName("gtk_box_get_homogeneous")]
-	public static extern c_int box_get_homogeneous(GtkBox* box_);
+	public static extern c_int BoxGetHomogeneous(Box box_);
 	[LinkName("gtk_box_get_spacing")]
-	public static extern c_int box_get_spacing(GtkBox* box_);
+	public static extern c_int BoxGetSpacing(Box box_);
 	[LinkName("gtk_box_insert_child_after")]
-	public static extern void box_insert_child_after(GtkBox* box_, GtkWidget* child, GtkWidget* sibling);
+	public static extern void BoxInsertChildAfter(Box box_, Widget child, Widget sibling);
 	[LinkName("gtk_box_prepend")]
-	public static extern void box_prepend(GtkBox* box_, GtkWidget* child);
+	public static extern void BoxPrepend(Box box_, Widget child);
 	[LinkName("gtk_box_remove")]
-	public static extern void box_remove(GtkBox* box_, GtkWidget* child);
+	public static extern void BoxRemove(Box box_, Widget child);
 	[LinkName("gtk_box_reorder_child_after")]
-	public static extern void box_reorder_child_after(GtkBox* box_, GtkWidget* child, GtkWidget* sibling);
+	public static extern void BoxReorderChildAfter(Box box_, Widget child, Widget sibling);
 	[LinkName("gtk_box_set_baseline_child")]
-	public static extern void box_set_baseline_child(GtkBox* box_, c_int child);
+	public static extern void BoxSetBaselineChild(Box box_, c_int child);
 	[LinkName("gtk_box_set_baseline_position")]
-	public static extern void box_set_baseline_position(GtkBox* box_, GtkBaselinePosition position);
+	public static extern void BoxSetBaselinePosition(Box box_, BaselinePosition position);
 	[LinkName("gtk_box_set_homogeneous")]
-	public static extern void box_set_homogeneous(GtkBox* box_, c_int homogeneous);
+	public static extern void BoxSetHomogeneous(Box box_, c_int homogeneous);
 	[LinkName("gtk_box_set_spacing")]
-	public static extern void box_set_spacing(GtkBox* box_, c_int spacing);
+	public static extern void BoxSetSpacing(Box box_, c_int spacing);
 	[CRepr]
-	public struct GtkBoxClass
+	public struct BoxClass
 	{
-		GtkWidgetClass parent_class;
+		WidgetClass parent_class;
 	}
 	[CRepr]
-	public struct GtkBoxLayout;
+	public struct BoxLayout;
 	[LinkName("gtk_box_layout_new")]
-	public static extern GtkLayoutManager* box_layout_new(GtkOrientation orientation);
+	public static extern LayoutManager BoxLayoutNew(Orientation orientation);
 	[LinkName("gtk_box_layout_get_baseline_child")]
-	public static extern c_int box_layout_get_baseline_child(GtkBoxLayout* box_layout);
+	public static extern c_int BoxLayoutGetBaselineChild(BoxLayout box_layout);
 	[LinkName("gtk_box_layout_get_baseline_position")]
-	public static extern GtkBaselinePosition box_layout_get_baseline_position(GtkBoxLayout* box_layout);
+	public static extern BaselinePosition BoxLayoutGetBaselinePosition(BoxLayout box_layout);
 	[LinkName("gtk_box_layout_get_homogeneous")]
-	public static extern c_int box_layout_get_homogeneous(GtkBoxLayout* box_layout);
+	public static extern c_int BoxLayoutGetHomogeneous(BoxLayout box_layout);
 	[LinkName("gtk_box_layout_get_spacing")]
-	public static extern c_uint box_layout_get_spacing(GtkBoxLayout* box_layout);
+	public static extern c_uint BoxLayoutGetSpacing(BoxLayout box_layout);
 	[LinkName("gtk_box_layout_set_baseline_child")]
-	public static extern void box_layout_set_baseline_child(GtkBoxLayout* box_layout, c_int child);
+	public static extern void BoxLayoutSetBaselineChild(BoxLayout box_layout, c_int child);
 	[LinkName("gtk_box_layout_set_baseline_position")]
-	public static extern void box_layout_set_baseline_position(GtkBoxLayout* box_layout, GtkBaselinePosition position);
+	public static extern void BoxLayoutSetBaselinePosition(BoxLayout box_layout, BaselinePosition position);
 	[LinkName("gtk_box_layout_set_homogeneous")]
-	public static extern void box_layout_set_homogeneous(GtkBoxLayout* box_layout, c_int homogeneous);
+	public static extern void BoxLayoutSetHomogeneous(BoxLayout box_layout, c_int homogeneous);
 	[LinkName("gtk_box_layout_set_spacing")]
-	public static extern void box_layout_set_spacing(GtkBoxLayout* box_layout, c_uint spacing);
+	public static extern void BoxLayoutSetSpacing(BoxLayout box_layout, c_uint spacing);
 	[CRepr]
-	public struct GtkBoxLayoutClass
+	public struct BoxLayoutClass
 	{
-		GtkLayoutManagerClass parent_class;
+		LayoutManagerClass parent_class;
 	}
 	[CRepr]
-	public struct GtkBuildable
+	public struct Buildable
 	{
-		public function void(GtkBuildable* buildable, GtkBuilder* builder, GObject* child,  c_char* type) add_child;
+		public function void(Buildable buildable, Builder builder, GObject.Object child, char8* type) add_child;
 
-		public function GObject*(GtkBuildable* buildable, GtkBuilder* builder,  c_char* name) construct_child;
+		public function GObject.Object(Buildable buildable, Builder builder, char8* name) construct_child;
 
-		public function void(GtkBuildable* buildable, GtkBuilder* builder, GObject* child,  c_char* tagname, void* data) custom_finished;
+		public function void(Buildable buildable, Builder builder, GObject.Object child, char8* tagname, void* data) custom_finished;
 
-		public function void(GtkBuildable* buildable, GtkBuilder* builder, GObject* child,  c_char* tagname, void* data) custom_tag_end;
+		public function void(Buildable buildable, Builder builder, GObject.Object child, char8* tagname, void* data) custom_tag_end;
 
-		public function c_int(GtkBuildable* buildable, GtkBuilder* builder, GObject* child,  c_char* tagname, GtkBuildableParser* parser, void** data) custom_tag_start;
+		public function c_int(Buildable buildable, Builder builder, GObject.Object child, char8* tagname, BuildableParser parser, void* data) custom_tag_start;
 
-		public function  c_char*(GtkBuildable* buildable) get_id;
+		public function char8*(Buildable buildable) get_id;
 
-		public function GObject*(GtkBuildable* buildable, GtkBuilder* builder,  c_char* childname) get_internal_child;
+		public function GObject.Object(Buildable buildable, Builder builder, char8* childname) get_internal_child;
 
-		public function void(GtkBuildable* buildable, GtkBuilder* builder) parser_finished;
+		public function void(Buildable buildable, Builder builder) parser_finished;
 
-		public function void(GtkBuildable* buildable, GtkBuilder* builder,  c_char* name,  GValue* value) set_buildable_property;
+		public function void(Buildable buildable, Builder builder, char8* name, GObject.Value value) set_buildable_property;
 
-		public function void(GtkBuildable* buildable,  c_char* id) set_id;
+		public function void(Buildable buildable, char8* id) set_id;
 	}
 	[CRepr]
-	public struct GtkBuildableIface
+	public struct BuildableIface
 	{
-		GTypeInterface g_iface;
+		GObject.TypeInterface g_iface;
 	}
 	[CRepr]
-	public struct GtkBuildableParseContext
-	{
-	}
-	[CRepr]
-	public struct GtkBuildableParser
+	public struct BuildableParseContext
 	{
 	}
 	[CRepr]
-	public struct GtkBuilder;
+	public struct BuildableParser
+	{
+	}
+	[CRepr]
+	public struct Builder;
 	[LinkName("gtk_builder_new")]
-	public static extern GtkBuilder* builder_new();
+	public static extern Builder BuilderNew();
 	[LinkName("gtk_builder_new_from_file")]
-	public static extern GtkBuilder* builder_new_from_file( c_char* filename);
+	public static extern Builder BuilderNewFromFile(char8* filename);
 	[LinkName("gtk_builder_new_from_resource")]
-	public static extern GtkBuilder* builder_new_from_resource( c_char* resource_path);
+	public static extern Builder BuilderNewFromResource(char8* resource_path);
 	[LinkName("gtk_builder_new_from_string")]
-	public static extern GtkBuilder* builder_new_from_string( c_char* string, c_long length);
+	public static extern Builder BuilderNewFromString(char8* string, c_long length);
 	[LinkName("gtk_builder_add_from_file")]
-	public static extern c_int builder_add_from_file(GtkBuilder* builder,  c_char* filename);
+	public static extern c_int BuilderAddFromFile(Builder builder, char8* filename);
 	[LinkName("gtk_builder_add_from_resource")]
-	public static extern c_int builder_add_from_resource(GtkBuilder* builder,  c_char* resource_path);
+	public static extern c_int BuilderAddFromResource(Builder builder, char8* resource_path);
 	[LinkName("gtk_builder_add_from_string")]
-	public static extern c_int builder_add_from_string(GtkBuilder* builder,  c_char* buffer, c_long length);
+	public static extern c_int BuilderAddFromString(Builder builder, char8* buffer, c_long length);
 	[LinkName("gtk_builder_add_objects_from_file")]
-	public static extern c_int builder_add_objects_from_file(GtkBuilder* builder,  c_char* filename);
+	public static extern c_int BuilderAddObjectsFromFile(Builder builder, char8* filename);
 	[LinkName("gtk_builder_add_objects_from_resource")]
-	public static extern c_int builder_add_objects_from_resource(GtkBuilder* builder,  c_char* resource_path);
+	public static extern c_int BuilderAddObjectsFromResource(Builder builder, char8* resource_path);
 	[LinkName("gtk_builder_add_objects_from_string")]
-	public static extern c_int builder_add_objects_from_string(GtkBuilder* builder,  c_char* buffer, c_long length);
+	public static extern c_int BuilderAddObjectsFromString(Builder builder, char8* buffer, c_long length);
 	[LinkName("gtk_builder_create_closure")]
-	public static extern GClosure* builder_create_closure(GtkBuilder* builder,  c_char* function_name, GtkBuilderClosureFlags flags, GObject* object);
+	public static extern GObject.Closure BuilderCreateClosure(Builder builder, char8* function_name, BuilderClosureFlags flags, GObject.Object object);
 	[LinkName("gtk_builder_expose_object")]
-	public static extern void builder_expose_object(GtkBuilder* builder,  c_char* name, GObject* object);
+	public static extern void BuilderExposeObject(Builder builder, char8* name, GObject.Object object);
 	[LinkName("gtk_builder_extend_with_template")]
-	public static extern c_int builder_extend_with_template(GtkBuilder* builder, GObject* object, GType template_type,  c_char* buffer, c_long length);
+	public static extern c_int BuilderExtendWithTemplate(Builder builder, GObject.Object object, GLib.Type template_type, char8* buffer, c_long length);
 	[LinkName("gtk_builder_get_current_object")]
-	public static extern GObject* builder_get_current_object(GtkBuilder* builder);
+	public static extern GObject.Object BuilderGetCurrentObject(Builder builder);
 	[LinkName("gtk_builder_get_object")]
-	public static extern GObject* builder_get_object(GtkBuilder* builder,  c_char* name);
+	public static extern GObject.Object BuilderGetObject(Builder builder, char8* name);
 	[LinkName("gtk_builder_get_objects")]
-	public static extern GSList* builder_get_objects(GtkBuilder* builder);
+	public static extern GLib.SList BuilderGetObjects(Builder builder);
 	[LinkName("gtk_builder_get_scope")]
-	public static extern GtkBuilderScope* builder_get_scope(GtkBuilder* builder);
+	public static extern BuilderScope BuilderGetScope(Builder builder);
 	[LinkName("gtk_builder_get_translation_domain")]
-	public static extern  c_char* builder_get_translation_domain(GtkBuilder* builder);
+	public static extern char8* BuilderGetTranslationDomain(Builder builder);
 	[LinkName("gtk_builder_get_type_from_name")]
-	public static extern GType builder_get_type_from_name(GtkBuilder* builder,  c_char* type_name);
+	public static extern GLib.Type BuilderGetTypeFromName(Builder builder, char8* type_name);
 	[LinkName("gtk_builder_set_current_object")]
-	public static extern void builder_set_current_object(GtkBuilder* builder, GObject* current_object);
+	public static extern void BuilderSetCurrentObject(Builder builder, GObject.Object current_object);
 	[LinkName("gtk_builder_set_scope")]
-	public static extern void builder_set_scope(GtkBuilder* builder, GtkBuilderScope* scope_);
+	public static extern void BuilderSetScope(Builder builder, BuilderScope scope_);
 	[LinkName("gtk_builder_set_translation_domain")]
-	public static extern void builder_set_translation_domain(GtkBuilder* builder,  c_char* domain);
+	public static extern void BuilderSetTranslationDomain(Builder builder, char8* domain);
 	[LinkName("gtk_builder_value_from_string")]
-	public static extern c_int builder_value_from_string(GtkBuilder* builder, GParamSpec* pspec,  c_char* string, GValue* value);
+	public static extern c_int BuilderValueFromString(Builder builder, GObject.ParamSpec pspec, char8* string, GObject.Value value);
 	[LinkName("gtk_builder_value_from_string_type")]
-	public static extern c_int builder_value_from_string_type(GtkBuilder* builder, GType type,  c_char* string, GValue* value);
+	public static extern c_int BuilderValueFromStringType(Builder builder, GLib.Type type, char8* string, GObject.Value value);
 	[CRepr]
-	public struct GtkBuilderCScope;
+	public struct BuilderCScope;
 	[LinkName("gtk_builder_cscope_new")]
-	public static extern GtkBuilderScope* builder_cscope_new();
+	public static extern BuilderCScope BuilderCscopeNew();
 	[LinkName("gtk_builder_cscope_add_callback_symbol")]
-	public static extern void builder_cscope_add_callback_symbol(GtkBuilderCScope* self,  c_char* callback_name, GCallback callback_symbol);
+	public static extern void BuilderCscopeAddCallbackSymbol(BuilderCScope self, char8* callback_name, GObject.Callback callback_symbol);
 	[LinkName("gtk_builder_cscope_add_callback_symbols")]
-	public static extern void builder_cscope_add_callback_symbols(GtkBuilderCScope* self,  c_char* first_callback_name, GCallback first_callback_symbol);
+	public static extern void BuilderCscopeAddCallbackSymbols(BuilderCScope self, char8* first_callback_name, GObject.Callback first_callback_symbol);
 	[LinkName("gtk_builder_cscope_lookup_callback_symbol")]
-	public static extern GCallback builder_cscope_lookup_callback_symbol(GtkBuilderCScope* self,  c_char* callback_name);
+	public static extern GObject.Callback BuilderCscopeLookupCallbackSymbol(BuilderCScope self, char8* callback_name);
 	[CRepr]
-	public struct GtkBuilderCScopeClass
+	public struct BuilderCScopeClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GtkBuilderClass
+	public struct BuilderClass
 	{
 	}
 	[CRepr]
-	public struct GtkBuilderClosureFlags
+	public struct BuilderClosureFlags
 	{
 		public const int GTK_BUILDER_CLOSURE_SWAPPED = 1;
 	}
-	public enum GtkBuilderError : c_int
+	public enum BuilderError : c_int
 	{
 		GTK_BUILDER_ERROR_INVALID_TYPE_FUNCTION,
 		GTK_BUILDER_ERROR_UNHANDLED_TAG,
@@ -946,79 +946,79 @@ class Gtk
 		GTK_BUILDER_ERROR_INVALID_FUNCTION
 	}
 	[CRepr]
-	public struct GtkBuilderListItemFactory;
+	public struct BuilderListItemFactory;
 	[LinkName("gtk_builder_list_item_factory_new_from_bytes")]
-	public static extern GtkListItemFactory* builder_list_item_factory_new_from_bytes(GtkBuilderScope* scope_, GBytes* bytes);
+	public static extern ListItemFactory BuilderListItemFactoryNewFromBytes(BuilderScope scope_, GLib.Bytes bytes);
 	[LinkName("gtk_builder_list_item_factory_new_from_resource")]
-	public static extern GtkListItemFactory* builder_list_item_factory_new_from_resource(GtkBuilderScope* scope_,  c_char* resource_path);
+	public static extern ListItemFactory BuilderListItemFactoryNewFromResource(BuilderScope scope_, char8* resource_path);
 	[LinkName("gtk_builder_list_item_factory_get_bytes")]
-	public static extern GBytes* builder_list_item_factory_get_bytes(GtkBuilderListItemFactory* self);
+	public static extern GLib.Bytes BuilderListItemFactoryGetBytes(BuilderListItemFactory self);
 	[LinkName("gtk_builder_list_item_factory_get_resource")]
-	public static extern  c_char* builder_list_item_factory_get_resource(GtkBuilderListItemFactory* self);
+	public static extern char8* BuilderListItemFactoryGetResource(BuilderListItemFactory self);
 	[LinkName("gtk_builder_list_item_factory_get_scope")]
-	public static extern GtkBuilderScope* builder_list_item_factory_get_scope(GtkBuilderListItemFactory* self);
+	public static extern BuilderScope BuilderListItemFactoryGetScope(BuilderListItemFactory self);
 	[CRepr]
-	public struct GtkBuilderListItemFactoryClass
+	public struct BuilderListItemFactoryClass
 	{
 	}
 	[CRepr]
-	public struct GtkBuilderScope
+	public struct BuilderScope
 	{
-		public function GClosure*(GtkBuilderScope this, GtkBuilder* builder,  c_char* function_name, GtkBuilderClosureFlags flags, GObject* object) create_closure;
+		public function GObject.Closure(BuilderScope this, Builder builder, char8* function_name, BuilderClosureFlags flags, GObject.Object object) create_closure;
 
-		public function GType(GtkBuilderScope this, GtkBuilder* builder,  c_char* function_name) get_type_from_function;
+		public function GLib.Type(BuilderScope this, Builder builder, char8* function_name) get_type_from_function;
 
-		public function GType(GtkBuilderScope this, GtkBuilder* builder,  c_char* type_name) get_type_from_name;
+		public function GLib.Type(BuilderScope this, Builder builder, char8* type_name) get_type_from_name;
 	}
 	[CRepr]
-	public struct GtkBuilderScopeInterface
+	public struct BuilderScopeInterface
 	{
-		GTypeInterface g_iface;
+		GObject.TypeInterface g_iface;
 	}
 	[CRepr]
-	public struct GtkButton;
+	public struct Button;
 	[LinkName("gtk_button_new")]
-	public static extern GtkWidget* button_new();
+	public static extern Widget ButtonNew();
 	[LinkName("gtk_button_new_from_icon_name")]
-	public static extern GtkWidget* button_new_from_icon_name( c_char* icon_name);
+	public static extern Widget ButtonNewFromIconName(char8* icon_name);
 	[LinkName("gtk_button_new_with_label")]
-	public static extern GtkWidget* button_new_with_label( c_char* label);
+	public static extern Widget ButtonNewWithLabel(char8* label);
 	[LinkName("gtk_button_new_with_mnemonic")]
-	public static extern GtkWidget* button_new_with_mnemonic( c_char* label);
+	public static extern Widget ButtonNewWithMnemonic(char8* label);
 	[LinkName("gtk_button_get_can_shrink")]
-	public static extern c_int button_get_can_shrink(GtkButton* button);
+	public static extern c_int ButtonGetCanShrink(Button button);
 	[LinkName("gtk_button_get_child")]
-	public static extern GtkWidget* button_get_child(GtkButton* button);
+	public static extern Widget ButtonGetChild(Button button);
 	[LinkName("gtk_button_get_has_frame")]
-	public static extern c_int button_get_has_frame(GtkButton* button);
+	public static extern c_int ButtonGetHasFrame(Button button);
 	[LinkName("gtk_button_get_icon_name")]
-	public static extern  c_char* button_get_icon_name(GtkButton* button);
+	public static extern char8* ButtonGetIconName(Button button);
 	[LinkName("gtk_button_get_label")]
-	public static extern  c_char* button_get_label(GtkButton* button);
+	public static extern char8* ButtonGetLabel(Button button);
 	[LinkName("gtk_button_get_use_underline")]
-	public static extern c_int button_get_use_underline(GtkButton* button);
+	public static extern c_int ButtonGetUseUnderline(Button button);
 	[LinkName("gtk_button_set_can_shrink")]
-	public static extern void button_set_can_shrink(GtkButton* button, c_int can_shrink);
+	public static extern void ButtonSetCanShrink(Button button, c_int can_shrink);
 	[LinkName("gtk_button_set_child")]
-	public static extern void button_set_child(GtkButton* button, GtkWidget* child);
+	public static extern void ButtonSetChild(Button button, Widget child);
 	[LinkName("gtk_button_set_has_frame")]
-	public static extern void button_set_has_frame(GtkButton* button, c_int has_frame);
+	public static extern void ButtonSetHasFrame(Button button, c_int has_frame);
 	[LinkName("gtk_button_set_icon_name")]
-	public static extern void button_set_icon_name(GtkButton* button,  c_char* icon_name);
+	public static extern void ButtonSetIconName(Button button, char8* icon_name);
 	[LinkName("gtk_button_set_label")]
-	public static extern void button_set_label(GtkButton* button,  c_char* label);
+	public static extern void ButtonSetLabel(Button button, char8* label);
 	[LinkName("gtk_button_set_use_underline")]
-	public static extern void button_set_use_underline(GtkButton* button, c_int use_underline);
+	public static extern void ButtonSetUseUnderline(Button button, c_int use_underline);
 	[CRepr]
-	public struct GtkButtonClass
+	public struct ButtonClass
 	{
-		GtkWidgetClass parent_class;
+		WidgetClass parent_class;
 	}
 	[CRepr]
-	public struct GtkButtonPrivate
+	public struct ButtonPrivate
 	{
 	}
-	public enum GtkButtonsType : c_int
+	public enum ButtonsType : c_int
 	{
 		GTK_BUTTONS_NONE,
 		GTK_BUTTONS_OK,
@@ -1028,332 +1028,332 @@ class Gtk
 		GTK_BUTTONS_OK_CANCEL
 	}
 	[CRepr]
-	public struct GtkCClosureExpression;
+	public struct CClosureExpression;
 	[LinkName("gtk_cclosure_expression_new")]
-	public static extern GtkExpression* cclosure_expression_new(GType value_type, GClosureMarshal marshal, c_uint n_params, GCallback callback_func, void* user_data, GClosureNotify user_destroy);
+	public static extern CClosureExpression CclosureExpressionNew(GLib.Type value_type, GObject.ClosureMarshal marshal, c_uint n_params, GObject.Callback callback_func, void* user_data, GObject.ClosureNotify user_destroy);
 	[CRepr]
-	public struct GtkCalendar;
+	public struct Calendar;
 	[LinkName("gtk_calendar_new")]
-	public static extern GtkWidget* calendar_new();
+	public static extern Widget CalendarNew();
 	[LinkName("gtk_calendar_clear_marks")]
-	public static extern void calendar_clear_marks(GtkCalendar* calendar);
+	public static extern void CalendarClearMarks(Calendar calendar);
 	[LinkName("gtk_calendar_get_date")]
-	public static extern GDateTime* calendar_get_date(GtkCalendar* self);
+	public static extern GLib.DateTime CalendarGetDate(Calendar self);
 	[LinkName("gtk_calendar_get_day_is_marked")]
-	public static extern c_int calendar_get_day_is_marked(GtkCalendar* calendar, c_uint day);
+	public static extern c_int CalendarGetDayIsMarked(Calendar calendar, c_uint day);
 	[LinkName("gtk_calendar_get_show_day_names")]
-	public static extern c_int calendar_get_show_day_names(GtkCalendar* self);
+	public static extern c_int CalendarGetShowDayNames(Calendar self);
 	[LinkName("gtk_calendar_get_show_heading")]
-	public static extern c_int calendar_get_show_heading(GtkCalendar* self);
+	public static extern c_int CalendarGetShowHeading(Calendar self);
 	[LinkName("gtk_calendar_get_show_week_numbers")]
-	public static extern c_int calendar_get_show_week_numbers(GtkCalendar* self);
+	public static extern c_int CalendarGetShowWeekNumbers(Calendar self);
 	[LinkName("gtk_calendar_mark_day")]
-	public static extern void calendar_mark_day(GtkCalendar* calendar, c_uint day);
+	public static extern void CalendarMarkDay(Calendar calendar, c_uint day);
 	[LinkName("gtk_calendar_select_day")]
-	public static extern void calendar_select_day(GtkCalendar* self, GDateTime* date);
+	public static extern void CalendarSelectDay(Calendar self, GLib.DateTime date);
 	[LinkName("gtk_calendar_set_show_day_names")]
-	public static extern void calendar_set_show_day_names(GtkCalendar* self, c_int value);
+	public static extern void CalendarSetShowDayNames(Calendar self, c_int value);
 	[LinkName("gtk_calendar_set_show_heading")]
-	public static extern void calendar_set_show_heading(GtkCalendar* self, c_int value);
+	public static extern void CalendarSetShowHeading(Calendar self, c_int value);
 	[LinkName("gtk_calendar_set_show_week_numbers")]
-	public static extern void calendar_set_show_week_numbers(GtkCalendar* self, c_int value);
+	public static extern void CalendarSetShowWeekNumbers(Calendar self, c_int value);
 	[LinkName("gtk_calendar_unmark_day")]
-	public static extern void calendar_unmark_day(GtkCalendar* calendar, c_uint day);
+	public static extern void CalendarUnmarkDay(Calendar calendar, c_uint day);
 	[CRepr]
-	public struct GtkCallbackAction;
+	public struct CallbackAction;
 	[LinkName("gtk_callback_action_new")]
-	public static extern GtkShortcutAction* callback_action_new(GtkShortcutFunc callback, void* data, GDestroyNotify destroy);
+	public static extern CallbackAction CallbackActionNew(ShortcutFunc callback, void* data, GLib.DestroyNotify destroy);
 	[CRepr]
-	public struct GtkCallbackActionClass
+	public struct CallbackActionClass
 	{
 	}
-	public function c_int GtkCellAllocCallback(GtkCellRenderer* renderer,  GdkRectangle* cell_area,  GdkRectangle* cell_background, void* data);
+	public function c_int CellAllocCallback(CellRenderer renderer, Gdk.Rectangle cell_area, Gdk.Rectangle cell_background, void* data);
 	[CRepr]
-	public struct GtkCellArea;
+	public struct CellArea;
 	[LinkName("gtk_cell_area_activate")]
-	public static extern c_int cell_area_activate(GtkCellArea* area, GtkCellAreaContext* context, GtkWidget* widget,  GdkRectangle* cell_area, GtkCellRendererState flags, c_int edit_only);
+	public static extern c_int CellAreaActivate(CellArea area, CellAreaContext context, Widget widget, Gdk.Rectangle cell_area, CellRendererState flags, c_int edit_only);
 	[LinkName("gtk_cell_area_activate_cell")]
-	public static extern c_int cell_area_activate_cell(GtkCellArea* area, GtkWidget* widget, GtkCellRenderer* renderer, GdkEvent* event,  GdkRectangle* cell_area, GtkCellRendererState flags);
+	public static extern c_int CellAreaActivateCell(CellArea area, Widget widget, CellRenderer renderer, Gdk.Event event, Gdk.Rectangle cell_area, CellRendererState flags);
 	[LinkName("gtk_cell_area_add")]
-	public static extern void cell_area_add(GtkCellArea* area, GtkCellRenderer* renderer);
+	public static extern void CellAreaAdd(CellArea area, CellRenderer renderer);
 	[LinkName("gtk_cell_area_add_focus_sibling")]
-	public static extern void cell_area_add_focus_sibling(GtkCellArea* area, GtkCellRenderer* renderer, GtkCellRenderer* sibling);
+	public static extern void CellAreaAddFocusSibling(CellArea area, CellRenderer renderer, CellRenderer sibling);
 	[LinkName("gtk_cell_area_add_with_properties")]
-	public static extern void cell_area_add_with_properties(GtkCellArea* area, GtkCellRenderer* renderer,  c_char* first_prop_name);
+	public static extern void CellAreaAddWithProperties(CellArea area, CellRenderer renderer, char8* first_prop_name);
 	[LinkName("gtk_cell_area_apply_attributes")]
-	public static extern void cell_area_apply_attributes(GtkCellArea* area, GtkTreeModel* tree_model, GtkTreeIter* iter, c_int is_expander, c_int is_expanded);
+	public static extern void CellAreaApplyAttributes(CellArea area, TreeModel tree_model, TreeIter iter, c_int is_expander, c_int is_expanded);
 	[LinkName("gtk_cell_area_attribute_connect")]
-	public static extern void cell_area_attribute_connect(GtkCellArea* area, GtkCellRenderer* renderer,  c_char* attribute, c_int column);
+	public static extern void CellAreaAttributeConnect(CellArea area, CellRenderer renderer, char8* attribute, c_int column);
 	[LinkName("gtk_cell_area_attribute_disconnect")]
-	public static extern void cell_area_attribute_disconnect(GtkCellArea* area, GtkCellRenderer* renderer,  c_char* attribute);
+	public static extern void CellAreaAttributeDisconnect(CellArea area, CellRenderer renderer, char8* attribute);
 	[LinkName("gtk_cell_area_attribute_get_column")]
-	public static extern c_int cell_area_attribute_get_column(GtkCellArea* area, GtkCellRenderer* renderer,  c_char* attribute);
+	public static extern c_int CellAreaAttributeGetColumn(CellArea area, CellRenderer renderer, char8* attribute);
 	[LinkName("gtk_cell_area_cell_get")]
-	public static extern void cell_area_cell_get(GtkCellArea* area, GtkCellRenderer* renderer,  c_char* first_prop_name);
+	public static extern void CellAreaCellGet(CellArea area, CellRenderer renderer, char8* first_prop_name);
 	[LinkName("gtk_cell_area_cell_get_property")]
-	public static extern void cell_area_cell_get_property(GtkCellArea* area, GtkCellRenderer* renderer,  c_char* property_name, GValue* value);
+	public static extern void CellAreaCellGetProperty(CellArea area, CellRenderer renderer, char8* property_name, GObject.Value value);
 	[LinkName("gtk_cell_area_cell_get_valist")]
-	public static extern void cell_area_cell_get_valist(GtkCellArea* area, GtkCellRenderer* renderer,  c_char* first_property_name, VarArgs var_args);
+	public static extern void CellAreaCellGetValist(CellArea area, CellRenderer renderer, char8* first_property_name, VarArgs var_args);
 	[LinkName("gtk_cell_area_cell_set")]
-	public static extern void cell_area_cell_set(GtkCellArea* area, GtkCellRenderer* renderer,  c_char* first_prop_name);
+	public static extern void CellAreaCellSet(CellArea area, CellRenderer renderer, char8* first_prop_name);
 	[LinkName("gtk_cell_area_cell_set_property")]
-	public static extern void cell_area_cell_set_property(GtkCellArea* area, GtkCellRenderer* renderer,  c_char* property_name,  GValue* value);
+	public static extern void CellAreaCellSetProperty(CellArea area, CellRenderer renderer, char8* property_name, GObject.Value value);
 	[LinkName("gtk_cell_area_cell_set_valist")]
-	public static extern void cell_area_cell_set_valist(GtkCellArea* area, GtkCellRenderer* renderer,  c_char* first_property_name, VarArgs var_args);
+	public static extern void CellAreaCellSetValist(CellArea area, CellRenderer renderer, char8* first_property_name, VarArgs var_args);
 	[LinkName("gtk_cell_area_copy_context")]
-	public static extern GtkCellAreaContext* cell_area_copy_context(GtkCellArea* area, GtkCellAreaContext* context);
+	public static extern CellAreaContext CellAreaCopyContext(CellArea area, CellAreaContext context);
 	[LinkName("gtk_cell_area_create_context")]
-	public static extern GtkCellAreaContext* cell_area_create_context(GtkCellArea* area);
+	public static extern CellAreaContext CellAreaCreateContext(CellArea area);
 	[LinkName("gtk_cell_area_event")]
-	public static extern c_int cell_area_event(GtkCellArea* area, GtkCellAreaContext* context, GtkWidget* widget, GdkEvent* event,  GdkRectangle* cell_area, GtkCellRendererState flags);
+	public static extern c_int CellAreaEvent(CellArea area, CellAreaContext context, Widget widget, Gdk.Event event, Gdk.Rectangle cell_area, CellRendererState flags);
 	[LinkName("gtk_cell_area_focus")]
-	public static extern c_int cell_area_focus(GtkCellArea* area, GtkDirectionType direction);
+	public static extern c_int CellAreaFocus(CellArea area, DirectionType direction);
 	[LinkName("gtk_cell_area_foreach")]
-	public static extern void cell_area_foreach(GtkCellArea* area, GtkCellCallback callback, void* callback_data);
+	public static extern void CellAreaForeach(CellArea area, CellCallback callback, void* callback_data);
 	[LinkName("gtk_cell_area_foreach_alloc")]
-	public static extern void cell_area_foreach_alloc(GtkCellArea* area, GtkCellAreaContext* context, GtkWidget* widget,  GdkRectangle* cell_area,  GdkRectangle* background_area, GtkCellAllocCallback callback, void* callback_data);
+	public static extern void CellAreaForeachAlloc(CellArea area, CellAreaContext context, Widget widget, Gdk.Rectangle cell_area, Gdk.Rectangle background_area, CellAllocCallback callback, void* callback_data);
 	[LinkName("gtk_cell_area_get_cell_allocation")]
-	public static extern void cell_area_get_cell_allocation(GtkCellArea* area, GtkCellAreaContext* context, GtkWidget* widget, GtkCellRenderer* renderer,  GdkRectangle* cell_area, GdkRectangle* allocation);
+	public static extern void CellAreaGetCellAllocation(CellArea area, CellAreaContext context, Widget widget, CellRenderer renderer, Gdk.Rectangle cell_area, Gdk.Rectangle allocation);
 	[LinkName("gtk_cell_area_get_cell_at_position")]
-	public static extern GtkCellRenderer* cell_area_get_cell_at_position(GtkCellArea* area, GtkCellAreaContext* context, GtkWidget* widget,  GdkRectangle* cell_area, c_int x, c_int y, GdkRectangle* alloc_area);
+	public static extern CellRenderer CellAreaGetCellAtPosition(CellArea area, CellAreaContext context, Widget widget, Gdk.Rectangle cell_area, c_int x, c_int y, Gdk.Rectangle alloc_area);
 	[LinkName("gtk_cell_area_get_current_path_string")]
-	public static extern  c_char* cell_area_get_current_path_string(GtkCellArea* area);
+	public static extern char8* CellAreaGetCurrentPathString(CellArea area);
 	[LinkName("gtk_cell_area_get_edit_widget")]
-	public static extern GtkCellEditable* cell_area_get_edit_widget(GtkCellArea* area);
+	public static extern CellEditable CellAreaGetEditWidget(CellArea area);
 	[LinkName("gtk_cell_area_get_edited_cell")]
-	public static extern GtkCellRenderer* cell_area_get_edited_cell(GtkCellArea* area);
+	public static extern CellRenderer CellAreaGetEditedCell(CellArea area);
 	[LinkName("gtk_cell_area_get_focus_cell")]
-	public static extern GtkCellRenderer* cell_area_get_focus_cell(GtkCellArea* area);
+	public static extern CellRenderer CellAreaGetFocusCell(CellArea area);
 	[LinkName("gtk_cell_area_get_focus_from_sibling")]
-	public static extern GtkCellRenderer* cell_area_get_focus_from_sibling(GtkCellArea* area, GtkCellRenderer* renderer);
+	public static extern CellRenderer CellAreaGetFocusFromSibling(CellArea area, CellRenderer renderer);
 	[LinkName("gtk_cell_area_get_focus_siblings")]
-	public static extern  GList* cell_area_get_focus_siblings(GtkCellArea* area, GtkCellRenderer* renderer);
+	public static extern GLib.List CellAreaGetFocusSiblings(CellArea area, CellRenderer renderer);
 	[LinkName("gtk_cell_area_get_preferred_height")]
-	public static extern void cell_area_get_preferred_height(GtkCellArea* area, GtkCellAreaContext* context, GtkWidget* widget, c_int* minimum_height, c_int* natural_height);
+	public static extern void CellAreaGetPreferredHeight(CellArea area, CellAreaContext context, Widget widget, c_int minimum_height, c_int natural_height);
 	[LinkName("gtk_cell_area_get_preferred_height_for_width")]
-	public static extern void cell_area_get_preferred_height_for_width(GtkCellArea* area, GtkCellAreaContext* context, GtkWidget* widget, c_int width, c_int* minimum_height, c_int* natural_height);
+	public static extern void CellAreaGetPreferredHeightForWidth(CellArea area, CellAreaContext context, Widget widget, c_int width, c_int minimum_height, c_int natural_height);
 	[LinkName("gtk_cell_area_get_preferred_width")]
-	public static extern void cell_area_get_preferred_width(GtkCellArea* area, GtkCellAreaContext* context, GtkWidget* widget, c_int* minimum_width, c_int* natural_width);
+	public static extern void CellAreaGetPreferredWidth(CellArea area, CellAreaContext context, Widget widget, c_int minimum_width, c_int natural_width);
 	[LinkName("gtk_cell_area_get_preferred_width_for_height")]
-	public static extern void cell_area_get_preferred_width_for_height(GtkCellArea* area, GtkCellAreaContext* context, GtkWidget* widget, c_int height, c_int* minimum_width, c_int* natural_width);
+	public static extern void CellAreaGetPreferredWidthForHeight(CellArea area, CellAreaContext context, Widget widget, c_int height, c_int minimum_width, c_int natural_width);
 	[LinkName("gtk_cell_area_get_request_mode")]
-	public static extern GtkSizeRequestMode cell_area_get_request_mode(GtkCellArea* area);
+	public static extern SizeRequestMode CellAreaGetRequestMode(CellArea area);
 	[LinkName("gtk_cell_area_has_renderer")]
-	public static extern c_int cell_area_has_renderer(GtkCellArea* area, GtkCellRenderer* renderer);
+	public static extern c_int CellAreaHasRenderer(CellArea area, CellRenderer renderer);
 	[LinkName("gtk_cell_area_inner_cell_area")]
-	public static extern void cell_area_inner_cell_area(GtkCellArea* area, GtkWidget* widget,  GdkRectangle* cell_area, GdkRectangle* inner_area);
+	public static extern void CellAreaInnerCellArea(CellArea area, Widget widget, Gdk.Rectangle cell_area, Gdk.Rectangle inner_area);
 	[LinkName("gtk_cell_area_is_activatable")]
-	public static extern c_int cell_area_is_activatable(GtkCellArea* area);
+	public static extern c_int CellAreaIsActivatable(CellArea area);
 	[LinkName("gtk_cell_area_is_focus_sibling")]
-	public static extern c_int cell_area_is_focus_sibling(GtkCellArea* area, GtkCellRenderer* renderer, GtkCellRenderer* sibling);
+	public static extern c_int CellAreaIsFocusSibling(CellArea area, CellRenderer renderer, CellRenderer sibling);
 	[LinkName("gtk_cell_area_remove")]
-	public static extern void cell_area_remove(GtkCellArea* area, GtkCellRenderer* renderer);
+	public static extern void CellAreaRemove(CellArea area, CellRenderer renderer);
 	[LinkName("gtk_cell_area_remove_focus_sibling")]
-	public static extern void cell_area_remove_focus_sibling(GtkCellArea* area, GtkCellRenderer* renderer, GtkCellRenderer* sibling);
+	public static extern void CellAreaRemoveFocusSibling(CellArea area, CellRenderer renderer, CellRenderer sibling);
 	[LinkName("gtk_cell_area_request_renderer")]
-	public static extern void cell_area_request_renderer(GtkCellArea* area, GtkCellRenderer* renderer, GtkOrientation orientation, GtkWidget* widget, c_int for_size, c_int* minimum_size, c_int* natural_size);
+	public static extern void CellAreaRequestRenderer(CellArea area, CellRenderer renderer, Orientation orientation, Widget widget, c_int for_size, c_int minimum_size, c_int natural_size);
 	[LinkName("gtk_cell_area_set_focus_cell")]
-	public static extern void cell_area_set_focus_cell(GtkCellArea* area, GtkCellRenderer* renderer);
+	public static extern void CellAreaSetFocusCell(CellArea area, CellRenderer renderer);
 	[LinkName("gtk_cell_area_snapshot")]
-	public static extern void cell_area_snapshot(GtkCellArea* area, GtkCellAreaContext* context, GtkWidget* widget, GtkSnapshot* snapshot,  GdkRectangle* background_area,  GdkRectangle* cell_area, GtkCellRendererState flags, c_int paint_focus);
+	public static extern void CellAreaSnapshot(CellArea area, CellAreaContext context, Widget widget, Snapshot snapshot, Gdk.Rectangle background_area, Gdk.Rectangle cell_area, CellRendererState flags, c_int paint_focus);
 	[LinkName("gtk_cell_area_stop_editing")]
-	public static extern void cell_area_stop_editing(GtkCellArea* area, c_int canceled);
+	public static extern void CellAreaStopEditing(CellArea area, c_int canceled);
 	[CRepr]
-	public struct GtkCellAreaBox;
+	public struct CellAreaBox;
 	[LinkName("gtk_cell_area_box_new")]
-	public static extern GtkCellArea* cell_area_box_new();
+	public static extern CellArea CellAreaBoxNew();
 	[LinkName("gtk_cell_area_box_get_spacing")]
-	public static extern c_int cell_area_box_get_spacing(GtkCellAreaBox* box_);
+	public static extern c_int CellAreaBoxGetSpacing(CellAreaBox box_);
 	[LinkName("gtk_cell_area_box_pack_end")]
-	public static extern void cell_area_box_pack_end(GtkCellAreaBox* box_, GtkCellRenderer* renderer, c_int expand, c_int align, c_int fixed_);
+	public static extern void CellAreaBoxPackEnd(CellAreaBox box_, CellRenderer renderer, c_int expand, c_int align, c_int fixed_);
 	[LinkName("gtk_cell_area_box_pack_start")]
-	public static extern void cell_area_box_pack_start(GtkCellAreaBox* box_, GtkCellRenderer* renderer, c_int expand, c_int align, c_int fixed_);
+	public static extern void CellAreaBoxPackStart(CellAreaBox box_, CellRenderer renderer, c_int expand, c_int align, c_int fixed_);
 	[LinkName("gtk_cell_area_box_set_spacing")]
-	public static extern void cell_area_box_set_spacing(GtkCellAreaBox* box_, c_int spacing);
+	public static extern void CellAreaBoxSetSpacing(CellAreaBox box_, c_int spacing);
 	[CRepr]
-	public struct GtkCellAreaClass
+	public struct CellAreaClass
 	{
-		GInitiallyUnownedClass parent_class;
+		GObject.InitiallyUnownedClass parent_class;
 	}
 	[CRepr]
-	public struct GtkCellAreaContext;
+	public struct CellAreaContext;
 	[LinkName("gtk_cell_area_context_allocate")]
-	public static extern void cell_area_context_allocate(GtkCellAreaContext* context, c_int width, c_int height);
+	public static extern void CellAreaContextAllocate(CellAreaContext context, c_int width, c_int height);
 	[LinkName("gtk_cell_area_context_get_allocation")]
-	public static extern void cell_area_context_get_allocation(GtkCellAreaContext* context, c_int* width, c_int* height);
+	public static extern void CellAreaContextGetAllocation(CellAreaContext context, c_int width, c_int height);
 	[LinkName("gtk_cell_area_context_get_area")]
-	public static extern GtkCellArea* cell_area_context_get_area(GtkCellAreaContext* context);
+	public static extern CellArea CellAreaContextGetArea(CellAreaContext context);
 	[LinkName("gtk_cell_area_context_get_preferred_height")]
-	public static extern void cell_area_context_get_preferred_height(GtkCellAreaContext* context, c_int* minimum_height, c_int* natural_height);
+	public static extern void CellAreaContextGetPreferredHeight(CellAreaContext context, c_int minimum_height, c_int natural_height);
 	[LinkName("gtk_cell_area_context_get_preferred_height_for_width")]
-	public static extern void cell_area_context_get_preferred_height_for_width(GtkCellAreaContext* context, c_int width, c_int* minimum_height, c_int* natural_height);
+	public static extern void CellAreaContextGetPreferredHeightForWidth(CellAreaContext context, c_int width, c_int minimum_height, c_int natural_height);
 	[LinkName("gtk_cell_area_context_get_preferred_width")]
-	public static extern void cell_area_context_get_preferred_width(GtkCellAreaContext* context, c_int* minimum_width, c_int* natural_width);
+	public static extern void CellAreaContextGetPreferredWidth(CellAreaContext context, c_int minimum_width, c_int natural_width);
 	[LinkName("gtk_cell_area_context_get_preferred_width_for_height")]
-	public static extern void cell_area_context_get_preferred_width_for_height(GtkCellAreaContext* context, c_int height, c_int* minimum_width, c_int* natural_width);
+	public static extern void CellAreaContextGetPreferredWidthForHeight(CellAreaContext context, c_int height, c_int minimum_width, c_int natural_width);
 	[LinkName("gtk_cell_area_context_push_preferred_height")]
-	public static extern void cell_area_context_push_preferred_height(GtkCellAreaContext* context, c_int minimum_height, c_int natural_height);
+	public static extern void CellAreaContextPushPreferredHeight(CellAreaContext context, c_int minimum_height, c_int natural_height);
 	[LinkName("gtk_cell_area_context_push_preferred_width")]
-	public static extern void cell_area_context_push_preferred_width(GtkCellAreaContext* context, c_int minimum_width, c_int natural_width);
+	public static extern void CellAreaContextPushPreferredWidth(CellAreaContext context, c_int minimum_width, c_int natural_width);
 	[LinkName("gtk_cell_area_context_reset")]
-	public static extern void cell_area_context_reset(GtkCellAreaContext* context);
+	public static extern void CellAreaContextReset(CellAreaContext context);
 	[CRepr]
-	public struct GtkCellAreaContextClass
+	public struct CellAreaContextClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GtkCellAreaContextPrivate
+	public struct CellAreaContextPrivate
 	{
 	}
-	public function c_int GtkCellCallback(GtkCellRenderer* renderer, void* data);
+	public function c_int CellCallback(CellRenderer renderer, void* data);
 	[CRepr]
-	public struct GtkCellEditable
+	public struct CellEditable
 	{
-		public function void(GtkCellEditable* cell_editable) editing_done;
+		public function void(CellEditable cell_editable) editing_done;
 
-		public function void(GtkCellEditable* cell_editable) remove_widget;
+		public function void(CellEditable cell_editable) remove_widget;
 
-		public function void(GtkCellEditable* cell_editable, GdkEvent* event) start_editing;
+		public function void(CellEditable cell_editable, Gdk.Event event) start_editing;
 	}
 	[CRepr]
-	public struct GtkCellEditableIface
+	public struct CellEditableIface
 	{
-		GTypeInterface g_iface;
+		GObject.TypeInterface g_iface;
 	}
 	[CRepr]
-	public struct GtkCellLayout
+	public struct CellLayout
 	{
-		public function void(GtkCellLayout* cell_layout, GtkCellRenderer* cell,  c_char* attribute, c_int column) add_attribute;
+		public function void(CellLayout cell_layout, CellRenderer cell, char8* attribute, c_int column) add_attribute;
 
-		public function void(GtkCellLayout* cell_layout) clear;
+		public function void(CellLayout cell_layout) clear;
 
-		public function void(GtkCellLayout* cell_layout, GtkCellRenderer* cell) clear_attributes;
+		public function void(CellLayout cell_layout, CellRenderer cell) clear_attributes;
 
-		public function GtkCellArea*(GtkCellLayout* cell_layout) get_area;
+		public function CellArea(CellLayout cell_layout) get_area;
 
-		public function GList*(GtkCellLayout* cell_layout) get_cells;
+		public function GLib.List(CellLayout cell_layout) get_cells;
 
-		public function void(GtkCellLayout* cell_layout, GtkCellRenderer* cell, c_int expand) pack_end;
+		public function void(CellLayout cell_layout, CellRenderer cell, c_int expand) pack_end;
 
-		public function void(GtkCellLayout* cell_layout, GtkCellRenderer* cell, c_int expand) pack_start;
+		public function void(CellLayout cell_layout, CellRenderer cell, c_int expand) pack_start;
 
-		public function void(GtkCellLayout* cell_layout, GtkCellRenderer* cell, c_int position) reorder;
+		public function void(CellLayout cell_layout, CellRenderer cell, c_int position) reorder;
 
-		public function void(GtkCellLayout* cell_layout, GtkCellRenderer* cell, GtkCellLayoutDataFunc func, void* func_data, GDestroyNotify destroy) set_cell_data_func;
+		public function void(CellLayout cell_layout, CellRenderer cell, CellLayoutDataFunc func, void* func_data, GLib.DestroyNotify destroy) set_cell_data_func;
 	}
-	public function void GtkCellLayoutDataFunc(GtkCellLayout* cell_layout, GtkCellRenderer* cell, GtkTreeModel* tree_model, GtkTreeIter* iter, void* data);
+	public function void CellLayoutDataFunc(CellLayout cell_layout, CellRenderer cell, TreeModel tree_model, TreeIter iter, void* data);
 	[CRepr]
-	public struct GtkCellLayoutIface
+	public struct CellLayoutIface
 	{
-		GTypeInterface g_iface;
+		GObject.TypeInterface g_iface;
 	}
 	[CRepr]
-	public struct GtkCellRenderer;
+	public struct CellRenderer;
 	[LinkName("gtk_cell_renderer_activate")]
-	public static extern c_int cell_renderer_activate(GtkCellRenderer* cell, GdkEvent* event, GtkWidget* widget,  c_char* path,  GdkRectangle* background_area,  GdkRectangle* cell_area, GtkCellRendererState flags);
+	public static extern c_int CellRendererActivate(CellRenderer cell, Gdk.Event event, Widget widget, char8* path, Gdk.Rectangle background_area, Gdk.Rectangle cell_area, CellRendererState flags);
 	[LinkName("gtk_cell_renderer_get_aligned_area")]
-	public static extern void cell_renderer_get_aligned_area(GtkCellRenderer* cell, GtkWidget* widget, GtkCellRendererState flags,  GdkRectangle* cell_area, GdkRectangle* aligned_area);
+	public static extern void CellRendererGetAlignedArea(CellRenderer cell, Widget widget, CellRendererState flags, Gdk.Rectangle cell_area, Gdk.Rectangle aligned_area);
 	[LinkName("gtk_cell_renderer_get_alignment")]
-	public static extern void cell_renderer_get_alignment(GtkCellRenderer* cell, float* xalign, float* yalign);
+	public static extern void CellRendererGetAlignment(CellRenderer cell, float xalign, float yalign);
 	[LinkName("gtk_cell_renderer_get_fixed_size")]
-	public static extern void cell_renderer_get_fixed_size(GtkCellRenderer* cell, c_int* width, c_int* height);
+	public static extern void CellRendererGetFixedSize(CellRenderer cell, c_int width, c_int height);
 	[LinkName("gtk_cell_renderer_get_is_expanded")]
-	public static extern c_int cell_renderer_get_is_expanded(GtkCellRenderer* cell);
+	public static extern c_int CellRendererGetIsExpanded(CellRenderer cell);
 	[LinkName("gtk_cell_renderer_get_is_expander")]
-	public static extern c_int cell_renderer_get_is_expander(GtkCellRenderer* cell);
+	public static extern c_int CellRendererGetIsExpander(CellRenderer cell);
 	[LinkName("gtk_cell_renderer_get_padding")]
-	public static extern void cell_renderer_get_padding(GtkCellRenderer* cell, c_int* xpad, c_int* ypad);
+	public static extern void CellRendererGetPadding(CellRenderer cell, c_int xpad, c_int ypad);
 	[LinkName("gtk_cell_renderer_get_preferred_height")]
-	public static extern void cell_renderer_get_preferred_height(GtkCellRenderer* cell, GtkWidget* widget, c_int* minimum_size, c_int* natural_size);
+	public static extern void CellRendererGetPreferredHeight(CellRenderer cell, Widget widget, c_int minimum_size, c_int natural_size);
 	[LinkName("gtk_cell_renderer_get_preferred_height_for_width")]
-	public static extern void cell_renderer_get_preferred_height_for_width(GtkCellRenderer* cell, GtkWidget* widget, c_int width, c_int* minimum_height, c_int* natural_height);
+	public static extern void CellRendererGetPreferredHeightForWidth(CellRenderer cell, Widget widget, c_int width, c_int minimum_height, c_int natural_height);
 	[LinkName("gtk_cell_renderer_get_preferred_size")]
-	public static extern void cell_renderer_get_preferred_size(GtkCellRenderer* cell, GtkWidget* widget, GtkRequisition* minimum_size, GtkRequisition* natural_size);
+	public static extern void CellRendererGetPreferredSize(CellRenderer cell, Widget widget, Requisition minimum_size, Requisition natural_size);
 	[LinkName("gtk_cell_renderer_get_preferred_width")]
-	public static extern void cell_renderer_get_preferred_width(GtkCellRenderer* cell, GtkWidget* widget, c_int* minimum_size, c_int* natural_size);
+	public static extern void CellRendererGetPreferredWidth(CellRenderer cell, Widget widget, c_int minimum_size, c_int natural_size);
 	[LinkName("gtk_cell_renderer_get_preferred_width_for_height")]
-	public static extern void cell_renderer_get_preferred_width_for_height(GtkCellRenderer* cell, GtkWidget* widget, c_int height, c_int* minimum_width, c_int* natural_width);
+	public static extern void CellRendererGetPreferredWidthForHeight(CellRenderer cell, Widget widget, c_int height, c_int minimum_width, c_int natural_width);
 	[LinkName("gtk_cell_renderer_get_request_mode")]
-	public static extern GtkSizeRequestMode cell_renderer_get_request_mode(GtkCellRenderer* cell);
+	public static extern SizeRequestMode CellRendererGetRequestMode(CellRenderer cell);
 	[LinkName("gtk_cell_renderer_get_sensitive")]
-	public static extern c_int cell_renderer_get_sensitive(GtkCellRenderer* cell);
+	public static extern c_int CellRendererGetSensitive(CellRenderer cell);
 	[LinkName("gtk_cell_renderer_get_state")]
-	public static extern GtkStateFlags cell_renderer_get_state(GtkCellRenderer* cell, GtkWidget* widget, GtkCellRendererState cell_state);
+	public static extern StateFlags CellRendererGetState(CellRenderer cell, Widget widget, CellRendererState cell_state);
 	[LinkName("gtk_cell_renderer_get_visible")]
-	public static extern c_int cell_renderer_get_visible(GtkCellRenderer* cell);
+	public static extern c_int CellRendererGetVisible(CellRenderer cell);
 	[LinkName("gtk_cell_renderer_is_activatable")]
-	public static extern c_int cell_renderer_is_activatable(GtkCellRenderer* cell);
+	public static extern c_int CellRendererIsActivatable(CellRenderer cell);
 	[LinkName("gtk_cell_renderer_set_alignment")]
-	public static extern void cell_renderer_set_alignment(GtkCellRenderer* cell, float xalign, float yalign);
+	public static extern void CellRendererSetAlignment(CellRenderer cell, float xalign, float yalign);
 	[LinkName("gtk_cell_renderer_set_fixed_size")]
-	public static extern void cell_renderer_set_fixed_size(GtkCellRenderer* cell, c_int width, c_int height);
+	public static extern void CellRendererSetFixedSize(CellRenderer cell, c_int width, c_int height);
 	[LinkName("gtk_cell_renderer_set_is_expanded")]
-	public static extern void cell_renderer_set_is_expanded(GtkCellRenderer* cell, c_int is_expanded);
+	public static extern void CellRendererSetIsExpanded(CellRenderer cell, c_int is_expanded);
 	[LinkName("gtk_cell_renderer_set_is_expander")]
-	public static extern void cell_renderer_set_is_expander(GtkCellRenderer* cell, c_int is_expander);
+	public static extern void CellRendererSetIsExpander(CellRenderer cell, c_int is_expander);
 	[LinkName("gtk_cell_renderer_set_padding")]
-	public static extern void cell_renderer_set_padding(GtkCellRenderer* cell, c_int xpad, c_int ypad);
+	public static extern void CellRendererSetPadding(CellRenderer cell, c_int xpad, c_int ypad);
 	[LinkName("gtk_cell_renderer_set_sensitive")]
-	public static extern void cell_renderer_set_sensitive(GtkCellRenderer* cell, c_int sensitive);
+	public static extern void CellRendererSetSensitive(CellRenderer cell, c_int sensitive);
 	[LinkName("gtk_cell_renderer_set_visible")]
-	public static extern void cell_renderer_set_visible(GtkCellRenderer* cell, c_int visible);
+	public static extern void CellRendererSetVisible(CellRenderer cell, c_int visible);
 	[LinkName("gtk_cell_renderer_snapshot")]
-	public static extern void cell_renderer_snapshot(GtkCellRenderer* cell, GtkSnapshot* snapshot, GtkWidget* widget,  GdkRectangle* background_area,  GdkRectangle* cell_area, GtkCellRendererState flags);
+	public static extern void CellRendererSnapshot(CellRenderer cell, Snapshot snapshot, Widget widget, Gdk.Rectangle background_area, Gdk.Rectangle cell_area, CellRendererState flags);
 	[LinkName("gtk_cell_renderer_start_editing")]
-	public static extern GtkCellEditable* cell_renderer_start_editing(GtkCellRenderer* cell, GdkEvent* event, GtkWidget* widget,  c_char* path,  GdkRectangle* background_area,  GdkRectangle* cell_area, GtkCellRendererState flags);
+	public static extern CellEditable CellRendererStartEditing(CellRenderer cell, Gdk.Event event, Widget widget, char8* path, Gdk.Rectangle background_area, Gdk.Rectangle cell_area, CellRendererState flags);
 	[LinkName("gtk_cell_renderer_stop_editing")]
-	public static extern void cell_renderer_stop_editing(GtkCellRenderer* cell, c_int canceled);
+	public static extern void CellRendererStopEditing(CellRenderer cell, c_int canceled);
 	[CRepr]
-	public struct GtkCellRendererAccel;
+	public struct CellRendererAccel;
 	[LinkName("gtk_cell_renderer_accel_new")]
-	public static extern GtkCellRenderer* cell_renderer_accel_new();
-	public enum GtkCellRendererAccelMode : c_int
+	public static extern CellRenderer CellRendererAccelNew();
+	public enum CellRendererAccelMode : c_int
 	{
 		GTK_CELL_RENDERER_ACCEL_MODE_GTK,
 		GTK_CELL_RENDERER_ACCEL_MODE_OTHER
 	}
 	[CRepr]
-	public struct GtkCellRendererClass
+	public struct CellRendererClass
 	{
-		GInitiallyUnownedClass parent_class;
+		GObject.InitiallyUnownedClass parent_class;
 	}
 	[CRepr]
-	public struct GtkCellRendererClassPrivate
+	public struct CellRendererClassPrivate
 	{
 	}
 	[CRepr]
-	public struct GtkCellRendererCombo;
+	public struct CellRendererCombo;
 	[LinkName("gtk_cell_renderer_combo_new")]
-	public static extern GtkCellRenderer* cell_renderer_combo_new();
-	public enum GtkCellRendererMode : c_int
+	public static extern CellRenderer CellRendererComboNew();
+	public enum CellRendererMode : c_int
 	{
 		GTK_CELL_RENDERER_MODE_INERT,
 		GTK_CELL_RENDERER_MODE_ACTIVATABLE,
 		GTK_CELL_RENDERER_MODE_EDITABLE
 	}
 	[CRepr]
-	public struct GtkCellRendererPixbuf;
+	public struct CellRendererPixbuf;
 	[LinkName("gtk_cell_renderer_pixbuf_new")]
-	public static extern GtkCellRenderer* cell_renderer_pixbuf_new();
+	public static extern CellRenderer CellRendererPixbufNew();
 	[CRepr]
-	public struct GtkCellRendererPrivate
+	public struct CellRendererPrivate
 	{
 	}
 	[CRepr]
-	public struct GtkCellRendererProgress;
+	public struct CellRendererProgress;
 	[LinkName("gtk_cell_renderer_progress_new")]
-	public static extern GtkCellRenderer* cell_renderer_progress_new();
+	public static extern CellRenderer CellRendererProgressNew();
 	[CRepr]
-	public struct GtkCellRendererSpin;
+	public struct CellRendererSpin;
 	[LinkName("gtk_cell_renderer_spin_new")]
-	public static extern GtkCellRenderer* cell_renderer_spin_new();
+	public static extern CellRenderer CellRendererSpinNew();
 	[CRepr]
-	public struct GtkCellRendererSpinner;
+	public struct CellRendererSpinner;
 	[LinkName("gtk_cell_renderer_spinner_new")]
-	public static extern GtkCellRenderer* cell_renderer_spinner_new();
+	public static extern CellRenderer CellRendererSpinnerNew();
 	[CRepr]
-	public struct GtkCellRendererState
+	public struct CellRendererState
 	{
 		public const int GTK_CELL_RENDERER_SELECTED = 1;
 		public const int GTK_CELL_RENDERER_PRELIT = 2;
@@ -1364,531 +1364,531 @@ class Gtk
 		public const int GTK_CELL_RENDERER_EXPANDED = 64;
 	}
 	[CRepr]
-	public struct GtkCellRendererText;
+	public struct CellRendererText;
 	[LinkName("gtk_cell_renderer_text_new")]
-	public static extern GtkCellRenderer* cell_renderer_text_new();
+	public static extern CellRenderer CellRendererTextNew();
 	[LinkName("gtk_cell_renderer_text_set_fixed_height_from_font")]
-	public static extern void cell_renderer_text_set_fixed_height_from_font(GtkCellRendererText* renderer, c_int number_of_rows);
+	public static extern void CellRendererTextSetFixedHeightFromFont(CellRendererText renderer, c_int number_of_rows);
 	[CRepr]
-	public struct GtkCellRendererTextClass
+	public struct CellRendererTextClass
 	{
-		GtkCellRendererClass parent_class;
+		CellRendererClass parent_class;
 	}
 	[CRepr]
-	public struct GtkCellRendererToggle;
+	public struct CellRendererToggle;
 	[LinkName("gtk_cell_renderer_toggle_new")]
-	public static extern GtkCellRenderer* cell_renderer_toggle_new();
+	public static extern CellRenderer CellRendererToggleNew();
 	[LinkName("gtk_cell_renderer_toggle_get_activatable")]
-	public static extern c_int cell_renderer_toggle_get_activatable(GtkCellRendererToggle* toggle);
+	public static extern c_int CellRendererToggleGetActivatable(CellRendererToggle toggle);
 	[LinkName("gtk_cell_renderer_toggle_get_active")]
-	public static extern c_int cell_renderer_toggle_get_active(GtkCellRendererToggle* toggle);
+	public static extern c_int CellRendererToggleGetActive(CellRendererToggle toggle);
 	[LinkName("gtk_cell_renderer_toggle_get_radio")]
-	public static extern c_int cell_renderer_toggle_get_radio(GtkCellRendererToggle* toggle);
+	public static extern c_int CellRendererToggleGetRadio(CellRendererToggle toggle);
 	[LinkName("gtk_cell_renderer_toggle_set_activatable")]
-	public static extern void cell_renderer_toggle_set_activatable(GtkCellRendererToggle* toggle, c_int setting);
+	public static extern void CellRendererToggleSetActivatable(CellRendererToggle toggle, c_int setting);
 	[LinkName("gtk_cell_renderer_toggle_set_active")]
-	public static extern void cell_renderer_toggle_set_active(GtkCellRendererToggle* toggle, c_int setting);
+	public static extern void CellRendererToggleSetActive(CellRendererToggle toggle, c_int setting);
 	[LinkName("gtk_cell_renderer_toggle_set_radio")]
-	public static extern void cell_renderer_toggle_set_radio(GtkCellRendererToggle* toggle, c_int radio);
+	public static extern void CellRendererToggleSetRadio(CellRendererToggle toggle, c_int radio);
 	[CRepr]
-	public struct GtkCellView;
+	public struct CellView;
 	[LinkName("gtk_cell_view_new")]
-	public static extern GtkWidget* cell_view_new();
+	public static extern Widget CellViewNew();
 	[LinkName("gtk_cell_view_new_with_context")]
-	public static extern GtkWidget* cell_view_new_with_context(GtkCellArea* area, GtkCellAreaContext* context);
+	public static extern Widget CellViewNewWithContext(CellArea area, CellAreaContext context);
 	[LinkName("gtk_cell_view_new_with_markup")]
-	public static extern GtkWidget* cell_view_new_with_markup( c_char* markup);
+	public static extern Widget CellViewNewWithMarkup(char8* markup);
 	[LinkName("gtk_cell_view_new_with_text")]
-	public static extern GtkWidget* cell_view_new_with_text( c_char* text);
+	public static extern Widget CellViewNewWithText(char8* text);
 	[LinkName("gtk_cell_view_new_with_texture")]
-	public static extern GtkWidget* cell_view_new_with_texture(GdkTexture* texture);
+	public static extern Widget CellViewNewWithTexture(Gdk.Texture texture);
 	[LinkName("gtk_cell_view_get_displayed_row")]
-	public static extern GtkTreePath* cell_view_get_displayed_row(GtkCellView* cell_view);
+	public static extern TreePath CellViewGetDisplayedRow(CellView cell_view);
 	[LinkName("gtk_cell_view_get_draw_sensitive")]
-	public static extern c_int cell_view_get_draw_sensitive(GtkCellView* cell_view);
+	public static extern c_int CellViewGetDrawSensitive(CellView cell_view);
 	[LinkName("gtk_cell_view_get_fit_model")]
-	public static extern c_int cell_view_get_fit_model(GtkCellView* cell_view);
+	public static extern c_int CellViewGetFitModel(CellView cell_view);
 	[LinkName("gtk_cell_view_get_model")]
-	public static extern GtkTreeModel* cell_view_get_model(GtkCellView* cell_view);
+	public static extern TreeModel CellViewGetModel(CellView cell_view);
 	[LinkName("gtk_cell_view_set_displayed_row")]
-	public static extern void cell_view_set_displayed_row(GtkCellView* cell_view, GtkTreePath* path);
+	public static extern void CellViewSetDisplayedRow(CellView cell_view, TreePath path);
 	[LinkName("gtk_cell_view_set_draw_sensitive")]
-	public static extern void cell_view_set_draw_sensitive(GtkCellView* cell_view, c_int draw_sensitive);
+	public static extern void CellViewSetDrawSensitive(CellView cell_view, c_int draw_sensitive);
 	[LinkName("gtk_cell_view_set_fit_model")]
-	public static extern void cell_view_set_fit_model(GtkCellView* cell_view, c_int fit_model);
+	public static extern void CellViewSetFitModel(CellView cell_view, c_int fit_model);
 	[LinkName("gtk_cell_view_set_model")]
-	public static extern void cell_view_set_model(GtkCellView* cell_view, GtkTreeModel* model);
+	public static extern void CellViewSetModel(CellView cell_view, TreeModel model);
 	[CRepr]
-	public struct GtkCenterBox;
+	public struct CenterBox;
 	[LinkName("gtk_center_box_new")]
-	public static extern GtkWidget* center_box_new();
+	public static extern Widget CenterBoxNew();
 	[LinkName("gtk_center_box_get_baseline_position")]
-	public static extern GtkBaselinePosition center_box_get_baseline_position(GtkCenterBox* self);
+	public static extern BaselinePosition CenterBoxGetBaselinePosition(CenterBox self);
 	[LinkName("gtk_center_box_get_center_widget")]
-	public static extern GtkWidget* center_box_get_center_widget(GtkCenterBox* self);
+	public static extern Widget CenterBoxGetCenterWidget(CenterBox self);
 	[LinkName("gtk_center_box_get_end_widget")]
-	public static extern GtkWidget* center_box_get_end_widget(GtkCenterBox* self);
+	public static extern Widget CenterBoxGetEndWidget(CenterBox self);
 	[LinkName("gtk_center_box_get_shrink_center_last")]
-	public static extern c_int center_box_get_shrink_center_last(GtkCenterBox* self);
+	public static extern c_int CenterBoxGetShrinkCenterLast(CenterBox self);
 	[LinkName("gtk_center_box_get_start_widget")]
-	public static extern GtkWidget* center_box_get_start_widget(GtkCenterBox* self);
+	public static extern Widget CenterBoxGetStartWidget(CenterBox self);
 	[LinkName("gtk_center_box_set_baseline_position")]
-	public static extern void center_box_set_baseline_position(GtkCenterBox* self, GtkBaselinePosition position);
+	public static extern void CenterBoxSetBaselinePosition(CenterBox self, BaselinePosition position);
 	[LinkName("gtk_center_box_set_center_widget")]
-	public static extern void center_box_set_center_widget(GtkCenterBox* self, GtkWidget* child);
+	public static extern void CenterBoxSetCenterWidget(CenterBox self, Widget child);
 	[LinkName("gtk_center_box_set_end_widget")]
-	public static extern void center_box_set_end_widget(GtkCenterBox* self, GtkWidget* child);
+	public static extern void CenterBoxSetEndWidget(CenterBox self, Widget child);
 	[LinkName("gtk_center_box_set_shrink_center_last")]
-	public static extern void center_box_set_shrink_center_last(GtkCenterBox* self, c_int shrink_center_last);
+	public static extern void CenterBoxSetShrinkCenterLast(CenterBox self, c_int shrink_center_last);
 	[LinkName("gtk_center_box_set_start_widget")]
-	public static extern void center_box_set_start_widget(GtkCenterBox* self, GtkWidget* child);
+	public static extern void CenterBoxSetStartWidget(CenterBox self, Widget child);
 	[CRepr]
-	public struct GtkCenterBoxClass
+	public struct CenterBoxClass
 	{
 	}
 	[CRepr]
-	public struct GtkCenterLayout;
+	public struct CenterLayout;
 	[LinkName("gtk_center_layout_new")]
-	public static extern GtkLayoutManager* center_layout_new();
+	public static extern LayoutManager CenterLayoutNew();
 	[LinkName("gtk_center_layout_get_baseline_position")]
-	public static extern GtkBaselinePosition center_layout_get_baseline_position(GtkCenterLayout* self);
+	public static extern BaselinePosition CenterLayoutGetBaselinePosition(CenterLayout self);
 	[LinkName("gtk_center_layout_get_center_widget")]
-	public static extern GtkWidget* center_layout_get_center_widget(GtkCenterLayout* self);
+	public static extern Widget CenterLayoutGetCenterWidget(CenterLayout self);
 	[LinkName("gtk_center_layout_get_end_widget")]
-	public static extern GtkWidget* center_layout_get_end_widget(GtkCenterLayout* self);
+	public static extern Widget CenterLayoutGetEndWidget(CenterLayout self);
 	[LinkName("gtk_center_layout_get_orientation")]
-	public static extern GtkOrientation center_layout_get_orientation(GtkCenterLayout* self);
+	public static extern Orientation CenterLayoutGetOrientation(CenterLayout self);
 	[LinkName("gtk_center_layout_get_shrink_center_last")]
-	public static extern c_int center_layout_get_shrink_center_last(GtkCenterLayout* self);
+	public static extern c_int CenterLayoutGetShrinkCenterLast(CenterLayout self);
 	[LinkName("gtk_center_layout_get_start_widget")]
-	public static extern GtkWidget* center_layout_get_start_widget(GtkCenterLayout* self);
+	public static extern Widget CenterLayoutGetStartWidget(CenterLayout self);
 	[LinkName("gtk_center_layout_set_baseline_position")]
-	public static extern void center_layout_set_baseline_position(GtkCenterLayout* self, GtkBaselinePosition baseline_position);
+	public static extern void CenterLayoutSetBaselinePosition(CenterLayout self, BaselinePosition baseline_position);
 	[LinkName("gtk_center_layout_set_center_widget")]
-	public static extern void center_layout_set_center_widget(GtkCenterLayout* self, GtkWidget* widget);
+	public static extern void CenterLayoutSetCenterWidget(CenterLayout self, Widget widget);
 	[LinkName("gtk_center_layout_set_end_widget")]
-	public static extern void center_layout_set_end_widget(GtkCenterLayout* self, GtkWidget* widget);
+	public static extern void CenterLayoutSetEndWidget(CenterLayout self, Widget widget);
 	[LinkName("gtk_center_layout_set_orientation")]
-	public static extern void center_layout_set_orientation(GtkCenterLayout* self, GtkOrientation orientation);
+	public static extern void CenterLayoutSetOrientation(CenterLayout self, Orientation orientation);
 	[LinkName("gtk_center_layout_set_shrink_center_last")]
-	public static extern void center_layout_set_shrink_center_last(GtkCenterLayout* self, c_int shrink_center_last);
+	public static extern void CenterLayoutSetShrinkCenterLast(CenterLayout self, c_int shrink_center_last);
 	[LinkName("gtk_center_layout_set_start_widget")]
-	public static extern void center_layout_set_start_widget(GtkCenterLayout* self, GtkWidget* widget);
+	public static extern void CenterLayoutSetStartWidget(CenterLayout self, Widget widget);
 	[CRepr]
-	public struct GtkCenterLayoutClass
+	public struct CenterLayoutClass
 	{
-		GtkLayoutManagerClass parent_class;
+		LayoutManagerClass parent_class;
 	}
 	[CRepr]
-	public struct GtkCheckButton;
+	public struct CheckButton;
 	[LinkName("gtk_check_button_new")]
-	public static extern GtkWidget* check_button_new();
+	public static extern Widget CheckButtonNew();
 	[LinkName("gtk_check_button_new_with_label")]
-	public static extern GtkWidget* check_button_new_with_label( c_char* label);
+	public static extern Widget CheckButtonNewWithLabel(char8* label);
 	[LinkName("gtk_check_button_new_with_mnemonic")]
-	public static extern GtkWidget* check_button_new_with_mnemonic( c_char* label);
+	public static extern Widget CheckButtonNewWithMnemonic(char8* label);
 	[LinkName("gtk_check_button_get_active")]
-	public static extern c_int check_button_get_active(GtkCheckButton* self);
+	public static extern c_int CheckButtonGetActive(CheckButton self);
 	[LinkName("gtk_check_button_get_child")]
-	public static extern GtkWidget* check_button_get_child(GtkCheckButton* button);
+	public static extern Widget CheckButtonGetChild(CheckButton button);
 	[LinkName("gtk_check_button_get_inconsistent")]
-	public static extern c_int check_button_get_inconsistent(GtkCheckButton* check_button);
+	public static extern c_int CheckButtonGetInconsistent(CheckButton check_button);
 	[LinkName("gtk_check_button_get_label")]
-	public static extern  c_char* check_button_get_label(GtkCheckButton* self);
+	public static extern char8* CheckButtonGetLabel(CheckButton self);
 	[LinkName("gtk_check_button_get_use_underline")]
-	public static extern c_int check_button_get_use_underline(GtkCheckButton* self);
+	public static extern c_int CheckButtonGetUseUnderline(CheckButton self);
 	[LinkName("gtk_check_button_set_active")]
-	public static extern void check_button_set_active(GtkCheckButton* self, c_int setting);
+	public static extern void CheckButtonSetActive(CheckButton self, c_int setting);
 	[LinkName("gtk_check_button_set_child")]
-	public static extern void check_button_set_child(GtkCheckButton* button, GtkWidget* child);
+	public static extern void CheckButtonSetChild(CheckButton button, Widget child);
 	[LinkName("gtk_check_button_set_group")]
-	public static extern void check_button_set_group(GtkCheckButton* self, GtkCheckButton* group);
+	public static extern void CheckButtonSetGroup(CheckButton self, CheckButton group);
 	[LinkName("gtk_check_button_set_inconsistent")]
-	public static extern void check_button_set_inconsistent(GtkCheckButton* check_button, c_int inconsistent);
+	public static extern void CheckButtonSetInconsistent(CheckButton check_button, c_int inconsistent);
 	[LinkName("gtk_check_button_set_label")]
-	public static extern void check_button_set_label(GtkCheckButton* self,  c_char* label);
+	public static extern void CheckButtonSetLabel(CheckButton self, char8* label);
 	[LinkName("gtk_check_button_set_use_underline")]
-	public static extern void check_button_set_use_underline(GtkCheckButton* self, c_int setting);
+	public static extern void CheckButtonSetUseUnderline(CheckButton self, c_int setting);
 	[CRepr]
-	public struct GtkCheckButtonClass
+	public struct CheckButtonClass
 	{
-		GtkWidgetClass parent_class;
+		WidgetClass parent_class;
 	}
 	[CRepr]
-	public struct GtkClosureExpression;
+	public struct ClosureExpression;
 	[LinkName("gtk_closure_expression_new")]
-	public static extern GtkExpression* closure_expression_new(GType value_type, GClosure* closure, c_uint n_params);
-	public enum GtkCollation : c_int
+	public static extern ClosureExpression ClosureExpressionNew(GLib.Type value_type, GObject.Closure closure, c_uint n_params);
+	public enum Collation : c_int
 	{
 		GTK_COLLATION_NONE,
 		GTK_COLLATION_UNICODE,
 		GTK_COLLATION_FILENAME
 	}
 	[CRepr]
-	public struct GtkColorButton;
+	public struct ColorButton;
 	[LinkName("gtk_color_button_new")]
-	public static extern GtkWidget* color_button_new();
+	public static extern Widget ColorButtonNew();
 	[LinkName("gtk_color_button_new_with_rgba")]
-	public static extern GtkWidget* color_button_new_with_rgba( GdkRGBA* rgba);
+	public static extern Widget ColorButtonNewWithRgba(Gdk.RGBA rgba);
 	[LinkName("gtk_color_button_get_modal")]
-	public static extern c_int color_button_get_modal(GtkColorButton* button);
+	public static extern c_int ColorButtonGetModal(ColorButton button);
 	[LinkName("gtk_color_button_get_title")]
-	public static extern  c_char* color_button_get_title(GtkColorButton* button);
+	public static extern char8* ColorButtonGetTitle(ColorButton button);
 	[LinkName("gtk_color_button_set_modal")]
-	public static extern void color_button_set_modal(GtkColorButton* button, c_int modal);
+	public static extern void ColorButtonSetModal(ColorButton button, c_int modal);
 	[LinkName("gtk_color_button_set_title")]
-	public static extern void color_button_set_title(GtkColorButton* button,  c_char* title);
+	public static extern void ColorButtonSetTitle(ColorButton button, char8* title);
 	[CRepr]
-	public struct GtkColorChooser
+	public struct ColorChooser
 	{
-		public function void(GtkColorChooser* chooser, GtkOrientation orientation, c_int colors_per_line, c_int n_colors) add_palette;
+		public function void(ColorChooser chooser, Orientation orientation, c_int colors_per_line, c_int n_colors) add_palette;
 
-		public function void(GtkColorChooser* chooser,  GdkRGBA* color) color_activated;
+		public function void(ColorChooser chooser, Gdk.RGBA color) color_activated;
 
-		public function void(GtkColorChooser* chooser, GdkRGBA* color) get_rgba;
+		public function void(ColorChooser chooser, Gdk.RGBA color) get_rgba;
 
-		public function void(GtkColorChooser* chooser,  GdkRGBA* color) set_rgba;
+		public function void(ColorChooser chooser, Gdk.RGBA color) set_rgba;
 	}
 	[CRepr]
-	public struct GtkColorChooserDialog;
+	public struct ColorChooserDialog;
 	[LinkName("gtk_color_chooser_dialog_new")]
-	public static extern GtkWidget* color_chooser_dialog_new( c_char* title, GtkWindow* parent);
+	public static extern Widget ColorChooserDialogNew(char8* title, Window parent);
 	[CRepr]
-	public struct GtkColorChooserInterface
+	public struct ColorChooserInterface
 	{
-		GTypeInterface base_interface;
+		GObject.TypeInterface base_interface;
 	}
 	[CRepr]
-	public struct GtkColorChooserWidget;
+	public struct ColorChooserWidget;
 	[LinkName("gtk_color_chooser_widget_new")]
-	public static extern GtkWidget* color_chooser_widget_new();
+	public static extern Widget ColorChooserWidgetNew();
 	[CRepr]
-	public struct GtkColorDialog;
+	public struct ColorDialog;
 	[LinkName("gtk_color_dialog_new")]
-	public static extern GtkColorDialog* color_dialog_new();
+	public static extern ColorDialog ColorDialogNew();
 	[LinkName("gtk_color_dialog_choose_rgba")]
-	public static extern void color_dialog_choose_rgba(GtkColorDialog* self, GtkWindow* parent,  GdkRGBA* initial_color, GCancellable* cancellable, GAsyncReadyCallback callback, void* user_data);
+	public static extern void ColorDialogChooseRgba(ColorDialog self, Window parent, Gdk.RGBA initial_color, Gio.Cancellable cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gtk_color_dialog_choose_rgba_finish")]
-	public static extern GdkRGBA* color_dialog_choose_rgba_finish(GtkColorDialog* self, GAsyncResult* result);
+	public static extern Gdk.RGBA ColorDialogChooseRgbaFinish(ColorDialog self, Gio.AsyncResult result);
 	[LinkName("gtk_color_dialog_get_modal")]
-	public static extern c_int color_dialog_get_modal(GtkColorDialog* self);
+	public static extern c_int ColorDialogGetModal(ColorDialog self);
 	[LinkName("gtk_color_dialog_get_title")]
-	public static extern  c_char* color_dialog_get_title(GtkColorDialog* self);
+	public static extern char8* ColorDialogGetTitle(ColorDialog self);
 	[LinkName("gtk_color_dialog_get_with_alpha")]
-	public static extern c_int color_dialog_get_with_alpha(GtkColorDialog* self);
+	public static extern c_int ColorDialogGetWithAlpha(ColorDialog self);
 	[LinkName("gtk_color_dialog_set_modal")]
-	public static extern void color_dialog_set_modal(GtkColorDialog* self, c_int modal);
+	public static extern void ColorDialogSetModal(ColorDialog self, c_int modal);
 	[LinkName("gtk_color_dialog_set_title")]
-	public static extern void color_dialog_set_title(GtkColorDialog* self,  c_char* title);
+	public static extern void ColorDialogSetTitle(ColorDialog self, char8* title);
 	[LinkName("gtk_color_dialog_set_with_alpha")]
-	public static extern void color_dialog_set_with_alpha(GtkColorDialog* self, c_int with_alpha);
+	public static extern void ColorDialogSetWithAlpha(ColorDialog self, c_int with_alpha);
 	[CRepr]
-	public struct GtkColorDialogButton;
+	public struct ColorDialogButton;
 	[LinkName("gtk_color_dialog_button_new")]
-	public static extern GtkWidget* color_dialog_button_new(GtkColorDialog* dialog);
+	public static extern Widget ColorDialogButtonNew(ColorDialog dialog);
 	[LinkName("gtk_color_dialog_button_get_dialog")]
-	public static extern GtkColorDialog* color_dialog_button_get_dialog(GtkColorDialogButton* self);
+	public static extern ColorDialog ColorDialogButtonGetDialog(ColorDialogButton self);
 	[LinkName("gtk_color_dialog_button_get_rgba")]
-	public static extern  GdkRGBA* color_dialog_button_get_rgba(GtkColorDialogButton* self);
+	public static extern Gdk.RGBA ColorDialogButtonGetRgba(ColorDialogButton self);
 	[LinkName("gtk_color_dialog_button_set_dialog")]
-	public static extern void color_dialog_button_set_dialog(GtkColorDialogButton* self, GtkColorDialog* dialog);
+	public static extern void ColorDialogButtonSetDialog(ColorDialogButton self, ColorDialog dialog);
 	[LinkName("gtk_color_dialog_button_set_rgba")]
-	public static extern void color_dialog_button_set_rgba(GtkColorDialogButton* self,  GdkRGBA* color);
+	public static extern void ColorDialogButtonSetRgba(ColorDialogButton self, Gdk.RGBA color);
 	[CRepr]
-	public struct GtkColorDialogButtonClass
+	public struct ColorDialogButtonClass
 	{
-		GtkWidgetClass parent_class;
+		WidgetClass parent_class;
 	}
 	[CRepr]
-	public struct GtkColorDialogClass
+	public struct ColorDialogClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GtkColumnView;
+	public struct ColumnView;
 	[LinkName("gtk_column_view_new")]
-	public static extern GtkWidget* column_view_new(GtkSelectionModel* model);
+	public static extern Widget ColumnViewNew(SelectionModel model);
 	[LinkName("gtk_column_view_append_column")]
-	public static extern void column_view_append_column(GtkColumnView* self, GtkColumnViewColumn* column);
+	public static extern void ColumnViewAppendColumn(ColumnView self, ColumnViewColumn column);
 	[LinkName("gtk_column_view_get_columns")]
-	public static extern GListModel* column_view_get_columns(GtkColumnView* self);
+	public static extern Gio.ListModel ColumnViewGetColumns(ColumnView self);
 	[LinkName("gtk_column_view_get_enable_rubberband")]
-	public static extern c_int column_view_get_enable_rubberband(GtkColumnView* self);
+	public static extern c_int ColumnViewGetEnableRubberband(ColumnView self);
 	[LinkName("gtk_column_view_get_header_factory")]
-	public static extern GtkListItemFactory* column_view_get_header_factory(GtkColumnView* self);
+	public static extern ListItemFactory ColumnViewGetHeaderFactory(ColumnView self);
 	[LinkName("gtk_column_view_get_model")]
-	public static extern GtkSelectionModel* column_view_get_model(GtkColumnView* self);
+	public static extern SelectionModel ColumnViewGetModel(ColumnView self);
 	[LinkName("gtk_column_view_get_reorderable")]
-	public static extern c_int column_view_get_reorderable(GtkColumnView* self);
+	public static extern c_int ColumnViewGetReorderable(ColumnView self);
 	[LinkName("gtk_column_view_get_row_factory")]
-	public static extern GtkListItemFactory* column_view_get_row_factory(GtkColumnView* self);
+	public static extern ListItemFactory ColumnViewGetRowFactory(ColumnView self);
 	[LinkName("gtk_column_view_get_show_column_separators")]
-	public static extern c_int column_view_get_show_column_separators(GtkColumnView* self);
+	public static extern c_int ColumnViewGetShowColumnSeparators(ColumnView self);
 	[LinkName("gtk_column_view_get_show_row_separators")]
-	public static extern c_int column_view_get_show_row_separators(GtkColumnView* self);
+	public static extern c_int ColumnViewGetShowRowSeparators(ColumnView self);
 	[LinkName("gtk_column_view_get_single_click_activate")]
-	public static extern c_int column_view_get_single_click_activate(GtkColumnView* self);
+	public static extern c_int ColumnViewGetSingleClickActivate(ColumnView self);
 	[LinkName("gtk_column_view_get_sorter")]
-	public static extern GtkSorter* column_view_get_sorter(GtkColumnView* self);
+	public static extern Sorter ColumnViewGetSorter(ColumnView self);
 	[LinkName("gtk_column_view_get_tab_behavior")]
-	public static extern GtkListTabBehavior column_view_get_tab_behavior(GtkColumnView* self);
+	public static extern ListTabBehavior ColumnViewGetTabBehavior(ColumnView self);
 	[LinkName("gtk_column_view_insert_column")]
-	public static extern void column_view_insert_column(GtkColumnView* self, c_uint position, GtkColumnViewColumn* column);
+	public static extern void ColumnViewInsertColumn(ColumnView self, c_uint position, ColumnViewColumn column);
 	[LinkName("gtk_column_view_remove_column")]
-	public static extern void column_view_remove_column(GtkColumnView* self, GtkColumnViewColumn* column);
+	public static extern void ColumnViewRemoveColumn(ColumnView self, ColumnViewColumn column);
 	[LinkName("gtk_column_view_set_enable_rubberband")]
-	public static extern void column_view_set_enable_rubberband(GtkColumnView* self, c_int enable_rubberband);
+	public static extern void ColumnViewSetEnableRubberband(ColumnView self, c_int enable_rubberband);
 	[LinkName("gtk_column_view_set_header_factory")]
-	public static extern void column_view_set_header_factory(GtkColumnView* self, GtkListItemFactory* factory);
+	public static extern void ColumnViewSetHeaderFactory(ColumnView self, ListItemFactory factory);
 	[LinkName("gtk_column_view_set_model")]
-	public static extern void column_view_set_model(GtkColumnView* self, GtkSelectionModel* model);
+	public static extern void ColumnViewSetModel(ColumnView self, SelectionModel model);
 	[LinkName("gtk_column_view_set_reorderable")]
-	public static extern void column_view_set_reorderable(GtkColumnView* self, c_int reorderable);
+	public static extern void ColumnViewSetReorderable(ColumnView self, c_int reorderable);
 	[LinkName("gtk_column_view_set_row_factory")]
-	public static extern void column_view_set_row_factory(GtkColumnView* self, GtkListItemFactory* factory);
+	public static extern void ColumnViewSetRowFactory(ColumnView self, ListItemFactory factory);
 	[LinkName("gtk_column_view_set_show_column_separators")]
-	public static extern void column_view_set_show_column_separators(GtkColumnView* self, c_int show_column_separators);
+	public static extern void ColumnViewSetShowColumnSeparators(ColumnView self, c_int show_column_separators);
 	[LinkName("gtk_column_view_set_show_row_separators")]
-	public static extern void column_view_set_show_row_separators(GtkColumnView* self, c_int show_row_separators);
+	public static extern void ColumnViewSetShowRowSeparators(ColumnView self, c_int show_row_separators);
 	[LinkName("gtk_column_view_set_single_click_activate")]
-	public static extern void column_view_set_single_click_activate(GtkColumnView* self, c_int single_click_activate);
+	public static extern void ColumnViewSetSingleClickActivate(ColumnView self, c_int single_click_activate);
 	[LinkName("gtk_column_view_set_tab_behavior")]
-	public static extern void column_view_set_tab_behavior(GtkColumnView* self, GtkListTabBehavior tab_behavior);
+	public static extern void ColumnViewSetTabBehavior(ColumnView self, ListTabBehavior tab_behavior);
 	[LinkName("gtk_column_view_sort_by_column")]
-	public static extern void column_view_sort_by_column(GtkColumnView* self, GtkColumnViewColumn* column, GtkSortType direction);
+	public static extern void ColumnViewSortByColumn(ColumnView self, ColumnViewColumn column, SortType direction);
 	[CRepr]
-	public struct GtkColumnViewCell;
+	public struct ColumnViewCell;
 	[LinkName("gtk_column_view_cell_get_child")]
-	public static extern GtkWidget* column_view_cell_get_child(GtkColumnViewCell* self);
+	public static extern Widget ColumnViewCellGetChild(ColumnViewCell self);
 	[LinkName("gtk_column_view_cell_get_focusable")]
-	public static extern c_int column_view_cell_get_focusable(GtkColumnViewCell* self);
+	public static extern c_int ColumnViewCellGetFocusable(ColumnViewCell self);
 	[LinkName("gtk_column_view_cell_get_item")]
-	public static extern void* column_view_cell_get_item(GtkColumnViewCell* self);
+	public static extern GObject.Object ColumnViewCellGetItem(ColumnViewCell self);
 	[LinkName("gtk_column_view_cell_get_position")]
-	public static extern c_uint column_view_cell_get_position(GtkColumnViewCell* self);
+	public static extern c_uint ColumnViewCellGetPosition(ColumnViewCell self);
 	[LinkName("gtk_column_view_cell_get_selected")]
-	public static extern c_int column_view_cell_get_selected(GtkColumnViewCell* self);
+	public static extern c_int ColumnViewCellGetSelected(ColumnViewCell self);
 	[LinkName("gtk_column_view_cell_set_child")]
-	public static extern void column_view_cell_set_child(GtkColumnViewCell* self, GtkWidget* child);
+	public static extern void ColumnViewCellSetChild(ColumnViewCell self, Widget child);
 	[LinkName("gtk_column_view_cell_set_focusable")]
-	public static extern void column_view_cell_set_focusable(GtkColumnViewCell* self, c_int focusable);
+	public static extern void ColumnViewCellSetFocusable(ColumnViewCell self, c_int focusable);
 	[CRepr]
-	public struct GtkColumnViewCellClass
+	public struct ColumnViewCellClass
 	{
 	}
 	[CRepr]
-	public struct GtkColumnViewClass
+	public struct ColumnViewClass
 	{
 	}
 	[CRepr]
-	public struct GtkColumnViewColumn;
+	public struct ColumnViewColumn;
 	[LinkName("gtk_column_view_column_new")]
-	public static extern GtkColumnViewColumn* column_view_column_new( c_char* title, GtkListItemFactory* factory);
+	public static extern ColumnViewColumn ColumnViewColumnNew(char8* title, ListItemFactory factory);
 	[LinkName("gtk_column_view_column_get_column_view")]
-	public static extern GtkColumnView* column_view_column_get_column_view(GtkColumnViewColumn* self);
+	public static extern ColumnView ColumnViewColumnGetColumnView(ColumnViewColumn self);
 	[LinkName("gtk_column_view_column_get_expand")]
-	public static extern c_int column_view_column_get_expand(GtkColumnViewColumn* self);
+	public static extern c_int ColumnViewColumnGetExpand(ColumnViewColumn self);
 	[LinkName("gtk_column_view_column_get_factory")]
-	public static extern GtkListItemFactory* column_view_column_get_factory(GtkColumnViewColumn* self);
+	public static extern ListItemFactory ColumnViewColumnGetFactory(ColumnViewColumn self);
 	[LinkName("gtk_column_view_column_get_fixed_width")]
-	public static extern c_int column_view_column_get_fixed_width(GtkColumnViewColumn* self);
+	public static extern c_int ColumnViewColumnGetFixedWidth(ColumnViewColumn self);
 	[LinkName("gtk_column_view_column_get_header_menu")]
-	public static extern GMenuModel* column_view_column_get_header_menu(GtkColumnViewColumn* self);
+	public static extern Gio.MenuModel ColumnViewColumnGetHeaderMenu(ColumnViewColumn self);
 	[LinkName("gtk_column_view_column_get_id")]
-	public static extern  c_char* column_view_column_get_id(GtkColumnViewColumn* self);
+	public static extern char8* ColumnViewColumnGetId(ColumnViewColumn self);
 	[LinkName("gtk_column_view_column_get_resizable")]
-	public static extern c_int column_view_column_get_resizable(GtkColumnViewColumn* self);
+	public static extern c_int ColumnViewColumnGetResizable(ColumnViewColumn self);
 	[LinkName("gtk_column_view_column_get_sorter")]
-	public static extern GtkSorter* column_view_column_get_sorter(GtkColumnViewColumn* self);
+	public static extern Sorter ColumnViewColumnGetSorter(ColumnViewColumn self);
 	[LinkName("gtk_column_view_column_get_title")]
-	public static extern  c_char* column_view_column_get_title(GtkColumnViewColumn* self);
+	public static extern char8* ColumnViewColumnGetTitle(ColumnViewColumn self);
 	[LinkName("gtk_column_view_column_get_visible")]
-	public static extern c_int column_view_column_get_visible(GtkColumnViewColumn* self);
+	public static extern c_int ColumnViewColumnGetVisible(ColumnViewColumn self);
 	[LinkName("gtk_column_view_column_set_expand")]
-	public static extern void column_view_column_set_expand(GtkColumnViewColumn* self, c_int expand);
+	public static extern void ColumnViewColumnSetExpand(ColumnViewColumn self, c_int expand);
 	[LinkName("gtk_column_view_column_set_factory")]
-	public static extern void column_view_column_set_factory(GtkColumnViewColumn* self, GtkListItemFactory* factory);
+	public static extern void ColumnViewColumnSetFactory(ColumnViewColumn self, ListItemFactory factory);
 	[LinkName("gtk_column_view_column_set_fixed_width")]
-	public static extern void column_view_column_set_fixed_width(GtkColumnViewColumn* self, c_int fixed_width);
+	public static extern void ColumnViewColumnSetFixedWidth(ColumnViewColumn self, c_int fixed_width);
 	[LinkName("gtk_column_view_column_set_header_menu")]
-	public static extern void column_view_column_set_header_menu(GtkColumnViewColumn* self, GMenuModel* menu);
+	public static extern void ColumnViewColumnSetHeaderMenu(ColumnViewColumn self, Gio.MenuModel menu);
 	[LinkName("gtk_column_view_column_set_id")]
-	public static extern void column_view_column_set_id(GtkColumnViewColumn* self,  c_char* id);
+	public static extern void ColumnViewColumnSetId(ColumnViewColumn self, char8* id);
 	[LinkName("gtk_column_view_column_set_resizable")]
-	public static extern void column_view_column_set_resizable(GtkColumnViewColumn* self, c_int resizable);
+	public static extern void ColumnViewColumnSetResizable(ColumnViewColumn self, c_int resizable);
 	[LinkName("gtk_column_view_column_set_sorter")]
-	public static extern void column_view_column_set_sorter(GtkColumnViewColumn* self, GtkSorter* sorter);
+	public static extern void ColumnViewColumnSetSorter(ColumnViewColumn self, Sorter sorter);
 	[LinkName("gtk_column_view_column_set_title")]
-	public static extern void column_view_column_set_title(GtkColumnViewColumn* self,  c_char* title);
+	public static extern void ColumnViewColumnSetTitle(ColumnViewColumn self, char8* title);
 	[LinkName("gtk_column_view_column_set_visible")]
-	public static extern void column_view_column_set_visible(GtkColumnViewColumn* self, c_int visible);
+	public static extern void ColumnViewColumnSetVisible(ColumnViewColumn self, c_int visible);
 	[CRepr]
-	public struct GtkColumnViewColumnClass
+	public struct ColumnViewColumnClass
 	{
 	}
 	[CRepr]
-	public struct GtkColumnViewRow;
+	public struct ColumnViewRow;
 	[LinkName("gtk_column_view_row_get_activatable")]
-	public static extern c_int column_view_row_get_activatable(GtkColumnViewRow* self);
+	public static extern c_int ColumnViewRowGetActivatable(ColumnViewRow self);
 	[LinkName("gtk_column_view_row_get_focusable")]
-	public static extern c_int column_view_row_get_focusable(GtkColumnViewRow* self);
+	public static extern c_int ColumnViewRowGetFocusable(ColumnViewRow self);
 	[LinkName("gtk_column_view_row_get_item")]
-	public static extern void* column_view_row_get_item(GtkColumnViewRow* self);
+	public static extern GObject.Object ColumnViewRowGetItem(ColumnViewRow self);
 	[LinkName("gtk_column_view_row_get_position")]
-	public static extern c_uint column_view_row_get_position(GtkColumnViewRow* self);
+	public static extern c_uint ColumnViewRowGetPosition(ColumnViewRow self);
 	[LinkName("gtk_column_view_row_get_selectable")]
-	public static extern c_int column_view_row_get_selectable(GtkColumnViewRow* self);
+	public static extern c_int ColumnViewRowGetSelectable(ColumnViewRow self);
 	[LinkName("gtk_column_view_row_get_selected")]
-	public static extern c_int column_view_row_get_selected(GtkColumnViewRow* self);
+	public static extern c_int ColumnViewRowGetSelected(ColumnViewRow self);
 	[LinkName("gtk_column_view_row_set_activatable")]
-	public static extern void column_view_row_set_activatable(GtkColumnViewRow* self, c_int activatable);
+	public static extern void ColumnViewRowSetActivatable(ColumnViewRow self, c_int activatable);
 	[LinkName("gtk_column_view_row_set_focusable")]
-	public static extern void column_view_row_set_focusable(GtkColumnViewRow* self, c_int focusable);
+	public static extern void ColumnViewRowSetFocusable(ColumnViewRow self, c_int focusable);
 	[LinkName("gtk_column_view_row_set_selectable")]
-	public static extern void column_view_row_set_selectable(GtkColumnViewRow* self, c_int selectable);
+	public static extern void ColumnViewRowSetSelectable(ColumnViewRow self, c_int selectable);
 	[CRepr]
-	public struct GtkColumnViewRowClass
+	public struct ColumnViewRowClass
 	{
 	}
 	[CRepr]
-	public struct GtkColumnViewSorter;
+	public struct ColumnViewSorter;
 	[LinkName("gtk_column_view_sorter_get_n_sort_columns")]
-	public static extern c_uint column_view_sorter_get_n_sort_columns(GtkColumnViewSorter* self);
+	public static extern c_uint ColumnViewSorterGetNSortColumns(ColumnViewSorter self);
 	[LinkName("gtk_column_view_sorter_get_nth_sort_column")]
-	public static extern GtkColumnViewColumn* column_view_sorter_get_nth_sort_column(GtkColumnViewSorter* self, c_uint position, GtkSortType* sort_order);
+	public static extern ColumnViewColumn ColumnViewSorterGetNthSortColumn(ColumnViewSorter self, c_uint position, SortType sort_order);
 	[LinkName("gtk_column_view_sorter_get_primary_sort_column")]
-	public static extern GtkColumnViewColumn* column_view_sorter_get_primary_sort_column(GtkColumnViewSorter* self);
+	public static extern ColumnViewColumn ColumnViewSorterGetPrimarySortColumn(ColumnViewSorter self);
 	[LinkName("gtk_column_view_sorter_get_primary_sort_order")]
-	public static extern GtkSortType column_view_sorter_get_primary_sort_order(GtkColumnViewSorter* self);
+	public static extern SortType ColumnViewSorterGetPrimarySortOrder(ColumnViewSorter self);
 	[CRepr]
-	public struct GtkColumnViewSorterClass
+	public struct ColumnViewSorterClass
 	{
-		GtkSorterClass parent_class;
+		SorterClass parent_class;
 	}
 	[CRepr]
-	public struct GtkComboBox;
+	public struct ComboBox;
 	[LinkName("gtk_combo_box_new")]
-	public static extern GtkWidget* combo_box_new();
+	public static extern Widget ComboBoxNew();
 	[LinkName("gtk_combo_box_new_with_entry")]
-	public static extern GtkWidget* combo_box_new_with_entry();
+	public static extern Widget ComboBoxNewWithEntry();
 	[LinkName("gtk_combo_box_new_with_model")]
-	public static extern GtkWidget* combo_box_new_with_model(GtkTreeModel* model);
+	public static extern Widget ComboBoxNewWithModel(TreeModel model);
 	[LinkName("gtk_combo_box_new_with_model_and_entry")]
-	public static extern GtkWidget* combo_box_new_with_model_and_entry(GtkTreeModel* model);
+	public static extern Widget ComboBoxNewWithModelAndEntry(TreeModel model);
 	[LinkName("gtk_combo_box_get_active")]
-	public static extern c_int combo_box_get_active(GtkComboBox* combo_box);
+	public static extern c_int ComboBoxGetActive(ComboBox combo_box);
 	[LinkName("gtk_combo_box_get_active_id")]
-	public static extern  c_char* combo_box_get_active_id(GtkComboBox* combo_box);
+	public static extern char8* ComboBoxGetActiveId(ComboBox combo_box);
 	[LinkName("gtk_combo_box_get_active_iter")]
-	public static extern c_int combo_box_get_active_iter(GtkComboBox* combo_box, GtkTreeIter* iter);
+	public static extern c_int ComboBoxGetActiveIter(ComboBox combo_box, TreeIter iter);
 	[LinkName("gtk_combo_box_get_button_sensitivity")]
-	public static extern GtkSensitivityType combo_box_get_button_sensitivity(GtkComboBox* combo_box);
+	public static extern SensitivityType ComboBoxGetButtonSensitivity(ComboBox combo_box);
 	[LinkName("gtk_combo_box_get_child")]
-	public static extern GtkWidget* combo_box_get_child(GtkComboBox* combo_box);
+	public static extern Widget ComboBoxGetChild(ComboBox combo_box);
 	[LinkName("gtk_combo_box_get_entry_text_column")]
-	public static extern c_int combo_box_get_entry_text_column(GtkComboBox* combo_box);
+	public static extern c_int ComboBoxGetEntryTextColumn(ComboBox combo_box);
 	[LinkName("gtk_combo_box_get_has_entry")]
-	public static extern c_int combo_box_get_has_entry(GtkComboBox* combo_box);
+	public static extern c_int ComboBoxGetHasEntry(ComboBox combo_box);
 	[LinkName("gtk_combo_box_get_id_column")]
-	public static extern c_int combo_box_get_id_column(GtkComboBox* combo_box);
+	public static extern c_int ComboBoxGetIdColumn(ComboBox combo_box);
 	[LinkName("gtk_combo_box_get_model")]
-	public static extern GtkTreeModel* combo_box_get_model(GtkComboBox* combo_box);
+	public static extern TreeModel ComboBoxGetModel(ComboBox combo_box);
 	[LinkName("gtk_combo_box_get_popup_fixed_width")]
-	public static extern c_int combo_box_get_popup_fixed_width(GtkComboBox* combo_box);
+	public static extern c_int ComboBoxGetPopupFixedWidth(ComboBox combo_box);
 	[LinkName("gtk_combo_box_get_row_separator_func")]
-	public static extern GtkTreeViewRowSeparatorFunc combo_box_get_row_separator_func(GtkComboBox* combo_box);
+	public static extern TreeViewRowSeparatorFunc ComboBoxGetRowSeparatorFunc(ComboBox combo_box);
 	[LinkName("gtk_combo_box_popdown")]
-	public static extern void combo_box_popdown(GtkComboBox* combo_box);
+	public static extern void ComboBoxPopdown(ComboBox combo_box);
 	[LinkName("gtk_combo_box_popup")]
-	public static extern void combo_box_popup(GtkComboBox* combo_box);
+	public static extern void ComboBoxPopup(ComboBox combo_box);
 	[LinkName("gtk_combo_box_popup_for_device")]
-	public static extern void combo_box_popup_for_device(GtkComboBox* combo_box, GdkDevice* device);
+	public static extern void ComboBoxPopupForDevice(ComboBox combo_box, Gdk.Device device);
 	[LinkName("gtk_combo_box_set_active")]
-	public static extern void combo_box_set_active(GtkComboBox* combo_box, c_int index_);
+	public static extern void ComboBoxSetActive(ComboBox combo_box, c_int index_);
 	[LinkName("gtk_combo_box_set_active_id")]
-	public static extern c_int combo_box_set_active_id(GtkComboBox* combo_box,  c_char* active_id);
+	public static extern c_int ComboBoxSetActiveId(ComboBox combo_box, char8* active_id);
 	[LinkName("gtk_combo_box_set_active_iter")]
-	public static extern void combo_box_set_active_iter(GtkComboBox* combo_box, GtkTreeIter* iter);
+	public static extern void ComboBoxSetActiveIter(ComboBox combo_box, TreeIter iter);
 	[LinkName("gtk_combo_box_set_button_sensitivity")]
-	public static extern void combo_box_set_button_sensitivity(GtkComboBox* combo_box, GtkSensitivityType sensitivity);
+	public static extern void ComboBoxSetButtonSensitivity(ComboBox combo_box, SensitivityType sensitivity);
 	[LinkName("gtk_combo_box_set_child")]
-	public static extern void combo_box_set_child(GtkComboBox* combo_box, GtkWidget* child);
+	public static extern void ComboBoxSetChild(ComboBox combo_box, Widget child);
 	[LinkName("gtk_combo_box_set_entry_text_column")]
-	public static extern void combo_box_set_entry_text_column(GtkComboBox* combo_box, c_int text_column);
+	public static extern void ComboBoxSetEntryTextColumn(ComboBox combo_box, c_int text_column);
 	[LinkName("gtk_combo_box_set_id_column")]
-	public static extern void combo_box_set_id_column(GtkComboBox* combo_box, c_int id_column);
+	public static extern void ComboBoxSetIdColumn(ComboBox combo_box, c_int id_column);
 	[LinkName("gtk_combo_box_set_model")]
-	public static extern void combo_box_set_model(GtkComboBox* combo_box, GtkTreeModel* model);
+	public static extern void ComboBoxSetModel(ComboBox combo_box, TreeModel model);
 	[LinkName("gtk_combo_box_set_popup_fixed_width")]
-	public static extern void combo_box_set_popup_fixed_width(GtkComboBox* combo_box, c_int fixed_);
+	public static extern void ComboBoxSetPopupFixedWidth(ComboBox combo_box, c_int fixed_);
 	[LinkName("gtk_combo_box_set_row_separator_func")]
-	public static extern void combo_box_set_row_separator_func(GtkComboBox* combo_box, GtkTreeViewRowSeparatorFunc func, void* data, GDestroyNotify destroy);
+	public static extern void ComboBoxSetRowSeparatorFunc(ComboBox combo_box, TreeViewRowSeparatorFunc func, void* data, GLib.DestroyNotify destroy);
 	[CRepr]
-	public struct GtkComboBoxClass
+	public struct ComboBoxClass
 	{
-		GtkWidgetClass parent_class;
+		WidgetClass parent_class;
 	}
 	[CRepr]
-	public struct GtkComboBoxText;
+	public struct ComboBoxText;
 	[LinkName("gtk_combo_box_text_new")]
-	public static extern GtkWidget* combo_box_text_new();
+	public static extern Widget ComboBoxTextNew();
 	[LinkName("gtk_combo_box_text_new_with_entry")]
-	public static extern GtkWidget* combo_box_text_new_with_entry();
+	public static extern Widget ComboBoxTextNewWithEntry();
 	[LinkName("gtk_combo_box_text_append")]
-	public static extern void combo_box_text_append(GtkComboBoxText* combo_box,  c_char* id,  c_char* text);
+	public static extern void ComboBoxTextAppend(ComboBoxText combo_box, char8* id, char8* text);
 	[LinkName("gtk_combo_box_text_append_text")]
-	public static extern void combo_box_text_append_text(GtkComboBoxText* combo_box,  c_char* text);
+	public static extern void ComboBoxTextAppendText(ComboBoxText combo_box, char8* text);
 	[LinkName("gtk_combo_box_text_get_active_text")]
-	public static extern c_char* combo_box_text_get_active_text(GtkComboBoxText* combo_box);
+	public static extern char8* ComboBoxTextGetActiveText(ComboBoxText combo_box);
 	[LinkName("gtk_combo_box_text_insert")]
-	public static extern void combo_box_text_insert(GtkComboBoxText* combo_box, c_int position,  c_char* id,  c_char* text);
+	public static extern void ComboBoxTextInsert(ComboBoxText combo_box, c_int position, char8* id, char8* text);
 	[LinkName("gtk_combo_box_text_insert_text")]
-	public static extern void combo_box_text_insert_text(GtkComboBoxText* combo_box, c_int position,  c_char* text);
+	public static extern void ComboBoxTextInsertText(ComboBoxText combo_box, c_int position, char8* text);
 	[LinkName("gtk_combo_box_text_prepend")]
-	public static extern void combo_box_text_prepend(GtkComboBoxText* combo_box,  c_char* id,  c_char* text);
+	public static extern void ComboBoxTextPrepend(ComboBoxText combo_box, char8* id, char8* text);
 	[LinkName("gtk_combo_box_text_prepend_text")]
-	public static extern void combo_box_text_prepend_text(GtkComboBoxText* combo_box,  c_char* text);
+	public static extern void ComboBoxTextPrependText(ComboBoxText combo_box, char8* text);
 	[LinkName("gtk_combo_box_text_remove")]
-	public static extern void combo_box_text_remove(GtkComboBoxText* combo_box, c_int position);
+	public static extern void ComboBoxTextRemove(ComboBoxText combo_box, c_int position);
 	[LinkName("gtk_combo_box_text_remove_all")]
-	public static extern void combo_box_text_remove_all(GtkComboBoxText* combo_box);
+	public static extern void ComboBoxTextRemoveAll(ComboBoxText combo_box);
 	[CRepr]
-	public struct GtkConstantExpression;
+	public struct ConstantExpression;
 	[LinkName("gtk_constant_expression_new")]
-	public static extern GtkExpression* constant_expression_new(GType value_type);
+	public static extern ConstantExpression ConstantExpressionNew(GLib.Type value_type);
 	[LinkName("gtk_constant_expression_new_for_value")]
-	public static extern GtkExpression* constant_expression_new_for_value( GValue* value);
+	public static extern ConstantExpression ConstantExpressionNewForValue(GObject.Value value);
 	[LinkName("gtk_constant_expression_get_value")]
-	public static extern  GValue* constant_expression_get_value(GtkExpression* expression);
+	public static extern GObject.Value ConstantExpressionGetValue(ConstantExpression expression);
 	[CRepr]
-	public struct GtkConstraint;
+	public struct Constraint;
 	[LinkName("gtk_constraint_new")]
-	public static extern GtkConstraint* constraint_new(void* target, GtkConstraintAttribute target_attribute, GtkConstraintRelation relation, void* source, GtkConstraintAttribute source_attribute, double multiplier, double constant, c_int strength);
+	public static extern Constraint ConstraintNew(ConstraintTarget target, ConstraintAttribute target_attribute, ConstraintRelation relation, ConstraintTarget source, ConstraintAttribute source_attribute, double multiplier, double constant, c_int strength);
 	[LinkName("gtk_constraint_new_constant")]
-	public static extern GtkConstraint* constraint_new_constant(void* target, GtkConstraintAttribute target_attribute, GtkConstraintRelation relation, double constant, c_int strength);
+	public static extern Constraint ConstraintNewConstant(ConstraintTarget target, ConstraintAttribute target_attribute, ConstraintRelation relation, double constant, c_int strength);
 	[LinkName("gtk_constraint_get_constant")]
-	public static extern double constraint_get_constant(GtkConstraint* constraint);
+	public static extern double ConstraintGetConstant(Constraint constraint);
 	[LinkName("gtk_constraint_get_multiplier")]
-	public static extern double constraint_get_multiplier(GtkConstraint* constraint);
+	public static extern double ConstraintGetMultiplier(Constraint constraint);
 	[LinkName("gtk_constraint_get_relation")]
-	public static extern GtkConstraintRelation constraint_get_relation(GtkConstraint* constraint);
+	public static extern ConstraintRelation ConstraintGetRelation(Constraint constraint);
 	[LinkName("gtk_constraint_get_source")]
-	public static extern GtkConstraintTarget* constraint_get_source(GtkConstraint* constraint);
+	public static extern ConstraintTarget ConstraintGetSource(Constraint constraint);
 	[LinkName("gtk_constraint_get_source_attribute")]
-	public static extern GtkConstraintAttribute constraint_get_source_attribute(GtkConstraint* constraint);
+	public static extern ConstraintAttribute ConstraintGetSourceAttribute(Constraint constraint);
 	[LinkName("gtk_constraint_get_strength")]
-	public static extern c_int constraint_get_strength(GtkConstraint* constraint);
+	public static extern c_int ConstraintGetStrength(Constraint constraint);
 	[LinkName("gtk_constraint_get_target")]
-	public static extern GtkConstraintTarget* constraint_get_target(GtkConstraint* constraint);
+	public static extern ConstraintTarget ConstraintGetTarget(Constraint constraint);
 	[LinkName("gtk_constraint_get_target_attribute")]
-	public static extern GtkConstraintAttribute constraint_get_target_attribute(GtkConstraint* constraint);
+	public static extern ConstraintAttribute ConstraintGetTargetAttribute(Constraint constraint);
 	[LinkName("gtk_constraint_is_attached")]
-	public static extern c_int constraint_is_attached(GtkConstraint* constraint);
+	public static extern c_int ConstraintIsAttached(Constraint constraint);
 	[LinkName("gtk_constraint_is_constant")]
-	public static extern c_int constraint_is_constant(GtkConstraint* constraint);
+	public static extern c_int ConstraintIsConstant(Constraint constraint);
 	[LinkName("gtk_constraint_is_required")]
-	public static extern c_int constraint_is_required(GtkConstraint* constraint);
-	public enum GtkConstraintAttribute : c_int
+	public static extern c_int ConstraintIsRequired(Constraint constraint);
+	public enum ConstraintAttribute : c_int
 	{
 		GTK_CONSTRAINT_ATTRIBUTE_NONE,
 		GTK_CONSTRAINT_ATTRIBUTE_LEFT,
@@ -1904,80 +1904,80 @@ class Gtk
 		GTK_CONSTRAINT_ATTRIBUTE_BASELINE
 	}
 	[CRepr]
-	public struct GtkConstraintClass
+	public struct ConstraintClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GtkConstraintGuide;
+	public struct ConstraintGuide;
 	[LinkName("gtk_constraint_guide_new")]
-	public static extern GtkConstraintGuide* constraint_guide_new();
+	public static extern ConstraintGuide ConstraintGuideNew();
 	[LinkName("gtk_constraint_guide_get_max_size")]
-	public static extern void constraint_guide_get_max_size(GtkConstraintGuide* guide, c_int* width, c_int* height);
+	public static extern void ConstraintGuideGetMaxSize(ConstraintGuide guide, c_int width, c_int height);
 	[LinkName("gtk_constraint_guide_get_min_size")]
-	public static extern void constraint_guide_get_min_size(GtkConstraintGuide* guide, c_int* width, c_int* height);
+	public static extern void ConstraintGuideGetMinSize(ConstraintGuide guide, c_int width, c_int height);
 	[LinkName("gtk_constraint_guide_get_name")]
-	public static extern  c_char* constraint_guide_get_name(GtkConstraintGuide* guide);
+	public static extern char8* ConstraintGuideGetName(ConstraintGuide guide);
 	[LinkName("gtk_constraint_guide_get_nat_size")]
-	public static extern void constraint_guide_get_nat_size(GtkConstraintGuide* guide, c_int* width, c_int* height);
+	public static extern void ConstraintGuideGetNatSize(ConstraintGuide guide, c_int width, c_int height);
 	[LinkName("gtk_constraint_guide_get_strength")]
-	public static extern GtkConstraintStrength constraint_guide_get_strength(GtkConstraintGuide* guide);
+	public static extern ConstraintStrength ConstraintGuideGetStrength(ConstraintGuide guide);
 	[LinkName("gtk_constraint_guide_set_max_size")]
-	public static extern void constraint_guide_set_max_size(GtkConstraintGuide* guide, c_int width, c_int height);
+	public static extern void ConstraintGuideSetMaxSize(ConstraintGuide guide, c_int width, c_int height);
 	[LinkName("gtk_constraint_guide_set_min_size")]
-	public static extern void constraint_guide_set_min_size(GtkConstraintGuide* guide, c_int width, c_int height);
+	public static extern void ConstraintGuideSetMinSize(ConstraintGuide guide, c_int width, c_int height);
 	[LinkName("gtk_constraint_guide_set_name")]
-	public static extern void constraint_guide_set_name(GtkConstraintGuide* guide,  c_char* name);
+	public static extern void ConstraintGuideSetName(ConstraintGuide guide, char8* name);
 	[LinkName("gtk_constraint_guide_set_nat_size")]
-	public static extern void constraint_guide_set_nat_size(GtkConstraintGuide* guide, c_int width, c_int height);
+	public static extern void ConstraintGuideSetNatSize(ConstraintGuide guide, c_int width, c_int height);
 	[LinkName("gtk_constraint_guide_set_strength")]
-	public static extern void constraint_guide_set_strength(GtkConstraintGuide* guide, GtkConstraintStrength strength);
+	public static extern void ConstraintGuideSetStrength(ConstraintGuide guide, ConstraintStrength strength);
 	[CRepr]
-	public struct GtkConstraintGuideClass
+	public struct ConstraintGuideClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GtkConstraintLayout;
+	public struct ConstraintLayout;
 	[LinkName("gtk_constraint_layout_new")]
-	public static extern GtkLayoutManager* constraint_layout_new();
+	public static extern LayoutManager ConstraintLayoutNew();
 	[LinkName("gtk_constraint_layout_add_constraint")]
-	public static extern void constraint_layout_add_constraint(GtkConstraintLayout* layout, GtkConstraint* constraint);
+	public static extern void ConstraintLayoutAddConstraint(ConstraintLayout layout, Constraint constraint);
 	[LinkName("gtk_constraint_layout_add_constraints_from_description")]
-	public static extern GList* constraint_layout_add_constraints_from_description(GtkConstraintLayout* layout, c_ulong n_lines, c_int hspacing, c_int vspacing, GError** error,  c_char* first_view);
+	public static extern GLib.List ConstraintLayoutAddConstraintsFromDescription(ConstraintLayout layout, c_ulong n_lines, c_int hspacing, c_int vspacing, GLib.Error error, char8* first_view);
 	[LinkName("gtk_constraint_layout_add_constraints_from_descriptionv")]
-	public static extern GList* constraint_layout_add_constraints_from_descriptionv(GtkConstraintLayout* layout, c_ulong n_lines, c_int hspacing, c_int vspacing, GHashTable* views);
+	public static extern GLib.List ConstraintLayoutAddConstraintsFromDescriptionv(ConstraintLayout layout, c_ulong n_lines, c_int hspacing, c_int vspacing, GLib.HashTable views);
 	[LinkName("gtk_constraint_layout_add_guide")]
-	public static extern void constraint_layout_add_guide(GtkConstraintLayout* layout, GtkConstraintGuide* guide);
+	public static extern void ConstraintLayoutAddGuide(ConstraintLayout layout, ConstraintGuide guide);
 	[LinkName("gtk_constraint_layout_observe_constraints")]
-	public static extern GListModel* constraint_layout_observe_constraints(GtkConstraintLayout* layout);
+	public static extern Gio.ListModel ConstraintLayoutObserveConstraints(ConstraintLayout layout);
 	[LinkName("gtk_constraint_layout_observe_guides")]
-	public static extern GListModel* constraint_layout_observe_guides(GtkConstraintLayout* layout);
+	public static extern Gio.ListModel ConstraintLayoutObserveGuides(ConstraintLayout layout);
 	[LinkName("gtk_constraint_layout_remove_all_constraints")]
-	public static extern void constraint_layout_remove_all_constraints(GtkConstraintLayout* layout);
+	public static extern void ConstraintLayoutRemoveAllConstraints(ConstraintLayout layout);
 	[LinkName("gtk_constraint_layout_remove_constraint")]
-	public static extern void constraint_layout_remove_constraint(GtkConstraintLayout* layout, GtkConstraint* constraint);
+	public static extern void ConstraintLayoutRemoveConstraint(ConstraintLayout layout, Constraint constraint);
 	[LinkName("gtk_constraint_layout_remove_guide")]
-	public static extern void constraint_layout_remove_guide(GtkConstraintLayout* layout, GtkConstraintGuide* guide);
+	public static extern void ConstraintLayoutRemoveGuide(ConstraintLayout layout, ConstraintGuide guide);
 	[CRepr]
-	public struct GtkConstraintLayoutChild;
+	public struct ConstraintLayoutChild;
 	[CRepr]
-	public struct GtkConstraintLayoutChildClass
+	public struct ConstraintLayoutChildClass
 	{
-		GtkLayoutChildClass parent_class;
+		LayoutChildClass parent_class;
 	}
 	[CRepr]
-	public struct GtkConstraintLayoutClass
+	public struct ConstraintLayoutClass
 	{
-		GtkLayoutManagerClass parent_class;
+		LayoutManagerClass parent_class;
 	}
-	public enum GtkConstraintRelation : c_int
+	public enum ConstraintRelation : c_int
 	{
 		GTK_CONSTRAINT_RELATION_LE,
 		GTK_CONSTRAINT_RELATION_EQ,
 		GTK_CONSTRAINT_RELATION_GE
 	}
-	public enum GtkConstraintStrength : c_int
+	public enum ConstraintStrength : c_int
 	{
 		GTK_CONSTRAINT_STRENGTH_REQUIRED,
 		GTK_CONSTRAINT_STRENGTH_STRONG,
@@ -1985,13 +1985,13 @@ class Gtk
 		GTK_CONSTRAINT_STRENGTH_WEAK
 	}
 	[CRepr]
-	public struct GtkConstraintTarget
+	public struct ConstraintTarget
 	{	}
 	[CRepr]
-	public struct GtkConstraintTargetInterface
+	public struct ConstraintTargetInterface
 	{
 	}
-	public enum GtkConstraintVflParserError : c_int
+	public enum ConstraintVflParserError : c_int
 	{
 		GTK_CONSTRAINT_VFL_PARSER_ERROR_INVALID_SYMBOL,
 		GTK_CONSTRAINT_VFL_PARSER_ERROR_INVALID_ATTRIBUTE,
@@ -2000,14 +2000,14 @@ class Gtk
 		GTK_CONSTRAINT_VFL_PARSER_ERROR_INVALID_PRIORITY,
 		GTK_CONSTRAINT_VFL_PARSER_ERROR_INVALID_RELATION
 	}
-	public enum GtkContentFit : c_int
+	public enum ContentFit : c_int
 	{
 		GTK_CONTENT_FIT_FILL,
 		GTK_CONTENT_FIT_CONTAIN,
 		GTK_CONTENT_FIT_COVER,
 		GTK_CONTENT_FIT_SCALE_DOWN
 	}
-	public enum GtkCornerType : c_int
+	public enum CornerType : c_int
 	{
 		GTK_CORNER_TOP_LEFT,
 		GTK_CORNER_BOTTOM_LEFT,
@@ -2015,7 +2015,7 @@ class Gtk
 		GTK_CORNER_BOTTOM_RIGHT
 	}
 	[CRepr]
-	public struct GtkCssLocation
+	public struct CssLocation
 	{
 		c_ulong bytes;
 		c_ulong chars;
@@ -2023,7 +2023,7 @@ class Gtk
 		c_ulong line_bytes;
 		c_ulong line_chars;
 	}
-	public enum GtkCssParserError : c_int
+	public enum CssParserError : c_int
 	{
 		GTK_CSS_PARSER_ERROR_FAILED,
 		GTK_CSS_PARSER_ERROR_SYNTAX,
@@ -2031,85 +2031,85 @@ class Gtk
 		GTK_CSS_PARSER_ERROR_NAME,
 		GTK_CSS_PARSER_ERROR_UNKNOWN_VALUE
 	}
-	public enum GtkCssParserWarning : c_int
+	public enum CssParserWarning : c_int
 	{
 		GTK_CSS_PARSER_WARNING_DEPRECATED,
 		GTK_CSS_PARSER_WARNING_SYNTAX,
 		GTK_CSS_PARSER_WARNING_UNIMPLEMENTED
 	}
 	[CRepr]
-	public struct GtkCssProvider;
+	public struct CssProvider;
 	[LinkName("gtk_css_provider_new")]
-	public static extern GtkCssProvider* css_provider_new();
+	public static extern CssProvider CssProviderNew();
 	[LinkName("gtk_css_provider_load_from_bytes")]
-	public static extern void css_provider_load_from_bytes(GtkCssProvider* css_provider, GBytes* data);
+	public static extern void CssProviderLoadFromBytes(CssProvider css_provider, GLib.Bytes data);
 	[LinkName("gtk_css_provider_load_from_data")]
-	public static extern void css_provider_load_from_data(GtkCssProvider* css_provider,  c_char* data, c_long length);
+	public static extern void CssProviderLoadFromData(CssProvider css_provider, char8* data, c_long length);
 	[LinkName("gtk_css_provider_load_from_file")]
-	public static extern void css_provider_load_from_file(GtkCssProvider* css_provider, GFile* file);
+	public static extern void CssProviderLoadFromFile(CssProvider css_provider, Gio.File file);
 	[LinkName("gtk_css_provider_load_from_path")]
-	public static extern void css_provider_load_from_path(GtkCssProvider* css_provider,  c_char* path);
+	public static extern void CssProviderLoadFromPath(CssProvider css_provider, char8* path);
 	[LinkName("gtk_css_provider_load_from_resource")]
-	public static extern void css_provider_load_from_resource(GtkCssProvider* css_provider,  c_char* resource_path);
+	public static extern void CssProviderLoadFromResource(CssProvider css_provider, char8* resource_path);
 	[LinkName("gtk_css_provider_load_from_string")]
-	public static extern void css_provider_load_from_string(GtkCssProvider* css_provider,  c_char* string);
+	public static extern void CssProviderLoadFromString(CssProvider css_provider, char8* string);
 	[LinkName("gtk_css_provider_load_named")]
-	public static extern void css_provider_load_named(GtkCssProvider* provider,  c_char* name,  c_char* variant);
+	public static extern void CssProviderLoadNamed(CssProvider provider, char8* name, char8* variant);
 	[LinkName("gtk_css_provider_to_string")]
-	public static extern c_char* css_provider_to_string(GtkCssProvider* provider);
+	public static extern char8* CssProviderToString(CssProvider provider);
 	[CRepr]
-	public struct GtkCssProviderClass
+	public struct CssProviderClass
 	{
 	}
 	[CRepr]
-	public struct GtkCssProviderPrivate
+	public struct CssProviderPrivate
 	{
 	}
 	[CRepr]
-	public struct GtkCssSection
+	public struct CssSection
 	{
 	}
 	[CRepr]
-	public struct GtkCssStyleChange
+	public struct CssStyleChange
 	{
 	}
-	public function void GtkCustomAllocateFunc(GtkWidget* widget, c_int width, c_int height, c_int baseline);
+	public function void CustomAllocateFunc(Widget widget, c_int width, c_int height, c_int baseline);
 	[CRepr]
-	public struct GtkCustomFilter;
+	public struct CustomFilter;
 	[LinkName("gtk_custom_filter_new")]
-	public static extern GtkCustomFilter* custom_filter_new(GtkCustomFilterFunc match_func, void* user_data, GDestroyNotify user_destroy);
+	public static extern CustomFilter CustomFilterNew(CustomFilterFunc match_func, void* user_data, GLib.DestroyNotify user_destroy);
 	[LinkName("gtk_custom_filter_set_filter_func")]
-	public static extern void custom_filter_set_filter_func(GtkCustomFilter* self, GtkCustomFilterFunc match_func, void* user_data, GDestroyNotify user_destroy);
+	public static extern void CustomFilterSetFilterFunc(CustomFilter self, CustomFilterFunc match_func, void* user_data, GLib.DestroyNotify user_destroy);
 	[CRepr]
-	public struct GtkCustomFilterClass
+	public struct CustomFilterClass
 	{
-		GtkFilterClass parent_class;
+		FilterClass parent_class;
 	}
-	public function c_int GtkCustomFilterFunc(void* item, void* user_data);
+	public function c_int CustomFilterFunc(GObject.Object item, void* user_data);
 	[CRepr]
-	public struct GtkCustomLayout;
+	public struct CustomLayout;
 	[LinkName("gtk_custom_layout_new")]
-	public static extern GtkLayoutManager* custom_layout_new(GtkCustomRequestModeFunc request_mode, GtkCustomMeasureFunc measure, GtkCustomAllocateFunc allocate);
+	public static extern LayoutManager CustomLayoutNew(CustomRequestModeFunc request_mode, CustomMeasureFunc measure, CustomAllocateFunc allocate);
 	[CRepr]
-	public struct GtkCustomLayoutClass
+	public struct CustomLayoutClass
 	{
-		GtkLayoutManagerClass parent_class;
+		LayoutManagerClass parent_class;
 	}
-	public function void GtkCustomMeasureFunc(GtkWidget* widget, GtkOrientation orientation, c_int for_size, c_int* minimum, c_int* natural, c_int* minimum_baseline, c_int* natural_baseline);
-	public function GtkSizeRequestMode GtkCustomRequestModeFunc(GtkWidget* widget);
+	public function void CustomMeasureFunc(Widget widget, Orientation orientation, c_int for_size, c_int minimum, c_int natural, c_int minimum_baseline, c_int natural_baseline);
+	public function SizeRequestMode CustomRequestModeFunc(Widget widget);
 	[CRepr]
-	public struct GtkCustomSorter;
+	public struct CustomSorter;
 	[LinkName("gtk_custom_sorter_new")]
-	public static extern GtkCustomSorter* custom_sorter_new(GCompareDataFunc sort_func, void* user_data, GDestroyNotify user_destroy);
+	public static extern CustomSorter CustomSorterNew(GLib.CompareDataFunc sort_func, void* user_data, GLib.DestroyNotify user_destroy);
 	[LinkName("gtk_custom_sorter_set_sort_func")]
-	public static extern void custom_sorter_set_sort_func(GtkCustomSorter* self, GCompareDataFunc sort_func, void* user_data, GDestroyNotify user_destroy);
+	public static extern void CustomSorterSetSortFunc(CustomSorter self, GLib.CompareDataFunc sort_func, void* user_data, GLib.DestroyNotify user_destroy);
 	[CRepr]
-	public struct GtkCustomSorterClass
+	public struct CustomSorterClass
 	{
-		GtkSorterClass parent_class;
+		SorterClass parent_class;
 	}
 	[CRepr]
-	public struct GtkDebugFlags
+	public struct DebugFlags
 	{
 		public const int GTK_DEBUG_TEXT = 1;
 		public const int GTK_DEBUG_TREE = 2;
@@ -2132,7 +2132,7 @@ class Gtk
 		public const int GTK_DEBUG_ICONFALLBACK = 262144;
 		public const int GTK_DEBUG_INVERT_TEXT_DIR = 524288;
 	}
-	public enum GtkDeleteType : c_int
+	public enum DeleteType : c_int
 	{
 		GTK_DELETE_CHARS,
 		GTK_DELETE_WORD_ENDS,
@@ -2144,50 +2144,50 @@ class Gtk
 		GTK_DELETE_WHITESPACE
 	}
 	[CRepr]
-	public struct GtkDialog;
+	public struct Dialog;
 	[LinkName("gtk_dialog_new")]
-	public static extern GtkWidget* dialog_new();
+	public static extern Widget DialogNew();
 	[LinkName("gtk_dialog_new_with_buttons")]
-	public static extern GtkWidget* dialog_new_with_buttons( c_char* title, GtkWindow* parent, GtkDialogFlags flags,  c_char* first_button_text);
+	public static extern Widget DialogNewWithButtons(char8* title, Window parent, DialogFlags flags, char8* first_button_text);
 	[LinkName("gtk_dialog_add_action_widget")]
-	public static extern void dialog_add_action_widget(GtkDialog* dialog, GtkWidget* child, c_int response_id);
+	public static extern void DialogAddActionWidget(Dialog dialog, Widget child, c_int response_id);
 	[LinkName("gtk_dialog_add_button")]
-	public static extern GtkWidget* dialog_add_button(GtkDialog* dialog,  c_char* button_text, c_int response_id);
+	public static extern Widget DialogAddButton(Dialog dialog, char8* button_text, c_int response_id);
 	[LinkName("gtk_dialog_add_buttons")]
-	public static extern void dialog_add_buttons(GtkDialog* dialog,  c_char* first_button_text);
+	public static extern void DialogAddButtons(Dialog dialog, char8* first_button_text);
 	[LinkName("gtk_dialog_get_content_area")]
-	public static extern GtkWidget* dialog_get_content_area(GtkDialog* dialog);
+	public static extern Box DialogGetContentArea(Dialog dialog);
 	[LinkName("gtk_dialog_get_header_bar")]
-	public static extern GtkWidget* dialog_get_header_bar(GtkDialog* dialog);
+	public static extern HeaderBar DialogGetHeaderBar(Dialog dialog);
 	[LinkName("gtk_dialog_get_response_for_widget")]
-	public static extern c_int dialog_get_response_for_widget(GtkDialog* dialog, GtkWidget* widget);
+	public static extern c_int DialogGetResponseForWidget(Dialog dialog, Widget widget);
 	[LinkName("gtk_dialog_get_widget_for_response")]
-	public static extern GtkWidget* dialog_get_widget_for_response(GtkDialog* dialog, c_int response_id);
+	public static extern Widget DialogGetWidgetForResponse(Dialog dialog, c_int response_id);
 	[LinkName("gtk_dialog_response")]
-	public static extern void dialog_response(GtkDialog* dialog, c_int response_id);
+	public static extern void DialogResponse(Dialog dialog, c_int response_id);
 	[LinkName("gtk_dialog_set_default_response")]
-	public static extern void dialog_set_default_response(GtkDialog* dialog, c_int response_id);
+	public static extern void DialogSetDefaultResponse(Dialog dialog, c_int response_id);
 	[LinkName("gtk_dialog_set_response_sensitive")]
-	public static extern void dialog_set_response_sensitive(GtkDialog* dialog, c_int response_id, c_int setting);
+	public static extern void DialogSetResponseSensitive(Dialog dialog, c_int response_id, c_int setting);
 	[CRepr]
-	public struct GtkDialogClass
+	public struct DialogClass
 	{
-		GtkWindowClass parent_class;
+		WindowClass parent_class;
 	}
-	public enum GtkDialogError : c_int
+	public enum DialogError : c_int
 	{
 		GTK_DIALOG_ERROR_FAILED,
 		GTK_DIALOG_ERROR_CANCELLED,
 		GTK_DIALOG_ERROR_DISMISSED
 	}
 	[CRepr]
-	public struct GtkDialogFlags
+	public struct DialogFlags
 	{
 		public const int GTK_DIALOG_MODAL = 1;
 		public const int GTK_DIALOG_DESTROY_WITH_PARENT = 2;
 		public const int GTK_DIALOG_USE_HEADER_BAR = 4;
 	}
-	public enum GtkDirectionType : c_int
+	public enum DirectionType : c_int
 	{
 		GTK_DIR_TAB_FORWARD,
 		GTK_DIR_TAB_BACKWARD,
@@ -2197,232 +2197,232 @@ class Gtk
 		GTK_DIR_RIGHT
 	}
 	[CRepr]
-	public struct GtkDirectoryList;
+	public struct DirectoryList;
 	[LinkName("gtk_directory_list_new")]
-	public static extern GtkDirectoryList* directory_list_new( c_char* attributes, GFile* file);
+	public static extern DirectoryList DirectoryListNew(char8* attributes, Gio.File file);
 	[LinkName("gtk_directory_list_get_attributes")]
-	public static extern  c_char* directory_list_get_attributes(GtkDirectoryList* self);
+	public static extern char8* DirectoryListGetAttributes(DirectoryList self);
 	[LinkName("gtk_directory_list_get_error")]
-	public static extern  GError* directory_list_get_error(GtkDirectoryList* self);
+	public static extern GLib.Error DirectoryListGetError(DirectoryList self);
 	[LinkName("gtk_directory_list_get_file")]
-	public static extern GFile* directory_list_get_file(GtkDirectoryList* self);
+	public static extern Gio.File DirectoryListGetFile(DirectoryList self);
 	[LinkName("gtk_directory_list_get_io_priority")]
-	public static extern c_int directory_list_get_io_priority(GtkDirectoryList* self);
+	public static extern c_int DirectoryListGetIoPriority(DirectoryList self);
 	[LinkName("gtk_directory_list_get_monitored")]
-	public static extern c_int directory_list_get_monitored(GtkDirectoryList* self);
+	public static extern c_int DirectoryListGetMonitored(DirectoryList self);
 	[LinkName("gtk_directory_list_is_loading")]
-	public static extern c_int directory_list_is_loading(GtkDirectoryList* self);
+	public static extern c_int DirectoryListIsLoading(DirectoryList self);
 	[LinkName("gtk_directory_list_set_attributes")]
-	public static extern void directory_list_set_attributes(GtkDirectoryList* self,  c_char* attributes);
+	public static extern void DirectoryListSetAttributes(DirectoryList self, char8* attributes);
 	[LinkName("gtk_directory_list_set_file")]
-	public static extern void directory_list_set_file(GtkDirectoryList* self, GFile* file);
+	public static extern void DirectoryListSetFile(DirectoryList self, Gio.File file);
 	[LinkName("gtk_directory_list_set_io_priority")]
-	public static extern void directory_list_set_io_priority(GtkDirectoryList* self, c_int io_priority);
+	public static extern void DirectoryListSetIoPriority(DirectoryList self, c_int io_priority);
 	[LinkName("gtk_directory_list_set_monitored")]
-	public static extern void directory_list_set_monitored(GtkDirectoryList* self, c_int monitored);
+	public static extern void DirectoryListSetMonitored(DirectoryList self, c_int monitored);
 	[CRepr]
-	public struct GtkDirectoryListClass
+	public struct DirectoryListClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GtkDragIcon;
+	public struct DragIcon;
 	[LinkName("gtk_drag_icon_get_child")]
-	public static extern GtkWidget* drag_icon_get_child(GtkDragIcon* self);
+	public static extern Widget DragIconGetChild(DragIcon self);
 	[LinkName("gtk_drag_icon_set_child")]
-	public static extern void drag_icon_set_child(GtkDragIcon* self, GtkWidget* child);
+	public static extern void DragIconSetChild(DragIcon self, Widget child);
 	[CRepr]
-	public struct GtkDragIconClass
+	public struct DragIconClass
 	{
-		GtkWidgetClass parent_class;
+		WidgetClass parent_class;
 	}
 	[CRepr]
-	public struct GtkDragSource;
+	public struct DragSource;
 	[LinkName("gtk_drag_source_new")]
-	public static extern GtkDragSource* drag_source_new();
+	public static extern DragSource DragSourceNew();
 	[LinkName("gtk_drag_source_drag_cancel")]
-	public static extern void drag_source_drag_cancel(GtkDragSource* source);
+	public static extern void DragSourceDragCancel(DragSource source);
 	[LinkName("gtk_drag_source_get_actions")]
-	public static extern GdkDragAction drag_source_get_actions(GtkDragSource* source);
+	public static extern Gdk.DragAction DragSourceGetActions(DragSource source);
 	[LinkName("gtk_drag_source_get_content")]
-	public static extern GdkContentProvider* drag_source_get_content(GtkDragSource* source);
+	public static extern Gdk.ContentProvider DragSourceGetContent(DragSource source);
 	[LinkName("gtk_drag_source_get_drag")]
-	public static extern GdkDrag* drag_source_get_drag(GtkDragSource* source);
+	public static extern Gdk.Drag DragSourceGetDrag(DragSource source);
 	[LinkName("gtk_drag_source_set_actions")]
-	public static extern void drag_source_set_actions(GtkDragSource* source, GdkDragAction actions);
+	public static extern void DragSourceSetActions(DragSource source, Gdk.DragAction actions);
 	[LinkName("gtk_drag_source_set_content")]
-	public static extern void drag_source_set_content(GtkDragSource* source, GdkContentProvider* content);
+	public static extern void DragSourceSetContent(DragSource source, Gdk.ContentProvider content);
 	[LinkName("gtk_drag_source_set_icon")]
-	public static extern void drag_source_set_icon(GtkDragSource* source, GdkPaintable* paintable, c_int hot_x, c_int hot_y);
+	public static extern void DragSourceSetIcon(DragSource source, Gdk.Paintable paintable, c_int hot_x, c_int hot_y);
 	[CRepr]
-	public struct GtkDragSourceClass
+	public struct DragSourceClass
 	{
 	}
 	[CRepr]
-	public struct GtkDrawingArea;
+	public struct DrawingArea;
 	[LinkName("gtk_drawing_area_new")]
-	public static extern GtkWidget* drawing_area_new();
+	public static extern Widget DrawingAreaNew();
 	[LinkName("gtk_drawing_area_get_content_height")]
-	public static extern c_int drawing_area_get_content_height(GtkDrawingArea* self);
+	public static extern c_int DrawingAreaGetContentHeight(DrawingArea self);
 	[LinkName("gtk_drawing_area_get_content_width")]
-	public static extern c_int drawing_area_get_content_width(GtkDrawingArea* self);
+	public static extern c_int DrawingAreaGetContentWidth(DrawingArea self);
 	[LinkName("gtk_drawing_area_set_content_height")]
-	public static extern void drawing_area_set_content_height(GtkDrawingArea* self, c_int height);
+	public static extern void DrawingAreaSetContentHeight(DrawingArea self, c_int height);
 	[LinkName("gtk_drawing_area_set_content_width")]
-	public static extern void drawing_area_set_content_width(GtkDrawingArea* self, c_int width);
+	public static extern void DrawingAreaSetContentWidth(DrawingArea self, c_int width);
 	[LinkName("gtk_drawing_area_set_draw_func")]
-	public static extern void drawing_area_set_draw_func(GtkDrawingArea* self, GtkDrawingAreaDrawFunc draw_func, void* user_data, GDestroyNotify destroy);
+	public static extern void DrawingAreaSetDrawFunc(DrawingArea self, DrawingAreaDrawFunc draw_func, void* user_data, GLib.DestroyNotify destroy);
 	[CRepr]
-	public struct GtkDrawingAreaClass
+	public struct DrawingAreaClass
 	{
-		GtkWidgetClass parent_class;
+		WidgetClass parent_class;
 	}
-	public function void GtkDrawingAreaDrawFunc(GtkDrawingArea* drawing_area, cairo_t* cr, c_int width, c_int height, void* user_data);
+	public function void DrawingAreaDrawFunc(DrawingArea drawing_area, cairo.Context cr, c_int width, c_int height, void* user_data);
 	[CRepr]
-	public struct GtkDropControllerMotion;
+	public struct DropControllerMotion;
 	[LinkName("gtk_drop_controller_motion_new")]
-	public static extern GtkEventController* drop_controller_motion_new();
+	public static extern EventController DropControllerMotionNew();
 	[LinkName("gtk_drop_controller_motion_contains_pointer")]
-	public static extern c_int drop_controller_motion_contains_pointer(GtkDropControllerMotion* self);
+	public static extern c_int DropControllerMotionContainsPointer(DropControllerMotion self);
 	[LinkName("gtk_drop_controller_motion_get_drop")]
-	public static extern GdkDrop* drop_controller_motion_get_drop(GtkDropControllerMotion* self);
+	public static extern Gdk.Drop DropControllerMotionGetDrop(DropControllerMotion self);
 	[LinkName("gtk_drop_controller_motion_is_pointer")]
-	public static extern c_int drop_controller_motion_is_pointer(GtkDropControllerMotion* self);
+	public static extern c_int DropControllerMotionIsPointer(DropControllerMotion self);
 	[CRepr]
-	public struct GtkDropControllerMotionClass
+	public struct DropControllerMotionClass
 	{
 	}
 	[CRepr]
-	public struct GtkDropDown;
+	public struct DropDown;
 	[LinkName("gtk_drop_down_new")]
-	public static extern GtkWidget* drop_down_new(GListModel* model, GtkExpression* expression);
+	public static extern Widget DropDownNew(Gio.ListModel model, Expression expression);
 	[LinkName("gtk_drop_down_new_from_strings")]
-	public static extern GtkWidget* drop_down_new_from_strings();
+	public static extern Widget DropDownNewFromStrings();
 	[LinkName("gtk_drop_down_get_enable_search")]
-	public static extern c_int drop_down_get_enable_search(GtkDropDown* self);
+	public static extern c_int DropDownGetEnableSearch(DropDown self);
 	[LinkName("gtk_drop_down_get_expression")]
-	public static extern GtkExpression* drop_down_get_expression(GtkDropDown* self);
+	public static extern Expression DropDownGetExpression(DropDown self);
 	[LinkName("gtk_drop_down_get_factory")]
-	public static extern GtkListItemFactory* drop_down_get_factory(GtkDropDown* self);
+	public static extern ListItemFactory DropDownGetFactory(DropDown self);
 	[LinkName("gtk_drop_down_get_list_factory")]
-	public static extern GtkListItemFactory* drop_down_get_list_factory(GtkDropDown* self);
+	public static extern ListItemFactory DropDownGetListFactory(DropDown self);
 	[LinkName("gtk_drop_down_get_model")]
-	public static extern GListModel* drop_down_get_model(GtkDropDown* self);
+	public static extern Gio.ListModel DropDownGetModel(DropDown self);
 	[LinkName("gtk_drop_down_get_selected")]
-	public static extern c_uint drop_down_get_selected(GtkDropDown* self);
+	public static extern c_uint DropDownGetSelected(DropDown self);
 	[LinkName("gtk_drop_down_get_selected_item")]
-	public static extern void* drop_down_get_selected_item(GtkDropDown* self);
+	public static extern GObject.Object DropDownGetSelectedItem(DropDown self);
 	[LinkName("gtk_drop_down_get_show_arrow")]
-	public static extern c_int drop_down_get_show_arrow(GtkDropDown* self);
+	public static extern c_int DropDownGetShowArrow(DropDown self);
 	[LinkName("gtk_drop_down_set_enable_search")]
-	public static extern void drop_down_set_enable_search(GtkDropDown* self, c_int enable_search);
+	public static extern void DropDownSetEnableSearch(DropDown self, c_int enable_search);
 	[LinkName("gtk_drop_down_set_expression")]
-	public static extern void drop_down_set_expression(GtkDropDown* self, GtkExpression* expression);
+	public static extern void DropDownSetExpression(DropDown self, Expression expression);
 	[LinkName("gtk_drop_down_set_factory")]
-	public static extern void drop_down_set_factory(GtkDropDown* self, GtkListItemFactory* factory);
+	public static extern void DropDownSetFactory(DropDown self, ListItemFactory factory);
 	[LinkName("gtk_drop_down_set_list_factory")]
-	public static extern void drop_down_set_list_factory(GtkDropDown* self, GtkListItemFactory* factory);
+	public static extern void DropDownSetListFactory(DropDown self, ListItemFactory factory);
 	[LinkName("gtk_drop_down_set_model")]
-	public static extern void drop_down_set_model(GtkDropDown* self, GListModel* model);
+	public static extern void DropDownSetModel(DropDown self, Gio.ListModel model);
 	[LinkName("gtk_drop_down_set_selected")]
-	public static extern void drop_down_set_selected(GtkDropDown* self, c_uint position);
+	public static extern void DropDownSetSelected(DropDown self, c_uint position);
 	[LinkName("gtk_drop_down_set_show_arrow")]
-	public static extern void drop_down_set_show_arrow(GtkDropDown* self, c_int show_arrow);
+	public static extern void DropDownSetShowArrow(DropDown self, c_int show_arrow);
 	[CRepr]
-	public struct GtkDropDownClass
+	public struct DropDownClass
 	{
-		GtkWidgetClass parent_class;
+		WidgetClass parent_class;
 	}
 	[CRepr]
-	public struct GtkDropTarget;
+	public struct DropTarget;
 	[LinkName("gtk_drop_target_new")]
-	public static extern GtkDropTarget* drop_target_new(GType type, GdkDragAction actions);
+	public static extern DropTarget DropTargetNew(GLib.Type type, Gdk.DragAction actions);
 	[LinkName("gtk_drop_target_get_actions")]
-	public static extern GdkDragAction drop_target_get_actions(GtkDropTarget* self);
+	public static extern Gdk.DragAction DropTargetGetActions(DropTarget self);
 	[LinkName("gtk_drop_target_get_current_drop")]
-	public static extern GdkDrop* drop_target_get_current_drop(GtkDropTarget* self);
+	public static extern Gdk.Drop DropTargetGetCurrentDrop(DropTarget self);
 	[LinkName("gtk_drop_target_get_drop")]
-	public static extern GdkDrop* drop_target_get_drop(GtkDropTarget* self);
+	public static extern Gdk.Drop DropTargetGetDrop(DropTarget self);
 	[LinkName("gtk_drop_target_get_formats")]
-	public static extern GdkContentFormats* drop_target_get_formats(GtkDropTarget* self);
+	public static extern Gdk.ContentFormats DropTargetGetFormats(DropTarget self);
 	[LinkName("gtk_drop_target_get_gtypes")]
-	public static extern  GType* drop_target_get_gtypes(GtkDropTarget* self, c_ulong* n_types);
+	public static extern GLib.Type DropTargetGetGtypes(DropTarget self, c_ulong n_types);
 	[LinkName("gtk_drop_target_get_preload")]
-	public static extern c_int drop_target_get_preload(GtkDropTarget* self);
+	public static extern c_int DropTargetGetPreload(DropTarget self);
 	[LinkName("gtk_drop_target_get_value")]
-	public static extern  GValue* drop_target_get_value(GtkDropTarget* self);
+	public static extern GObject.Value DropTargetGetValue(DropTarget self);
 	[LinkName("gtk_drop_target_reject")]
-	public static extern void drop_target_reject(GtkDropTarget* self);
+	public static extern void DropTargetReject(DropTarget self);
 	[LinkName("gtk_drop_target_set_actions")]
-	public static extern void drop_target_set_actions(GtkDropTarget* self, GdkDragAction actions);
+	public static extern void DropTargetSetActions(DropTarget self, Gdk.DragAction actions);
 	[LinkName("gtk_drop_target_set_gtypes")]
-	public static extern void drop_target_set_gtypes(GtkDropTarget* self, c_ulong n_types);
+	public static extern void DropTargetSetGtypes(DropTarget self, c_ulong n_types);
 	[LinkName("gtk_drop_target_set_preload")]
-	public static extern void drop_target_set_preload(GtkDropTarget* self, c_int preload);
+	public static extern void DropTargetSetPreload(DropTarget self, c_int preload);
 	[CRepr]
-	public struct GtkDropTargetAsync;
+	public struct DropTargetAsync;
 	[LinkName("gtk_drop_target_async_new")]
-	public static extern GtkDropTargetAsync* drop_target_async_new(GdkContentFormats* formats, GdkDragAction actions);
+	public static extern DropTargetAsync DropTargetAsyncNew(Gdk.ContentFormats formats, Gdk.DragAction actions);
 	[LinkName("gtk_drop_target_async_get_actions")]
-	public static extern GdkDragAction drop_target_async_get_actions(GtkDropTargetAsync* self);
+	public static extern Gdk.DragAction DropTargetAsyncGetActions(DropTargetAsync self);
 	[LinkName("gtk_drop_target_async_get_formats")]
-	public static extern GdkContentFormats* drop_target_async_get_formats(GtkDropTargetAsync* self);
+	public static extern Gdk.ContentFormats DropTargetAsyncGetFormats(DropTargetAsync self);
 	[LinkName("gtk_drop_target_async_reject_drop")]
-	public static extern void drop_target_async_reject_drop(GtkDropTargetAsync* self, GdkDrop* drop);
+	public static extern void DropTargetAsyncRejectDrop(DropTargetAsync self, Gdk.Drop drop);
 	[LinkName("gtk_drop_target_async_set_actions")]
-	public static extern void drop_target_async_set_actions(GtkDropTargetAsync* self, GdkDragAction actions);
+	public static extern void DropTargetAsyncSetActions(DropTargetAsync self, Gdk.DragAction actions);
 	[LinkName("gtk_drop_target_async_set_formats")]
-	public static extern void drop_target_async_set_formats(GtkDropTargetAsync* self, GdkContentFormats* formats);
+	public static extern void DropTargetAsyncSetFormats(DropTargetAsync self, Gdk.ContentFormats formats);
 	[CRepr]
-	public struct GtkDropTargetAsyncClass
+	public struct DropTargetAsyncClass
 	{
 	}
 	[CRepr]
-	public struct GtkDropTargetClass
+	public struct DropTargetClass
 	{
 	}
 	[CRepr]
-	public struct GtkEditable
+	public struct Editable
 	{
-		public function void(GtkEditable* editable) changed;
+		public function void(Editable editable) changed;
 
-		public function void(GtkEditable* editable, c_int start_pos, c_int end_pos) delete_text;
+		public function void(Editable editable, c_int start_pos, c_int end_pos) delete_text;
 
-		public function void(GtkEditable* editable, c_int start_pos, c_int end_pos) do_delete_text;
+		public function void(Editable editable, c_int start_pos, c_int end_pos) do_delete_text;
 
-		public function void(GtkEditable* editable,  c_char* text, c_int length, c_int* position) do_insert_text;
+		public function void(Editable editable, char8* text, c_int length, c_int position) do_insert_text;
 
-		public function GtkEditable*(GtkEditable* editable) get_delegate;
+		public function Editable(Editable editable) get_delegate;
 
-		public function c_int(GtkEditable* editable, c_int* start_pos, c_int* end_pos) get_selection_bounds;
+		public function c_int(Editable editable, c_int start_pos, c_int end_pos) get_selection_bounds;
 
-		public function  c_char*(GtkEditable* editable) get_text;
+		public function char8*(Editable editable) get_text;
 
-		public function void(GtkEditable* editable,  c_char* text, c_int length, c_int* position) insert_text;
+		public function void(Editable editable, char8* text, c_int length, c_int position) insert_text;
 
-		public function void(GtkEditable* editable, c_int start_pos, c_int end_pos) set_selection_bounds;
+		public function void(Editable editable, c_int start_pos, c_int end_pos) set_selection_bounds;
 	}
 	[CRepr]
-	public struct GtkEditableInterface
+	public struct EditableInterface
 	{
-		GTypeInterface base_iface;
+		GObject.TypeInterface base_iface;
 	}
 	[CRepr]
-	public struct GtkEditableLabel;
+	public struct EditableLabel;
 	[LinkName("gtk_editable_label_new")]
-	public static extern GtkWidget* editable_label_new( c_char* str);
+	public static extern Widget EditableLabelNew(char8* str);
 	[LinkName("gtk_editable_label_get_editing")]
-	public static extern c_int editable_label_get_editing(GtkEditableLabel* self);
+	public static extern c_int EditableLabelGetEditing(EditableLabel self);
 	[LinkName("gtk_editable_label_start_editing")]
-	public static extern void editable_label_start_editing(GtkEditableLabel* self);
+	public static extern void EditableLabelStartEditing(EditableLabel self);
 	[LinkName("gtk_editable_label_stop_editing")]
-	public static extern void editable_label_stop_editing(GtkEditableLabel* self, c_int commit);
+	public static extern void EditableLabelStopEditing(EditableLabel self, c_int commit);
 	[CRepr]
-	public struct GtkEditableLabelClass
+	public struct EditableLabelClass
 	{
-		GtkWidgetClass parent_class;
+		WidgetClass parent_class;
 	}
-	public enum GtkEditableProperties : c_int
+	public enum EditableProperties : c_int
 	{
 		GTK_EDITABLE_PROP_TEXT,
 		GTK_EDITABLE_PROP_CURSOR_POSITION,
@@ -2435,321 +2435,321 @@ class Gtk
 		GTK_EDITABLE_NUM_PROPERTIES
 	}
 	[CRepr]
-	public struct GtkEmojiChooser;
+	public struct EmojiChooser;
 	[LinkName("gtk_emoji_chooser_new")]
-	public static extern GtkWidget* emoji_chooser_new();
+	public static extern Widget EmojiChooserNew();
 	[CRepr]
-	public struct GtkEmojiChooserClass
+	public struct EmojiChooserClass
 	{
 	}
 	[CRepr]
-	public struct GtkEntry;
+	public struct Entry;
 	[LinkName("gtk_entry_new")]
-	public static extern GtkWidget* entry_new();
+	public static extern Widget EntryNew();
 	[LinkName("gtk_entry_new_with_buffer")]
-	public static extern GtkWidget* entry_new_with_buffer(GtkEntryBuffer* buffer);
+	public static extern Widget EntryNewWithBuffer(EntryBuffer buffer);
 	[LinkName("gtk_entry_get_activates_default")]
-	public static extern c_int entry_get_activates_default(GtkEntry* entry);
+	public static extern c_int EntryGetActivatesDefault(Entry entry);
 	[LinkName("gtk_entry_get_alignment")]
-	public static extern float entry_get_alignment(GtkEntry* entry);
+	public static extern float EntryGetAlignment(Entry entry);
 	[LinkName("gtk_entry_get_attributes")]
-	public static extern PangoAttrList* entry_get_attributes(GtkEntry* entry);
+	public static extern Pango.AttrList EntryGetAttributes(Entry entry);
 	[LinkName("gtk_entry_get_buffer")]
-	public static extern GtkEntryBuffer* entry_get_buffer(GtkEntry* entry);
+	public static extern EntryBuffer EntryGetBuffer(Entry entry);
 	[LinkName("gtk_entry_get_completion")]
-	public static extern GtkEntryCompletion* entry_get_completion(GtkEntry* entry);
+	public static extern EntryCompletion EntryGetCompletion(Entry entry);
 	[LinkName("gtk_entry_get_current_icon_drag_source")]
-	public static extern c_int entry_get_current_icon_drag_source(GtkEntry* entry);
+	public static extern c_int EntryGetCurrentIconDragSource(Entry entry);
 	[LinkName("gtk_entry_get_extra_menu")]
-	public static extern GMenuModel* entry_get_extra_menu(GtkEntry* entry);
+	public static extern Gio.MenuModel EntryGetExtraMenu(Entry entry);
 	[LinkName("gtk_entry_get_has_frame")]
-	public static extern c_int entry_get_has_frame(GtkEntry* entry);
+	public static extern c_int EntryGetHasFrame(Entry entry);
 	[LinkName("gtk_entry_get_icon_activatable")]
-	public static extern c_int entry_get_icon_activatable(GtkEntry* entry, GtkEntryIconPosition icon_pos);
+	public static extern c_int EntryGetIconActivatable(Entry entry, EntryIconPosition icon_pos);
 	[LinkName("gtk_entry_get_icon_area")]
-	public static extern void entry_get_icon_area(GtkEntry* entry, GtkEntryIconPosition icon_pos, GdkRectangle* icon_area);
+	public static extern void EntryGetIconArea(Entry entry, EntryIconPosition icon_pos, Gdk.Rectangle icon_area);
 	[LinkName("gtk_entry_get_icon_at_pos")]
-	public static extern c_int entry_get_icon_at_pos(GtkEntry* entry, c_int x, c_int y);
+	public static extern c_int EntryGetIconAtPos(Entry entry, c_int x, c_int y);
 	[LinkName("gtk_entry_get_icon_gicon")]
-	public static extern GIcon* entry_get_icon_gicon(GtkEntry* entry, GtkEntryIconPosition icon_pos);
+	public static extern Gio.Icon EntryGetIconGicon(Entry entry, EntryIconPosition icon_pos);
 	[LinkName("gtk_entry_get_icon_name")]
-	public static extern  c_char* entry_get_icon_name(GtkEntry* entry, GtkEntryIconPosition icon_pos);
+	public static extern char8* EntryGetIconName(Entry entry, EntryIconPosition icon_pos);
 	[LinkName("gtk_entry_get_icon_paintable")]
-	public static extern GdkPaintable* entry_get_icon_paintable(GtkEntry* entry, GtkEntryIconPosition icon_pos);
+	public static extern Gdk.Paintable EntryGetIconPaintable(Entry entry, EntryIconPosition icon_pos);
 	[LinkName("gtk_entry_get_icon_sensitive")]
-	public static extern c_int entry_get_icon_sensitive(GtkEntry* entry, GtkEntryIconPosition icon_pos);
+	public static extern c_int EntryGetIconSensitive(Entry entry, EntryIconPosition icon_pos);
 	[LinkName("gtk_entry_get_icon_storage_type")]
-	public static extern GtkImageType entry_get_icon_storage_type(GtkEntry* entry, GtkEntryIconPosition icon_pos);
+	public static extern ImageType EntryGetIconStorageType(Entry entry, EntryIconPosition icon_pos);
 	[LinkName("gtk_entry_get_icon_tooltip_markup")]
-	public static extern c_char* entry_get_icon_tooltip_markup(GtkEntry* entry, GtkEntryIconPosition icon_pos);
+	public static extern char8* EntryGetIconTooltipMarkup(Entry entry, EntryIconPosition icon_pos);
 	[LinkName("gtk_entry_get_icon_tooltip_text")]
-	public static extern c_char* entry_get_icon_tooltip_text(GtkEntry* entry, GtkEntryIconPosition icon_pos);
+	public static extern char8* EntryGetIconTooltipText(Entry entry, EntryIconPosition icon_pos);
 	[LinkName("gtk_entry_get_input_hints")]
-	public static extern GtkInputHints entry_get_input_hints(GtkEntry* entry);
+	public static extern InputHints EntryGetInputHints(Entry entry);
 	[LinkName("gtk_entry_get_input_purpose")]
-	public static extern GtkInputPurpose entry_get_input_purpose(GtkEntry* entry);
+	public static extern InputPurpose EntryGetInputPurpose(Entry entry);
 	[LinkName("gtk_entry_get_invisible_char")]
-	public static extern c_uint entry_get_invisible_char(GtkEntry* entry);
+	public static extern c_uint EntryGetInvisibleChar(Entry entry);
 	[LinkName("gtk_entry_get_max_length")]
-	public static extern c_int entry_get_max_length(GtkEntry* entry);
+	public static extern c_int EntryGetMaxLength(Entry entry);
 	[LinkName("gtk_entry_get_overwrite_mode")]
-	public static extern c_int entry_get_overwrite_mode(GtkEntry* entry);
+	public static extern c_int EntryGetOverwriteMode(Entry entry);
 	[LinkName("gtk_entry_get_placeholder_text")]
-	public static extern  c_char* entry_get_placeholder_text(GtkEntry* entry);
+	public static extern char8* EntryGetPlaceholderText(Entry entry);
 	[LinkName("gtk_entry_get_progress_fraction")]
-	public static extern double entry_get_progress_fraction(GtkEntry* entry);
+	public static extern double EntryGetProgressFraction(Entry entry);
 	[LinkName("gtk_entry_get_progress_pulse_step")]
-	public static extern double entry_get_progress_pulse_step(GtkEntry* entry);
+	public static extern double EntryGetProgressPulseStep(Entry entry);
 	[LinkName("gtk_entry_get_tabs")]
-	public static extern PangoTabArray* entry_get_tabs(GtkEntry* entry);
+	public static extern Pango.TabArray EntryGetTabs(Entry entry);
 	[LinkName("gtk_entry_get_text_length")]
-	public static extern c_ushort entry_get_text_length(GtkEntry* entry);
+	public static extern c_ushort EntryGetTextLength(Entry entry);
 	[LinkName("gtk_entry_get_visibility")]
-	public static extern c_int entry_get_visibility(GtkEntry* entry);
+	public static extern c_int EntryGetVisibility(Entry entry);
 	[LinkName("gtk_entry_grab_focus_without_selecting")]
-	public static extern c_int entry_grab_focus_without_selecting(GtkEntry* entry);
+	public static extern c_int EntryGrabFocusWithoutSelecting(Entry entry);
 	[LinkName("gtk_entry_progress_pulse")]
-	public static extern void entry_progress_pulse(GtkEntry* entry);
+	public static extern void EntryProgressPulse(Entry entry);
 	[LinkName("gtk_entry_reset_im_context")]
-	public static extern void entry_reset_im_context(GtkEntry* entry);
+	public static extern void EntryResetImContext(Entry entry);
 	[LinkName("gtk_entry_set_activates_default")]
-	public static extern void entry_set_activates_default(GtkEntry* entry, c_int setting);
+	public static extern void EntrySetActivatesDefault(Entry entry, c_int setting);
 	[LinkName("gtk_entry_set_alignment")]
-	public static extern void entry_set_alignment(GtkEntry* entry, float xalign);
+	public static extern void EntrySetAlignment(Entry entry, float xalign);
 	[LinkName("gtk_entry_set_attributes")]
-	public static extern void entry_set_attributes(GtkEntry* entry, PangoAttrList* attrs);
+	public static extern void EntrySetAttributes(Entry entry, Pango.AttrList attrs);
 	[LinkName("gtk_entry_set_buffer")]
-	public static extern void entry_set_buffer(GtkEntry* entry, GtkEntryBuffer* buffer);
+	public static extern void EntrySetBuffer(Entry entry, EntryBuffer buffer);
 	[LinkName("gtk_entry_set_completion")]
-	public static extern void entry_set_completion(GtkEntry* entry, GtkEntryCompletion* completion);
+	public static extern void EntrySetCompletion(Entry entry, EntryCompletion completion);
 	[LinkName("gtk_entry_set_extra_menu")]
-	public static extern void entry_set_extra_menu(GtkEntry* entry, GMenuModel* model);
+	public static extern void EntrySetExtraMenu(Entry entry, Gio.MenuModel model);
 	[LinkName("gtk_entry_set_has_frame")]
-	public static extern void entry_set_has_frame(GtkEntry* entry, c_int setting);
+	public static extern void EntrySetHasFrame(Entry entry, c_int setting);
 	[LinkName("gtk_entry_set_icon_activatable")]
-	public static extern void entry_set_icon_activatable(GtkEntry* entry, GtkEntryIconPosition icon_pos, c_int activatable);
+	public static extern void EntrySetIconActivatable(Entry entry, EntryIconPosition icon_pos, c_int activatable);
 	[LinkName("gtk_entry_set_icon_drag_source")]
-	public static extern void entry_set_icon_drag_source(GtkEntry* entry, GtkEntryIconPosition icon_pos, GdkContentProvider* provider, GdkDragAction actions);
+	public static extern void EntrySetIconDragSource(Entry entry, EntryIconPosition icon_pos, Gdk.ContentProvider provider, Gdk.DragAction actions);
 	[LinkName("gtk_entry_set_icon_from_gicon")]
-	public static extern void entry_set_icon_from_gicon(GtkEntry* entry, GtkEntryIconPosition icon_pos, GIcon* icon);
+	public static extern void EntrySetIconFromGicon(Entry entry, EntryIconPosition icon_pos, Gio.Icon icon);
 	[LinkName("gtk_entry_set_icon_from_icon_name")]
-	public static extern void entry_set_icon_from_icon_name(GtkEntry* entry, GtkEntryIconPosition icon_pos,  c_char* icon_name);
+	public static extern void EntrySetIconFromIconName(Entry entry, EntryIconPosition icon_pos, char8* icon_name);
 	[LinkName("gtk_entry_set_icon_from_paintable")]
-	public static extern void entry_set_icon_from_paintable(GtkEntry* entry, GtkEntryIconPosition icon_pos, GdkPaintable* paintable);
+	public static extern void EntrySetIconFromPaintable(Entry entry, EntryIconPosition icon_pos, Gdk.Paintable paintable);
 	[LinkName("gtk_entry_set_icon_sensitive")]
-	public static extern void entry_set_icon_sensitive(GtkEntry* entry, GtkEntryIconPosition icon_pos, c_int sensitive);
+	public static extern void EntrySetIconSensitive(Entry entry, EntryIconPosition icon_pos, c_int sensitive);
 	[LinkName("gtk_entry_set_icon_tooltip_markup")]
-	public static extern void entry_set_icon_tooltip_markup(GtkEntry* entry, GtkEntryIconPosition icon_pos,  c_char* tooltip);
+	public static extern void EntrySetIconTooltipMarkup(Entry entry, EntryIconPosition icon_pos, char8* tooltip);
 	[LinkName("gtk_entry_set_icon_tooltip_text")]
-	public static extern void entry_set_icon_tooltip_text(GtkEntry* entry, GtkEntryIconPosition icon_pos,  c_char* tooltip);
+	public static extern void EntrySetIconTooltipText(Entry entry, EntryIconPosition icon_pos, char8* tooltip);
 	[LinkName("gtk_entry_set_input_hints")]
-	public static extern void entry_set_input_hints(GtkEntry* entry, GtkInputHints hints);
+	public static extern void EntrySetInputHints(Entry entry, InputHints hints);
 	[LinkName("gtk_entry_set_input_purpose")]
-	public static extern void entry_set_input_purpose(GtkEntry* entry, GtkInputPurpose purpose);
+	public static extern void EntrySetInputPurpose(Entry entry, InputPurpose purpose);
 	[LinkName("gtk_entry_set_invisible_char")]
-	public static extern void entry_set_invisible_char(GtkEntry* entry, c_uint ch);
+	public static extern void EntrySetInvisibleChar(Entry entry, c_uint ch);
 	[LinkName("gtk_entry_set_max_length")]
-	public static extern void entry_set_max_length(GtkEntry* entry, c_int max);
+	public static extern void EntrySetMaxLength(Entry entry, c_int max);
 	[LinkName("gtk_entry_set_overwrite_mode")]
-	public static extern void entry_set_overwrite_mode(GtkEntry* entry, c_int overwrite);
+	public static extern void EntrySetOverwriteMode(Entry entry, c_int overwrite);
 	[LinkName("gtk_entry_set_placeholder_text")]
-	public static extern void entry_set_placeholder_text(GtkEntry* entry,  c_char* text);
+	public static extern void EntrySetPlaceholderText(Entry entry, char8* text);
 	[LinkName("gtk_entry_set_progress_fraction")]
-	public static extern void entry_set_progress_fraction(GtkEntry* entry, double fraction);
+	public static extern void EntrySetProgressFraction(Entry entry, double fraction);
 	[LinkName("gtk_entry_set_progress_pulse_step")]
-	public static extern void entry_set_progress_pulse_step(GtkEntry* entry, double fraction);
+	public static extern void EntrySetProgressPulseStep(Entry entry, double fraction);
 	[LinkName("gtk_entry_set_tabs")]
-	public static extern void entry_set_tabs(GtkEntry* entry, PangoTabArray* tabs);
+	public static extern void EntrySetTabs(Entry entry, Pango.TabArray tabs);
 	[LinkName("gtk_entry_set_visibility")]
-	public static extern void entry_set_visibility(GtkEntry* entry, c_int visible);
+	public static extern void EntrySetVisibility(Entry entry, c_int visible);
 	[LinkName("gtk_entry_unset_invisible_char")]
-	public static extern void entry_unset_invisible_char(GtkEntry* entry);
+	public static extern void EntryUnsetInvisibleChar(Entry entry);
 	[CRepr]
-	public struct GtkEntryBuffer;
+	public struct EntryBuffer;
 	[LinkName("gtk_entry_buffer_new")]
-	public static extern GtkEntryBuffer* entry_buffer_new( c_char* initial_chars, c_int n_initial_chars);
+	public static extern EntryBuffer EntryBufferNew(char8* initial_chars, c_int n_initial_chars);
 	[LinkName("gtk_entry_buffer_delete_text")]
-	public static extern c_uint entry_buffer_delete_text(GtkEntryBuffer* buffer, c_uint position, c_int n_chars);
+	public static extern c_uint EntryBufferDeleteText(EntryBuffer buffer, c_uint position, c_int n_chars);
 	[LinkName("gtk_entry_buffer_emit_deleted_text")]
-	public static extern void entry_buffer_emit_deleted_text(GtkEntryBuffer* buffer, c_uint position, c_uint n_chars);
+	public static extern void EntryBufferEmitDeletedText(EntryBuffer buffer, c_uint position, c_uint n_chars);
 	[LinkName("gtk_entry_buffer_emit_inserted_text")]
-	public static extern void entry_buffer_emit_inserted_text(GtkEntryBuffer* buffer, c_uint position,  c_char* chars, c_uint n_chars);
+	public static extern void EntryBufferEmitInsertedText(EntryBuffer buffer, c_uint position, char8* chars, c_uint n_chars);
 	[LinkName("gtk_entry_buffer_get_bytes")]
-	public static extern c_ulong entry_buffer_get_bytes(GtkEntryBuffer* buffer);
+	public static extern c_ulong EntryBufferGetBytes(EntryBuffer buffer);
 	[LinkName("gtk_entry_buffer_get_length")]
-	public static extern c_uint entry_buffer_get_length(GtkEntryBuffer* buffer);
+	public static extern c_uint EntryBufferGetLength(EntryBuffer buffer);
 	[LinkName("gtk_entry_buffer_get_max_length")]
-	public static extern c_int entry_buffer_get_max_length(GtkEntryBuffer* buffer);
+	public static extern c_int EntryBufferGetMaxLength(EntryBuffer buffer);
 	[LinkName("gtk_entry_buffer_get_text")]
-	public static extern  c_char* entry_buffer_get_text(GtkEntryBuffer* buffer);
+	public static extern char8* EntryBufferGetText(EntryBuffer buffer);
 	[LinkName("gtk_entry_buffer_insert_text")]
-	public static extern c_uint entry_buffer_insert_text(GtkEntryBuffer* buffer, c_uint position,  c_char* chars, c_int n_chars);
+	public static extern c_uint EntryBufferInsertText(EntryBuffer buffer, c_uint position, char8* chars, c_int n_chars);
 	[LinkName("gtk_entry_buffer_set_max_length")]
-	public static extern void entry_buffer_set_max_length(GtkEntryBuffer* buffer, c_int max_length);
+	public static extern void EntryBufferSetMaxLength(EntryBuffer buffer, c_int max_length);
 	[LinkName("gtk_entry_buffer_set_text")]
-	public static extern void entry_buffer_set_text(GtkEntryBuffer* buffer,  c_char* chars, c_int n_chars);
+	public static extern void EntryBufferSetText(EntryBuffer buffer, char8* chars, c_int n_chars);
 	[CRepr]
-	public struct GtkEntryBufferClass
+	public struct EntryBufferClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GtkEntryClass
+	public struct EntryClass
 	{
-		GtkWidgetClass parent_class;
+		WidgetClass parent_class;
 	}
 	[CRepr]
-	public struct GtkEntryCompletion;
+	public struct EntryCompletion;
 	[LinkName("gtk_entry_completion_new")]
-	public static extern GtkEntryCompletion* entry_completion_new();
+	public static extern EntryCompletion EntryCompletionNew();
 	[LinkName("gtk_entry_completion_new_with_area")]
-	public static extern GtkEntryCompletion* entry_completion_new_with_area(GtkCellArea* area);
+	public static extern EntryCompletion EntryCompletionNewWithArea(CellArea area);
 	[LinkName("gtk_entry_completion_complete")]
-	public static extern void entry_completion_complete(GtkEntryCompletion* completion);
+	public static extern void EntryCompletionComplete(EntryCompletion completion);
 	[LinkName("gtk_entry_completion_compute_prefix")]
-	public static extern c_char* entry_completion_compute_prefix(GtkEntryCompletion* completion,  c_char* key);
+	public static extern char8* EntryCompletionComputePrefix(EntryCompletion completion, char8* key);
 	[LinkName("gtk_entry_completion_get_completion_prefix")]
-	public static extern  c_char* entry_completion_get_completion_prefix(GtkEntryCompletion* completion);
+	public static extern char8* EntryCompletionGetCompletionPrefix(EntryCompletion completion);
 	[LinkName("gtk_entry_completion_get_entry")]
-	public static extern GtkWidget* entry_completion_get_entry(GtkEntryCompletion* completion);
+	public static extern Widget EntryCompletionGetEntry(EntryCompletion completion);
 	[LinkName("gtk_entry_completion_get_inline_completion")]
-	public static extern c_int entry_completion_get_inline_completion(GtkEntryCompletion* completion);
+	public static extern c_int EntryCompletionGetInlineCompletion(EntryCompletion completion);
 	[LinkName("gtk_entry_completion_get_inline_selection")]
-	public static extern c_int entry_completion_get_inline_selection(GtkEntryCompletion* completion);
+	public static extern c_int EntryCompletionGetInlineSelection(EntryCompletion completion);
 	[LinkName("gtk_entry_completion_get_minimum_key_length")]
-	public static extern c_int entry_completion_get_minimum_key_length(GtkEntryCompletion* completion);
+	public static extern c_int EntryCompletionGetMinimumKeyLength(EntryCompletion completion);
 	[LinkName("gtk_entry_completion_get_model")]
-	public static extern GtkTreeModel* entry_completion_get_model(GtkEntryCompletion* completion);
+	public static extern TreeModel EntryCompletionGetModel(EntryCompletion completion);
 	[LinkName("gtk_entry_completion_get_popup_completion")]
-	public static extern c_int entry_completion_get_popup_completion(GtkEntryCompletion* completion);
+	public static extern c_int EntryCompletionGetPopupCompletion(EntryCompletion completion);
 	[LinkName("gtk_entry_completion_get_popup_set_width")]
-	public static extern c_int entry_completion_get_popup_set_width(GtkEntryCompletion* completion);
+	public static extern c_int EntryCompletionGetPopupSetWidth(EntryCompletion completion);
 	[LinkName("gtk_entry_completion_get_popup_single_match")]
-	public static extern c_int entry_completion_get_popup_single_match(GtkEntryCompletion* completion);
+	public static extern c_int EntryCompletionGetPopupSingleMatch(EntryCompletion completion);
 	[LinkName("gtk_entry_completion_get_text_column")]
-	public static extern c_int entry_completion_get_text_column(GtkEntryCompletion* completion);
+	public static extern c_int EntryCompletionGetTextColumn(EntryCompletion completion);
 	[LinkName("gtk_entry_completion_insert_prefix")]
-	public static extern void entry_completion_insert_prefix(GtkEntryCompletion* completion);
+	public static extern void EntryCompletionInsertPrefix(EntryCompletion completion);
 	[LinkName("gtk_entry_completion_set_inline_completion")]
-	public static extern void entry_completion_set_inline_completion(GtkEntryCompletion* completion, c_int inline_completion);
+	public static extern void EntryCompletionSetInlineCompletion(EntryCompletion completion, c_int inline_completion);
 	[LinkName("gtk_entry_completion_set_inline_selection")]
-	public static extern void entry_completion_set_inline_selection(GtkEntryCompletion* completion, c_int inline_selection);
+	public static extern void EntryCompletionSetInlineSelection(EntryCompletion completion, c_int inline_selection);
 	[LinkName("gtk_entry_completion_set_match_func")]
-	public static extern void entry_completion_set_match_func(GtkEntryCompletion* completion, GtkEntryCompletionMatchFunc func, void* func_data, GDestroyNotify func_notify);
+	public static extern void EntryCompletionSetMatchFunc(EntryCompletion completion, EntryCompletionMatchFunc func, void* func_data, GLib.DestroyNotify func_notify);
 	[LinkName("gtk_entry_completion_set_minimum_key_length")]
-	public static extern void entry_completion_set_minimum_key_length(GtkEntryCompletion* completion, c_int length);
+	public static extern void EntryCompletionSetMinimumKeyLength(EntryCompletion completion, c_int length);
 	[LinkName("gtk_entry_completion_set_model")]
-	public static extern void entry_completion_set_model(GtkEntryCompletion* completion, GtkTreeModel* model);
+	public static extern void EntryCompletionSetModel(EntryCompletion completion, TreeModel model);
 	[LinkName("gtk_entry_completion_set_popup_completion")]
-	public static extern void entry_completion_set_popup_completion(GtkEntryCompletion* completion, c_int popup_completion);
+	public static extern void EntryCompletionSetPopupCompletion(EntryCompletion completion, c_int popup_completion);
 	[LinkName("gtk_entry_completion_set_popup_set_width")]
-	public static extern void entry_completion_set_popup_set_width(GtkEntryCompletion* completion, c_int popup_set_width);
+	public static extern void EntryCompletionSetPopupSetWidth(EntryCompletion completion, c_int popup_set_width);
 	[LinkName("gtk_entry_completion_set_popup_single_match")]
-	public static extern void entry_completion_set_popup_single_match(GtkEntryCompletion* completion, c_int popup_single_match);
+	public static extern void EntryCompletionSetPopupSingleMatch(EntryCompletion completion, c_int popup_single_match);
 	[LinkName("gtk_entry_completion_set_text_column")]
-	public static extern void entry_completion_set_text_column(GtkEntryCompletion* completion, c_int column);
-	public function c_int GtkEntryCompletionMatchFunc(GtkEntryCompletion* completion,  c_char* key, GtkTreeIter* iter, void* user_data);
-	public enum GtkEntryIconPosition : c_int
+	public static extern void EntryCompletionSetTextColumn(EntryCompletion completion, c_int column);
+	public function c_int EntryCompletionMatchFunc(EntryCompletion completion, char8* key, TreeIter iter, void* user_data);
+	public enum EntryIconPosition : c_int
 	{
 		GTK_ENTRY_ICON_PRIMARY,
 		GTK_ENTRY_ICON_SECONDARY
 	}
 	[CRepr]
-	public struct GtkEventController;
+	public struct EventController;
 	[LinkName("gtk_event_controller_get_current_event")]
-	public static extern GdkEvent* event_controller_get_current_event(GtkEventController* controller);
+	public static extern Gdk.Event EventControllerGetCurrentEvent(EventController controller);
 	[LinkName("gtk_event_controller_get_current_event_device")]
-	public static extern GdkDevice* event_controller_get_current_event_device(GtkEventController* controller);
+	public static extern Gdk.Device EventControllerGetCurrentEventDevice(EventController controller);
 	[LinkName("gtk_event_controller_get_current_event_state")]
-	public static extern GdkModifierType event_controller_get_current_event_state(GtkEventController* controller);
+	public static extern Gdk.ModifierType EventControllerGetCurrentEventState(EventController controller);
 	[LinkName("gtk_event_controller_get_current_event_time")]
-	public static extern c_uint event_controller_get_current_event_time(GtkEventController* controller);
+	public static extern c_uint EventControllerGetCurrentEventTime(EventController controller);
 	[LinkName("gtk_event_controller_get_name")]
-	public static extern  c_char* event_controller_get_name(GtkEventController* controller);
+	public static extern char8* EventControllerGetName(EventController controller);
 	[LinkName("gtk_event_controller_get_propagation_limit")]
-	public static extern GtkPropagationLimit event_controller_get_propagation_limit(GtkEventController* controller);
+	public static extern PropagationLimit EventControllerGetPropagationLimit(EventController controller);
 	[LinkName("gtk_event_controller_get_propagation_phase")]
-	public static extern GtkPropagationPhase event_controller_get_propagation_phase(GtkEventController* controller);
+	public static extern PropagationPhase EventControllerGetPropagationPhase(EventController controller);
 	[LinkName("gtk_event_controller_get_widget")]
-	public static extern GtkWidget* event_controller_get_widget(GtkEventController* controller);
+	public static extern Widget EventControllerGetWidget(EventController controller);
 	[LinkName("gtk_event_controller_reset")]
-	public static extern void event_controller_reset(GtkEventController* controller);
+	public static extern void EventControllerReset(EventController controller);
 	[LinkName("gtk_event_controller_set_name")]
-	public static extern void event_controller_set_name(GtkEventController* controller,  c_char* name);
+	public static extern void EventControllerSetName(EventController controller, char8* name);
 	[LinkName("gtk_event_controller_set_propagation_limit")]
-	public static extern void event_controller_set_propagation_limit(GtkEventController* controller, GtkPropagationLimit limit);
+	public static extern void EventControllerSetPropagationLimit(EventController controller, PropagationLimit limit);
 	[LinkName("gtk_event_controller_set_propagation_phase")]
-	public static extern void event_controller_set_propagation_phase(GtkEventController* controller, GtkPropagationPhase phase);
+	public static extern void EventControllerSetPropagationPhase(EventController controller, PropagationPhase phase);
 	[LinkName("gtk_event_controller_set_static_name")]
-	public static extern void event_controller_set_static_name(GtkEventController* controller,  c_char* name);
+	public static extern void EventControllerSetStaticName(EventController controller, char8* name);
 	[CRepr]
-	public struct GtkEventControllerClass
+	public struct EventControllerClass
 	{
 	}
 	[CRepr]
-	public struct GtkEventControllerFocus;
+	public struct EventControllerFocus;
 	[LinkName("gtk_event_controller_focus_new")]
-	public static extern GtkEventController* event_controller_focus_new();
+	public static extern EventController EventControllerFocusNew();
 	[LinkName("gtk_event_controller_focus_contains_focus")]
-	public static extern c_int event_controller_focus_contains_focus(GtkEventControllerFocus* self);
+	public static extern c_int EventControllerFocusContainsFocus(EventControllerFocus self);
 	[LinkName("gtk_event_controller_focus_is_focus")]
-	public static extern c_int event_controller_focus_is_focus(GtkEventControllerFocus* self);
+	public static extern c_int EventControllerFocusIsFocus(EventControllerFocus self);
 	[CRepr]
-	public struct GtkEventControllerFocusClass
+	public struct EventControllerFocusClass
 	{
 	}
 	[CRepr]
-	public struct GtkEventControllerKey;
+	public struct EventControllerKey;
 	[LinkName("gtk_event_controller_key_new")]
-	public static extern GtkEventController* event_controller_key_new();
+	public static extern EventController EventControllerKeyNew();
 	[LinkName("gtk_event_controller_key_forward")]
-	public static extern c_int event_controller_key_forward(GtkEventControllerKey* controller, GtkWidget* widget);
+	public static extern c_int EventControllerKeyForward(EventControllerKey controller, Widget widget);
 	[LinkName("gtk_event_controller_key_get_group")]
-	public static extern c_uint event_controller_key_get_group(GtkEventControllerKey* controller);
+	public static extern c_uint EventControllerKeyGetGroup(EventControllerKey controller);
 	[LinkName("gtk_event_controller_key_get_im_context")]
-	public static extern GtkIMContext* event_controller_key_get_im_context(GtkEventControllerKey* controller);
+	public static extern IMContext EventControllerKeyGetImContext(EventControllerKey controller);
 	[LinkName("gtk_event_controller_key_set_im_context")]
-	public static extern void event_controller_key_set_im_context(GtkEventControllerKey* controller, GtkIMContext* im_context);
+	public static extern void EventControllerKeySetImContext(EventControllerKey controller, IMContext im_context);
 	[CRepr]
-	public struct GtkEventControllerKeyClass
+	public struct EventControllerKeyClass
 	{
 	}
 	[CRepr]
-	public struct GtkEventControllerLegacy;
+	public struct EventControllerLegacy;
 	[LinkName("gtk_event_controller_legacy_new")]
-	public static extern GtkEventController* event_controller_legacy_new();
+	public static extern EventController EventControllerLegacyNew();
 	[CRepr]
-	public struct GtkEventControllerLegacyClass
+	public struct EventControllerLegacyClass
 	{
 	}
 	[CRepr]
-	public struct GtkEventControllerMotion;
+	public struct EventControllerMotion;
 	[LinkName("gtk_event_controller_motion_new")]
-	public static extern GtkEventController* event_controller_motion_new();
+	public static extern EventController EventControllerMotionNew();
 	[LinkName("gtk_event_controller_motion_contains_pointer")]
-	public static extern c_int event_controller_motion_contains_pointer(GtkEventControllerMotion* self);
+	public static extern c_int EventControllerMotionContainsPointer(EventControllerMotion self);
 	[LinkName("gtk_event_controller_motion_is_pointer")]
-	public static extern c_int event_controller_motion_is_pointer(GtkEventControllerMotion* self);
+	public static extern c_int EventControllerMotionIsPointer(EventControllerMotion self);
 	[CRepr]
-	public struct GtkEventControllerMotionClass
+	public struct EventControllerMotionClass
 	{
 	}
 	[CRepr]
-	public struct GtkEventControllerScroll;
+	public struct EventControllerScroll;
 	[LinkName("gtk_event_controller_scroll_new")]
-	public static extern GtkEventController* event_controller_scroll_new(GtkEventControllerScrollFlags flags);
+	public static extern EventController EventControllerScrollNew(EventControllerScrollFlags flags);
 	[LinkName("gtk_event_controller_scroll_get_flags")]
-	public static extern GtkEventControllerScrollFlags event_controller_scroll_get_flags(GtkEventControllerScroll* scroll);
+	public static extern EventControllerScrollFlags EventControllerScrollGetFlags(EventControllerScroll scroll);
 	[LinkName("gtk_event_controller_scroll_get_unit")]
-	public static extern GdkScrollUnit event_controller_scroll_get_unit(GtkEventControllerScroll* scroll);
+	public static extern Gdk.ScrollUnit EventControllerScrollGetUnit(EventControllerScroll scroll);
 	[LinkName("gtk_event_controller_scroll_set_flags")]
-	public static extern void event_controller_scroll_set_flags(GtkEventControllerScroll* scroll, GtkEventControllerScrollFlags flags);
+	public static extern void EventControllerScrollSetFlags(EventControllerScroll scroll, EventControllerScrollFlags flags);
 	[CRepr]
-	public struct GtkEventControllerScrollClass
+	public struct EventControllerScrollClass
 	{
 	}
 	[CRepr]
-	public struct GtkEventControllerScrollFlags
+	public struct EventControllerScrollFlags
 	{
 		public const int GTK_EVENT_CONTROLLER_SCROLL_NONE = 0;
 		public const int GTK_EVENT_CONTROLLER_SCROLL_VERTICAL = 1;
@@ -2758,89 +2758,89 @@ class Gtk
 		public const int GTK_EVENT_CONTROLLER_SCROLL_KINETIC = 8;
 		public const int GTK_EVENT_CONTROLLER_SCROLL_BOTH_AXES = 3;
 	}
-	public enum GtkEventSequenceState : c_int
+	public enum EventSequenceState : c_int
 	{
 		GTK_EVENT_SEQUENCE_NONE,
 		GTK_EVENT_SEQUENCE_CLAIMED,
 		GTK_EVENT_SEQUENCE_DENIED
 	}
 	[CRepr]
-	public struct GtkEveryFilter;
+	public struct EveryFilter;
 	[LinkName("gtk_every_filter_new")]
-	public static extern GtkEveryFilter* every_filter_new();
+	public static extern EveryFilter EveryFilterNew();
 	[CRepr]
-	public struct GtkEveryFilterClass
+	public struct EveryFilterClass
 	{
 	}
 	[CRepr]
-	public struct GtkExpander;
+	public struct Expander;
 	[LinkName("gtk_expander_new")]
-	public static extern GtkWidget* expander_new( c_char* label);
+	public static extern Widget ExpanderNew(char8* label);
 	[LinkName("gtk_expander_new_with_mnemonic")]
-	public static extern GtkWidget* expander_new_with_mnemonic( c_char* label);
+	public static extern Widget ExpanderNewWithMnemonic(char8* label);
 	[LinkName("gtk_expander_get_child")]
-	public static extern GtkWidget* expander_get_child(GtkExpander* expander);
+	public static extern Widget ExpanderGetChild(Expander expander);
 	[LinkName("gtk_expander_get_expanded")]
-	public static extern c_int expander_get_expanded(GtkExpander* expander);
+	public static extern c_int ExpanderGetExpanded(Expander expander);
 	[LinkName("gtk_expander_get_label")]
-	public static extern  c_char* expander_get_label(GtkExpander* expander);
+	public static extern char8* ExpanderGetLabel(Expander expander);
 	[LinkName("gtk_expander_get_label_widget")]
-	public static extern GtkWidget* expander_get_label_widget(GtkExpander* expander);
+	public static extern Widget ExpanderGetLabelWidget(Expander expander);
 	[LinkName("gtk_expander_get_resize_toplevel")]
-	public static extern c_int expander_get_resize_toplevel(GtkExpander* expander);
+	public static extern c_int ExpanderGetResizeToplevel(Expander expander);
 	[LinkName("gtk_expander_get_use_markup")]
-	public static extern c_int expander_get_use_markup(GtkExpander* expander);
+	public static extern c_int ExpanderGetUseMarkup(Expander expander);
 	[LinkName("gtk_expander_get_use_underline")]
-	public static extern c_int expander_get_use_underline(GtkExpander* expander);
+	public static extern c_int ExpanderGetUseUnderline(Expander expander);
 	[LinkName("gtk_expander_set_child")]
-	public static extern void expander_set_child(GtkExpander* expander, GtkWidget* child);
+	public static extern void ExpanderSetChild(Expander expander, Widget child);
 	[LinkName("gtk_expander_set_expanded")]
-	public static extern void expander_set_expanded(GtkExpander* expander, c_int expanded);
+	public static extern void ExpanderSetExpanded(Expander expander, c_int expanded);
 	[LinkName("gtk_expander_set_label")]
-	public static extern void expander_set_label(GtkExpander* expander,  c_char* label);
+	public static extern void ExpanderSetLabel(Expander expander, char8* label);
 	[LinkName("gtk_expander_set_label_widget")]
-	public static extern void expander_set_label_widget(GtkExpander* expander, GtkWidget* label_widget);
+	public static extern void ExpanderSetLabelWidget(Expander expander, Widget label_widget);
 	[LinkName("gtk_expander_set_resize_toplevel")]
-	public static extern void expander_set_resize_toplevel(GtkExpander* expander, c_int resize_toplevel);
+	public static extern void ExpanderSetResizeToplevel(Expander expander, c_int resize_toplevel);
 	[LinkName("gtk_expander_set_use_markup")]
-	public static extern void expander_set_use_markup(GtkExpander* expander, c_int use_markup);
+	public static extern void ExpanderSetUseMarkup(Expander expander, c_int use_markup);
 	[LinkName("gtk_expander_set_use_underline")]
-	public static extern void expander_set_use_underline(GtkExpander* expander, c_int use_underline);
+	public static extern void ExpanderSetUseUnderline(Expander expander, c_int use_underline);
 	[CRepr]
-	public struct GtkExpression;
+	public struct Expression;
 	[LinkName("gtk_expression_bind")]
-	public static extern GtkExpressionWatch* expression_bind(GtkExpression* self, void* target,  c_char* property, void* this_);
+	public static extern ExpressionWatch ExpressionBind(Expression self, GObject.Object target, char8* property, GObject.Object this_);
 	[LinkName("gtk_expression_evaluate")]
-	public static extern c_int expression_evaluate(GtkExpression* self, void* this_, GValue* value);
+	public static extern c_int ExpressionEvaluate(Expression self, GObject.Object this_, GObject.Value value);
 	[LinkName("gtk_expression_get_value_type")]
-	public static extern GType expression_get_value_type(GtkExpression* self);
+	public static extern GLib.Type ExpressionGetValueType(Expression self);
 	[LinkName("gtk_expression_is_static")]
-	public static extern c_int expression_is_static(GtkExpression* self);
+	public static extern c_int ExpressionIsStatic(Expression self);
 	[LinkName("gtk_expression_ref")]
-	public static extern GtkExpression* expression_ref(GtkExpression* self);
+	public static extern Expression ExpressionRef(Expression self);
 	[LinkName("gtk_expression_unref")]
-	public static extern void expression_unref(GtkExpression* self);
+	public static extern void ExpressionUnref(Expression self);
 	[LinkName("gtk_expression_watch")]
-	public static extern GtkExpressionWatch* expression_watch(GtkExpression* self, void* this_, GtkExpressionNotify notify, void* user_data, GDestroyNotify user_destroy);
-	public function void GtkExpressionNotify(void* user_data);
+	public static extern ExpressionWatch ExpressionWatch(Expression self, GObject.Object this_, ExpressionNotify notify, void* user_data, GLib.DestroyNotify user_destroy);
+	public function void ExpressionNotify(void* user_data);
 	[CRepr]
-	public struct GtkExpressionWatch
+	public struct ExpressionWatch
 	{
 	}
 	[CRepr]
-	public struct GtkFileChooser
+	public struct FileChooser
 	{	}
-	public enum GtkFileChooserAction : c_int
+	public enum FileChooserAction : c_int
 	{
 		GTK_FILE_CHOOSER_ACTION_OPEN,
 		GTK_FILE_CHOOSER_ACTION_SAVE,
 		GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER
 	}
 	[CRepr]
-	public struct GtkFileChooserDialog;
+	public struct FileChooserDialog;
 	[LinkName("gtk_file_chooser_dialog_new")]
-	public static extern GtkWidget* file_chooser_dialog_new( c_char* title, GtkWindow* parent, GtkFileChooserAction action,  c_char* first_button_text);
-	public enum GtkFileChooserError : c_int
+	public static extern Widget FileChooserDialogNew(char8* title, Window parent, FileChooserAction action, char8* first_button_text);
+	public enum FileChooserError : c_int
 	{
 		GTK_FILE_CHOOSER_ERROR_NONEXISTENT,
 		GTK_FILE_CHOOSER_ERROR_BAD_FILENAME,
@@ -2848,379 +2848,379 @@ class Gtk
 		GTK_FILE_CHOOSER_ERROR_INCOMPLETE_HOSTNAME
 	}
 	[CRepr]
-	public struct GtkFileChooserNative;
+	public struct FileChooserNative;
 	[LinkName("gtk_file_chooser_native_new")]
-	public static extern GtkFileChooserNative* file_chooser_native_new( c_char* title, GtkWindow* parent, GtkFileChooserAction action,  c_char* accept_label,  c_char* cancel_label);
+	public static extern FileChooserNative FileChooserNativeNew(char8* title, Window parent, FileChooserAction action, char8* accept_label, char8* cancel_label);
 	[LinkName("gtk_file_chooser_native_get_accept_label")]
-	public static extern  c_char* file_chooser_native_get_accept_label(GtkFileChooserNative* self);
+	public static extern char8* FileChooserNativeGetAcceptLabel(FileChooserNative self);
 	[LinkName("gtk_file_chooser_native_get_cancel_label")]
-	public static extern  c_char* file_chooser_native_get_cancel_label(GtkFileChooserNative* self);
+	public static extern char8* FileChooserNativeGetCancelLabel(FileChooserNative self);
 	[LinkName("gtk_file_chooser_native_set_accept_label")]
-	public static extern void file_chooser_native_set_accept_label(GtkFileChooserNative* self,  c_char* accept_label);
+	public static extern void FileChooserNativeSetAcceptLabel(FileChooserNative self, char8* accept_label);
 	[LinkName("gtk_file_chooser_native_set_cancel_label")]
-	public static extern void file_chooser_native_set_cancel_label(GtkFileChooserNative* self,  c_char* cancel_label);
+	public static extern void FileChooserNativeSetCancelLabel(FileChooserNative self, char8* cancel_label);
 	[CRepr]
-	public struct GtkFileChooserNativeClass
+	public struct FileChooserNativeClass
 	{
-		GtkNativeDialogClass parent_class;
+		NativeDialogClass parent_class;
 	}
 	[CRepr]
-	public struct GtkFileChooserWidget;
+	public struct FileChooserWidget;
 	[LinkName("gtk_file_chooser_widget_new")]
-	public static extern GtkWidget* file_chooser_widget_new(GtkFileChooserAction action);
+	public static extern Widget FileChooserWidgetNew(FileChooserAction action);
 	[CRepr]
-	public struct GtkFileDialog;
+	public struct FileDialog;
 	[LinkName("gtk_file_dialog_new")]
-	public static extern GtkFileDialog* file_dialog_new();
+	public static extern FileDialog FileDialogNew();
 	[LinkName("gtk_file_dialog_get_accept_label")]
-	public static extern  c_char* file_dialog_get_accept_label(GtkFileDialog* self);
+	public static extern char8* FileDialogGetAcceptLabel(FileDialog self);
 	[LinkName("gtk_file_dialog_get_default_filter")]
-	public static extern GtkFileFilter* file_dialog_get_default_filter(GtkFileDialog* self);
+	public static extern FileFilter FileDialogGetDefaultFilter(FileDialog self);
 	[LinkName("gtk_file_dialog_get_filters")]
-	public static extern GListModel* file_dialog_get_filters(GtkFileDialog* self);
+	public static extern Gio.ListModel FileDialogGetFilters(FileDialog self);
 	[LinkName("gtk_file_dialog_get_initial_file")]
-	public static extern GFile* file_dialog_get_initial_file(GtkFileDialog* self);
+	public static extern Gio.File FileDialogGetInitialFile(FileDialog self);
 	[LinkName("gtk_file_dialog_get_initial_folder")]
-	public static extern GFile* file_dialog_get_initial_folder(GtkFileDialog* self);
+	public static extern Gio.File FileDialogGetInitialFolder(FileDialog self);
 	[LinkName("gtk_file_dialog_get_initial_name")]
-	public static extern  c_char* file_dialog_get_initial_name(GtkFileDialog* self);
+	public static extern char8* FileDialogGetInitialName(FileDialog self);
 	[LinkName("gtk_file_dialog_get_modal")]
-	public static extern c_int file_dialog_get_modal(GtkFileDialog* self);
+	public static extern c_int FileDialogGetModal(FileDialog self);
 	[LinkName("gtk_file_dialog_get_title")]
-	public static extern  c_char* file_dialog_get_title(GtkFileDialog* self);
+	public static extern char8* FileDialogGetTitle(FileDialog self);
 	[LinkName("gtk_file_dialog_open")]
-	public static extern void file_dialog_open(GtkFileDialog* self, GtkWindow* parent, GCancellable* cancellable, GAsyncReadyCallback callback, void* user_data);
+	public static extern void FileDialogOpen(FileDialog self, Window parent, Gio.Cancellable cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gtk_file_dialog_open_finish")]
-	public static extern GFile* file_dialog_open_finish(GtkFileDialog* self, GAsyncResult* result);
+	public static extern Gio.File FileDialogOpenFinish(FileDialog self, Gio.AsyncResult result);
 	[LinkName("gtk_file_dialog_open_multiple")]
-	public static extern void file_dialog_open_multiple(GtkFileDialog* self, GtkWindow* parent, GCancellable* cancellable, GAsyncReadyCallback callback, void* user_data);
+	public static extern void FileDialogOpenMultiple(FileDialog self, Window parent, Gio.Cancellable cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gtk_file_dialog_open_multiple_finish")]
-	public static extern GListModel* file_dialog_open_multiple_finish(GtkFileDialog* self, GAsyncResult* result);
+	public static extern Gio.ListModel FileDialogOpenMultipleFinish(FileDialog self, Gio.AsyncResult result);
 	[LinkName("gtk_file_dialog_save")]
-	public static extern void file_dialog_save(GtkFileDialog* self, GtkWindow* parent, GCancellable* cancellable, GAsyncReadyCallback callback, void* user_data);
+	public static extern void FileDialogSave(FileDialog self, Window parent, Gio.Cancellable cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gtk_file_dialog_save_finish")]
-	public static extern GFile* file_dialog_save_finish(GtkFileDialog* self, GAsyncResult* result);
+	public static extern Gio.File FileDialogSaveFinish(FileDialog self, Gio.AsyncResult result);
 	[LinkName("gtk_file_dialog_select_folder")]
-	public static extern void file_dialog_select_folder(GtkFileDialog* self, GtkWindow* parent, GCancellable* cancellable, GAsyncReadyCallback callback, void* user_data);
+	public static extern void FileDialogSelectFolder(FileDialog self, Window parent, Gio.Cancellable cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gtk_file_dialog_select_folder_finish")]
-	public static extern GFile* file_dialog_select_folder_finish(GtkFileDialog* self, GAsyncResult* result);
+	public static extern Gio.File FileDialogSelectFolderFinish(FileDialog self, Gio.AsyncResult result);
 	[LinkName("gtk_file_dialog_select_multiple_folders")]
-	public static extern void file_dialog_select_multiple_folders(GtkFileDialog* self, GtkWindow* parent, GCancellable* cancellable, GAsyncReadyCallback callback, void* user_data);
+	public static extern void FileDialogSelectMultipleFolders(FileDialog self, Window parent, Gio.Cancellable cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gtk_file_dialog_select_multiple_folders_finish")]
-	public static extern GListModel* file_dialog_select_multiple_folders_finish(GtkFileDialog* self, GAsyncResult* result);
+	public static extern Gio.ListModel FileDialogSelectMultipleFoldersFinish(FileDialog self, Gio.AsyncResult result);
 	[LinkName("gtk_file_dialog_set_accept_label")]
-	public static extern void file_dialog_set_accept_label(GtkFileDialog* self,  c_char* accept_label);
+	public static extern void FileDialogSetAcceptLabel(FileDialog self, char8* accept_label);
 	[LinkName("gtk_file_dialog_set_default_filter")]
-	public static extern void file_dialog_set_default_filter(GtkFileDialog* self, GtkFileFilter* filter);
+	public static extern void FileDialogSetDefaultFilter(FileDialog self, FileFilter filter);
 	[LinkName("gtk_file_dialog_set_filters")]
-	public static extern void file_dialog_set_filters(GtkFileDialog* self, GListModel* filters);
+	public static extern void FileDialogSetFilters(FileDialog self, Gio.ListModel filters);
 	[LinkName("gtk_file_dialog_set_initial_file")]
-	public static extern void file_dialog_set_initial_file(GtkFileDialog* self, GFile* file);
+	public static extern void FileDialogSetInitialFile(FileDialog self, Gio.File file);
 	[LinkName("gtk_file_dialog_set_initial_folder")]
-	public static extern void file_dialog_set_initial_folder(GtkFileDialog* self, GFile* folder);
+	public static extern void FileDialogSetInitialFolder(FileDialog self, Gio.File folder);
 	[LinkName("gtk_file_dialog_set_initial_name")]
-	public static extern void file_dialog_set_initial_name(GtkFileDialog* self,  c_char* name);
+	public static extern void FileDialogSetInitialName(FileDialog self, char8* name);
 	[LinkName("gtk_file_dialog_set_modal")]
-	public static extern void file_dialog_set_modal(GtkFileDialog* self, c_int modal);
+	public static extern void FileDialogSetModal(FileDialog self, c_int modal);
 	[LinkName("gtk_file_dialog_set_title")]
-	public static extern void file_dialog_set_title(GtkFileDialog* self,  c_char* title);
+	public static extern void FileDialogSetTitle(FileDialog self, char8* title);
 	[CRepr]
-	public struct GtkFileDialogClass
+	public struct FileDialogClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GtkFileFilter;
+	public struct FileFilter;
 	[LinkName("gtk_file_filter_new")]
-	public static extern GtkFileFilter* file_filter_new();
+	public static extern FileFilter FileFilterNew();
 	[LinkName("gtk_file_filter_new_from_gvariant")]
-	public static extern GtkFileFilter* file_filter_new_from_gvariant(GVariant* variant);
+	public static extern FileFilter FileFilterNewFromGvariant(GLib.Variant variant);
 	[LinkName("gtk_file_filter_add_mime_type")]
-	public static extern void file_filter_add_mime_type(GtkFileFilter* filter,  c_char* mime_type);
+	public static extern void FileFilterAddMimeType(FileFilter filter, char8* mime_type);
 	[LinkName("gtk_file_filter_add_pattern")]
-	public static extern void file_filter_add_pattern(GtkFileFilter* filter,  c_char* pattern);
+	public static extern void FileFilterAddPattern(FileFilter filter, char8* pattern);
 	[LinkName("gtk_file_filter_add_pixbuf_formats")]
-	public static extern void file_filter_add_pixbuf_formats(GtkFileFilter* filter);
+	public static extern void FileFilterAddPixbufFormats(FileFilter filter);
 	[LinkName("gtk_file_filter_add_suffix")]
-	public static extern void file_filter_add_suffix(GtkFileFilter* filter,  c_char* suffix);
+	public static extern void FileFilterAddSuffix(FileFilter filter, char8* suffix);
 	[LinkName("gtk_file_filter_get_attributes")]
-	public static extern  c_char** file_filter_get_attributes(GtkFileFilter* filter);
+	public static extern char8* FileFilterGetAttributes(FileFilter filter);
 	[LinkName("gtk_file_filter_get_name")]
-	public static extern  c_char* file_filter_get_name(GtkFileFilter* filter);
+	public static extern char8* FileFilterGetName(FileFilter filter);
 	[LinkName("gtk_file_filter_set_name")]
-	public static extern void file_filter_set_name(GtkFileFilter* filter,  c_char* name);
+	public static extern void FileFilterSetName(FileFilter filter, char8* name);
 	[LinkName("gtk_file_filter_to_gvariant")]
-	public static extern GVariant* file_filter_to_gvariant(GtkFileFilter* filter);
+	public static extern GLib.Variant FileFilterToGvariant(FileFilter filter);
 	[CRepr]
-	public struct GtkFileLauncher;
+	public struct FileLauncher;
 	[LinkName("gtk_file_launcher_new")]
-	public static extern GtkFileLauncher* file_launcher_new(GFile* file);
+	public static extern FileLauncher FileLauncherNew(Gio.File file);
 	[LinkName("gtk_file_launcher_get_file")]
-	public static extern GFile* file_launcher_get_file(GtkFileLauncher* self);
+	public static extern Gio.File FileLauncherGetFile(FileLauncher self);
 	[LinkName("gtk_file_launcher_launch")]
-	public static extern void file_launcher_launch(GtkFileLauncher* self, GtkWindow* parent, GCancellable* cancellable, GAsyncReadyCallback callback, void* user_data);
+	public static extern void FileLauncherLaunch(FileLauncher self, Window parent, Gio.Cancellable cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gtk_file_launcher_launch_finish")]
-	public static extern c_int file_launcher_launch_finish(GtkFileLauncher* self, GAsyncResult* result);
+	public static extern c_int FileLauncherLaunchFinish(FileLauncher self, Gio.AsyncResult result);
 	[LinkName("gtk_file_launcher_open_containing_folder")]
-	public static extern void file_launcher_open_containing_folder(GtkFileLauncher* self, GtkWindow* parent, GCancellable* cancellable, GAsyncReadyCallback callback, void* user_data);
+	public static extern void FileLauncherOpenContainingFolder(FileLauncher self, Window parent, Gio.Cancellable cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gtk_file_launcher_open_containing_folder_finish")]
-	public static extern c_int file_launcher_open_containing_folder_finish(GtkFileLauncher* self, GAsyncResult* result);
+	public static extern c_int FileLauncherOpenContainingFolderFinish(FileLauncher self, Gio.AsyncResult result);
 	[LinkName("gtk_file_launcher_set_file")]
-	public static extern void file_launcher_set_file(GtkFileLauncher* self, GFile* file);
+	public static extern void FileLauncherSetFile(FileLauncher self, Gio.File file);
 	[CRepr]
-	public struct GtkFileLauncherClass
+	public struct FileLauncherClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GtkFilter;
+	public struct Filter;
 	[LinkName("gtk_filter_changed")]
-	public static extern void filter_changed(GtkFilter* self, GtkFilterChange change);
+	public static extern void FilterChanged(Filter self, FilterChange change);
 	[LinkName("gtk_filter_get_strictness")]
-	public static extern GtkFilterMatch filter_get_strictness(GtkFilter* self);
+	public static extern FilterMatch FilterGetStrictness(Filter self);
 	[LinkName("gtk_filter_match")]
-	public static extern c_int filter_match(GtkFilter* self, void* item);
-	public enum GtkFilterChange : c_int
+	public static extern c_int FilterMatch(Filter self, GObject.Object item);
+	public enum FilterChange : c_int
 	{
 		GTK_FILTER_CHANGE_DIFFERENT,
 		GTK_FILTER_CHANGE_LESS_STRICT,
 		GTK_FILTER_CHANGE_MORE_STRICT
 	}
 	[CRepr]
-	public struct GtkFilterClass
+	public struct FilterClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GtkFilterListModel;
+	public struct FilterListModel;
 	[LinkName("gtk_filter_list_model_new")]
-	public static extern GtkFilterListModel* filter_list_model_new(GListModel* model, GtkFilter* filter);
+	public static extern FilterListModel FilterListModelNew(Gio.ListModel model, Filter filter);
 	[LinkName("gtk_filter_list_model_get_filter")]
-	public static extern GtkFilter* filter_list_model_get_filter(GtkFilterListModel* self);
+	public static extern Filter FilterListModelGetFilter(FilterListModel self);
 	[LinkName("gtk_filter_list_model_get_incremental")]
-	public static extern c_int filter_list_model_get_incremental(GtkFilterListModel* self);
+	public static extern c_int FilterListModelGetIncremental(FilterListModel self);
 	[LinkName("gtk_filter_list_model_get_model")]
-	public static extern GListModel* filter_list_model_get_model(GtkFilterListModel* self);
+	public static extern Gio.ListModel FilterListModelGetModel(FilterListModel self);
 	[LinkName("gtk_filter_list_model_get_pending")]
-	public static extern c_uint filter_list_model_get_pending(GtkFilterListModel* self);
+	public static extern c_uint FilterListModelGetPending(FilterListModel self);
 	[LinkName("gtk_filter_list_model_set_filter")]
-	public static extern void filter_list_model_set_filter(GtkFilterListModel* self, GtkFilter* filter);
+	public static extern void FilterListModelSetFilter(FilterListModel self, Filter filter);
 	[LinkName("gtk_filter_list_model_set_incremental")]
-	public static extern void filter_list_model_set_incremental(GtkFilterListModel* self, c_int incremental);
+	public static extern void FilterListModelSetIncremental(FilterListModel self, c_int incremental);
 	[LinkName("gtk_filter_list_model_set_model")]
-	public static extern void filter_list_model_set_model(GtkFilterListModel* self, GListModel* model);
+	public static extern void FilterListModelSetModel(FilterListModel self, Gio.ListModel model);
 	[CRepr]
-	public struct GtkFilterListModelClass
+	public struct FilterListModelClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
-	public enum GtkFilterMatch : c_int
+	public enum FilterMatch : c_int
 	{
 		GTK_FILTER_MATCH_SOME,
 		GTK_FILTER_MATCH_NONE,
 		GTK_FILTER_MATCH_ALL
 	}
 	[CRepr]
-	public struct GtkFixed;
+	public struct Fixed;
 	[LinkName("gtk_fixed_new")]
-	public static extern GtkWidget* fixed_new();
+	public static extern Widget FixedNew();
 	[LinkName("gtk_fixed_get_child_position")]
-	public static extern void fixed_get_child_position(GtkFixed* fixed_, GtkWidget* widget, double* x, double* y);
+	public static extern void FixedGetChildPosition(Fixed fixed_, Widget widget, double x, double y);
 	[LinkName("gtk_fixed_get_child_transform")]
-	public static extern GskTransform* fixed_get_child_transform(GtkFixed* fixed_, GtkWidget* widget);
+	public static extern Gsk.Transform FixedGetChildTransform(Fixed fixed_, Widget widget);
 	[LinkName("gtk_fixed_move")]
-	public static extern void fixed_move(GtkFixed* fixed_, GtkWidget* widget, double x, double y);
+	public static extern void FixedMove(Fixed fixed_, Widget widget, double x, double y);
 	[LinkName("gtk_fixed_put")]
-	public static extern void fixed_put(GtkFixed* fixed_, GtkWidget* widget, double x, double y);
+	public static extern void FixedPut(Fixed fixed_, Widget widget, double x, double y);
 	[LinkName("gtk_fixed_remove")]
-	public static extern void fixed_remove(GtkFixed* fixed_, GtkWidget* widget);
+	public static extern void FixedRemove(Fixed fixed_, Widget widget);
 	[LinkName("gtk_fixed_set_child_transform")]
-	public static extern void fixed_set_child_transform(GtkFixed* fixed_, GtkWidget* widget, GskTransform* transform);
+	public static extern void FixedSetChildTransform(Fixed fixed_, Widget widget, Gsk.Transform transform);
 	[CRepr]
-	public struct GtkFixedClass
+	public struct FixedClass
 	{
-		GtkWidgetClass parent_class;
+		WidgetClass parent_class;
 	}
 	[CRepr]
-	public struct GtkFixedLayout;
+	public struct FixedLayout;
 	[LinkName("gtk_fixed_layout_new")]
-	public static extern GtkLayoutManager* fixed_layout_new();
+	public static extern LayoutManager FixedLayoutNew();
 	[CRepr]
-	public struct GtkFixedLayoutChild;
+	public struct FixedLayoutChild;
 	[LinkName("gtk_fixed_layout_child_get_transform")]
-	public static extern GskTransform* fixed_layout_child_get_transform(GtkFixedLayoutChild* child);
+	public static extern Gsk.Transform FixedLayoutChildGetTransform(FixedLayoutChild child);
 	[LinkName("gtk_fixed_layout_child_set_transform")]
-	public static extern void fixed_layout_child_set_transform(GtkFixedLayoutChild* child, GskTransform* transform);
+	public static extern void FixedLayoutChildSetTransform(FixedLayoutChild child, Gsk.Transform transform);
 	[CRepr]
-	public struct GtkFixedLayoutChildClass
+	public struct FixedLayoutChildClass
 	{
-		GtkLayoutChildClass parent_class;
+		LayoutChildClass parent_class;
 	}
 	[CRepr]
-	public struct GtkFixedLayoutClass
+	public struct FixedLayoutClass
 	{
-		GtkLayoutManagerClass parent_class;
+		LayoutManagerClass parent_class;
 	}
 	[CRepr]
-	public struct GtkFlattenListModel;
+	public struct FlattenListModel;
 	[LinkName("gtk_flatten_list_model_new")]
-	public static extern GtkFlattenListModel* flatten_list_model_new(GListModel* model);
+	public static extern FlattenListModel FlattenListModelNew(Gio.ListModel model);
 	[LinkName("gtk_flatten_list_model_get_model")]
-	public static extern GListModel* flatten_list_model_get_model(GtkFlattenListModel* self);
+	public static extern Gio.ListModel FlattenListModelGetModel(FlattenListModel self);
 	[LinkName("gtk_flatten_list_model_get_model_for_item")]
-	public static extern GListModel* flatten_list_model_get_model_for_item(GtkFlattenListModel* self, c_uint position);
+	public static extern Gio.ListModel FlattenListModelGetModelForItem(FlattenListModel self, c_uint position);
 	[LinkName("gtk_flatten_list_model_set_model")]
-	public static extern void flatten_list_model_set_model(GtkFlattenListModel* self, GListModel* model);
+	public static extern void FlattenListModelSetModel(FlattenListModel self, Gio.ListModel model);
 	[CRepr]
-	public struct GtkFlattenListModelClass
+	public struct FlattenListModelClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GtkFlowBox;
+	public struct FlowBox;
 	[LinkName("gtk_flow_box_new")]
-	public static extern GtkWidget* flow_box_new();
+	public static extern Widget FlowBoxNew();
 	[LinkName("gtk_flow_box_append")]
-	public static extern void flow_box_append(GtkFlowBox* self, GtkWidget* child);
+	public static extern void FlowBoxAppend(FlowBox self, Widget child);
 	[LinkName("gtk_flow_box_bind_model")]
-	public static extern void flow_box_bind_model(GtkFlowBox* box_, GListModel* model, GtkFlowBoxCreateWidgetFunc create_widget_func, void* user_data, GDestroyNotify user_data_free_func);
+	public static extern void FlowBoxBindModel(FlowBox box_, Gio.ListModel model, FlowBoxCreateWidgetFunc create_widget_func, void* user_data, GLib.DestroyNotify user_data_free_func);
 	[LinkName("gtk_flow_box_get_activate_on_single_click")]
-	public static extern c_int flow_box_get_activate_on_single_click(GtkFlowBox* box_);
+	public static extern c_int FlowBoxGetActivateOnSingleClick(FlowBox box_);
 	[LinkName("gtk_flow_box_get_child_at_index")]
-	public static extern GtkFlowBoxChild* flow_box_get_child_at_index(GtkFlowBox* box_, c_int idx);
+	public static extern FlowBoxChild FlowBoxGetChildAtIndex(FlowBox box_, c_int idx);
 	[LinkName("gtk_flow_box_get_child_at_pos")]
-	public static extern GtkFlowBoxChild* flow_box_get_child_at_pos(GtkFlowBox* box_, c_int x, c_int y);
+	public static extern FlowBoxChild FlowBoxGetChildAtPos(FlowBox box_, c_int x, c_int y);
 	[LinkName("gtk_flow_box_get_column_spacing")]
-	public static extern c_uint flow_box_get_column_spacing(GtkFlowBox* box_);
+	public static extern c_uint FlowBoxGetColumnSpacing(FlowBox box_);
 	[LinkName("gtk_flow_box_get_homogeneous")]
-	public static extern c_int flow_box_get_homogeneous(GtkFlowBox* box_);
+	public static extern c_int FlowBoxGetHomogeneous(FlowBox box_);
 	[LinkName("gtk_flow_box_get_max_children_per_line")]
-	public static extern c_uint flow_box_get_max_children_per_line(GtkFlowBox* box_);
+	public static extern c_uint FlowBoxGetMaxChildrenPerLine(FlowBox box_);
 	[LinkName("gtk_flow_box_get_min_children_per_line")]
-	public static extern c_uint flow_box_get_min_children_per_line(GtkFlowBox* box_);
+	public static extern c_uint FlowBoxGetMinChildrenPerLine(FlowBox box_);
 	[LinkName("gtk_flow_box_get_row_spacing")]
-	public static extern c_uint flow_box_get_row_spacing(GtkFlowBox* box_);
+	public static extern c_uint FlowBoxGetRowSpacing(FlowBox box_);
 	[LinkName("gtk_flow_box_get_selected_children")]
-	public static extern GList* flow_box_get_selected_children(GtkFlowBox* box_);
+	public static extern GLib.List FlowBoxGetSelectedChildren(FlowBox box_);
 	[LinkName("gtk_flow_box_get_selection_mode")]
-	public static extern GtkSelectionMode flow_box_get_selection_mode(GtkFlowBox* box_);
+	public static extern SelectionMode FlowBoxGetSelectionMode(FlowBox box_);
 	[LinkName("gtk_flow_box_insert")]
-	public static extern void flow_box_insert(GtkFlowBox* box_, GtkWidget* widget, c_int position);
+	public static extern void FlowBoxInsert(FlowBox box_, Widget widget, c_int position);
 	[LinkName("gtk_flow_box_invalidate_filter")]
-	public static extern void flow_box_invalidate_filter(GtkFlowBox* box_);
+	public static extern void FlowBoxInvalidateFilter(FlowBox box_);
 	[LinkName("gtk_flow_box_invalidate_sort")]
-	public static extern void flow_box_invalidate_sort(GtkFlowBox* box_);
+	public static extern void FlowBoxInvalidateSort(FlowBox box_);
 	[LinkName("gtk_flow_box_prepend")]
-	public static extern void flow_box_prepend(GtkFlowBox* self, GtkWidget* child);
+	public static extern void FlowBoxPrepend(FlowBox self, Widget child);
 	[LinkName("gtk_flow_box_remove")]
-	public static extern void flow_box_remove(GtkFlowBox* box_, GtkWidget* widget);
+	public static extern void FlowBoxRemove(FlowBox box_, Widget widget);
 	[LinkName("gtk_flow_box_remove_all")]
-	public static extern void flow_box_remove_all(GtkFlowBox* box_);
+	public static extern void FlowBoxRemoveAll(FlowBox box_);
 	[LinkName("gtk_flow_box_select_all")]
-	public static extern void flow_box_select_all(GtkFlowBox* box_);
+	public static extern void FlowBoxSelectAll(FlowBox box_);
 	[LinkName("gtk_flow_box_select_child")]
-	public static extern void flow_box_select_child(GtkFlowBox* box_, GtkFlowBoxChild* child);
+	public static extern void FlowBoxSelectChild(FlowBox box_, FlowBoxChild child);
 	[LinkName("gtk_flow_box_selected_foreach")]
-	public static extern void flow_box_selected_foreach(GtkFlowBox* box_, GtkFlowBoxForeachFunc func, void* data);
+	public static extern void FlowBoxSelectedForeach(FlowBox box_, FlowBoxForeachFunc func, void* data);
 	[LinkName("gtk_flow_box_set_activate_on_single_click")]
-	public static extern void flow_box_set_activate_on_single_click(GtkFlowBox* box_, c_int single);
+	public static extern void FlowBoxSetActivateOnSingleClick(FlowBox box_, c_int single);
 	[LinkName("gtk_flow_box_set_column_spacing")]
-	public static extern void flow_box_set_column_spacing(GtkFlowBox* box_, c_uint spacing);
+	public static extern void FlowBoxSetColumnSpacing(FlowBox box_, c_uint spacing);
 	[LinkName("gtk_flow_box_set_filter_func")]
-	public static extern void flow_box_set_filter_func(GtkFlowBox* box_, GtkFlowBoxFilterFunc filter_func, void* user_data, GDestroyNotify destroy);
+	public static extern void FlowBoxSetFilterFunc(FlowBox box_, FlowBoxFilterFunc filter_func, void* user_data, GLib.DestroyNotify destroy);
 	[LinkName("gtk_flow_box_set_hadjustment")]
-	public static extern void flow_box_set_hadjustment(GtkFlowBox* box_, GtkAdjustment* adjustment);
+	public static extern void FlowBoxSetHadjustment(FlowBox box_, Adjustment adjustment);
 	[LinkName("gtk_flow_box_set_homogeneous")]
-	public static extern void flow_box_set_homogeneous(GtkFlowBox* box_, c_int homogeneous);
+	public static extern void FlowBoxSetHomogeneous(FlowBox box_, c_int homogeneous);
 	[LinkName("gtk_flow_box_set_max_children_per_line")]
-	public static extern void flow_box_set_max_children_per_line(GtkFlowBox* box_, c_uint n_children);
+	public static extern void FlowBoxSetMaxChildrenPerLine(FlowBox box_, c_uint n_children);
 	[LinkName("gtk_flow_box_set_min_children_per_line")]
-	public static extern void flow_box_set_min_children_per_line(GtkFlowBox* box_, c_uint n_children);
+	public static extern void FlowBoxSetMinChildrenPerLine(FlowBox box_, c_uint n_children);
 	[LinkName("gtk_flow_box_set_row_spacing")]
-	public static extern void flow_box_set_row_spacing(GtkFlowBox* box_, c_uint spacing);
+	public static extern void FlowBoxSetRowSpacing(FlowBox box_, c_uint spacing);
 	[LinkName("gtk_flow_box_set_selection_mode")]
-	public static extern void flow_box_set_selection_mode(GtkFlowBox* box_, GtkSelectionMode mode);
+	public static extern void FlowBoxSetSelectionMode(FlowBox box_, SelectionMode mode);
 	[LinkName("gtk_flow_box_set_sort_func")]
-	public static extern void flow_box_set_sort_func(GtkFlowBox* box_, GtkFlowBoxSortFunc sort_func, void* user_data, GDestroyNotify destroy);
+	public static extern void FlowBoxSetSortFunc(FlowBox box_, FlowBoxSortFunc sort_func, void* user_data, GLib.DestroyNotify destroy);
 	[LinkName("gtk_flow_box_set_vadjustment")]
-	public static extern void flow_box_set_vadjustment(GtkFlowBox* box_, GtkAdjustment* adjustment);
+	public static extern void FlowBoxSetVadjustment(FlowBox box_, Adjustment adjustment);
 	[LinkName("gtk_flow_box_unselect_all")]
-	public static extern void flow_box_unselect_all(GtkFlowBox* box_);
+	public static extern void FlowBoxUnselectAll(FlowBox box_);
 	[LinkName("gtk_flow_box_unselect_child")]
-	public static extern void flow_box_unselect_child(GtkFlowBox* box_, GtkFlowBoxChild* child);
+	public static extern void FlowBoxUnselectChild(FlowBox box_, FlowBoxChild child);
 	[CRepr]
-	public struct GtkFlowBoxChild;
+	public struct FlowBoxChild;
 	[LinkName("gtk_flow_box_child_new")]
-	public static extern GtkWidget* flow_box_child_new();
+	public static extern Widget FlowBoxChildNew();
 	[LinkName("gtk_flow_box_child_changed")]
-	public static extern void flow_box_child_changed(GtkFlowBoxChild* child);
+	public static extern void FlowBoxChildChanged(FlowBoxChild child);
 	[LinkName("gtk_flow_box_child_get_child")]
-	public static extern GtkWidget* flow_box_child_get_child(GtkFlowBoxChild* self);
+	public static extern Widget FlowBoxChildGetChild(FlowBoxChild self);
 	[LinkName("gtk_flow_box_child_get_index")]
-	public static extern c_int flow_box_child_get_index(GtkFlowBoxChild* child);
+	public static extern c_int FlowBoxChildGetIndex(FlowBoxChild child);
 	[LinkName("gtk_flow_box_child_is_selected")]
-	public static extern c_int flow_box_child_is_selected(GtkFlowBoxChild* child);
+	public static extern c_int FlowBoxChildIsSelected(FlowBoxChild child);
 	[LinkName("gtk_flow_box_child_set_child")]
-	public static extern void flow_box_child_set_child(GtkFlowBoxChild* self, GtkWidget* child);
+	public static extern void FlowBoxChildSetChild(FlowBoxChild self, Widget child);
 	[CRepr]
-	public struct GtkFlowBoxChildClass
+	public struct FlowBoxChildClass
 	{
-		GtkWidgetClass parent_class;
+		WidgetClass parent_class;
 	}
-	public function GtkWidget* GtkFlowBoxCreateWidgetFunc(void* item, void* user_data);
-	public function c_int GtkFlowBoxFilterFunc(GtkFlowBoxChild* child, void* user_data);
-	public function void GtkFlowBoxForeachFunc(GtkFlowBox* box_, GtkFlowBoxChild* child, void* user_data);
-	public function c_int GtkFlowBoxSortFunc(GtkFlowBoxChild* child1, GtkFlowBoxChild* child2, void* user_data);
+	public function Widget FlowBoxCreateWidgetFunc(GObject.Object item, void* user_data);
+	public function c_int FlowBoxFilterFunc(FlowBoxChild child, void* user_data);
+	public function void FlowBoxForeachFunc(FlowBox box_, FlowBoxChild child, void* user_data);
+	public function c_int FlowBoxSortFunc(FlowBoxChild child1, FlowBoxChild child2, void* user_data);
 	[CRepr]
-	public struct GtkFontButton;
+	public struct FontButton;
 	[LinkName("gtk_font_button_new")]
-	public static extern GtkWidget* font_button_new();
+	public static extern Widget FontButtonNew();
 	[LinkName("gtk_font_button_new_with_font")]
-	public static extern GtkWidget* font_button_new_with_font( c_char* fontname);
+	public static extern Widget FontButtonNewWithFont(char8* fontname);
 	[LinkName("gtk_font_button_get_modal")]
-	public static extern c_int font_button_get_modal(GtkFontButton* font_button);
+	public static extern c_int FontButtonGetModal(FontButton font_button);
 	[LinkName("gtk_font_button_get_title")]
-	public static extern  c_char* font_button_get_title(GtkFontButton* font_button);
+	public static extern char8* FontButtonGetTitle(FontButton font_button);
 	[LinkName("gtk_font_button_get_use_font")]
-	public static extern c_int font_button_get_use_font(GtkFontButton* font_button);
+	public static extern c_int FontButtonGetUseFont(FontButton font_button);
 	[LinkName("gtk_font_button_get_use_size")]
-	public static extern c_int font_button_get_use_size(GtkFontButton* font_button);
+	public static extern c_int FontButtonGetUseSize(FontButton font_button);
 	[LinkName("gtk_font_button_set_modal")]
-	public static extern void font_button_set_modal(GtkFontButton* font_button, c_int modal);
+	public static extern void FontButtonSetModal(FontButton font_button, c_int modal);
 	[LinkName("gtk_font_button_set_title")]
-	public static extern void font_button_set_title(GtkFontButton* font_button,  c_char* title);
+	public static extern void FontButtonSetTitle(FontButton font_button, char8* title);
 	[LinkName("gtk_font_button_set_use_font")]
-	public static extern void font_button_set_use_font(GtkFontButton* font_button, c_int use_font);
+	public static extern void FontButtonSetUseFont(FontButton font_button, c_int use_font);
 	[LinkName("gtk_font_button_set_use_size")]
-	public static extern void font_button_set_use_size(GtkFontButton* font_button, c_int use_size);
+	public static extern void FontButtonSetUseSize(FontButton font_button, c_int use_size);
 	[CRepr]
-	public struct GtkFontChooser
+	public struct FontChooser
 	{
-		public function void(GtkFontChooser* chooser,  c_char* fontname) font_activated;
+		public function void(FontChooser chooser, char8* fontname) font_activated;
 
-		public function PangoFontFace*(GtkFontChooser* fontchooser) get_font_face;
+		public function Pango.FontFace(FontChooser fontchooser) get_font_face;
 
-		public function PangoFontFamily*(GtkFontChooser* fontchooser) get_font_family;
+		public function Pango.FontFamily(FontChooser fontchooser) get_font_family;
 
-		public function PangoFontMap*(GtkFontChooser* fontchooser) get_font_map;
+		public function Pango.FontMap(FontChooser fontchooser) get_font_map;
 
-		public function c_int(GtkFontChooser* fontchooser) get_font_size;
+		public function c_int(FontChooser fontchooser) get_font_size;
 
-		public function void(GtkFontChooser* fontchooser, GtkFontFilterFunc filter, void* user_data, GDestroyNotify destroy) set_filter_func;
+		public function void(FontChooser fontchooser, FontFilterFunc filter, void* user_data, GLib.DestroyNotify destroy) set_filter_func;
 
-		public function void(GtkFontChooser* fontchooser, PangoFontMap* fontmap) set_font_map;
+		public function void(FontChooser fontchooser, Pango.FontMap fontmap) set_font_map;
 	}
 	[CRepr]
-	public struct GtkFontChooserDialog;
+	public struct FontChooserDialog;
 	[LinkName("gtk_font_chooser_dialog_new")]
-	public static extern GtkWidget* font_chooser_dialog_new( c_char* title, GtkWindow* parent);
+	public static extern Widget FontChooserDialogNew(char8* title, Window parent);
 	[CRepr]
-	public struct GtkFontChooserIface
+	public struct FontChooserIface
 	{
-		GTypeInterface base_iface;
+		GObject.TypeInterface base_iface;
 	}
 	[CRepr]
-	public struct GtkFontChooserLevel
+	public struct FontChooserLevel
 	{
 		public const int GTK_FONT_CHOOSER_LEVEL_FAMILY = 0;
 		public const int GTK_FONT_CHOOSER_LEVEL_STYLE = 1;
@@ -3229,93 +3229,93 @@ class Gtk
 		public const int GTK_FONT_CHOOSER_LEVEL_FEATURES = 8;
 	}
 	[CRepr]
-	public struct GtkFontChooserWidget;
+	public struct FontChooserWidget;
 	[LinkName("gtk_font_chooser_widget_new")]
-	public static extern GtkWidget* font_chooser_widget_new();
+	public static extern Widget FontChooserWidgetNew();
 	[CRepr]
-	public struct GtkFontDialog;
+	public struct FontDialog;
 	[LinkName("gtk_font_dialog_new")]
-	public static extern GtkFontDialog* font_dialog_new();
+	public static extern FontDialog FontDialogNew();
 	[LinkName("gtk_font_dialog_choose_face")]
-	public static extern void font_dialog_choose_face(GtkFontDialog* self, GtkWindow* parent, PangoFontFace* initial_value, GCancellable* cancellable, GAsyncReadyCallback callback, void* user_data);
+	public static extern void FontDialogChooseFace(FontDialog self, Window parent, Pango.FontFace initial_value, Gio.Cancellable cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gtk_font_dialog_choose_face_finish")]
-	public static extern PangoFontFace* font_dialog_choose_face_finish(GtkFontDialog* self, GAsyncResult* result);
+	public static extern Pango.FontFace FontDialogChooseFaceFinish(FontDialog self, Gio.AsyncResult result);
 	[LinkName("gtk_font_dialog_choose_family")]
-	public static extern void font_dialog_choose_family(GtkFontDialog* self, GtkWindow* parent, PangoFontFamily* initial_value, GCancellable* cancellable, GAsyncReadyCallback callback, void* user_data);
+	public static extern void FontDialogChooseFamily(FontDialog self, Window parent, Pango.FontFamily initial_value, Gio.Cancellable cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gtk_font_dialog_choose_family_finish")]
-	public static extern PangoFontFamily* font_dialog_choose_family_finish(GtkFontDialog* self, GAsyncResult* result);
+	public static extern Pango.FontFamily FontDialogChooseFamilyFinish(FontDialog self, Gio.AsyncResult result);
 	[LinkName("gtk_font_dialog_choose_font")]
-	public static extern void font_dialog_choose_font(GtkFontDialog* self, GtkWindow* parent, PangoFontDescription* initial_value, GCancellable* cancellable, GAsyncReadyCallback callback, void* user_data);
+	public static extern void FontDialogChooseFont(FontDialog self, Window parent, Pango.FontDescription initial_value, Gio.Cancellable cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gtk_font_dialog_choose_font_and_features")]
-	public static extern void font_dialog_choose_font_and_features(GtkFontDialog* self, GtkWindow* parent, PangoFontDescription* initial_value, GCancellable* cancellable, GAsyncReadyCallback callback, void* user_data);
+	public static extern void FontDialogChooseFontAndFeatures(FontDialog self, Window parent, Pango.FontDescription initial_value, Gio.Cancellable cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gtk_font_dialog_choose_font_and_features_finish")]
-	public static extern c_int font_dialog_choose_font_and_features_finish(GtkFontDialog* self, GAsyncResult* result, PangoFontDescription** font_desc, c_char** font_features, PangoLanguage** language);
+	public static extern c_int FontDialogChooseFontAndFeaturesFinish(FontDialog self, Gio.AsyncResult result, Pango.FontDescription font_desc, char8* font_features, Pango.Language language);
 	[LinkName("gtk_font_dialog_choose_font_finish")]
-	public static extern PangoFontDescription* font_dialog_choose_font_finish(GtkFontDialog* self, GAsyncResult* result);
+	public static extern Pango.FontDescription FontDialogChooseFontFinish(FontDialog self, Gio.AsyncResult result);
 	[LinkName("gtk_font_dialog_get_filter")]
-	public static extern GtkFilter* font_dialog_get_filter(GtkFontDialog* self);
+	public static extern Filter FontDialogGetFilter(FontDialog self);
 	[LinkName("gtk_font_dialog_get_font_map")]
-	public static extern PangoFontMap* font_dialog_get_font_map(GtkFontDialog* self);
+	public static extern Pango.FontMap FontDialogGetFontMap(FontDialog self);
 	[LinkName("gtk_font_dialog_get_language")]
-	public static extern PangoLanguage* font_dialog_get_language(GtkFontDialog* self);
+	public static extern Pango.Language FontDialogGetLanguage(FontDialog self);
 	[LinkName("gtk_font_dialog_get_modal")]
-	public static extern c_int font_dialog_get_modal(GtkFontDialog* self);
+	public static extern c_int FontDialogGetModal(FontDialog self);
 	[LinkName("gtk_font_dialog_get_title")]
-	public static extern  c_char* font_dialog_get_title(GtkFontDialog* self);
+	public static extern char8* FontDialogGetTitle(FontDialog self);
 	[LinkName("gtk_font_dialog_set_filter")]
-	public static extern void font_dialog_set_filter(GtkFontDialog* self, GtkFilter* filter);
+	public static extern void FontDialogSetFilter(FontDialog self, Filter filter);
 	[LinkName("gtk_font_dialog_set_font_map")]
-	public static extern void font_dialog_set_font_map(GtkFontDialog* self, PangoFontMap* fontmap);
+	public static extern void FontDialogSetFontMap(FontDialog self, Pango.FontMap fontmap);
 	[LinkName("gtk_font_dialog_set_language")]
-	public static extern void font_dialog_set_language(GtkFontDialog* self, PangoLanguage* language);
+	public static extern void FontDialogSetLanguage(FontDialog self, Pango.Language language);
 	[LinkName("gtk_font_dialog_set_modal")]
-	public static extern void font_dialog_set_modal(GtkFontDialog* self, c_int modal);
+	public static extern void FontDialogSetModal(FontDialog self, c_int modal);
 	[LinkName("gtk_font_dialog_set_title")]
-	public static extern void font_dialog_set_title(GtkFontDialog* self,  c_char* title);
+	public static extern void FontDialogSetTitle(FontDialog self, char8* title);
 	[CRepr]
-	public struct GtkFontDialogButton;
+	public struct FontDialogButton;
 	[LinkName("gtk_font_dialog_button_new")]
-	public static extern GtkWidget* font_dialog_button_new(GtkFontDialog* dialog);
+	public static extern Widget FontDialogButtonNew(FontDialog dialog);
 	[LinkName("gtk_font_dialog_button_get_dialog")]
-	public static extern GtkFontDialog* font_dialog_button_get_dialog(GtkFontDialogButton* self);
+	public static extern FontDialog FontDialogButtonGetDialog(FontDialogButton self);
 	[LinkName("gtk_font_dialog_button_get_font_desc")]
-	public static extern PangoFontDescription* font_dialog_button_get_font_desc(GtkFontDialogButton* self);
+	public static extern Pango.FontDescription FontDialogButtonGetFontDesc(FontDialogButton self);
 	[LinkName("gtk_font_dialog_button_get_font_features")]
-	public static extern  c_char* font_dialog_button_get_font_features(GtkFontDialogButton* self);
+	public static extern char8* FontDialogButtonGetFontFeatures(FontDialogButton self);
 	[LinkName("gtk_font_dialog_button_get_language")]
-	public static extern PangoLanguage* font_dialog_button_get_language(GtkFontDialogButton* self);
+	public static extern Pango.Language FontDialogButtonGetLanguage(FontDialogButton self);
 	[LinkName("gtk_font_dialog_button_get_level")]
-	public static extern GtkFontLevel font_dialog_button_get_level(GtkFontDialogButton* self);
+	public static extern FontLevel FontDialogButtonGetLevel(FontDialogButton self);
 	[LinkName("gtk_font_dialog_button_get_use_font")]
-	public static extern c_int font_dialog_button_get_use_font(GtkFontDialogButton* self);
+	public static extern c_int FontDialogButtonGetUseFont(FontDialogButton self);
 	[LinkName("gtk_font_dialog_button_get_use_size")]
-	public static extern c_int font_dialog_button_get_use_size(GtkFontDialogButton* self);
+	public static extern c_int FontDialogButtonGetUseSize(FontDialogButton self);
 	[LinkName("gtk_font_dialog_button_set_dialog")]
-	public static extern void font_dialog_button_set_dialog(GtkFontDialogButton* self, GtkFontDialog* dialog);
+	public static extern void FontDialogButtonSetDialog(FontDialogButton self, FontDialog dialog);
 	[LinkName("gtk_font_dialog_button_set_font_desc")]
-	public static extern void font_dialog_button_set_font_desc(GtkFontDialogButton* self,  PangoFontDescription* font_desc);
+	public static extern void FontDialogButtonSetFontDesc(FontDialogButton self, Pango.FontDescription font_desc);
 	[LinkName("gtk_font_dialog_button_set_font_features")]
-	public static extern void font_dialog_button_set_font_features(GtkFontDialogButton* self,  c_char* font_features);
+	public static extern void FontDialogButtonSetFontFeatures(FontDialogButton self, char8* font_features);
 	[LinkName("gtk_font_dialog_button_set_language")]
-	public static extern void font_dialog_button_set_language(GtkFontDialogButton* self, PangoLanguage* language);
+	public static extern void FontDialogButtonSetLanguage(FontDialogButton self, Pango.Language language);
 	[LinkName("gtk_font_dialog_button_set_level")]
-	public static extern void font_dialog_button_set_level(GtkFontDialogButton* self, GtkFontLevel level);
+	public static extern void FontDialogButtonSetLevel(FontDialogButton self, FontLevel level);
 	[LinkName("gtk_font_dialog_button_set_use_font")]
-	public static extern void font_dialog_button_set_use_font(GtkFontDialogButton* self, c_int use_font);
+	public static extern void FontDialogButtonSetUseFont(FontDialogButton self, c_int use_font);
 	[LinkName("gtk_font_dialog_button_set_use_size")]
-	public static extern void font_dialog_button_set_use_size(GtkFontDialogButton* self, c_int use_size);
+	public static extern void FontDialogButtonSetUseSize(FontDialogButton self, c_int use_size);
 	[CRepr]
-	public struct GtkFontDialogButtonClass
+	public struct FontDialogButtonClass
 	{
-		GtkWidgetClass parent_class;
+		WidgetClass parent_class;
 	}
 	[CRepr]
-	public struct GtkFontDialogClass
+	public struct FontDialogClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
-	public function c_int GtkFontFilterFunc( PangoFontFamily* family,  PangoFontFace* face, void* data);
-	public enum GtkFontLevel : c_int
+	public function c_int FontFilterFunc(Pango.FontFamily family, Pango.FontFace face, void* data);
+	public enum FontLevel : c_int
 	{
 		GTK_FONT_LEVEL_FAMILY,
 		GTK_FONT_LEVEL_FACE,
@@ -3323,660 +3323,660 @@ class Gtk
 		GTK_FONT_LEVEL_FEATURES
 	}
 	[CRepr]
-	public struct GtkFrame;
+	public struct Frame;
 	[LinkName("gtk_frame_new")]
-	public static extern GtkWidget* frame_new( c_char* label);
+	public static extern Widget FrameNew(char8* label);
 	[LinkName("gtk_frame_get_child")]
-	public static extern GtkWidget* frame_get_child(GtkFrame* frame);
+	public static extern Widget FrameGetChild(Frame frame);
 	[LinkName("gtk_frame_get_label")]
-	public static extern  c_char* frame_get_label(GtkFrame* frame);
+	public static extern char8* FrameGetLabel(Frame frame);
 	[LinkName("gtk_frame_get_label_align")]
-	public static extern float frame_get_label_align(GtkFrame* frame);
+	public static extern float FrameGetLabelAlign(Frame frame);
 	[LinkName("gtk_frame_get_label_widget")]
-	public static extern GtkWidget* frame_get_label_widget(GtkFrame* frame);
+	public static extern Widget FrameGetLabelWidget(Frame frame);
 	[LinkName("gtk_frame_set_child")]
-	public static extern void frame_set_child(GtkFrame* frame, GtkWidget* child);
+	public static extern void FrameSetChild(Frame frame, Widget child);
 	[LinkName("gtk_frame_set_label")]
-	public static extern void frame_set_label(GtkFrame* frame,  c_char* label);
+	public static extern void FrameSetLabel(Frame frame, char8* label);
 	[LinkName("gtk_frame_set_label_align")]
-	public static extern void frame_set_label_align(GtkFrame* frame, float xalign);
+	public static extern void FrameSetLabelAlign(Frame frame, float xalign);
 	[LinkName("gtk_frame_set_label_widget")]
-	public static extern void frame_set_label_widget(GtkFrame* frame, GtkWidget* label_widget);
+	public static extern void FrameSetLabelWidget(Frame frame, Widget label_widget);
 	[CRepr]
-	public struct GtkFrameClass
+	public struct FrameClass
 	{
-		GtkWidgetClass parent_class;
+		WidgetClass parent_class;
 	}
 	[CRepr]
-	public struct GtkGLArea;
+	public struct GLArea;
 	[LinkName("gtk_gl_area_new")]
-	public static extern GtkWidget* gl_area_new();
+	public static extern Widget GlAreaNew();
 	[LinkName("gtk_gl_area_attach_buffers")]
-	public static extern void gl_area_attach_buffers(GtkGLArea* area);
+	public static extern void GlAreaAttachBuffers(GLArea area);
 	[LinkName("gtk_gl_area_get_allowed_apis")]
-	public static extern GdkGLAPI gl_area_get_allowed_apis(GtkGLArea* area);
+	public static extern Gdk.GLAPI GlAreaGetAllowedApis(GLArea area);
 	[LinkName("gtk_gl_area_get_api")]
-	public static extern GdkGLAPI gl_area_get_api(GtkGLArea* area);
+	public static extern Gdk.GLAPI GlAreaGetApi(GLArea area);
 	[LinkName("gtk_gl_area_get_auto_render")]
-	public static extern c_int gl_area_get_auto_render(GtkGLArea* area);
+	public static extern c_int GlAreaGetAutoRender(GLArea area);
 	[LinkName("gtk_gl_area_get_context")]
-	public static extern GdkGLContext* gl_area_get_context(GtkGLArea* area);
+	public static extern Gdk.GLContext GlAreaGetContext(GLArea area);
 	[LinkName("gtk_gl_area_get_error")]
-	public static extern GError* gl_area_get_error(GtkGLArea* area);
+	public static extern GLib.Error GlAreaGetError(GLArea area);
 	[LinkName("gtk_gl_area_get_has_depth_buffer")]
-	public static extern c_int gl_area_get_has_depth_buffer(GtkGLArea* area);
+	public static extern c_int GlAreaGetHasDepthBuffer(GLArea area);
 	[LinkName("gtk_gl_area_get_has_stencil_buffer")]
-	public static extern c_int gl_area_get_has_stencil_buffer(GtkGLArea* area);
+	public static extern c_int GlAreaGetHasStencilBuffer(GLArea area);
 	[LinkName("gtk_gl_area_get_required_version")]
-	public static extern void gl_area_get_required_version(GtkGLArea* area, c_int* major, c_int* minor);
+	public static extern void GlAreaGetRequiredVersion(GLArea area, c_int major, c_int minor);
 	[LinkName("gtk_gl_area_get_use_es")]
-	public static extern c_int gl_area_get_use_es(GtkGLArea* area);
+	public static extern c_int GlAreaGetUseEs(GLArea area);
 	[LinkName("gtk_gl_area_make_current")]
-	public static extern void gl_area_make_current(GtkGLArea* area);
+	public static extern void GlAreaMakeCurrent(GLArea area);
 	[LinkName("gtk_gl_area_queue_render")]
-	public static extern void gl_area_queue_render(GtkGLArea* area);
+	public static extern void GlAreaQueueRender(GLArea area);
 	[LinkName("gtk_gl_area_set_allowed_apis")]
-	public static extern void gl_area_set_allowed_apis(GtkGLArea* area, GdkGLAPI apis);
+	public static extern void GlAreaSetAllowedApis(GLArea area, Gdk.GLAPI apis);
 	[LinkName("gtk_gl_area_set_auto_render")]
-	public static extern void gl_area_set_auto_render(GtkGLArea* area, c_int auto_render);
+	public static extern void GlAreaSetAutoRender(GLArea area, c_int auto_render);
 	[LinkName("gtk_gl_area_set_error")]
-	public static extern void gl_area_set_error(GtkGLArea* area,  GError* error);
+	public static extern void GlAreaSetError(GLArea area, GLib.Error error);
 	[LinkName("gtk_gl_area_set_has_depth_buffer")]
-	public static extern void gl_area_set_has_depth_buffer(GtkGLArea* area, c_int has_depth_buffer);
+	public static extern void GlAreaSetHasDepthBuffer(GLArea area, c_int has_depth_buffer);
 	[LinkName("gtk_gl_area_set_has_stencil_buffer")]
-	public static extern void gl_area_set_has_stencil_buffer(GtkGLArea* area, c_int has_stencil_buffer);
+	public static extern void GlAreaSetHasStencilBuffer(GLArea area, c_int has_stencil_buffer);
 	[LinkName("gtk_gl_area_set_required_version")]
-	public static extern void gl_area_set_required_version(GtkGLArea* area, c_int major, c_int minor);
+	public static extern void GlAreaSetRequiredVersion(GLArea area, c_int major, c_int minor);
 	[LinkName("gtk_gl_area_set_use_es")]
-	public static extern void gl_area_set_use_es(GtkGLArea* area, c_int use_es);
+	public static extern void GlAreaSetUseEs(GLArea area, c_int use_es);
 	[CRepr]
-	public struct GtkGLAreaClass
+	public struct GLAreaClass
 	{
-		GtkWidgetClass parent_class;
+		WidgetClass parent_class;
 	}
 	[CRepr]
-	public struct GtkGesture;
+	public struct Gesture;
 	[LinkName("gtk_gesture_get_bounding_box")]
-	public static extern c_int gesture_get_bounding_box(GtkGesture* gesture, GdkRectangle* rect);
+	public static extern c_int GestureGetBoundingBox(Gesture gesture, Gdk.Rectangle rect);
 	[LinkName("gtk_gesture_get_bounding_box_center")]
-	public static extern c_int gesture_get_bounding_box_center(GtkGesture* gesture, double* x, double* y);
+	public static extern c_int GestureGetBoundingBoxCenter(Gesture gesture, double x, double y);
 	[LinkName("gtk_gesture_get_device")]
-	public static extern GdkDevice* gesture_get_device(GtkGesture* gesture);
+	public static extern Gdk.Device GestureGetDevice(Gesture gesture);
 	[LinkName("gtk_gesture_get_group")]
-	public static extern GList* gesture_get_group(GtkGesture* gesture);
+	public static extern GLib.List GestureGetGroup(Gesture gesture);
 	[LinkName("gtk_gesture_get_last_event")]
-	public static extern GdkEvent* gesture_get_last_event(GtkGesture* gesture, GdkEventSequence* sequence);
+	public static extern Gdk.Event GestureGetLastEvent(Gesture gesture, Gdk.EventSequence sequence);
 	[LinkName("gtk_gesture_get_last_updated_sequence")]
-	public static extern GdkEventSequence* gesture_get_last_updated_sequence(GtkGesture* gesture);
+	public static extern Gdk.EventSequence GestureGetLastUpdatedSequence(Gesture gesture);
 	[LinkName("gtk_gesture_get_point")]
-	public static extern c_int gesture_get_point(GtkGesture* gesture, GdkEventSequence* sequence, double* x, double* y);
+	public static extern c_int GestureGetPoint(Gesture gesture, Gdk.EventSequence sequence, double x, double y);
 	[LinkName("gtk_gesture_get_sequence_state")]
-	public static extern GtkEventSequenceState gesture_get_sequence_state(GtkGesture* gesture, GdkEventSequence* sequence);
+	public static extern EventSequenceState GestureGetSequenceState(Gesture gesture, Gdk.EventSequence sequence);
 	[LinkName("gtk_gesture_get_sequences")]
-	public static extern GList* gesture_get_sequences(GtkGesture* gesture);
+	public static extern GLib.List GestureGetSequences(Gesture gesture);
 	[LinkName("gtk_gesture_group")]
-	public static extern void gesture_group(GtkGesture* group_gesture, GtkGesture* gesture);
+	public static extern void GestureGroup(Gesture group_gesture, Gesture gesture);
 	[LinkName("gtk_gesture_handles_sequence")]
-	public static extern c_int gesture_handles_sequence(GtkGesture* gesture, GdkEventSequence* sequence);
+	public static extern c_int GestureHandlesSequence(Gesture gesture, Gdk.EventSequence sequence);
 	[LinkName("gtk_gesture_is_active")]
-	public static extern c_int gesture_is_active(GtkGesture* gesture);
+	public static extern c_int GestureIsActive(Gesture gesture);
 	[LinkName("gtk_gesture_is_grouped_with")]
-	public static extern c_int gesture_is_grouped_with(GtkGesture* gesture, GtkGesture* other);
+	public static extern c_int GestureIsGroupedWith(Gesture gesture, Gesture other);
 	[LinkName("gtk_gesture_is_recognized")]
-	public static extern c_int gesture_is_recognized(GtkGesture* gesture);
+	public static extern c_int GestureIsRecognized(Gesture gesture);
 	[LinkName("gtk_gesture_set_sequence_state")]
-	public static extern c_int gesture_set_sequence_state(GtkGesture* gesture, GdkEventSequence* sequence, GtkEventSequenceState state);
+	public static extern c_int GestureSetSequenceState(Gesture gesture, Gdk.EventSequence sequence, EventSequenceState state);
 	[LinkName("gtk_gesture_set_state")]
-	public static extern c_int gesture_set_state(GtkGesture* gesture, GtkEventSequenceState state);
+	public static extern c_int GestureSetState(Gesture gesture, EventSequenceState state);
 	[LinkName("gtk_gesture_ungroup")]
-	public static extern void gesture_ungroup(GtkGesture* gesture);
+	public static extern void GestureUngroup(Gesture gesture);
 	[CRepr]
-	public struct GtkGestureClass
+	public struct GestureClass
 	{
 	}
 	[CRepr]
-	public struct GtkGestureClick;
+	public struct GestureClick;
 	[LinkName("gtk_gesture_click_new")]
-	public static extern GtkGesture* gesture_click_new();
+	public static extern Gesture GestureClickNew();
 	[CRepr]
-	public struct GtkGestureClickClass
+	public struct GestureClickClass
 	{
 	}
 	[CRepr]
-	public struct GtkGestureDrag;
+	public struct GestureDrag;
 	[LinkName("gtk_gesture_drag_new")]
-	public static extern GtkGesture* gesture_drag_new();
+	public static extern Gesture GestureDragNew();
 	[LinkName("gtk_gesture_drag_get_offset")]
-	public static extern c_int gesture_drag_get_offset(GtkGestureDrag* gesture, double* x, double* y);
+	public static extern c_int GestureDragGetOffset(GestureDrag gesture, double x, double y);
 	[LinkName("gtk_gesture_drag_get_start_point")]
-	public static extern c_int gesture_drag_get_start_point(GtkGestureDrag* gesture, double* x, double* y);
+	public static extern c_int GestureDragGetStartPoint(GestureDrag gesture, double x, double y);
 	[CRepr]
-	public struct GtkGestureDragClass
+	public struct GestureDragClass
 	{
 	}
 	[CRepr]
-	public struct GtkGestureLongPress;
+	public struct GestureLongPress;
 	[LinkName("gtk_gesture_long_press_new")]
-	public static extern GtkGesture* gesture_long_press_new();
+	public static extern Gesture GestureLongPressNew();
 	[LinkName("gtk_gesture_long_press_get_delay_factor")]
-	public static extern double gesture_long_press_get_delay_factor(GtkGestureLongPress* gesture);
+	public static extern double GestureLongPressGetDelayFactor(GestureLongPress gesture);
 	[LinkName("gtk_gesture_long_press_set_delay_factor")]
-	public static extern void gesture_long_press_set_delay_factor(GtkGestureLongPress* gesture, double delay_factor);
+	public static extern void GestureLongPressSetDelayFactor(GestureLongPress gesture, double delay_factor);
 	[CRepr]
-	public struct GtkGestureLongPressClass
+	public struct GestureLongPressClass
 	{
 	}
 	[CRepr]
-	public struct GtkGesturePan;
+	public struct GesturePan;
 	[LinkName("gtk_gesture_pan_new")]
-	public static extern GtkGesture* gesture_pan_new(GtkOrientation orientation);
+	public static extern Gesture GesturePanNew(Orientation orientation);
 	[LinkName("gtk_gesture_pan_get_orientation")]
-	public static extern GtkOrientation gesture_pan_get_orientation(GtkGesturePan* gesture);
+	public static extern Orientation GesturePanGetOrientation(GesturePan gesture);
 	[LinkName("gtk_gesture_pan_set_orientation")]
-	public static extern void gesture_pan_set_orientation(GtkGesturePan* gesture, GtkOrientation orientation);
+	public static extern void GesturePanSetOrientation(GesturePan gesture, Orientation orientation);
 	[CRepr]
-	public struct GtkGesturePanClass
+	public struct GesturePanClass
 	{
 	}
 	[CRepr]
-	public struct GtkGestureRotate;
+	public struct GestureRotate;
 	[LinkName("gtk_gesture_rotate_new")]
-	public static extern GtkGesture* gesture_rotate_new();
+	public static extern Gesture GestureRotateNew();
 	[LinkName("gtk_gesture_rotate_get_angle_delta")]
-	public static extern double gesture_rotate_get_angle_delta(GtkGestureRotate* gesture);
+	public static extern double GestureRotateGetAngleDelta(GestureRotate gesture);
 	[CRepr]
-	public struct GtkGestureRotateClass
+	public struct GestureRotateClass
 	{
 	}
 	[CRepr]
-	public struct GtkGestureSingle;
+	public struct GestureSingle;
 	[LinkName("gtk_gesture_single_get_button")]
-	public static extern c_uint gesture_single_get_button(GtkGestureSingle* gesture);
+	public static extern c_uint GestureSingleGetButton(GestureSingle gesture);
 	[LinkName("gtk_gesture_single_get_current_button")]
-	public static extern c_uint gesture_single_get_current_button(GtkGestureSingle* gesture);
+	public static extern c_uint GestureSingleGetCurrentButton(GestureSingle gesture);
 	[LinkName("gtk_gesture_single_get_current_sequence")]
-	public static extern GdkEventSequence* gesture_single_get_current_sequence(GtkGestureSingle* gesture);
+	public static extern Gdk.EventSequence GestureSingleGetCurrentSequence(GestureSingle gesture);
 	[LinkName("gtk_gesture_single_get_exclusive")]
-	public static extern c_int gesture_single_get_exclusive(GtkGestureSingle* gesture);
+	public static extern c_int GestureSingleGetExclusive(GestureSingle gesture);
 	[LinkName("gtk_gesture_single_get_touch_only")]
-	public static extern c_int gesture_single_get_touch_only(GtkGestureSingle* gesture);
+	public static extern c_int GestureSingleGetTouchOnly(GestureSingle gesture);
 	[LinkName("gtk_gesture_single_set_button")]
-	public static extern void gesture_single_set_button(GtkGestureSingle* gesture, c_uint button);
+	public static extern void GestureSingleSetButton(GestureSingle gesture, c_uint button);
 	[LinkName("gtk_gesture_single_set_exclusive")]
-	public static extern void gesture_single_set_exclusive(GtkGestureSingle* gesture, c_int exclusive);
+	public static extern void GestureSingleSetExclusive(GestureSingle gesture, c_int exclusive);
 	[LinkName("gtk_gesture_single_set_touch_only")]
-	public static extern void gesture_single_set_touch_only(GtkGestureSingle* gesture, c_int touch_only);
+	public static extern void GestureSingleSetTouchOnly(GestureSingle gesture, c_int touch_only);
 	[CRepr]
-	public struct GtkGestureSingleClass
+	public struct GestureSingleClass
 	{
 	}
 	[CRepr]
-	public struct GtkGestureStylus;
+	public struct GestureStylus;
 	[LinkName("gtk_gesture_stylus_new")]
-	public static extern GtkGesture* gesture_stylus_new();
+	public static extern Gesture GestureStylusNew();
 	[LinkName("gtk_gesture_stylus_get_axes")]
-	public static extern c_int gesture_stylus_get_axes(GtkGestureStylus* gesture);
+	public static extern c_int GestureStylusGetAxes(GestureStylus gesture);
 	[LinkName("gtk_gesture_stylus_get_axis")]
-	public static extern c_int gesture_stylus_get_axis(GtkGestureStylus* gesture, GdkAxisUse axis, double* value);
+	public static extern c_int GestureStylusGetAxis(GestureStylus gesture, Gdk.AxisUse axis, double value);
 	[LinkName("gtk_gesture_stylus_get_backlog")]
-	public static extern c_int gesture_stylus_get_backlog(GtkGestureStylus* gesture, c_uint* n_elems);
+	public static extern c_int GestureStylusGetBacklog(GestureStylus gesture, c_uint n_elems);
 	[LinkName("gtk_gesture_stylus_get_device_tool")]
-	public static extern GdkDeviceTool* gesture_stylus_get_device_tool(GtkGestureStylus* gesture);
+	public static extern Gdk.DeviceTool GestureStylusGetDeviceTool(GestureStylus gesture);
 	[LinkName("gtk_gesture_stylus_get_stylus_only")]
-	public static extern c_int gesture_stylus_get_stylus_only(GtkGestureStylus* gesture);
+	public static extern c_int GestureStylusGetStylusOnly(GestureStylus gesture);
 	[LinkName("gtk_gesture_stylus_set_stylus_only")]
-	public static extern void gesture_stylus_set_stylus_only(GtkGestureStylus* gesture, c_int stylus_only);
+	public static extern void GestureStylusSetStylusOnly(GestureStylus gesture, c_int stylus_only);
 	[CRepr]
-	public struct GtkGestureStylusClass
+	public struct GestureStylusClass
 	{
 	}
 	[CRepr]
-	public struct GtkGestureSwipe;
+	public struct GestureSwipe;
 	[LinkName("gtk_gesture_swipe_new")]
-	public static extern GtkGesture* gesture_swipe_new();
+	public static extern Gesture GestureSwipeNew();
 	[LinkName("gtk_gesture_swipe_get_velocity")]
-	public static extern c_int gesture_swipe_get_velocity(GtkGestureSwipe* gesture, double* velocity_x, double* velocity_y);
+	public static extern c_int GestureSwipeGetVelocity(GestureSwipe gesture, double velocity_x, double velocity_y);
 	[CRepr]
-	public struct GtkGestureSwipeClass
+	public struct GestureSwipeClass
 	{
 	}
 	[CRepr]
-	public struct GtkGestureZoom;
+	public struct GestureZoom;
 	[LinkName("gtk_gesture_zoom_new")]
-	public static extern GtkGesture* gesture_zoom_new();
+	public static extern Gesture GestureZoomNew();
 	[LinkName("gtk_gesture_zoom_get_scale_delta")]
-	public static extern double gesture_zoom_get_scale_delta(GtkGestureZoom* gesture);
+	public static extern double GestureZoomGetScaleDelta(GestureZoom gesture);
 	[CRepr]
-	public struct GtkGestureZoomClass
+	public struct GestureZoomClass
 	{
 	}
 	[CRepr]
-	public struct GtkGrid;
+	public struct Grid;
 	[LinkName("gtk_grid_new")]
-	public static extern GtkWidget* grid_new();
+	public static extern Widget GridNew();
 	[LinkName("gtk_grid_attach")]
-	public static extern void grid_attach(GtkGrid* grid, GtkWidget* child, c_int column, c_int row, c_int width, c_int height);
+	public static extern void GridAttach(Grid grid, Widget child, c_int column, c_int row, c_int width, c_int height);
 	[LinkName("gtk_grid_attach_next_to")]
-	public static extern void grid_attach_next_to(GtkGrid* grid, GtkWidget* child, GtkWidget* sibling, GtkPositionType side, c_int width, c_int height);
+	public static extern void GridAttachNextTo(Grid grid, Widget child, Widget sibling, PositionType side, c_int width, c_int height);
 	[LinkName("gtk_grid_get_baseline_row")]
-	public static extern c_int grid_get_baseline_row(GtkGrid* grid);
+	public static extern c_int GridGetBaselineRow(Grid grid);
 	[LinkName("gtk_grid_get_child_at")]
-	public static extern GtkWidget* grid_get_child_at(GtkGrid* grid, c_int column, c_int row);
+	public static extern Widget GridGetChildAt(Grid grid, c_int column, c_int row);
 	[LinkName("gtk_grid_get_column_homogeneous")]
-	public static extern c_int grid_get_column_homogeneous(GtkGrid* grid);
+	public static extern c_int GridGetColumnHomogeneous(Grid grid);
 	[LinkName("gtk_grid_get_column_spacing")]
-	public static extern c_uint grid_get_column_spacing(GtkGrid* grid);
+	public static extern c_uint GridGetColumnSpacing(Grid grid);
 	[LinkName("gtk_grid_get_row_baseline_position")]
-	public static extern GtkBaselinePosition grid_get_row_baseline_position(GtkGrid* grid, c_int row);
+	public static extern BaselinePosition GridGetRowBaselinePosition(Grid grid, c_int row);
 	[LinkName("gtk_grid_get_row_homogeneous")]
-	public static extern c_int grid_get_row_homogeneous(GtkGrid* grid);
+	public static extern c_int GridGetRowHomogeneous(Grid grid);
 	[LinkName("gtk_grid_get_row_spacing")]
-	public static extern c_uint grid_get_row_spacing(GtkGrid* grid);
+	public static extern c_uint GridGetRowSpacing(Grid grid);
 	[LinkName("gtk_grid_insert_column")]
-	public static extern void grid_insert_column(GtkGrid* grid, c_int position);
+	public static extern void GridInsertColumn(Grid grid, c_int position);
 	[LinkName("gtk_grid_insert_next_to")]
-	public static extern void grid_insert_next_to(GtkGrid* grid, GtkWidget* sibling, GtkPositionType side);
+	public static extern void GridInsertNextTo(Grid grid, Widget sibling, PositionType side);
 	[LinkName("gtk_grid_insert_row")]
-	public static extern void grid_insert_row(GtkGrid* grid, c_int position);
+	public static extern void GridInsertRow(Grid grid, c_int position);
 	[LinkName("gtk_grid_query_child")]
-	public static extern void grid_query_child(GtkGrid* grid, GtkWidget* child, c_int* column, c_int* row, c_int* width, c_int* height);
+	public static extern void GridQueryChild(Grid grid, Widget child, c_int column, c_int row, c_int width, c_int height);
 	[LinkName("gtk_grid_remove")]
-	public static extern void grid_remove(GtkGrid* grid, GtkWidget* child);
+	public static extern void GridRemove(Grid grid, Widget child);
 	[LinkName("gtk_grid_remove_column")]
-	public static extern void grid_remove_column(GtkGrid* grid, c_int position);
+	public static extern void GridRemoveColumn(Grid grid, c_int position);
 	[LinkName("gtk_grid_remove_row")]
-	public static extern void grid_remove_row(GtkGrid* grid, c_int position);
+	public static extern void GridRemoveRow(Grid grid, c_int position);
 	[LinkName("gtk_grid_set_baseline_row")]
-	public static extern void grid_set_baseline_row(GtkGrid* grid, c_int row);
+	public static extern void GridSetBaselineRow(Grid grid, c_int row);
 	[LinkName("gtk_grid_set_column_homogeneous")]
-	public static extern void grid_set_column_homogeneous(GtkGrid* grid, c_int homogeneous);
+	public static extern void GridSetColumnHomogeneous(Grid grid, c_int homogeneous);
 	[LinkName("gtk_grid_set_column_spacing")]
-	public static extern void grid_set_column_spacing(GtkGrid* grid, c_uint spacing);
+	public static extern void GridSetColumnSpacing(Grid grid, c_uint spacing);
 	[LinkName("gtk_grid_set_row_baseline_position")]
-	public static extern void grid_set_row_baseline_position(GtkGrid* grid, c_int row, GtkBaselinePosition pos);
+	public static extern void GridSetRowBaselinePosition(Grid grid, c_int row, BaselinePosition pos);
 	[LinkName("gtk_grid_set_row_homogeneous")]
-	public static extern void grid_set_row_homogeneous(GtkGrid* grid, c_int homogeneous);
+	public static extern void GridSetRowHomogeneous(Grid grid, c_int homogeneous);
 	[LinkName("gtk_grid_set_row_spacing")]
-	public static extern void grid_set_row_spacing(GtkGrid* grid, c_uint spacing);
+	public static extern void GridSetRowSpacing(Grid grid, c_uint spacing);
 	[CRepr]
-	public struct GtkGridClass
+	public struct GridClass
 	{
-		GtkWidgetClass parent_class;
+		WidgetClass parent_class;
 	}
 	[CRepr]
-	public struct GtkGridLayout;
+	public struct GridLayout;
 	[LinkName("gtk_grid_layout_new")]
-	public static extern GtkLayoutManager* grid_layout_new();
+	public static extern LayoutManager GridLayoutNew();
 	[LinkName("gtk_grid_layout_get_baseline_row")]
-	public static extern c_int grid_layout_get_baseline_row(GtkGridLayout* grid);
+	public static extern c_int GridLayoutGetBaselineRow(GridLayout grid);
 	[LinkName("gtk_grid_layout_get_column_homogeneous")]
-	public static extern c_int grid_layout_get_column_homogeneous(GtkGridLayout* grid);
+	public static extern c_int GridLayoutGetColumnHomogeneous(GridLayout grid);
 	[LinkName("gtk_grid_layout_get_column_spacing")]
-	public static extern c_uint grid_layout_get_column_spacing(GtkGridLayout* grid);
+	public static extern c_uint GridLayoutGetColumnSpacing(GridLayout grid);
 	[LinkName("gtk_grid_layout_get_row_baseline_position")]
-	public static extern GtkBaselinePosition grid_layout_get_row_baseline_position(GtkGridLayout* grid, c_int row);
+	public static extern BaselinePosition GridLayoutGetRowBaselinePosition(GridLayout grid, c_int row);
 	[LinkName("gtk_grid_layout_get_row_homogeneous")]
-	public static extern c_int grid_layout_get_row_homogeneous(GtkGridLayout* grid);
+	public static extern c_int GridLayoutGetRowHomogeneous(GridLayout grid);
 	[LinkName("gtk_grid_layout_get_row_spacing")]
-	public static extern c_uint grid_layout_get_row_spacing(GtkGridLayout* grid);
+	public static extern c_uint GridLayoutGetRowSpacing(GridLayout grid);
 	[LinkName("gtk_grid_layout_set_baseline_row")]
-	public static extern void grid_layout_set_baseline_row(GtkGridLayout* grid, c_int row);
+	public static extern void GridLayoutSetBaselineRow(GridLayout grid, c_int row);
 	[LinkName("gtk_grid_layout_set_column_homogeneous")]
-	public static extern void grid_layout_set_column_homogeneous(GtkGridLayout* grid, c_int homogeneous);
+	public static extern void GridLayoutSetColumnHomogeneous(GridLayout grid, c_int homogeneous);
 	[LinkName("gtk_grid_layout_set_column_spacing")]
-	public static extern void grid_layout_set_column_spacing(GtkGridLayout* grid, c_uint spacing);
+	public static extern void GridLayoutSetColumnSpacing(GridLayout grid, c_uint spacing);
 	[LinkName("gtk_grid_layout_set_row_baseline_position")]
-	public static extern void grid_layout_set_row_baseline_position(GtkGridLayout* grid, c_int row, GtkBaselinePosition pos);
+	public static extern void GridLayoutSetRowBaselinePosition(GridLayout grid, c_int row, BaselinePosition pos);
 	[LinkName("gtk_grid_layout_set_row_homogeneous")]
-	public static extern void grid_layout_set_row_homogeneous(GtkGridLayout* grid, c_int homogeneous);
+	public static extern void GridLayoutSetRowHomogeneous(GridLayout grid, c_int homogeneous);
 	[LinkName("gtk_grid_layout_set_row_spacing")]
-	public static extern void grid_layout_set_row_spacing(GtkGridLayout* grid, c_uint spacing);
+	public static extern void GridLayoutSetRowSpacing(GridLayout grid, c_uint spacing);
 	[CRepr]
-	public struct GtkGridLayoutChild;
+	public struct GridLayoutChild;
 	[LinkName("gtk_grid_layout_child_get_column")]
-	public static extern c_int grid_layout_child_get_column(GtkGridLayoutChild* child);
+	public static extern c_int GridLayoutChildGetColumn(GridLayoutChild child);
 	[LinkName("gtk_grid_layout_child_get_column_span")]
-	public static extern c_int grid_layout_child_get_column_span(GtkGridLayoutChild* child);
+	public static extern c_int GridLayoutChildGetColumnSpan(GridLayoutChild child);
 	[LinkName("gtk_grid_layout_child_get_row")]
-	public static extern c_int grid_layout_child_get_row(GtkGridLayoutChild* child);
+	public static extern c_int GridLayoutChildGetRow(GridLayoutChild child);
 	[LinkName("gtk_grid_layout_child_get_row_span")]
-	public static extern c_int grid_layout_child_get_row_span(GtkGridLayoutChild* child);
+	public static extern c_int GridLayoutChildGetRowSpan(GridLayoutChild child);
 	[LinkName("gtk_grid_layout_child_set_column")]
-	public static extern void grid_layout_child_set_column(GtkGridLayoutChild* child, c_int column);
+	public static extern void GridLayoutChildSetColumn(GridLayoutChild child, c_int column);
 	[LinkName("gtk_grid_layout_child_set_column_span")]
-	public static extern void grid_layout_child_set_column_span(GtkGridLayoutChild* child, c_int span);
+	public static extern void GridLayoutChildSetColumnSpan(GridLayoutChild child, c_int span);
 	[LinkName("gtk_grid_layout_child_set_row")]
-	public static extern void grid_layout_child_set_row(GtkGridLayoutChild* child, c_int row);
+	public static extern void GridLayoutChildSetRow(GridLayoutChild child, c_int row);
 	[LinkName("gtk_grid_layout_child_set_row_span")]
-	public static extern void grid_layout_child_set_row_span(GtkGridLayoutChild* child, c_int span);
+	public static extern void GridLayoutChildSetRowSpan(GridLayoutChild child, c_int span);
 	[CRepr]
-	public struct GtkGridLayoutChildClass
+	public struct GridLayoutChildClass
 	{
-		GtkLayoutChildClass parent_class;
+		LayoutChildClass parent_class;
 	}
 	[CRepr]
-	public struct GtkGridLayoutClass
+	public struct GridLayoutClass
 	{
-		GtkLayoutManagerClass parent_class;
+		LayoutManagerClass parent_class;
 	}
 	[CRepr]
-	public struct GtkGridView;
+	public struct GridView;
 	[LinkName("gtk_grid_view_new")]
-	public static extern GtkWidget* grid_view_new(GtkSelectionModel* model, GtkListItemFactory* factory);
+	public static extern Widget GridViewNew(SelectionModel model, ListItemFactory factory);
 	[LinkName("gtk_grid_view_get_enable_rubberband")]
-	public static extern c_int grid_view_get_enable_rubberband(GtkGridView* self);
+	public static extern c_int GridViewGetEnableRubberband(GridView self);
 	[LinkName("gtk_grid_view_get_factory")]
-	public static extern GtkListItemFactory* grid_view_get_factory(GtkGridView* self);
+	public static extern ListItemFactory GridViewGetFactory(GridView self);
 	[LinkName("gtk_grid_view_get_max_columns")]
-	public static extern c_uint grid_view_get_max_columns(GtkGridView* self);
+	public static extern c_uint GridViewGetMaxColumns(GridView self);
 	[LinkName("gtk_grid_view_get_min_columns")]
-	public static extern c_uint grid_view_get_min_columns(GtkGridView* self);
+	public static extern c_uint GridViewGetMinColumns(GridView self);
 	[LinkName("gtk_grid_view_get_model")]
-	public static extern GtkSelectionModel* grid_view_get_model(GtkGridView* self);
+	public static extern SelectionModel GridViewGetModel(GridView self);
 	[LinkName("gtk_grid_view_get_single_click_activate")]
-	public static extern c_int grid_view_get_single_click_activate(GtkGridView* self);
+	public static extern c_int GridViewGetSingleClickActivate(GridView self);
 	[LinkName("gtk_grid_view_get_tab_behavior")]
-	public static extern GtkListTabBehavior grid_view_get_tab_behavior(GtkGridView* self);
+	public static extern ListTabBehavior GridViewGetTabBehavior(GridView self);
 	[LinkName("gtk_grid_view_set_enable_rubberband")]
-	public static extern void grid_view_set_enable_rubberband(GtkGridView* self, c_int enable_rubberband);
+	public static extern void GridViewSetEnableRubberband(GridView self, c_int enable_rubberband);
 	[LinkName("gtk_grid_view_set_factory")]
-	public static extern void grid_view_set_factory(GtkGridView* self, GtkListItemFactory* factory);
+	public static extern void GridViewSetFactory(GridView self, ListItemFactory factory);
 	[LinkName("gtk_grid_view_set_max_columns")]
-	public static extern void grid_view_set_max_columns(GtkGridView* self, c_uint max_columns);
+	public static extern void GridViewSetMaxColumns(GridView self, c_uint max_columns);
 	[LinkName("gtk_grid_view_set_min_columns")]
-	public static extern void grid_view_set_min_columns(GtkGridView* self, c_uint min_columns);
+	public static extern void GridViewSetMinColumns(GridView self, c_uint min_columns);
 	[LinkName("gtk_grid_view_set_model")]
-	public static extern void grid_view_set_model(GtkGridView* self, GtkSelectionModel* model);
+	public static extern void GridViewSetModel(GridView self, SelectionModel model);
 	[LinkName("gtk_grid_view_set_single_click_activate")]
-	public static extern void grid_view_set_single_click_activate(GtkGridView* self, c_int single_click_activate);
+	public static extern void GridViewSetSingleClickActivate(GridView self, c_int single_click_activate);
 	[LinkName("gtk_grid_view_set_tab_behavior")]
-	public static extern void grid_view_set_tab_behavior(GtkGridView* self, GtkListTabBehavior tab_behavior);
+	public static extern void GridViewSetTabBehavior(GridView self, ListTabBehavior tab_behavior);
 	[CRepr]
-	public struct GtkGridViewClass
+	public struct GridViewClass
 	{
 	}
 	[CRepr]
-	public struct GtkHeaderBar;
+	public struct HeaderBar;
 	[LinkName("gtk_header_bar_new")]
-	public static extern GtkWidget* header_bar_new();
+	public static extern Widget HeaderBarNew();
 	[LinkName("gtk_header_bar_get_decoration_layout")]
-	public static extern  c_char* header_bar_get_decoration_layout(GtkHeaderBar* bar);
+	public static extern char8* HeaderBarGetDecorationLayout(HeaderBar bar);
 	[LinkName("gtk_header_bar_get_show_title_buttons")]
-	public static extern c_int header_bar_get_show_title_buttons(GtkHeaderBar* bar);
+	public static extern c_int HeaderBarGetShowTitleButtons(HeaderBar bar);
 	[LinkName("gtk_header_bar_get_title_widget")]
-	public static extern GtkWidget* header_bar_get_title_widget(GtkHeaderBar* bar);
+	public static extern Widget HeaderBarGetTitleWidget(HeaderBar bar);
 	[LinkName("gtk_header_bar_pack_end")]
-	public static extern void header_bar_pack_end(GtkHeaderBar* bar, GtkWidget* child);
+	public static extern void HeaderBarPackEnd(HeaderBar bar, Widget child);
 	[LinkName("gtk_header_bar_pack_start")]
-	public static extern void header_bar_pack_start(GtkHeaderBar* bar, GtkWidget* child);
+	public static extern void HeaderBarPackStart(HeaderBar bar, Widget child);
 	[LinkName("gtk_header_bar_remove")]
-	public static extern void header_bar_remove(GtkHeaderBar* bar, GtkWidget* child);
+	public static extern void HeaderBarRemove(HeaderBar bar, Widget child);
 	[LinkName("gtk_header_bar_set_decoration_layout")]
-	public static extern void header_bar_set_decoration_layout(GtkHeaderBar* bar,  c_char* layout);
+	public static extern void HeaderBarSetDecorationLayout(HeaderBar bar, char8* layout);
 	[LinkName("gtk_header_bar_set_show_title_buttons")]
-	public static extern void header_bar_set_show_title_buttons(GtkHeaderBar* bar, c_int setting);
+	public static extern void HeaderBarSetShowTitleButtons(HeaderBar bar, c_int setting);
 	[LinkName("gtk_header_bar_set_title_widget")]
-	public static extern void header_bar_set_title_widget(GtkHeaderBar* bar, GtkWidget* title_widget);
+	public static extern void HeaderBarSetTitleWidget(HeaderBar bar, Widget title_widget);
 	[CRepr]
-	public struct GtkIMContext;
+	public struct IMContext;
 	[LinkName("gtk_im_context_delete_surrounding")]
-	public static extern c_int im_context_delete_surrounding(GtkIMContext* context, c_int offset, c_int n_chars);
+	public static extern c_int ImContextDeleteSurrounding(IMContext context, c_int offset, c_int n_chars);
 	[LinkName("gtk_im_context_filter_key")]
-	public static extern c_int im_context_filter_key(GtkIMContext* context, c_int press, GdkSurface* surface, GdkDevice* device, c_uint time, c_uint keycode, GdkModifierType state, c_int group);
+	public static extern c_int ImContextFilterKey(IMContext context, c_int press, Gdk.Surface surface, Gdk.Device device, c_uint time, c_uint keycode, Gdk.ModifierType state, c_int group);
 	[LinkName("gtk_im_context_filter_keypress")]
-	public static extern c_int im_context_filter_keypress(GtkIMContext* context, GdkEvent* event);
+	public static extern c_int ImContextFilterKeypress(IMContext context, Gdk.Event event);
 	[LinkName("gtk_im_context_focus_in")]
-	public static extern void im_context_focus_in(GtkIMContext* context);
+	public static extern void ImContextFocusIn(IMContext context);
 	[LinkName("gtk_im_context_focus_out")]
-	public static extern void im_context_focus_out(GtkIMContext* context);
+	public static extern void ImContextFocusOut(IMContext context);
 	[LinkName("gtk_im_context_get_preedit_string")]
-	public static extern void im_context_get_preedit_string(GtkIMContext* context, c_char** str, PangoAttrList** attrs, c_int* cursor_pos);
+	public static extern void ImContextGetPreeditString(IMContext context, char8* str, Pango.AttrList attrs, c_int cursor_pos);
 	[LinkName("gtk_im_context_get_surrounding")]
-	public static extern c_int im_context_get_surrounding(GtkIMContext* context, c_char** text, c_int* cursor_index);
+	public static extern c_int ImContextGetSurrounding(IMContext context, char8* text, c_int cursor_index);
 	[LinkName("gtk_im_context_get_surrounding_with_selection")]
-	public static extern c_int im_context_get_surrounding_with_selection(GtkIMContext* context, c_char** text, c_int* cursor_index, c_int* anchor_index);
+	public static extern c_int ImContextGetSurroundingWithSelection(IMContext context, char8* text, c_int cursor_index, c_int anchor_index);
 	[LinkName("gtk_im_context_reset")]
-	public static extern void im_context_reset(GtkIMContext* context);
+	public static extern void ImContextReset(IMContext context);
 	[LinkName("gtk_im_context_set_client_widget")]
-	public static extern void im_context_set_client_widget(GtkIMContext* context, GtkWidget* widget);
+	public static extern void ImContextSetClientWidget(IMContext context, Widget widget);
 	[LinkName("gtk_im_context_set_cursor_location")]
-	public static extern void im_context_set_cursor_location(GtkIMContext* context,  GdkRectangle* area);
+	public static extern void ImContextSetCursorLocation(IMContext context, Gdk.Rectangle area);
 	[LinkName("gtk_im_context_set_surrounding")]
-	public static extern void im_context_set_surrounding(GtkIMContext* context,  c_char* text, c_int len, c_int cursor_index);
+	public static extern void ImContextSetSurrounding(IMContext context, char8* text, c_int len, c_int cursor_index);
 	[LinkName("gtk_im_context_set_surrounding_with_selection")]
-	public static extern void im_context_set_surrounding_with_selection(GtkIMContext* context,  c_char* text, c_int len, c_int cursor_index, c_int anchor_index);
+	public static extern void ImContextSetSurroundingWithSelection(IMContext context, char8* text, c_int len, c_int cursor_index, c_int anchor_index);
 	[LinkName("gtk_im_context_set_use_preedit")]
-	public static extern void im_context_set_use_preedit(GtkIMContext* context, c_int use_preedit);
+	public static extern void ImContextSetUsePreedit(IMContext context, c_int use_preedit);
 	[CRepr]
-	public struct GtkIMContextClass
+	public struct IMContextClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GtkIMContextSimple;
+	public struct IMContextSimple;
 	[LinkName("gtk_im_context_simple_new")]
-	public static extern GtkIMContext* im_context_simple_new();
+	public static extern IMContext ImContextSimpleNew();
 	[LinkName("gtk_im_context_simple_add_compose_file")]
-	public static extern void im_context_simple_add_compose_file(GtkIMContextSimple* context_simple,  c_char* compose_file);
+	public static extern void ImContextSimpleAddComposeFile(IMContextSimple context_simple, char8* compose_file);
 	[LinkName("gtk_im_context_simple_add_table")]
-	public static extern void im_context_simple_add_table(GtkIMContextSimple* context_simple, c_int max_seq_len, c_int n_seqs);
+	public static extern void ImContextSimpleAddTable(IMContextSimple context_simple, c_int max_seq_len, c_int n_seqs);
 	[CRepr]
-	public struct GtkIMContextSimpleClass
+	public struct IMContextSimpleClass
 	{
-		GtkIMContextClass parent_class;
+		IMContextClass parent_class;
 	}
 	[CRepr]
-	public struct GtkIMContextSimplePrivate
+	public struct IMContextSimplePrivate
 	{
 	}
 	[CRepr]
-	public struct GtkIMMulticontext;
+	public struct IMMulticontext;
 	[LinkName("gtk_im_multicontext_new")]
-	public static extern GtkIMContext* im_multicontext_new();
+	public static extern IMContext ImMulticontextNew();
 	[LinkName("gtk_im_multicontext_get_context_id")]
-	public static extern  c_char* im_multicontext_get_context_id(GtkIMMulticontext* context);
+	public static extern char8* ImMulticontextGetContextId(IMMulticontext context);
 	[LinkName("gtk_im_multicontext_set_context_id")]
-	public static extern void im_multicontext_set_context_id(GtkIMMulticontext* context,  c_char* context_id);
+	public static extern void ImMulticontextSetContextId(IMMulticontext context, char8* context_id);
 	[CRepr]
-	public struct GtkIMMulticontextClass
+	public struct IMMulticontextClass
 	{
-		GtkIMContextClass parent_class;
+		IMContextClass parent_class;
 	}
 	[CRepr]
-	public struct GtkIMMulticontextPrivate
+	public struct IMMulticontextPrivate
 	{
 	}
 	[CRepr]
-	public struct GtkIconLookupFlags
+	public struct IconLookupFlags
 	{
 		public const int GTK_ICON_LOOKUP_FORCE_REGULAR = 1;
 		public const int GTK_ICON_LOOKUP_FORCE_SYMBOLIC = 2;
 		public const int GTK_ICON_LOOKUP_PRELOAD = 4;
 	}
 	[CRepr]
-	public struct GtkIconPaintable;
+	public struct IconPaintable;
 	[LinkName("gtk_icon_paintable_new_for_file")]
-	public static extern GtkIconPaintable* icon_paintable_new_for_file(GFile* file, c_int size, c_int scale);
+	public static extern IconPaintable IconPaintableNewForFile(Gio.File file, c_int size, c_int scale);
 	[LinkName("gtk_icon_paintable_get_file")]
-	public static extern GFile* icon_paintable_get_file(GtkIconPaintable* self);
+	public static extern Gio.File IconPaintableGetFile(IconPaintable self);
 	[LinkName("gtk_icon_paintable_get_icon_name")]
-	public static extern  c_char* icon_paintable_get_icon_name(GtkIconPaintable* self);
+	public static extern char8* IconPaintableGetIconName(IconPaintable self);
 	[LinkName("gtk_icon_paintable_is_symbolic")]
-	public static extern c_int icon_paintable_is_symbolic(GtkIconPaintable* self);
-	public enum GtkIconSize : c_int
+	public static extern c_int IconPaintableIsSymbolic(IconPaintable self);
+	public enum IconSize : c_int
 	{
 		GTK_ICON_SIZE_INHERIT,
 		GTK_ICON_SIZE_NORMAL,
 		GTK_ICON_SIZE_LARGE
 	}
 	[CRepr]
-	public struct GtkIconTheme;
+	public struct IconTheme;
 	[LinkName("gtk_icon_theme_new")]
-	public static extern GtkIconTheme* icon_theme_new();
+	public static extern IconTheme IconThemeNew();
 	[LinkName("gtk_icon_theme_add_resource_path")]
-	public static extern void icon_theme_add_resource_path(GtkIconTheme* self,  c_char* path);
+	public static extern void IconThemeAddResourcePath(IconTheme self, char8* path);
 	[LinkName("gtk_icon_theme_add_search_path")]
-	public static extern void icon_theme_add_search_path(GtkIconTheme* self,  c_char* path);
+	public static extern void IconThemeAddSearchPath(IconTheme self, char8* path);
 	[LinkName("gtk_icon_theme_get_display")]
-	public static extern GdkDisplay* icon_theme_get_display(GtkIconTheme* self);
+	public static extern Gdk.Display IconThemeGetDisplay(IconTheme self);
 	[LinkName("gtk_icon_theme_get_icon_names")]
-	public static extern c_char** icon_theme_get_icon_names(GtkIconTheme* self);
+	public static extern char8* IconThemeGetIconNames(IconTheme self);
 	[LinkName("gtk_icon_theme_get_icon_sizes")]
-	public static extern c_int* icon_theme_get_icon_sizes(GtkIconTheme* self,  c_char* icon_name);
+	public static extern c_int IconThemeGetIconSizes(IconTheme self, char8* icon_name);
 	[LinkName("gtk_icon_theme_get_resource_path")]
-	public static extern c_char** icon_theme_get_resource_path(GtkIconTheme* self);
+	public static extern char8* IconThemeGetResourcePath(IconTheme self);
 	[LinkName("gtk_icon_theme_get_search_path")]
-	public static extern c_char** icon_theme_get_search_path(GtkIconTheme* self);
+	public static extern char8* IconThemeGetSearchPath(IconTheme self);
 	[LinkName("gtk_icon_theme_get_theme_name")]
-	public static extern c_char* icon_theme_get_theme_name(GtkIconTheme* self);
+	public static extern char8* IconThemeGetThemeName(IconTheme self);
 	[LinkName("gtk_icon_theme_has_gicon")]
-	public static extern c_int icon_theme_has_gicon(GtkIconTheme* self, GIcon* gicon);
+	public static extern c_int IconThemeHasGicon(IconTheme self, Gio.Icon gicon);
 	[LinkName("gtk_icon_theme_has_icon")]
-	public static extern c_int icon_theme_has_icon(GtkIconTheme* self,  c_char* icon_name);
+	public static extern c_int IconThemeHasIcon(IconTheme self, char8* icon_name);
 	[LinkName("gtk_icon_theme_lookup_by_gicon")]
-	public static extern GtkIconPaintable* icon_theme_lookup_by_gicon(GtkIconTheme* self, GIcon* icon, c_int size, c_int scale, GtkTextDirection direction, GtkIconLookupFlags flags);
+	public static extern IconPaintable IconThemeLookupByGicon(IconTheme self, Gio.Icon icon, c_int size, c_int scale, TextDirection direction, IconLookupFlags flags);
 	[LinkName("gtk_icon_theme_lookup_icon")]
-	public static extern GtkIconPaintable* icon_theme_lookup_icon(GtkIconTheme* self,  c_char* icon_name, c_int size, c_int scale, GtkTextDirection direction, GtkIconLookupFlags flags);
+	public static extern IconPaintable IconThemeLookupIcon(IconTheme self, char8* icon_name, c_int size, c_int scale, TextDirection direction, IconLookupFlags flags);
 	[LinkName("gtk_icon_theme_set_resource_path")]
-	public static extern void icon_theme_set_resource_path(GtkIconTheme* self);
+	public static extern void IconThemeSetResourcePath(IconTheme self);
 	[LinkName("gtk_icon_theme_set_search_path")]
-	public static extern void icon_theme_set_search_path(GtkIconTheme* self);
+	public static extern void IconThemeSetSearchPath(IconTheme self);
 	[LinkName("gtk_icon_theme_set_theme_name")]
-	public static extern void icon_theme_set_theme_name(GtkIconTheme* self,  c_char* theme_name);
-	public enum GtkIconThemeError : c_int
+	public static extern void IconThemeSetThemeName(IconTheme self, char8* theme_name);
+	public enum IconThemeError : c_int
 	{
 		GTK_ICON_THEME_NOT_FOUND,
 		GTK_ICON_THEME_FAILED
 	}
 	[CRepr]
-	public struct GtkIconView;
+	public struct IconView;
 	[LinkName("gtk_icon_view_new")]
-	public static extern GtkWidget* icon_view_new();
+	public static extern Widget IconViewNew();
 	[LinkName("gtk_icon_view_new_with_area")]
-	public static extern GtkWidget* icon_view_new_with_area(GtkCellArea* area);
+	public static extern Widget IconViewNewWithArea(CellArea area);
 	[LinkName("gtk_icon_view_new_with_model")]
-	public static extern GtkWidget* icon_view_new_with_model(GtkTreeModel* model);
+	public static extern Widget IconViewNewWithModel(TreeModel model);
 	[LinkName("gtk_icon_view_create_drag_icon")]
-	public static extern GdkPaintable* icon_view_create_drag_icon(GtkIconView* icon_view, GtkTreePath* path);
+	public static extern Gdk.Paintable IconViewCreateDragIcon(IconView icon_view, TreePath path);
 	[LinkName("gtk_icon_view_enable_model_drag_dest")]
-	public static extern void icon_view_enable_model_drag_dest(GtkIconView* icon_view, GdkContentFormats* formats, GdkDragAction actions);
+	public static extern void IconViewEnableModelDragDest(IconView icon_view, Gdk.ContentFormats formats, Gdk.DragAction actions);
 	[LinkName("gtk_icon_view_enable_model_drag_source")]
-	public static extern void icon_view_enable_model_drag_source(GtkIconView* icon_view, GdkModifierType start_button_mask, GdkContentFormats* formats, GdkDragAction actions);
+	public static extern void IconViewEnableModelDragSource(IconView icon_view, Gdk.ModifierType start_button_mask, Gdk.ContentFormats formats, Gdk.DragAction actions);
 	[LinkName("gtk_icon_view_get_activate_on_single_click")]
-	public static extern c_int icon_view_get_activate_on_single_click(GtkIconView* icon_view);
+	public static extern c_int IconViewGetActivateOnSingleClick(IconView icon_view);
 	[LinkName("gtk_icon_view_get_cell_rect")]
-	public static extern c_int icon_view_get_cell_rect(GtkIconView* icon_view, GtkTreePath* path, GtkCellRenderer* cell, GdkRectangle* rect);
+	public static extern c_int IconViewGetCellRect(IconView icon_view, TreePath path, CellRenderer cell, Gdk.Rectangle rect);
 	[LinkName("gtk_icon_view_get_column_spacing")]
-	public static extern c_int icon_view_get_column_spacing(GtkIconView* icon_view);
+	public static extern c_int IconViewGetColumnSpacing(IconView icon_view);
 	[LinkName("gtk_icon_view_get_columns")]
-	public static extern c_int icon_view_get_columns(GtkIconView* icon_view);
+	public static extern c_int IconViewGetColumns(IconView icon_view);
 	[LinkName("gtk_icon_view_get_cursor")]
-	public static extern c_int icon_view_get_cursor(GtkIconView* icon_view, GtkTreePath** path, GtkCellRenderer** cell);
+	public static extern c_int IconViewGetCursor(IconView icon_view, TreePath path, CellRenderer cell);
 	[LinkName("gtk_icon_view_get_dest_item_at_pos")]
-	public static extern c_int icon_view_get_dest_item_at_pos(GtkIconView* icon_view, c_int drag_x, c_int drag_y, GtkTreePath** path, GtkIconViewDropPosition* pos);
+	public static extern c_int IconViewGetDestItemAtPos(IconView icon_view, c_int drag_x, c_int drag_y, TreePath path, IconViewDropPosition pos);
 	[LinkName("gtk_icon_view_get_drag_dest_item")]
-	public static extern void icon_view_get_drag_dest_item(GtkIconView* icon_view, GtkTreePath** path, GtkIconViewDropPosition* pos);
+	public static extern void IconViewGetDragDestItem(IconView icon_view, TreePath path, IconViewDropPosition pos);
 	[LinkName("gtk_icon_view_get_item_at_pos")]
-	public static extern c_int icon_view_get_item_at_pos(GtkIconView* icon_view, c_int x, c_int y, GtkTreePath** path, GtkCellRenderer** cell);
+	public static extern c_int IconViewGetItemAtPos(IconView icon_view, c_int x, c_int y, TreePath path, CellRenderer cell);
 	[LinkName("gtk_icon_view_get_item_column")]
-	public static extern c_int icon_view_get_item_column(GtkIconView* icon_view, GtkTreePath* path);
+	public static extern c_int IconViewGetItemColumn(IconView icon_view, TreePath path);
 	[LinkName("gtk_icon_view_get_item_orientation")]
-	public static extern GtkOrientation icon_view_get_item_orientation(GtkIconView* icon_view);
+	public static extern Orientation IconViewGetItemOrientation(IconView icon_view);
 	[LinkName("gtk_icon_view_get_item_padding")]
-	public static extern c_int icon_view_get_item_padding(GtkIconView* icon_view);
+	public static extern c_int IconViewGetItemPadding(IconView icon_view);
 	[LinkName("gtk_icon_view_get_item_row")]
-	public static extern c_int icon_view_get_item_row(GtkIconView* icon_view, GtkTreePath* path);
+	public static extern c_int IconViewGetItemRow(IconView icon_view, TreePath path);
 	[LinkName("gtk_icon_view_get_item_width")]
-	public static extern c_int icon_view_get_item_width(GtkIconView* icon_view);
+	public static extern c_int IconViewGetItemWidth(IconView icon_view);
 	[LinkName("gtk_icon_view_get_margin")]
-	public static extern c_int icon_view_get_margin(GtkIconView* icon_view);
+	public static extern c_int IconViewGetMargin(IconView icon_view);
 	[LinkName("gtk_icon_view_get_markup_column")]
-	public static extern c_int icon_view_get_markup_column(GtkIconView* icon_view);
+	public static extern c_int IconViewGetMarkupColumn(IconView icon_view);
 	[LinkName("gtk_icon_view_get_model")]
-	public static extern GtkTreeModel* icon_view_get_model(GtkIconView* icon_view);
+	public static extern TreeModel IconViewGetModel(IconView icon_view);
 	[LinkName("gtk_icon_view_get_path_at_pos")]
-	public static extern GtkTreePath* icon_view_get_path_at_pos(GtkIconView* icon_view, c_int x, c_int y);
+	public static extern TreePath IconViewGetPathAtPos(IconView icon_view, c_int x, c_int y);
 	[LinkName("gtk_icon_view_get_pixbuf_column")]
-	public static extern c_int icon_view_get_pixbuf_column(GtkIconView* icon_view);
+	public static extern c_int IconViewGetPixbufColumn(IconView icon_view);
 	[LinkName("gtk_icon_view_get_reorderable")]
-	public static extern c_int icon_view_get_reorderable(GtkIconView* icon_view);
+	public static extern c_int IconViewGetReorderable(IconView icon_view);
 	[LinkName("gtk_icon_view_get_row_spacing")]
-	public static extern c_int icon_view_get_row_spacing(GtkIconView* icon_view);
+	public static extern c_int IconViewGetRowSpacing(IconView icon_view);
 	[LinkName("gtk_icon_view_get_selected_items")]
-	public static extern GList* icon_view_get_selected_items(GtkIconView* icon_view);
+	public static extern GLib.List IconViewGetSelectedItems(IconView icon_view);
 	[LinkName("gtk_icon_view_get_selection_mode")]
-	public static extern GtkSelectionMode icon_view_get_selection_mode(GtkIconView* icon_view);
+	public static extern SelectionMode IconViewGetSelectionMode(IconView icon_view);
 	[LinkName("gtk_icon_view_get_spacing")]
-	public static extern c_int icon_view_get_spacing(GtkIconView* icon_view);
+	public static extern c_int IconViewGetSpacing(IconView icon_view);
 	[LinkName("gtk_icon_view_get_text_column")]
-	public static extern c_int icon_view_get_text_column(GtkIconView* icon_view);
+	public static extern c_int IconViewGetTextColumn(IconView icon_view);
 	[LinkName("gtk_icon_view_get_tooltip_column")]
-	public static extern c_int icon_view_get_tooltip_column(GtkIconView* icon_view);
+	public static extern c_int IconViewGetTooltipColumn(IconView icon_view);
 	[LinkName("gtk_icon_view_get_tooltip_context")]
-	public static extern c_int icon_view_get_tooltip_context(GtkIconView* icon_view, c_int x, c_int y, c_int keyboard_tip, GtkTreeModel** model, GtkTreePath** path, GtkTreeIter* iter);
+	public static extern c_int IconViewGetTooltipContext(IconView icon_view, c_int x, c_int y, c_int keyboard_tip, TreeModel model, TreePath path, TreeIter iter);
 	[LinkName("gtk_icon_view_get_visible_range")]
-	public static extern c_int icon_view_get_visible_range(GtkIconView* icon_view, GtkTreePath** start_path, GtkTreePath** end_path);
+	public static extern c_int IconViewGetVisibleRange(IconView icon_view, TreePath start_path, TreePath end_path);
 	[LinkName("gtk_icon_view_item_activated")]
-	public static extern void icon_view_item_activated(GtkIconView* icon_view, GtkTreePath* path);
+	public static extern void IconViewItemActivated(IconView icon_view, TreePath path);
 	[LinkName("gtk_icon_view_path_is_selected")]
-	public static extern c_int icon_view_path_is_selected(GtkIconView* icon_view, GtkTreePath* path);
+	public static extern c_int IconViewPathIsSelected(IconView icon_view, TreePath path);
 	[LinkName("gtk_icon_view_scroll_to_path")]
-	public static extern void icon_view_scroll_to_path(GtkIconView* icon_view, GtkTreePath* path, c_int use_align, float row_align, float col_align);
+	public static extern void IconViewScrollToPath(IconView icon_view, TreePath path, c_int use_align, float row_align, float col_align);
 	[LinkName("gtk_icon_view_select_all")]
-	public static extern void icon_view_select_all(GtkIconView* icon_view);
+	public static extern void IconViewSelectAll(IconView icon_view);
 	[LinkName("gtk_icon_view_select_path")]
-	public static extern void icon_view_select_path(GtkIconView* icon_view, GtkTreePath* path);
+	public static extern void IconViewSelectPath(IconView icon_view, TreePath path);
 	[LinkName("gtk_icon_view_selected_foreach")]
-	public static extern void icon_view_selected_foreach(GtkIconView* icon_view, GtkIconViewForeachFunc func, void* data);
+	public static extern void IconViewSelectedForeach(IconView icon_view, IconViewForeachFunc func, void* data);
 	[LinkName("gtk_icon_view_set_activate_on_single_click")]
-	public static extern void icon_view_set_activate_on_single_click(GtkIconView* icon_view, c_int single);
+	public static extern void IconViewSetActivateOnSingleClick(IconView icon_view, c_int single);
 	[LinkName("gtk_icon_view_set_column_spacing")]
-	public static extern void icon_view_set_column_spacing(GtkIconView* icon_view, c_int column_spacing);
+	public static extern void IconViewSetColumnSpacing(IconView icon_view, c_int column_spacing);
 	[LinkName("gtk_icon_view_set_columns")]
-	public static extern void icon_view_set_columns(GtkIconView* icon_view, c_int columns);
+	public static extern void IconViewSetColumns(IconView icon_view, c_int columns);
 	[LinkName("gtk_icon_view_set_cursor")]
-	public static extern void icon_view_set_cursor(GtkIconView* icon_view, GtkTreePath* path, GtkCellRenderer* cell, c_int start_editing);
+	public static extern void IconViewSetCursor(IconView icon_view, TreePath path, CellRenderer cell, c_int start_editing);
 	[LinkName("gtk_icon_view_set_drag_dest_item")]
-	public static extern void icon_view_set_drag_dest_item(GtkIconView* icon_view, GtkTreePath* path, GtkIconViewDropPosition pos);
+	public static extern void IconViewSetDragDestItem(IconView icon_view, TreePath path, IconViewDropPosition pos);
 	[LinkName("gtk_icon_view_set_item_orientation")]
-	public static extern void icon_view_set_item_orientation(GtkIconView* icon_view, GtkOrientation orientation);
+	public static extern void IconViewSetItemOrientation(IconView icon_view, Orientation orientation);
 	[LinkName("gtk_icon_view_set_item_padding")]
-	public static extern void icon_view_set_item_padding(GtkIconView* icon_view, c_int item_padding);
+	public static extern void IconViewSetItemPadding(IconView icon_view, c_int item_padding);
 	[LinkName("gtk_icon_view_set_item_width")]
-	public static extern void icon_view_set_item_width(GtkIconView* icon_view, c_int item_width);
+	public static extern void IconViewSetItemWidth(IconView icon_view, c_int item_width);
 	[LinkName("gtk_icon_view_set_margin")]
-	public static extern void icon_view_set_margin(GtkIconView* icon_view, c_int margin);
+	public static extern void IconViewSetMargin(IconView icon_view, c_int margin);
 	[LinkName("gtk_icon_view_set_markup_column")]
-	public static extern void icon_view_set_markup_column(GtkIconView* icon_view, c_int column);
+	public static extern void IconViewSetMarkupColumn(IconView icon_view, c_int column);
 	[LinkName("gtk_icon_view_set_model")]
-	public static extern void icon_view_set_model(GtkIconView* icon_view, GtkTreeModel* model);
+	public static extern void IconViewSetModel(IconView icon_view, TreeModel model);
 	[LinkName("gtk_icon_view_set_pixbuf_column")]
-	public static extern void icon_view_set_pixbuf_column(GtkIconView* icon_view, c_int column);
+	public static extern void IconViewSetPixbufColumn(IconView icon_view, c_int column);
 	[LinkName("gtk_icon_view_set_reorderable")]
-	public static extern void icon_view_set_reorderable(GtkIconView* icon_view, c_int reorderable);
+	public static extern void IconViewSetReorderable(IconView icon_view, c_int reorderable);
 	[LinkName("gtk_icon_view_set_row_spacing")]
-	public static extern void icon_view_set_row_spacing(GtkIconView* icon_view, c_int row_spacing);
+	public static extern void IconViewSetRowSpacing(IconView icon_view, c_int row_spacing);
 	[LinkName("gtk_icon_view_set_selection_mode")]
-	public static extern void icon_view_set_selection_mode(GtkIconView* icon_view, GtkSelectionMode mode);
+	public static extern void IconViewSetSelectionMode(IconView icon_view, SelectionMode mode);
 	[LinkName("gtk_icon_view_set_spacing")]
-	public static extern void icon_view_set_spacing(GtkIconView* icon_view, c_int spacing);
+	public static extern void IconViewSetSpacing(IconView icon_view, c_int spacing);
 	[LinkName("gtk_icon_view_set_text_column")]
-	public static extern void icon_view_set_text_column(GtkIconView* icon_view, c_int column);
+	public static extern void IconViewSetTextColumn(IconView icon_view, c_int column);
 	[LinkName("gtk_icon_view_set_tooltip_cell")]
-	public static extern void icon_view_set_tooltip_cell(GtkIconView* icon_view, GtkTooltip* tooltip, GtkTreePath* path, GtkCellRenderer* cell);
+	public static extern void IconViewSetTooltipCell(IconView icon_view, Tooltip tooltip, TreePath path, CellRenderer cell);
 	[LinkName("gtk_icon_view_set_tooltip_column")]
-	public static extern void icon_view_set_tooltip_column(GtkIconView* icon_view, c_int column);
+	public static extern void IconViewSetTooltipColumn(IconView icon_view, c_int column);
 	[LinkName("gtk_icon_view_set_tooltip_item")]
-	public static extern void icon_view_set_tooltip_item(GtkIconView* icon_view, GtkTooltip* tooltip, GtkTreePath* path);
+	public static extern void IconViewSetTooltipItem(IconView icon_view, Tooltip tooltip, TreePath path);
 	[LinkName("gtk_icon_view_unselect_all")]
-	public static extern void icon_view_unselect_all(GtkIconView* icon_view);
+	public static extern void IconViewUnselectAll(IconView icon_view);
 	[LinkName("gtk_icon_view_unselect_path")]
-	public static extern void icon_view_unselect_path(GtkIconView* icon_view, GtkTreePath* path);
+	public static extern void IconViewUnselectPath(IconView icon_view, TreePath path);
 	[LinkName("gtk_icon_view_unset_model_drag_dest")]
-	public static extern void icon_view_unset_model_drag_dest(GtkIconView* icon_view);
+	public static extern void IconViewUnsetModelDragDest(IconView icon_view);
 	[LinkName("gtk_icon_view_unset_model_drag_source")]
-	public static extern void icon_view_unset_model_drag_source(GtkIconView* icon_view);
-	public enum GtkIconViewDropPosition : c_int
+	public static extern void IconViewUnsetModelDragSource(IconView icon_view);
+	public enum IconViewDropPosition : c_int
 	{
 		GTK_ICON_VIEW_NO_DROP,
 		GTK_ICON_VIEW_DROP_INTO,
@@ -3985,54 +3985,54 @@ class Gtk
 		GTK_ICON_VIEW_DROP_ABOVE,
 		GTK_ICON_VIEW_DROP_BELOW
 	}
-	public function void GtkIconViewForeachFunc(GtkIconView* icon_view, GtkTreePath* path, void* data);
+	public function void IconViewForeachFunc(IconView icon_view, TreePath path, void* data);
 	[CRepr]
-	public struct GtkImage;
+	public struct Image;
 	[LinkName("gtk_image_new")]
-	public static extern GtkWidget* image_new();
+	public static extern Widget ImageNew();
 	[LinkName("gtk_image_new_from_file")]
-	public static extern GtkWidget* image_new_from_file( c_char* filename);
+	public static extern Widget ImageNewFromFile(char8* filename);
 	[LinkName("gtk_image_new_from_gicon")]
-	public static extern GtkWidget* image_new_from_gicon(GIcon* icon);
+	public static extern Widget ImageNewFromGicon(Gio.Icon icon);
 	[LinkName("gtk_image_new_from_icon_name")]
-	public static extern GtkWidget* image_new_from_icon_name( c_char* icon_name);
+	public static extern Widget ImageNewFromIconName(char8* icon_name);
 	[LinkName("gtk_image_new_from_paintable")]
-	public static extern GtkWidget* image_new_from_paintable(GdkPaintable* paintable);
+	public static extern Widget ImageNewFromPaintable(Gdk.Paintable paintable);
 	[LinkName("gtk_image_new_from_pixbuf")]
-	public static extern GtkWidget* image_new_from_pixbuf(GdkPixbuf* pixbuf);
+	public static extern Widget ImageNewFromPixbuf(GdkPixbuf.Pixbuf pixbuf);
 	[LinkName("gtk_image_new_from_resource")]
-	public static extern GtkWidget* image_new_from_resource( c_char* resource_path);
+	public static extern Widget ImageNewFromResource(char8* resource_path);
 	[LinkName("gtk_image_clear")]
-	public static extern void image_clear(GtkImage* image);
+	public static extern void ImageClear(Image image);
 	[LinkName("gtk_image_get_gicon")]
-	public static extern GIcon* image_get_gicon(GtkImage* image);
+	public static extern Gio.Icon ImageGetGicon(Image image);
 	[LinkName("gtk_image_get_icon_name")]
-	public static extern  c_char* image_get_icon_name(GtkImage* image);
+	public static extern char8* ImageGetIconName(Image image);
 	[LinkName("gtk_image_get_icon_size")]
-	public static extern GtkIconSize image_get_icon_size(GtkImage* image);
+	public static extern IconSize ImageGetIconSize(Image image);
 	[LinkName("gtk_image_get_paintable")]
-	public static extern GdkPaintable* image_get_paintable(GtkImage* image);
+	public static extern Gdk.Paintable ImageGetPaintable(Image image);
 	[LinkName("gtk_image_get_pixel_size")]
-	public static extern c_int image_get_pixel_size(GtkImage* image);
+	public static extern c_int ImageGetPixelSize(Image image);
 	[LinkName("gtk_image_get_storage_type")]
-	public static extern GtkImageType image_get_storage_type(GtkImage* image);
+	public static extern ImageType ImageGetStorageType(Image image);
 	[LinkName("gtk_image_set_from_file")]
-	public static extern void image_set_from_file(GtkImage* image,  c_char* filename);
+	public static extern void ImageSetFromFile(Image image, char8* filename);
 	[LinkName("gtk_image_set_from_gicon")]
-	public static extern void image_set_from_gicon(GtkImage* image, GIcon* icon);
+	public static extern void ImageSetFromGicon(Image image, Gio.Icon icon);
 	[LinkName("gtk_image_set_from_icon_name")]
-	public static extern void image_set_from_icon_name(GtkImage* image,  c_char* icon_name);
+	public static extern void ImageSetFromIconName(Image image, char8* icon_name);
 	[LinkName("gtk_image_set_from_paintable")]
-	public static extern void image_set_from_paintable(GtkImage* image, GdkPaintable* paintable);
+	public static extern void ImageSetFromPaintable(Image image, Gdk.Paintable paintable);
 	[LinkName("gtk_image_set_from_pixbuf")]
-	public static extern void image_set_from_pixbuf(GtkImage* image, GdkPixbuf* pixbuf);
+	public static extern void ImageSetFromPixbuf(Image image, GdkPixbuf.Pixbuf pixbuf);
 	[LinkName("gtk_image_set_from_resource")]
-	public static extern void image_set_from_resource(GtkImage* image,  c_char* resource_path);
+	public static extern void ImageSetFromResource(Image image, char8* resource_path);
 	[LinkName("gtk_image_set_icon_size")]
-	public static extern void image_set_icon_size(GtkImage* image, GtkIconSize icon_size);
+	public static extern void ImageSetIconSize(Image image, IconSize icon_size);
 	[LinkName("gtk_image_set_pixel_size")]
-	public static extern void image_set_pixel_size(GtkImage* image, c_int pixel_size);
-	public enum GtkImageType : c_int
+	public static extern void ImageSetPixelSize(Image image, c_int pixel_size);
+	public enum ImageType : c_int
 	{
 		GTK_IMAGE_EMPTY,
 		GTK_IMAGE_ICON_NAME,
@@ -4040,43 +4040,43 @@ class Gtk
 		GTK_IMAGE_PAINTABLE
 	}
 	[CRepr]
-	public struct GtkInfoBar;
+	public struct InfoBar;
 	[LinkName("gtk_info_bar_new")]
-	public static extern GtkWidget* info_bar_new();
+	public static extern Widget InfoBarNew();
 	[LinkName("gtk_info_bar_new_with_buttons")]
-	public static extern GtkWidget* info_bar_new_with_buttons( c_char* first_button_text);
+	public static extern Widget InfoBarNewWithButtons(char8* first_button_text);
 	[LinkName("gtk_info_bar_add_action_widget")]
-	public static extern void info_bar_add_action_widget(GtkInfoBar* info_bar, GtkWidget* child, c_int response_id);
+	public static extern void InfoBarAddActionWidget(InfoBar info_bar, Widget child, c_int response_id);
 	[LinkName("gtk_info_bar_add_button")]
-	public static extern GtkWidget* info_bar_add_button(GtkInfoBar* info_bar,  c_char* button_text, c_int response_id);
+	public static extern Button InfoBarAddButton(InfoBar info_bar, char8* button_text, c_int response_id);
 	[LinkName("gtk_info_bar_add_buttons")]
-	public static extern void info_bar_add_buttons(GtkInfoBar* info_bar,  c_char* first_button_text);
+	public static extern void InfoBarAddButtons(InfoBar info_bar, char8* first_button_text);
 	[LinkName("gtk_info_bar_add_child")]
-	public static extern void info_bar_add_child(GtkInfoBar* info_bar, GtkWidget* widget);
+	public static extern void InfoBarAddChild(InfoBar info_bar, Widget widget);
 	[LinkName("gtk_info_bar_get_message_type")]
-	public static extern GtkMessageType info_bar_get_message_type(GtkInfoBar* info_bar);
+	public static extern MessageType InfoBarGetMessageType(InfoBar info_bar);
 	[LinkName("gtk_info_bar_get_revealed")]
-	public static extern c_int info_bar_get_revealed(GtkInfoBar* info_bar);
+	public static extern c_int InfoBarGetRevealed(InfoBar info_bar);
 	[LinkName("gtk_info_bar_get_show_close_button")]
-	public static extern c_int info_bar_get_show_close_button(GtkInfoBar* info_bar);
+	public static extern c_int InfoBarGetShowCloseButton(InfoBar info_bar);
 	[LinkName("gtk_info_bar_remove_action_widget")]
-	public static extern void info_bar_remove_action_widget(GtkInfoBar* info_bar, GtkWidget* widget);
+	public static extern void InfoBarRemoveActionWidget(InfoBar info_bar, Widget widget);
 	[LinkName("gtk_info_bar_remove_child")]
-	public static extern void info_bar_remove_child(GtkInfoBar* info_bar, GtkWidget* widget);
+	public static extern void InfoBarRemoveChild(InfoBar info_bar, Widget widget);
 	[LinkName("gtk_info_bar_response")]
-	public static extern void info_bar_response(GtkInfoBar* info_bar, c_int response_id);
+	public static extern void InfoBarResponse(InfoBar info_bar, c_int response_id);
 	[LinkName("gtk_info_bar_set_default_response")]
-	public static extern void info_bar_set_default_response(GtkInfoBar* info_bar, c_int response_id);
+	public static extern void InfoBarSetDefaultResponse(InfoBar info_bar, c_int response_id);
 	[LinkName("gtk_info_bar_set_message_type")]
-	public static extern void info_bar_set_message_type(GtkInfoBar* info_bar, GtkMessageType message_type);
+	public static extern void InfoBarSetMessageType(InfoBar info_bar, MessageType message_type);
 	[LinkName("gtk_info_bar_set_response_sensitive")]
-	public static extern void info_bar_set_response_sensitive(GtkInfoBar* info_bar, c_int response_id, c_int setting);
+	public static extern void InfoBarSetResponseSensitive(InfoBar info_bar, c_int response_id, c_int setting);
 	[LinkName("gtk_info_bar_set_revealed")]
-	public static extern void info_bar_set_revealed(GtkInfoBar* info_bar, c_int revealed);
+	public static extern void InfoBarSetRevealed(InfoBar info_bar, c_int revealed);
 	[LinkName("gtk_info_bar_set_show_close_button")]
-	public static extern void info_bar_set_show_close_button(GtkInfoBar* info_bar, c_int setting);
+	public static extern void InfoBarSetShowCloseButton(InfoBar info_bar, c_int setting);
 	[CRepr]
-	public struct GtkInputHints
+	public struct InputHints
 	{
 		public const int GTK_INPUT_HINT_NONE = 0;
 		public const int GTK_INPUT_HINT_SPELLCHECK = 1;
@@ -4092,7 +4092,7 @@ class Gtk
 		public const int GTK_INPUT_HINT_NO_EMOJI = 1024;
 		public const int GTK_INPUT_HINT_PRIVATE = 2048;
 	}
-	public enum GtkInputPurpose : c_int
+	public enum InputPurpose : c_int
 	{
 		GTK_INPUT_PURPOSE_FREE_FORM,
 		GTK_INPUT_PURPOSE_ALPHA,
@@ -4107,64 +4107,64 @@ class Gtk
 		GTK_INPUT_PURPOSE_TERMINAL
 	}
 	[CRepr]
-	public struct GtkInscription;
+	public struct Inscription;
 	[LinkName("gtk_inscription_new")]
-	public static extern GtkWidget* inscription_new( c_char* text);
+	public static extern Widget InscriptionNew(char8* text);
 	[LinkName("gtk_inscription_get_attributes")]
-	public static extern PangoAttrList* inscription_get_attributes(GtkInscription* self);
+	public static extern Pango.AttrList InscriptionGetAttributes(Inscription self);
 	[LinkName("gtk_inscription_get_min_chars")]
-	public static extern c_uint inscription_get_min_chars(GtkInscription* self);
+	public static extern c_uint InscriptionGetMinChars(Inscription self);
 	[LinkName("gtk_inscription_get_min_lines")]
-	public static extern c_uint inscription_get_min_lines(GtkInscription* self);
+	public static extern c_uint InscriptionGetMinLines(Inscription self);
 	[LinkName("gtk_inscription_get_nat_chars")]
-	public static extern c_uint inscription_get_nat_chars(GtkInscription* self);
+	public static extern c_uint InscriptionGetNatChars(Inscription self);
 	[LinkName("gtk_inscription_get_nat_lines")]
-	public static extern c_uint inscription_get_nat_lines(GtkInscription* self);
+	public static extern c_uint InscriptionGetNatLines(Inscription self);
 	[LinkName("gtk_inscription_get_text")]
-	public static extern  c_char* inscription_get_text(GtkInscription* self);
+	public static extern char8* InscriptionGetText(Inscription self);
 	[LinkName("gtk_inscription_get_text_overflow")]
-	public static extern GtkInscriptionOverflow inscription_get_text_overflow(GtkInscription* self);
+	public static extern InscriptionOverflow InscriptionGetTextOverflow(Inscription self);
 	[LinkName("gtk_inscription_get_wrap_mode")]
-	public static extern PangoWrapMode inscription_get_wrap_mode(GtkInscription* self);
+	public static extern Pango.WrapMode InscriptionGetWrapMode(Inscription self);
 	[LinkName("gtk_inscription_get_xalign")]
-	public static extern float inscription_get_xalign(GtkInscription* self);
+	public static extern float InscriptionGetXalign(Inscription self);
 	[LinkName("gtk_inscription_get_yalign")]
-	public static extern float inscription_get_yalign(GtkInscription* self);
+	public static extern float InscriptionGetYalign(Inscription self);
 	[LinkName("gtk_inscription_set_attributes")]
-	public static extern void inscription_set_attributes(GtkInscription* self, PangoAttrList* attrs);
+	public static extern void InscriptionSetAttributes(Inscription self, Pango.AttrList attrs);
 	[LinkName("gtk_inscription_set_markup")]
-	public static extern void inscription_set_markup(GtkInscription* self,  c_char* markup);
+	public static extern void InscriptionSetMarkup(Inscription self, char8* markup);
 	[LinkName("gtk_inscription_set_min_chars")]
-	public static extern void inscription_set_min_chars(GtkInscription* self, c_uint min_chars);
+	public static extern void InscriptionSetMinChars(Inscription self, c_uint min_chars);
 	[LinkName("gtk_inscription_set_min_lines")]
-	public static extern void inscription_set_min_lines(GtkInscription* self, c_uint min_lines);
+	public static extern void InscriptionSetMinLines(Inscription self, c_uint min_lines);
 	[LinkName("gtk_inscription_set_nat_chars")]
-	public static extern void inscription_set_nat_chars(GtkInscription* self, c_uint nat_chars);
+	public static extern void InscriptionSetNatChars(Inscription self, c_uint nat_chars);
 	[LinkName("gtk_inscription_set_nat_lines")]
-	public static extern void inscription_set_nat_lines(GtkInscription* self, c_uint nat_lines);
+	public static extern void InscriptionSetNatLines(Inscription self, c_uint nat_lines);
 	[LinkName("gtk_inscription_set_text")]
-	public static extern void inscription_set_text(GtkInscription* self,  c_char* text);
+	public static extern void InscriptionSetText(Inscription self, char8* text);
 	[LinkName("gtk_inscription_set_text_overflow")]
-	public static extern void inscription_set_text_overflow(GtkInscription* self, GtkInscriptionOverflow overflow);
+	public static extern void InscriptionSetTextOverflow(Inscription self, InscriptionOverflow overflow);
 	[LinkName("gtk_inscription_set_wrap_mode")]
-	public static extern void inscription_set_wrap_mode(GtkInscription* self, PangoWrapMode wrap_mode);
+	public static extern void InscriptionSetWrapMode(Inscription self, Pango.WrapMode wrap_mode);
 	[LinkName("gtk_inscription_set_xalign")]
-	public static extern void inscription_set_xalign(GtkInscription* self, float xalign);
+	public static extern void InscriptionSetXalign(Inscription self, float xalign);
 	[LinkName("gtk_inscription_set_yalign")]
-	public static extern void inscription_set_yalign(GtkInscription* self, float yalign);
+	public static extern void InscriptionSetYalign(Inscription self, float yalign);
 	[CRepr]
-	public struct GtkInscriptionClass
+	public struct InscriptionClass
 	{
-		GtkWidgetClass parent_class;
+		WidgetClass parent_class;
 	}
-	public enum GtkInscriptionOverflow : c_int
+	public enum InscriptionOverflow : c_int
 	{
 		GTK_INSCRIPTION_OVERFLOW_CLIP,
 		GTK_INSCRIPTION_OVERFLOW_ELLIPSIZE_START,
 		GTK_INSCRIPTION_OVERFLOW_ELLIPSIZE_MIDDLE,
 		GTK_INSCRIPTION_OVERFLOW_ELLIPSIZE_END
 	}
-	public enum GtkJustification : c_int
+	public enum Justification : c_int
 	{
 		GTK_JUSTIFY_LEFT,
 		GTK_JUSTIFY_RIGHT,
@@ -4172,190 +4172,190 @@ class Gtk
 		GTK_JUSTIFY_FILL
 	}
 	[CRepr]
-	public struct GtkKeyvalTrigger;
+	public struct KeyvalTrigger;
 	[LinkName("gtk_keyval_trigger_new")]
-	public static extern GtkShortcutTrigger* keyval_trigger_new(c_uint keyval, GdkModifierType modifiers);
+	public static extern ShortcutTrigger KeyvalTriggerNew(c_uint keyval, Gdk.ModifierType modifiers);
 	[LinkName("gtk_keyval_trigger_get_keyval")]
-	public static extern c_uint keyval_trigger_get_keyval(GtkKeyvalTrigger* self);
+	public static extern c_uint KeyvalTriggerGetKeyval(KeyvalTrigger self);
 	[LinkName("gtk_keyval_trigger_get_modifiers")]
-	public static extern GdkModifierType keyval_trigger_get_modifiers(GtkKeyvalTrigger* self);
+	public static extern Gdk.ModifierType KeyvalTriggerGetModifiers(KeyvalTrigger self);
 	[CRepr]
-	public struct GtkKeyvalTriggerClass
+	public struct KeyvalTriggerClass
 	{
 	}
 	[CRepr]
-	public struct GtkLabel;
+	public struct Label;
 	[LinkName("gtk_label_new")]
-	public static extern GtkWidget* label_new( c_char* str);
+	public static extern Widget LabelNew(char8* str);
 	[LinkName("gtk_label_new_with_mnemonic")]
-	public static extern GtkWidget* label_new_with_mnemonic( c_char* str);
+	public static extern Widget LabelNewWithMnemonic(char8* str);
 	[LinkName("gtk_label_get_attributes")]
-	public static extern PangoAttrList* label_get_attributes(GtkLabel* self);
+	public static extern Pango.AttrList LabelGetAttributes(Label self);
 	[LinkName("gtk_label_get_current_uri")]
-	public static extern  c_char* label_get_current_uri(GtkLabel* self);
+	public static extern char8* LabelGetCurrentUri(Label self);
 	[LinkName("gtk_label_get_ellipsize")]
-	public static extern PangoEllipsizeMode label_get_ellipsize(GtkLabel* self);
+	public static extern Pango.EllipsizeMode LabelGetEllipsize(Label self);
 	[LinkName("gtk_label_get_extra_menu")]
-	public static extern GMenuModel* label_get_extra_menu(GtkLabel* self);
+	public static extern Gio.MenuModel LabelGetExtraMenu(Label self);
 	[LinkName("gtk_label_get_justify")]
-	public static extern GtkJustification label_get_justify(GtkLabel* self);
+	public static extern Justification LabelGetJustify(Label self);
 	[LinkName("gtk_label_get_label")]
-	public static extern  c_char* label_get_label(GtkLabel* self);
+	public static extern char8* LabelGetLabel(Label self);
 	[LinkName("gtk_label_get_layout")]
-	public static extern PangoLayout* label_get_layout(GtkLabel* self);
+	public static extern Pango.Layout LabelGetLayout(Label self);
 	[LinkName("gtk_label_get_layout_offsets")]
-	public static extern void label_get_layout_offsets(GtkLabel* self, c_int* x, c_int* y);
+	public static extern void LabelGetLayoutOffsets(Label self, c_int x, c_int y);
 	[LinkName("gtk_label_get_lines")]
-	public static extern c_int label_get_lines(GtkLabel* self);
+	public static extern c_int LabelGetLines(Label self);
 	[LinkName("gtk_label_get_max_width_chars")]
-	public static extern c_int label_get_max_width_chars(GtkLabel* self);
+	public static extern c_int LabelGetMaxWidthChars(Label self);
 	[LinkName("gtk_label_get_mnemonic_keyval")]
-	public static extern c_uint label_get_mnemonic_keyval(GtkLabel* self);
+	public static extern c_uint LabelGetMnemonicKeyval(Label self);
 	[LinkName("gtk_label_get_mnemonic_widget")]
-	public static extern GtkWidget* label_get_mnemonic_widget(GtkLabel* self);
+	public static extern Widget LabelGetMnemonicWidget(Label self);
 	[LinkName("gtk_label_get_natural_wrap_mode")]
-	public static extern GtkNaturalWrapMode label_get_natural_wrap_mode(GtkLabel* self);
+	public static extern NaturalWrapMode LabelGetNaturalWrapMode(Label self);
 	[LinkName("gtk_label_get_selectable")]
-	public static extern c_int label_get_selectable(GtkLabel* self);
+	public static extern c_int LabelGetSelectable(Label self);
 	[LinkName("gtk_label_get_selection_bounds")]
-	public static extern c_int label_get_selection_bounds(GtkLabel* self, c_int* start, c_int* end);
+	public static extern c_int LabelGetSelectionBounds(Label self, c_int start, c_int end);
 	[LinkName("gtk_label_get_single_line_mode")]
-	public static extern c_int label_get_single_line_mode(GtkLabel* self);
+	public static extern c_int LabelGetSingleLineMode(Label self);
 	[LinkName("gtk_label_get_tabs")]
-	public static extern PangoTabArray* label_get_tabs(GtkLabel* self);
+	public static extern Pango.TabArray LabelGetTabs(Label self);
 	[LinkName("gtk_label_get_text")]
-	public static extern  c_char* label_get_text(GtkLabel* self);
+	public static extern char8* LabelGetText(Label self);
 	[LinkName("gtk_label_get_use_markup")]
-	public static extern c_int label_get_use_markup(GtkLabel* self);
+	public static extern c_int LabelGetUseMarkup(Label self);
 	[LinkName("gtk_label_get_use_underline")]
-	public static extern c_int label_get_use_underline(GtkLabel* self);
+	public static extern c_int LabelGetUseUnderline(Label self);
 	[LinkName("gtk_label_get_width_chars")]
-	public static extern c_int label_get_width_chars(GtkLabel* self);
+	public static extern c_int LabelGetWidthChars(Label self);
 	[LinkName("gtk_label_get_wrap")]
-	public static extern c_int label_get_wrap(GtkLabel* self);
+	public static extern c_int LabelGetWrap(Label self);
 	[LinkName("gtk_label_get_wrap_mode")]
-	public static extern PangoWrapMode label_get_wrap_mode(GtkLabel* self);
+	public static extern Pango.WrapMode LabelGetWrapMode(Label self);
 	[LinkName("gtk_label_get_xalign")]
-	public static extern float label_get_xalign(GtkLabel* self);
+	public static extern float LabelGetXalign(Label self);
 	[LinkName("gtk_label_get_yalign")]
-	public static extern float label_get_yalign(GtkLabel* self);
+	public static extern float LabelGetYalign(Label self);
 	[LinkName("gtk_label_select_region")]
-	public static extern void label_select_region(GtkLabel* self, c_int start_offset, c_int end_offset);
+	public static extern void LabelSelectRegion(Label self, c_int start_offset, c_int end_offset);
 	[LinkName("gtk_label_set_attributes")]
-	public static extern void label_set_attributes(GtkLabel* self, PangoAttrList* attrs);
+	public static extern void LabelSetAttributes(Label self, Pango.AttrList attrs);
 	[LinkName("gtk_label_set_ellipsize")]
-	public static extern void label_set_ellipsize(GtkLabel* self, PangoEllipsizeMode mode);
+	public static extern void LabelSetEllipsize(Label self, Pango.EllipsizeMode mode);
 	[LinkName("gtk_label_set_extra_menu")]
-	public static extern void label_set_extra_menu(GtkLabel* self, GMenuModel* model);
+	public static extern void LabelSetExtraMenu(Label self, Gio.MenuModel model);
 	[LinkName("gtk_label_set_justify")]
-	public static extern void label_set_justify(GtkLabel* self, GtkJustification jtype);
+	public static extern void LabelSetJustify(Label self, Justification jtype);
 	[LinkName("gtk_label_set_label")]
-	public static extern void label_set_label(GtkLabel* self,  c_char* str);
+	public static extern void LabelSetLabel(Label self, char8* str);
 	[LinkName("gtk_label_set_lines")]
-	public static extern void label_set_lines(GtkLabel* self, c_int lines);
+	public static extern void LabelSetLines(Label self, c_int lines);
 	[LinkName("gtk_label_set_markup")]
-	public static extern void label_set_markup(GtkLabel* self,  c_char* str);
+	public static extern void LabelSetMarkup(Label self, char8* str);
 	[LinkName("gtk_label_set_markup_with_mnemonic")]
-	public static extern void label_set_markup_with_mnemonic(GtkLabel* self,  c_char* str);
+	public static extern void LabelSetMarkupWithMnemonic(Label self, char8* str);
 	[LinkName("gtk_label_set_max_width_chars")]
-	public static extern void label_set_max_width_chars(GtkLabel* self, c_int n_chars);
+	public static extern void LabelSetMaxWidthChars(Label self, c_int n_chars);
 	[LinkName("gtk_label_set_mnemonic_widget")]
-	public static extern void label_set_mnemonic_widget(GtkLabel* self, GtkWidget* widget);
+	public static extern void LabelSetMnemonicWidget(Label self, Widget widget);
 	[LinkName("gtk_label_set_natural_wrap_mode")]
-	public static extern void label_set_natural_wrap_mode(GtkLabel* self, GtkNaturalWrapMode wrap_mode);
+	public static extern void LabelSetNaturalWrapMode(Label self, NaturalWrapMode wrap_mode);
 	[LinkName("gtk_label_set_selectable")]
-	public static extern void label_set_selectable(GtkLabel* self, c_int setting);
+	public static extern void LabelSetSelectable(Label self, c_int setting);
 	[LinkName("gtk_label_set_single_line_mode")]
-	public static extern void label_set_single_line_mode(GtkLabel* self, c_int single_line_mode);
+	public static extern void LabelSetSingleLineMode(Label self, c_int single_line_mode);
 	[LinkName("gtk_label_set_tabs")]
-	public static extern void label_set_tabs(GtkLabel* self, PangoTabArray* tabs);
+	public static extern void LabelSetTabs(Label self, Pango.TabArray tabs);
 	[LinkName("gtk_label_set_text")]
-	public static extern void label_set_text(GtkLabel* self,  c_char* str);
+	public static extern void LabelSetText(Label self, char8* str);
 	[LinkName("gtk_label_set_text_with_mnemonic")]
-	public static extern void label_set_text_with_mnemonic(GtkLabel* self,  c_char* str);
+	public static extern void LabelSetTextWithMnemonic(Label self, char8* str);
 	[LinkName("gtk_label_set_use_markup")]
-	public static extern void label_set_use_markup(GtkLabel* self, c_int setting);
+	public static extern void LabelSetUseMarkup(Label self, c_int setting);
 	[LinkName("gtk_label_set_use_underline")]
-	public static extern void label_set_use_underline(GtkLabel* self, c_int setting);
+	public static extern void LabelSetUseUnderline(Label self, c_int setting);
 	[LinkName("gtk_label_set_width_chars")]
-	public static extern void label_set_width_chars(GtkLabel* self, c_int n_chars);
+	public static extern void LabelSetWidthChars(Label self, c_int n_chars);
 	[LinkName("gtk_label_set_wrap")]
-	public static extern void label_set_wrap(GtkLabel* self, c_int wrap);
+	public static extern void LabelSetWrap(Label self, c_int wrap);
 	[LinkName("gtk_label_set_wrap_mode")]
-	public static extern void label_set_wrap_mode(GtkLabel* self, PangoWrapMode wrap_mode);
+	public static extern void LabelSetWrapMode(Label self, Pango.WrapMode wrap_mode);
 	[LinkName("gtk_label_set_xalign")]
-	public static extern void label_set_xalign(GtkLabel* self, float xalign);
+	public static extern void LabelSetXalign(Label self, float xalign);
 	[LinkName("gtk_label_set_yalign")]
-	public static extern void label_set_yalign(GtkLabel* self, float yalign);
+	public static extern void LabelSetYalign(Label self, float yalign);
 	[CRepr]
-	public struct GtkLayoutChild;
+	public struct LayoutChild;
 	[LinkName("gtk_layout_child_get_child_widget")]
-	public static extern GtkWidget* layout_child_get_child_widget(GtkLayoutChild* layout_child);
+	public static extern Widget LayoutChildGetChildWidget(LayoutChild layout_child);
 	[LinkName("gtk_layout_child_get_layout_manager")]
-	public static extern GtkLayoutManager* layout_child_get_layout_manager(GtkLayoutChild* layout_child);
+	public static extern LayoutManager LayoutChildGetLayoutManager(LayoutChild layout_child);
 	[CRepr]
-	public struct GtkLayoutChildClass
+	public struct LayoutChildClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GtkLayoutManager;
+	public struct LayoutManager;
 	[LinkName("gtk_layout_manager_allocate")]
-	public static extern void layout_manager_allocate(GtkLayoutManager* manager, GtkWidget* widget, c_int width, c_int height, c_int baseline);
+	public static extern void LayoutManagerAllocate(LayoutManager manager, Widget widget, c_int width, c_int height, c_int baseline);
 	[LinkName("gtk_layout_manager_get_layout_child")]
-	public static extern GtkLayoutChild* layout_manager_get_layout_child(GtkLayoutManager* manager, GtkWidget* child);
+	public static extern LayoutChild LayoutManagerGetLayoutChild(LayoutManager manager, Widget child);
 	[LinkName("gtk_layout_manager_get_request_mode")]
-	public static extern GtkSizeRequestMode layout_manager_get_request_mode(GtkLayoutManager* manager);
+	public static extern SizeRequestMode LayoutManagerGetRequestMode(LayoutManager manager);
 	[LinkName("gtk_layout_manager_get_widget")]
-	public static extern GtkWidget* layout_manager_get_widget(GtkLayoutManager* manager);
+	public static extern Widget LayoutManagerGetWidget(LayoutManager manager);
 	[LinkName("gtk_layout_manager_layout_changed")]
-	public static extern void layout_manager_layout_changed(GtkLayoutManager* manager);
+	public static extern void LayoutManagerLayoutChanged(LayoutManager manager);
 	[LinkName("gtk_layout_manager_measure")]
-	public static extern void layout_manager_measure(GtkLayoutManager* manager, GtkWidget* widget, GtkOrientation orientation, c_int for_size, c_int* minimum, c_int* natural, c_int* minimum_baseline, c_int* natural_baseline);
+	public static extern void LayoutManagerMeasure(LayoutManager manager, Widget widget, Orientation orientation, c_int for_size, c_int minimum, c_int natural, c_int minimum_baseline, c_int natural_baseline);
 	[CRepr]
-	public struct GtkLayoutManagerClass
+	public struct LayoutManagerClass
 	{
-		GObjectClass parent_class;
-		GType layout_child_type;
+		GObject.ObjectClass parent_class;
+		GLib.Type layout_child_type;
 	}
 	[CRepr]
-	public struct GtkLevelBar;
+	public struct LevelBar;
 	[LinkName("gtk_level_bar_new")]
-	public static extern GtkWidget* level_bar_new();
+	public static extern Widget LevelBarNew();
 	[LinkName("gtk_level_bar_new_for_interval")]
-	public static extern GtkWidget* level_bar_new_for_interval(double min_value, double max_value);
+	public static extern Widget LevelBarNewForInterval(double min_value, double max_value);
 	[LinkName("gtk_level_bar_add_offset_value")]
-	public static extern void level_bar_add_offset_value(GtkLevelBar* self,  c_char* name, double value);
+	public static extern void LevelBarAddOffsetValue(LevelBar self, char8* name, double value);
 	[LinkName("gtk_level_bar_get_inverted")]
-	public static extern c_int level_bar_get_inverted(GtkLevelBar* self);
+	public static extern c_int LevelBarGetInverted(LevelBar self);
 	[LinkName("gtk_level_bar_get_max_value")]
-	public static extern double level_bar_get_max_value(GtkLevelBar* self);
+	public static extern double LevelBarGetMaxValue(LevelBar self);
 	[LinkName("gtk_level_bar_get_min_value")]
-	public static extern double level_bar_get_min_value(GtkLevelBar* self);
+	public static extern double LevelBarGetMinValue(LevelBar self);
 	[LinkName("gtk_level_bar_get_mode")]
-	public static extern GtkLevelBarMode level_bar_get_mode(GtkLevelBar* self);
+	public static extern LevelBarMode LevelBarGetMode(LevelBar self);
 	[LinkName("gtk_level_bar_get_offset_value")]
-	public static extern c_int level_bar_get_offset_value(GtkLevelBar* self,  c_char* name, double* value);
+	public static extern c_int LevelBarGetOffsetValue(LevelBar self, char8* name, double value);
 	[LinkName("gtk_level_bar_get_value")]
-	public static extern double level_bar_get_value(GtkLevelBar* self);
+	public static extern double LevelBarGetValue(LevelBar self);
 	[LinkName("gtk_level_bar_remove_offset_value")]
-	public static extern void level_bar_remove_offset_value(GtkLevelBar* self,  c_char* name);
+	public static extern void LevelBarRemoveOffsetValue(LevelBar self, char8* name);
 	[LinkName("gtk_level_bar_set_inverted")]
-	public static extern void level_bar_set_inverted(GtkLevelBar* self, c_int inverted);
+	public static extern void LevelBarSetInverted(LevelBar self, c_int inverted);
 	[LinkName("gtk_level_bar_set_max_value")]
-	public static extern void level_bar_set_max_value(GtkLevelBar* self, double value);
+	public static extern void LevelBarSetMaxValue(LevelBar self, double value);
 	[LinkName("gtk_level_bar_set_min_value")]
-	public static extern void level_bar_set_min_value(GtkLevelBar* self, double value);
+	public static extern void LevelBarSetMinValue(LevelBar self, double value);
 	[LinkName("gtk_level_bar_set_mode")]
-	public static extern void level_bar_set_mode(GtkLevelBar* self, GtkLevelBarMode mode);
+	public static extern void LevelBarSetMode(LevelBar self, LevelBarMode mode);
 	[LinkName("gtk_level_bar_set_value")]
-	public static extern void level_bar_set_value(GtkLevelBar* self, double value);
-	public enum GtkLevelBarMode : c_int
+	public static extern void LevelBarSetValue(LevelBar self, double value);
+	public enum LevelBarMode : c_int
 	{
 		GTK_LEVEL_BAR_MODE_CONTINUOUS,
 		GTK_LEVEL_BAR_MODE_DISCRETE
 	}
-	public enum GtkLicense : c_int
+	public enum License : c_int
 	{
 		GTK_LICENSE_UNKNOWN,
 		GTK_LICENSE_CUSTOM,
@@ -4377,499 +4377,499 @@ class Gtk
 		GTK_LICENSE_MPL_2_0
 	}
 	[CRepr]
-	public struct GtkLinkButton;
+	public struct LinkButton;
 	[LinkName("gtk_link_button_new")]
-	public static extern GtkWidget* link_button_new( c_char* uri);
+	public static extern Widget LinkButtonNew(char8* uri);
 	[LinkName("gtk_link_button_new_with_label")]
-	public static extern GtkWidget* link_button_new_with_label( c_char* uri,  c_char* label);
+	public static extern Widget LinkButtonNewWithLabel(char8* uri, char8* label);
 	[LinkName("gtk_link_button_get_uri")]
-	public static extern  c_char* link_button_get_uri(GtkLinkButton* link_button);
+	public static extern char8* LinkButtonGetUri(LinkButton link_button);
 	[LinkName("gtk_link_button_get_visited")]
-	public static extern c_int link_button_get_visited(GtkLinkButton* link_button);
+	public static extern c_int LinkButtonGetVisited(LinkButton link_button);
 	[LinkName("gtk_link_button_set_uri")]
-	public static extern void link_button_set_uri(GtkLinkButton* link_button,  c_char* uri);
+	public static extern void LinkButtonSetUri(LinkButton link_button, char8* uri);
 	[LinkName("gtk_link_button_set_visited")]
-	public static extern void link_button_set_visited(GtkLinkButton* link_button, c_int visited);
+	public static extern void LinkButtonSetVisited(LinkButton link_button, c_int visited);
 	[CRepr]
-	public struct GtkListBase;
+	public struct ListBase;
 	[CRepr]
-	public struct GtkListBaseClass
+	public struct ListBaseClass
 	{
 	}
 	[CRepr]
-	public struct GtkListBox;
+	public struct ListBox;
 	[LinkName("gtk_list_box_new")]
-	public static extern GtkWidget* list_box_new();
+	public static extern Widget ListBoxNew();
 	[LinkName("gtk_list_box_append")]
-	public static extern void list_box_append(GtkListBox* box_, GtkWidget* child);
+	public static extern void ListBoxAppend(ListBox box_, Widget child);
 	[LinkName("gtk_list_box_bind_model")]
-	public static extern void list_box_bind_model(GtkListBox* box_, GListModel* model, GtkListBoxCreateWidgetFunc create_widget_func, void* user_data, GDestroyNotify user_data_free_func);
+	public static extern void ListBoxBindModel(ListBox box_, Gio.ListModel model, ListBoxCreateWidgetFunc create_widget_func, void* user_data, GLib.DestroyNotify user_data_free_func);
 	[LinkName("gtk_list_box_drag_highlight_row")]
-	public static extern void list_box_drag_highlight_row(GtkListBox* box_, GtkListBoxRow* row);
+	public static extern void ListBoxDragHighlightRow(ListBox box_, ListBoxRow row);
 	[LinkName("gtk_list_box_drag_unhighlight_row")]
-	public static extern void list_box_drag_unhighlight_row(GtkListBox* box_);
+	public static extern void ListBoxDragUnhighlightRow(ListBox box_);
 	[LinkName("gtk_list_box_get_activate_on_single_click")]
-	public static extern c_int list_box_get_activate_on_single_click(GtkListBox* box_);
+	public static extern c_int ListBoxGetActivateOnSingleClick(ListBox box_);
 	[LinkName("gtk_list_box_get_adjustment")]
-	public static extern GtkAdjustment* list_box_get_adjustment(GtkListBox* box_);
+	public static extern Adjustment ListBoxGetAdjustment(ListBox box_);
 	[LinkName("gtk_list_box_get_row_at_index")]
-	public static extern GtkListBoxRow* list_box_get_row_at_index(GtkListBox* box_, c_int index_);
+	public static extern ListBoxRow ListBoxGetRowAtIndex(ListBox box_, c_int index_);
 	[LinkName("gtk_list_box_get_row_at_y")]
-	public static extern GtkListBoxRow* list_box_get_row_at_y(GtkListBox* box_, c_int y);
+	public static extern ListBoxRow ListBoxGetRowAtY(ListBox box_, c_int y);
 	[LinkName("gtk_list_box_get_selected_row")]
-	public static extern GtkListBoxRow* list_box_get_selected_row(GtkListBox* box_);
+	public static extern ListBoxRow ListBoxGetSelectedRow(ListBox box_);
 	[LinkName("gtk_list_box_get_selected_rows")]
-	public static extern GList* list_box_get_selected_rows(GtkListBox* box_);
+	public static extern GLib.List ListBoxGetSelectedRows(ListBox box_);
 	[LinkName("gtk_list_box_get_selection_mode")]
-	public static extern GtkSelectionMode list_box_get_selection_mode(GtkListBox* box_);
+	public static extern SelectionMode ListBoxGetSelectionMode(ListBox box_);
 	[LinkName("gtk_list_box_get_show_separators")]
-	public static extern c_int list_box_get_show_separators(GtkListBox* box_);
+	public static extern c_int ListBoxGetShowSeparators(ListBox box_);
 	[LinkName("gtk_list_box_insert")]
-	public static extern void list_box_insert(GtkListBox* box_, GtkWidget* child, c_int position);
+	public static extern void ListBoxInsert(ListBox box_, Widget child, c_int position);
 	[LinkName("gtk_list_box_invalidate_filter")]
-	public static extern void list_box_invalidate_filter(GtkListBox* box_);
+	public static extern void ListBoxInvalidateFilter(ListBox box_);
 	[LinkName("gtk_list_box_invalidate_headers")]
-	public static extern void list_box_invalidate_headers(GtkListBox* box_);
+	public static extern void ListBoxInvalidateHeaders(ListBox box_);
 	[LinkName("gtk_list_box_invalidate_sort")]
-	public static extern void list_box_invalidate_sort(GtkListBox* box_);
+	public static extern void ListBoxInvalidateSort(ListBox box_);
 	[LinkName("gtk_list_box_prepend")]
-	public static extern void list_box_prepend(GtkListBox* box_, GtkWidget* child);
+	public static extern void ListBoxPrepend(ListBox box_, Widget child);
 	[LinkName("gtk_list_box_remove")]
-	public static extern void list_box_remove(GtkListBox* box_, GtkWidget* child);
+	public static extern void ListBoxRemove(ListBox box_, Widget child);
 	[LinkName("gtk_list_box_remove_all")]
-	public static extern void list_box_remove_all(GtkListBox* box_);
+	public static extern void ListBoxRemoveAll(ListBox box_);
 	[LinkName("gtk_list_box_select_all")]
-	public static extern void list_box_select_all(GtkListBox* box_);
+	public static extern void ListBoxSelectAll(ListBox box_);
 	[LinkName("gtk_list_box_select_row")]
-	public static extern void list_box_select_row(GtkListBox* box_, GtkListBoxRow* row);
+	public static extern void ListBoxSelectRow(ListBox box_, ListBoxRow row);
 	[LinkName("gtk_list_box_selected_foreach")]
-	public static extern void list_box_selected_foreach(GtkListBox* box_, GtkListBoxForeachFunc func, void* data);
+	public static extern void ListBoxSelectedForeach(ListBox box_, ListBoxForeachFunc func, void* data);
 	[LinkName("gtk_list_box_set_activate_on_single_click")]
-	public static extern void list_box_set_activate_on_single_click(GtkListBox* box_, c_int single);
+	public static extern void ListBoxSetActivateOnSingleClick(ListBox box_, c_int single);
 	[LinkName("gtk_list_box_set_adjustment")]
-	public static extern void list_box_set_adjustment(GtkListBox* box_, GtkAdjustment* adjustment);
+	public static extern void ListBoxSetAdjustment(ListBox box_, Adjustment adjustment);
 	[LinkName("gtk_list_box_set_filter_func")]
-	public static extern void list_box_set_filter_func(GtkListBox* box_, GtkListBoxFilterFunc filter_func, void* user_data, GDestroyNotify destroy);
+	public static extern void ListBoxSetFilterFunc(ListBox box_, ListBoxFilterFunc filter_func, void* user_data, GLib.DestroyNotify destroy);
 	[LinkName("gtk_list_box_set_header_func")]
-	public static extern void list_box_set_header_func(GtkListBox* box_, GtkListBoxUpdateHeaderFunc update_header, void* user_data, GDestroyNotify destroy);
+	public static extern void ListBoxSetHeaderFunc(ListBox box_, ListBoxUpdateHeaderFunc update_header, void* user_data, GLib.DestroyNotify destroy);
 	[LinkName("gtk_list_box_set_placeholder")]
-	public static extern void list_box_set_placeholder(GtkListBox* box_, GtkWidget* placeholder);
+	public static extern void ListBoxSetPlaceholder(ListBox box_, Widget placeholder);
 	[LinkName("gtk_list_box_set_selection_mode")]
-	public static extern void list_box_set_selection_mode(GtkListBox* box_, GtkSelectionMode mode);
+	public static extern void ListBoxSetSelectionMode(ListBox box_, SelectionMode mode);
 	[LinkName("gtk_list_box_set_show_separators")]
-	public static extern void list_box_set_show_separators(GtkListBox* box_, c_int show_separators);
+	public static extern void ListBoxSetShowSeparators(ListBox box_, c_int show_separators);
 	[LinkName("gtk_list_box_set_sort_func")]
-	public static extern void list_box_set_sort_func(GtkListBox* box_, GtkListBoxSortFunc sort_func, void* user_data, GDestroyNotify destroy);
+	public static extern void ListBoxSetSortFunc(ListBox box_, ListBoxSortFunc sort_func, void* user_data, GLib.DestroyNotify destroy);
 	[LinkName("gtk_list_box_unselect_all")]
-	public static extern void list_box_unselect_all(GtkListBox* box_);
+	public static extern void ListBoxUnselectAll(ListBox box_);
 	[LinkName("gtk_list_box_unselect_row")]
-	public static extern void list_box_unselect_row(GtkListBox* box_, GtkListBoxRow* row);
-	public function GtkWidget* GtkListBoxCreateWidgetFunc(void* item, void* user_data);
-	public function c_int GtkListBoxFilterFunc(GtkListBoxRow* row, void* user_data);
-	public function void GtkListBoxForeachFunc(GtkListBox* box_, GtkListBoxRow* row, void* user_data);
+	public static extern void ListBoxUnselectRow(ListBox box_, ListBoxRow row);
+	public function Widget ListBoxCreateWidgetFunc(GObject.Object item, void* user_data);
+	public function c_int ListBoxFilterFunc(ListBoxRow row, void* user_data);
+	public function void ListBoxForeachFunc(ListBox box_, ListBoxRow row, void* user_data);
 	[CRepr]
-	public struct GtkListBoxRow;
+	public struct ListBoxRow;
 	[LinkName("gtk_list_box_row_new")]
-	public static extern GtkWidget* list_box_row_new();
+	public static extern Widget ListBoxRowNew();
 	[LinkName("gtk_list_box_row_changed")]
-	public static extern void list_box_row_changed(GtkListBoxRow* row);
+	public static extern void ListBoxRowChanged(ListBoxRow row);
 	[LinkName("gtk_list_box_row_get_activatable")]
-	public static extern c_int list_box_row_get_activatable(GtkListBoxRow* row);
+	public static extern c_int ListBoxRowGetActivatable(ListBoxRow row);
 	[LinkName("gtk_list_box_row_get_child")]
-	public static extern GtkWidget* list_box_row_get_child(GtkListBoxRow* row);
+	public static extern Widget ListBoxRowGetChild(ListBoxRow row);
 	[LinkName("gtk_list_box_row_get_header")]
-	public static extern GtkWidget* list_box_row_get_header(GtkListBoxRow* row);
+	public static extern Widget ListBoxRowGetHeader(ListBoxRow row);
 	[LinkName("gtk_list_box_row_get_index")]
-	public static extern c_int list_box_row_get_index(GtkListBoxRow* row);
+	public static extern c_int ListBoxRowGetIndex(ListBoxRow row);
 	[LinkName("gtk_list_box_row_get_selectable")]
-	public static extern c_int list_box_row_get_selectable(GtkListBoxRow* row);
+	public static extern c_int ListBoxRowGetSelectable(ListBoxRow row);
 	[LinkName("gtk_list_box_row_is_selected")]
-	public static extern c_int list_box_row_is_selected(GtkListBoxRow* row);
+	public static extern c_int ListBoxRowIsSelected(ListBoxRow row);
 	[LinkName("gtk_list_box_row_set_activatable")]
-	public static extern void list_box_row_set_activatable(GtkListBoxRow* row, c_int activatable);
+	public static extern void ListBoxRowSetActivatable(ListBoxRow row, c_int activatable);
 	[LinkName("gtk_list_box_row_set_child")]
-	public static extern void list_box_row_set_child(GtkListBoxRow* row, GtkWidget* child);
+	public static extern void ListBoxRowSetChild(ListBoxRow row, Widget child);
 	[LinkName("gtk_list_box_row_set_header")]
-	public static extern void list_box_row_set_header(GtkListBoxRow* row, GtkWidget* header);
+	public static extern void ListBoxRowSetHeader(ListBoxRow row, Widget header);
 	[LinkName("gtk_list_box_row_set_selectable")]
-	public static extern void list_box_row_set_selectable(GtkListBoxRow* row, c_int selectable);
+	public static extern void ListBoxRowSetSelectable(ListBoxRow row, c_int selectable);
 	[CRepr]
-	public struct GtkListBoxRowClass
+	public struct ListBoxRowClass
 	{
-		GtkWidgetClass parent_class;
+		WidgetClass parent_class;
 	}
-	public function c_int GtkListBoxSortFunc(GtkListBoxRow* row1, GtkListBoxRow* row2, void* user_data);
-	public function void GtkListBoxUpdateHeaderFunc(GtkListBoxRow* row, GtkListBoxRow* before, void* user_data);
+	public function c_int ListBoxSortFunc(ListBoxRow row1, ListBoxRow row2, void* user_data);
+	public function void ListBoxUpdateHeaderFunc(ListBoxRow row, ListBoxRow before, void* user_data);
 	[CRepr]
-	public struct GtkListHeader;
+	public struct ListHeader;
 	[LinkName("gtk_list_header_get_child")]
-	public static extern GtkWidget* list_header_get_child(GtkListHeader* self);
+	public static extern Widget ListHeaderGetChild(ListHeader self);
 	[LinkName("gtk_list_header_get_end")]
-	public static extern c_uint list_header_get_end(GtkListHeader* self);
+	public static extern c_uint ListHeaderGetEnd(ListHeader self);
 	[LinkName("gtk_list_header_get_item")]
-	public static extern void* list_header_get_item(GtkListHeader* self);
+	public static extern GObject.Object ListHeaderGetItem(ListHeader self);
 	[LinkName("gtk_list_header_get_n_items")]
-	public static extern c_uint list_header_get_n_items(GtkListHeader* self);
+	public static extern c_uint ListHeaderGetNItems(ListHeader self);
 	[LinkName("gtk_list_header_get_start")]
-	public static extern c_uint list_header_get_start(GtkListHeader* self);
+	public static extern c_uint ListHeaderGetStart(ListHeader self);
 	[LinkName("gtk_list_header_set_child")]
-	public static extern void list_header_set_child(GtkListHeader* self, GtkWidget* child);
+	public static extern void ListHeaderSetChild(ListHeader self, Widget child);
 	[CRepr]
-	public struct GtkListHeaderClass
+	public struct ListHeaderClass
 	{
 	}
 	[CRepr]
-	public struct GtkListItem;
+	public struct ListItem;
 	[LinkName("gtk_list_item_get_activatable")]
-	public static extern c_int list_item_get_activatable(GtkListItem* self);
+	public static extern c_int ListItemGetActivatable(ListItem self);
 	[LinkName("gtk_list_item_get_child")]
-	public static extern GtkWidget* list_item_get_child(GtkListItem* self);
+	public static extern Widget ListItemGetChild(ListItem self);
 	[LinkName("gtk_list_item_get_focusable")]
-	public static extern c_int list_item_get_focusable(GtkListItem* self);
+	public static extern c_int ListItemGetFocusable(ListItem self);
 	[LinkName("gtk_list_item_get_item")]
-	public static extern void* list_item_get_item(GtkListItem* self);
+	public static extern GObject.Object ListItemGetItem(ListItem self);
 	[LinkName("gtk_list_item_get_position")]
-	public static extern c_uint list_item_get_position(GtkListItem* self);
+	public static extern c_uint ListItemGetPosition(ListItem self);
 	[LinkName("gtk_list_item_get_selectable")]
-	public static extern c_int list_item_get_selectable(GtkListItem* self);
+	public static extern c_int ListItemGetSelectable(ListItem self);
 	[LinkName("gtk_list_item_get_selected")]
-	public static extern c_int list_item_get_selected(GtkListItem* self);
+	public static extern c_int ListItemGetSelected(ListItem self);
 	[LinkName("gtk_list_item_set_activatable")]
-	public static extern void list_item_set_activatable(GtkListItem* self, c_int activatable);
+	public static extern void ListItemSetActivatable(ListItem self, c_int activatable);
 	[LinkName("gtk_list_item_set_child")]
-	public static extern void list_item_set_child(GtkListItem* self, GtkWidget* child);
+	public static extern void ListItemSetChild(ListItem self, Widget child);
 	[LinkName("gtk_list_item_set_focusable")]
-	public static extern void list_item_set_focusable(GtkListItem* self, c_int focusable);
+	public static extern void ListItemSetFocusable(ListItem self, c_int focusable);
 	[LinkName("gtk_list_item_set_selectable")]
-	public static extern void list_item_set_selectable(GtkListItem* self, c_int selectable);
+	public static extern void ListItemSetSelectable(ListItem self, c_int selectable);
 	[CRepr]
-	public struct GtkListItemClass
+	public struct ListItemClass
 	{
 	}
 	[CRepr]
-	public struct GtkListItemFactory;
+	public struct ListItemFactory;
 	[CRepr]
-	public struct GtkListItemFactoryClass
+	public struct ListItemFactoryClass
 	{
 	}
 	[CRepr]
-	public struct GtkListStore;
+	public struct ListStore;
 	[LinkName("gtk_list_store_new")]
-	public static extern GtkListStore* list_store_new(c_int n_columns);
+	public static extern ListStore ListStoreNew(c_int n_columns);
 	[LinkName("gtk_list_store_newv")]
-	public static extern GtkListStore* list_store_newv(c_int n_columns);
+	public static extern ListStore ListStoreNewv(c_int n_columns);
 	[LinkName("gtk_list_store_append")]
-	public static extern void list_store_append(GtkListStore* list_store, GtkTreeIter* iter);
+	public static extern void ListStoreAppend(ListStore list_store, TreeIter iter);
 	[LinkName("gtk_list_store_clear")]
-	public static extern void list_store_clear(GtkListStore* list_store);
+	public static extern void ListStoreClear(ListStore list_store);
 	[LinkName("gtk_list_store_insert")]
-	public static extern void list_store_insert(GtkListStore* list_store, GtkTreeIter* iter, c_int position);
+	public static extern void ListStoreInsert(ListStore list_store, TreeIter iter, c_int position);
 	[LinkName("gtk_list_store_insert_after")]
-	public static extern void list_store_insert_after(GtkListStore* list_store, GtkTreeIter* iter, GtkTreeIter* sibling);
+	public static extern void ListStoreInsertAfter(ListStore list_store, TreeIter iter, TreeIter sibling);
 	[LinkName("gtk_list_store_insert_before")]
-	public static extern void list_store_insert_before(GtkListStore* list_store, GtkTreeIter* iter, GtkTreeIter* sibling);
+	public static extern void ListStoreInsertBefore(ListStore list_store, TreeIter iter, TreeIter sibling);
 	[LinkName("gtk_list_store_insert_with_values")]
-	public static extern void list_store_insert_with_values(GtkListStore* list_store, GtkTreeIter* iter, c_int position);
+	public static extern void ListStoreInsertWithValues(ListStore list_store, TreeIter iter, c_int position);
 	[LinkName("gtk_list_store_insert_with_valuesv")]
-	public static extern void list_store_insert_with_valuesv(GtkListStore* list_store, GtkTreeIter* iter, c_int position, c_int n_values);
+	public static extern void ListStoreInsertWithValuesv(ListStore list_store, TreeIter iter, c_int position, c_int n_values);
 	[LinkName("gtk_list_store_iter_is_valid")]
-	public static extern c_int list_store_iter_is_valid(GtkListStore* list_store, GtkTreeIter* iter);
+	public static extern c_int ListStoreIterIsValid(ListStore list_store, TreeIter iter);
 	[LinkName("gtk_list_store_move_after")]
-	public static extern void list_store_move_after(GtkListStore* store, GtkTreeIter* iter, GtkTreeIter* position);
+	public static extern void ListStoreMoveAfter(ListStore store, TreeIter iter, TreeIter position);
 	[LinkName("gtk_list_store_move_before")]
-	public static extern void list_store_move_before(GtkListStore* store, GtkTreeIter* iter, GtkTreeIter* position);
+	public static extern void ListStoreMoveBefore(ListStore store, TreeIter iter, TreeIter position);
 	[LinkName("gtk_list_store_prepend")]
-	public static extern void list_store_prepend(GtkListStore* list_store, GtkTreeIter* iter);
+	public static extern void ListStorePrepend(ListStore list_store, TreeIter iter);
 	[LinkName("gtk_list_store_remove")]
-	public static extern c_int list_store_remove(GtkListStore* list_store, GtkTreeIter* iter);
+	public static extern c_int ListStoreRemove(ListStore list_store, TreeIter iter);
 	[LinkName("gtk_list_store_reorder")]
-	public static extern void list_store_reorder(GtkListStore* store);
+	public static extern void ListStoreReorder(ListStore store);
 	[LinkName("gtk_list_store_set")]
-	public static extern void list_store_set(GtkListStore* list_store, GtkTreeIter* iter);
+	public static extern void ListStoreSet(ListStore list_store, TreeIter iter);
 	[LinkName("gtk_list_store_set_column_types")]
-	public static extern void list_store_set_column_types(GtkListStore* list_store, c_int n_columns);
+	public static extern void ListStoreSetColumnTypes(ListStore list_store, c_int n_columns);
 	[LinkName("gtk_list_store_set_valist")]
-	public static extern void list_store_set_valist(GtkListStore* list_store, GtkTreeIter* iter, VarArgs var_args);
+	public static extern void ListStoreSetValist(ListStore list_store, TreeIter iter, VarArgs var_args);
 	[LinkName("gtk_list_store_set_value")]
-	public static extern void list_store_set_value(GtkListStore* list_store, GtkTreeIter* iter, c_int column, GValue* value);
+	public static extern void ListStoreSetValue(ListStore list_store, TreeIter iter, c_int column, GObject.Value value);
 	[LinkName("gtk_list_store_set_valuesv")]
-	public static extern void list_store_set_valuesv(GtkListStore* list_store, GtkTreeIter* iter, c_int n_values);
+	public static extern void ListStoreSetValuesv(ListStore list_store, TreeIter iter, c_int n_values);
 	[LinkName("gtk_list_store_swap")]
-	public static extern void list_store_swap(GtkListStore* store, GtkTreeIter* a, GtkTreeIter* b);
+	public static extern void ListStoreSwap(ListStore store, TreeIter a, TreeIter b);
 	[CRepr]
-	public struct GtkListStoreClass
+	public struct ListStoreClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GtkListStorePrivate
+	public struct ListStorePrivate
 	{
 	}
-	public enum GtkListTabBehavior : c_int
+	public enum ListTabBehavior : c_int
 	{
 		GTK_LIST_TAB_ALL,
 		GTK_LIST_TAB_ITEM,
 		GTK_LIST_TAB_CELL
 	}
 	[CRepr]
-	public struct GtkListView;
+	public struct ListView;
 	[LinkName("gtk_list_view_new")]
-	public static extern GtkWidget* list_view_new(GtkSelectionModel* model, GtkListItemFactory* factory);
+	public static extern Widget ListViewNew(SelectionModel model, ListItemFactory factory);
 	[LinkName("gtk_list_view_get_enable_rubberband")]
-	public static extern c_int list_view_get_enable_rubberband(GtkListView* self);
+	public static extern c_int ListViewGetEnableRubberband(ListView self);
 	[LinkName("gtk_list_view_get_factory")]
-	public static extern GtkListItemFactory* list_view_get_factory(GtkListView* self);
+	public static extern ListItemFactory ListViewGetFactory(ListView self);
 	[LinkName("gtk_list_view_get_header_factory")]
-	public static extern GtkListItemFactory* list_view_get_header_factory(GtkListView* self);
+	public static extern ListItemFactory ListViewGetHeaderFactory(ListView self);
 	[LinkName("gtk_list_view_get_model")]
-	public static extern GtkSelectionModel* list_view_get_model(GtkListView* self);
+	public static extern SelectionModel ListViewGetModel(ListView self);
 	[LinkName("gtk_list_view_get_show_separators")]
-	public static extern c_int list_view_get_show_separators(GtkListView* self);
+	public static extern c_int ListViewGetShowSeparators(ListView self);
 	[LinkName("gtk_list_view_get_single_click_activate")]
-	public static extern c_int list_view_get_single_click_activate(GtkListView* self);
+	public static extern c_int ListViewGetSingleClickActivate(ListView self);
 	[LinkName("gtk_list_view_get_tab_behavior")]
-	public static extern GtkListTabBehavior list_view_get_tab_behavior(GtkListView* self);
+	public static extern ListTabBehavior ListViewGetTabBehavior(ListView self);
 	[LinkName("gtk_list_view_set_enable_rubberband")]
-	public static extern void list_view_set_enable_rubberband(GtkListView* self, c_int enable_rubberband);
+	public static extern void ListViewSetEnableRubberband(ListView self, c_int enable_rubberband);
 	[LinkName("gtk_list_view_set_factory")]
-	public static extern void list_view_set_factory(GtkListView* self, GtkListItemFactory* factory);
+	public static extern void ListViewSetFactory(ListView self, ListItemFactory factory);
 	[LinkName("gtk_list_view_set_header_factory")]
-	public static extern void list_view_set_header_factory(GtkListView* self, GtkListItemFactory* factory);
+	public static extern void ListViewSetHeaderFactory(ListView self, ListItemFactory factory);
 	[LinkName("gtk_list_view_set_model")]
-	public static extern void list_view_set_model(GtkListView* self, GtkSelectionModel* model);
+	public static extern void ListViewSetModel(ListView self, SelectionModel model);
 	[LinkName("gtk_list_view_set_show_separators")]
-	public static extern void list_view_set_show_separators(GtkListView* self, c_int show_separators);
+	public static extern void ListViewSetShowSeparators(ListView self, c_int show_separators);
 	[LinkName("gtk_list_view_set_single_click_activate")]
-	public static extern void list_view_set_single_click_activate(GtkListView* self, c_int single_click_activate);
+	public static extern void ListViewSetSingleClickActivate(ListView self, c_int single_click_activate);
 	[LinkName("gtk_list_view_set_tab_behavior")]
-	public static extern void list_view_set_tab_behavior(GtkListView* self, GtkListTabBehavior tab_behavior);
+	public static extern void ListViewSetTabBehavior(ListView self, ListTabBehavior tab_behavior);
 	[CRepr]
-	public struct GtkListViewClass
+	public struct ListViewClass
 	{
 	}
 	[CRepr]
-	public struct GtkLockButton;
+	public struct LockButton;
 	[LinkName("gtk_lock_button_new")]
-	public static extern GtkWidget* lock_button_new(GPermission* permission);
+	public static extern Widget LockButtonNew(Gio.Permission permission);
 	[LinkName("gtk_lock_button_get_permission")]
-	public static extern GPermission* lock_button_get_permission(GtkLockButton* button);
+	public static extern Gio.Permission LockButtonGetPermission(LockButton button);
 	[LinkName("gtk_lock_button_set_permission")]
-	public static extern void lock_button_set_permission(GtkLockButton* button, GPermission* permission);
+	public static extern void LockButtonSetPermission(LockButton button, Gio.Permission permission);
 	[CRepr]
-	public struct GtkMapListModel;
+	public struct MapListModel;
 	[LinkName("gtk_map_list_model_new")]
-	public static extern GtkMapListModel* map_list_model_new(GListModel* model, GtkMapListModelMapFunc map_func, void* user_data, GDestroyNotify user_destroy);
+	public static extern MapListModel MapListModelNew(Gio.ListModel model, MapListModelMapFunc map_func, void* user_data, GLib.DestroyNotify user_destroy);
 	[LinkName("gtk_map_list_model_get_model")]
-	public static extern GListModel* map_list_model_get_model(GtkMapListModel* self);
+	public static extern Gio.ListModel MapListModelGetModel(MapListModel self);
 	[LinkName("gtk_map_list_model_has_map")]
-	public static extern c_int map_list_model_has_map(GtkMapListModel* self);
+	public static extern c_int MapListModelHasMap(MapListModel self);
 	[LinkName("gtk_map_list_model_set_map_func")]
-	public static extern void map_list_model_set_map_func(GtkMapListModel* self, GtkMapListModelMapFunc map_func, void* user_data, GDestroyNotify user_destroy);
+	public static extern void MapListModelSetMapFunc(MapListModel self, MapListModelMapFunc map_func, void* user_data, GLib.DestroyNotify user_destroy);
 	[LinkName("gtk_map_list_model_set_model")]
-	public static extern void map_list_model_set_model(GtkMapListModel* self, GListModel* model);
+	public static extern void MapListModelSetModel(MapListModel self, Gio.ListModel model);
 	[CRepr]
-	public struct GtkMapListModelClass
+	public struct MapListModelClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
-	public function void* GtkMapListModelMapFunc(void* item, void* user_data);
+	public function GObject.Object MapListModelMapFunc(GObject.Object item, void* user_data);
 	[CRepr]
-	public struct GtkMediaControls;
+	public struct MediaControls;
 	[LinkName("gtk_media_controls_new")]
-	public static extern GtkWidget* media_controls_new(GtkMediaStream* stream);
+	public static extern Widget MediaControlsNew(MediaStream stream);
 	[LinkName("gtk_media_controls_get_media_stream")]
-	public static extern GtkMediaStream* media_controls_get_media_stream(GtkMediaControls* controls);
+	public static extern MediaStream MediaControlsGetMediaStream(MediaControls controls);
 	[LinkName("gtk_media_controls_set_media_stream")]
-	public static extern void media_controls_set_media_stream(GtkMediaControls* controls, GtkMediaStream* stream);
+	public static extern void MediaControlsSetMediaStream(MediaControls controls, MediaStream stream);
 	[CRepr]
-	public struct GtkMediaControlsClass
+	public struct MediaControlsClass
 	{
-		GtkWidgetClass parent_class;
+		WidgetClass parent_class;
 	}
 	[CRepr]
-	public struct GtkMediaFile;
+	public struct MediaFile;
 	[LinkName("gtk_media_file_new")]
-	public static extern GtkMediaStream* media_file_new();
+	public static extern MediaFile MediaFileNew();
 	[LinkName("gtk_media_file_new_for_file")]
-	public static extern GtkMediaStream* media_file_new_for_file(GFile* file);
+	public static extern MediaFile MediaFileNewForFile(Gio.File file);
 	[LinkName("gtk_media_file_new_for_filename")]
-	public static extern GtkMediaStream* media_file_new_for_filename( c_char* filename);
+	public static extern MediaFile MediaFileNewForFilename(char8* filename);
 	[LinkName("gtk_media_file_new_for_input_stream")]
-	public static extern GtkMediaStream* media_file_new_for_input_stream(GInputStream* stream);
+	public static extern MediaFile MediaFileNewForInputStream(Gio.InputStream stream);
 	[LinkName("gtk_media_file_new_for_resource")]
-	public static extern GtkMediaStream* media_file_new_for_resource( c_char* resource_path);
+	public static extern MediaFile MediaFileNewForResource(char8* resource_path);
 	[LinkName("gtk_media_file_clear")]
-	public static extern void media_file_clear(GtkMediaFile* self);
+	public static extern void MediaFileClear(MediaFile self);
 	[LinkName("gtk_media_file_get_file")]
-	public static extern GFile* media_file_get_file(GtkMediaFile* self);
+	public static extern Gio.File MediaFileGetFile(MediaFile self);
 	[LinkName("gtk_media_file_get_input_stream")]
-	public static extern GInputStream* media_file_get_input_stream(GtkMediaFile* self);
+	public static extern Gio.InputStream MediaFileGetInputStream(MediaFile self);
 	[LinkName("gtk_media_file_set_file")]
-	public static extern void media_file_set_file(GtkMediaFile* self, GFile* file);
+	public static extern void MediaFileSetFile(MediaFile self, Gio.File file);
 	[LinkName("gtk_media_file_set_filename")]
-	public static extern void media_file_set_filename(GtkMediaFile* self,  c_char* filename);
+	public static extern void MediaFileSetFilename(MediaFile self, char8* filename);
 	[LinkName("gtk_media_file_set_input_stream")]
-	public static extern void media_file_set_input_stream(GtkMediaFile* self, GInputStream* stream);
+	public static extern void MediaFileSetInputStream(MediaFile self, Gio.InputStream stream);
 	[LinkName("gtk_media_file_set_resource")]
-	public static extern void media_file_set_resource(GtkMediaFile* self,  c_char* resource_path);
+	public static extern void MediaFileSetResource(MediaFile self, char8* resource_path);
 	[CRepr]
-	public struct GtkMediaFileClass
+	public struct MediaFileClass
 	{
-		GtkMediaStreamClass parent_class;
+		MediaStreamClass parent_class;
 	}
 	[CRepr]
-	public struct GtkMediaStream;
+	public struct MediaStream;
 	[LinkName("gtk_media_stream_ended")]
-	public static extern void media_stream_ended(GtkMediaStream* self);
+	public static extern void MediaStreamEnded(MediaStream self);
 	[LinkName("gtk_media_stream_error")]
-	public static extern void media_stream_error(GtkMediaStream* self, GQuark domain, c_int code,  c_char* format);
+	public static extern void MediaStreamError(MediaStream self, GLib.Quark domain, c_int code, char8* format);
 	[LinkName("gtk_media_stream_error_valist")]
-	public static extern void media_stream_error_valist(GtkMediaStream* self, GQuark domain, c_int code,  c_char* format, VarArgs args);
+	public static extern void MediaStreamErrorValist(MediaStream self, GLib.Quark domain, c_int code, char8* format, VarArgs args);
 	[LinkName("gtk_media_stream_gerror")]
-	public static extern void media_stream_gerror(GtkMediaStream* self, GError* error);
+	public static extern void MediaStreamGerror(MediaStream self, GLib.Error error);
 	[LinkName("gtk_media_stream_get_duration")]
-	public static extern c_longlong media_stream_get_duration(GtkMediaStream* self);
+	public static extern c_longlong MediaStreamGetDuration(MediaStream self);
 	[LinkName("gtk_media_stream_get_ended")]
-	public static extern c_int media_stream_get_ended(GtkMediaStream* self);
+	public static extern c_int MediaStreamGetEnded(MediaStream self);
 	[LinkName("gtk_media_stream_get_error")]
-	public static extern  GError* media_stream_get_error(GtkMediaStream* self);
+	public static extern GLib.Error MediaStreamGetError(MediaStream self);
 	[LinkName("gtk_media_stream_get_loop")]
-	public static extern c_int media_stream_get_loop(GtkMediaStream* self);
+	public static extern c_int MediaStreamGetLoop(MediaStream self);
 	[LinkName("gtk_media_stream_get_muted")]
-	public static extern c_int media_stream_get_muted(GtkMediaStream* self);
+	public static extern c_int MediaStreamGetMuted(MediaStream self);
 	[LinkName("gtk_media_stream_get_playing")]
-	public static extern c_int media_stream_get_playing(GtkMediaStream* self);
+	public static extern c_int MediaStreamGetPlaying(MediaStream self);
 	[LinkName("gtk_media_stream_get_timestamp")]
-	public static extern c_longlong media_stream_get_timestamp(GtkMediaStream* self);
+	public static extern c_longlong MediaStreamGetTimestamp(MediaStream self);
 	[LinkName("gtk_media_stream_get_volume")]
-	public static extern double media_stream_get_volume(GtkMediaStream* self);
+	public static extern double MediaStreamGetVolume(MediaStream self);
 	[LinkName("gtk_media_stream_has_audio")]
-	public static extern c_int media_stream_has_audio(GtkMediaStream* self);
+	public static extern c_int MediaStreamHasAudio(MediaStream self);
 	[LinkName("gtk_media_stream_has_video")]
-	public static extern c_int media_stream_has_video(GtkMediaStream* self);
+	public static extern c_int MediaStreamHasVideo(MediaStream self);
 	[LinkName("gtk_media_stream_is_prepared")]
-	public static extern c_int media_stream_is_prepared(GtkMediaStream* self);
+	public static extern c_int MediaStreamIsPrepared(MediaStream self);
 	[LinkName("gtk_media_stream_is_seekable")]
-	public static extern c_int media_stream_is_seekable(GtkMediaStream* self);
+	public static extern c_int MediaStreamIsSeekable(MediaStream self);
 	[LinkName("gtk_media_stream_is_seeking")]
-	public static extern c_int media_stream_is_seeking(GtkMediaStream* self);
+	public static extern c_int MediaStreamIsSeeking(MediaStream self);
 	[LinkName("gtk_media_stream_pause")]
-	public static extern void media_stream_pause(GtkMediaStream* self);
+	public static extern void MediaStreamPause(MediaStream self);
 	[LinkName("gtk_media_stream_play")]
-	public static extern void media_stream_play(GtkMediaStream* self);
+	public static extern void MediaStreamPlay(MediaStream self);
 	[LinkName("gtk_media_stream_prepared")]
-	public static extern void media_stream_prepared(GtkMediaStream* self, c_int has_audio, c_int has_video, c_int seekable, c_longlong duration);
+	public static extern void MediaStreamPrepared(MediaStream self, c_int has_audio, c_int has_video, c_int seekable, c_longlong duration);
 	[LinkName("gtk_media_stream_realize")]
-	public static extern void media_stream_realize(GtkMediaStream* self, GdkSurface* surface);
+	public static extern void MediaStreamRealize(MediaStream self, Gdk.Surface surface);
 	[LinkName("gtk_media_stream_seek")]
-	public static extern void media_stream_seek(GtkMediaStream* self, c_longlong timestamp);
+	public static extern void MediaStreamSeek(MediaStream self, c_longlong timestamp);
 	[LinkName("gtk_media_stream_seek_failed")]
-	public static extern void media_stream_seek_failed(GtkMediaStream* self);
+	public static extern void MediaStreamSeekFailed(MediaStream self);
 	[LinkName("gtk_media_stream_seek_success")]
-	public static extern void media_stream_seek_success(GtkMediaStream* self);
+	public static extern void MediaStreamSeekSuccess(MediaStream self);
 	[LinkName("gtk_media_stream_set_loop")]
-	public static extern void media_stream_set_loop(GtkMediaStream* self, c_int loop);
+	public static extern void MediaStreamSetLoop(MediaStream self, c_int loop);
 	[LinkName("gtk_media_stream_set_muted")]
-	public static extern void media_stream_set_muted(GtkMediaStream* self, c_int muted);
+	public static extern void MediaStreamSetMuted(MediaStream self, c_int muted);
 	[LinkName("gtk_media_stream_set_playing")]
-	public static extern void media_stream_set_playing(GtkMediaStream* self, c_int playing);
+	public static extern void MediaStreamSetPlaying(MediaStream self, c_int playing);
 	[LinkName("gtk_media_stream_set_volume")]
-	public static extern void media_stream_set_volume(GtkMediaStream* self, double volume);
+	public static extern void MediaStreamSetVolume(MediaStream self, double volume);
 	[LinkName("gtk_media_stream_stream_ended")]
-	public static extern void media_stream_stream_ended(GtkMediaStream* self);
+	public static extern void MediaStreamStreamEnded(MediaStream self);
 	[LinkName("gtk_media_stream_stream_prepared")]
-	public static extern void media_stream_stream_prepared(GtkMediaStream* self, c_int has_audio, c_int has_video, c_int seekable, c_longlong duration);
+	public static extern void MediaStreamStreamPrepared(MediaStream self, c_int has_audio, c_int has_video, c_int seekable, c_longlong duration);
 	[LinkName("gtk_media_stream_stream_unprepared")]
-	public static extern void media_stream_stream_unprepared(GtkMediaStream* self);
+	public static extern void MediaStreamStreamUnprepared(MediaStream self);
 	[LinkName("gtk_media_stream_unprepared")]
-	public static extern void media_stream_unprepared(GtkMediaStream* self);
+	public static extern void MediaStreamUnprepared(MediaStream self);
 	[LinkName("gtk_media_stream_unrealize")]
-	public static extern void media_stream_unrealize(GtkMediaStream* self, GdkSurface* surface);
+	public static extern void MediaStreamUnrealize(MediaStream self, Gdk.Surface surface);
 	[LinkName("gtk_media_stream_update")]
-	public static extern void media_stream_update(GtkMediaStream* self, c_longlong timestamp);
+	public static extern void MediaStreamUpdate(MediaStream self, c_longlong timestamp);
 	[CRepr]
-	public struct GtkMediaStreamClass
+	public struct MediaStreamClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GtkMenuButton;
+	public struct MenuButton;
 	[LinkName("gtk_menu_button_new")]
-	public static extern GtkWidget* menu_button_new();
+	public static extern Widget MenuButtonNew();
 	[LinkName("gtk_menu_button_get_active")]
-	public static extern c_int menu_button_get_active(GtkMenuButton* menu_button);
+	public static extern c_int MenuButtonGetActive(MenuButton menu_button);
 	[LinkName("gtk_menu_button_get_always_show_arrow")]
-	public static extern c_int menu_button_get_always_show_arrow(GtkMenuButton* menu_button);
+	public static extern c_int MenuButtonGetAlwaysShowArrow(MenuButton menu_button);
 	[LinkName("gtk_menu_button_get_can_shrink")]
-	public static extern c_int menu_button_get_can_shrink(GtkMenuButton* menu_button);
+	public static extern c_int MenuButtonGetCanShrink(MenuButton menu_button);
 	[LinkName("gtk_menu_button_get_child")]
-	public static extern GtkWidget* menu_button_get_child(GtkMenuButton* menu_button);
+	public static extern Widget MenuButtonGetChild(MenuButton menu_button);
 	[LinkName("gtk_menu_button_get_direction")]
-	public static extern GtkArrowType menu_button_get_direction(GtkMenuButton* menu_button);
+	public static extern ArrowType MenuButtonGetDirection(MenuButton menu_button);
 	[LinkName("gtk_menu_button_get_has_frame")]
-	public static extern c_int menu_button_get_has_frame(GtkMenuButton* menu_button);
+	public static extern c_int MenuButtonGetHasFrame(MenuButton menu_button);
 	[LinkName("gtk_menu_button_get_icon_name")]
-	public static extern  c_char* menu_button_get_icon_name(GtkMenuButton* menu_button);
+	public static extern char8* MenuButtonGetIconName(MenuButton menu_button);
 	[LinkName("gtk_menu_button_get_label")]
-	public static extern  c_char* menu_button_get_label(GtkMenuButton* menu_button);
+	public static extern char8* MenuButtonGetLabel(MenuButton menu_button);
 	[LinkName("gtk_menu_button_get_menu_model")]
-	public static extern GMenuModel* menu_button_get_menu_model(GtkMenuButton* menu_button);
+	public static extern Gio.MenuModel MenuButtonGetMenuModel(MenuButton menu_button);
 	[LinkName("gtk_menu_button_get_popover")]
-	public static extern GtkPopover* menu_button_get_popover(GtkMenuButton* menu_button);
+	public static extern Popover MenuButtonGetPopover(MenuButton menu_button);
 	[LinkName("gtk_menu_button_get_primary")]
-	public static extern c_int menu_button_get_primary(GtkMenuButton* menu_button);
+	public static extern c_int MenuButtonGetPrimary(MenuButton menu_button);
 	[LinkName("gtk_menu_button_get_use_underline")]
-	public static extern c_int menu_button_get_use_underline(GtkMenuButton* menu_button);
+	public static extern c_int MenuButtonGetUseUnderline(MenuButton menu_button);
 	[LinkName("gtk_menu_button_popdown")]
-	public static extern void menu_button_popdown(GtkMenuButton* menu_button);
+	public static extern void MenuButtonPopdown(MenuButton menu_button);
 	[LinkName("gtk_menu_button_popup")]
-	public static extern void menu_button_popup(GtkMenuButton* menu_button);
+	public static extern void MenuButtonPopup(MenuButton menu_button);
 	[LinkName("gtk_menu_button_set_active")]
-	public static extern void menu_button_set_active(GtkMenuButton* menu_button, c_int active);
+	public static extern void MenuButtonSetActive(MenuButton menu_button, c_int active);
 	[LinkName("gtk_menu_button_set_always_show_arrow")]
-	public static extern void menu_button_set_always_show_arrow(GtkMenuButton* menu_button, c_int always_show_arrow);
+	public static extern void MenuButtonSetAlwaysShowArrow(MenuButton menu_button, c_int always_show_arrow);
 	[LinkName("gtk_menu_button_set_can_shrink")]
-	public static extern void menu_button_set_can_shrink(GtkMenuButton* menu_button, c_int can_shrink);
+	public static extern void MenuButtonSetCanShrink(MenuButton menu_button, c_int can_shrink);
 	[LinkName("gtk_menu_button_set_child")]
-	public static extern void menu_button_set_child(GtkMenuButton* menu_button, GtkWidget* child);
+	public static extern void MenuButtonSetChild(MenuButton menu_button, Widget child);
 	[LinkName("gtk_menu_button_set_create_popup_func")]
-	public static extern void menu_button_set_create_popup_func(GtkMenuButton* menu_button, GtkMenuButtonCreatePopupFunc func, void* user_data, GDestroyNotify destroy_notify);
+	public static extern void MenuButtonSetCreatePopupFunc(MenuButton menu_button, MenuButtonCreatePopupFunc func, void* user_data, GLib.DestroyNotify destroy_notify);
 	[LinkName("gtk_menu_button_set_direction")]
-	public static extern void menu_button_set_direction(GtkMenuButton* menu_button, GtkArrowType direction);
+	public static extern void MenuButtonSetDirection(MenuButton menu_button, ArrowType direction);
 	[LinkName("gtk_menu_button_set_has_frame")]
-	public static extern void menu_button_set_has_frame(GtkMenuButton* menu_button, c_int has_frame);
+	public static extern void MenuButtonSetHasFrame(MenuButton menu_button, c_int has_frame);
 	[LinkName("gtk_menu_button_set_icon_name")]
-	public static extern void menu_button_set_icon_name(GtkMenuButton* menu_button,  c_char* icon_name);
+	public static extern void MenuButtonSetIconName(MenuButton menu_button, char8* icon_name);
 	[LinkName("gtk_menu_button_set_label")]
-	public static extern void menu_button_set_label(GtkMenuButton* menu_button,  c_char* label);
+	public static extern void MenuButtonSetLabel(MenuButton menu_button, char8* label);
 	[LinkName("gtk_menu_button_set_menu_model")]
-	public static extern void menu_button_set_menu_model(GtkMenuButton* menu_button, GMenuModel* menu_model);
+	public static extern void MenuButtonSetMenuModel(MenuButton menu_button, Gio.MenuModel menu_model);
 	[LinkName("gtk_menu_button_set_popover")]
-	public static extern void menu_button_set_popover(GtkMenuButton* menu_button, GtkWidget* popover);
+	public static extern void MenuButtonSetPopover(MenuButton menu_button, Widget popover);
 	[LinkName("gtk_menu_button_set_primary")]
-	public static extern void menu_button_set_primary(GtkMenuButton* menu_button, c_int primary);
+	public static extern void MenuButtonSetPrimary(MenuButton menu_button, c_int primary);
 	[LinkName("gtk_menu_button_set_use_underline")]
-	public static extern void menu_button_set_use_underline(GtkMenuButton* menu_button, c_int use_underline);
-	public function void GtkMenuButtonCreatePopupFunc(GtkMenuButton* menu_button, void* user_data);
+	public static extern void MenuButtonSetUseUnderline(MenuButton menu_button, c_int use_underline);
+	public function void MenuButtonCreatePopupFunc(MenuButton menu_button, void* user_data);
 	[CRepr]
-	public struct GtkMessageDialog;
+	public struct MessageDialog;
 	[LinkName("gtk_message_dialog_new")]
-	public static extern GtkWidget* message_dialog_new(GtkWindow* parent, GtkDialogFlags flags, GtkMessageType type, GtkButtonsType buttons,  c_char* message_format);
+	public static extern Widget MessageDialogNew(Window parent, DialogFlags flags, MessageType type, ButtonsType buttons, char8* message_format);
 	[LinkName("gtk_message_dialog_new_with_markup")]
-	public static extern GtkWidget* message_dialog_new_with_markup(GtkWindow* parent, GtkDialogFlags flags, GtkMessageType type, GtkButtonsType buttons,  c_char* message_format);
+	public static extern Widget MessageDialogNewWithMarkup(Window parent, DialogFlags flags, MessageType type, ButtonsType buttons, char8* message_format);
 	[LinkName("gtk_message_dialog_format_secondary_markup")]
-	public static extern void message_dialog_format_secondary_markup(GtkMessageDialog* message_dialog,  c_char* message_format);
+	public static extern void MessageDialogFormatSecondaryMarkup(MessageDialog message_dialog, char8* message_format);
 	[LinkName("gtk_message_dialog_format_secondary_text")]
-	public static extern void message_dialog_format_secondary_text(GtkMessageDialog* message_dialog,  c_char* message_format);
+	public static extern void MessageDialogFormatSecondaryText(MessageDialog message_dialog, char8* message_format);
 	[LinkName("gtk_message_dialog_get_message_area")]
-	public static extern GtkWidget* message_dialog_get_message_area(GtkMessageDialog* message_dialog);
+	public static extern Widget MessageDialogGetMessageArea(MessageDialog message_dialog);
 	[LinkName("gtk_message_dialog_set_markup")]
-	public static extern void message_dialog_set_markup(GtkMessageDialog* message_dialog,  c_char* str);
+	public static extern void MessageDialogSetMarkup(MessageDialog message_dialog, char8* str);
 	[CRepr]
-	public struct GtkMessageDialogClass
+	public struct MessageDialogClass
 	{
 	}
-	public enum GtkMessageType : c_int
+	public enum MessageType : c_int
 	{
 		GTK_MESSAGE_INFO,
 		GTK_MESSAGE_WARNING,
@@ -4878,45 +4878,45 @@ class Gtk
 		GTK_MESSAGE_OTHER
 	}
 	[CRepr]
-	public struct GtkMnemonicAction;
+	public struct MnemonicAction;
 	[CRepr]
-	public struct GtkMnemonicActionClass
+	public struct MnemonicActionClass
 	{
 	}
 	[CRepr]
-	public struct GtkMnemonicTrigger;
+	public struct MnemonicTrigger;
 	[LinkName("gtk_mnemonic_trigger_new")]
-	public static extern GtkShortcutTrigger* mnemonic_trigger_new(c_uint keyval);
+	public static extern MnemonicTrigger MnemonicTriggerNew(c_uint keyval);
 	[LinkName("gtk_mnemonic_trigger_get_keyval")]
-	public static extern c_uint mnemonic_trigger_get_keyval(GtkMnemonicTrigger* self);
+	public static extern c_uint MnemonicTriggerGetKeyval(MnemonicTrigger self);
 	[CRepr]
-	public struct GtkMnemonicTriggerClass
+	public struct MnemonicTriggerClass
 	{
 	}
 	[CRepr]
-	public struct GtkMountOperation;
+	public struct MountOperation;
 	[LinkName("gtk_mount_operation_new")]
-	public static extern GMountOperation* mount_operation_new(GtkWindow* parent);
+	public static extern Gio.MountOperation MountOperationNew(Window parent);
 	[LinkName("gtk_mount_operation_get_display")]
-	public static extern GdkDisplay* mount_operation_get_display(GtkMountOperation* op);
+	public static extern Gdk.Display MountOperationGetDisplay(MountOperation op);
 	[LinkName("gtk_mount_operation_get_parent")]
-	public static extern GtkWindow* mount_operation_get_parent(GtkMountOperation* op);
+	public static extern Window MountOperationGetParent(MountOperation op);
 	[LinkName("gtk_mount_operation_is_showing")]
-	public static extern c_int mount_operation_is_showing(GtkMountOperation* op);
+	public static extern c_int MountOperationIsShowing(MountOperation op);
 	[LinkName("gtk_mount_operation_set_display")]
-	public static extern void mount_operation_set_display(GtkMountOperation* op, GdkDisplay* display);
+	public static extern void MountOperationSetDisplay(MountOperation op, Gdk.Display display);
 	[LinkName("gtk_mount_operation_set_parent")]
-	public static extern void mount_operation_set_parent(GtkMountOperation* op, GtkWindow* parent);
+	public static extern void MountOperationSetParent(MountOperation op, Window parent);
 	[CRepr]
-	public struct GtkMountOperationClass
+	public struct MountOperationClass
 	{
-		GMountOperationClass parent_class;
+		Gio.MountOperationClass parent_class;
 	}
 	[CRepr]
-	public struct GtkMountOperationPrivate
+	public struct MountOperationPrivate
 	{
 	}
-	public enum GtkMovementStep : c_int
+	public enum MovementStep : c_int
 	{
 		GTK_MOVEMENT_LOGICAL_POSITIONS,
 		GTK_MOVEMENT_VISUAL_POSITIONS,
@@ -4930,218 +4930,218 @@ class Gtk
 		GTK_MOVEMENT_HORIZONTAL_PAGES
 	}
 	[CRepr]
-	public struct GtkMultiFilter;
+	public struct MultiFilter;
 	[LinkName("gtk_multi_filter_append")]
-	public static extern void multi_filter_append(GtkMultiFilter* self, GtkFilter* filter);
+	public static extern void MultiFilterAppend(MultiFilter self, Filter filter);
 	[LinkName("gtk_multi_filter_remove")]
-	public static extern void multi_filter_remove(GtkMultiFilter* self, c_uint position);
+	public static extern void MultiFilterRemove(MultiFilter self, c_uint position);
 	[CRepr]
-	public struct GtkMultiFilterClass
+	public struct MultiFilterClass
 	{
 	}
 	[CRepr]
-	public struct GtkMultiSelection;
+	public struct MultiSelection;
 	[LinkName("gtk_multi_selection_new")]
-	public static extern GtkMultiSelection* multi_selection_new(GListModel* model);
+	public static extern MultiSelection MultiSelectionNew(Gio.ListModel model);
 	[LinkName("gtk_multi_selection_get_model")]
-	public static extern GListModel* multi_selection_get_model(GtkMultiSelection* self);
+	public static extern Gio.ListModel MultiSelectionGetModel(MultiSelection self);
 	[LinkName("gtk_multi_selection_set_model")]
-	public static extern void multi_selection_set_model(GtkMultiSelection* self, GListModel* model);
+	public static extern void MultiSelectionSetModel(MultiSelection self, Gio.ListModel model);
 	[CRepr]
-	public struct GtkMultiSelectionClass
+	public struct MultiSelectionClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GtkMultiSorter;
+	public struct MultiSorter;
 	[LinkName("gtk_multi_sorter_new")]
-	public static extern GtkMultiSorter* multi_sorter_new();
+	public static extern MultiSorter MultiSorterNew();
 	[LinkName("gtk_multi_sorter_append")]
-	public static extern void multi_sorter_append(GtkMultiSorter* self, GtkSorter* sorter);
+	public static extern void MultiSorterAppend(MultiSorter self, Sorter sorter);
 	[LinkName("gtk_multi_sorter_remove")]
-	public static extern void multi_sorter_remove(GtkMultiSorter* self, c_uint position);
+	public static extern void MultiSorterRemove(MultiSorter self, c_uint position);
 	[CRepr]
-	public struct GtkMultiSorterClass
+	public struct MultiSorterClass
 	{
-		GtkSorterClass parent_class;
+		SorterClass parent_class;
 	}
 	[CRepr]
-	public struct GtkNamedAction;
+	public struct NamedAction;
 	[LinkName("gtk_named_action_new")]
-	public static extern GtkShortcutAction* named_action_new( c_char* name);
+	public static extern NamedAction NamedActionNew(char8* name);
 	[LinkName("gtk_named_action_get_action_name")]
-	public static extern  c_char* named_action_get_action_name(GtkNamedAction* self);
+	public static extern char8* NamedActionGetActionName(NamedAction self);
 	[CRepr]
-	public struct GtkNamedActionClass
+	public struct NamedActionClass
 	{
 	}
 	[CRepr]
-	public struct GtkNative
+	public struct Native
 	{	}
 	[CRepr]
-	public struct GtkNativeDialog;
+	public struct NativeDialog;
 	[LinkName("gtk_native_dialog_destroy")]
-	public static extern void native_dialog_destroy(GtkNativeDialog* self);
+	public static extern void NativeDialogDestroy(NativeDialog self);
 	[LinkName("gtk_native_dialog_get_modal")]
-	public static extern c_int native_dialog_get_modal(GtkNativeDialog* self);
+	public static extern c_int NativeDialogGetModal(NativeDialog self);
 	[LinkName("gtk_native_dialog_get_title")]
-	public static extern  c_char* native_dialog_get_title(GtkNativeDialog* self);
+	public static extern char8* NativeDialogGetTitle(NativeDialog self);
 	[LinkName("gtk_native_dialog_get_transient_for")]
-	public static extern GtkWindow* native_dialog_get_transient_for(GtkNativeDialog* self);
+	public static extern Window NativeDialogGetTransientFor(NativeDialog self);
 	[LinkName("gtk_native_dialog_get_visible")]
-	public static extern c_int native_dialog_get_visible(GtkNativeDialog* self);
+	public static extern c_int NativeDialogGetVisible(NativeDialog self);
 	[LinkName("gtk_native_dialog_hide")]
-	public static extern void native_dialog_hide(GtkNativeDialog* self);
+	public static extern void NativeDialogHide(NativeDialog self);
 	[LinkName("gtk_native_dialog_set_modal")]
-	public static extern void native_dialog_set_modal(GtkNativeDialog* self, c_int modal);
+	public static extern void NativeDialogSetModal(NativeDialog self, c_int modal);
 	[LinkName("gtk_native_dialog_set_title")]
-	public static extern void native_dialog_set_title(GtkNativeDialog* self,  c_char* title);
+	public static extern void NativeDialogSetTitle(NativeDialog self, char8* title);
 	[LinkName("gtk_native_dialog_set_transient_for")]
-	public static extern void native_dialog_set_transient_for(GtkNativeDialog* self, GtkWindow* parent);
+	public static extern void NativeDialogSetTransientFor(NativeDialog self, Window parent);
 	[LinkName("gtk_native_dialog_show")]
-	public static extern void native_dialog_show(GtkNativeDialog* self);
+	public static extern void NativeDialogShow(NativeDialog self);
 	[CRepr]
-	public struct GtkNativeDialogClass
+	public struct NativeDialogClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GtkNativeInterface
+	public struct NativeInterface
 	{
 	}
-	public enum GtkNaturalWrapMode : c_int
+	public enum NaturalWrapMode : c_int
 	{
 		GTK_NATURAL_WRAP_INHERIT,
 		GTK_NATURAL_WRAP_NONE,
 		GTK_NATURAL_WRAP_WORD
 	}
 	[CRepr]
-	public struct GtkNeverTrigger;
+	public struct NeverTrigger;
 	[CRepr]
-	public struct GtkNeverTriggerClass
+	public struct NeverTriggerClass
 	{
 	}
 	[CRepr]
-	public struct GtkNoSelection;
+	public struct NoSelection;
 	[LinkName("gtk_no_selection_new")]
-	public static extern GtkNoSelection* no_selection_new(GListModel* model);
+	public static extern NoSelection NoSelectionNew(Gio.ListModel model);
 	[LinkName("gtk_no_selection_get_model")]
-	public static extern GListModel* no_selection_get_model(GtkNoSelection* self);
+	public static extern Gio.ListModel NoSelectionGetModel(NoSelection self);
 	[LinkName("gtk_no_selection_set_model")]
-	public static extern void no_selection_set_model(GtkNoSelection* self, GListModel* model);
+	public static extern void NoSelectionSetModel(NoSelection self, Gio.ListModel model);
 	[CRepr]
-	public struct GtkNoSelectionClass
+	public struct NoSelectionClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GtkNotebook;
+	public struct Notebook;
 	[LinkName("gtk_notebook_new")]
-	public static extern GtkWidget* notebook_new();
+	public static extern Widget NotebookNew();
 	[LinkName("gtk_notebook_append_page")]
-	public static extern c_int notebook_append_page(GtkNotebook* notebook, GtkWidget* child, GtkWidget* tab_label);
+	public static extern c_int NotebookAppendPage(Notebook notebook, Widget child, Widget tab_label);
 	[LinkName("gtk_notebook_append_page_menu")]
-	public static extern c_int notebook_append_page_menu(GtkNotebook* notebook, GtkWidget* child, GtkWidget* tab_label, GtkWidget* menu_label);
+	public static extern c_int NotebookAppendPageMenu(Notebook notebook, Widget child, Widget tab_label, Widget menu_label);
 	[LinkName("gtk_notebook_detach_tab")]
-	public static extern void notebook_detach_tab(GtkNotebook* notebook, GtkWidget* child);
+	public static extern void NotebookDetachTab(Notebook notebook, Widget child);
 	[LinkName("gtk_notebook_get_action_widget")]
-	public static extern GtkWidget* notebook_get_action_widget(GtkNotebook* notebook, GtkPackType pack_type);
+	public static extern Widget NotebookGetActionWidget(Notebook notebook, PackType pack_type);
 	[LinkName("gtk_notebook_get_current_page")]
-	public static extern c_int notebook_get_current_page(GtkNotebook* notebook);
+	public static extern c_int NotebookGetCurrentPage(Notebook notebook);
 	[LinkName("gtk_notebook_get_group_name")]
-	public static extern  c_char* notebook_get_group_name(GtkNotebook* notebook);
+	public static extern char8* NotebookGetGroupName(Notebook notebook);
 	[LinkName("gtk_notebook_get_menu_label")]
-	public static extern GtkWidget* notebook_get_menu_label(GtkNotebook* notebook, GtkWidget* child);
+	public static extern Widget NotebookGetMenuLabel(Notebook notebook, Widget child);
 	[LinkName("gtk_notebook_get_menu_label_text")]
-	public static extern  c_char* notebook_get_menu_label_text(GtkNotebook* notebook, GtkWidget* child);
+	public static extern char8* NotebookGetMenuLabelText(Notebook notebook, Widget child);
 	[LinkName("gtk_notebook_get_n_pages")]
-	public static extern c_int notebook_get_n_pages(GtkNotebook* notebook);
+	public static extern c_int NotebookGetNPages(Notebook notebook);
 	[LinkName("gtk_notebook_get_nth_page")]
-	public static extern GtkWidget* notebook_get_nth_page(GtkNotebook* notebook, c_int page_num);
+	public static extern Widget NotebookGetNthPage(Notebook notebook, c_int page_num);
 	[LinkName("gtk_notebook_get_page")]
-	public static extern GtkNotebookPage* notebook_get_page(GtkNotebook* notebook, GtkWidget* child);
+	public static extern NotebookPage NotebookGetPage(Notebook notebook, Widget child);
 	[LinkName("gtk_notebook_get_pages")]
-	public static extern GListModel* notebook_get_pages(GtkNotebook* notebook);
+	public static extern Gio.ListModel NotebookGetPages(Notebook notebook);
 	[LinkName("gtk_notebook_get_scrollable")]
-	public static extern c_int notebook_get_scrollable(GtkNotebook* notebook);
+	public static extern c_int NotebookGetScrollable(Notebook notebook);
 	[LinkName("gtk_notebook_get_show_border")]
-	public static extern c_int notebook_get_show_border(GtkNotebook* notebook);
+	public static extern c_int NotebookGetShowBorder(Notebook notebook);
 	[LinkName("gtk_notebook_get_show_tabs")]
-	public static extern c_int notebook_get_show_tabs(GtkNotebook* notebook);
+	public static extern c_int NotebookGetShowTabs(Notebook notebook);
 	[LinkName("gtk_notebook_get_tab_detachable")]
-	public static extern c_int notebook_get_tab_detachable(GtkNotebook* notebook, GtkWidget* child);
+	public static extern c_int NotebookGetTabDetachable(Notebook notebook, Widget child);
 	[LinkName("gtk_notebook_get_tab_label")]
-	public static extern GtkWidget* notebook_get_tab_label(GtkNotebook* notebook, GtkWidget* child);
+	public static extern Widget NotebookGetTabLabel(Notebook notebook, Widget child);
 	[LinkName("gtk_notebook_get_tab_label_text")]
-	public static extern  c_char* notebook_get_tab_label_text(GtkNotebook* notebook, GtkWidget* child);
+	public static extern char8* NotebookGetTabLabelText(Notebook notebook, Widget child);
 	[LinkName("gtk_notebook_get_tab_pos")]
-	public static extern GtkPositionType notebook_get_tab_pos(GtkNotebook* notebook);
+	public static extern PositionType NotebookGetTabPos(Notebook notebook);
 	[LinkName("gtk_notebook_get_tab_reorderable")]
-	public static extern c_int notebook_get_tab_reorderable(GtkNotebook* notebook, GtkWidget* child);
+	public static extern c_int NotebookGetTabReorderable(Notebook notebook, Widget child);
 	[LinkName("gtk_notebook_insert_page")]
-	public static extern c_int notebook_insert_page(GtkNotebook* notebook, GtkWidget* child, GtkWidget* tab_label, c_int position);
+	public static extern c_int NotebookInsertPage(Notebook notebook, Widget child, Widget tab_label, c_int position);
 	[LinkName("gtk_notebook_insert_page_menu")]
-	public static extern c_int notebook_insert_page_menu(GtkNotebook* notebook, GtkWidget* child, GtkWidget* tab_label, GtkWidget* menu_label, c_int position);
+	public static extern c_int NotebookInsertPageMenu(Notebook notebook, Widget child, Widget tab_label, Widget menu_label, c_int position);
 	[LinkName("gtk_notebook_next_page")]
-	public static extern void notebook_next_page(GtkNotebook* notebook);
+	public static extern void NotebookNextPage(Notebook notebook);
 	[LinkName("gtk_notebook_page_num")]
-	public static extern c_int notebook_page_num(GtkNotebook* notebook, GtkWidget* child);
+	public static extern c_int NotebookPageNum(Notebook notebook, Widget child);
 	[LinkName("gtk_notebook_popup_disable")]
-	public static extern void notebook_popup_disable(GtkNotebook* notebook);
+	public static extern void NotebookPopupDisable(Notebook notebook);
 	[LinkName("gtk_notebook_popup_enable")]
-	public static extern void notebook_popup_enable(GtkNotebook* notebook);
+	public static extern void NotebookPopupEnable(Notebook notebook);
 	[LinkName("gtk_notebook_prepend_page")]
-	public static extern c_int notebook_prepend_page(GtkNotebook* notebook, GtkWidget* child, GtkWidget* tab_label);
+	public static extern c_int NotebookPrependPage(Notebook notebook, Widget child, Widget tab_label);
 	[LinkName("gtk_notebook_prepend_page_menu")]
-	public static extern c_int notebook_prepend_page_menu(GtkNotebook* notebook, GtkWidget* child, GtkWidget* tab_label, GtkWidget* menu_label);
+	public static extern c_int NotebookPrependPageMenu(Notebook notebook, Widget child, Widget tab_label, Widget menu_label);
 	[LinkName("gtk_notebook_prev_page")]
-	public static extern void notebook_prev_page(GtkNotebook* notebook);
+	public static extern void NotebookPrevPage(Notebook notebook);
 	[LinkName("gtk_notebook_remove_page")]
-	public static extern void notebook_remove_page(GtkNotebook* notebook, c_int page_num);
+	public static extern void NotebookRemovePage(Notebook notebook, c_int page_num);
 	[LinkName("gtk_notebook_reorder_child")]
-	public static extern void notebook_reorder_child(GtkNotebook* notebook, GtkWidget* child, c_int position);
+	public static extern void NotebookReorderChild(Notebook notebook, Widget child, c_int position);
 	[LinkName("gtk_notebook_set_action_widget")]
-	public static extern void notebook_set_action_widget(GtkNotebook* notebook, GtkWidget* widget, GtkPackType pack_type);
+	public static extern void NotebookSetActionWidget(Notebook notebook, Widget widget, PackType pack_type);
 	[LinkName("gtk_notebook_set_current_page")]
-	public static extern void notebook_set_current_page(GtkNotebook* notebook, c_int page_num);
+	public static extern void NotebookSetCurrentPage(Notebook notebook, c_int page_num);
 	[LinkName("gtk_notebook_set_group_name")]
-	public static extern void notebook_set_group_name(GtkNotebook* notebook,  c_char* group_name);
+	public static extern void NotebookSetGroupName(Notebook notebook, char8* group_name);
 	[LinkName("gtk_notebook_set_menu_label")]
-	public static extern void notebook_set_menu_label(GtkNotebook* notebook, GtkWidget* child, GtkWidget* menu_label);
+	public static extern void NotebookSetMenuLabel(Notebook notebook, Widget child, Widget menu_label);
 	[LinkName("gtk_notebook_set_menu_label_text")]
-	public static extern void notebook_set_menu_label_text(GtkNotebook* notebook, GtkWidget* child,  c_char* menu_text);
+	public static extern void NotebookSetMenuLabelText(Notebook notebook, Widget child, char8* menu_text);
 	[LinkName("gtk_notebook_set_scrollable")]
-	public static extern void notebook_set_scrollable(GtkNotebook* notebook, c_int scrollable);
+	public static extern void NotebookSetScrollable(Notebook notebook, c_int scrollable);
 	[LinkName("gtk_notebook_set_show_border")]
-	public static extern void notebook_set_show_border(GtkNotebook* notebook, c_int show_border);
+	public static extern void NotebookSetShowBorder(Notebook notebook, c_int show_border);
 	[LinkName("gtk_notebook_set_show_tabs")]
-	public static extern void notebook_set_show_tabs(GtkNotebook* notebook, c_int show_tabs);
+	public static extern void NotebookSetShowTabs(Notebook notebook, c_int show_tabs);
 	[LinkName("gtk_notebook_set_tab_detachable")]
-	public static extern void notebook_set_tab_detachable(GtkNotebook* notebook, GtkWidget* child, c_int detachable);
+	public static extern void NotebookSetTabDetachable(Notebook notebook, Widget child, c_int detachable);
 	[LinkName("gtk_notebook_set_tab_label")]
-	public static extern void notebook_set_tab_label(GtkNotebook* notebook, GtkWidget* child, GtkWidget* tab_label);
+	public static extern void NotebookSetTabLabel(Notebook notebook, Widget child, Widget tab_label);
 	[LinkName("gtk_notebook_set_tab_label_text")]
-	public static extern void notebook_set_tab_label_text(GtkNotebook* notebook, GtkWidget* child,  c_char* tab_text);
+	public static extern void NotebookSetTabLabelText(Notebook notebook, Widget child, char8* tab_text);
 	[LinkName("gtk_notebook_set_tab_pos")]
-	public static extern void notebook_set_tab_pos(GtkNotebook* notebook, GtkPositionType pos);
+	public static extern void NotebookSetTabPos(Notebook notebook, PositionType pos);
 	[LinkName("gtk_notebook_set_tab_reorderable")]
-	public static extern void notebook_set_tab_reorderable(GtkNotebook* notebook, GtkWidget* child, c_int reorderable);
+	public static extern void NotebookSetTabReorderable(Notebook notebook, Widget child, c_int reorderable);
 	[CRepr]
-	public struct GtkNotebookPage;
+	public struct NotebookPage;
 	[LinkName("gtk_notebook_page_get_child")]
-	public static extern GtkWidget* notebook_page_get_child(GtkNotebookPage* page);
-	public enum GtkNotebookTab : c_int
+	public static extern Widget NotebookPageGetChild(NotebookPage page);
+	public enum NotebookTab : c_int
 	{
 		GTK_NOTEBOOK_TAB_FIRST,
 		GTK_NOTEBOOK_TAB_LAST
 	}
 	[CRepr]
-	public struct GtkNothingAction;
+	public struct NothingAction;
 	[CRepr]
-	public struct GtkNothingActionClass
+	public struct NothingActionClass
 	{
 	}
-	public enum GtkNumberUpLayout : c_int
+	public enum NumberUpLayout : c_int
 	{
 		GTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_TOP_TO_BOTTOM,
 		GTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_BOTTOM_TO_TOP,
@@ -5153,129 +5153,129 @@ class Gtk
 		GTK_NUMBER_UP_LAYOUT_BOTTOM_TO_TOP_RIGHT_TO_LEFT
 	}
 	[CRepr]
-	public struct GtkNumericSorter;
+	public struct NumericSorter;
 	[LinkName("gtk_numeric_sorter_new")]
-	public static extern GtkNumericSorter* numeric_sorter_new(GtkExpression* expression);
+	public static extern NumericSorter NumericSorterNew(Expression expression);
 	[LinkName("gtk_numeric_sorter_get_expression")]
-	public static extern GtkExpression* numeric_sorter_get_expression(GtkNumericSorter* self);
+	public static extern Expression NumericSorterGetExpression(NumericSorter self);
 	[LinkName("gtk_numeric_sorter_get_sort_order")]
-	public static extern GtkSortType numeric_sorter_get_sort_order(GtkNumericSorter* self);
+	public static extern SortType NumericSorterGetSortOrder(NumericSorter self);
 	[LinkName("gtk_numeric_sorter_set_expression")]
-	public static extern void numeric_sorter_set_expression(GtkNumericSorter* self, GtkExpression* expression);
+	public static extern void NumericSorterSetExpression(NumericSorter self, Expression expression);
 	[LinkName("gtk_numeric_sorter_set_sort_order")]
-	public static extern void numeric_sorter_set_sort_order(GtkNumericSorter* self, GtkSortType sort_order);
+	public static extern void NumericSorterSetSortOrder(NumericSorter self, SortType sort_order);
 	[CRepr]
-	public struct GtkNumericSorterClass
+	public struct NumericSorterClass
 	{
-		GtkSorterClass parent_class;
+		SorterClass parent_class;
 	}
 	[CRepr]
-	public struct GtkObjectExpression;
+	public struct ObjectExpression;
 	[LinkName("gtk_object_expression_new")]
-	public static extern GtkExpression* object_expression_new(GObject* object);
+	public static extern ObjectExpression ObjectExpressionNew(GObject.Object object);
 	[LinkName("gtk_object_expression_get_object")]
-	public static extern GObject* object_expression_get_object(GtkExpression* expression);
-	public enum GtkOrdering : c_int
+	public static extern GObject.Object ObjectExpressionGetObject(ObjectExpression expression);
+	public enum Ordering : c_int
 	{
 		GTK_ORDERING_SMALLER,
 		GTK_ORDERING_EQUAL,
 		GTK_ORDERING_LARGER
 	}
 	[CRepr]
-	public struct GtkOrientable
+	public struct Orientable
 	{	}
 	[CRepr]
-	public struct GtkOrientableIface
+	public struct OrientableIface
 	{
-		GTypeInterface base_iface;
+		GObject.TypeInterface base_iface;
 	}
-	public enum GtkOrientation : c_int
+	public enum Orientation : c_int
 	{
 		GTK_ORIENTATION_HORIZONTAL,
 		GTK_ORIENTATION_VERTICAL
 	}
-	public enum GtkOverflow : c_int
+	public enum Overflow : c_int
 	{
 		GTK_OVERFLOW_VISIBLE,
 		GTK_OVERFLOW_HIDDEN
 	}
 	[CRepr]
-	public struct GtkOverlay;
+	public struct Overlay;
 	[LinkName("gtk_overlay_new")]
-	public static extern GtkWidget* overlay_new();
+	public static extern Widget OverlayNew();
 	[LinkName("gtk_overlay_add_overlay")]
-	public static extern void overlay_add_overlay(GtkOverlay* overlay, GtkWidget* widget);
+	public static extern void OverlayAddOverlay(Overlay overlay, Widget widget);
 	[LinkName("gtk_overlay_get_child")]
-	public static extern GtkWidget* overlay_get_child(GtkOverlay* overlay);
+	public static extern Widget OverlayGetChild(Overlay overlay);
 	[LinkName("gtk_overlay_get_clip_overlay")]
-	public static extern c_int overlay_get_clip_overlay(GtkOverlay* overlay, GtkWidget* widget);
+	public static extern c_int OverlayGetClipOverlay(Overlay overlay, Widget widget);
 	[LinkName("gtk_overlay_get_measure_overlay")]
-	public static extern c_int overlay_get_measure_overlay(GtkOverlay* overlay, GtkWidget* widget);
+	public static extern c_int OverlayGetMeasureOverlay(Overlay overlay, Widget widget);
 	[LinkName("gtk_overlay_remove_overlay")]
-	public static extern void overlay_remove_overlay(GtkOverlay* overlay, GtkWidget* widget);
+	public static extern void OverlayRemoveOverlay(Overlay overlay, Widget widget);
 	[LinkName("gtk_overlay_set_child")]
-	public static extern void overlay_set_child(GtkOverlay* overlay, GtkWidget* child);
+	public static extern void OverlaySetChild(Overlay overlay, Widget child);
 	[LinkName("gtk_overlay_set_clip_overlay")]
-	public static extern void overlay_set_clip_overlay(GtkOverlay* overlay, GtkWidget* widget, c_int clip_overlay);
+	public static extern void OverlaySetClipOverlay(Overlay overlay, Widget widget, c_int clip_overlay);
 	[LinkName("gtk_overlay_set_measure_overlay")]
-	public static extern void overlay_set_measure_overlay(GtkOverlay* overlay, GtkWidget* widget, c_int measure);
+	public static extern void OverlaySetMeasureOverlay(Overlay overlay, Widget widget, c_int measure);
 	[CRepr]
-	public struct GtkOverlayLayout;
+	public struct OverlayLayout;
 	[LinkName("gtk_overlay_layout_new")]
-	public static extern GtkLayoutManager* overlay_layout_new();
+	public static extern LayoutManager OverlayLayoutNew();
 	[CRepr]
-	public struct GtkOverlayLayoutChild;
+	public struct OverlayLayoutChild;
 	[LinkName("gtk_overlay_layout_child_get_clip_overlay")]
-	public static extern c_int overlay_layout_child_get_clip_overlay(GtkOverlayLayoutChild* child);
+	public static extern c_int OverlayLayoutChildGetClipOverlay(OverlayLayoutChild child);
 	[LinkName("gtk_overlay_layout_child_get_measure")]
-	public static extern c_int overlay_layout_child_get_measure(GtkOverlayLayoutChild* child);
+	public static extern c_int OverlayLayoutChildGetMeasure(OverlayLayoutChild child);
 	[LinkName("gtk_overlay_layout_child_set_clip_overlay")]
-	public static extern void overlay_layout_child_set_clip_overlay(GtkOverlayLayoutChild* child, c_int clip_overlay);
+	public static extern void OverlayLayoutChildSetClipOverlay(OverlayLayoutChild child, c_int clip_overlay);
 	[LinkName("gtk_overlay_layout_child_set_measure")]
-	public static extern void overlay_layout_child_set_measure(GtkOverlayLayoutChild* child, c_int measure);
+	public static extern void OverlayLayoutChildSetMeasure(OverlayLayoutChild child, c_int measure);
 	[CRepr]
-	public struct GtkOverlayLayoutChildClass
+	public struct OverlayLayoutChildClass
 	{
-		GtkLayoutChildClass parent_class;
+		LayoutChildClass parent_class;
 	}
 	[CRepr]
-	public struct GtkOverlayLayoutClass
+	public struct OverlayLayoutClass
 	{
-		GtkLayoutManagerClass parent_class;
+		LayoutManagerClass parent_class;
 	}
-	public enum GtkPackType : c_int
+	public enum PackType : c_int
 	{
 		GTK_PACK_START,
 		GTK_PACK_END
 	}
 	[CRepr]
-	public struct GtkPadActionEntry
+	public struct PadActionEntry
 	{
-		GtkPadActionType type;
+		PadActionType type;
 		c_int index;
 		c_int mode;
-		 c_char* label;
-		 c_char* action_name;
+		char8* label;
+		char8* action_name;
 	}
-	public enum GtkPadActionType : c_int
+	public enum PadActionType : c_int
 	{
 		GTK_PAD_ACTION_BUTTON,
 		GTK_PAD_ACTION_RING,
 		GTK_PAD_ACTION_STRIP
 	}
 	[CRepr]
-	public struct GtkPadController;
+	public struct PadController;
 	[LinkName("gtk_pad_controller_new")]
-	public static extern GtkPadController* pad_controller_new(GActionGroup* group, GdkDevice* pad);
+	public static extern PadController PadControllerNew(Gio.ActionGroup group, Gdk.Device pad);
 	[LinkName("gtk_pad_controller_set_action")]
-	public static extern void pad_controller_set_action(GtkPadController* controller, GtkPadActionType type, c_int index, c_int mode,  c_char* label,  c_char* action_name);
+	public static extern void PadControllerSetAction(PadController controller, PadActionType type, c_int index, c_int mode, char8* label, char8* action_name);
 	[LinkName("gtk_pad_controller_set_action_entries")]
-	public static extern void pad_controller_set_action_entries(GtkPadController* controller, c_int n_entries);
+	public static extern void PadControllerSetActionEntries(PadController controller, c_int n_entries);
 	[CRepr]
-	public struct GtkPadControllerClass
+	public struct PadControllerClass
 	{
 	}
-	public enum GtkPageOrientation : c_int
+	public enum PageOrientation : c_int
 	{
 		GTK_PAGE_ORIENTATION_PORTRAIT,
 		GTK_PAGE_ORIENTATION_LANDSCAPE,
@@ -5283,87 +5283,87 @@ class Gtk
 		GTK_PAGE_ORIENTATION_REVERSE_LANDSCAPE
 	}
 	[CRepr]
-	public struct GtkPageRange
+	public struct PageRange
 	{
 		c_int start;
 		c_int end;
 	}
-	public enum GtkPageSet : c_int
+	public enum PageSet : c_int
 	{
 		GTK_PAGE_SET_ALL,
 		GTK_PAGE_SET_EVEN,
 		GTK_PAGE_SET_ODD
 	}
 	[CRepr]
-	public struct GtkPageSetup;
+	public struct PageSetup;
 	[LinkName("gtk_page_setup_new")]
-	public static extern GtkPageSetup* page_setup_new();
+	public static extern PageSetup PageSetupNew();
 	[LinkName("gtk_page_setup_new_from_file")]
-	public static extern GtkPageSetup* page_setup_new_from_file( c_char* file_name);
+	public static extern PageSetup PageSetupNewFromFile(char8* file_name);
 	[LinkName("gtk_page_setup_new_from_gvariant")]
-	public static extern GtkPageSetup* page_setup_new_from_gvariant(GVariant* variant);
+	public static extern PageSetup PageSetupNewFromGvariant(GLib.Variant variant);
 	[LinkName("gtk_page_setup_new_from_key_file")]
-	public static extern GtkPageSetup* page_setup_new_from_key_file(GKeyFile* key_file,  c_char* group_name);
+	public static extern PageSetup PageSetupNewFromKeyFile(GLib.KeyFile key_file, char8* group_name);
 	[LinkName("gtk_page_setup_copy")]
-	public static extern GtkPageSetup* page_setup_copy(GtkPageSetup* other);
+	public static extern PageSetup PageSetupCopy(PageSetup other);
 	[LinkName("gtk_page_setup_get_bottom_margin")]
-	public static extern double page_setup_get_bottom_margin(GtkPageSetup* setup, GtkUnit unit);
+	public static extern double PageSetupGetBottomMargin(PageSetup setup, Unit unit);
 	[LinkName("gtk_page_setup_get_left_margin")]
-	public static extern double page_setup_get_left_margin(GtkPageSetup* setup, GtkUnit unit);
+	public static extern double PageSetupGetLeftMargin(PageSetup setup, Unit unit);
 	[LinkName("gtk_page_setup_get_orientation")]
-	public static extern GtkPageOrientation page_setup_get_orientation(GtkPageSetup* setup);
+	public static extern PageOrientation PageSetupGetOrientation(PageSetup setup);
 	[LinkName("gtk_page_setup_get_page_height")]
-	public static extern double page_setup_get_page_height(GtkPageSetup* setup, GtkUnit unit);
+	public static extern double PageSetupGetPageHeight(PageSetup setup, Unit unit);
 	[LinkName("gtk_page_setup_get_page_width")]
-	public static extern double page_setup_get_page_width(GtkPageSetup* setup, GtkUnit unit);
+	public static extern double PageSetupGetPageWidth(PageSetup setup, Unit unit);
 	[LinkName("gtk_page_setup_get_paper_height")]
-	public static extern double page_setup_get_paper_height(GtkPageSetup* setup, GtkUnit unit);
+	public static extern double PageSetupGetPaperHeight(PageSetup setup, Unit unit);
 	[LinkName("gtk_page_setup_get_paper_size")]
-	public static extern GtkPaperSize* page_setup_get_paper_size(GtkPageSetup* setup);
+	public static extern PaperSize PageSetupGetPaperSize(PageSetup setup);
 	[LinkName("gtk_page_setup_get_paper_width")]
-	public static extern double page_setup_get_paper_width(GtkPageSetup* setup, GtkUnit unit);
+	public static extern double PageSetupGetPaperWidth(PageSetup setup, Unit unit);
 	[LinkName("gtk_page_setup_get_right_margin")]
-	public static extern double page_setup_get_right_margin(GtkPageSetup* setup, GtkUnit unit);
+	public static extern double PageSetupGetRightMargin(PageSetup setup, Unit unit);
 	[LinkName("gtk_page_setup_get_top_margin")]
-	public static extern double page_setup_get_top_margin(GtkPageSetup* setup, GtkUnit unit);
+	public static extern double PageSetupGetTopMargin(PageSetup setup, Unit unit);
 	[LinkName("gtk_page_setup_load_file")]
-	public static extern c_int page_setup_load_file(GtkPageSetup* setup,  c_char* file_name);
+	public static extern c_int PageSetupLoadFile(PageSetup setup, char8* file_name);
 	[LinkName("gtk_page_setup_load_key_file")]
-	public static extern c_int page_setup_load_key_file(GtkPageSetup* setup, GKeyFile* key_file,  c_char* group_name);
+	public static extern c_int PageSetupLoadKeyFile(PageSetup setup, GLib.KeyFile key_file, char8* group_name);
 	[LinkName("gtk_page_setup_set_bottom_margin")]
-	public static extern void page_setup_set_bottom_margin(GtkPageSetup* setup, double margin, GtkUnit unit);
+	public static extern void PageSetupSetBottomMargin(PageSetup setup, double margin, Unit unit);
 	[LinkName("gtk_page_setup_set_left_margin")]
-	public static extern void page_setup_set_left_margin(GtkPageSetup* setup, double margin, GtkUnit unit);
+	public static extern void PageSetupSetLeftMargin(PageSetup setup, double margin, Unit unit);
 	[LinkName("gtk_page_setup_set_orientation")]
-	public static extern void page_setup_set_orientation(GtkPageSetup* setup, GtkPageOrientation orientation);
+	public static extern void PageSetupSetOrientation(PageSetup setup, PageOrientation orientation);
 	[LinkName("gtk_page_setup_set_paper_size")]
-	public static extern void page_setup_set_paper_size(GtkPageSetup* setup, GtkPaperSize* size);
+	public static extern void PageSetupSetPaperSize(PageSetup setup, PaperSize size);
 	[LinkName("gtk_page_setup_set_paper_size_and_default_margins")]
-	public static extern void page_setup_set_paper_size_and_default_margins(GtkPageSetup* setup, GtkPaperSize* size);
+	public static extern void PageSetupSetPaperSizeAndDefaultMargins(PageSetup setup, PaperSize size);
 	[LinkName("gtk_page_setup_set_right_margin")]
-	public static extern void page_setup_set_right_margin(GtkPageSetup* setup, double margin, GtkUnit unit);
+	public static extern void PageSetupSetRightMargin(PageSetup setup, double margin, Unit unit);
 	[LinkName("gtk_page_setup_set_top_margin")]
-	public static extern void page_setup_set_top_margin(GtkPageSetup* setup, double margin, GtkUnit unit);
+	public static extern void PageSetupSetTopMargin(PageSetup setup, double margin, Unit unit);
 	[LinkName("gtk_page_setup_to_file")]
-	public static extern c_int page_setup_to_file(GtkPageSetup* setup,  c_char* file_name);
+	public static extern c_int PageSetupToFile(PageSetup setup, char8* file_name);
 	[LinkName("gtk_page_setup_to_gvariant")]
-	public static extern GVariant* page_setup_to_gvariant(GtkPageSetup* setup);
+	public static extern GLib.Variant PageSetupToGvariant(PageSetup setup);
 	[LinkName("gtk_page_setup_to_key_file")]
-	public static extern void page_setup_to_key_file(GtkPageSetup* setup, GKeyFile* key_file,  c_char* group_name);
-	public function void GtkPageSetupDoneFunc(GtkPageSetup* page_setup, void* data);
+	public static extern void PageSetupToKeyFile(PageSetup setup, GLib.KeyFile key_file, char8* group_name);
+	public function void PageSetupDoneFunc(PageSetup page_setup, void* data);
 	[CRepr]
-	public struct GtkPageSetupUnixDialog;
+	public struct PageSetupUnixDialog;
 	[LinkName("gtk_page_setup_unix_dialog_new")]
-	public static extern GtkWidget* page_setup_unix_dialog_new( c_char* title, GtkWindow* parent);
+	public static extern Widget PageSetupUnixDialogNew(char8* title, Window parent);
 	[LinkName("gtk_page_setup_unix_dialog_get_page_setup")]
-	public static extern GtkPageSetup* page_setup_unix_dialog_get_page_setup(GtkPageSetupUnixDialog* dialog);
+	public static extern PageSetup PageSetupUnixDialogGetPageSetup(PageSetupUnixDialog dialog);
 	[LinkName("gtk_page_setup_unix_dialog_get_print_settings")]
-	public static extern GtkPrintSettings* page_setup_unix_dialog_get_print_settings(GtkPageSetupUnixDialog* dialog);
+	public static extern PrintSettings PageSetupUnixDialogGetPrintSettings(PageSetupUnixDialog dialog);
 	[LinkName("gtk_page_setup_unix_dialog_set_page_setup")]
-	public static extern void page_setup_unix_dialog_set_page_setup(GtkPageSetupUnixDialog* dialog, GtkPageSetup* page_setup);
+	public static extern void PageSetupUnixDialogSetPageSetup(PageSetupUnixDialog dialog, PageSetup page_setup);
 	[LinkName("gtk_page_setup_unix_dialog_set_print_settings")]
-	public static extern void page_setup_unix_dialog_set_print_settings(GtkPageSetupUnixDialog* dialog, GtkPrintSettings* print_settings);
-	public enum GtkPanDirection : c_int
+	public static extern void PageSetupUnixDialogSetPrintSettings(PageSetupUnixDialog dialog, PrintSettings print_settings);
+	public enum PanDirection : c_int
 	{
 		GTK_PAN_DIRECTION_LEFT,
 		GTK_PAN_DIRECTION_RIGHT,
@@ -5371,129 +5371,129 @@ class Gtk
 		GTK_PAN_DIRECTION_DOWN
 	}
 	[CRepr]
-	public struct GtkPaned;
+	public struct Paned;
 	[LinkName("gtk_paned_new")]
-	public static extern GtkWidget* paned_new(GtkOrientation orientation);
+	public static extern Widget PanedNew(Orientation orientation);
 	[LinkName("gtk_paned_get_end_child")]
-	public static extern GtkWidget* paned_get_end_child(GtkPaned* paned);
+	public static extern Widget PanedGetEndChild(Paned paned);
 	[LinkName("gtk_paned_get_position")]
-	public static extern c_int paned_get_position(GtkPaned* paned);
+	public static extern c_int PanedGetPosition(Paned paned);
 	[LinkName("gtk_paned_get_resize_end_child")]
-	public static extern c_int paned_get_resize_end_child(GtkPaned* paned);
+	public static extern c_int PanedGetResizeEndChild(Paned paned);
 	[LinkName("gtk_paned_get_resize_start_child")]
-	public static extern c_int paned_get_resize_start_child(GtkPaned* paned);
+	public static extern c_int PanedGetResizeStartChild(Paned paned);
 	[LinkName("gtk_paned_get_shrink_end_child")]
-	public static extern c_int paned_get_shrink_end_child(GtkPaned* paned);
+	public static extern c_int PanedGetShrinkEndChild(Paned paned);
 	[LinkName("gtk_paned_get_shrink_start_child")]
-	public static extern c_int paned_get_shrink_start_child(GtkPaned* paned);
+	public static extern c_int PanedGetShrinkStartChild(Paned paned);
 	[LinkName("gtk_paned_get_start_child")]
-	public static extern GtkWidget* paned_get_start_child(GtkPaned* paned);
+	public static extern Widget PanedGetStartChild(Paned paned);
 	[LinkName("gtk_paned_get_wide_handle")]
-	public static extern c_int paned_get_wide_handle(GtkPaned* paned);
+	public static extern c_int PanedGetWideHandle(Paned paned);
 	[LinkName("gtk_paned_set_end_child")]
-	public static extern void paned_set_end_child(GtkPaned* paned, GtkWidget* child);
+	public static extern void PanedSetEndChild(Paned paned, Widget child);
 	[LinkName("gtk_paned_set_position")]
-	public static extern void paned_set_position(GtkPaned* paned, c_int position);
+	public static extern void PanedSetPosition(Paned paned, c_int position);
 	[LinkName("gtk_paned_set_resize_end_child")]
-	public static extern void paned_set_resize_end_child(GtkPaned* paned, c_int resize);
+	public static extern void PanedSetResizeEndChild(Paned paned, c_int resize);
 	[LinkName("gtk_paned_set_resize_start_child")]
-	public static extern void paned_set_resize_start_child(GtkPaned* paned, c_int resize);
+	public static extern void PanedSetResizeStartChild(Paned paned, c_int resize);
 	[LinkName("gtk_paned_set_shrink_end_child")]
-	public static extern void paned_set_shrink_end_child(GtkPaned* paned, c_int resize);
+	public static extern void PanedSetShrinkEndChild(Paned paned, c_int resize);
 	[LinkName("gtk_paned_set_shrink_start_child")]
-	public static extern void paned_set_shrink_start_child(GtkPaned* paned, c_int resize);
+	public static extern void PanedSetShrinkStartChild(Paned paned, c_int resize);
 	[LinkName("gtk_paned_set_start_child")]
-	public static extern void paned_set_start_child(GtkPaned* paned, GtkWidget* child);
+	public static extern void PanedSetStartChild(Paned paned, Widget child);
 	[LinkName("gtk_paned_set_wide_handle")]
-	public static extern void paned_set_wide_handle(GtkPaned* paned, c_int wide);
+	public static extern void PanedSetWideHandle(Paned paned, c_int wide);
 	[CRepr]
-	public struct GtkPaperSize
+	public struct PaperSize
 	{
 	}
 	[CRepr]
-	public struct GtkParamSpecExpression;
+	public struct ParamSpecExpression;
 	[CRepr]
-	public struct GtkPasswordEntry;
+	public struct PasswordEntry;
 	[LinkName("gtk_password_entry_new")]
-	public static extern GtkWidget* password_entry_new();
+	public static extern Widget PasswordEntryNew();
 	[LinkName("gtk_password_entry_get_extra_menu")]
-	public static extern GMenuModel* password_entry_get_extra_menu(GtkPasswordEntry* entry);
+	public static extern Gio.MenuModel PasswordEntryGetExtraMenu(PasswordEntry entry);
 	[LinkName("gtk_password_entry_get_show_peek_icon")]
-	public static extern c_int password_entry_get_show_peek_icon(GtkPasswordEntry* entry);
+	public static extern c_int PasswordEntryGetShowPeekIcon(PasswordEntry entry);
 	[LinkName("gtk_password_entry_set_extra_menu")]
-	public static extern void password_entry_set_extra_menu(GtkPasswordEntry* entry, GMenuModel* model);
+	public static extern void PasswordEntrySetExtraMenu(PasswordEntry entry, Gio.MenuModel model);
 	[LinkName("gtk_password_entry_set_show_peek_icon")]
-	public static extern void password_entry_set_show_peek_icon(GtkPasswordEntry* entry, c_int show_peek_icon);
+	public static extern void PasswordEntrySetShowPeekIcon(PasswordEntry entry, c_int show_peek_icon);
 	[CRepr]
-	public struct GtkPasswordEntryBuffer;
+	public struct PasswordEntryBuffer;
 	[LinkName("gtk_password_entry_buffer_new")]
-	public static extern GtkEntryBuffer* password_entry_buffer_new();
+	public static extern EntryBuffer PasswordEntryBufferNew();
 	[CRepr]
-	public struct GtkPasswordEntryBufferClass
+	public struct PasswordEntryBufferClass
 	{
-		GtkEntryBufferClass parent_class;
+		EntryBufferClass parent_class;
 	}
 	[CRepr]
-	public struct GtkPasswordEntryClass
+	public struct PasswordEntryClass
 	{
 	}
 	[CRepr]
-	public struct GtkPickFlags
+	public struct PickFlags
 	{
 		public const int GTK_PICK_DEFAULT = 0;
 		public const int GTK_PICK_INSENSITIVE = 1;
 		public const int GTK_PICK_NON_TARGETABLE = 2;
 	}
 	[CRepr]
-	public struct GtkPicture;
+	public struct Picture;
 	[LinkName("gtk_picture_new")]
-	public static extern GtkWidget* picture_new();
+	public static extern Widget PictureNew();
 	[LinkName("gtk_picture_new_for_file")]
-	public static extern GtkWidget* picture_new_for_file(GFile* file);
+	public static extern Widget PictureNewForFile(Gio.File file);
 	[LinkName("gtk_picture_new_for_filename")]
-	public static extern GtkWidget* picture_new_for_filename( c_char* filename);
+	public static extern Widget PictureNewForFilename(char8* filename);
 	[LinkName("gtk_picture_new_for_paintable")]
-	public static extern GtkWidget* picture_new_for_paintable(GdkPaintable* paintable);
+	public static extern Widget PictureNewForPaintable(Gdk.Paintable paintable);
 	[LinkName("gtk_picture_new_for_pixbuf")]
-	public static extern GtkWidget* picture_new_for_pixbuf(GdkPixbuf* pixbuf);
+	public static extern Widget PictureNewForPixbuf(GdkPixbuf.Pixbuf pixbuf);
 	[LinkName("gtk_picture_new_for_resource")]
-	public static extern GtkWidget* picture_new_for_resource( c_char* resource_path);
+	public static extern Widget PictureNewForResource(char8* resource_path);
 	[LinkName("gtk_picture_get_alternative_text")]
-	public static extern  c_char* picture_get_alternative_text(GtkPicture* self);
+	public static extern char8* PictureGetAlternativeText(Picture self);
 	[LinkName("gtk_picture_get_can_shrink")]
-	public static extern c_int picture_get_can_shrink(GtkPicture* self);
+	public static extern c_int PictureGetCanShrink(Picture self);
 	[LinkName("gtk_picture_get_content_fit")]
-	public static extern GtkContentFit picture_get_content_fit(GtkPicture* self);
+	public static extern ContentFit PictureGetContentFit(Picture self);
 	[LinkName("gtk_picture_get_file")]
-	public static extern GFile* picture_get_file(GtkPicture* self);
+	public static extern Gio.File PictureGetFile(Picture self);
 	[LinkName("gtk_picture_get_keep_aspect_ratio")]
-	public static extern c_int picture_get_keep_aspect_ratio(GtkPicture* self);
+	public static extern c_int PictureGetKeepAspectRatio(Picture self);
 	[LinkName("gtk_picture_get_paintable")]
-	public static extern GdkPaintable* picture_get_paintable(GtkPicture* self);
+	public static extern Gdk.Paintable PictureGetPaintable(Picture self);
 	[LinkName("gtk_picture_set_alternative_text")]
-	public static extern void picture_set_alternative_text(GtkPicture* self,  c_char* alternative_text);
+	public static extern void PictureSetAlternativeText(Picture self, char8* alternative_text);
 	[LinkName("gtk_picture_set_can_shrink")]
-	public static extern void picture_set_can_shrink(GtkPicture* self, c_int can_shrink);
+	public static extern void PictureSetCanShrink(Picture self, c_int can_shrink);
 	[LinkName("gtk_picture_set_content_fit")]
-	public static extern void picture_set_content_fit(GtkPicture* self, GtkContentFit content_fit);
+	public static extern void PictureSetContentFit(Picture self, ContentFit content_fit);
 	[LinkName("gtk_picture_set_file")]
-	public static extern void picture_set_file(GtkPicture* self, GFile* file);
+	public static extern void PictureSetFile(Picture self, Gio.File file);
 	[LinkName("gtk_picture_set_filename")]
-	public static extern void picture_set_filename(GtkPicture* self,  c_char* filename);
+	public static extern void PictureSetFilename(Picture self, char8* filename);
 	[LinkName("gtk_picture_set_keep_aspect_ratio")]
-	public static extern void picture_set_keep_aspect_ratio(GtkPicture* self, c_int keep_aspect_ratio);
+	public static extern void PictureSetKeepAspectRatio(Picture self, c_int keep_aspect_ratio);
 	[LinkName("gtk_picture_set_paintable")]
-	public static extern void picture_set_paintable(GtkPicture* self, GdkPaintable* paintable);
+	public static extern void PictureSetPaintable(Picture self, Gdk.Paintable paintable);
 	[LinkName("gtk_picture_set_pixbuf")]
-	public static extern void picture_set_pixbuf(GtkPicture* self, GdkPixbuf* pixbuf);
+	public static extern void PictureSetPixbuf(Picture self, GdkPixbuf.Pixbuf pixbuf);
 	[LinkName("gtk_picture_set_resource")]
-	public static extern void picture_set_resource(GtkPicture* self,  c_char* resource_path);
+	public static extern void PictureSetResource(Picture self, char8* resource_path);
 	[CRepr]
-	public struct GtkPictureClass
+	public struct PictureClass
 	{
-		GtkWidgetClass parent_class;
+		WidgetClass parent_class;
 	}
-	public enum GtkPolicyType : c_int
+	public enum PolicyType : c_int
 	{
 		GTK_POLICY_ALWAYS,
 		GTK_POLICY_AUTOMATIC,
@@ -5501,86 +5501,86 @@ class Gtk
 		GTK_POLICY_EXTERNAL
 	}
 	[CRepr]
-	public struct GtkPopover;
+	public struct Popover;
 	[LinkName("gtk_popover_new")]
-	public static extern GtkWidget* popover_new();
+	public static extern Widget PopoverNew();
 	[LinkName("gtk_popover_get_autohide")]
-	public static extern c_int popover_get_autohide(GtkPopover* popover);
+	public static extern c_int PopoverGetAutohide(Popover popover);
 	[LinkName("gtk_popover_get_cascade_popdown")]
-	public static extern c_int popover_get_cascade_popdown(GtkPopover* popover);
+	public static extern c_int PopoverGetCascadePopdown(Popover popover);
 	[LinkName("gtk_popover_get_child")]
-	public static extern GtkWidget* popover_get_child(GtkPopover* popover);
+	public static extern Widget PopoverGetChild(Popover popover);
 	[LinkName("gtk_popover_get_has_arrow")]
-	public static extern c_int popover_get_has_arrow(GtkPopover* popover);
+	public static extern c_int PopoverGetHasArrow(Popover popover);
 	[LinkName("gtk_popover_get_mnemonics_visible")]
-	public static extern c_int popover_get_mnemonics_visible(GtkPopover* popover);
+	public static extern c_int PopoverGetMnemonicsVisible(Popover popover);
 	[LinkName("gtk_popover_get_offset")]
-	public static extern void popover_get_offset(GtkPopover* popover, c_int* x_offset, c_int* y_offset);
+	public static extern void PopoverGetOffset(Popover popover, c_int x_offset, c_int y_offset);
 	[LinkName("gtk_popover_get_pointing_to")]
-	public static extern c_int popover_get_pointing_to(GtkPopover* popover, GdkRectangle* rect);
+	public static extern c_int PopoverGetPointingTo(Popover popover, Gdk.Rectangle rect);
 	[LinkName("gtk_popover_get_position")]
-	public static extern GtkPositionType popover_get_position(GtkPopover* popover);
+	public static extern PositionType PopoverGetPosition(Popover popover);
 	[LinkName("gtk_popover_popdown")]
-	public static extern void popover_popdown(GtkPopover* popover);
+	public static extern void PopoverPopdown(Popover popover);
 	[LinkName("gtk_popover_popup")]
-	public static extern void popover_popup(GtkPopover* popover);
+	public static extern void PopoverPopup(Popover popover);
 	[LinkName("gtk_popover_present")]
-	public static extern void popover_present(GtkPopover* popover);
+	public static extern void PopoverPresent(Popover popover);
 	[LinkName("gtk_popover_set_autohide")]
-	public static extern void popover_set_autohide(GtkPopover* popover, c_int autohide);
+	public static extern void PopoverSetAutohide(Popover popover, c_int autohide);
 	[LinkName("gtk_popover_set_cascade_popdown")]
-	public static extern void popover_set_cascade_popdown(GtkPopover* popover, c_int cascade_popdown);
+	public static extern void PopoverSetCascadePopdown(Popover popover, c_int cascade_popdown);
 	[LinkName("gtk_popover_set_child")]
-	public static extern void popover_set_child(GtkPopover* popover, GtkWidget* child);
+	public static extern void PopoverSetChild(Popover popover, Widget child);
 	[LinkName("gtk_popover_set_default_widget")]
-	public static extern void popover_set_default_widget(GtkPopover* popover, GtkWidget* widget);
+	public static extern void PopoverSetDefaultWidget(Popover popover, Widget widget);
 	[LinkName("gtk_popover_set_has_arrow")]
-	public static extern void popover_set_has_arrow(GtkPopover* popover, c_int has_arrow);
+	public static extern void PopoverSetHasArrow(Popover popover, c_int has_arrow);
 	[LinkName("gtk_popover_set_mnemonics_visible")]
-	public static extern void popover_set_mnemonics_visible(GtkPopover* popover, c_int mnemonics_visible);
+	public static extern void PopoverSetMnemonicsVisible(Popover popover, c_int mnemonics_visible);
 	[LinkName("gtk_popover_set_offset")]
-	public static extern void popover_set_offset(GtkPopover* popover, c_int x_offset, c_int y_offset);
+	public static extern void PopoverSetOffset(Popover popover, c_int x_offset, c_int y_offset);
 	[LinkName("gtk_popover_set_pointing_to")]
-	public static extern void popover_set_pointing_to(GtkPopover* popover,  GdkRectangle* rect);
+	public static extern void PopoverSetPointingTo(Popover popover, Gdk.Rectangle rect);
 	[LinkName("gtk_popover_set_position")]
-	public static extern void popover_set_position(GtkPopover* popover, GtkPositionType position);
+	public static extern void PopoverSetPosition(Popover popover, PositionType position);
 	[CRepr]
-	public struct GtkPopoverClass
+	public struct PopoverClass
 	{
-		GtkWidgetClass parent_class;
+		WidgetClass parent_class;
 	}
 	[CRepr]
-	public struct GtkPopoverMenu;
+	public struct PopoverMenu;
 	[LinkName("gtk_popover_menu_new_from_model")]
-	public static extern GtkWidget* popover_menu_new_from_model(GMenuModel* model);
+	public static extern Widget PopoverMenuNewFromModel(Gio.MenuModel model);
 	[LinkName("gtk_popover_menu_new_from_model_full")]
-	public static extern GtkWidget* popover_menu_new_from_model_full(GMenuModel* model, GtkPopoverMenuFlags flags);
+	public static extern Widget PopoverMenuNewFromModelFull(Gio.MenuModel model, PopoverMenuFlags flags);
 	[LinkName("gtk_popover_menu_add_child")]
-	public static extern c_int popover_menu_add_child(GtkPopoverMenu* popover, GtkWidget* child,  c_char* id);
+	public static extern c_int PopoverMenuAddChild(PopoverMenu popover, Widget child, char8* id);
 	[LinkName("gtk_popover_menu_get_menu_model")]
-	public static extern GMenuModel* popover_menu_get_menu_model(GtkPopoverMenu* popover);
+	public static extern Gio.MenuModel PopoverMenuGetMenuModel(PopoverMenu popover);
 	[LinkName("gtk_popover_menu_remove_child")]
-	public static extern c_int popover_menu_remove_child(GtkPopoverMenu* popover, GtkWidget* child);
+	public static extern c_int PopoverMenuRemoveChild(PopoverMenu popover, Widget child);
 	[LinkName("gtk_popover_menu_set_menu_model")]
-	public static extern void popover_menu_set_menu_model(GtkPopoverMenu* popover, GMenuModel* model);
+	public static extern void PopoverMenuSetMenuModel(PopoverMenu popover, Gio.MenuModel model);
 	[CRepr]
-	public struct GtkPopoverMenuBar;
+	public struct PopoverMenuBar;
 	[LinkName("gtk_popover_menu_bar_new_from_model")]
-	public static extern GtkWidget* popover_menu_bar_new_from_model(GMenuModel* model);
+	public static extern Widget PopoverMenuBarNewFromModel(Gio.MenuModel model);
 	[LinkName("gtk_popover_menu_bar_add_child")]
-	public static extern c_int popover_menu_bar_add_child(GtkPopoverMenuBar* bar, GtkWidget* child,  c_char* id);
+	public static extern c_int PopoverMenuBarAddChild(PopoverMenuBar bar, Widget child, char8* id);
 	[LinkName("gtk_popover_menu_bar_get_menu_model")]
-	public static extern GMenuModel* popover_menu_bar_get_menu_model(GtkPopoverMenuBar* bar);
+	public static extern Gio.MenuModel PopoverMenuBarGetMenuModel(PopoverMenuBar bar);
 	[LinkName("gtk_popover_menu_bar_remove_child")]
-	public static extern c_int popover_menu_bar_remove_child(GtkPopoverMenuBar* bar, GtkWidget* child);
+	public static extern c_int PopoverMenuBarRemoveChild(PopoverMenuBar bar, Widget child);
 	[LinkName("gtk_popover_menu_bar_set_menu_model")]
-	public static extern void popover_menu_bar_set_menu_model(GtkPopoverMenuBar* bar, GMenuModel* model);
+	public static extern void PopoverMenuBarSetMenuModel(PopoverMenuBar bar, Gio.MenuModel model);
 	[CRepr]
-	public struct GtkPopoverMenuFlags
+	public struct PopoverMenuFlags
 	{
 		public const int GTK_POPOVER_MENU_NESTED = 1;
 	}
-	public enum GtkPositionType : c_int
+	public enum PositionType : c_int
 	{
 		GTK_POS_LEFT,
 		GTK_POS_RIGHT,
@@ -5588,11 +5588,11 @@ class Gtk
 		GTK_POS_BOTTOM
 	}
 	[CRepr]
-	public struct GtkPrintBackend
+	public struct PrintBackend
 	{
 	}
 	[CRepr]
-	public struct GtkPrintCapabilities
+	public struct PrintCapabilities
 	{
 		public const int GTK_PRINT_CAPABILITY_PAGE_SET = 1;
 		public const int GTK_PRINT_CAPABILITY_COPIES = 2;
@@ -5606,36 +5606,36 @@ class Gtk
 		public const int GTK_PRINT_CAPABILITY_NUMBER_UP_LAYOUT = 512;
 	}
 	[CRepr]
-	public struct GtkPrintContext;
+	public struct PrintContext;
 	[LinkName("gtk_print_context_create_pango_context")]
-	public static extern PangoContext* print_context_create_pango_context(GtkPrintContext* context);
+	public static extern Pango.Context PrintContextCreatePangoContext(PrintContext context);
 	[LinkName("gtk_print_context_create_pango_layout")]
-	public static extern PangoLayout* print_context_create_pango_layout(GtkPrintContext* context);
+	public static extern Pango.Layout PrintContextCreatePangoLayout(PrintContext context);
 	[LinkName("gtk_print_context_get_cairo_context")]
-	public static extern cairo_t* print_context_get_cairo_context(GtkPrintContext* context);
+	public static extern cairo.Context PrintContextGetCairoContext(PrintContext context);
 	[LinkName("gtk_print_context_get_dpi_x")]
-	public static extern double print_context_get_dpi_x(GtkPrintContext* context);
+	public static extern double PrintContextGetDpiX(PrintContext context);
 	[LinkName("gtk_print_context_get_dpi_y")]
-	public static extern double print_context_get_dpi_y(GtkPrintContext* context);
+	public static extern double PrintContextGetDpiY(PrintContext context);
 	[LinkName("gtk_print_context_get_hard_margins")]
-	public static extern c_int print_context_get_hard_margins(GtkPrintContext* context, double* top, double* bottom, double* left, double* right);
+	public static extern c_int PrintContextGetHardMargins(PrintContext context, double top, double bottom, double left, double right);
 	[LinkName("gtk_print_context_get_height")]
-	public static extern double print_context_get_height(GtkPrintContext* context);
+	public static extern double PrintContextGetHeight(PrintContext context);
 	[LinkName("gtk_print_context_get_page_setup")]
-	public static extern GtkPageSetup* print_context_get_page_setup(GtkPrintContext* context);
+	public static extern PageSetup PrintContextGetPageSetup(PrintContext context);
 	[LinkName("gtk_print_context_get_pango_fontmap")]
-	public static extern PangoFontMap* print_context_get_pango_fontmap(GtkPrintContext* context);
+	public static extern Pango.FontMap PrintContextGetPangoFontmap(PrintContext context);
 	[LinkName("gtk_print_context_get_width")]
-	public static extern double print_context_get_width(GtkPrintContext* context);
+	public static extern double PrintContextGetWidth(PrintContext context);
 	[LinkName("gtk_print_context_set_cairo_context")]
-	public static extern void print_context_set_cairo_context(GtkPrintContext* context, cairo_t* cr, double dpi_x, double dpi_y);
-	public enum GtkPrintDuplex : c_int
+	public static extern void PrintContextSetCairoContext(PrintContext context, cairo.Context cr, double dpi_x, double dpi_y);
+	public enum PrintDuplex : c_int
 	{
 		GTK_PRINT_DUPLEX_SIMPLEX,
 		GTK_PRINT_DUPLEX_HORIZONTAL,
 		GTK_PRINT_DUPLEX_VERTICAL
 	}
-	public enum GtkPrintError : c_int
+	public enum PrintError : c_int
 	{
 		GTK_PRINT_ERROR_GENERAL,
 		GTK_PRINT_ERROR_INTERNAL_ERROR,
@@ -5643,133 +5643,133 @@ class Gtk
 		GTK_PRINT_ERROR_INVALID_FILE
 	}
 	[CRepr]
-	public struct GtkPrintJob;
+	public struct PrintJob;
 	[LinkName("gtk_print_job_new")]
-	public static extern GtkPrintJob* print_job_new( c_char* title, GtkPrinter* printer, GtkPrintSettings* settings, GtkPageSetup* page_setup);
+	public static extern PrintJob PrintJobNew(char8* title, Printer printer, PrintSettings settings, PageSetup page_setup);
 	[LinkName("gtk_print_job_get_collate")]
-	public static extern c_int print_job_get_collate(GtkPrintJob* job);
+	public static extern c_int PrintJobGetCollate(PrintJob job);
 	[LinkName("gtk_print_job_get_n_up")]
-	public static extern c_uint print_job_get_n_up(GtkPrintJob* job);
+	public static extern c_uint PrintJobGetNUp(PrintJob job);
 	[LinkName("gtk_print_job_get_n_up_layout")]
-	public static extern GtkNumberUpLayout print_job_get_n_up_layout(GtkPrintJob* job);
+	public static extern NumberUpLayout PrintJobGetNUpLayout(PrintJob job);
 	[LinkName("gtk_print_job_get_num_copies")]
-	public static extern c_int print_job_get_num_copies(GtkPrintJob* job);
+	public static extern c_int PrintJobGetNumCopies(PrintJob job);
 	[LinkName("gtk_print_job_get_page_ranges")]
-	public static extern GtkPageRange* print_job_get_page_ranges(GtkPrintJob* job, c_int* n_ranges);
+	public static extern PageRange PrintJobGetPageRanges(PrintJob job, c_int n_ranges);
 	[LinkName("gtk_print_job_get_page_set")]
-	public static extern GtkPageSet print_job_get_page_set(GtkPrintJob* job);
+	public static extern PageSet PrintJobGetPageSet(PrintJob job);
 	[LinkName("gtk_print_job_get_pages")]
-	public static extern GtkPrintPages print_job_get_pages(GtkPrintJob* job);
+	public static extern PrintPages PrintJobGetPages(PrintJob job);
 	[LinkName("gtk_print_job_get_printer")]
-	public static extern GtkPrinter* print_job_get_printer(GtkPrintJob* job);
+	public static extern Printer PrintJobGetPrinter(PrintJob job);
 	[LinkName("gtk_print_job_get_reverse")]
-	public static extern c_int print_job_get_reverse(GtkPrintJob* job);
+	public static extern c_int PrintJobGetReverse(PrintJob job);
 	[LinkName("gtk_print_job_get_rotate")]
-	public static extern c_int print_job_get_rotate(GtkPrintJob* job);
+	public static extern c_int PrintJobGetRotate(PrintJob job);
 	[LinkName("gtk_print_job_get_scale")]
-	public static extern double print_job_get_scale(GtkPrintJob* job);
+	public static extern double PrintJobGetScale(PrintJob job);
 	[LinkName("gtk_print_job_get_settings")]
-	public static extern GtkPrintSettings* print_job_get_settings(GtkPrintJob* job);
+	public static extern PrintSettings PrintJobGetSettings(PrintJob job);
 	[LinkName("gtk_print_job_get_status")]
-	public static extern GtkPrintStatus print_job_get_status(GtkPrintJob* job);
+	public static extern PrintStatus PrintJobGetStatus(PrintJob job);
 	[LinkName("gtk_print_job_get_surface")]
-	public static extern cairo_surface_t* print_job_get_surface(GtkPrintJob* job);
+	public static extern cairo.Surface PrintJobGetSurface(PrintJob job);
 	[LinkName("gtk_print_job_get_title")]
-	public static extern  c_char* print_job_get_title(GtkPrintJob* job);
+	public static extern char8* PrintJobGetTitle(PrintJob job);
 	[LinkName("gtk_print_job_get_track_print_status")]
-	public static extern c_int print_job_get_track_print_status(GtkPrintJob* job);
+	public static extern c_int PrintJobGetTrackPrintStatus(PrintJob job);
 	[LinkName("gtk_print_job_send")]
-	public static extern void print_job_send(GtkPrintJob* job, GtkPrintJobCompleteFunc callback, void* user_data, GDestroyNotify dnotify);
+	public static extern void PrintJobSend(PrintJob job, PrintJobCompleteFunc callback, void* user_data, GLib.DestroyNotify dnotify);
 	[LinkName("gtk_print_job_set_collate")]
-	public static extern void print_job_set_collate(GtkPrintJob* job, c_int collate);
+	public static extern void PrintJobSetCollate(PrintJob job, c_int collate);
 	[LinkName("gtk_print_job_set_n_up")]
-	public static extern void print_job_set_n_up(GtkPrintJob* job, c_uint n_up);
+	public static extern void PrintJobSetNUp(PrintJob job, c_uint n_up);
 	[LinkName("gtk_print_job_set_n_up_layout")]
-	public static extern void print_job_set_n_up_layout(GtkPrintJob* job, GtkNumberUpLayout layout);
+	public static extern void PrintJobSetNUpLayout(PrintJob job, NumberUpLayout layout);
 	[LinkName("gtk_print_job_set_num_copies")]
-	public static extern void print_job_set_num_copies(GtkPrintJob* job, c_int num_copies);
+	public static extern void PrintJobSetNumCopies(PrintJob job, c_int num_copies);
 	[LinkName("gtk_print_job_set_page_ranges")]
-	public static extern void print_job_set_page_ranges(GtkPrintJob* job, c_int n_ranges);
+	public static extern void PrintJobSetPageRanges(PrintJob job, c_int n_ranges);
 	[LinkName("gtk_print_job_set_page_set")]
-	public static extern void print_job_set_page_set(GtkPrintJob* job, GtkPageSet page_set);
+	public static extern void PrintJobSetPageSet(PrintJob job, PageSet page_set);
 	[LinkName("gtk_print_job_set_pages")]
-	public static extern void print_job_set_pages(GtkPrintJob* job, GtkPrintPages pages);
+	public static extern void PrintJobSetPages(PrintJob job, PrintPages pages);
 	[LinkName("gtk_print_job_set_reverse")]
-	public static extern void print_job_set_reverse(GtkPrintJob* job, c_int reverse);
+	public static extern void PrintJobSetReverse(PrintJob job, c_int reverse);
 	[LinkName("gtk_print_job_set_rotate")]
-	public static extern void print_job_set_rotate(GtkPrintJob* job, c_int rotate);
+	public static extern void PrintJobSetRotate(PrintJob job, c_int rotate);
 	[LinkName("gtk_print_job_set_scale")]
-	public static extern void print_job_set_scale(GtkPrintJob* job, double scale);
+	public static extern void PrintJobSetScale(PrintJob job, double scale);
 	[LinkName("gtk_print_job_set_source_fd")]
-	public static extern c_int print_job_set_source_fd(GtkPrintJob* job, c_int fd);
+	public static extern c_int PrintJobSetSourceFd(PrintJob job, c_int fd);
 	[LinkName("gtk_print_job_set_source_file")]
-	public static extern c_int print_job_set_source_file(GtkPrintJob* job,  c_char* filename);
+	public static extern c_int PrintJobSetSourceFile(PrintJob job, char8* filename);
 	[LinkName("gtk_print_job_set_track_print_status")]
-	public static extern void print_job_set_track_print_status(GtkPrintJob* job, c_int track_status);
-	public function void GtkPrintJobCompleteFunc(GtkPrintJob* print_job, void* user_data,  GError* error);
+	public static extern void PrintJobSetTrackPrintStatus(PrintJob job, c_int track_status);
+	public function void PrintJobCompleteFunc(PrintJob print_job, void* user_data, GLib.Error error);
 	[CRepr]
-	public struct GtkPrintOperation;
+	public struct PrintOperation;
 	[LinkName("gtk_print_operation_new")]
-	public static extern GtkPrintOperation* print_operation_new();
+	public static extern PrintOperation PrintOperationNew();
 	[LinkName("gtk_print_operation_cancel")]
-	public static extern void print_operation_cancel(GtkPrintOperation* op);
+	public static extern void PrintOperationCancel(PrintOperation op);
 	[LinkName("gtk_print_operation_draw_page_finish")]
-	public static extern void print_operation_draw_page_finish(GtkPrintOperation* op);
+	public static extern void PrintOperationDrawPageFinish(PrintOperation op);
 	[LinkName("gtk_print_operation_get_default_page_setup")]
-	public static extern GtkPageSetup* print_operation_get_default_page_setup(GtkPrintOperation* op);
+	public static extern PageSetup PrintOperationGetDefaultPageSetup(PrintOperation op);
 	[LinkName("gtk_print_operation_get_embed_page_setup")]
-	public static extern c_int print_operation_get_embed_page_setup(GtkPrintOperation* op);
+	public static extern c_int PrintOperationGetEmbedPageSetup(PrintOperation op);
 	[LinkName("gtk_print_operation_get_error")]
-	public static extern void print_operation_get_error(GtkPrintOperation* op);
+	public static extern void PrintOperationGetError(PrintOperation op);
 	[LinkName("gtk_print_operation_get_has_selection")]
-	public static extern c_int print_operation_get_has_selection(GtkPrintOperation* op);
+	public static extern c_int PrintOperationGetHasSelection(PrintOperation op);
 	[LinkName("gtk_print_operation_get_n_pages_to_print")]
-	public static extern c_int print_operation_get_n_pages_to_print(GtkPrintOperation* op);
+	public static extern c_int PrintOperationGetNPagesToPrint(PrintOperation op);
 	[LinkName("gtk_print_operation_get_print_settings")]
-	public static extern GtkPrintSettings* print_operation_get_print_settings(GtkPrintOperation* op);
+	public static extern PrintSettings PrintOperationGetPrintSettings(PrintOperation op);
 	[LinkName("gtk_print_operation_get_status")]
-	public static extern GtkPrintStatus print_operation_get_status(GtkPrintOperation* op);
+	public static extern PrintStatus PrintOperationGetStatus(PrintOperation op);
 	[LinkName("gtk_print_operation_get_status_string")]
-	public static extern  c_char* print_operation_get_status_string(GtkPrintOperation* op);
+	public static extern char8* PrintOperationGetStatusString(PrintOperation op);
 	[LinkName("gtk_print_operation_get_support_selection")]
-	public static extern c_int print_operation_get_support_selection(GtkPrintOperation* op);
+	public static extern c_int PrintOperationGetSupportSelection(PrintOperation op);
 	[LinkName("gtk_print_operation_is_finished")]
-	public static extern c_int print_operation_is_finished(GtkPrintOperation* op);
+	public static extern c_int PrintOperationIsFinished(PrintOperation op);
 	[LinkName("gtk_print_operation_run")]
-	public static extern GtkPrintOperationResult print_operation_run(GtkPrintOperation* op, GtkPrintOperationAction action, GtkWindow* parent);
+	public static extern PrintOperationResult PrintOperationRun(PrintOperation op, PrintOperationAction action, Window parent);
 	[LinkName("gtk_print_operation_set_allow_async")]
-	public static extern void print_operation_set_allow_async(GtkPrintOperation* op, c_int allow_async);
+	public static extern void PrintOperationSetAllowAsync(PrintOperation op, c_int allow_async);
 	[LinkName("gtk_print_operation_set_current_page")]
-	public static extern void print_operation_set_current_page(GtkPrintOperation* op, c_int current_page);
+	public static extern void PrintOperationSetCurrentPage(PrintOperation op, c_int current_page);
 	[LinkName("gtk_print_operation_set_custom_tab_label")]
-	public static extern void print_operation_set_custom_tab_label(GtkPrintOperation* op,  c_char* label);
+	public static extern void PrintOperationSetCustomTabLabel(PrintOperation op, char8* label);
 	[LinkName("gtk_print_operation_set_default_page_setup")]
-	public static extern void print_operation_set_default_page_setup(GtkPrintOperation* op, GtkPageSetup* default_page_setup);
+	public static extern void PrintOperationSetDefaultPageSetup(PrintOperation op, PageSetup default_page_setup);
 	[LinkName("gtk_print_operation_set_defer_drawing")]
-	public static extern void print_operation_set_defer_drawing(GtkPrintOperation* op);
+	public static extern void PrintOperationSetDeferDrawing(PrintOperation op);
 	[LinkName("gtk_print_operation_set_embed_page_setup")]
-	public static extern void print_operation_set_embed_page_setup(GtkPrintOperation* op, c_int embed);
+	public static extern void PrintOperationSetEmbedPageSetup(PrintOperation op, c_int embed);
 	[LinkName("gtk_print_operation_set_export_filename")]
-	public static extern void print_operation_set_export_filename(GtkPrintOperation* op,  c_char* filename);
+	public static extern void PrintOperationSetExportFilename(PrintOperation op, char8* filename);
 	[LinkName("gtk_print_operation_set_has_selection")]
-	public static extern void print_operation_set_has_selection(GtkPrintOperation* op, c_int has_selection);
+	public static extern void PrintOperationSetHasSelection(PrintOperation op, c_int has_selection);
 	[LinkName("gtk_print_operation_set_job_name")]
-	public static extern void print_operation_set_job_name(GtkPrintOperation* op,  c_char* job_name);
+	public static extern void PrintOperationSetJobName(PrintOperation op, char8* job_name);
 	[LinkName("gtk_print_operation_set_n_pages")]
-	public static extern void print_operation_set_n_pages(GtkPrintOperation* op, c_int n_pages);
+	public static extern void PrintOperationSetNPages(PrintOperation op, c_int n_pages);
 	[LinkName("gtk_print_operation_set_print_settings")]
-	public static extern void print_operation_set_print_settings(GtkPrintOperation* op, GtkPrintSettings* print_settings);
+	public static extern void PrintOperationSetPrintSettings(PrintOperation op, PrintSettings print_settings);
 	[LinkName("gtk_print_operation_set_show_progress")]
-	public static extern void print_operation_set_show_progress(GtkPrintOperation* op, c_int show_progress);
+	public static extern void PrintOperationSetShowProgress(PrintOperation op, c_int show_progress);
 	[LinkName("gtk_print_operation_set_support_selection")]
-	public static extern void print_operation_set_support_selection(GtkPrintOperation* op, c_int support_selection);
+	public static extern void PrintOperationSetSupportSelection(PrintOperation op, c_int support_selection);
 	[LinkName("gtk_print_operation_set_track_print_status")]
-	public static extern void print_operation_set_track_print_status(GtkPrintOperation* op, c_int track_status);
+	public static extern void PrintOperationSetTrackPrintStatus(PrintOperation op, c_int track_status);
 	[LinkName("gtk_print_operation_set_unit")]
-	public static extern void print_operation_set_unit(GtkPrintOperation* op, GtkUnit unit);
+	public static extern void PrintOperationSetUnit(PrintOperation op, Unit unit);
 	[LinkName("gtk_print_operation_set_use_full_page")]
-	public static extern void print_operation_set_use_full_page(GtkPrintOperation* op, c_int full_page);
-	public enum GtkPrintOperationAction : c_int
+	public static extern void PrintOperationSetUseFullPage(PrintOperation op, c_int full_page);
+	public enum PrintOperationAction : c_int
 	{
 		GTK_PRINT_OPERATION_ACTION_PRINT_DIALOG,
 		GTK_PRINT_OPERATION_ACTION_PRINT,
@@ -5777,47 +5777,47 @@ class Gtk
 		GTK_PRINT_OPERATION_ACTION_EXPORT
 	}
 	[CRepr]
-	public struct GtkPrintOperationClass
+	public struct PrintOperationClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GtkPrintOperationPreview
+	public struct PrintOperationPreview
 	{
-		public function void(GtkPrintOperationPreview* preview) end_preview;
+		public function void(PrintOperationPreview preview) end_preview;
 
-		public function void(GtkPrintOperationPreview* preview, GtkPrintContext* context, GtkPageSetup* page_setup) got_page_size;
+		public function void(PrintOperationPreview preview, PrintContext context, PageSetup page_setup) got_page_size;
 
-		public function c_int(GtkPrintOperationPreview* preview, c_int page_nr) is_selected;
+		public function c_int(PrintOperationPreview preview, c_int page_nr) is_selected;
 
-		public function void(GtkPrintOperationPreview* preview, GtkPrintContext* context) ready;
+		public function void(PrintOperationPreview preview, PrintContext context) ready;
 
-		public function void(GtkPrintOperationPreview* preview, c_int page_nr) render_page;
+		public function void(PrintOperationPreview preview, c_int page_nr) render_page;
 	}
 	[CRepr]
-	public struct GtkPrintOperationPreviewIface
+	public struct PrintOperationPreviewIface
 	{
-		GTypeInterface g_iface;
+		GObject.TypeInterface g_iface;
 	}
 	[CRepr]
-	public struct GtkPrintOperationPrivate
+	public struct PrintOperationPrivate
 	{
 	}
-	public enum GtkPrintOperationResult : c_int
+	public enum PrintOperationResult : c_int
 	{
 		GTK_PRINT_OPERATION_RESULT_ERROR,
 		GTK_PRINT_OPERATION_RESULT_APPLY,
 		GTK_PRINT_OPERATION_RESULT_CANCEL,
 		GTK_PRINT_OPERATION_RESULT_IN_PROGRESS
 	}
-	public enum GtkPrintPages : c_int
+	public enum PrintPages : c_int
 	{
 		GTK_PRINT_PAGES_ALL,
 		GTK_PRINT_PAGES_CURRENT,
 		GTK_PRINT_PAGES_RANGES,
 		GTK_PRINT_PAGES_SELECTION
 	}
-	public enum GtkPrintQuality : c_int
+	public enum PrintQuality : c_int
 	{
 		GTK_PRINT_QUALITY_LOW,
 		GTK_PRINT_QUALITY_NORMAL,
@@ -5825,161 +5825,161 @@ class Gtk
 		GTK_PRINT_QUALITY_DRAFT
 	}
 	[CRepr]
-	public struct GtkPrintSettings;
+	public struct PrintSettings;
 	[LinkName("gtk_print_settings_new")]
-	public static extern GtkPrintSettings* print_settings_new();
+	public static extern PrintSettings PrintSettingsNew();
 	[LinkName("gtk_print_settings_new_from_file")]
-	public static extern GtkPrintSettings* print_settings_new_from_file( c_char* file_name);
+	public static extern PrintSettings PrintSettingsNewFromFile(char8* file_name);
 	[LinkName("gtk_print_settings_new_from_gvariant")]
-	public static extern GtkPrintSettings* print_settings_new_from_gvariant(GVariant* variant);
+	public static extern PrintSettings PrintSettingsNewFromGvariant(GLib.Variant variant);
 	[LinkName("gtk_print_settings_new_from_key_file")]
-	public static extern GtkPrintSettings* print_settings_new_from_key_file(GKeyFile* key_file,  c_char* group_name);
+	public static extern PrintSettings PrintSettingsNewFromKeyFile(GLib.KeyFile key_file, char8* group_name);
 	[LinkName("gtk_print_settings_copy")]
-	public static extern GtkPrintSettings* print_settings_copy(GtkPrintSettings* other);
+	public static extern PrintSettings PrintSettingsCopy(PrintSettings other);
 	[LinkName("gtk_print_settings_foreach")]
-	public static extern void print_settings_foreach(GtkPrintSettings* settings, GtkPrintSettingsFunc func, void* user_data);
+	public static extern void PrintSettingsForeach(PrintSettings settings, PrintSettingsFunc func, void* user_data);
 	[LinkName("gtk_print_settings_get")]
-	public static extern  c_char* print_settings_get(GtkPrintSettings* settings,  c_char* key);
+	public static extern char8* PrintSettingsGet(PrintSettings settings, char8* key);
 	[LinkName("gtk_print_settings_get_bool")]
-	public static extern c_int print_settings_get_bool(GtkPrintSettings* settings,  c_char* key);
+	public static extern c_int PrintSettingsGetBool(PrintSettings settings, char8* key);
 	[LinkName("gtk_print_settings_get_collate")]
-	public static extern c_int print_settings_get_collate(GtkPrintSettings* settings);
+	public static extern c_int PrintSettingsGetCollate(PrintSettings settings);
 	[LinkName("gtk_print_settings_get_default_source")]
-	public static extern  c_char* print_settings_get_default_source(GtkPrintSettings* settings);
+	public static extern char8* PrintSettingsGetDefaultSource(PrintSettings settings);
 	[LinkName("gtk_print_settings_get_dither")]
-	public static extern  c_char* print_settings_get_dither(GtkPrintSettings* settings);
+	public static extern char8* PrintSettingsGetDither(PrintSettings settings);
 	[LinkName("gtk_print_settings_get_double")]
-	public static extern double print_settings_get_double(GtkPrintSettings* settings,  c_char* key);
+	public static extern double PrintSettingsGetDouble(PrintSettings settings, char8* key);
 	[LinkName("gtk_print_settings_get_double_with_default")]
-	public static extern double print_settings_get_double_with_default(GtkPrintSettings* settings,  c_char* key, double def);
+	public static extern double PrintSettingsGetDoubleWithDefault(PrintSettings settings, char8* key, double def);
 	[LinkName("gtk_print_settings_get_duplex")]
-	public static extern GtkPrintDuplex print_settings_get_duplex(GtkPrintSettings* settings);
+	public static extern PrintDuplex PrintSettingsGetDuplex(PrintSettings settings);
 	[LinkName("gtk_print_settings_get_finishings")]
-	public static extern  c_char* print_settings_get_finishings(GtkPrintSettings* settings);
+	public static extern char8* PrintSettingsGetFinishings(PrintSettings settings);
 	[LinkName("gtk_print_settings_get_int")]
-	public static extern c_int print_settings_get_int(GtkPrintSettings* settings,  c_char* key);
+	public static extern c_int PrintSettingsGetInt(PrintSettings settings, char8* key);
 	[LinkName("gtk_print_settings_get_int_with_default")]
-	public static extern c_int print_settings_get_int_with_default(GtkPrintSettings* settings,  c_char* key, c_int def);
+	public static extern c_int PrintSettingsGetIntWithDefault(PrintSettings settings, char8* key, c_int def);
 	[LinkName("gtk_print_settings_get_length")]
-	public static extern double print_settings_get_length(GtkPrintSettings* settings,  c_char* key, GtkUnit unit);
+	public static extern double PrintSettingsGetLength(PrintSettings settings, char8* key, Unit unit);
 	[LinkName("gtk_print_settings_get_media_type")]
-	public static extern  c_char* print_settings_get_media_type(GtkPrintSettings* settings);
+	public static extern char8* PrintSettingsGetMediaType(PrintSettings settings);
 	[LinkName("gtk_print_settings_get_n_copies")]
-	public static extern c_int print_settings_get_n_copies(GtkPrintSettings* settings);
+	public static extern c_int PrintSettingsGetNCopies(PrintSettings settings);
 	[LinkName("gtk_print_settings_get_number_up")]
-	public static extern c_int print_settings_get_number_up(GtkPrintSettings* settings);
+	public static extern c_int PrintSettingsGetNumberUp(PrintSettings settings);
 	[LinkName("gtk_print_settings_get_number_up_layout")]
-	public static extern GtkNumberUpLayout print_settings_get_number_up_layout(GtkPrintSettings* settings);
+	public static extern NumberUpLayout PrintSettingsGetNumberUpLayout(PrintSettings settings);
 	[LinkName("gtk_print_settings_get_orientation")]
-	public static extern GtkPageOrientation print_settings_get_orientation(GtkPrintSettings* settings);
+	public static extern PageOrientation PrintSettingsGetOrientation(PrintSettings settings);
 	[LinkName("gtk_print_settings_get_output_bin")]
-	public static extern  c_char* print_settings_get_output_bin(GtkPrintSettings* settings);
+	public static extern char8* PrintSettingsGetOutputBin(PrintSettings settings);
 	[LinkName("gtk_print_settings_get_page_ranges")]
-	public static extern GtkPageRange* print_settings_get_page_ranges(GtkPrintSettings* settings, c_int* num_ranges);
+	public static extern PageRange PrintSettingsGetPageRanges(PrintSettings settings, c_int num_ranges);
 	[LinkName("gtk_print_settings_get_page_set")]
-	public static extern GtkPageSet print_settings_get_page_set(GtkPrintSettings* settings);
+	public static extern PageSet PrintSettingsGetPageSet(PrintSettings settings);
 	[LinkName("gtk_print_settings_get_paper_height")]
-	public static extern double print_settings_get_paper_height(GtkPrintSettings* settings, GtkUnit unit);
+	public static extern double PrintSettingsGetPaperHeight(PrintSettings settings, Unit unit);
 	[LinkName("gtk_print_settings_get_paper_size")]
-	public static extern GtkPaperSize* print_settings_get_paper_size(GtkPrintSettings* settings);
+	public static extern PaperSize PrintSettingsGetPaperSize(PrintSettings settings);
 	[LinkName("gtk_print_settings_get_paper_width")]
-	public static extern double print_settings_get_paper_width(GtkPrintSettings* settings, GtkUnit unit);
+	public static extern double PrintSettingsGetPaperWidth(PrintSettings settings, Unit unit);
 	[LinkName("gtk_print_settings_get_print_pages")]
-	public static extern GtkPrintPages print_settings_get_print_pages(GtkPrintSettings* settings);
+	public static extern PrintPages PrintSettingsGetPrintPages(PrintSettings settings);
 	[LinkName("gtk_print_settings_get_printer")]
-	public static extern  c_char* print_settings_get_printer(GtkPrintSettings* settings);
+	public static extern char8* PrintSettingsGetPrinter(PrintSettings settings);
 	[LinkName("gtk_print_settings_get_printer_lpi")]
-	public static extern double print_settings_get_printer_lpi(GtkPrintSettings* settings);
+	public static extern double PrintSettingsGetPrinterLpi(PrintSettings settings);
 	[LinkName("gtk_print_settings_get_quality")]
-	public static extern GtkPrintQuality print_settings_get_quality(GtkPrintSettings* settings);
+	public static extern PrintQuality PrintSettingsGetQuality(PrintSettings settings);
 	[LinkName("gtk_print_settings_get_resolution")]
-	public static extern c_int print_settings_get_resolution(GtkPrintSettings* settings);
+	public static extern c_int PrintSettingsGetResolution(PrintSettings settings);
 	[LinkName("gtk_print_settings_get_resolution_x")]
-	public static extern c_int print_settings_get_resolution_x(GtkPrintSettings* settings);
+	public static extern c_int PrintSettingsGetResolutionX(PrintSettings settings);
 	[LinkName("gtk_print_settings_get_resolution_y")]
-	public static extern c_int print_settings_get_resolution_y(GtkPrintSettings* settings);
+	public static extern c_int PrintSettingsGetResolutionY(PrintSettings settings);
 	[LinkName("gtk_print_settings_get_reverse")]
-	public static extern c_int print_settings_get_reverse(GtkPrintSettings* settings);
+	public static extern c_int PrintSettingsGetReverse(PrintSettings settings);
 	[LinkName("gtk_print_settings_get_scale")]
-	public static extern double print_settings_get_scale(GtkPrintSettings* settings);
+	public static extern double PrintSettingsGetScale(PrintSettings settings);
 	[LinkName("gtk_print_settings_get_use_color")]
-	public static extern c_int print_settings_get_use_color(GtkPrintSettings* settings);
+	public static extern c_int PrintSettingsGetUseColor(PrintSettings settings);
 	[LinkName("gtk_print_settings_has_key")]
-	public static extern c_int print_settings_has_key(GtkPrintSettings* settings,  c_char* key);
+	public static extern c_int PrintSettingsHasKey(PrintSettings settings, char8* key);
 	[LinkName("gtk_print_settings_load_file")]
-	public static extern c_int print_settings_load_file(GtkPrintSettings* settings,  c_char* file_name);
+	public static extern c_int PrintSettingsLoadFile(PrintSettings settings, char8* file_name);
 	[LinkName("gtk_print_settings_load_key_file")]
-	public static extern c_int print_settings_load_key_file(GtkPrintSettings* settings, GKeyFile* key_file,  c_char* group_name);
+	public static extern c_int PrintSettingsLoadKeyFile(PrintSettings settings, GLib.KeyFile key_file, char8* group_name);
 	[LinkName("gtk_print_settings_set")]
-	public static extern void print_settings_set(GtkPrintSettings* settings,  c_char* key,  c_char* value);
+	public static extern void PrintSettingsSet(PrintSettings settings, char8* key, char8* value);
 	[LinkName("gtk_print_settings_set_bool")]
-	public static extern void print_settings_set_bool(GtkPrintSettings* settings,  c_char* key, c_int value);
+	public static extern void PrintSettingsSetBool(PrintSettings settings, char8* key, c_int value);
 	[LinkName("gtk_print_settings_set_collate")]
-	public static extern void print_settings_set_collate(GtkPrintSettings* settings, c_int collate);
+	public static extern void PrintSettingsSetCollate(PrintSettings settings, c_int collate);
 	[LinkName("gtk_print_settings_set_default_source")]
-	public static extern void print_settings_set_default_source(GtkPrintSettings* settings,  c_char* default_source);
+	public static extern void PrintSettingsSetDefaultSource(PrintSettings settings, char8* default_source);
 	[LinkName("gtk_print_settings_set_dither")]
-	public static extern void print_settings_set_dither(GtkPrintSettings* settings,  c_char* dither);
+	public static extern void PrintSettingsSetDither(PrintSettings settings, char8* dither);
 	[LinkName("gtk_print_settings_set_double")]
-	public static extern void print_settings_set_double(GtkPrintSettings* settings,  c_char* key, double value);
+	public static extern void PrintSettingsSetDouble(PrintSettings settings, char8* key, double value);
 	[LinkName("gtk_print_settings_set_duplex")]
-	public static extern void print_settings_set_duplex(GtkPrintSettings* settings, GtkPrintDuplex duplex);
+	public static extern void PrintSettingsSetDuplex(PrintSettings settings, PrintDuplex duplex);
 	[LinkName("gtk_print_settings_set_finishings")]
-	public static extern void print_settings_set_finishings(GtkPrintSettings* settings,  c_char* finishings);
+	public static extern void PrintSettingsSetFinishings(PrintSettings settings, char8* finishings);
 	[LinkName("gtk_print_settings_set_int")]
-	public static extern void print_settings_set_int(GtkPrintSettings* settings,  c_char* key, c_int value);
+	public static extern void PrintSettingsSetInt(PrintSettings settings, char8* key, c_int value);
 	[LinkName("gtk_print_settings_set_length")]
-	public static extern void print_settings_set_length(GtkPrintSettings* settings,  c_char* key, double value, GtkUnit unit);
+	public static extern void PrintSettingsSetLength(PrintSettings settings, char8* key, double value, Unit unit);
 	[LinkName("gtk_print_settings_set_media_type")]
-	public static extern void print_settings_set_media_type(GtkPrintSettings* settings,  c_char* media_type);
+	public static extern void PrintSettingsSetMediaType(PrintSettings settings, char8* media_type);
 	[LinkName("gtk_print_settings_set_n_copies")]
-	public static extern void print_settings_set_n_copies(GtkPrintSettings* settings, c_int num_copies);
+	public static extern void PrintSettingsSetNCopies(PrintSettings settings, c_int num_copies);
 	[LinkName("gtk_print_settings_set_number_up")]
-	public static extern void print_settings_set_number_up(GtkPrintSettings* settings, c_int number_up);
+	public static extern void PrintSettingsSetNumberUp(PrintSettings settings, c_int number_up);
 	[LinkName("gtk_print_settings_set_number_up_layout")]
-	public static extern void print_settings_set_number_up_layout(GtkPrintSettings* settings, GtkNumberUpLayout number_up_layout);
+	public static extern void PrintSettingsSetNumberUpLayout(PrintSettings settings, NumberUpLayout number_up_layout);
 	[LinkName("gtk_print_settings_set_orientation")]
-	public static extern void print_settings_set_orientation(GtkPrintSettings* settings, GtkPageOrientation orientation);
+	public static extern void PrintSettingsSetOrientation(PrintSettings settings, PageOrientation orientation);
 	[LinkName("gtk_print_settings_set_output_bin")]
-	public static extern void print_settings_set_output_bin(GtkPrintSettings* settings,  c_char* output_bin);
+	public static extern void PrintSettingsSetOutputBin(PrintSettings settings, char8* output_bin);
 	[LinkName("gtk_print_settings_set_page_ranges")]
-	public static extern void print_settings_set_page_ranges(GtkPrintSettings* settings, c_int num_ranges);
+	public static extern void PrintSettingsSetPageRanges(PrintSettings settings, c_int num_ranges);
 	[LinkName("gtk_print_settings_set_page_set")]
-	public static extern void print_settings_set_page_set(GtkPrintSettings* settings, GtkPageSet page_set);
+	public static extern void PrintSettingsSetPageSet(PrintSettings settings, PageSet page_set);
 	[LinkName("gtk_print_settings_set_paper_height")]
-	public static extern void print_settings_set_paper_height(GtkPrintSettings* settings, double height, GtkUnit unit);
+	public static extern void PrintSettingsSetPaperHeight(PrintSettings settings, double height, Unit unit);
 	[LinkName("gtk_print_settings_set_paper_size")]
-	public static extern void print_settings_set_paper_size(GtkPrintSettings* settings, GtkPaperSize* paper_size);
+	public static extern void PrintSettingsSetPaperSize(PrintSettings settings, PaperSize paper_size);
 	[LinkName("gtk_print_settings_set_paper_width")]
-	public static extern void print_settings_set_paper_width(GtkPrintSettings* settings, double width, GtkUnit unit);
+	public static extern void PrintSettingsSetPaperWidth(PrintSettings settings, double width, Unit unit);
 	[LinkName("gtk_print_settings_set_print_pages")]
-	public static extern void print_settings_set_print_pages(GtkPrintSettings* settings, GtkPrintPages pages);
+	public static extern void PrintSettingsSetPrintPages(PrintSettings settings, PrintPages pages);
 	[LinkName("gtk_print_settings_set_printer")]
-	public static extern void print_settings_set_printer(GtkPrintSettings* settings,  c_char* printer);
+	public static extern void PrintSettingsSetPrinter(PrintSettings settings, char8* printer);
 	[LinkName("gtk_print_settings_set_printer_lpi")]
-	public static extern void print_settings_set_printer_lpi(GtkPrintSettings* settings, double lpi);
+	public static extern void PrintSettingsSetPrinterLpi(PrintSettings settings, double lpi);
 	[LinkName("gtk_print_settings_set_quality")]
-	public static extern void print_settings_set_quality(GtkPrintSettings* settings, GtkPrintQuality quality);
+	public static extern void PrintSettingsSetQuality(PrintSettings settings, PrintQuality quality);
 	[LinkName("gtk_print_settings_set_resolution")]
-	public static extern void print_settings_set_resolution(GtkPrintSettings* settings, c_int resolution);
+	public static extern void PrintSettingsSetResolution(PrintSettings settings, c_int resolution);
 	[LinkName("gtk_print_settings_set_resolution_xy")]
-	public static extern void print_settings_set_resolution_xy(GtkPrintSettings* settings, c_int resolution_x, c_int resolution_y);
+	public static extern void PrintSettingsSetResolutionXy(PrintSettings settings, c_int resolution_x, c_int resolution_y);
 	[LinkName("gtk_print_settings_set_reverse")]
-	public static extern void print_settings_set_reverse(GtkPrintSettings* settings, c_int reverse);
+	public static extern void PrintSettingsSetReverse(PrintSettings settings, c_int reverse);
 	[LinkName("gtk_print_settings_set_scale")]
-	public static extern void print_settings_set_scale(GtkPrintSettings* settings, double scale);
+	public static extern void PrintSettingsSetScale(PrintSettings settings, double scale);
 	[LinkName("gtk_print_settings_set_use_color")]
-	public static extern void print_settings_set_use_color(GtkPrintSettings* settings, c_int use_color);
+	public static extern void PrintSettingsSetUseColor(PrintSettings settings, c_int use_color);
 	[LinkName("gtk_print_settings_to_file")]
-	public static extern c_int print_settings_to_file(GtkPrintSettings* settings,  c_char* file_name);
+	public static extern c_int PrintSettingsToFile(PrintSettings settings, char8* file_name);
 	[LinkName("gtk_print_settings_to_gvariant")]
-	public static extern GVariant* print_settings_to_gvariant(GtkPrintSettings* settings);
+	public static extern GLib.Variant PrintSettingsToGvariant(PrintSettings settings);
 	[LinkName("gtk_print_settings_to_key_file")]
-	public static extern void print_settings_to_key_file(GtkPrintSettings* settings, GKeyFile* key_file,  c_char* group_name);
+	public static extern void PrintSettingsToKeyFile(PrintSettings settings, GLib.KeyFile key_file, char8* group_name);
 	[LinkName("gtk_print_settings_unset")]
-	public static extern void print_settings_unset(GtkPrintSettings* settings,  c_char* key);
-	public function void GtkPrintSettingsFunc( c_char* key,  c_char* value, void* user_data);
-	public enum GtkPrintStatus : c_int
+	public static extern void PrintSettingsUnset(PrintSettings settings, char8* key);
+	public function void PrintSettingsFunc(char8* key, char8* value, void* user_data);
+	public enum PrintStatus : c_int
 	{
 		GTK_PRINT_STATUS_INITIAL,
 		GTK_PRINT_STATUS_PREPARING,
@@ -5992,128 +5992,128 @@ class Gtk
 		GTK_PRINT_STATUS_FINISHED_ABORTED
 	}
 	[CRepr]
-	public struct GtkPrintUnixDialog;
+	public struct PrintUnixDialog;
 	[LinkName("gtk_print_unix_dialog_new")]
-	public static extern GtkWidget* print_unix_dialog_new( c_char* title, GtkWindow* parent);
+	public static extern Widget PrintUnixDialogNew(char8* title, Window parent);
 	[LinkName("gtk_print_unix_dialog_add_custom_tab")]
-	public static extern void print_unix_dialog_add_custom_tab(GtkPrintUnixDialog* dialog, GtkWidget* child, GtkWidget* tab_label);
+	public static extern void PrintUnixDialogAddCustomTab(PrintUnixDialog dialog, Widget child, Widget tab_label);
 	[LinkName("gtk_print_unix_dialog_get_current_page")]
-	public static extern c_int print_unix_dialog_get_current_page(GtkPrintUnixDialog* dialog);
+	public static extern c_int PrintUnixDialogGetCurrentPage(PrintUnixDialog dialog);
 	[LinkName("gtk_print_unix_dialog_get_embed_page_setup")]
-	public static extern c_int print_unix_dialog_get_embed_page_setup(GtkPrintUnixDialog* dialog);
+	public static extern c_int PrintUnixDialogGetEmbedPageSetup(PrintUnixDialog dialog);
 	[LinkName("gtk_print_unix_dialog_get_has_selection")]
-	public static extern c_int print_unix_dialog_get_has_selection(GtkPrintUnixDialog* dialog);
+	public static extern c_int PrintUnixDialogGetHasSelection(PrintUnixDialog dialog);
 	[LinkName("gtk_print_unix_dialog_get_manual_capabilities")]
-	public static extern GtkPrintCapabilities print_unix_dialog_get_manual_capabilities(GtkPrintUnixDialog* dialog);
+	public static extern PrintCapabilities PrintUnixDialogGetManualCapabilities(PrintUnixDialog dialog);
 	[LinkName("gtk_print_unix_dialog_get_page_setup")]
-	public static extern GtkPageSetup* print_unix_dialog_get_page_setup(GtkPrintUnixDialog* dialog);
+	public static extern PageSetup PrintUnixDialogGetPageSetup(PrintUnixDialog dialog);
 	[LinkName("gtk_print_unix_dialog_get_page_setup_set")]
-	public static extern c_int print_unix_dialog_get_page_setup_set(GtkPrintUnixDialog* dialog);
+	public static extern c_int PrintUnixDialogGetPageSetupSet(PrintUnixDialog dialog);
 	[LinkName("gtk_print_unix_dialog_get_selected_printer")]
-	public static extern GtkPrinter* print_unix_dialog_get_selected_printer(GtkPrintUnixDialog* dialog);
+	public static extern Printer PrintUnixDialogGetSelectedPrinter(PrintUnixDialog dialog);
 	[LinkName("gtk_print_unix_dialog_get_settings")]
-	public static extern GtkPrintSettings* print_unix_dialog_get_settings(GtkPrintUnixDialog* dialog);
+	public static extern PrintSettings PrintUnixDialogGetSettings(PrintUnixDialog dialog);
 	[LinkName("gtk_print_unix_dialog_get_support_selection")]
-	public static extern c_int print_unix_dialog_get_support_selection(GtkPrintUnixDialog* dialog);
+	public static extern c_int PrintUnixDialogGetSupportSelection(PrintUnixDialog dialog);
 	[LinkName("gtk_print_unix_dialog_set_current_page")]
-	public static extern void print_unix_dialog_set_current_page(GtkPrintUnixDialog* dialog, c_int current_page);
+	public static extern void PrintUnixDialogSetCurrentPage(PrintUnixDialog dialog, c_int current_page);
 	[LinkName("gtk_print_unix_dialog_set_embed_page_setup")]
-	public static extern void print_unix_dialog_set_embed_page_setup(GtkPrintUnixDialog* dialog, c_int embed);
+	public static extern void PrintUnixDialogSetEmbedPageSetup(PrintUnixDialog dialog, c_int embed);
 	[LinkName("gtk_print_unix_dialog_set_has_selection")]
-	public static extern void print_unix_dialog_set_has_selection(GtkPrintUnixDialog* dialog, c_int has_selection);
+	public static extern void PrintUnixDialogSetHasSelection(PrintUnixDialog dialog, c_int has_selection);
 	[LinkName("gtk_print_unix_dialog_set_manual_capabilities")]
-	public static extern void print_unix_dialog_set_manual_capabilities(GtkPrintUnixDialog* dialog, GtkPrintCapabilities capabilities);
+	public static extern void PrintUnixDialogSetManualCapabilities(PrintUnixDialog dialog, PrintCapabilities capabilities);
 	[LinkName("gtk_print_unix_dialog_set_page_setup")]
-	public static extern void print_unix_dialog_set_page_setup(GtkPrintUnixDialog* dialog, GtkPageSetup* page_setup);
+	public static extern void PrintUnixDialogSetPageSetup(PrintUnixDialog dialog, PageSetup page_setup);
 	[LinkName("gtk_print_unix_dialog_set_settings")]
-	public static extern void print_unix_dialog_set_settings(GtkPrintUnixDialog* dialog, GtkPrintSettings* settings);
+	public static extern void PrintUnixDialogSetSettings(PrintUnixDialog dialog, PrintSettings settings);
 	[LinkName("gtk_print_unix_dialog_set_support_selection")]
-	public static extern void print_unix_dialog_set_support_selection(GtkPrintUnixDialog* dialog, c_int support_selection);
+	public static extern void PrintUnixDialogSetSupportSelection(PrintUnixDialog dialog, c_int support_selection);
 	[CRepr]
-	public struct GtkPrinter;
+	public struct Printer;
 	[LinkName("gtk_printer_new")]
-	public static extern GtkPrinter* printer_new( c_char* name, GtkPrintBackend* backend, c_int virtual_);
+	public static extern Printer PrinterNew(char8* name, PrintBackend backend, c_int virtual_);
 	[LinkName("gtk_printer_accepts_pdf")]
-	public static extern c_int printer_accepts_pdf(GtkPrinter* printer);
+	public static extern c_int PrinterAcceptsPdf(Printer printer);
 	[LinkName("gtk_printer_accepts_ps")]
-	public static extern c_int printer_accepts_ps(GtkPrinter* printer);
+	public static extern c_int PrinterAcceptsPs(Printer printer);
 	[LinkName("gtk_printer_compare")]
-	public static extern c_int printer_compare(GtkPrinter* a, GtkPrinter* b);
+	public static extern c_int PrinterCompare(Printer a, Printer b);
 	[LinkName("gtk_printer_get_backend")]
-	public static extern GtkPrintBackend* printer_get_backend(GtkPrinter* printer);
+	public static extern PrintBackend PrinterGetBackend(Printer printer);
 	[LinkName("gtk_printer_get_capabilities")]
-	public static extern GtkPrintCapabilities printer_get_capabilities(GtkPrinter* printer);
+	public static extern PrintCapabilities PrinterGetCapabilities(Printer printer);
 	[LinkName("gtk_printer_get_default_page_size")]
-	public static extern GtkPageSetup* printer_get_default_page_size(GtkPrinter* printer);
+	public static extern PageSetup PrinterGetDefaultPageSize(Printer printer);
 	[LinkName("gtk_printer_get_description")]
-	public static extern  c_char* printer_get_description(GtkPrinter* printer);
+	public static extern char8* PrinterGetDescription(Printer printer);
 	[LinkName("gtk_printer_get_hard_margins")]
-	public static extern c_int printer_get_hard_margins(GtkPrinter* printer, double* top, double* bottom, double* left, double* right);
+	public static extern c_int PrinterGetHardMargins(Printer printer, double top, double bottom, double left, double right);
 	[LinkName("gtk_printer_get_hard_margins_for_paper_size")]
-	public static extern c_int printer_get_hard_margins_for_paper_size(GtkPrinter* printer, GtkPaperSize* paper_size, double* top, double* bottom, double* left, double* right);
+	public static extern c_int PrinterGetHardMarginsForPaperSize(Printer printer, PaperSize paper_size, double top, double bottom, double left, double right);
 	[LinkName("gtk_printer_get_icon_name")]
-	public static extern  c_char* printer_get_icon_name(GtkPrinter* printer);
+	public static extern char8* PrinterGetIconName(Printer printer);
 	[LinkName("gtk_printer_get_job_count")]
-	public static extern c_int printer_get_job_count(GtkPrinter* printer);
+	public static extern c_int PrinterGetJobCount(Printer printer);
 	[LinkName("gtk_printer_get_location")]
-	public static extern  c_char* printer_get_location(GtkPrinter* printer);
+	public static extern char8* PrinterGetLocation(Printer printer);
 	[LinkName("gtk_printer_get_name")]
-	public static extern  c_char* printer_get_name(GtkPrinter* printer);
+	public static extern char8* PrinterGetName(Printer printer);
 	[LinkName("gtk_printer_get_state_message")]
-	public static extern  c_char* printer_get_state_message(GtkPrinter* printer);
+	public static extern char8* PrinterGetStateMessage(Printer printer);
 	[LinkName("gtk_printer_has_details")]
-	public static extern c_int printer_has_details(GtkPrinter* printer);
+	public static extern c_int PrinterHasDetails(Printer printer);
 	[LinkName("gtk_printer_is_accepting_jobs")]
-	public static extern c_int printer_is_accepting_jobs(GtkPrinter* printer);
+	public static extern c_int PrinterIsAcceptingJobs(Printer printer);
 	[LinkName("gtk_printer_is_active")]
-	public static extern c_int printer_is_active(GtkPrinter* printer);
+	public static extern c_int PrinterIsActive(Printer printer);
 	[LinkName("gtk_printer_is_default")]
-	public static extern c_int printer_is_default(GtkPrinter* printer);
+	public static extern c_int PrinterIsDefault(Printer printer);
 	[LinkName("gtk_printer_is_paused")]
-	public static extern c_int printer_is_paused(GtkPrinter* printer);
+	public static extern c_int PrinterIsPaused(Printer printer);
 	[LinkName("gtk_printer_is_virtual")]
-	public static extern c_int printer_is_virtual(GtkPrinter* printer);
+	public static extern c_int PrinterIsVirtual(Printer printer);
 	[LinkName("gtk_printer_list_papers")]
-	public static extern GList* printer_list_papers(GtkPrinter* printer);
+	public static extern GLib.List PrinterListPapers(Printer printer);
 	[LinkName("gtk_printer_request_details")]
-	public static extern void printer_request_details(GtkPrinter* printer);
-	public function c_int GtkPrinterFunc(GtkPrinter* printer, void* data);
+	public static extern void PrinterRequestDetails(Printer printer);
+	public function c_int PrinterFunc(Printer printer, void* data);
 	[CRepr]
-	public struct GtkProgressBar;
+	public struct ProgressBar;
 	[LinkName("gtk_progress_bar_new")]
-	public static extern GtkWidget* progress_bar_new();
+	public static extern Widget ProgressBarNew();
 	[LinkName("gtk_progress_bar_get_ellipsize")]
-	public static extern PangoEllipsizeMode progress_bar_get_ellipsize(GtkProgressBar* pbar);
+	public static extern Pango.EllipsizeMode ProgressBarGetEllipsize(ProgressBar pbar);
 	[LinkName("gtk_progress_bar_get_fraction")]
-	public static extern double progress_bar_get_fraction(GtkProgressBar* pbar);
+	public static extern double ProgressBarGetFraction(ProgressBar pbar);
 	[LinkName("gtk_progress_bar_get_inverted")]
-	public static extern c_int progress_bar_get_inverted(GtkProgressBar* pbar);
+	public static extern c_int ProgressBarGetInverted(ProgressBar pbar);
 	[LinkName("gtk_progress_bar_get_pulse_step")]
-	public static extern double progress_bar_get_pulse_step(GtkProgressBar* pbar);
+	public static extern double ProgressBarGetPulseStep(ProgressBar pbar);
 	[LinkName("gtk_progress_bar_get_show_text")]
-	public static extern c_int progress_bar_get_show_text(GtkProgressBar* pbar);
+	public static extern c_int ProgressBarGetShowText(ProgressBar pbar);
 	[LinkName("gtk_progress_bar_get_text")]
-	public static extern  c_char* progress_bar_get_text(GtkProgressBar* pbar);
+	public static extern char8* ProgressBarGetText(ProgressBar pbar);
 	[LinkName("gtk_progress_bar_pulse")]
-	public static extern void progress_bar_pulse(GtkProgressBar* pbar);
+	public static extern void ProgressBarPulse(ProgressBar pbar);
 	[LinkName("gtk_progress_bar_set_ellipsize")]
-	public static extern void progress_bar_set_ellipsize(GtkProgressBar* pbar, PangoEllipsizeMode mode);
+	public static extern void ProgressBarSetEllipsize(ProgressBar pbar, Pango.EllipsizeMode mode);
 	[LinkName("gtk_progress_bar_set_fraction")]
-	public static extern void progress_bar_set_fraction(GtkProgressBar* pbar, double fraction);
+	public static extern void ProgressBarSetFraction(ProgressBar pbar, double fraction);
 	[LinkName("gtk_progress_bar_set_inverted")]
-	public static extern void progress_bar_set_inverted(GtkProgressBar* pbar, c_int inverted);
+	public static extern void ProgressBarSetInverted(ProgressBar pbar, c_int inverted);
 	[LinkName("gtk_progress_bar_set_pulse_step")]
-	public static extern void progress_bar_set_pulse_step(GtkProgressBar* pbar, double fraction);
+	public static extern void ProgressBarSetPulseStep(ProgressBar pbar, double fraction);
 	[LinkName("gtk_progress_bar_set_show_text")]
-	public static extern void progress_bar_set_show_text(GtkProgressBar* pbar, c_int show_text);
+	public static extern void ProgressBarSetShowText(ProgressBar pbar, c_int show_text);
 	[LinkName("gtk_progress_bar_set_text")]
-	public static extern void progress_bar_set_text(GtkProgressBar* pbar,  c_char* text);
-	public enum GtkPropagationLimit : c_int
+	public static extern void ProgressBarSetText(ProgressBar pbar, char8* text);
+	public enum PropagationLimit : c_int
 	{
 		GTK_LIMIT_NONE,
 		GTK_LIMIT_SAME_NATIVE
 	}
-	public enum GtkPropagationPhase : c_int
+	public enum PropagationPhase : c_int
 	{
 		GTK_PHASE_NONE,
 		GTK_PHASE_CAPTURE,
@@ -6121,106 +6121,106 @@ class Gtk
 		GTK_PHASE_TARGET
 	}
 	[CRepr]
-	public struct GtkPropertyExpression;
+	public struct PropertyExpression;
 	[LinkName("gtk_property_expression_new")]
-	public static extern GtkExpression* property_expression_new(GType this_type, GtkExpression* expression,  c_char* property_name);
+	public static extern PropertyExpression PropertyExpressionNew(GLib.Type this_type, Expression expression, char8* property_name);
 	[LinkName("gtk_property_expression_new_for_pspec")]
-	public static extern GtkExpression* property_expression_new_for_pspec(GtkExpression* expression, GParamSpec* pspec);
+	public static extern PropertyExpression PropertyExpressionNewForPspec(Expression expression, GObject.ParamSpec pspec);
 	[LinkName("gtk_property_expression_get_expression")]
-	public static extern GtkExpression* property_expression_get_expression(GtkExpression* expression);
+	public static extern Expression PropertyExpressionGetExpression(PropertyExpression expression);
 	[LinkName("gtk_property_expression_get_pspec")]
-	public static extern GParamSpec* property_expression_get_pspec(GtkExpression* expression);
+	public static extern GObject.ParamSpec PropertyExpressionGetPspec(PropertyExpression expression);
 	[CRepr]
-	public struct GtkRange;
+	public struct Range;
 	[LinkName("gtk_range_get_adjustment")]
-	public static extern GtkAdjustment* range_get_adjustment(GtkRange* range);
+	public static extern Adjustment RangeGetAdjustment(Range range);
 	[LinkName("gtk_range_get_fill_level")]
-	public static extern double range_get_fill_level(GtkRange* range);
+	public static extern double RangeGetFillLevel(Range range);
 	[LinkName("gtk_range_get_flippable")]
-	public static extern c_int range_get_flippable(GtkRange* range);
+	public static extern c_int RangeGetFlippable(Range range);
 	[LinkName("gtk_range_get_inverted")]
-	public static extern c_int range_get_inverted(GtkRange* range);
+	public static extern c_int RangeGetInverted(Range range);
 	[LinkName("gtk_range_get_range_rect")]
-	public static extern void range_get_range_rect(GtkRange* range, GdkRectangle* range_rect);
+	public static extern void RangeGetRangeRect(Range range, Gdk.Rectangle range_rect);
 	[LinkName("gtk_range_get_restrict_to_fill_level")]
-	public static extern c_int range_get_restrict_to_fill_level(GtkRange* range);
+	public static extern c_int RangeGetRestrictToFillLevel(Range range);
 	[LinkName("gtk_range_get_round_digits")]
-	public static extern c_int range_get_round_digits(GtkRange* range);
+	public static extern c_int RangeGetRoundDigits(Range range);
 	[LinkName("gtk_range_get_show_fill_level")]
-	public static extern c_int range_get_show_fill_level(GtkRange* range);
+	public static extern c_int RangeGetShowFillLevel(Range range);
 	[LinkName("gtk_range_get_slider_range")]
-	public static extern void range_get_slider_range(GtkRange* range, c_int* slider_start, c_int* slider_end);
+	public static extern void RangeGetSliderRange(Range range, c_int slider_start, c_int slider_end);
 	[LinkName("gtk_range_get_slider_size_fixed")]
-	public static extern c_int range_get_slider_size_fixed(GtkRange* range);
+	public static extern c_int RangeGetSliderSizeFixed(Range range);
 	[LinkName("gtk_range_get_value")]
-	public static extern double range_get_value(GtkRange* range);
+	public static extern double RangeGetValue(Range range);
 	[LinkName("gtk_range_set_adjustment")]
-	public static extern void range_set_adjustment(GtkRange* range, GtkAdjustment* adjustment);
+	public static extern void RangeSetAdjustment(Range range, Adjustment adjustment);
 	[LinkName("gtk_range_set_fill_level")]
-	public static extern void range_set_fill_level(GtkRange* range, double fill_level);
+	public static extern void RangeSetFillLevel(Range range, double fill_level);
 	[LinkName("gtk_range_set_flippable")]
-	public static extern void range_set_flippable(GtkRange* range, c_int flippable);
+	public static extern void RangeSetFlippable(Range range, c_int flippable);
 	[LinkName("gtk_range_set_increments")]
-	public static extern void range_set_increments(GtkRange* range, double step, double page);
+	public static extern void RangeSetIncrements(Range range, double step, double page);
 	[LinkName("gtk_range_set_inverted")]
-	public static extern void range_set_inverted(GtkRange* range, c_int setting);
+	public static extern void RangeSetInverted(Range range, c_int setting);
 	[LinkName("gtk_range_set_range")]
-	public static extern void range_set_range(GtkRange* range, double min, double max);
+	public static extern void RangeSetRange(Range range, double min, double max);
 	[LinkName("gtk_range_set_restrict_to_fill_level")]
-	public static extern void range_set_restrict_to_fill_level(GtkRange* range, c_int restrict_to_fill_level);
+	public static extern void RangeSetRestrictToFillLevel(Range range, c_int restrict_to_fill_level);
 	[LinkName("gtk_range_set_round_digits")]
-	public static extern void range_set_round_digits(GtkRange* range, c_int round_digits);
+	public static extern void RangeSetRoundDigits(Range range, c_int round_digits);
 	[LinkName("gtk_range_set_show_fill_level")]
-	public static extern void range_set_show_fill_level(GtkRange* range, c_int show_fill_level);
+	public static extern void RangeSetShowFillLevel(Range range, c_int show_fill_level);
 	[LinkName("gtk_range_set_slider_size_fixed")]
-	public static extern void range_set_slider_size_fixed(GtkRange* range, c_int size_fixed);
+	public static extern void RangeSetSliderSizeFixed(Range range, c_int size_fixed);
 	[LinkName("gtk_range_set_value")]
-	public static extern void range_set_value(GtkRange* range, double value);
+	public static extern void RangeSetValue(Range range, double value);
 	[CRepr]
-	public struct GtkRangeClass
+	public struct RangeClass
 	{
-		GtkWidgetClass parent_class;
+		WidgetClass parent_class;
 	}
 	[CRepr]
-	public struct GtkRecentData
+	public struct RecentData
 	{
-		c_char* display_name;
-		c_char* description;
-		c_char* mime_type;
-		c_char* app_name;
-		c_char* app_exec;
+		char8* display_name;
+		char8* description;
+		char8* mime_type;
+		char8* app_name;
+		char8* app_exec;
 		c_int is_private;
 	}
 	[CRepr]
-	public struct GtkRecentInfo
+	public struct RecentInfo
 	{
 	}
 	[CRepr]
-	public struct GtkRecentManager;
+	public struct RecentManager;
 	[LinkName("gtk_recent_manager_new")]
-	public static extern GtkRecentManager* recent_manager_new();
+	public static extern RecentManager RecentManagerNew();
 	[LinkName("gtk_recent_manager_add_full")]
-	public static extern c_int recent_manager_add_full(GtkRecentManager* manager,  c_char* uri,  GtkRecentData* recent_data);
+	public static extern c_int RecentManagerAddFull(RecentManager manager, char8* uri, RecentData recent_data);
 	[LinkName("gtk_recent_manager_add_item")]
-	public static extern c_int recent_manager_add_item(GtkRecentManager* manager,  c_char* uri);
+	public static extern c_int RecentManagerAddItem(RecentManager manager, char8* uri);
 	[LinkName("gtk_recent_manager_get_items")]
-	public static extern GList* recent_manager_get_items(GtkRecentManager* manager);
+	public static extern GLib.List RecentManagerGetItems(RecentManager manager);
 	[LinkName("gtk_recent_manager_has_item")]
-	public static extern c_int recent_manager_has_item(GtkRecentManager* manager,  c_char* uri);
+	public static extern c_int RecentManagerHasItem(RecentManager manager, char8* uri);
 	[LinkName("gtk_recent_manager_lookup_item")]
-	public static extern GtkRecentInfo* recent_manager_lookup_item(GtkRecentManager* manager,  c_char* uri);
+	public static extern RecentInfo RecentManagerLookupItem(RecentManager manager, char8* uri);
 	[LinkName("gtk_recent_manager_move_item")]
-	public static extern c_int recent_manager_move_item(GtkRecentManager* manager,  c_char* uri,  c_char* new_uri);
+	public static extern c_int RecentManagerMoveItem(RecentManager manager, char8* uri, char8* new_uri);
 	[LinkName("gtk_recent_manager_purge_items")]
-	public static extern c_int recent_manager_purge_items(GtkRecentManager* manager);
+	public static extern c_int RecentManagerPurgeItems(RecentManager manager);
 	[LinkName("gtk_recent_manager_remove_item")]
-	public static extern c_int recent_manager_remove_item(GtkRecentManager* manager,  c_char* uri);
+	public static extern c_int RecentManagerRemoveItem(RecentManager manager, char8* uri);
 	[CRepr]
-	public struct GtkRecentManagerClass
+	public struct RecentManagerClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
-	public enum GtkRecentManagerError : c_int
+	public enum RecentManagerError : c_int
 	{
 		GTK_RECENT_MANAGER_ERROR_NOT_FOUND,
 		GTK_RECENT_MANAGER_ERROR_INVALID_URI,
@@ -6231,23 +6231,23 @@ class Gtk
 		GTK_RECENT_MANAGER_ERROR_UNKNOWN
 	}
 	[CRepr]
-	public struct GtkRecentManagerPrivate
+	public struct RecentManagerPrivate
 	{
 	}
 	[CRepr]
-	public struct GtkRequestedSize
+	public struct RequestedSize
 	{
 		void* data;
 		c_int minimum_size;
 		c_int natural_size;
 	}
 	[CRepr]
-	public struct GtkRequisition
+	public struct Requisition
 	{
 		c_int width;
 		c_int height;
 	}
-	public enum GtkResponseType : c_int
+	public enum ResponseType : c_int
 	{
 		GTK_RESPONSE_NONE,
 		GTK_RESPONSE_REJECT,
@@ -6262,28 +6262,28 @@ class Gtk
 		GTK_RESPONSE_HELP
 	}
 	[CRepr]
-	public struct GtkRevealer;
+	public struct Revealer;
 	[LinkName("gtk_revealer_new")]
-	public static extern GtkWidget* revealer_new();
+	public static extern Widget RevealerNew();
 	[LinkName("gtk_revealer_get_child")]
-	public static extern GtkWidget* revealer_get_child(GtkRevealer* revealer);
+	public static extern Widget RevealerGetChild(Revealer revealer);
 	[LinkName("gtk_revealer_get_child_revealed")]
-	public static extern c_int revealer_get_child_revealed(GtkRevealer* revealer);
+	public static extern c_int RevealerGetChildRevealed(Revealer revealer);
 	[LinkName("gtk_revealer_get_reveal_child")]
-	public static extern c_int revealer_get_reveal_child(GtkRevealer* revealer);
+	public static extern c_int RevealerGetRevealChild(Revealer revealer);
 	[LinkName("gtk_revealer_get_transition_duration")]
-	public static extern c_uint revealer_get_transition_duration(GtkRevealer* revealer);
+	public static extern c_uint RevealerGetTransitionDuration(Revealer revealer);
 	[LinkName("gtk_revealer_get_transition_type")]
-	public static extern GtkRevealerTransitionType revealer_get_transition_type(GtkRevealer* revealer);
+	public static extern RevealerTransitionType RevealerGetTransitionType(Revealer revealer);
 	[LinkName("gtk_revealer_set_child")]
-	public static extern void revealer_set_child(GtkRevealer* revealer, GtkWidget* child);
+	public static extern void RevealerSetChild(Revealer revealer, Widget child);
 	[LinkName("gtk_revealer_set_reveal_child")]
-	public static extern void revealer_set_reveal_child(GtkRevealer* revealer, c_int reveal_child);
+	public static extern void RevealerSetRevealChild(Revealer revealer, c_int reveal_child);
 	[LinkName("gtk_revealer_set_transition_duration")]
-	public static extern void revealer_set_transition_duration(GtkRevealer* revealer, c_uint duration);
+	public static extern void RevealerSetTransitionDuration(Revealer revealer, c_uint duration);
 	[LinkName("gtk_revealer_set_transition_type")]
-	public static extern void revealer_set_transition_type(GtkRevealer* revealer, GtkRevealerTransitionType transition);
-	public enum GtkRevealerTransitionType : c_int
+	public static extern void RevealerSetTransitionType(Revealer revealer, RevealerTransitionType transition);
+	public enum RevealerTransitionType : c_int
 	{
 		GTK_REVEALER_TRANSITION_TYPE_NONE,
 		GTK_REVEALER_TRANSITION_TYPE_CROSSFADE,
@@ -6297,78 +6297,78 @@ class Gtk
 		GTK_REVEALER_TRANSITION_TYPE_SWING_DOWN
 	}
 	[CRepr]
-	public struct GtkRoot
+	public struct Root
 	{	}
 	[CRepr]
-	public struct GtkRootInterface
+	public struct RootInterface
 	{
 	}
 	[CRepr]
-	public struct GtkScale;
+	public struct Scale;
 	[LinkName("gtk_scale_new")]
-	public static extern GtkWidget* scale_new(GtkOrientation orientation, GtkAdjustment* adjustment);
+	public static extern Widget ScaleNew(Orientation orientation, Adjustment adjustment);
 	[LinkName("gtk_scale_new_with_range")]
-	public static extern GtkWidget* scale_new_with_range(GtkOrientation orientation, double min, double max, double step);
+	public static extern Widget ScaleNewWithRange(Orientation orientation, double min, double max, double step);
 	[LinkName("gtk_scale_add_mark")]
-	public static extern void scale_add_mark(GtkScale* scale, double value, GtkPositionType position,  c_char* markup);
+	public static extern void ScaleAddMark(Scale scale, double value, PositionType position, char8* markup);
 	[LinkName("gtk_scale_clear_marks")]
-	public static extern void scale_clear_marks(GtkScale* scale);
+	public static extern void ScaleClearMarks(Scale scale);
 	[LinkName("gtk_scale_get_digits")]
-	public static extern c_int scale_get_digits(GtkScale* scale);
+	public static extern c_int ScaleGetDigits(Scale scale);
 	[LinkName("gtk_scale_get_draw_value")]
-	public static extern c_int scale_get_draw_value(GtkScale* scale);
+	public static extern c_int ScaleGetDrawValue(Scale scale);
 	[LinkName("gtk_scale_get_has_origin")]
-	public static extern c_int scale_get_has_origin(GtkScale* scale);
+	public static extern c_int ScaleGetHasOrigin(Scale scale);
 	[LinkName("gtk_scale_get_layout")]
-	public static extern PangoLayout* scale_get_layout(GtkScale* scale);
+	public static extern Pango.Layout ScaleGetLayout(Scale scale);
 	[LinkName("gtk_scale_get_layout_offsets")]
-	public static extern void scale_get_layout_offsets(GtkScale* scale, c_int* x, c_int* y);
+	public static extern void ScaleGetLayoutOffsets(Scale scale, c_int x, c_int y);
 	[LinkName("gtk_scale_get_value_pos")]
-	public static extern GtkPositionType scale_get_value_pos(GtkScale* scale);
+	public static extern PositionType ScaleGetValuePos(Scale scale);
 	[LinkName("gtk_scale_set_digits")]
-	public static extern void scale_set_digits(GtkScale* scale, c_int digits);
+	public static extern void ScaleSetDigits(Scale scale, c_int digits);
 	[LinkName("gtk_scale_set_draw_value")]
-	public static extern void scale_set_draw_value(GtkScale* scale, c_int draw_value);
+	public static extern void ScaleSetDrawValue(Scale scale, c_int draw_value);
 	[LinkName("gtk_scale_set_format_value_func")]
-	public static extern void scale_set_format_value_func(GtkScale* scale, GtkScaleFormatValueFunc func, void* user_data, GDestroyNotify destroy_notify);
+	public static extern void ScaleSetFormatValueFunc(Scale scale, ScaleFormatValueFunc func, void* user_data, GLib.DestroyNotify destroy_notify);
 	[LinkName("gtk_scale_set_has_origin")]
-	public static extern void scale_set_has_origin(GtkScale* scale, c_int has_origin);
+	public static extern void ScaleSetHasOrigin(Scale scale, c_int has_origin);
 	[LinkName("gtk_scale_set_value_pos")]
-	public static extern void scale_set_value_pos(GtkScale* scale, GtkPositionType pos);
+	public static extern void ScaleSetValuePos(Scale scale, PositionType pos);
 	[CRepr]
-	public struct GtkScaleButton;
+	public struct ScaleButton;
 	[LinkName("gtk_scale_button_new")]
-	public static extern GtkWidget* scale_button_new(double min, double max, double step);
+	public static extern Widget ScaleButtonNew(double min, double max, double step);
 	[LinkName("gtk_scale_button_get_active")]
-	public static extern c_int scale_button_get_active(GtkScaleButton* button);
+	public static extern c_int ScaleButtonGetActive(ScaleButton button);
 	[LinkName("gtk_scale_button_get_adjustment")]
-	public static extern GtkAdjustment* scale_button_get_adjustment(GtkScaleButton* button);
+	public static extern Adjustment ScaleButtonGetAdjustment(ScaleButton button);
 	[LinkName("gtk_scale_button_get_minus_button")]
-	public static extern GtkWidget* scale_button_get_minus_button(GtkScaleButton* button);
+	public static extern Button ScaleButtonGetMinusButton(ScaleButton button);
 	[LinkName("gtk_scale_button_get_plus_button")]
-	public static extern GtkWidget* scale_button_get_plus_button(GtkScaleButton* button);
+	public static extern Button ScaleButtonGetPlusButton(ScaleButton button);
 	[LinkName("gtk_scale_button_get_popup")]
-	public static extern GtkWidget* scale_button_get_popup(GtkScaleButton* button);
+	public static extern Widget ScaleButtonGetPopup(ScaleButton button);
 	[LinkName("gtk_scale_button_get_value")]
-	public static extern double scale_button_get_value(GtkScaleButton* button);
+	public static extern double ScaleButtonGetValue(ScaleButton button);
 	[LinkName("gtk_scale_button_set_adjustment")]
-	public static extern void scale_button_set_adjustment(GtkScaleButton* button, GtkAdjustment* adjustment);
+	public static extern void ScaleButtonSetAdjustment(ScaleButton button, Adjustment adjustment);
 	[LinkName("gtk_scale_button_set_icons")]
-	public static extern void scale_button_set_icons(GtkScaleButton* button);
+	public static extern void ScaleButtonSetIcons(ScaleButton button);
 	[LinkName("gtk_scale_button_set_value")]
-	public static extern void scale_button_set_value(GtkScaleButton* button, double value);
+	public static extern void ScaleButtonSetValue(ScaleButton button, double value);
 	[CRepr]
-	public struct GtkScaleButtonClass
+	public struct ScaleButtonClass
 	{
-		GtkWidgetClass parent_class;
+		WidgetClass parent_class;
 	}
 	[CRepr]
-	public struct GtkScaleClass
+	public struct ScaleClass
 	{
-		GtkRangeClass parent_class;
+		RangeClass parent_class;
 	}
-	public function c_char* GtkScaleFormatValueFunc(GtkScale* scale, double value, void* user_data);
-	public enum GtkScrollStep : c_int
+	public function char8* ScaleFormatValueFunc(Scale scale, double value, void* user_data);
+	public enum ScrollStep : c_int
 	{
 		GTK_SCROLL_STEPS,
 		GTK_SCROLL_PAGES,
@@ -6377,7 +6377,7 @@ class Gtk
 		GTK_SCROLL_HORIZONTAL_PAGES,
 		GTK_SCROLL_HORIZONTAL_ENDS
 	}
-	public enum GtkScrollType : c_int
+	public enum ScrollType : c_int
 	{
 		GTK_SCROLL_NONE,
 		GTK_SCROLL_JUMP,
@@ -6397,156 +6397,156 @@ class Gtk
 		GTK_SCROLL_END
 	}
 	[CRepr]
-	public struct GtkScrollable
+	public struct Scrollable
 	{
-		public function c_int(GtkScrollable* scrollable, GtkBorder* border) get_border;
+		public function c_int(Scrollable scrollable, Border border) get_border;
 	}
 	[CRepr]
-	public struct GtkScrollableInterface
+	public struct ScrollableInterface
 	{
-		GTypeInterface base_iface;
+		GObject.TypeInterface base_iface;
 	}
-	public enum GtkScrollablePolicy : c_int
+	public enum ScrollablePolicy : c_int
 	{
 		GTK_SCROLL_MINIMUM,
 		GTK_SCROLL_NATURAL
 	}
 	[CRepr]
-	public struct GtkScrollbar;
+	public struct Scrollbar;
 	[LinkName("gtk_scrollbar_new")]
-	public static extern GtkWidget* scrollbar_new(GtkOrientation orientation, GtkAdjustment* adjustment);
+	public static extern Widget ScrollbarNew(Orientation orientation, Adjustment adjustment);
 	[LinkName("gtk_scrollbar_get_adjustment")]
-	public static extern GtkAdjustment* scrollbar_get_adjustment(GtkScrollbar* self);
+	public static extern Adjustment ScrollbarGetAdjustment(Scrollbar self);
 	[LinkName("gtk_scrollbar_set_adjustment")]
-	public static extern void scrollbar_set_adjustment(GtkScrollbar* self, GtkAdjustment* adjustment);
+	public static extern void ScrollbarSetAdjustment(Scrollbar self, Adjustment adjustment);
 	[CRepr]
-	public struct GtkScrolledWindow;
+	public struct ScrolledWindow;
 	[LinkName("gtk_scrolled_window_new")]
-	public static extern GtkWidget* scrolled_window_new();
+	public static extern Widget ScrolledWindowNew();
 	[LinkName("gtk_scrolled_window_get_child")]
-	public static extern GtkWidget* scrolled_window_get_child(GtkScrolledWindow* scrolled_window);
+	public static extern Widget ScrolledWindowGetChild(ScrolledWindow scrolled_window);
 	[LinkName("gtk_scrolled_window_get_hadjustment")]
-	public static extern GtkAdjustment* scrolled_window_get_hadjustment(GtkScrolledWindow* scrolled_window);
+	public static extern Adjustment ScrolledWindowGetHadjustment(ScrolledWindow scrolled_window);
 	[LinkName("gtk_scrolled_window_get_has_frame")]
-	public static extern c_int scrolled_window_get_has_frame(GtkScrolledWindow* scrolled_window);
+	public static extern c_int ScrolledWindowGetHasFrame(ScrolledWindow scrolled_window);
 	[LinkName("gtk_scrolled_window_get_hscrollbar")]
-	public static extern GtkWidget* scrolled_window_get_hscrollbar(GtkScrolledWindow* scrolled_window);
+	public static extern Widget ScrolledWindowGetHscrollbar(ScrolledWindow scrolled_window);
 	[LinkName("gtk_scrolled_window_get_kinetic_scrolling")]
-	public static extern c_int scrolled_window_get_kinetic_scrolling(GtkScrolledWindow* scrolled_window);
+	public static extern c_int ScrolledWindowGetKineticScrolling(ScrolledWindow scrolled_window);
 	[LinkName("gtk_scrolled_window_get_max_content_height")]
-	public static extern c_int scrolled_window_get_max_content_height(GtkScrolledWindow* scrolled_window);
+	public static extern c_int ScrolledWindowGetMaxContentHeight(ScrolledWindow scrolled_window);
 	[LinkName("gtk_scrolled_window_get_max_content_width")]
-	public static extern c_int scrolled_window_get_max_content_width(GtkScrolledWindow* scrolled_window);
+	public static extern c_int ScrolledWindowGetMaxContentWidth(ScrolledWindow scrolled_window);
 	[LinkName("gtk_scrolled_window_get_min_content_height")]
-	public static extern c_int scrolled_window_get_min_content_height(GtkScrolledWindow* scrolled_window);
+	public static extern c_int ScrolledWindowGetMinContentHeight(ScrolledWindow scrolled_window);
 	[LinkName("gtk_scrolled_window_get_min_content_width")]
-	public static extern c_int scrolled_window_get_min_content_width(GtkScrolledWindow* scrolled_window);
+	public static extern c_int ScrolledWindowGetMinContentWidth(ScrolledWindow scrolled_window);
 	[LinkName("gtk_scrolled_window_get_overlay_scrolling")]
-	public static extern c_int scrolled_window_get_overlay_scrolling(GtkScrolledWindow* scrolled_window);
+	public static extern c_int ScrolledWindowGetOverlayScrolling(ScrolledWindow scrolled_window);
 	[LinkName("gtk_scrolled_window_get_placement")]
-	public static extern GtkCornerType scrolled_window_get_placement(GtkScrolledWindow* scrolled_window);
+	public static extern CornerType ScrolledWindowGetPlacement(ScrolledWindow scrolled_window);
 	[LinkName("gtk_scrolled_window_get_policy")]
-	public static extern void scrolled_window_get_policy(GtkScrolledWindow* scrolled_window, GtkPolicyType* hscrollbar_policy, GtkPolicyType* vscrollbar_policy);
+	public static extern void ScrolledWindowGetPolicy(ScrolledWindow scrolled_window, PolicyType hscrollbar_policy, PolicyType vscrollbar_policy);
 	[LinkName("gtk_scrolled_window_get_propagate_natural_height")]
-	public static extern c_int scrolled_window_get_propagate_natural_height(GtkScrolledWindow* scrolled_window);
+	public static extern c_int ScrolledWindowGetPropagateNaturalHeight(ScrolledWindow scrolled_window);
 	[LinkName("gtk_scrolled_window_get_propagate_natural_width")]
-	public static extern c_int scrolled_window_get_propagate_natural_width(GtkScrolledWindow* scrolled_window);
+	public static extern c_int ScrolledWindowGetPropagateNaturalWidth(ScrolledWindow scrolled_window);
 	[LinkName("gtk_scrolled_window_get_vadjustment")]
-	public static extern GtkAdjustment* scrolled_window_get_vadjustment(GtkScrolledWindow* scrolled_window);
+	public static extern Adjustment ScrolledWindowGetVadjustment(ScrolledWindow scrolled_window);
 	[LinkName("gtk_scrolled_window_get_vscrollbar")]
-	public static extern GtkWidget* scrolled_window_get_vscrollbar(GtkScrolledWindow* scrolled_window);
+	public static extern Widget ScrolledWindowGetVscrollbar(ScrolledWindow scrolled_window);
 	[LinkName("gtk_scrolled_window_set_child")]
-	public static extern void scrolled_window_set_child(GtkScrolledWindow* scrolled_window, GtkWidget* child);
+	public static extern void ScrolledWindowSetChild(ScrolledWindow scrolled_window, Widget child);
 	[LinkName("gtk_scrolled_window_set_hadjustment")]
-	public static extern void scrolled_window_set_hadjustment(GtkScrolledWindow* scrolled_window, GtkAdjustment* hadjustment);
+	public static extern void ScrolledWindowSetHadjustment(ScrolledWindow scrolled_window, Adjustment hadjustment);
 	[LinkName("gtk_scrolled_window_set_has_frame")]
-	public static extern void scrolled_window_set_has_frame(GtkScrolledWindow* scrolled_window, c_int has_frame);
+	public static extern void ScrolledWindowSetHasFrame(ScrolledWindow scrolled_window, c_int has_frame);
 	[LinkName("gtk_scrolled_window_set_kinetic_scrolling")]
-	public static extern void scrolled_window_set_kinetic_scrolling(GtkScrolledWindow* scrolled_window, c_int kinetic_scrolling);
+	public static extern void ScrolledWindowSetKineticScrolling(ScrolledWindow scrolled_window, c_int kinetic_scrolling);
 	[LinkName("gtk_scrolled_window_set_max_content_height")]
-	public static extern void scrolled_window_set_max_content_height(GtkScrolledWindow* scrolled_window, c_int height);
+	public static extern void ScrolledWindowSetMaxContentHeight(ScrolledWindow scrolled_window, c_int height);
 	[LinkName("gtk_scrolled_window_set_max_content_width")]
-	public static extern void scrolled_window_set_max_content_width(GtkScrolledWindow* scrolled_window, c_int width);
+	public static extern void ScrolledWindowSetMaxContentWidth(ScrolledWindow scrolled_window, c_int width);
 	[LinkName("gtk_scrolled_window_set_min_content_height")]
-	public static extern void scrolled_window_set_min_content_height(GtkScrolledWindow* scrolled_window, c_int height);
+	public static extern void ScrolledWindowSetMinContentHeight(ScrolledWindow scrolled_window, c_int height);
 	[LinkName("gtk_scrolled_window_set_min_content_width")]
-	public static extern void scrolled_window_set_min_content_width(GtkScrolledWindow* scrolled_window, c_int width);
+	public static extern void ScrolledWindowSetMinContentWidth(ScrolledWindow scrolled_window, c_int width);
 	[LinkName("gtk_scrolled_window_set_overlay_scrolling")]
-	public static extern void scrolled_window_set_overlay_scrolling(GtkScrolledWindow* scrolled_window, c_int overlay_scrolling);
+	public static extern void ScrolledWindowSetOverlayScrolling(ScrolledWindow scrolled_window, c_int overlay_scrolling);
 	[LinkName("gtk_scrolled_window_set_placement")]
-	public static extern void scrolled_window_set_placement(GtkScrolledWindow* scrolled_window, GtkCornerType window_placement);
+	public static extern void ScrolledWindowSetPlacement(ScrolledWindow scrolled_window, CornerType window_placement);
 	[LinkName("gtk_scrolled_window_set_policy")]
-	public static extern void scrolled_window_set_policy(GtkScrolledWindow* scrolled_window, GtkPolicyType hscrollbar_policy, GtkPolicyType vscrollbar_policy);
+	public static extern void ScrolledWindowSetPolicy(ScrolledWindow scrolled_window, PolicyType hscrollbar_policy, PolicyType vscrollbar_policy);
 	[LinkName("gtk_scrolled_window_set_propagate_natural_height")]
-	public static extern void scrolled_window_set_propagate_natural_height(GtkScrolledWindow* scrolled_window, c_int propagate);
+	public static extern void ScrolledWindowSetPropagateNaturalHeight(ScrolledWindow scrolled_window, c_int propagate);
 	[LinkName("gtk_scrolled_window_set_propagate_natural_width")]
-	public static extern void scrolled_window_set_propagate_natural_width(GtkScrolledWindow* scrolled_window, c_int propagate);
+	public static extern void ScrolledWindowSetPropagateNaturalWidth(ScrolledWindow scrolled_window, c_int propagate);
 	[LinkName("gtk_scrolled_window_set_vadjustment")]
-	public static extern void scrolled_window_set_vadjustment(GtkScrolledWindow* scrolled_window, GtkAdjustment* vadjustment);
+	public static extern void ScrolledWindowSetVadjustment(ScrolledWindow scrolled_window, Adjustment vadjustment);
 	[LinkName("gtk_scrolled_window_unset_placement")]
-	public static extern void scrolled_window_unset_placement(GtkScrolledWindow* scrolled_window);
+	public static extern void ScrolledWindowUnsetPlacement(ScrolledWindow scrolled_window);
 	[CRepr]
-	public struct GtkSearchBar;
+	public struct SearchBar;
 	[LinkName("gtk_search_bar_new")]
-	public static extern GtkWidget* search_bar_new();
+	public static extern Widget SearchBarNew();
 	[LinkName("gtk_search_bar_connect_entry")]
-	public static extern void search_bar_connect_entry(GtkSearchBar* bar, GtkEditable* entry);
+	public static extern void SearchBarConnectEntry(SearchBar bar, Editable entry);
 	[LinkName("gtk_search_bar_get_child")]
-	public static extern GtkWidget* search_bar_get_child(GtkSearchBar* bar);
+	public static extern Widget SearchBarGetChild(SearchBar bar);
 	[LinkName("gtk_search_bar_get_key_capture_widget")]
-	public static extern GtkWidget* search_bar_get_key_capture_widget(GtkSearchBar* bar);
+	public static extern Widget SearchBarGetKeyCaptureWidget(SearchBar bar);
 	[LinkName("gtk_search_bar_get_search_mode")]
-	public static extern c_int search_bar_get_search_mode(GtkSearchBar* bar);
+	public static extern c_int SearchBarGetSearchMode(SearchBar bar);
 	[LinkName("gtk_search_bar_get_show_close_button")]
-	public static extern c_int search_bar_get_show_close_button(GtkSearchBar* bar);
+	public static extern c_int SearchBarGetShowCloseButton(SearchBar bar);
 	[LinkName("gtk_search_bar_set_child")]
-	public static extern void search_bar_set_child(GtkSearchBar* bar, GtkWidget* child);
+	public static extern void SearchBarSetChild(SearchBar bar, Widget child);
 	[LinkName("gtk_search_bar_set_key_capture_widget")]
-	public static extern void search_bar_set_key_capture_widget(GtkSearchBar* bar, GtkWidget* widget);
+	public static extern void SearchBarSetKeyCaptureWidget(SearchBar bar, Widget widget);
 	[LinkName("gtk_search_bar_set_search_mode")]
-	public static extern void search_bar_set_search_mode(GtkSearchBar* bar, c_int search_mode);
+	public static extern void SearchBarSetSearchMode(SearchBar bar, c_int search_mode);
 	[LinkName("gtk_search_bar_set_show_close_button")]
-	public static extern void search_bar_set_show_close_button(GtkSearchBar* bar, c_int visible);
+	public static extern void SearchBarSetShowCloseButton(SearchBar bar, c_int visible);
 	[CRepr]
-	public struct GtkSearchEntry;
+	public struct SearchEntry;
 	[LinkName("gtk_search_entry_new")]
-	public static extern GtkWidget* search_entry_new();
+	public static extern Widget SearchEntryNew();
 	[LinkName("gtk_search_entry_get_key_capture_widget")]
-	public static extern GtkWidget* search_entry_get_key_capture_widget(GtkSearchEntry* entry);
+	public static extern Widget SearchEntryGetKeyCaptureWidget(SearchEntry entry);
 	[LinkName("gtk_search_entry_get_placeholder_text")]
-	public static extern  c_char* search_entry_get_placeholder_text(GtkSearchEntry* entry);
+	public static extern char8* SearchEntryGetPlaceholderText(SearchEntry entry);
 	[LinkName("gtk_search_entry_get_search_delay")]
-	public static extern c_uint search_entry_get_search_delay(GtkSearchEntry* entry);
+	public static extern c_uint SearchEntryGetSearchDelay(SearchEntry entry);
 	[LinkName("gtk_search_entry_set_key_capture_widget")]
-	public static extern void search_entry_set_key_capture_widget(GtkSearchEntry* entry, GtkWidget* widget);
+	public static extern void SearchEntrySetKeyCaptureWidget(SearchEntry entry, Widget widget);
 	[LinkName("gtk_search_entry_set_placeholder_text")]
-	public static extern void search_entry_set_placeholder_text(GtkSearchEntry* entry,  c_char* text);
+	public static extern void SearchEntrySetPlaceholderText(SearchEntry entry, char8* text);
 	[LinkName("gtk_search_entry_set_search_delay")]
-	public static extern void search_entry_set_search_delay(GtkSearchEntry* entry, c_uint delay);
+	public static extern void SearchEntrySetSearchDelay(SearchEntry entry, c_uint delay);
 	[CRepr]
-	public struct GtkSectionModel
+	public struct SectionModel
 	{
-		public function void(GtkSectionModel this, c_uint position, c_uint* out_start, c_uint* out_end) get_section;
+		public function void(SectionModel this, c_uint position, c_uint out_start, c_uint out_end) get_section;
 	}
 	[CRepr]
-	public struct GtkSectionModelInterface
+	public struct SectionModelInterface
 	{
-		GTypeInterface g_iface;
+		GObject.TypeInterface g_iface;
 	}
 	[CRepr]
-	public struct GtkSelectionFilterModel;
+	public struct SelectionFilterModel;
 	[LinkName("gtk_selection_filter_model_new")]
-	public static extern GtkSelectionFilterModel* selection_filter_model_new(GtkSelectionModel* model);
+	public static extern SelectionFilterModel SelectionFilterModelNew(SelectionModel model);
 	[LinkName("gtk_selection_filter_model_get_model")]
-	public static extern GtkSelectionModel* selection_filter_model_get_model(GtkSelectionFilterModel* self);
+	public static extern SelectionModel SelectionFilterModelGetModel(SelectionFilterModel self);
 	[LinkName("gtk_selection_filter_model_set_model")]
-	public static extern void selection_filter_model_set_model(GtkSelectionFilterModel* self, GtkSelectionModel* model);
+	public static extern void SelectionFilterModelSetModel(SelectionFilterModel self, SelectionModel model);
 	[CRepr]
-	public struct GtkSelectionFilterModelClass
+	public struct SelectionFilterModelClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
-	public enum GtkSelectionMode : c_int
+	public enum SelectionMode : c_int
 	{
 		GTK_SELECTION_NONE,
 		GTK_SELECTION_SINGLE,
@@ -6554,169 +6554,169 @@ class Gtk
 		GTK_SELECTION_MULTIPLE
 	}
 	[CRepr]
-	public struct GtkSelectionModel
+	public struct SelectionModel
 	{
-		public function GtkBitset*(GtkSelectionModel* model, c_uint position, c_uint n_items) get_selection_in_range;
+		public function Bitset(SelectionModel model, c_uint position, c_uint n_items) get_selection_in_range;
 
-		public function c_int(GtkSelectionModel* model, c_uint position) is_selected;
+		public function c_int(SelectionModel model, c_uint position) is_selected;
 
-		public function c_int(GtkSelectionModel* model) select_all;
+		public function c_int(SelectionModel model) select_all;
 
-		public function c_int(GtkSelectionModel* model, c_uint position, c_int unselect_rest) select_item;
+		public function c_int(SelectionModel model, c_uint position, c_int unselect_rest) select_item;
 
-		public function c_int(GtkSelectionModel* model, c_uint position, c_uint n_items, c_int unselect_rest) select_range;
+		public function c_int(SelectionModel model, c_uint position, c_uint n_items, c_int unselect_rest) select_range;
 
-		public function c_int(GtkSelectionModel* model, GtkBitset* selected, GtkBitset* mask) set_selection;
+		public function c_int(SelectionModel model, Bitset selected, Bitset mask) set_selection;
 
-		public function c_int(GtkSelectionModel* model) unselect_all;
+		public function c_int(SelectionModel model) unselect_all;
 
-		public function c_int(GtkSelectionModel* model, c_uint position) unselect_item;
+		public function c_int(SelectionModel model, c_uint position) unselect_item;
 
-		public function c_int(GtkSelectionModel* model, c_uint position, c_uint n_items) unselect_range;
+		public function c_int(SelectionModel model, c_uint position, c_uint n_items) unselect_range;
 	}
 	[CRepr]
-	public struct GtkSelectionModelInterface
+	public struct SelectionModelInterface
 	{
-		GTypeInterface g_iface;
+		GObject.TypeInterface g_iface;
 	}
-	public enum GtkSensitivityType : c_int
+	public enum SensitivityType : c_int
 	{
 		GTK_SENSITIVITY_AUTO,
 		GTK_SENSITIVITY_ON,
 		GTK_SENSITIVITY_OFF
 	}
 	[CRepr]
-	public struct GtkSeparator;
+	public struct Separator;
 	[LinkName("gtk_separator_new")]
-	public static extern GtkWidget* separator_new(GtkOrientation orientation);
+	public static extern Widget SeparatorNew(Orientation orientation);
 	[CRepr]
-	public struct GtkSettings;
+	public struct Settings;
 	[LinkName("gtk_settings_reset_property")]
-	public static extern void settings_reset_property(GtkSettings* settings,  c_char* name);
+	public static extern void SettingsResetProperty(Settings settings, char8* name);
 	[CRepr]
-	public struct GtkShortcut;
+	public struct Shortcut;
 	[LinkName("gtk_shortcut_new")]
-	public static extern GtkShortcut* shortcut_new(GtkShortcutTrigger* trigger, GtkShortcutAction* action);
+	public static extern Shortcut ShortcutNew(ShortcutTrigger trigger, ShortcutAction action);
 	[LinkName("gtk_shortcut_new_with_arguments")]
-	public static extern GtkShortcut* shortcut_new_with_arguments(GtkShortcutTrigger* trigger, GtkShortcutAction* action,  c_char* format_string);
+	public static extern Shortcut ShortcutNewWithArguments(ShortcutTrigger trigger, ShortcutAction action, char8* format_string);
 	[LinkName("gtk_shortcut_get_action")]
-	public static extern GtkShortcutAction* shortcut_get_action(GtkShortcut* self);
+	public static extern ShortcutAction ShortcutGetAction(Shortcut self);
 	[LinkName("gtk_shortcut_get_arguments")]
-	public static extern GVariant* shortcut_get_arguments(GtkShortcut* self);
+	public static extern GLib.Variant ShortcutGetArguments(Shortcut self);
 	[LinkName("gtk_shortcut_get_trigger")]
-	public static extern GtkShortcutTrigger* shortcut_get_trigger(GtkShortcut* self);
+	public static extern ShortcutTrigger ShortcutGetTrigger(Shortcut self);
 	[LinkName("gtk_shortcut_set_action")]
-	public static extern void shortcut_set_action(GtkShortcut* self, GtkShortcutAction* action);
+	public static extern void ShortcutSetAction(Shortcut self, ShortcutAction action);
 	[LinkName("gtk_shortcut_set_arguments")]
-	public static extern void shortcut_set_arguments(GtkShortcut* self, GVariant* args);
+	public static extern void ShortcutSetArguments(Shortcut self, GLib.Variant args);
 	[LinkName("gtk_shortcut_set_trigger")]
-	public static extern void shortcut_set_trigger(GtkShortcut* self, GtkShortcutTrigger* trigger);
+	public static extern void ShortcutSetTrigger(Shortcut self, ShortcutTrigger trigger);
 	[CRepr]
-	public struct GtkShortcutAction;
+	public struct ShortcutAction;
 	[LinkName("gtk_shortcut_action_parse_string")]
-	public static extern GtkShortcutAction* shortcut_action_parse_string( c_char* string);
+	public static extern ShortcutAction ShortcutActionParseString(char8* string);
 	[LinkName("gtk_shortcut_action_activate")]
-	public static extern c_int shortcut_action_activate(GtkShortcutAction* self, GtkShortcutActionFlags flags, GtkWidget* widget, GVariant* args);
+	public static extern c_int ShortcutActionActivate(ShortcutAction self, ShortcutActionFlags flags, Widget widget, GLib.Variant args);
 	[LinkName("gtk_shortcut_action_print")]
-	public static extern void shortcut_action_print(GtkShortcutAction* self, GString* string);
+	public static extern void ShortcutActionPrint(ShortcutAction self, GLib.String string);
 	[LinkName("gtk_shortcut_action_to_string")]
-	public static extern c_char* shortcut_action_to_string(GtkShortcutAction* self);
+	public static extern char8* ShortcutActionToString(ShortcutAction self);
 	[CRepr]
-	public struct GtkShortcutActionClass
+	public struct ShortcutActionClass
 	{
 	}
 	[CRepr]
-	public struct GtkShortcutActionFlags
+	public struct ShortcutActionFlags
 	{
 		public const int GTK_SHORTCUT_ACTION_EXCLUSIVE = 1;
 	}
 	[CRepr]
-	public struct GtkShortcutClass
+	public struct ShortcutClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GtkShortcutController;
+	public struct ShortcutController;
 	[LinkName("gtk_shortcut_controller_new")]
-	public static extern GtkEventController* shortcut_controller_new();
+	public static extern EventController ShortcutControllerNew();
 	[LinkName("gtk_shortcut_controller_new_for_model")]
-	public static extern GtkEventController* shortcut_controller_new_for_model(GListModel* model);
+	public static extern EventController ShortcutControllerNewForModel(Gio.ListModel model);
 	[LinkName("gtk_shortcut_controller_add_shortcut")]
-	public static extern void shortcut_controller_add_shortcut(GtkShortcutController* self, GtkShortcut* shortcut);
+	public static extern void ShortcutControllerAddShortcut(ShortcutController self, Shortcut shortcut);
 	[LinkName("gtk_shortcut_controller_get_mnemonics_modifiers")]
-	public static extern GdkModifierType shortcut_controller_get_mnemonics_modifiers(GtkShortcutController* self);
+	public static extern Gdk.ModifierType ShortcutControllerGetMnemonicsModifiers(ShortcutController self);
 	[LinkName("gtk_shortcut_controller_get_scope")]
-	public static extern GtkShortcutScope shortcut_controller_get_scope(GtkShortcutController* self);
+	public static extern ShortcutScope ShortcutControllerGetScope(ShortcutController self);
 	[LinkName("gtk_shortcut_controller_remove_shortcut")]
-	public static extern void shortcut_controller_remove_shortcut(GtkShortcutController* self, GtkShortcut* shortcut);
+	public static extern void ShortcutControllerRemoveShortcut(ShortcutController self, Shortcut shortcut);
 	[LinkName("gtk_shortcut_controller_set_mnemonics_modifiers")]
-	public static extern void shortcut_controller_set_mnemonics_modifiers(GtkShortcutController* self, GdkModifierType modifiers);
+	public static extern void ShortcutControllerSetMnemonicsModifiers(ShortcutController self, Gdk.ModifierType modifiers);
 	[LinkName("gtk_shortcut_controller_set_scope")]
-	public static extern void shortcut_controller_set_scope(GtkShortcutController* self, GtkShortcutScope scope_);
+	public static extern void ShortcutControllerSetScope(ShortcutController self, ShortcutScope scope_);
 	[CRepr]
-	public struct GtkShortcutControllerClass
+	public struct ShortcutControllerClass
 	{
 	}
-	public function c_int GtkShortcutFunc(GtkWidget* widget, GVariant* args, void* user_data);
+	public function c_int ShortcutFunc(Widget widget, GLib.Variant args, void* user_data);
 	[CRepr]
-	public struct GtkShortcutLabel;
+	public struct ShortcutLabel;
 	[LinkName("gtk_shortcut_label_new")]
-	public static extern GtkWidget* shortcut_label_new( c_char* accelerator);
+	public static extern Widget ShortcutLabelNew(char8* accelerator);
 	[LinkName("gtk_shortcut_label_get_accelerator")]
-	public static extern  c_char* shortcut_label_get_accelerator(GtkShortcutLabel* self);
+	public static extern char8* ShortcutLabelGetAccelerator(ShortcutLabel self);
 	[LinkName("gtk_shortcut_label_get_disabled_text")]
-	public static extern  c_char* shortcut_label_get_disabled_text(GtkShortcutLabel* self);
+	public static extern char8* ShortcutLabelGetDisabledText(ShortcutLabel self);
 	[LinkName("gtk_shortcut_label_set_accelerator")]
-	public static extern void shortcut_label_set_accelerator(GtkShortcutLabel* self,  c_char* accelerator);
+	public static extern void ShortcutLabelSetAccelerator(ShortcutLabel self, char8* accelerator);
 	[LinkName("gtk_shortcut_label_set_disabled_text")]
-	public static extern void shortcut_label_set_disabled_text(GtkShortcutLabel* self,  c_char* disabled_text);
+	public static extern void ShortcutLabelSetDisabledText(ShortcutLabel self, char8* disabled_text);
 	[CRepr]
-	public struct GtkShortcutLabelClass
+	public struct ShortcutLabelClass
 	{
 	}
 	[CRepr]
-	public struct GtkShortcutManager
+	public struct ShortcutManager
 	{
-		public function void(GtkShortcutManager this, GtkShortcutController* controller) add_controller;
+		public function void(ShortcutManager this, ShortcutController controller) add_controller;
 
-		public function void(GtkShortcutManager this, GtkShortcutController* controller) remove_controller;
+		public function void(ShortcutManager this, ShortcutController controller) remove_controller;
 	}
 	[CRepr]
-	public struct GtkShortcutManagerInterface
+	public struct ShortcutManagerInterface
 	{
-		GTypeInterface g_iface;
+		GObject.TypeInterface g_iface;
 	}
-	public enum GtkShortcutScope : c_int
+	public enum ShortcutScope : c_int
 	{
 		GTK_SHORTCUT_SCOPE_LOCAL,
 		GTK_SHORTCUT_SCOPE_MANAGED,
 		GTK_SHORTCUT_SCOPE_GLOBAL
 	}
 	[CRepr]
-	public struct GtkShortcutTrigger;
+	public struct ShortcutTrigger;
 	[LinkName("gtk_shortcut_trigger_parse_string")]
-	public static extern GtkShortcutTrigger* shortcut_trigger_parse_string( c_char* string);
+	public static extern ShortcutTrigger ShortcutTriggerParseString(char8* string);
 	[LinkName("gtk_shortcut_trigger_compare")]
-	public static extern c_int shortcut_trigger_compare(void* trigger1, void* trigger2);
+	public static extern c_int ShortcutTriggerCompare(ShortcutTrigger trigger1, ShortcutTrigger trigger2);
 	[LinkName("gtk_shortcut_trigger_equal")]
-	public static extern c_int shortcut_trigger_equal(void* trigger1, void* trigger2);
+	public static extern c_int ShortcutTriggerEqual(ShortcutTrigger trigger1, ShortcutTrigger trigger2);
 	[LinkName("gtk_shortcut_trigger_hash")]
-	public static extern c_uint shortcut_trigger_hash(void* trigger);
+	public static extern c_uint ShortcutTriggerHash(ShortcutTrigger trigger);
 	[LinkName("gtk_shortcut_trigger_print")]
-	public static extern void shortcut_trigger_print(GtkShortcutTrigger* self, GString* string);
+	public static extern void ShortcutTriggerPrint(ShortcutTrigger self, GLib.String string);
 	[LinkName("gtk_shortcut_trigger_print_label")]
-	public static extern c_int shortcut_trigger_print_label(GtkShortcutTrigger* self, GdkDisplay* display, GString* string);
+	public static extern c_int ShortcutTriggerPrintLabel(ShortcutTrigger self, Gdk.Display display, GLib.String string);
 	[LinkName("gtk_shortcut_trigger_to_label")]
-	public static extern c_char* shortcut_trigger_to_label(GtkShortcutTrigger* self, GdkDisplay* display);
+	public static extern char8* ShortcutTriggerToLabel(ShortcutTrigger self, Gdk.Display display);
 	[LinkName("gtk_shortcut_trigger_to_string")]
-	public static extern c_char* shortcut_trigger_to_string(GtkShortcutTrigger* self);
+	public static extern char8* ShortcutTriggerToString(ShortcutTrigger self);
 	[LinkName("gtk_shortcut_trigger_trigger")]
-	public static extern GdkKeyMatch shortcut_trigger_trigger(GtkShortcutTrigger* self, GdkEvent* event, c_int enable_mnemonics);
+	public static extern Gdk.KeyMatch ShortcutTriggerTrigger(ShortcutTrigger self, Gdk.Event event, c_int enable_mnemonics);
 	[CRepr]
-	public struct GtkShortcutTriggerClass
+	public struct ShortcutTriggerClass
 	{
 	}
-	public enum GtkShortcutType : c_int
+	public enum ShortcutType : c_int
 	{
 		GTK_SHORTCUT_ACCELERATOR,
 		GTK_SHORTCUT_GESTURE_PINCH,
@@ -6730,263 +6730,263 @@ class Gtk
 		GTK_SHORTCUT_GESTURE_SWIPE_RIGHT
 	}
 	[CRepr]
-	public struct GtkShortcutsGroup;
+	public struct ShortcutsGroup;
 	[CRepr]
-	public struct GtkShortcutsGroupClass
+	public struct ShortcutsGroupClass
 	{
 	}
 	[CRepr]
-	public struct GtkShortcutsSection;
+	public struct ShortcutsSection;
 	[CRepr]
-	public struct GtkShortcutsSectionClass
+	public struct ShortcutsSectionClass
 	{
 	}
 	[CRepr]
-	public struct GtkShortcutsShortcut;
+	public struct ShortcutsShortcut;
 	[CRepr]
-	public struct GtkShortcutsShortcutClass
+	public struct ShortcutsShortcutClass
 	{
 	}
 	[CRepr]
-	public struct GtkShortcutsWindow;
+	public struct ShortcutsWindow;
 	[CRepr]
-	public struct GtkSignalAction;
+	public struct SignalAction;
 	[LinkName("gtk_signal_action_new")]
-	public static extern GtkShortcutAction* signal_action_new( c_char* signal_name);
+	public static extern SignalAction SignalActionNew(char8* signal_name);
 	[LinkName("gtk_signal_action_get_signal_name")]
-	public static extern  c_char* signal_action_get_signal_name(GtkSignalAction* self);
+	public static extern char8* SignalActionGetSignalName(SignalAction self);
 	[CRepr]
-	public struct GtkSignalActionClass
+	public struct SignalActionClass
 	{
 	}
 	[CRepr]
-	public struct GtkSignalListItemFactory;
+	public struct SignalListItemFactory;
 	[LinkName("gtk_signal_list_item_factory_new")]
-	public static extern GtkListItemFactory* signal_list_item_factory_new();
+	public static extern ListItemFactory SignalListItemFactoryNew();
 	[CRepr]
-	public struct GtkSignalListItemFactoryClass
+	public struct SignalListItemFactoryClass
 	{
 	}
 	[CRepr]
-	public struct GtkSingleSelection;
+	public struct SingleSelection;
 	[LinkName("gtk_single_selection_new")]
-	public static extern GtkSingleSelection* single_selection_new(GListModel* model);
+	public static extern SingleSelection SingleSelectionNew(Gio.ListModel model);
 	[LinkName("gtk_single_selection_get_autoselect")]
-	public static extern c_int single_selection_get_autoselect(GtkSingleSelection* self);
+	public static extern c_int SingleSelectionGetAutoselect(SingleSelection self);
 	[LinkName("gtk_single_selection_get_can_unselect")]
-	public static extern c_int single_selection_get_can_unselect(GtkSingleSelection* self);
+	public static extern c_int SingleSelectionGetCanUnselect(SingleSelection self);
 	[LinkName("gtk_single_selection_get_model")]
-	public static extern GListModel* single_selection_get_model(GtkSingleSelection* self);
+	public static extern Gio.ListModel SingleSelectionGetModel(SingleSelection self);
 	[LinkName("gtk_single_selection_get_selected")]
-	public static extern c_uint single_selection_get_selected(GtkSingleSelection* self);
+	public static extern c_uint SingleSelectionGetSelected(SingleSelection self);
 	[LinkName("gtk_single_selection_get_selected_item")]
-	public static extern void* single_selection_get_selected_item(GtkSingleSelection* self);
+	public static extern GObject.Object SingleSelectionGetSelectedItem(SingleSelection self);
 	[LinkName("gtk_single_selection_set_autoselect")]
-	public static extern void single_selection_set_autoselect(GtkSingleSelection* self, c_int autoselect);
+	public static extern void SingleSelectionSetAutoselect(SingleSelection self, c_int autoselect);
 	[LinkName("gtk_single_selection_set_can_unselect")]
-	public static extern void single_selection_set_can_unselect(GtkSingleSelection* self, c_int can_unselect);
+	public static extern void SingleSelectionSetCanUnselect(SingleSelection self, c_int can_unselect);
 	[LinkName("gtk_single_selection_set_model")]
-	public static extern void single_selection_set_model(GtkSingleSelection* self, GListModel* model);
+	public static extern void SingleSelectionSetModel(SingleSelection self, Gio.ListModel model);
 	[LinkName("gtk_single_selection_set_selected")]
-	public static extern void single_selection_set_selected(GtkSingleSelection* self, c_uint position);
+	public static extern void SingleSelectionSetSelected(SingleSelection self, c_uint position);
 	[CRepr]
-	public struct GtkSingleSelectionClass
+	public struct SingleSelectionClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GtkSizeGroup;
+	public struct SizeGroup;
 	[LinkName("gtk_size_group_new")]
-	public static extern GtkSizeGroup* size_group_new(GtkSizeGroupMode mode);
+	public static extern SizeGroup SizeGroupNew(SizeGroupMode mode);
 	[LinkName("gtk_size_group_add_widget")]
-	public static extern void size_group_add_widget(GtkSizeGroup* size_group, GtkWidget* widget);
+	public static extern void SizeGroupAddWidget(SizeGroup size_group, Widget widget);
 	[LinkName("gtk_size_group_get_mode")]
-	public static extern GtkSizeGroupMode size_group_get_mode(GtkSizeGroup* size_group);
+	public static extern SizeGroupMode SizeGroupGetMode(SizeGroup size_group);
 	[LinkName("gtk_size_group_get_widgets")]
-	public static extern GSList* size_group_get_widgets(GtkSizeGroup* size_group);
+	public static extern GLib.SList SizeGroupGetWidgets(SizeGroup size_group);
 	[LinkName("gtk_size_group_remove_widget")]
-	public static extern void size_group_remove_widget(GtkSizeGroup* size_group, GtkWidget* widget);
+	public static extern void SizeGroupRemoveWidget(SizeGroup size_group, Widget widget);
 	[LinkName("gtk_size_group_set_mode")]
-	public static extern void size_group_set_mode(GtkSizeGroup* size_group, GtkSizeGroupMode mode);
-	public enum GtkSizeGroupMode : c_int
+	public static extern void SizeGroupSetMode(SizeGroup size_group, SizeGroupMode mode);
+	public enum SizeGroupMode : c_int
 	{
 		GTK_SIZE_GROUP_NONE,
 		GTK_SIZE_GROUP_HORIZONTAL,
 		GTK_SIZE_GROUP_VERTICAL,
 		GTK_SIZE_GROUP_BOTH
 	}
-	public enum GtkSizeRequestMode : c_int
+	public enum SizeRequestMode : c_int
 	{
 		GTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH,
 		GTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT,
 		GTK_SIZE_REQUEST_CONSTANT_SIZE
 	}
 	[CRepr]
-	public struct GtkSliceListModel;
+	public struct SliceListModel;
 	[LinkName("gtk_slice_list_model_new")]
-	public static extern GtkSliceListModel* slice_list_model_new(GListModel* model, c_uint offset, c_uint size);
+	public static extern SliceListModel SliceListModelNew(Gio.ListModel model, c_uint offset, c_uint size);
 	[LinkName("gtk_slice_list_model_get_model")]
-	public static extern GListModel* slice_list_model_get_model(GtkSliceListModel* self);
+	public static extern Gio.ListModel SliceListModelGetModel(SliceListModel self);
 	[LinkName("gtk_slice_list_model_get_offset")]
-	public static extern c_uint slice_list_model_get_offset(GtkSliceListModel* self);
+	public static extern c_uint SliceListModelGetOffset(SliceListModel self);
 	[LinkName("gtk_slice_list_model_get_size")]
-	public static extern c_uint slice_list_model_get_size(GtkSliceListModel* self);
+	public static extern c_uint SliceListModelGetSize(SliceListModel self);
 	[LinkName("gtk_slice_list_model_set_model")]
-	public static extern void slice_list_model_set_model(GtkSliceListModel* self, GListModel* model);
+	public static extern void SliceListModelSetModel(SliceListModel self, Gio.ListModel model);
 	[LinkName("gtk_slice_list_model_set_offset")]
-	public static extern void slice_list_model_set_offset(GtkSliceListModel* self, c_uint offset);
+	public static extern void SliceListModelSetOffset(SliceListModel self, c_uint offset);
 	[LinkName("gtk_slice_list_model_set_size")]
-	public static extern void slice_list_model_set_size(GtkSliceListModel* self, c_uint size);
+	public static extern void SliceListModelSetSize(SliceListModel self, c_uint size);
 	[CRepr]
-	public struct GtkSliceListModelClass
+	public struct SliceListModelClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GtkSnapshot;
+	public struct Snapshot;
 	[LinkName("gtk_snapshot_new")]
-	public static extern GtkSnapshot* snapshot_new();
+	public static extern Snapshot SnapshotNew();
 	[LinkName("gtk_snapshot_append_border")]
-	public static extern void snapshot_append_border(GtkSnapshot* snapshot,  GskRoundedRect* outline);
+	public static extern void SnapshotAppendBorder(Snapshot snapshot, Gsk.RoundedRect outline);
 	[LinkName("gtk_snapshot_append_cairo")]
-	public static extern cairo_t* snapshot_append_cairo(GtkSnapshot* snapshot,  graphene_rect_t* bounds);
+	public static extern cairo.Context SnapshotAppendCairo(Snapshot snapshot, Graphene.Rect bounds);
 	[LinkName("gtk_snapshot_append_color")]
-	public static extern void snapshot_append_color(GtkSnapshot* snapshot,  GdkRGBA* color,  graphene_rect_t* bounds);
+	public static extern void SnapshotAppendColor(Snapshot snapshot, Gdk.RGBA color, Graphene.Rect bounds);
 	[LinkName("gtk_snapshot_append_conic_gradient")]
-	public static extern void snapshot_append_conic_gradient(GtkSnapshot* snapshot,  graphene_rect_t* bounds,  graphene_point_t* center, float rotation, c_ulong n_stops);
+	public static extern void SnapshotAppendConicGradient(Snapshot snapshot, Graphene.Rect bounds, Graphene.Point center, float rotation, c_ulong n_stops);
 	[LinkName("gtk_snapshot_append_inset_shadow")]
-	public static extern void snapshot_append_inset_shadow(GtkSnapshot* snapshot,  GskRoundedRect* outline,  GdkRGBA* color, float dx, float dy, float spread, float blur_radius);
+	public static extern void SnapshotAppendInsetShadow(Snapshot snapshot, Gsk.RoundedRect outline, Gdk.RGBA color, float dx, float dy, float spread, float blur_radius);
 	[LinkName("gtk_snapshot_append_layout")]
-	public static extern void snapshot_append_layout(GtkSnapshot* snapshot, PangoLayout* layout,  GdkRGBA* color);
+	public static extern void SnapshotAppendLayout(Snapshot snapshot, Pango.Layout layout, Gdk.RGBA color);
 	[LinkName("gtk_snapshot_append_linear_gradient")]
-	public static extern void snapshot_append_linear_gradient(GtkSnapshot* snapshot,  graphene_rect_t* bounds,  graphene_point_t* start_point,  graphene_point_t* end_point, c_ulong n_stops);
+	public static extern void SnapshotAppendLinearGradient(Snapshot snapshot, Graphene.Rect bounds, Graphene.Point start_point, Graphene.Point end_point, c_ulong n_stops);
 	[LinkName("gtk_snapshot_append_node")]
-	public static extern void snapshot_append_node(GtkSnapshot* snapshot, GskRenderNode* node);
+	public static extern void SnapshotAppendNode(Snapshot snapshot, Gsk.RenderNode node);
 	[LinkName("gtk_snapshot_append_outset_shadow")]
-	public static extern void snapshot_append_outset_shadow(GtkSnapshot* snapshot,  GskRoundedRect* outline,  GdkRGBA* color, float dx, float dy, float spread, float blur_radius);
+	public static extern void SnapshotAppendOutsetShadow(Snapshot snapshot, Gsk.RoundedRect outline, Gdk.RGBA color, float dx, float dy, float spread, float blur_radius);
 	[LinkName("gtk_snapshot_append_radial_gradient")]
-	public static extern void snapshot_append_radial_gradient(GtkSnapshot* snapshot,  graphene_rect_t* bounds,  graphene_point_t* center, float hradius, float vradius, float start, float end, c_ulong n_stops);
+	public static extern void SnapshotAppendRadialGradient(Snapshot snapshot, Graphene.Rect bounds, Graphene.Point center, float hradius, float vradius, float start, float end, c_ulong n_stops);
 	[LinkName("gtk_snapshot_append_repeating_linear_gradient")]
-	public static extern void snapshot_append_repeating_linear_gradient(GtkSnapshot* snapshot,  graphene_rect_t* bounds,  graphene_point_t* start_point,  graphene_point_t* end_point, c_ulong n_stops);
+	public static extern void SnapshotAppendRepeatingLinearGradient(Snapshot snapshot, Graphene.Rect bounds, Graphene.Point start_point, Graphene.Point end_point, c_ulong n_stops);
 	[LinkName("gtk_snapshot_append_repeating_radial_gradient")]
-	public static extern void snapshot_append_repeating_radial_gradient(GtkSnapshot* snapshot,  graphene_rect_t* bounds,  graphene_point_t* center, float hradius, float vradius, float start, float end, c_ulong n_stops);
+	public static extern void SnapshotAppendRepeatingRadialGradient(Snapshot snapshot, Graphene.Rect bounds, Graphene.Point center, float hradius, float vradius, float start, float end, c_ulong n_stops);
 	[LinkName("gtk_snapshot_append_scaled_texture")]
-	public static extern void snapshot_append_scaled_texture(GtkSnapshot* snapshot, GdkTexture* texture, GskScalingFilter filter,  graphene_rect_t* bounds);
+	public static extern void SnapshotAppendScaledTexture(Snapshot snapshot, Gdk.Texture texture, Gsk.ScalingFilter filter, Graphene.Rect bounds);
 	[LinkName("gtk_snapshot_append_texture")]
-	public static extern void snapshot_append_texture(GtkSnapshot* snapshot, GdkTexture* texture,  graphene_rect_t* bounds);
+	public static extern void SnapshotAppendTexture(Snapshot snapshot, Gdk.Texture texture, Graphene.Rect bounds);
 	[LinkName("gtk_snapshot_free_to_node")]
-	public static extern GskRenderNode* snapshot_free_to_node(GtkSnapshot* snapshot);
+	public static extern Gsk.RenderNode SnapshotFreeToNode(Snapshot snapshot);
 	[LinkName("gtk_snapshot_free_to_paintable")]
-	public static extern GdkPaintable* snapshot_free_to_paintable(GtkSnapshot* snapshot,  graphene_size_t* size);
+	public static extern Gdk.Paintable SnapshotFreeToPaintable(Snapshot snapshot, Graphene.Size size);
 	[LinkName("gtk_snapshot_gl_shader_pop_texture")]
-	public static extern void snapshot_gl_shader_pop_texture(GtkSnapshot* snapshot);
+	public static extern void SnapshotGlShaderPopTexture(Snapshot snapshot);
 	[LinkName("gtk_snapshot_perspective")]
-	public static extern void snapshot_perspective(GtkSnapshot* snapshot, float depth);
+	public static extern void SnapshotPerspective(Snapshot snapshot, float depth);
 	[LinkName("gtk_snapshot_pop")]
-	public static extern void snapshot_pop(GtkSnapshot* snapshot);
+	public static extern void SnapshotPop(Snapshot snapshot);
 	[LinkName("gtk_snapshot_push_blend")]
-	public static extern void snapshot_push_blend(GtkSnapshot* snapshot, GskBlendMode blend_mode);
+	public static extern void SnapshotPushBlend(Snapshot snapshot, Gsk.BlendMode blend_mode);
 	[LinkName("gtk_snapshot_push_blur")]
-	public static extern void snapshot_push_blur(GtkSnapshot* snapshot, double radius);
+	public static extern void SnapshotPushBlur(Snapshot snapshot, double radius);
 	[LinkName("gtk_snapshot_push_clip")]
-	public static extern void snapshot_push_clip(GtkSnapshot* snapshot,  graphene_rect_t* bounds);
+	public static extern void SnapshotPushClip(Snapshot snapshot, Graphene.Rect bounds);
 	[LinkName("gtk_snapshot_push_color_matrix")]
-	public static extern void snapshot_push_color_matrix(GtkSnapshot* snapshot,  graphene_matrix_t* color_matrix,  graphene_vec4_t* color_offset);
+	public static extern void SnapshotPushColorMatrix(Snapshot snapshot, Graphene.Matrix color_matrix, Graphene.Vec4 color_offset);
 	[LinkName("gtk_snapshot_push_cross_fade")]
-	public static extern void snapshot_push_cross_fade(GtkSnapshot* snapshot, double progress);
+	public static extern void SnapshotPushCrossFade(Snapshot snapshot, double progress);
 	[LinkName("gtk_snapshot_push_debug")]
-	public static extern void snapshot_push_debug(GtkSnapshot* snapshot,  c_char* message);
+	public static extern void SnapshotPushDebug(Snapshot snapshot, char8* message);
 	[LinkName("gtk_snapshot_push_gl_shader")]
-	public static extern void snapshot_push_gl_shader(GtkSnapshot* snapshot, GskGLShader* shader,  graphene_rect_t* bounds, GBytes* take_args);
+	public static extern void SnapshotPushGlShader(Snapshot snapshot, Gsk.GLShader shader, Graphene.Rect bounds, GLib.Bytes take_args);
 	[LinkName("gtk_snapshot_push_mask")]
-	public static extern void snapshot_push_mask(GtkSnapshot* snapshot, GskMaskMode mask_mode);
+	public static extern void SnapshotPushMask(Snapshot snapshot, Gsk.MaskMode mask_mode);
 	[LinkName("gtk_snapshot_push_opacity")]
-	public static extern void snapshot_push_opacity(GtkSnapshot* snapshot, double opacity);
+	public static extern void SnapshotPushOpacity(Snapshot snapshot, double opacity);
 	[LinkName("gtk_snapshot_push_repeat")]
-	public static extern void snapshot_push_repeat(GtkSnapshot* snapshot,  graphene_rect_t* bounds,  graphene_rect_t* child_bounds);
+	public static extern void SnapshotPushRepeat(Snapshot snapshot, Graphene.Rect bounds, Graphene.Rect child_bounds);
 	[LinkName("gtk_snapshot_push_rounded_clip")]
-	public static extern void snapshot_push_rounded_clip(GtkSnapshot* snapshot,  GskRoundedRect* bounds);
+	public static extern void SnapshotPushRoundedClip(Snapshot snapshot, Gsk.RoundedRect bounds);
 	[LinkName("gtk_snapshot_push_shadow")]
-	public static extern void snapshot_push_shadow(GtkSnapshot* snapshot, c_ulong n_shadows);
+	public static extern void SnapshotPushShadow(Snapshot snapshot, c_ulong n_shadows);
 	[LinkName("gtk_snapshot_render_background")]
-	public static extern void snapshot_render_background(GtkSnapshot* snapshot, GtkStyleContext* context, double x, double y, double width, double height);
+	public static extern void SnapshotRenderBackground(Snapshot snapshot, StyleContext context, double x, double y, double width, double height);
 	[LinkName("gtk_snapshot_render_focus")]
-	public static extern void snapshot_render_focus(GtkSnapshot* snapshot, GtkStyleContext* context, double x, double y, double width, double height);
+	public static extern void SnapshotRenderFocus(Snapshot snapshot, StyleContext context, double x, double y, double width, double height);
 	[LinkName("gtk_snapshot_render_frame")]
-	public static extern void snapshot_render_frame(GtkSnapshot* snapshot, GtkStyleContext* context, double x, double y, double width, double height);
+	public static extern void SnapshotRenderFrame(Snapshot snapshot, StyleContext context, double x, double y, double width, double height);
 	[LinkName("gtk_snapshot_render_insertion_cursor")]
-	public static extern void snapshot_render_insertion_cursor(GtkSnapshot* snapshot, GtkStyleContext* context, double x, double y, PangoLayout* layout, c_int index, PangoDirection direction);
+	public static extern void SnapshotRenderInsertionCursor(Snapshot snapshot, StyleContext context, double x, double y, Pango.Layout layout, c_int index, Pango.Direction direction);
 	[LinkName("gtk_snapshot_render_layout")]
-	public static extern void snapshot_render_layout(GtkSnapshot* snapshot, GtkStyleContext* context, double x, double y, PangoLayout* layout);
+	public static extern void SnapshotRenderLayout(Snapshot snapshot, StyleContext context, double x, double y, Pango.Layout layout);
 	[LinkName("gtk_snapshot_restore")]
-	public static extern void snapshot_restore(GtkSnapshot* snapshot);
+	public static extern void SnapshotRestore(Snapshot snapshot);
 	[LinkName("gtk_snapshot_rotate")]
-	public static extern void snapshot_rotate(GtkSnapshot* snapshot, float angle);
+	public static extern void SnapshotRotate(Snapshot snapshot, float angle);
 	[LinkName("gtk_snapshot_rotate_3d")]
-	public static extern void snapshot_rotate_3d(GtkSnapshot* snapshot, float angle,  graphene_vec3_t* axis);
+	public static extern void SnapshotRotate3d(Snapshot snapshot, float angle, Graphene.Vec3 axis);
 	[LinkName("gtk_snapshot_save")]
-	public static extern void snapshot_save(GtkSnapshot* snapshot);
+	public static extern void SnapshotSave(Snapshot snapshot);
 	[LinkName("gtk_snapshot_scale")]
-	public static extern void snapshot_scale(GtkSnapshot* snapshot, float factor_x, float factor_y);
+	public static extern void SnapshotScale(Snapshot snapshot, float factor_x, float factor_y);
 	[LinkName("gtk_snapshot_scale_3d")]
-	public static extern void snapshot_scale_3d(GtkSnapshot* snapshot, float factor_x, float factor_y, float factor_z);
+	public static extern void SnapshotScale3d(Snapshot snapshot, float factor_x, float factor_y, float factor_z);
 	[LinkName("gtk_snapshot_to_node")]
-	public static extern GskRenderNode* snapshot_to_node(GtkSnapshot* snapshot);
+	public static extern Gsk.RenderNode SnapshotToNode(Snapshot snapshot);
 	[LinkName("gtk_snapshot_to_paintable")]
-	public static extern GdkPaintable* snapshot_to_paintable(GtkSnapshot* snapshot,  graphene_size_t* size);
+	public static extern Gdk.Paintable SnapshotToPaintable(Snapshot snapshot, Graphene.Size size);
 	[LinkName("gtk_snapshot_transform")]
-	public static extern void snapshot_transform(GtkSnapshot* snapshot, GskTransform* transform);
+	public static extern void SnapshotTransform(Snapshot snapshot, Gsk.Transform transform);
 	[LinkName("gtk_snapshot_transform_matrix")]
-	public static extern void snapshot_transform_matrix(GtkSnapshot* snapshot,  graphene_matrix_t* matrix);
+	public static extern void SnapshotTransformMatrix(Snapshot snapshot, Graphene.Matrix matrix);
 	[LinkName("gtk_snapshot_translate")]
-	public static extern void snapshot_translate(GtkSnapshot* snapshot,  graphene_point_t* point);
+	public static extern void SnapshotTranslate(Snapshot snapshot, Graphene.Point point);
 	[LinkName("gtk_snapshot_translate_3d")]
-	public static extern void snapshot_translate_3d(GtkSnapshot* snapshot,  graphene_point3d_t* point);
+	public static extern void SnapshotTranslate3d(Snapshot snapshot, Graphene.Point3D point);
 	[CRepr]
-	public struct GtkSnapshotClass
+	public struct SnapshotClass
 	{
 	}
 	[CRepr]
-	public struct GtkSortListModel;
+	public struct SortListModel;
 	[LinkName("gtk_sort_list_model_new")]
-	public static extern GtkSortListModel* sort_list_model_new(GListModel* model, GtkSorter* sorter);
+	public static extern SortListModel SortListModelNew(Gio.ListModel model, Sorter sorter);
 	[LinkName("gtk_sort_list_model_get_incremental")]
-	public static extern c_int sort_list_model_get_incremental(GtkSortListModel* self);
+	public static extern c_int SortListModelGetIncremental(SortListModel self);
 	[LinkName("gtk_sort_list_model_get_model")]
-	public static extern GListModel* sort_list_model_get_model(GtkSortListModel* self);
+	public static extern Gio.ListModel SortListModelGetModel(SortListModel self);
 	[LinkName("gtk_sort_list_model_get_pending")]
-	public static extern c_uint sort_list_model_get_pending(GtkSortListModel* self);
+	public static extern c_uint SortListModelGetPending(SortListModel self);
 	[LinkName("gtk_sort_list_model_get_section_sorter")]
-	public static extern GtkSorter* sort_list_model_get_section_sorter(GtkSortListModel* self);
+	public static extern Sorter SortListModelGetSectionSorter(SortListModel self);
 	[LinkName("gtk_sort_list_model_get_sorter")]
-	public static extern GtkSorter* sort_list_model_get_sorter(GtkSortListModel* self);
+	public static extern Sorter SortListModelGetSorter(SortListModel self);
 	[LinkName("gtk_sort_list_model_set_incremental")]
-	public static extern void sort_list_model_set_incremental(GtkSortListModel* self, c_int incremental);
+	public static extern void SortListModelSetIncremental(SortListModel self, c_int incremental);
 	[LinkName("gtk_sort_list_model_set_model")]
-	public static extern void sort_list_model_set_model(GtkSortListModel* self, GListModel* model);
+	public static extern void SortListModelSetModel(SortListModel self, Gio.ListModel model);
 	[LinkName("gtk_sort_list_model_set_section_sorter")]
-	public static extern void sort_list_model_set_section_sorter(GtkSortListModel* self, GtkSorter* sorter);
+	public static extern void SortListModelSetSectionSorter(SortListModel self, Sorter sorter);
 	[LinkName("gtk_sort_list_model_set_sorter")]
-	public static extern void sort_list_model_set_sorter(GtkSortListModel* self, GtkSorter* sorter);
+	public static extern void SortListModelSetSorter(SortListModel self, Sorter sorter);
 	[CRepr]
-	public struct GtkSortListModelClass
+	public struct SortListModelClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
-	public enum GtkSortType : c_int
+	public enum SortType : c_int
 	{
 		GTK_SORT_ASCENDING,
 		GTK_SORT_DESCENDING
 	}
 	[CRepr]
-	public struct GtkSorter;
+	public struct Sorter;
 	[LinkName("gtk_sorter_changed")]
-	public static extern void sorter_changed(GtkSorter* self, GtkSorterChange change);
+	public static extern void SorterChanged(Sorter self, SorterChange change);
 	[LinkName("gtk_sorter_compare")]
-	public static extern GtkOrdering sorter_compare(GtkSorter* self, void* item1, void* item2);
+	public static extern Ordering SorterCompare(Sorter self, GObject.Object item1, GObject.Object item2);
 	[LinkName("gtk_sorter_get_order")]
-	public static extern GtkSorterOrder sorter_get_order(GtkSorter* self);
-	public enum GtkSorterChange : c_int
+	public static extern SorterOrder SorterGetOrder(Sorter self);
+	public enum SorterChange : c_int
 	{
 		GTK_SORTER_CHANGE_DIFFERENT,
 		GTK_SORTER_CHANGE_INVERTED,
@@ -6994,76 +6994,76 @@ class Gtk
 		GTK_SORTER_CHANGE_MORE_STRICT
 	}
 	[CRepr]
-	public struct GtkSorterClass
+	public struct SorterClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
-	public enum GtkSorterOrder : c_int
+	public enum SorterOrder : c_int
 	{
 		GTK_SORTER_ORDER_PARTIAL,
 		GTK_SORTER_ORDER_NONE,
 		GTK_SORTER_ORDER_TOTAL
 	}
 	[CRepr]
-	public struct GtkSpinButton;
+	public struct SpinButton;
 	[LinkName("gtk_spin_button_new")]
-	public static extern GtkWidget* spin_button_new(GtkAdjustment* adjustment, double climb_rate, c_uint digits);
+	public static extern Widget SpinButtonNew(Adjustment adjustment, double climb_rate, c_uint digits);
 	[LinkName("gtk_spin_button_new_with_range")]
-	public static extern GtkWidget* spin_button_new_with_range(double min, double max, double step);
+	public static extern Widget SpinButtonNewWithRange(double min, double max, double step);
 	[LinkName("gtk_spin_button_configure")]
-	public static extern void spin_button_configure(GtkSpinButton* spin_button, GtkAdjustment* adjustment, double climb_rate, c_uint digits);
+	public static extern void SpinButtonConfigure(SpinButton spin_button, Adjustment adjustment, double climb_rate, c_uint digits);
 	[LinkName("gtk_spin_button_get_adjustment")]
-	public static extern GtkAdjustment* spin_button_get_adjustment(GtkSpinButton* spin_button);
+	public static extern Adjustment SpinButtonGetAdjustment(SpinButton spin_button);
 	[LinkName("gtk_spin_button_get_climb_rate")]
-	public static extern double spin_button_get_climb_rate(GtkSpinButton* spin_button);
+	public static extern double SpinButtonGetClimbRate(SpinButton spin_button);
 	[LinkName("gtk_spin_button_get_digits")]
-	public static extern c_uint spin_button_get_digits(GtkSpinButton* spin_button);
+	public static extern c_uint SpinButtonGetDigits(SpinButton spin_button);
 	[LinkName("gtk_spin_button_get_increments")]
-	public static extern void spin_button_get_increments(GtkSpinButton* spin_button, double* step, double* page);
+	public static extern void SpinButtonGetIncrements(SpinButton spin_button, double step, double page);
 	[LinkName("gtk_spin_button_get_numeric")]
-	public static extern c_int spin_button_get_numeric(GtkSpinButton* spin_button);
+	public static extern c_int SpinButtonGetNumeric(SpinButton spin_button);
 	[LinkName("gtk_spin_button_get_range")]
-	public static extern void spin_button_get_range(GtkSpinButton* spin_button, double* min, double* max);
+	public static extern void SpinButtonGetRange(SpinButton spin_button, double min, double max);
 	[LinkName("gtk_spin_button_get_snap_to_ticks")]
-	public static extern c_int spin_button_get_snap_to_ticks(GtkSpinButton* spin_button);
+	public static extern c_int SpinButtonGetSnapToTicks(SpinButton spin_button);
 	[LinkName("gtk_spin_button_get_update_policy")]
-	public static extern GtkSpinButtonUpdatePolicy spin_button_get_update_policy(GtkSpinButton* spin_button);
+	public static extern SpinButtonUpdatePolicy SpinButtonGetUpdatePolicy(SpinButton spin_button);
 	[LinkName("gtk_spin_button_get_value")]
-	public static extern double spin_button_get_value(GtkSpinButton* spin_button);
+	public static extern double SpinButtonGetValue(SpinButton spin_button);
 	[LinkName("gtk_spin_button_get_value_as_int")]
-	public static extern c_int spin_button_get_value_as_int(GtkSpinButton* spin_button);
+	public static extern c_int SpinButtonGetValueAsInt(SpinButton spin_button);
 	[LinkName("gtk_spin_button_get_wrap")]
-	public static extern c_int spin_button_get_wrap(GtkSpinButton* spin_button);
+	public static extern c_int SpinButtonGetWrap(SpinButton spin_button);
 	[LinkName("gtk_spin_button_set_adjustment")]
-	public static extern void spin_button_set_adjustment(GtkSpinButton* spin_button, GtkAdjustment* adjustment);
+	public static extern void SpinButtonSetAdjustment(SpinButton spin_button, Adjustment adjustment);
 	[LinkName("gtk_spin_button_set_climb_rate")]
-	public static extern void spin_button_set_climb_rate(GtkSpinButton* spin_button, double climb_rate);
+	public static extern void SpinButtonSetClimbRate(SpinButton spin_button, double climb_rate);
 	[LinkName("gtk_spin_button_set_digits")]
-	public static extern void spin_button_set_digits(GtkSpinButton* spin_button, c_uint digits);
+	public static extern void SpinButtonSetDigits(SpinButton spin_button, c_uint digits);
 	[LinkName("gtk_spin_button_set_increments")]
-	public static extern void spin_button_set_increments(GtkSpinButton* spin_button, double step, double page);
+	public static extern void SpinButtonSetIncrements(SpinButton spin_button, double step, double page);
 	[LinkName("gtk_spin_button_set_numeric")]
-	public static extern void spin_button_set_numeric(GtkSpinButton* spin_button, c_int numeric);
+	public static extern void SpinButtonSetNumeric(SpinButton spin_button, c_int numeric);
 	[LinkName("gtk_spin_button_set_range")]
-	public static extern void spin_button_set_range(GtkSpinButton* spin_button, double min, double max);
+	public static extern void SpinButtonSetRange(SpinButton spin_button, double min, double max);
 	[LinkName("gtk_spin_button_set_snap_to_ticks")]
-	public static extern void spin_button_set_snap_to_ticks(GtkSpinButton* spin_button, c_int snap_to_ticks);
+	public static extern void SpinButtonSetSnapToTicks(SpinButton spin_button, c_int snap_to_ticks);
 	[LinkName("gtk_spin_button_set_update_policy")]
-	public static extern void spin_button_set_update_policy(GtkSpinButton* spin_button, GtkSpinButtonUpdatePolicy policy);
+	public static extern void SpinButtonSetUpdatePolicy(SpinButton spin_button, SpinButtonUpdatePolicy policy);
 	[LinkName("gtk_spin_button_set_value")]
-	public static extern void spin_button_set_value(GtkSpinButton* spin_button, double value);
+	public static extern void SpinButtonSetValue(SpinButton spin_button, double value);
 	[LinkName("gtk_spin_button_set_wrap")]
-	public static extern void spin_button_set_wrap(GtkSpinButton* spin_button, c_int wrap);
+	public static extern void SpinButtonSetWrap(SpinButton spin_button, c_int wrap);
 	[LinkName("gtk_spin_button_spin")]
-	public static extern void spin_button_spin(GtkSpinButton* spin_button, GtkSpinType direction, double increment);
+	public static extern void SpinButtonSpin(SpinButton spin_button, SpinType direction, double increment);
 	[LinkName("gtk_spin_button_update")]
-	public static extern void spin_button_update(GtkSpinButton* spin_button);
-	public enum GtkSpinButtonUpdatePolicy : c_int
+	public static extern void SpinButtonUpdate(SpinButton spin_button);
+	public enum SpinButtonUpdatePolicy : c_int
 	{
 		GTK_UPDATE_ALWAYS,
 		GTK_UPDATE_IF_VALID
 	}
-	public enum GtkSpinType : c_int
+	public enum SpinType : c_int
 	{
 		GTK_SPIN_STEP_FORWARD,
 		GTK_SPIN_STEP_BACKWARD,
@@ -7074,112 +7074,112 @@ class Gtk
 		GTK_SPIN_USER_DEFINED
 	}
 	[CRepr]
-	public struct GtkSpinner;
+	public struct Spinner;
 	[LinkName("gtk_spinner_new")]
-	public static extern GtkWidget* spinner_new();
+	public static extern Widget SpinnerNew();
 	[LinkName("gtk_spinner_get_spinning")]
-	public static extern c_int spinner_get_spinning(GtkSpinner* spinner);
+	public static extern c_int SpinnerGetSpinning(Spinner spinner);
 	[LinkName("gtk_spinner_set_spinning")]
-	public static extern void spinner_set_spinning(GtkSpinner* spinner, c_int spinning);
+	public static extern void SpinnerSetSpinning(Spinner spinner, c_int spinning);
 	[LinkName("gtk_spinner_start")]
-	public static extern void spinner_start(GtkSpinner* spinner);
+	public static extern void SpinnerStart(Spinner spinner);
 	[LinkName("gtk_spinner_stop")]
-	public static extern void spinner_stop(GtkSpinner* spinner);
+	public static extern void SpinnerStop(Spinner spinner);
 	[CRepr]
-	public struct GtkStack;
+	public struct Stack;
 	[LinkName("gtk_stack_new")]
-	public static extern GtkWidget* stack_new();
+	public static extern Widget StackNew();
 	[LinkName("gtk_stack_add_child")]
-	public static extern GtkStackPage* stack_add_child(GtkStack* stack_, GtkWidget* child);
+	public static extern StackPage StackAddChild(Stack stack_, Widget child);
 	[LinkName("gtk_stack_add_named")]
-	public static extern GtkStackPage* stack_add_named(GtkStack* stack_, GtkWidget* child,  c_char* name);
+	public static extern StackPage StackAddNamed(Stack stack_, Widget child, char8* name);
 	[LinkName("gtk_stack_add_titled")]
-	public static extern GtkStackPage* stack_add_titled(GtkStack* stack_, GtkWidget* child,  c_char* name,  c_char* title);
+	public static extern StackPage StackAddTitled(Stack stack_, Widget child, char8* name, char8* title);
 	[LinkName("gtk_stack_get_child_by_name")]
-	public static extern GtkWidget* stack_get_child_by_name(GtkStack* stack_,  c_char* name);
+	public static extern Widget StackGetChildByName(Stack stack_, char8* name);
 	[LinkName("gtk_stack_get_hhomogeneous")]
-	public static extern c_int stack_get_hhomogeneous(GtkStack* stack_);
+	public static extern c_int StackGetHhomogeneous(Stack stack_);
 	[LinkName("gtk_stack_get_interpolate_size")]
-	public static extern c_int stack_get_interpolate_size(GtkStack* stack_);
+	public static extern c_int StackGetInterpolateSize(Stack stack_);
 	[LinkName("gtk_stack_get_page")]
-	public static extern GtkStackPage* stack_get_page(GtkStack* stack_, GtkWidget* child);
+	public static extern StackPage StackGetPage(Stack stack_, Widget child);
 	[LinkName("gtk_stack_get_pages")]
-	public static extern GtkSelectionModel* stack_get_pages(GtkStack* stack_);
+	public static extern SelectionModel StackGetPages(Stack stack_);
 	[LinkName("gtk_stack_get_transition_duration")]
-	public static extern c_uint stack_get_transition_duration(GtkStack* stack_);
+	public static extern c_uint StackGetTransitionDuration(Stack stack_);
 	[LinkName("gtk_stack_get_transition_running")]
-	public static extern c_int stack_get_transition_running(GtkStack* stack_);
+	public static extern c_int StackGetTransitionRunning(Stack stack_);
 	[LinkName("gtk_stack_get_transition_type")]
-	public static extern GtkStackTransitionType stack_get_transition_type(GtkStack* stack_);
+	public static extern StackTransitionType StackGetTransitionType(Stack stack_);
 	[LinkName("gtk_stack_get_vhomogeneous")]
-	public static extern c_int stack_get_vhomogeneous(GtkStack* stack_);
+	public static extern c_int StackGetVhomogeneous(Stack stack_);
 	[LinkName("gtk_stack_get_visible_child")]
-	public static extern GtkWidget* stack_get_visible_child(GtkStack* stack_);
+	public static extern Widget StackGetVisibleChild(Stack stack_);
 	[LinkName("gtk_stack_get_visible_child_name")]
-	public static extern  c_char* stack_get_visible_child_name(GtkStack* stack_);
+	public static extern char8* StackGetVisibleChildName(Stack stack_);
 	[LinkName("gtk_stack_remove")]
-	public static extern void stack_remove(GtkStack* stack_, GtkWidget* child);
+	public static extern void StackRemove(Stack stack_, Widget child);
 	[LinkName("gtk_stack_set_hhomogeneous")]
-	public static extern void stack_set_hhomogeneous(GtkStack* stack_, c_int hhomogeneous);
+	public static extern void StackSetHhomogeneous(Stack stack_, c_int hhomogeneous);
 	[LinkName("gtk_stack_set_interpolate_size")]
-	public static extern void stack_set_interpolate_size(GtkStack* stack_, c_int interpolate_size);
+	public static extern void StackSetInterpolateSize(Stack stack_, c_int interpolate_size);
 	[LinkName("gtk_stack_set_transition_duration")]
-	public static extern void stack_set_transition_duration(GtkStack* stack_, c_uint duration);
+	public static extern void StackSetTransitionDuration(Stack stack_, c_uint duration);
 	[LinkName("gtk_stack_set_transition_type")]
-	public static extern void stack_set_transition_type(GtkStack* stack_, GtkStackTransitionType transition);
+	public static extern void StackSetTransitionType(Stack stack_, StackTransitionType transition);
 	[LinkName("gtk_stack_set_vhomogeneous")]
-	public static extern void stack_set_vhomogeneous(GtkStack* stack_, c_int vhomogeneous);
+	public static extern void StackSetVhomogeneous(Stack stack_, c_int vhomogeneous);
 	[LinkName("gtk_stack_set_visible_child")]
-	public static extern void stack_set_visible_child(GtkStack* stack_, GtkWidget* child);
+	public static extern void StackSetVisibleChild(Stack stack_, Widget child);
 	[LinkName("gtk_stack_set_visible_child_full")]
-	public static extern void stack_set_visible_child_full(GtkStack* stack_,  c_char* name, GtkStackTransitionType transition);
+	public static extern void StackSetVisibleChildFull(Stack stack_, char8* name, StackTransitionType transition);
 	[LinkName("gtk_stack_set_visible_child_name")]
-	public static extern void stack_set_visible_child_name(GtkStack* stack_,  c_char* name);
+	public static extern void StackSetVisibleChildName(Stack stack_, char8* name);
 	[CRepr]
-	public struct GtkStackPage;
+	public struct StackPage;
 	[LinkName("gtk_stack_page_get_child")]
-	public static extern GtkWidget* stack_page_get_child(GtkStackPage* self);
+	public static extern Widget StackPageGetChild(StackPage self);
 	[LinkName("gtk_stack_page_get_icon_name")]
-	public static extern  c_char* stack_page_get_icon_name(GtkStackPage* self);
+	public static extern char8* StackPageGetIconName(StackPage self);
 	[LinkName("gtk_stack_page_get_name")]
-	public static extern  c_char* stack_page_get_name(GtkStackPage* self);
+	public static extern char8* StackPageGetName(StackPage self);
 	[LinkName("gtk_stack_page_get_needs_attention")]
-	public static extern c_int stack_page_get_needs_attention(GtkStackPage* self);
+	public static extern c_int StackPageGetNeedsAttention(StackPage self);
 	[LinkName("gtk_stack_page_get_title")]
-	public static extern  c_char* stack_page_get_title(GtkStackPage* self);
+	public static extern char8* StackPageGetTitle(StackPage self);
 	[LinkName("gtk_stack_page_get_use_underline")]
-	public static extern c_int stack_page_get_use_underline(GtkStackPage* self);
+	public static extern c_int StackPageGetUseUnderline(StackPage self);
 	[LinkName("gtk_stack_page_get_visible")]
-	public static extern c_int stack_page_get_visible(GtkStackPage* self);
+	public static extern c_int StackPageGetVisible(StackPage self);
 	[LinkName("gtk_stack_page_set_icon_name")]
-	public static extern void stack_page_set_icon_name(GtkStackPage* self,  c_char* setting);
+	public static extern void StackPageSetIconName(StackPage self, char8* setting);
 	[LinkName("gtk_stack_page_set_name")]
-	public static extern void stack_page_set_name(GtkStackPage* self,  c_char* setting);
+	public static extern void StackPageSetName(StackPage self, char8* setting);
 	[LinkName("gtk_stack_page_set_needs_attention")]
-	public static extern void stack_page_set_needs_attention(GtkStackPage* self, c_int setting);
+	public static extern void StackPageSetNeedsAttention(StackPage self, c_int setting);
 	[LinkName("gtk_stack_page_set_title")]
-	public static extern void stack_page_set_title(GtkStackPage* self,  c_char* setting);
+	public static extern void StackPageSetTitle(StackPage self, char8* setting);
 	[LinkName("gtk_stack_page_set_use_underline")]
-	public static extern void stack_page_set_use_underline(GtkStackPage* self, c_int setting);
+	public static extern void StackPageSetUseUnderline(StackPage self, c_int setting);
 	[LinkName("gtk_stack_page_set_visible")]
-	public static extern void stack_page_set_visible(GtkStackPage* self, c_int visible);
+	public static extern void StackPageSetVisible(StackPage self, c_int visible);
 	[CRepr]
-	public struct GtkStackSidebar;
+	public struct StackSidebar;
 	[LinkName("gtk_stack_sidebar_new")]
-	public static extern GtkWidget* stack_sidebar_new();
+	public static extern Widget StackSidebarNew();
 	[LinkName("gtk_stack_sidebar_get_stack")]
-	public static extern GtkStack* stack_sidebar_get_stack(GtkStackSidebar* self);
+	public static extern Stack StackSidebarGetStack(StackSidebar self);
 	[LinkName("gtk_stack_sidebar_set_stack")]
-	public static extern void stack_sidebar_set_stack(GtkStackSidebar* self, GtkStack* stack_);
+	public static extern void StackSidebarSetStack(StackSidebar self, Stack stack_);
 	[CRepr]
-	public struct GtkStackSwitcher;
+	public struct StackSwitcher;
 	[LinkName("gtk_stack_switcher_new")]
-	public static extern GtkWidget* stack_switcher_new();
+	public static extern Widget StackSwitcherNew();
 	[LinkName("gtk_stack_switcher_get_stack")]
-	public static extern GtkStack* stack_switcher_get_stack(GtkStackSwitcher* switcher);
+	public static extern Stack StackSwitcherGetStack(StackSwitcher switcher);
 	[LinkName("gtk_stack_switcher_set_stack")]
-	public static extern void stack_switcher_set_stack(GtkStackSwitcher* switcher, GtkStack* stack_);
-	public enum GtkStackTransitionType : c_int
+	public static extern void StackSwitcherSetStack(StackSwitcher switcher, Stack stack_);
+	public enum StackTransitionType : c_int
 	{
 		GTK_STACK_TRANSITION_TYPE_NONE,
 		GTK_STACK_TRANSITION_TYPE_CROSSFADE,
@@ -7206,7 +7206,7 @@ class Gtk
 		GTK_STACK_TRANSITION_TYPE_ROTATE_LEFT_RIGHT
 	}
 	[CRepr]
-	public struct GtkStateFlags
+	public struct StateFlags
 	{
 		public const int GTK_STATE_FLAG_NORMAL = 0;
 		public const int GTK_STATE_FLAG_ACTIVE = 1;
@@ -7226,148 +7226,148 @@ class Gtk
 		public const int GTK_STATE_FLAG_FOCUS_WITHIN = 16384;
 	}
 	[CRepr]
-	public struct GtkStatusbar;
+	public struct Statusbar;
 	[LinkName("gtk_statusbar_new")]
-	public static extern GtkWidget* statusbar_new();
+	public static extern Widget StatusbarNew();
 	[LinkName("gtk_statusbar_get_context_id")]
-	public static extern c_uint statusbar_get_context_id(GtkStatusbar* statusbar,  c_char* context_description);
+	public static extern c_uint StatusbarGetContextId(Statusbar statusbar, char8* context_description);
 	[LinkName("gtk_statusbar_pop")]
-	public static extern void statusbar_pop(GtkStatusbar* statusbar, c_uint context_id);
+	public static extern void StatusbarPop(Statusbar statusbar, c_uint context_id);
 	[LinkName("gtk_statusbar_push")]
-	public static extern c_uint statusbar_push(GtkStatusbar* statusbar, c_uint context_id,  c_char* text);
+	public static extern c_uint StatusbarPush(Statusbar statusbar, c_uint context_id, char8* text);
 	[LinkName("gtk_statusbar_remove")]
-	public static extern void statusbar_remove(GtkStatusbar* statusbar, c_uint context_id, c_uint message_id);
+	public static extern void StatusbarRemove(Statusbar statusbar, c_uint context_id, c_uint message_id);
 	[LinkName("gtk_statusbar_remove_all")]
-	public static extern void statusbar_remove_all(GtkStatusbar* statusbar, c_uint context_id);
+	public static extern void StatusbarRemoveAll(Statusbar statusbar, c_uint context_id);
 	[CRepr]
-	public struct GtkStringFilter;
+	public struct StringFilter;
 	[LinkName("gtk_string_filter_new")]
-	public static extern GtkStringFilter* string_filter_new(GtkExpression* expression);
+	public static extern StringFilter StringFilterNew(Expression expression);
 	[LinkName("gtk_string_filter_get_expression")]
-	public static extern GtkExpression* string_filter_get_expression(GtkStringFilter* self);
+	public static extern Expression StringFilterGetExpression(StringFilter self);
 	[LinkName("gtk_string_filter_get_ignore_case")]
-	public static extern c_int string_filter_get_ignore_case(GtkStringFilter* self);
+	public static extern c_int StringFilterGetIgnoreCase(StringFilter self);
 	[LinkName("gtk_string_filter_get_match_mode")]
-	public static extern GtkStringFilterMatchMode string_filter_get_match_mode(GtkStringFilter* self);
+	public static extern StringFilterMatchMode StringFilterGetMatchMode(StringFilter self);
 	[LinkName("gtk_string_filter_get_search")]
-	public static extern  c_char* string_filter_get_search(GtkStringFilter* self);
+	public static extern char8* StringFilterGetSearch(StringFilter self);
 	[LinkName("gtk_string_filter_set_expression")]
-	public static extern void string_filter_set_expression(GtkStringFilter* self, GtkExpression* expression);
+	public static extern void StringFilterSetExpression(StringFilter self, Expression expression);
 	[LinkName("gtk_string_filter_set_ignore_case")]
-	public static extern void string_filter_set_ignore_case(GtkStringFilter* self, c_int ignore_case);
+	public static extern void StringFilterSetIgnoreCase(StringFilter self, c_int ignore_case);
 	[LinkName("gtk_string_filter_set_match_mode")]
-	public static extern void string_filter_set_match_mode(GtkStringFilter* self, GtkStringFilterMatchMode mode);
+	public static extern void StringFilterSetMatchMode(StringFilter self, StringFilterMatchMode mode);
 	[LinkName("gtk_string_filter_set_search")]
-	public static extern void string_filter_set_search(GtkStringFilter* self,  c_char* search);
+	public static extern void StringFilterSetSearch(StringFilter self, char8* search);
 	[CRepr]
-	public struct GtkStringFilterClass
+	public struct StringFilterClass
 	{
-		GtkFilterClass parent_class;
+		FilterClass parent_class;
 	}
-	public enum GtkStringFilterMatchMode : c_int
+	public enum StringFilterMatchMode : c_int
 	{
 		GTK_STRING_FILTER_MATCH_MODE_EXACT,
 		GTK_STRING_FILTER_MATCH_MODE_SUBSTRING,
 		GTK_STRING_FILTER_MATCH_MODE_PREFIX
 	}
 	[CRepr]
-	public struct GtkStringList;
+	public struct StringList;
 	[LinkName("gtk_string_list_new")]
-	public static extern GtkStringList* string_list_new();
+	public static extern StringList StringListNew();
 	[LinkName("gtk_string_list_append")]
-	public static extern void string_list_append(GtkStringList* self,  c_char* string);
+	public static extern void StringListAppend(StringList self, char8* string);
 	[LinkName("gtk_string_list_get_string")]
-	public static extern  c_char* string_list_get_string(GtkStringList* self, c_uint position);
+	public static extern char8* StringListGetString(StringList self, c_uint position);
 	[LinkName("gtk_string_list_remove")]
-	public static extern void string_list_remove(GtkStringList* self, c_uint position);
+	public static extern void StringListRemove(StringList self, c_uint position);
 	[LinkName("gtk_string_list_splice")]
-	public static extern void string_list_splice(GtkStringList* self, c_uint position, c_uint n_removals);
+	public static extern void StringListSplice(StringList self, c_uint position, c_uint n_removals);
 	[LinkName("gtk_string_list_take")]
-	public static extern void string_list_take(GtkStringList* self, c_char* string);
+	public static extern void StringListTake(StringList self, char8* string);
 	[CRepr]
-	public struct GtkStringListClass
+	public struct StringListClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GtkStringObject;
+	public struct StringObject;
 	[LinkName("gtk_string_object_new")]
-	public static extern GtkStringObject* string_object_new( c_char* string);
+	public static extern StringObject StringObjectNew(char8* string);
 	[LinkName("gtk_string_object_get_string")]
-	public static extern  c_char* string_object_get_string(GtkStringObject* self);
+	public static extern char8* StringObjectGetString(StringObject self);
 	[CRepr]
-	public struct GtkStringObjectClass
+	public struct StringObjectClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GtkStringSorter;
+	public struct StringSorter;
 	[LinkName("gtk_string_sorter_new")]
-	public static extern GtkStringSorter* string_sorter_new(GtkExpression* expression);
+	public static extern StringSorter StringSorterNew(Expression expression);
 	[LinkName("gtk_string_sorter_get_collation")]
-	public static extern GtkCollation string_sorter_get_collation(GtkStringSorter* self);
+	public static extern Collation StringSorterGetCollation(StringSorter self);
 	[LinkName("gtk_string_sorter_get_expression")]
-	public static extern GtkExpression* string_sorter_get_expression(GtkStringSorter* self);
+	public static extern Expression StringSorterGetExpression(StringSorter self);
 	[LinkName("gtk_string_sorter_get_ignore_case")]
-	public static extern c_int string_sorter_get_ignore_case(GtkStringSorter* self);
+	public static extern c_int StringSorterGetIgnoreCase(StringSorter self);
 	[LinkName("gtk_string_sorter_set_collation")]
-	public static extern void string_sorter_set_collation(GtkStringSorter* self, GtkCollation collation);
+	public static extern void StringSorterSetCollation(StringSorter self, Collation collation);
 	[LinkName("gtk_string_sorter_set_expression")]
-	public static extern void string_sorter_set_expression(GtkStringSorter* self, GtkExpression* expression);
+	public static extern void StringSorterSetExpression(StringSorter self, Expression expression);
 	[LinkName("gtk_string_sorter_set_ignore_case")]
-	public static extern void string_sorter_set_ignore_case(GtkStringSorter* self, c_int ignore_case);
+	public static extern void StringSorterSetIgnoreCase(StringSorter self, c_int ignore_case);
 	[CRepr]
-	public struct GtkStringSorterClass
+	public struct StringSorterClass
 	{
-		GtkSorterClass parent_class;
+		SorterClass parent_class;
 	}
 	[CRepr]
-	public struct GtkStyleContext;
+	public struct StyleContext;
 	[LinkName("gtk_style_context_add_class")]
-	public static extern void style_context_add_class(GtkStyleContext* context,  c_char* class_name);
+	public static extern void StyleContextAddClass(StyleContext context, char8* class_name);
 	[LinkName("gtk_style_context_add_provider")]
-	public static extern void style_context_add_provider(GtkStyleContext* context, GtkStyleProvider* provider, c_uint priority);
+	public static extern void StyleContextAddProvider(StyleContext context, StyleProvider provider, c_uint priority);
 	[LinkName("gtk_style_context_get_border")]
-	public static extern void style_context_get_border(GtkStyleContext* context, GtkBorder* border);
+	public static extern void StyleContextGetBorder(StyleContext context, Border border);
 	[LinkName("gtk_style_context_get_color")]
-	public static extern void style_context_get_color(GtkStyleContext* context, GdkRGBA* color);
+	public static extern void StyleContextGetColor(StyleContext context, Gdk.RGBA color);
 	[LinkName("gtk_style_context_get_display")]
-	public static extern GdkDisplay* style_context_get_display(GtkStyleContext* context);
+	public static extern Gdk.Display StyleContextGetDisplay(StyleContext context);
 	[LinkName("gtk_style_context_get_margin")]
-	public static extern void style_context_get_margin(GtkStyleContext* context, GtkBorder* margin);
+	public static extern void StyleContextGetMargin(StyleContext context, Border margin);
 	[LinkName("gtk_style_context_get_padding")]
-	public static extern void style_context_get_padding(GtkStyleContext* context, GtkBorder* padding);
+	public static extern void StyleContextGetPadding(StyleContext context, Border padding);
 	[LinkName("gtk_style_context_get_scale")]
-	public static extern c_int style_context_get_scale(GtkStyleContext* context);
+	public static extern c_int StyleContextGetScale(StyleContext context);
 	[LinkName("gtk_style_context_get_state")]
-	public static extern GtkStateFlags style_context_get_state(GtkStyleContext* context);
+	public static extern StateFlags StyleContextGetState(StyleContext context);
 	[LinkName("gtk_style_context_has_class")]
-	public static extern c_int style_context_has_class(GtkStyleContext* context,  c_char* class_name);
+	public static extern c_int StyleContextHasClass(StyleContext context, char8* class_name);
 	[LinkName("gtk_style_context_lookup_color")]
-	public static extern c_int style_context_lookup_color(GtkStyleContext* context,  c_char* color_name, GdkRGBA* color);
+	public static extern c_int StyleContextLookupColor(StyleContext context, char8* color_name, Gdk.RGBA color);
 	[LinkName("gtk_style_context_remove_class")]
-	public static extern void style_context_remove_class(GtkStyleContext* context,  c_char* class_name);
+	public static extern void StyleContextRemoveClass(StyleContext context, char8* class_name);
 	[LinkName("gtk_style_context_remove_provider")]
-	public static extern void style_context_remove_provider(GtkStyleContext* context, GtkStyleProvider* provider);
+	public static extern void StyleContextRemoveProvider(StyleContext context, StyleProvider provider);
 	[LinkName("gtk_style_context_restore")]
-	public static extern void style_context_restore(GtkStyleContext* context);
+	public static extern void StyleContextRestore(StyleContext context);
 	[LinkName("gtk_style_context_save")]
-	public static extern void style_context_save(GtkStyleContext* context);
+	public static extern void StyleContextSave(StyleContext context);
 	[LinkName("gtk_style_context_set_display")]
-	public static extern void style_context_set_display(GtkStyleContext* context, GdkDisplay* display);
+	public static extern void StyleContextSetDisplay(StyleContext context, Gdk.Display display);
 	[LinkName("gtk_style_context_set_scale")]
-	public static extern void style_context_set_scale(GtkStyleContext* context, c_int scale);
+	public static extern void StyleContextSetScale(StyleContext context, c_int scale);
 	[LinkName("gtk_style_context_set_state")]
-	public static extern void style_context_set_state(GtkStyleContext* context, GtkStateFlags flags);
+	public static extern void StyleContextSetState(StyleContext context, StateFlags flags);
 	[LinkName("gtk_style_context_to_string")]
-	public static extern c_char* style_context_to_string(GtkStyleContext* context, GtkStyleContextPrintFlags flags);
+	public static extern char8* StyleContextToString(StyleContext context, StyleContextPrintFlags flags);
 	[CRepr]
-	public struct GtkStyleContextClass
+	public struct StyleContextClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GtkStyleContextPrintFlags
+	public struct StyleContextPrintFlags
 	{
 		public const int GTK_STYLE_CONTEXT_PRINT_NONE = 0;
 		public const int GTK_STYLE_CONTEXT_PRINT_RECURSE = 1;
@@ -7375,21 +7375,21 @@ class Gtk
 		public const int GTK_STYLE_CONTEXT_PRINT_SHOW_CHANGE = 4;
 	}
 	[CRepr]
-	public struct GtkStyleProvider
+	public struct StyleProvider
 	{	}
 	[CRepr]
-	public struct GtkSwitch;
+	public struct Switch;
 	[LinkName("gtk_switch_new")]
-	public static extern GtkWidget* switch_new();
+	public static extern Widget SwitchNew();
 	[LinkName("gtk_switch_get_active")]
-	public static extern c_int switch_get_active(GtkSwitch* self);
+	public static extern c_int SwitchGetActive(Switch self);
 	[LinkName("gtk_switch_get_state")]
-	public static extern c_int switch_get_state(GtkSwitch* self);
+	public static extern c_int SwitchGetState(Switch self);
 	[LinkName("gtk_switch_set_active")]
-	public static extern void switch_set_active(GtkSwitch* self, c_int is_active);
+	public static extern void SwitchSetActive(Switch self, c_int is_active);
 	[LinkName("gtk_switch_set_state")]
-	public static extern void switch_set_state(GtkSwitch* self, c_int state);
-	public enum GtkSymbolicColor : c_int
+	public static extern void SwitchSetState(Switch self, c_int state);
+	public enum SymbolicColor : c_int
 	{
 		GTK_SYMBOLIC_COLOR_FOREGROUND,
 		GTK_SYMBOLIC_COLOR_ERROR,
@@ -7397,16 +7397,16 @@ class Gtk
 		GTK_SYMBOLIC_COLOR_SUCCESS
 	}
 	[CRepr]
-	public struct GtkSymbolicPaintable
+	public struct SymbolicPaintable
 	{
-		public function void(GtkSymbolicPaintable* paintable, GdkSnapshot* snapshot, double width, double height, c_ulong n_colors) snapshot_symbolic;
+		public function void(SymbolicPaintable paintable, Gdk.Snapshot snapshot, double width, double height, c_ulong n_colors) snapshot_symbolic;
 	}
 	[CRepr]
-	public struct GtkSymbolicPaintableInterface
+	public struct SymbolicPaintableInterface
 	{
-		GTypeInterface g_iface;
+		GObject.TypeInterface g_iface;
 	}
-	public enum GtkSystemSetting : c_int
+	public enum SystemSetting : c_int
 	{
 		GTK_SYSTEM_SETTING_DPI,
 		GTK_SYSTEM_SETTING_FONT_NAME,
@@ -7415,261 +7415,261 @@ class Gtk
 		GTK_SYSTEM_SETTING_ICON_THEME
 	}
 	[CRepr]
-	public struct GtkText;
+	public struct Text;
 	[LinkName("gtk_text_new")]
-	public static extern GtkWidget* text_new();
+	public static extern Widget TextNew();
 	[LinkName("gtk_text_new_with_buffer")]
-	public static extern GtkWidget* text_new_with_buffer(GtkEntryBuffer* buffer);
+	public static extern Widget TextNewWithBuffer(EntryBuffer buffer);
 	[LinkName("gtk_text_compute_cursor_extents")]
-	public static extern void text_compute_cursor_extents(GtkText* self, c_ulong position, graphene_rect_t* strong, graphene_rect_t* weak);
+	public static extern void TextComputeCursorExtents(Text self, c_ulong position, Graphene.Rect strong, Graphene.Rect weak);
 	[LinkName("gtk_text_get_activates_default")]
-	public static extern c_int text_get_activates_default(GtkText* self);
+	public static extern c_int TextGetActivatesDefault(Text self);
 	[LinkName("gtk_text_get_attributes")]
-	public static extern PangoAttrList* text_get_attributes(GtkText* self);
+	public static extern Pango.AttrList TextGetAttributes(Text self);
 	[LinkName("gtk_text_get_buffer")]
-	public static extern GtkEntryBuffer* text_get_buffer(GtkText* self);
+	public static extern EntryBuffer TextGetBuffer(Text self);
 	[LinkName("gtk_text_get_enable_emoji_completion")]
-	public static extern c_int text_get_enable_emoji_completion(GtkText* self);
+	public static extern c_int TextGetEnableEmojiCompletion(Text self);
 	[LinkName("gtk_text_get_extra_menu")]
-	public static extern GMenuModel* text_get_extra_menu(GtkText* self);
+	public static extern Gio.MenuModel TextGetExtraMenu(Text self);
 	[LinkName("gtk_text_get_input_hints")]
-	public static extern GtkInputHints text_get_input_hints(GtkText* self);
+	public static extern InputHints TextGetInputHints(Text self);
 	[LinkName("gtk_text_get_input_purpose")]
-	public static extern GtkInputPurpose text_get_input_purpose(GtkText* self);
+	public static extern InputPurpose TextGetInputPurpose(Text self);
 	[LinkName("gtk_text_get_invisible_char")]
-	public static extern c_uint text_get_invisible_char(GtkText* self);
+	public static extern c_uint TextGetInvisibleChar(Text self);
 	[LinkName("gtk_text_get_max_length")]
-	public static extern c_int text_get_max_length(GtkText* self);
+	public static extern c_int TextGetMaxLength(Text self);
 	[LinkName("gtk_text_get_overwrite_mode")]
-	public static extern c_int text_get_overwrite_mode(GtkText* self);
+	public static extern c_int TextGetOverwriteMode(Text self);
 	[LinkName("gtk_text_get_placeholder_text")]
-	public static extern  c_char* text_get_placeholder_text(GtkText* self);
+	public static extern char8* TextGetPlaceholderText(Text self);
 	[LinkName("gtk_text_get_propagate_text_width")]
-	public static extern c_int text_get_propagate_text_width(GtkText* self);
+	public static extern c_int TextGetPropagateTextWidth(Text self);
 	[LinkName("gtk_text_get_tabs")]
-	public static extern PangoTabArray* text_get_tabs(GtkText* self);
+	public static extern Pango.TabArray TextGetTabs(Text self);
 	[LinkName("gtk_text_get_text_length")]
-	public static extern c_ushort text_get_text_length(GtkText* self);
+	public static extern c_ushort TextGetTextLength(Text self);
 	[LinkName("gtk_text_get_truncate_multiline")]
-	public static extern c_int text_get_truncate_multiline(GtkText* self);
+	public static extern c_int TextGetTruncateMultiline(Text self);
 	[LinkName("gtk_text_get_visibility")]
-	public static extern c_int text_get_visibility(GtkText* self);
+	public static extern c_int TextGetVisibility(Text self);
 	[LinkName("gtk_text_grab_focus_without_selecting")]
-	public static extern c_int text_grab_focus_without_selecting(GtkText* self);
+	public static extern c_int TextGrabFocusWithoutSelecting(Text self);
 	[LinkName("gtk_text_set_activates_default")]
-	public static extern void text_set_activates_default(GtkText* self, c_int activates);
+	public static extern void TextSetActivatesDefault(Text self, c_int activates);
 	[LinkName("gtk_text_set_attributes")]
-	public static extern void text_set_attributes(GtkText* self, PangoAttrList* attrs);
+	public static extern void TextSetAttributes(Text self, Pango.AttrList attrs);
 	[LinkName("gtk_text_set_buffer")]
-	public static extern void text_set_buffer(GtkText* self, GtkEntryBuffer* buffer);
+	public static extern void TextSetBuffer(Text self, EntryBuffer buffer);
 	[LinkName("gtk_text_set_enable_emoji_completion")]
-	public static extern void text_set_enable_emoji_completion(GtkText* self, c_int enable_emoji_completion);
+	public static extern void TextSetEnableEmojiCompletion(Text self, c_int enable_emoji_completion);
 	[LinkName("gtk_text_set_extra_menu")]
-	public static extern void text_set_extra_menu(GtkText* self, GMenuModel* model);
+	public static extern void TextSetExtraMenu(Text self, Gio.MenuModel model);
 	[LinkName("gtk_text_set_input_hints")]
-	public static extern void text_set_input_hints(GtkText* self, GtkInputHints hints);
+	public static extern void TextSetInputHints(Text self, InputHints hints);
 	[LinkName("gtk_text_set_input_purpose")]
-	public static extern void text_set_input_purpose(GtkText* self, GtkInputPurpose purpose);
+	public static extern void TextSetInputPurpose(Text self, InputPurpose purpose);
 	[LinkName("gtk_text_set_invisible_char")]
-	public static extern void text_set_invisible_char(GtkText* self, c_uint ch);
+	public static extern void TextSetInvisibleChar(Text self, c_uint ch);
 	[LinkName("gtk_text_set_max_length")]
-	public static extern void text_set_max_length(GtkText* self, c_int length);
+	public static extern void TextSetMaxLength(Text self, c_int length);
 	[LinkName("gtk_text_set_overwrite_mode")]
-	public static extern void text_set_overwrite_mode(GtkText* self, c_int overwrite);
+	public static extern void TextSetOverwriteMode(Text self, c_int overwrite);
 	[LinkName("gtk_text_set_placeholder_text")]
-	public static extern void text_set_placeholder_text(GtkText* self,  c_char* text);
+	public static extern void TextSetPlaceholderText(Text self, char8* text);
 	[LinkName("gtk_text_set_propagate_text_width")]
-	public static extern void text_set_propagate_text_width(GtkText* self, c_int propagate_text_width);
+	public static extern void TextSetPropagateTextWidth(Text self, c_int propagate_text_width);
 	[LinkName("gtk_text_set_tabs")]
-	public static extern void text_set_tabs(GtkText* self, PangoTabArray* tabs);
+	public static extern void TextSetTabs(Text self, Pango.TabArray tabs);
 	[LinkName("gtk_text_set_truncate_multiline")]
-	public static extern void text_set_truncate_multiline(GtkText* self, c_int truncate_multiline);
+	public static extern void TextSetTruncateMultiline(Text self, c_int truncate_multiline);
 	[LinkName("gtk_text_set_visibility")]
-	public static extern void text_set_visibility(GtkText* self, c_int visible);
+	public static extern void TextSetVisibility(Text self, c_int visible);
 	[LinkName("gtk_text_unset_invisible_char")]
-	public static extern void text_unset_invisible_char(GtkText* self);
+	public static extern void TextUnsetInvisibleChar(Text self);
 	[CRepr]
-	public struct GtkTextBuffer;
+	public struct TextBuffer;
 	[LinkName("gtk_text_buffer_new")]
-	public static extern GtkTextBuffer* text_buffer_new(GtkTextTagTable* table);
+	public static extern TextBuffer TextBufferNew(TextTagTable table);
 	[LinkName("gtk_text_buffer_add_mark")]
-	public static extern void text_buffer_add_mark(GtkTextBuffer* buffer, GtkTextMark* mark,  GtkTextIter* where_);
+	public static extern void TextBufferAddMark(TextBuffer buffer, TextMark mark, TextIter where_);
 	[LinkName("gtk_text_buffer_add_selection_clipboard")]
-	public static extern void text_buffer_add_selection_clipboard(GtkTextBuffer* buffer, GdkClipboard* clipboard);
+	public static extern void TextBufferAddSelectionClipboard(TextBuffer buffer, Gdk.Clipboard clipboard);
 	[LinkName("gtk_text_buffer_apply_tag")]
-	public static extern void text_buffer_apply_tag(GtkTextBuffer* buffer, GtkTextTag* tag,  GtkTextIter* start,  GtkTextIter* end);
+	public static extern void TextBufferApplyTag(TextBuffer buffer, TextTag tag, TextIter start, TextIter end);
 	[LinkName("gtk_text_buffer_apply_tag_by_name")]
-	public static extern void text_buffer_apply_tag_by_name(GtkTextBuffer* buffer,  c_char* name,  GtkTextIter* start,  GtkTextIter* end);
+	public static extern void TextBufferApplyTagByName(TextBuffer buffer, char8* name, TextIter start, TextIter end);
 	[LinkName("gtk_text_buffer_backspace")]
-	public static extern c_int text_buffer_backspace(GtkTextBuffer* buffer, GtkTextIter* iter, c_int interactive, c_int default_editable);
+	public static extern c_int TextBufferBackspace(TextBuffer buffer, TextIter iter, c_int interactive, c_int default_editable);
 	[LinkName("gtk_text_buffer_begin_irreversible_action")]
-	public static extern void text_buffer_begin_irreversible_action(GtkTextBuffer* buffer);
+	public static extern void TextBufferBeginIrreversibleAction(TextBuffer buffer);
 	[LinkName("gtk_text_buffer_begin_user_action")]
-	public static extern void text_buffer_begin_user_action(GtkTextBuffer* buffer);
+	public static extern void TextBufferBeginUserAction(TextBuffer buffer);
 	[LinkName("gtk_text_buffer_copy_clipboard")]
-	public static extern void text_buffer_copy_clipboard(GtkTextBuffer* buffer, GdkClipboard* clipboard);
+	public static extern void TextBufferCopyClipboard(TextBuffer buffer, Gdk.Clipboard clipboard);
 	[LinkName("gtk_text_buffer_create_child_anchor")]
-	public static extern GtkTextChildAnchor* text_buffer_create_child_anchor(GtkTextBuffer* buffer, GtkTextIter* iter);
+	public static extern TextChildAnchor TextBufferCreateChildAnchor(TextBuffer buffer, TextIter iter);
 	[LinkName("gtk_text_buffer_create_mark")]
-	public static extern GtkTextMark* text_buffer_create_mark(GtkTextBuffer* buffer,  c_char* mark_name,  GtkTextIter* where_, c_int left_gravity);
+	public static extern TextMark TextBufferCreateMark(TextBuffer buffer, char8* mark_name, TextIter where_, c_int left_gravity);
 	[LinkName("gtk_text_buffer_create_tag")]
-	public static extern GtkTextTag* text_buffer_create_tag(GtkTextBuffer* buffer,  c_char* tag_name,  c_char* first_property_name);
+	public static extern TextTag TextBufferCreateTag(TextBuffer buffer, char8* tag_name, char8* first_property_name);
 	[LinkName("gtk_text_buffer_cut_clipboard")]
-	public static extern void text_buffer_cut_clipboard(GtkTextBuffer* buffer, GdkClipboard* clipboard, c_int default_editable);
+	public static extern void TextBufferCutClipboard(TextBuffer buffer, Gdk.Clipboard clipboard, c_int default_editable);
 	[LinkName("gtk_text_buffer_delete")]
-	public static extern void text_buffer_delete(GtkTextBuffer* buffer, GtkTextIter* start, GtkTextIter* end);
+	public static extern void TextBufferDelete(TextBuffer buffer, TextIter start, TextIter end);
 	[LinkName("gtk_text_buffer_delete_interactive")]
-	public static extern c_int text_buffer_delete_interactive(GtkTextBuffer* buffer, GtkTextIter* start_iter, GtkTextIter* end_iter, c_int default_editable);
+	public static extern c_int TextBufferDeleteInteractive(TextBuffer buffer, TextIter start_iter, TextIter end_iter, c_int default_editable);
 	[LinkName("gtk_text_buffer_delete_mark")]
-	public static extern void text_buffer_delete_mark(GtkTextBuffer* buffer, GtkTextMark* mark);
+	public static extern void TextBufferDeleteMark(TextBuffer buffer, TextMark mark);
 	[LinkName("gtk_text_buffer_delete_mark_by_name")]
-	public static extern void text_buffer_delete_mark_by_name(GtkTextBuffer* buffer,  c_char* name);
+	public static extern void TextBufferDeleteMarkByName(TextBuffer buffer, char8* name);
 	[LinkName("gtk_text_buffer_delete_selection")]
-	public static extern c_int text_buffer_delete_selection(GtkTextBuffer* buffer, c_int interactive, c_int default_editable);
+	public static extern c_int TextBufferDeleteSelection(TextBuffer buffer, c_int interactive, c_int default_editable);
 	[LinkName("gtk_text_buffer_end_irreversible_action")]
-	public static extern void text_buffer_end_irreversible_action(GtkTextBuffer* buffer);
+	public static extern void TextBufferEndIrreversibleAction(TextBuffer buffer);
 	[LinkName("gtk_text_buffer_end_user_action")]
-	public static extern void text_buffer_end_user_action(GtkTextBuffer* buffer);
+	public static extern void TextBufferEndUserAction(TextBuffer buffer);
 	[LinkName("gtk_text_buffer_get_bounds")]
-	public static extern void text_buffer_get_bounds(GtkTextBuffer* buffer, GtkTextIter* start, GtkTextIter* end);
+	public static extern void TextBufferGetBounds(TextBuffer buffer, TextIter start, TextIter end);
 	[LinkName("gtk_text_buffer_get_can_redo")]
-	public static extern c_int text_buffer_get_can_redo(GtkTextBuffer* buffer);
+	public static extern c_int TextBufferGetCanRedo(TextBuffer buffer);
 	[LinkName("gtk_text_buffer_get_can_undo")]
-	public static extern c_int text_buffer_get_can_undo(GtkTextBuffer* buffer);
+	public static extern c_int TextBufferGetCanUndo(TextBuffer buffer);
 	[LinkName("gtk_text_buffer_get_char_count")]
-	public static extern c_int text_buffer_get_char_count(GtkTextBuffer* buffer);
+	public static extern c_int TextBufferGetCharCount(TextBuffer buffer);
 	[LinkName("gtk_text_buffer_get_enable_undo")]
-	public static extern c_int text_buffer_get_enable_undo(GtkTextBuffer* buffer);
+	public static extern c_int TextBufferGetEnableUndo(TextBuffer buffer);
 	[LinkName("gtk_text_buffer_get_end_iter")]
-	public static extern void text_buffer_get_end_iter(GtkTextBuffer* buffer, GtkTextIter* iter);
+	public static extern void TextBufferGetEndIter(TextBuffer buffer, TextIter iter);
 	[LinkName("gtk_text_buffer_get_has_selection")]
-	public static extern c_int text_buffer_get_has_selection(GtkTextBuffer* buffer);
+	public static extern c_int TextBufferGetHasSelection(TextBuffer buffer);
 	[LinkName("gtk_text_buffer_get_insert")]
-	public static extern GtkTextMark* text_buffer_get_insert(GtkTextBuffer* buffer);
+	public static extern TextMark TextBufferGetInsert(TextBuffer buffer);
 	[LinkName("gtk_text_buffer_get_iter_at_child_anchor")]
-	public static extern void text_buffer_get_iter_at_child_anchor(GtkTextBuffer* buffer, GtkTextIter* iter, GtkTextChildAnchor* anchor);
+	public static extern void TextBufferGetIterAtChildAnchor(TextBuffer buffer, TextIter iter, TextChildAnchor anchor);
 	[LinkName("gtk_text_buffer_get_iter_at_line")]
-	public static extern c_int text_buffer_get_iter_at_line(GtkTextBuffer* buffer, GtkTextIter* iter, c_int line_number);
+	public static extern c_int TextBufferGetIterAtLine(TextBuffer buffer, TextIter iter, c_int line_number);
 	[LinkName("gtk_text_buffer_get_iter_at_line_index")]
-	public static extern c_int text_buffer_get_iter_at_line_index(GtkTextBuffer* buffer, GtkTextIter* iter, c_int line_number, c_int byte_index);
+	public static extern c_int TextBufferGetIterAtLineIndex(TextBuffer buffer, TextIter iter, c_int line_number, c_int byte_index);
 	[LinkName("gtk_text_buffer_get_iter_at_line_offset")]
-	public static extern c_int text_buffer_get_iter_at_line_offset(GtkTextBuffer* buffer, GtkTextIter* iter, c_int line_number, c_int char_offset);
+	public static extern c_int TextBufferGetIterAtLineOffset(TextBuffer buffer, TextIter iter, c_int line_number, c_int char_offset);
 	[LinkName("gtk_text_buffer_get_iter_at_mark")]
-	public static extern void text_buffer_get_iter_at_mark(GtkTextBuffer* buffer, GtkTextIter* iter, GtkTextMark* mark);
+	public static extern void TextBufferGetIterAtMark(TextBuffer buffer, TextIter iter, TextMark mark);
 	[LinkName("gtk_text_buffer_get_iter_at_offset")]
-	public static extern void text_buffer_get_iter_at_offset(GtkTextBuffer* buffer, GtkTextIter* iter, c_int char_offset);
+	public static extern void TextBufferGetIterAtOffset(TextBuffer buffer, TextIter iter, c_int char_offset);
 	[LinkName("gtk_text_buffer_get_line_count")]
-	public static extern c_int text_buffer_get_line_count(GtkTextBuffer* buffer);
+	public static extern c_int TextBufferGetLineCount(TextBuffer buffer);
 	[LinkName("gtk_text_buffer_get_mark")]
-	public static extern GtkTextMark* text_buffer_get_mark(GtkTextBuffer* buffer,  c_char* name);
+	public static extern TextMark TextBufferGetMark(TextBuffer buffer, char8* name);
 	[LinkName("gtk_text_buffer_get_max_undo_levels")]
-	public static extern c_uint text_buffer_get_max_undo_levels(GtkTextBuffer* buffer);
+	public static extern c_uint TextBufferGetMaxUndoLevels(TextBuffer buffer);
 	[LinkName("gtk_text_buffer_get_modified")]
-	public static extern c_int text_buffer_get_modified(GtkTextBuffer* buffer);
+	public static extern c_int TextBufferGetModified(TextBuffer buffer);
 	[LinkName("gtk_text_buffer_get_selection_bound")]
-	public static extern GtkTextMark* text_buffer_get_selection_bound(GtkTextBuffer* buffer);
+	public static extern TextMark TextBufferGetSelectionBound(TextBuffer buffer);
 	[LinkName("gtk_text_buffer_get_selection_bounds")]
-	public static extern c_int text_buffer_get_selection_bounds(GtkTextBuffer* buffer, GtkTextIter* start, GtkTextIter* end);
+	public static extern c_int TextBufferGetSelectionBounds(TextBuffer buffer, TextIter start, TextIter end);
 	[LinkName("gtk_text_buffer_get_selection_content")]
-	public static extern GdkContentProvider* text_buffer_get_selection_content(GtkTextBuffer* buffer);
+	public static extern Gdk.ContentProvider TextBufferGetSelectionContent(TextBuffer buffer);
 	[LinkName("gtk_text_buffer_get_slice")]
-	public static extern c_char* text_buffer_get_slice(GtkTextBuffer* buffer,  GtkTextIter* start,  GtkTextIter* end, c_int include_hidden_chars);
+	public static extern char8* TextBufferGetSlice(TextBuffer buffer, TextIter start, TextIter end, c_int include_hidden_chars);
 	[LinkName("gtk_text_buffer_get_start_iter")]
-	public static extern void text_buffer_get_start_iter(GtkTextBuffer* buffer, GtkTextIter* iter);
+	public static extern void TextBufferGetStartIter(TextBuffer buffer, TextIter iter);
 	[LinkName("gtk_text_buffer_get_tag_table")]
-	public static extern GtkTextTagTable* text_buffer_get_tag_table(GtkTextBuffer* buffer);
+	public static extern TextTagTable TextBufferGetTagTable(TextBuffer buffer);
 	[LinkName("gtk_text_buffer_get_text")]
-	public static extern c_char* text_buffer_get_text(GtkTextBuffer* buffer,  GtkTextIter* start,  GtkTextIter* end, c_int include_hidden_chars);
+	public static extern char8* TextBufferGetText(TextBuffer buffer, TextIter start, TextIter end, c_int include_hidden_chars);
 	[LinkName("gtk_text_buffer_insert")]
-	public static extern void text_buffer_insert(GtkTextBuffer* buffer, GtkTextIter* iter,  c_char* text, c_int len);
+	public static extern void TextBufferInsert(TextBuffer buffer, TextIter iter, char8* text, c_int len);
 	[LinkName("gtk_text_buffer_insert_at_cursor")]
-	public static extern void text_buffer_insert_at_cursor(GtkTextBuffer* buffer,  c_char* text, c_int len);
+	public static extern void TextBufferInsertAtCursor(TextBuffer buffer, char8* text, c_int len);
 	[LinkName("gtk_text_buffer_insert_child_anchor")]
-	public static extern void text_buffer_insert_child_anchor(GtkTextBuffer* buffer, GtkTextIter* iter, GtkTextChildAnchor* anchor);
+	public static extern void TextBufferInsertChildAnchor(TextBuffer buffer, TextIter iter, TextChildAnchor anchor);
 	[LinkName("gtk_text_buffer_insert_interactive")]
-	public static extern c_int text_buffer_insert_interactive(GtkTextBuffer* buffer, GtkTextIter* iter,  c_char* text, c_int len, c_int default_editable);
+	public static extern c_int TextBufferInsertInteractive(TextBuffer buffer, TextIter iter, char8* text, c_int len, c_int default_editable);
 	[LinkName("gtk_text_buffer_insert_interactive_at_cursor")]
-	public static extern c_int text_buffer_insert_interactive_at_cursor(GtkTextBuffer* buffer,  c_char* text, c_int len, c_int default_editable);
+	public static extern c_int TextBufferInsertInteractiveAtCursor(TextBuffer buffer, char8* text, c_int len, c_int default_editable);
 	[LinkName("gtk_text_buffer_insert_markup")]
-	public static extern void text_buffer_insert_markup(GtkTextBuffer* buffer, GtkTextIter* iter,  c_char* markup, c_int len);
+	public static extern void TextBufferInsertMarkup(TextBuffer buffer, TextIter iter, char8* markup, c_int len);
 	[LinkName("gtk_text_buffer_insert_paintable")]
-	public static extern void text_buffer_insert_paintable(GtkTextBuffer* buffer, GtkTextIter* iter, GdkPaintable* paintable);
+	public static extern void TextBufferInsertPaintable(TextBuffer buffer, TextIter iter, Gdk.Paintable paintable);
 	[LinkName("gtk_text_buffer_insert_range")]
-	public static extern void text_buffer_insert_range(GtkTextBuffer* buffer, GtkTextIter* iter,  GtkTextIter* start,  GtkTextIter* end);
+	public static extern void TextBufferInsertRange(TextBuffer buffer, TextIter iter, TextIter start, TextIter end);
 	[LinkName("gtk_text_buffer_insert_range_interactive")]
-	public static extern c_int text_buffer_insert_range_interactive(GtkTextBuffer* buffer, GtkTextIter* iter,  GtkTextIter* start,  GtkTextIter* end, c_int default_editable);
+	public static extern c_int TextBufferInsertRangeInteractive(TextBuffer buffer, TextIter iter, TextIter start, TextIter end, c_int default_editable);
 	[LinkName("gtk_text_buffer_insert_with_tags")]
-	public static extern void text_buffer_insert_with_tags(GtkTextBuffer* buffer, GtkTextIter* iter,  c_char* text, c_int len, GtkTextTag* first_tag);
+	public static extern void TextBufferInsertWithTags(TextBuffer buffer, TextIter iter, char8* text, c_int len, TextTag first_tag);
 	[LinkName("gtk_text_buffer_insert_with_tags_by_name")]
-	public static extern void text_buffer_insert_with_tags_by_name(GtkTextBuffer* buffer, GtkTextIter* iter,  c_char* text, c_int len,  c_char* first_tag_name);
+	public static extern void TextBufferInsertWithTagsByName(TextBuffer buffer, TextIter iter, char8* text, c_int len, char8* first_tag_name);
 	[LinkName("gtk_text_buffer_move_mark")]
-	public static extern void text_buffer_move_mark(GtkTextBuffer* buffer, GtkTextMark* mark,  GtkTextIter* where_);
+	public static extern void TextBufferMoveMark(TextBuffer buffer, TextMark mark, TextIter where_);
 	[LinkName("gtk_text_buffer_move_mark_by_name")]
-	public static extern void text_buffer_move_mark_by_name(GtkTextBuffer* buffer,  c_char* name,  GtkTextIter* where_);
+	public static extern void TextBufferMoveMarkByName(TextBuffer buffer, char8* name, TextIter where_);
 	[LinkName("gtk_text_buffer_paste_clipboard")]
-	public static extern void text_buffer_paste_clipboard(GtkTextBuffer* buffer, GdkClipboard* clipboard, GtkTextIter* override_location, c_int default_editable);
+	public static extern void TextBufferPasteClipboard(TextBuffer buffer, Gdk.Clipboard clipboard, TextIter override_location, c_int default_editable);
 	[LinkName("gtk_text_buffer_place_cursor")]
-	public static extern void text_buffer_place_cursor(GtkTextBuffer* buffer,  GtkTextIter* where_);
+	public static extern void TextBufferPlaceCursor(TextBuffer buffer, TextIter where_);
 	[LinkName("gtk_text_buffer_redo")]
-	public static extern void text_buffer_redo(GtkTextBuffer* buffer);
+	public static extern void TextBufferRedo(TextBuffer buffer);
 	[LinkName("gtk_text_buffer_remove_all_tags")]
-	public static extern void text_buffer_remove_all_tags(GtkTextBuffer* buffer,  GtkTextIter* start,  GtkTextIter* end);
+	public static extern void TextBufferRemoveAllTags(TextBuffer buffer, TextIter start, TextIter end);
 	[LinkName("gtk_text_buffer_remove_selection_clipboard")]
-	public static extern void text_buffer_remove_selection_clipboard(GtkTextBuffer* buffer, GdkClipboard* clipboard);
+	public static extern void TextBufferRemoveSelectionClipboard(TextBuffer buffer, Gdk.Clipboard clipboard);
 	[LinkName("gtk_text_buffer_remove_tag")]
-	public static extern void text_buffer_remove_tag(GtkTextBuffer* buffer, GtkTextTag* tag,  GtkTextIter* start,  GtkTextIter* end);
+	public static extern void TextBufferRemoveTag(TextBuffer buffer, TextTag tag, TextIter start, TextIter end);
 	[LinkName("gtk_text_buffer_remove_tag_by_name")]
-	public static extern void text_buffer_remove_tag_by_name(GtkTextBuffer* buffer,  c_char* name,  GtkTextIter* start,  GtkTextIter* end);
+	public static extern void TextBufferRemoveTagByName(TextBuffer buffer, char8* name, TextIter start, TextIter end);
 	[LinkName("gtk_text_buffer_select_range")]
-	public static extern void text_buffer_select_range(GtkTextBuffer* buffer,  GtkTextIter* ins,  GtkTextIter* bound);
+	public static extern void TextBufferSelectRange(TextBuffer buffer, TextIter ins, TextIter bound);
 	[LinkName("gtk_text_buffer_set_enable_undo")]
-	public static extern void text_buffer_set_enable_undo(GtkTextBuffer* buffer, c_int enable_undo);
+	public static extern void TextBufferSetEnableUndo(TextBuffer buffer, c_int enable_undo);
 	[LinkName("gtk_text_buffer_set_max_undo_levels")]
-	public static extern void text_buffer_set_max_undo_levels(GtkTextBuffer* buffer, c_uint max_undo_levels);
+	public static extern void TextBufferSetMaxUndoLevels(TextBuffer buffer, c_uint max_undo_levels);
 	[LinkName("gtk_text_buffer_set_modified")]
-	public static extern void text_buffer_set_modified(GtkTextBuffer* buffer, c_int setting);
+	public static extern void TextBufferSetModified(TextBuffer buffer, c_int setting);
 	[LinkName("gtk_text_buffer_set_text")]
-	public static extern void text_buffer_set_text(GtkTextBuffer* buffer,  c_char* text, c_int len);
+	public static extern void TextBufferSetText(TextBuffer buffer, char8* text, c_int len);
 	[LinkName("gtk_text_buffer_undo")]
-	public static extern void text_buffer_undo(GtkTextBuffer* buffer);
+	public static extern void TextBufferUndo(TextBuffer buffer);
 	[CRepr]
-	public struct GtkTextBufferClass
+	public struct TextBufferClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GtkTextBufferPrivate
+	public struct TextBufferPrivate
 	{
 	}
-	public function c_int GtkTextCharPredicate(c_uint ch, void* user_data);
+	public function c_int TextCharPredicate(c_uint ch, void* user_data);
 	[CRepr]
-	public struct GtkTextChildAnchor;
+	public struct TextChildAnchor;
 	[LinkName("gtk_text_child_anchor_new")]
-	public static extern GtkTextChildAnchor* text_child_anchor_new();
+	public static extern TextChildAnchor TextChildAnchorNew();
 	[LinkName("gtk_text_child_anchor_new_with_replacement")]
-	public static extern GtkTextChildAnchor* text_child_anchor_new_with_replacement( c_char* character);
+	public static extern TextChildAnchor TextChildAnchorNewWithReplacement(char8* character);
 	[LinkName("gtk_text_child_anchor_get_deleted")]
-	public static extern c_int text_child_anchor_get_deleted(GtkTextChildAnchor* anchor);
+	public static extern c_int TextChildAnchorGetDeleted(TextChildAnchor anchor);
 	[LinkName("gtk_text_child_anchor_get_widgets")]
-	public static extern GtkWidget** text_child_anchor_get_widgets(GtkTextChildAnchor* anchor, c_uint* out_len);
+	public static extern Widget TextChildAnchorGetWidgets(TextChildAnchor anchor, c_uint out_len);
 	[CRepr]
-	public struct GtkTextChildAnchorClass
+	public struct TextChildAnchorClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
-	public enum GtkTextDirection : c_int
+	public enum TextDirection : c_int
 	{
 		GTK_TEXT_DIR_NONE,
 		GTK_TEXT_DIR_LTR,
 		GTK_TEXT_DIR_RTL
 	}
-	public enum GtkTextExtendSelection : c_int
+	public enum TextExtendSelection : c_int
 	{
 		GTK_TEXT_EXTEND_SELECTION_WORD,
 		GTK_TEXT_EXTEND_SELECTION_LINE
 	}
 	[CRepr]
-	public struct GtkTextIter
+	public struct TextIter
 	{
 		void* dummy1;
 		void* dummy2;
@@ -7687,230 +7687,230 @@ class Gtk
 		void* dummy14;
 	}
 	[CRepr]
-	public struct GtkTextMark;
+	public struct TextMark;
 	[LinkName("gtk_text_mark_new")]
-	public static extern GtkTextMark* text_mark_new( c_char* name, c_int left_gravity);
+	public static extern TextMark TextMarkNew(char8* name, c_int left_gravity);
 	[LinkName("gtk_text_mark_get_buffer")]
-	public static extern GtkTextBuffer* text_mark_get_buffer(GtkTextMark* mark);
+	public static extern TextBuffer TextMarkGetBuffer(TextMark mark);
 	[LinkName("gtk_text_mark_get_deleted")]
-	public static extern c_int text_mark_get_deleted(GtkTextMark* mark);
+	public static extern c_int TextMarkGetDeleted(TextMark mark);
 	[LinkName("gtk_text_mark_get_left_gravity")]
-	public static extern c_int text_mark_get_left_gravity(GtkTextMark* mark);
+	public static extern c_int TextMarkGetLeftGravity(TextMark mark);
 	[LinkName("gtk_text_mark_get_name")]
-	public static extern  c_char* text_mark_get_name(GtkTextMark* mark);
+	public static extern char8* TextMarkGetName(TextMark mark);
 	[LinkName("gtk_text_mark_get_visible")]
-	public static extern c_int text_mark_get_visible(GtkTextMark* mark);
+	public static extern c_int TextMarkGetVisible(TextMark mark);
 	[LinkName("gtk_text_mark_set_visible")]
-	public static extern void text_mark_set_visible(GtkTextMark* mark, c_int setting);
+	public static extern void TextMarkSetVisible(TextMark mark, c_int setting);
 	[CRepr]
-	public struct GtkTextMarkClass
+	public struct TextMarkClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GtkTextSearchFlags
+	public struct TextSearchFlags
 	{
 		public const int GTK_TEXT_SEARCH_VISIBLE_ONLY = 1;
 		public const int GTK_TEXT_SEARCH_TEXT_ONLY = 2;
 		public const int GTK_TEXT_SEARCH_CASE_INSENSITIVE = 4;
 	}
 	[CRepr]
-	public struct GtkTextTag;
+	public struct TextTag;
 	[LinkName("gtk_text_tag_new")]
-	public static extern GtkTextTag* text_tag_new( c_char* name);
+	public static extern TextTag TextTagNew(char8* name);
 	[LinkName("gtk_text_tag_changed")]
-	public static extern void text_tag_changed(GtkTextTag* tag, c_int size_changed);
+	public static extern void TextTagChanged(TextTag tag, c_int size_changed);
 	[LinkName("gtk_text_tag_get_priority")]
-	public static extern c_int text_tag_get_priority(GtkTextTag* tag);
+	public static extern c_int TextTagGetPriority(TextTag tag);
 	[LinkName("gtk_text_tag_set_priority")]
-	public static extern void text_tag_set_priority(GtkTextTag* tag, c_int priority);
+	public static extern void TextTagSetPriority(TextTag tag, c_int priority);
 	[CRepr]
-	public struct GtkTextTagClass
+	public struct TextTagClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GtkTextTagPrivate
+	public struct TextTagPrivate
 	{
 	}
 	[CRepr]
-	public struct GtkTextTagTable;
+	public struct TextTagTable;
 	[LinkName("gtk_text_tag_table_new")]
-	public static extern GtkTextTagTable* text_tag_table_new();
+	public static extern TextTagTable TextTagTableNew();
 	[LinkName("gtk_text_tag_table_add")]
-	public static extern c_int text_tag_table_add(GtkTextTagTable* table, GtkTextTag* tag);
+	public static extern c_int TextTagTableAdd(TextTagTable table, TextTag tag);
 	[LinkName("gtk_text_tag_table_foreach")]
-	public static extern void text_tag_table_foreach(GtkTextTagTable* table, GtkTextTagTableForeach func, void* data);
+	public static extern void TextTagTableForeach(TextTagTable table, TextTagTableForeach func, void* data);
 	[LinkName("gtk_text_tag_table_get_size")]
-	public static extern c_int text_tag_table_get_size(GtkTextTagTable* table);
+	public static extern c_int TextTagTableGetSize(TextTagTable table);
 	[LinkName("gtk_text_tag_table_lookup")]
-	public static extern GtkTextTag* text_tag_table_lookup(GtkTextTagTable* table,  c_char* name);
+	public static extern TextTag TextTagTableLookup(TextTagTable table, char8* name);
 	[LinkName("gtk_text_tag_table_remove")]
-	public static extern void text_tag_table_remove(GtkTextTagTable* table, GtkTextTag* tag);
-	public function void GtkTextTagTableForeach(GtkTextTag* tag, void* data);
+	public static extern void TextTagTableRemove(TextTagTable table, TextTag tag);
+	public function void TextTagTableForeach(TextTag tag, void* data);
 	[CRepr]
-	public struct GtkTextView;
+	public struct TextView;
 	[LinkName("gtk_text_view_new")]
-	public static extern GtkWidget* text_view_new();
+	public static extern Widget TextViewNew();
 	[LinkName("gtk_text_view_new_with_buffer")]
-	public static extern GtkWidget* text_view_new_with_buffer(GtkTextBuffer* buffer);
+	public static extern Widget TextViewNewWithBuffer(TextBuffer buffer);
 	[LinkName("gtk_text_view_add_child_at_anchor")]
-	public static extern void text_view_add_child_at_anchor(GtkTextView* text_view, GtkWidget* child, GtkTextChildAnchor* anchor);
+	public static extern void TextViewAddChildAtAnchor(TextView text_view, Widget child, TextChildAnchor anchor);
 	[LinkName("gtk_text_view_add_overlay")]
-	public static extern void text_view_add_overlay(GtkTextView* text_view, GtkWidget* child, c_int xpos, c_int ypos);
+	public static extern void TextViewAddOverlay(TextView text_view, Widget child, c_int xpos, c_int ypos);
 	[LinkName("gtk_text_view_backward_display_line")]
-	public static extern c_int text_view_backward_display_line(GtkTextView* text_view, GtkTextIter* iter);
+	public static extern c_int TextViewBackwardDisplayLine(TextView text_view, TextIter iter);
 	[LinkName("gtk_text_view_backward_display_line_start")]
-	public static extern c_int text_view_backward_display_line_start(GtkTextView* text_view, GtkTextIter* iter);
+	public static extern c_int TextViewBackwardDisplayLineStart(TextView text_view, TextIter iter);
 	[LinkName("gtk_text_view_buffer_to_window_coords")]
-	public static extern void text_view_buffer_to_window_coords(GtkTextView* text_view, GtkTextWindowType win, c_int buffer_x, c_int buffer_y, c_int* window_x, c_int* window_y);
+	public static extern void TextViewBufferToWindowCoords(TextView text_view, TextWindowType win, c_int buffer_x, c_int buffer_y, c_int window_x, c_int window_y);
 	[LinkName("gtk_text_view_forward_display_line")]
-	public static extern c_int text_view_forward_display_line(GtkTextView* text_view, GtkTextIter* iter);
+	public static extern c_int TextViewForwardDisplayLine(TextView text_view, TextIter iter);
 	[LinkName("gtk_text_view_forward_display_line_end")]
-	public static extern c_int text_view_forward_display_line_end(GtkTextView* text_view, GtkTextIter* iter);
+	public static extern c_int TextViewForwardDisplayLineEnd(TextView text_view, TextIter iter);
 	[LinkName("gtk_text_view_get_accepts_tab")]
-	public static extern c_int text_view_get_accepts_tab(GtkTextView* text_view);
+	public static extern c_int TextViewGetAcceptsTab(TextView text_view);
 	[LinkName("gtk_text_view_get_bottom_margin")]
-	public static extern c_int text_view_get_bottom_margin(GtkTextView* text_view);
+	public static extern c_int TextViewGetBottomMargin(TextView text_view);
 	[LinkName("gtk_text_view_get_buffer")]
-	public static extern GtkTextBuffer* text_view_get_buffer(GtkTextView* text_view);
+	public static extern TextBuffer TextViewGetBuffer(TextView text_view);
 	[LinkName("gtk_text_view_get_cursor_locations")]
-	public static extern void text_view_get_cursor_locations(GtkTextView* text_view,  GtkTextIter* iter, GdkRectangle* strong, GdkRectangle* weak);
+	public static extern void TextViewGetCursorLocations(TextView text_view, TextIter iter, Gdk.Rectangle strong, Gdk.Rectangle weak);
 	[LinkName("gtk_text_view_get_cursor_visible")]
-	public static extern c_int text_view_get_cursor_visible(GtkTextView* text_view);
+	public static extern c_int TextViewGetCursorVisible(TextView text_view);
 	[LinkName("gtk_text_view_get_editable")]
-	public static extern c_int text_view_get_editable(GtkTextView* text_view);
+	public static extern c_int TextViewGetEditable(TextView text_view);
 	[LinkName("gtk_text_view_get_extra_menu")]
-	public static extern GMenuModel* text_view_get_extra_menu(GtkTextView* text_view);
+	public static extern Gio.MenuModel TextViewGetExtraMenu(TextView text_view);
 	[LinkName("gtk_text_view_get_gutter")]
-	public static extern GtkWidget* text_view_get_gutter(GtkTextView* text_view, GtkTextWindowType win);
+	public static extern Widget TextViewGetGutter(TextView text_view, TextWindowType win);
 	[LinkName("gtk_text_view_get_indent")]
-	public static extern c_int text_view_get_indent(GtkTextView* text_view);
+	public static extern c_int TextViewGetIndent(TextView text_view);
 	[LinkName("gtk_text_view_get_input_hints")]
-	public static extern GtkInputHints text_view_get_input_hints(GtkTextView* text_view);
+	public static extern InputHints TextViewGetInputHints(TextView text_view);
 	[LinkName("gtk_text_view_get_input_purpose")]
-	public static extern GtkInputPurpose text_view_get_input_purpose(GtkTextView* text_view);
+	public static extern InputPurpose TextViewGetInputPurpose(TextView text_view);
 	[LinkName("gtk_text_view_get_iter_at_location")]
-	public static extern c_int text_view_get_iter_at_location(GtkTextView* text_view, GtkTextIter* iter, c_int x, c_int y);
+	public static extern c_int TextViewGetIterAtLocation(TextView text_view, TextIter iter, c_int x, c_int y);
 	[LinkName("gtk_text_view_get_iter_at_position")]
-	public static extern c_int text_view_get_iter_at_position(GtkTextView* text_view, GtkTextIter* iter, c_int* trailing, c_int x, c_int y);
+	public static extern c_int TextViewGetIterAtPosition(TextView text_view, TextIter iter, c_int trailing, c_int x, c_int y);
 	[LinkName("gtk_text_view_get_iter_location")]
-	public static extern void text_view_get_iter_location(GtkTextView* text_view,  GtkTextIter* iter, GdkRectangle* location);
+	public static extern void TextViewGetIterLocation(TextView text_view, TextIter iter, Gdk.Rectangle location);
 	[LinkName("gtk_text_view_get_justification")]
-	public static extern GtkJustification text_view_get_justification(GtkTextView* text_view);
+	public static extern Justification TextViewGetJustification(TextView text_view);
 	[LinkName("gtk_text_view_get_left_margin")]
-	public static extern c_int text_view_get_left_margin(GtkTextView* text_view);
+	public static extern c_int TextViewGetLeftMargin(TextView text_view);
 	[LinkName("gtk_text_view_get_line_at_y")]
-	public static extern void text_view_get_line_at_y(GtkTextView* text_view, GtkTextIter* target_iter, c_int y, c_int* line_top);
+	public static extern void TextViewGetLineAtY(TextView text_view, TextIter target_iter, c_int y, c_int line_top);
 	[LinkName("gtk_text_view_get_line_yrange")]
-	public static extern void text_view_get_line_yrange(GtkTextView* text_view,  GtkTextIter* iter, c_int* y, c_int* height);
+	public static extern void TextViewGetLineYrange(TextView text_view, TextIter iter, c_int y, c_int height);
 	[LinkName("gtk_text_view_get_ltr_context")]
-	public static extern PangoContext* text_view_get_ltr_context(GtkTextView* text_view);
+	public static extern Pango.Context TextViewGetLtrContext(TextView text_view);
 	[LinkName("gtk_text_view_get_monospace")]
-	public static extern c_int text_view_get_monospace(GtkTextView* text_view);
+	public static extern c_int TextViewGetMonospace(TextView text_view);
 	[LinkName("gtk_text_view_get_overwrite")]
-	public static extern c_int text_view_get_overwrite(GtkTextView* text_view);
+	public static extern c_int TextViewGetOverwrite(TextView text_view);
 	[LinkName("gtk_text_view_get_pixels_above_lines")]
-	public static extern c_int text_view_get_pixels_above_lines(GtkTextView* text_view);
+	public static extern c_int TextViewGetPixelsAboveLines(TextView text_view);
 	[LinkName("gtk_text_view_get_pixels_below_lines")]
-	public static extern c_int text_view_get_pixels_below_lines(GtkTextView* text_view);
+	public static extern c_int TextViewGetPixelsBelowLines(TextView text_view);
 	[LinkName("gtk_text_view_get_pixels_inside_wrap")]
-	public static extern c_int text_view_get_pixels_inside_wrap(GtkTextView* text_view);
+	public static extern c_int TextViewGetPixelsInsideWrap(TextView text_view);
 	[LinkName("gtk_text_view_get_right_margin")]
-	public static extern c_int text_view_get_right_margin(GtkTextView* text_view);
+	public static extern c_int TextViewGetRightMargin(TextView text_view);
 	[LinkName("gtk_text_view_get_rtl_context")]
-	public static extern PangoContext* text_view_get_rtl_context(GtkTextView* text_view);
+	public static extern Pango.Context TextViewGetRtlContext(TextView text_view);
 	[LinkName("gtk_text_view_get_tabs")]
-	public static extern PangoTabArray* text_view_get_tabs(GtkTextView* text_view);
+	public static extern Pango.TabArray TextViewGetTabs(TextView text_view);
 	[LinkName("gtk_text_view_get_top_margin")]
-	public static extern c_int text_view_get_top_margin(GtkTextView* text_view);
+	public static extern c_int TextViewGetTopMargin(TextView text_view);
 	[LinkName("gtk_text_view_get_visible_rect")]
-	public static extern void text_view_get_visible_rect(GtkTextView* text_view, GdkRectangle* visible_rect);
+	public static extern void TextViewGetVisibleRect(TextView text_view, Gdk.Rectangle visible_rect);
 	[LinkName("gtk_text_view_get_wrap_mode")]
-	public static extern GtkWrapMode text_view_get_wrap_mode(GtkTextView* text_view);
+	public static extern WrapMode TextViewGetWrapMode(TextView text_view);
 	[LinkName("gtk_text_view_im_context_filter_keypress")]
-	public static extern c_int text_view_im_context_filter_keypress(GtkTextView* text_view, GdkEvent* event);
+	public static extern c_int TextViewImContextFilterKeypress(TextView text_view, Gdk.Event event);
 	[LinkName("gtk_text_view_move_mark_onscreen")]
-	public static extern c_int text_view_move_mark_onscreen(GtkTextView* text_view, GtkTextMark* mark);
+	public static extern c_int TextViewMoveMarkOnscreen(TextView text_view, TextMark mark);
 	[LinkName("gtk_text_view_move_overlay")]
-	public static extern void text_view_move_overlay(GtkTextView* text_view, GtkWidget* child, c_int xpos, c_int ypos);
+	public static extern void TextViewMoveOverlay(TextView text_view, Widget child, c_int xpos, c_int ypos);
 	[LinkName("gtk_text_view_move_visually")]
-	public static extern c_int text_view_move_visually(GtkTextView* text_view, GtkTextIter* iter, c_int count);
+	public static extern c_int TextViewMoveVisually(TextView text_view, TextIter iter, c_int count);
 	[LinkName("gtk_text_view_place_cursor_onscreen")]
-	public static extern c_int text_view_place_cursor_onscreen(GtkTextView* text_view);
+	public static extern c_int TextViewPlaceCursorOnscreen(TextView text_view);
 	[LinkName("gtk_text_view_remove")]
-	public static extern void text_view_remove(GtkTextView* text_view, GtkWidget* child);
+	public static extern void TextViewRemove(TextView text_view, Widget child);
 	[LinkName("gtk_text_view_reset_cursor_blink")]
-	public static extern void text_view_reset_cursor_blink(GtkTextView* text_view);
+	public static extern void TextViewResetCursorBlink(TextView text_view);
 	[LinkName("gtk_text_view_reset_im_context")]
-	public static extern void text_view_reset_im_context(GtkTextView* text_view);
+	public static extern void TextViewResetImContext(TextView text_view);
 	[LinkName("gtk_text_view_scroll_mark_onscreen")]
-	public static extern void text_view_scroll_mark_onscreen(GtkTextView* text_view, GtkTextMark* mark);
+	public static extern void TextViewScrollMarkOnscreen(TextView text_view, TextMark mark);
 	[LinkName("gtk_text_view_scroll_to_iter")]
-	public static extern c_int text_view_scroll_to_iter(GtkTextView* text_view, GtkTextIter* iter, double within_margin, c_int use_align, double xalign, double yalign);
+	public static extern c_int TextViewScrollToIter(TextView text_view, TextIter iter, double within_margin, c_int use_align, double xalign, double yalign);
 	[LinkName("gtk_text_view_scroll_to_mark")]
-	public static extern void text_view_scroll_to_mark(GtkTextView* text_view, GtkTextMark* mark, double within_margin, c_int use_align, double xalign, double yalign);
+	public static extern void TextViewScrollToMark(TextView text_view, TextMark mark, double within_margin, c_int use_align, double xalign, double yalign);
 	[LinkName("gtk_text_view_set_accepts_tab")]
-	public static extern void text_view_set_accepts_tab(GtkTextView* text_view, c_int accepts_tab);
+	public static extern void TextViewSetAcceptsTab(TextView text_view, c_int accepts_tab);
 	[LinkName("gtk_text_view_set_bottom_margin")]
-	public static extern void text_view_set_bottom_margin(GtkTextView* text_view, c_int bottom_margin);
+	public static extern void TextViewSetBottomMargin(TextView text_view, c_int bottom_margin);
 	[LinkName("gtk_text_view_set_buffer")]
-	public static extern void text_view_set_buffer(GtkTextView* text_view, GtkTextBuffer* buffer);
+	public static extern void TextViewSetBuffer(TextView text_view, TextBuffer buffer);
 	[LinkName("gtk_text_view_set_cursor_visible")]
-	public static extern void text_view_set_cursor_visible(GtkTextView* text_view, c_int setting);
+	public static extern void TextViewSetCursorVisible(TextView text_view, c_int setting);
 	[LinkName("gtk_text_view_set_editable")]
-	public static extern void text_view_set_editable(GtkTextView* text_view, c_int setting);
+	public static extern void TextViewSetEditable(TextView text_view, c_int setting);
 	[LinkName("gtk_text_view_set_extra_menu")]
-	public static extern void text_view_set_extra_menu(GtkTextView* text_view, GMenuModel* model);
+	public static extern void TextViewSetExtraMenu(TextView text_view, Gio.MenuModel model);
 	[LinkName("gtk_text_view_set_gutter")]
-	public static extern void text_view_set_gutter(GtkTextView* text_view, GtkTextWindowType win, GtkWidget* widget);
+	public static extern void TextViewSetGutter(TextView text_view, TextWindowType win, Widget widget);
 	[LinkName("gtk_text_view_set_indent")]
-	public static extern void text_view_set_indent(GtkTextView* text_view, c_int indent);
+	public static extern void TextViewSetIndent(TextView text_view, c_int indent);
 	[LinkName("gtk_text_view_set_input_hints")]
-	public static extern void text_view_set_input_hints(GtkTextView* text_view, GtkInputHints hints);
+	public static extern void TextViewSetInputHints(TextView text_view, InputHints hints);
 	[LinkName("gtk_text_view_set_input_purpose")]
-	public static extern void text_view_set_input_purpose(GtkTextView* text_view, GtkInputPurpose purpose);
+	public static extern void TextViewSetInputPurpose(TextView text_view, InputPurpose purpose);
 	[LinkName("gtk_text_view_set_justification")]
-	public static extern void text_view_set_justification(GtkTextView* text_view, GtkJustification justification);
+	public static extern void TextViewSetJustification(TextView text_view, Justification justification);
 	[LinkName("gtk_text_view_set_left_margin")]
-	public static extern void text_view_set_left_margin(GtkTextView* text_view, c_int left_margin);
+	public static extern void TextViewSetLeftMargin(TextView text_view, c_int left_margin);
 	[LinkName("gtk_text_view_set_monospace")]
-	public static extern void text_view_set_monospace(GtkTextView* text_view, c_int monospace);
+	public static extern void TextViewSetMonospace(TextView text_view, c_int monospace);
 	[LinkName("gtk_text_view_set_overwrite")]
-	public static extern void text_view_set_overwrite(GtkTextView* text_view, c_int overwrite);
+	public static extern void TextViewSetOverwrite(TextView text_view, c_int overwrite);
 	[LinkName("gtk_text_view_set_pixels_above_lines")]
-	public static extern void text_view_set_pixels_above_lines(GtkTextView* text_view, c_int pixels_above_lines);
+	public static extern void TextViewSetPixelsAboveLines(TextView text_view, c_int pixels_above_lines);
 	[LinkName("gtk_text_view_set_pixels_below_lines")]
-	public static extern void text_view_set_pixels_below_lines(GtkTextView* text_view, c_int pixels_below_lines);
+	public static extern void TextViewSetPixelsBelowLines(TextView text_view, c_int pixels_below_lines);
 	[LinkName("gtk_text_view_set_pixels_inside_wrap")]
-	public static extern void text_view_set_pixels_inside_wrap(GtkTextView* text_view, c_int pixels_inside_wrap);
+	public static extern void TextViewSetPixelsInsideWrap(TextView text_view, c_int pixels_inside_wrap);
 	[LinkName("gtk_text_view_set_right_margin")]
-	public static extern void text_view_set_right_margin(GtkTextView* text_view, c_int right_margin);
+	public static extern void TextViewSetRightMargin(TextView text_view, c_int right_margin);
 	[LinkName("gtk_text_view_set_tabs")]
-	public static extern void text_view_set_tabs(GtkTextView* text_view, PangoTabArray* tabs);
+	public static extern void TextViewSetTabs(TextView text_view, Pango.TabArray tabs);
 	[LinkName("gtk_text_view_set_top_margin")]
-	public static extern void text_view_set_top_margin(GtkTextView* text_view, c_int top_margin);
+	public static extern void TextViewSetTopMargin(TextView text_view, c_int top_margin);
 	[LinkName("gtk_text_view_set_wrap_mode")]
-	public static extern void text_view_set_wrap_mode(GtkTextView* text_view, GtkWrapMode wrap_mode);
+	public static extern void TextViewSetWrapMode(TextView text_view, WrapMode wrap_mode);
 	[LinkName("gtk_text_view_starts_display_line")]
-	public static extern c_int text_view_starts_display_line(GtkTextView* text_view,  GtkTextIter* iter);
+	public static extern c_int TextViewStartsDisplayLine(TextView text_view, TextIter iter);
 	[LinkName("gtk_text_view_window_to_buffer_coords")]
-	public static extern void text_view_window_to_buffer_coords(GtkTextView* text_view, GtkTextWindowType win, c_int window_x, c_int window_y, c_int* buffer_x, c_int* buffer_y);
+	public static extern void TextViewWindowToBufferCoords(TextView text_view, TextWindowType win, c_int window_x, c_int window_y, c_int buffer_x, c_int buffer_y);
 	[CRepr]
-	public struct GtkTextViewClass
+	public struct TextViewClass
 	{
-		GtkWidgetClass parent_class;
+		WidgetClass parent_class;
 	}
-	public enum GtkTextViewLayer : c_int
+	public enum TextViewLayer : c_int
 	{
 		GTK_TEXT_VIEW_LAYER_BELOW_TEXT,
 		GTK_TEXT_VIEW_LAYER_ABOVE_TEXT
 	}
 	[CRepr]
-	public struct GtkTextViewPrivate
+	public struct TextViewPrivate
 	{
 	}
-	public enum GtkTextWindowType : c_int
+	public enum TextWindowType : c_int
 	{
 		GTK_TEXT_WINDOW_WIDGET,
 		GTK_TEXT_WINDOW_TEXT,
@@ -7919,739 +7919,739 @@ class Gtk
 		GTK_TEXT_WINDOW_TOP,
 		GTK_TEXT_WINDOW_BOTTOM
 	}
-	public function c_int GtkTickCallback(GtkWidget* widget, GdkFrameClock* frame_clock, void* user_data);
+	public function c_int TickCallback(Widget widget, Gdk.FrameClock frame_clock, void* user_data);
 	[CRepr]
-	public struct GtkToggleButton;
+	public struct ToggleButton;
 	[LinkName("gtk_toggle_button_new")]
-	public static extern GtkWidget* toggle_button_new();
+	public static extern Widget ToggleButtonNew();
 	[LinkName("gtk_toggle_button_new_with_label")]
-	public static extern GtkWidget* toggle_button_new_with_label( c_char* label);
+	public static extern Widget ToggleButtonNewWithLabel(char8* label);
 	[LinkName("gtk_toggle_button_new_with_mnemonic")]
-	public static extern GtkWidget* toggle_button_new_with_mnemonic( c_char* label);
+	public static extern Widget ToggleButtonNewWithMnemonic(char8* label);
 	[LinkName("gtk_toggle_button_get_active")]
-	public static extern c_int toggle_button_get_active(GtkToggleButton* toggle_button);
+	public static extern c_int ToggleButtonGetActive(ToggleButton toggle_button);
 	[LinkName("gtk_toggle_button_set_active")]
-	public static extern void toggle_button_set_active(GtkToggleButton* toggle_button, c_int is_active);
+	public static extern void ToggleButtonSetActive(ToggleButton toggle_button, c_int is_active);
 	[LinkName("gtk_toggle_button_set_group")]
-	public static extern void toggle_button_set_group(GtkToggleButton* toggle_button, GtkToggleButton* group);
+	public static extern void ToggleButtonSetGroup(ToggleButton toggle_button, ToggleButton group);
 	[LinkName("gtk_toggle_button_toggled")]
-	public static extern void toggle_button_toggled(GtkToggleButton* toggle_button);
+	public static extern void ToggleButtonToggled(ToggleButton toggle_button);
 	[CRepr]
-	public struct GtkToggleButtonClass
+	public struct ToggleButtonClass
 	{
-		GtkButtonClass parent_class;
+		ButtonClass parent_class;
 	}
 	[CRepr]
-	public struct GtkTooltip;
+	public struct Tooltip;
 	[LinkName("gtk_tooltip_set_custom")]
-	public static extern void tooltip_set_custom(GtkTooltip* tooltip, GtkWidget* custom_widget);
+	public static extern void TooltipSetCustom(Tooltip tooltip, Widget custom_widget);
 	[LinkName("gtk_tooltip_set_icon")]
-	public static extern void tooltip_set_icon(GtkTooltip* tooltip, GdkPaintable* paintable);
+	public static extern void TooltipSetIcon(Tooltip tooltip, Gdk.Paintable paintable);
 	[LinkName("gtk_tooltip_set_icon_from_gicon")]
-	public static extern void tooltip_set_icon_from_gicon(GtkTooltip* tooltip, GIcon* gicon);
+	public static extern void TooltipSetIconFromGicon(Tooltip tooltip, Gio.Icon gicon);
 	[LinkName("gtk_tooltip_set_icon_from_icon_name")]
-	public static extern void tooltip_set_icon_from_icon_name(GtkTooltip* tooltip,  c_char* icon_name);
+	public static extern void TooltipSetIconFromIconName(Tooltip tooltip, char8* icon_name);
 	[LinkName("gtk_tooltip_set_markup")]
-	public static extern void tooltip_set_markup(GtkTooltip* tooltip,  c_char* markup);
+	public static extern void TooltipSetMarkup(Tooltip tooltip, char8* markup);
 	[LinkName("gtk_tooltip_set_text")]
-	public static extern void tooltip_set_text(GtkTooltip* tooltip,  c_char* text);
+	public static extern void TooltipSetText(Tooltip tooltip, char8* text);
 	[LinkName("gtk_tooltip_set_tip_area")]
-	public static extern void tooltip_set_tip_area(GtkTooltip* tooltip,  GdkRectangle* rect);
-	public function void GtkTreeCellDataFunc(GtkTreeViewColumn* tree_column, GtkCellRenderer* cell, GtkTreeModel* tree_model, GtkTreeIter* iter, void* data);
+	public static extern void TooltipSetTipArea(Tooltip tooltip, Gdk.Rectangle rect);
+	public function void TreeCellDataFunc(TreeViewColumn tree_column, CellRenderer cell, TreeModel tree_model, TreeIter iter, void* data);
 	[CRepr]
-	public struct GtkTreeDragDest
+	public struct TreeDragDest
 	{
-		public function c_int(GtkTreeDragDest* drag_dest, GtkTreePath* dest,  GValue* value) drag_data_received;
+		public function c_int(TreeDragDest drag_dest, TreePath dest, GObject.Value value) drag_data_received;
 
-		public function c_int(GtkTreeDragDest* drag_dest, GtkTreePath* dest_path,  GValue* value) row_drop_possible;
+		public function c_int(TreeDragDest drag_dest, TreePath dest_path, GObject.Value value) row_drop_possible;
 	}
 	[CRepr]
-	public struct GtkTreeDragDestIface
+	public struct TreeDragDestIface
 	{
-		GTypeInterface g_iface;
+		GObject.TypeInterface g_iface;
 	}
 	[CRepr]
-	public struct GtkTreeDragSource
+	public struct TreeDragSource
 	{
-		public function c_int(GtkTreeDragSource* drag_source, GtkTreePath* path) drag_data_delete;
+		public function c_int(TreeDragSource drag_source, TreePath path) drag_data_delete;
 
-		public function GdkContentProvider*(GtkTreeDragSource* drag_source, GtkTreePath* path) drag_data_get;
+		public function Gdk.ContentProvider(TreeDragSource drag_source, TreePath path) drag_data_get;
 
-		public function c_int(GtkTreeDragSource* drag_source, GtkTreePath* path) row_draggable;
+		public function c_int(TreeDragSource drag_source, TreePath path) row_draggable;
 	}
 	[CRepr]
-	public struct GtkTreeDragSourceIface
+	public struct TreeDragSourceIface
 	{
-		GTypeInterface g_iface;
+		GObject.TypeInterface g_iface;
 	}
 	[CRepr]
-	public struct GtkTreeExpander;
+	public struct TreeExpander;
 	[LinkName("gtk_tree_expander_new")]
-	public static extern GtkWidget* tree_expander_new();
+	public static extern Widget TreeExpanderNew();
 	[LinkName("gtk_tree_expander_get_child")]
-	public static extern GtkWidget* tree_expander_get_child(GtkTreeExpander* self);
+	public static extern Widget TreeExpanderGetChild(TreeExpander self);
 	[LinkName("gtk_tree_expander_get_hide_expander")]
-	public static extern c_int tree_expander_get_hide_expander(GtkTreeExpander* self);
+	public static extern c_int TreeExpanderGetHideExpander(TreeExpander self);
 	[LinkName("gtk_tree_expander_get_indent_for_depth")]
-	public static extern c_int tree_expander_get_indent_for_depth(GtkTreeExpander* self);
+	public static extern c_int TreeExpanderGetIndentForDepth(TreeExpander self);
 	[LinkName("gtk_tree_expander_get_indent_for_icon")]
-	public static extern c_int tree_expander_get_indent_for_icon(GtkTreeExpander* self);
+	public static extern c_int TreeExpanderGetIndentForIcon(TreeExpander self);
 	[LinkName("gtk_tree_expander_get_item")]
-	public static extern void* tree_expander_get_item(GtkTreeExpander* self);
+	public static extern GObject.Object TreeExpanderGetItem(TreeExpander self);
 	[LinkName("gtk_tree_expander_get_list_row")]
-	public static extern GtkTreeListRow* tree_expander_get_list_row(GtkTreeExpander* self);
+	public static extern TreeListRow TreeExpanderGetListRow(TreeExpander self);
 	[LinkName("gtk_tree_expander_set_child")]
-	public static extern void tree_expander_set_child(GtkTreeExpander* self, GtkWidget* child);
+	public static extern void TreeExpanderSetChild(TreeExpander self, Widget child);
 	[LinkName("gtk_tree_expander_set_hide_expander")]
-	public static extern void tree_expander_set_hide_expander(GtkTreeExpander* self, c_int hide_expander);
+	public static extern void TreeExpanderSetHideExpander(TreeExpander self, c_int hide_expander);
 	[LinkName("gtk_tree_expander_set_indent_for_depth")]
-	public static extern void tree_expander_set_indent_for_depth(GtkTreeExpander* self, c_int indent_for_depth);
+	public static extern void TreeExpanderSetIndentForDepth(TreeExpander self, c_int indent_for_depth);
 	[LinkName("gtk_tree_expander_set_indent_for_icon")]
-	public static extern void tree_expander_set_indent_for_icon(GtkTreeExpander* self, c_int indent_for_icon);
+	public static extern void TreeExpanderSetIndentForIcon(TreeExpander self, c_int indent_for_icon);
 	[LinkName("gtk_tree_expander_set_list_row")]
-	public static extern void tree_expander_set_list_row(GtkTreeExpander* self, GtkTreeListRow* list_row);
+	public static extern void TreeExpanderSetListRow(TreeExpander self, TreeListRow list_row);
 	[CRepr]
-	public struct GtkTreeExpanderClass
+	public struct TreeExpanderClass
 	{
-		GtkWidgetClass parent_class;
+		WidgetClass parent_class;
 	}
 	[CRepr]
-	public struct GtkTreeIter
+	public struct TreeIter
 	{
 		c_int stamp;
 		void* user_data;
 		void* user_data2;
 		void* user_data3;
 	}
-	public function c_int GtkTreeIterCompareFunc(GtkTreeModel* model, GtkTreeIter* a, GtkTreeIter* b, void* user_data);
+	public function c_int TreeIterCompareFunc(TreeModel model, TreeIter a, TreeIter b, void* user_data);
 	[CRepr]
-	public struct GtkTreeListModel;
+	public struct TreeListModel;
 	[LinkName("gtk_tree_list_model_new")]
-	public static extern GtkTreeListModel* tree_list_model_new(GListModel* root, c_int passthrough, c_int autoexpand, GtkTreeListModelCreateModelFunc create_func, void* user_data, GDestroyNotify user_destroy);
+	public static extern TreeListModel TreeListModelNew(Gio.ListModel root, c_int passthrough, c_int autoexpand, TreeListModelCreateModelFunc create_func, void* user_data, GLib.DestroyNotify user_destroy);
 	[LinkName("gtk_tree_list_model_get_autoexpand")]
-	public static extern c_int tree_list_model_get_autoexpand(GtkTreeListModel* self);
+	public static extern c_int TreeListModelGetAutoexpand(TreeListModel self);
 	[LinkName("gtk_tree_list_model_get_child_row")]
-	public static extern GtkTreeListRow* tree_list_model_get_child_row(GtkTreeListModel* self, c_uint position);
+	public static extern TreeListRow TreeListModelGetChildRow(TreeListModel self, c_uint position);
 	[LinkName("gtk_tree_list_model_get_model")]
-	public static extern GListModel* tree_list_model_get_model(GtkTreeListModel* self);
+	public static extern Gio.ListModel TreeListModelGetModel(TreeListModel self);
 	[LinkName("gtk_tree_list_model_get_passthrough")]
-	public static extern c_int tree_list_model_get_passthrough(GtkTreeListModel* self);
+	public static extern c_int TreeListModelGetPassthrough(TreeListModel self);
 	[LinkName("gtk_tree_list_model_get_row")]
-	public static extern GtkTreeListRow* tree_list_model_get_row(GtkTreeListModel* self, c_uint position);
+	public static extern TreeListRow TreeListModelGetRow(TreeListModel self, c_uint position);
 	[LinkName("gtk_tree_list_model_set_autoexpand")]
-	public static extern void tree_list_model_set_autoexpand(GtkTreeListModel* self, c_int autoexpand);
+	public static extern void TreeListModelSetAutoexpand(TreeListModel self, c_int autoexpand);
 	[CRepr]
-	public struct GtkTreeListModelClass
+	public struct TreeListModelClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
-	public function GListModel* GtkTreeListModelCreateModelFunc(void* item, void* user_data);
+	public function Gio.ListModel TreeListModelCreateModelFunc(GObject.Object item, void* user_data);
 	[CRepr]
-	public struct GtkTreeListRow;
+	public struct TreeListRow;
 	[LinkName("gtk_tree_list_row_get_child_row")]
-	public static extern GtkTreeListRow* tree_list_row_get_child_row(GtkTreeListRow* self, c_uint position);
+	public static extern TreeListRow TreeListRowGetChildRow(TreeListRow self, c_uint position);
 	[LinkName("gtk_tree_list_row_get_children")]
-	public static extern GListModel* tree_list_row_get_children(GtkTreeListRow* self);
+	public static extern Gio.ListModel TreeListRowGetChildren(TreeListRow self);
 	[LinkName("gtk_tree_list_row_get_depth")]
-	public static extern c_uint tree_list_row_get_depth(GtkTreeListRow* self);
+	public static extern c_uint TreeListRowGetDepth(TreeListRow self);
 	[LinkName("gtk_tree_list_row_get_expanded")]
-	public static extern c_int tree_list_row_get_expanded(GtkTreeListRow* self);
+	public static extern c_int TreeListRowGetExpanded(TreeListRow self);
 	[LinkName("gtk_tree_list_row_get_item")]
-	public static extern void* tree_list_row_get_item(GtkTreeListRow* self);
+	public static extern GObject.Object TreeListRowGetItem(TreeListRow self);
 	[LinkName("gtk_tree_list_row_get_parent")]
-	public static extern GtkTreeListRow* tree_list_row_get_parent(GtkTreeListRow* self);
+	public static extern TreeListRow TreeListRowGetParent(TreeListRow self);
 	[LinkName("gtk_tree_list_row_get_position")]
-	public static extern c_uint tree_list_row_get_position(GtkTreeListRow* self);
+	public static extern c_uint TreeListRowGetPosition(TreeListRow self);
 	[LinkName("gtk_tree_list_row_is_expandable")]
-	public static extern c_int tree_list_row_is_expandable(GtkTreeListRow* self);
+	public static extern c_int TreeListRowIsExpandable(TreeListRow self);
 	[LinkName("gtk_tree_list_row_set_expanded")]
-	public static extern void tree_list_row_set_expanded(GtkTreeListRow* self, c_int expanded);
+	public static extern void TreeListRowSetExpanded(TreeListRow self, c_int expanded);
 	[CRepr]
-	public struct GtkTreeListRowClass
+	public struct TreeListRowClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GtkTreeListRowSorter;
+	public struct TreeListRowSorter;
 	[LinkName("gtk_tree_list_row_sorter_new")]
-	public static extern GtkTreeListRowSorter* tree_list_row_sorter_new(GtkSorter* sorter);
+	public static extern TreeListRowSorter TreeListRowSorterNew(Sorter sorter);
 	[LinkName("gtk_tree_list_row_sorter_get_sorter")]
-	public static extern GtkSorter* tree_list_row_sorter_get_sorter(GtkTreeListRowSorter* self);
+	public static extern Sorter TreeListRowSorterGetSorter(TreeListRowSorter self);
 	[LinkName("gtk_tree_list_row_sorter_set_sorter")]
-	public static extern void tree_list_row_sorter_set_sorter(GtkTreeListRowSorter* self, GtkSorter* sorter);
+	public static extern void TreeListRowSorterSetSorter(TreeListRowSorter self, Sorter sorter);
 	[CRepr]
-	public struct GtkTreeListRowSorterClass
+	public struct TreeListRowSorterClass
 	{
-		GtkSorterClass parent_class;
+		SorterClass parent_class;
 	}
 	[CRepr]
-	public struct GtkTreeModel
+	public struct TreeModel
 	{
-		public function GType(GtkTreeModel* tree_model, c_int index_) get_column_type;
+		public function GLib.Type(TreeModel tree_model, c_int index_) get_column_type;
 
-		public function GtkTreeModelFlags(GtkTreeModel* tree_model) get_flags;
+		public function TreeModelFlags(TreeModel tree_model) get_flags;
 
-		public function c_int(GtkTreeModel* tree_model, GtkTreeIter* iter, GtkTreePath* path) get_iter;
+		public function c_int(TreeModel tree_model, TreeIter iter, TreePath path) get_iter;
 
-		public function c_int(GtkTreeModel* tree_model) get_n_columns;
+		public function c_int(TreeModel tree_model) get_n_columns;
 
-		public function GtkTreePath*(GtkTreeModel* tree_model, GtkTreeIter* iter) get_path;
+		public function TreePath(TreeModel tree_model, TreeIter iter) get_path;
 
-		public function void(GtkTreeModel* tree_model, GtkTreeIter* iter, c_int column, GValue* value) get_value;
+		public function void(TreeModel tree_model, TreeIter iter, c_int column, GObject.Value value) get_value;
 
-		public function c_int(GtkTreeModel* tree_model, GtkTreeIter* iter, GtkTreeIter* parent) iter_children;
+		public function c_int(TreeModel tree_model, TreeIter iter, TreeIter parent) iter_children;
 
-		public function c_int(GtkTreeModel* tree_model, GtkTreeIter* iter) iter_has_child;
+		public function c_int(TreeModel tree_model, TreeIter iter) iter_has_child;
 
-		public function c_int(GtkTreeModel* tree_model, GtkTreeIter* iter) iter_n_children;
+		public function c_int(TreeModel tree_model, TreeIter iter) iter_n_children;
 
-		public function c_int(GtkTreeModel* tree_model, GtkTreeIter* iter) iter_next;
+		public function c_int(TreeModel tree_model, TreeIter iter) iter_next;
 
-		public function c_int(GtkTreeModel* tree_model, GtkTreeIter* iter, GtkTreeIter* parent, c_int n) iter_nth_child;
+		public function c_int(TreeModel tree_model, TreeIter iter, TreeIter parent, c_int n) iter_nth_child;
 
-		public function c_int(GtkTreeModel* tree_model, GtkTreeIter* iter, GtkTreeIter* child) iter_parent;
+		public function c_int(TreeModel tree_model, TreeIter iter, TreeIter child) iter_parent;
 
-		public function c_int(GtkTreeModel* tree_model, GtkTreeIter* iter) iter_previous;
+		public function c_int(TreeModel tree_model, TreeIter iter) iter_previous;
 
-		public function void(GtkTreeModel* tree_model, GtkTreeIter* iter) ref_node;
+		public function void(TreeModel tree_model, TreeIter iter) ref_node;
 
-		public function void(GtkTreeModel* tree_model, GtkTreePath* path, GtkTreeIter* iter) row_changed;
+		public function void(TreeModel tree_model, TreePath path, TreeIter iter) row_changed;
 
-		public function void(GtkTreeModel* tree_model, GtkTreePath* path) row_deleted;
+		public function void(TreeModel tree_model, TreePath path) row_deleted;
 
-		public function void(GtkTreeModel* tree_model, GtkTreePath* path, GtkTreeIter* iter) row_has_child_toggled;
+		public function void(TreeModel tree_model, TreePath path, TreeIter iter) row_has_child_toggled;
 
-		public function void(GtkTreeModel* tree_model, GtkTreePath* path, GtkTreeIter* iter) row_inserted;
+		public function void(TreeModel tree_model, TreePath path, TreeIter iter) row_inserted;
 
-		public function void(GtkTreeModel* tree_model, GtkTreePath* path, GtkTreeIter* iter, c_int* new_order) rows_reordered;
+		public function void(TreeModel tree_model, TreePath path, TreeIter iter, c_int new_order) rows_reordered;
 
-		public function void(GtkTreeModel* tree_model, GtkTreeIter* iter) unref_node;
+		public function void(TreeModel tree_model, TreeIter iter) unref_node;
 	}
 	[CRepr]
-	public struct GtkTreeModelFilter;
+	public struct TreeModelFilter;
 	[LinkName("gtk_tree_model_filter_clear_cache")]
-	public static extern void tree_model_filter_clear_cache(GtkTreeModelFilter* filter);
+	public static extern void TreeModelFilterClearCache(TreeModelFilter filter);
 	[LinkName("gtk_tree_model_filter_convert_child_iter_to_iter")]
-	public static extern c_int tree_model_filter_convert_child_iter_to_iter(GtkTreeModelFilter* filter, GtkTreeIter* filter_iter, GtkTreeIter* child_iter);
+	public static extern c_int TreeModelFilterConvertChildIterToIter(TreeModelFilter filter, TreeIter filter_iter, TreeIter child_iter);
 	[LinkName("gtk_tree_model_filter_convert_child_path_to_path")]
-	public static extern GtkTreePath* tree_model_filter_convert_child_path_to_path(GtkTreeModelFilter* filter, GtkTreePath* child_path);
+	public static extern TreePath TreeModelFilterConvertChildPathToPath(TreeModelFilter filter, TreePath child_path);
 	[LinkName("gtk_tree_model_filter_convert_iter_to_child_iter")]
-	public static extern void tree_model_filter_convert_iter_to_child_iter(GtkTreeModelFilter* filter, GtkTreeIter* child_iter, GtkTreeIter* filter_iter);
+	public static extern void TreeModelFilterConvertIterToChildIter(TreeModelFilter filter, TreeIter child_iter, TreeIter filter_iter);
 	[LinkName("gtk_tree_model_filter_convert_path_to_child_path")]
-	public static extern GtkTreePath* tree_model_filter_convert_path_to_child_path(GtkTreeModelFilter* filter, GtkTreePath* filter_path);
+	public static extern TreePath TreeModelFilterConvertPathToChildPath(TreeModelFilter filter, TreePath filter_path);
 	[LinkName("gtk_tree_model_filter_get_model")]
-	public static extern GtkTreeModel* tree_model_filter_get_model(GtkTreeModelFilter* filter);
+	public static extern TreeModel TreeModelFilterGetModel(TreeModelFilter filter);
 	[LinkName("gtk_tree_model_filter_refilter")]
-	public static extern void tree_model_filter_refilter(GtkTreeModelFilter* filter);
+	public static extern void TreeModelFilterRefilter(TreeModelFilter filter);
 	[LinkName("gtk_tree_model_filter_set_modify_func")]
-	public static extern void tree_model_filter_set_modify_func(GtkTreeModelFilter* filter, c_int n_columns, GtkTreeModelFilterModifyFunc func, void* data, GDestroyNotify destroy);
+	public static extern void TreeModelFilterSetModifyFunc(TreeModelFilter filter, c_int n_columns, TreeModelFilterModifyFunc func, void* data, GLib.DestroyNotify destroy);
 	[LinkName("gtk_tree_model_filter_set_visible_column")]
-	public static extern void tree_model_filter_set_visible_column(GtkTreeModelFilter* filter, c_int column);
+	public static extern void TreeModelFilterSetVisibleColumn(TreeModelFilter filter, c_int column);
 	[LinkName("gtk_tree_model_filter_set_visible_func")]
-	public static extern void tree_model_filter_set_visible_func(GtkTreeModelFilter* filter, GtkTreeModelFilterVisibleFunc func, void* data, GDestroyNotify destroy);
+	public static extern void TreeModelFilterSetVisibleFunc(TreeModelFilter filter, TreeModelFilterVisibleFunc func, void* data, GLib.DestroyNotify destroy);
 	[CRepr]
-	public struct GtkTreeModelFilterClass
+	public struct TreeModelFilterClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
-	public function void GtkTreeModelFilterModifyFunc(GtkTreeModel* model, GtkTreeIter* iter, GValue* value, c_int column, void* data);
+	public function void TreeModelFilterModifyFunc(TreeModel model, TreeIter iter, GObject.Value value, c_int column, void* data);
 	[CRepr]
-	public struct GtkTreeModelFilterPrivate
+	public struct TreeModelFilterPrivate
 	{
 	}
-	public function c_int GtkTreeModelFilterVisibleFunc(GtkTreeModel* model, GtkTreeIter* iter, void* data);
+	public function c_int TreeModelFilterVisibleFunc(TreeModel model, TreeIter iter, void* data);
 	[CRepr]
-	public struct GtkTreeModelFlags
+	public struct TreeModelFlags
 	{
 		public const int GTK_TREE_MODEL_ITERS_PERSIST = 1;
 		public const int GTK_TREE_MODEL_LIST_ONLY = 2;
 	}
-	public function c_int GtkTreeModelForeachFunc(GtkTreeModel* model, GtkTreePath* path, GtkTreeIter* iter, void* data);
+	public function c_int TreeModelForeachFunc(TreeModel model, TreePath path, TreeIter iter, void* data);
 	[CRepr]
-	public struct GtkTreeModelIface
+	public struct TreeModelIface
 	{
-		GTypeInterface g_iface;
+		GObject.TypeInterface g_iface;
 	}
 	[CRepr]
-	public struct GtkTreeModelSort;
+	public struct TreeModelSort;
 	[LinkName("gtk_tree_model_sort_new_with_model")]
-	public static extern GtkTreeModel* tree_model_sort_new_with_model(GtkTreeModel* child_model);
+	public static extern TreeModelSort TreeModelSortNewWithModel(TreeModel child_model);
 	[LinkName("gtk_tree_model_sort_clear_cache")]
-	public static extern void tree_model_sort_clear_cache(GtkTreeModelSort* tree_model_sort);
+	public static extern void TreeModelSortClearCache(TreeModelSort tree_model_sort);
 	[LinkName("gtk_tree_model_sort_convert_child_iter_to_iter")]
-	public static extern c_int tree_model_sort_convert_child_iter_to_iter(GtkTreeModelSort* tree_model_sort, GtkTreeIter* sort_iter, GtkTreeIter* child_iter);
+	public static extern c_int TreeModelSortConvertChildIterToIter(TreeModelSort tree_model_sort, TreeIter sort_iter, TreeIter child_iter);
 	[LinkName("gtk_tree_model_sort_convert_child_path_to_path")]
-	public static extern GtkTreePath* tree_model_sort_convert_child_path_to_path(GtkTreeModelSort* tree_model_sort, GtkTreePath* child_path);
+	public static extern TreePath TreeModelSortConvertChildPathToPath(TreeModelSort tree_model_sort, TreePath child_path);
 	[LinkName("gtk_tree_model_sort_convert_iter_to_child_iter")]
-	public static extern void tree_model_sort_convert_iter_to_child_iter(GtkTreeModelSort* tree_model_sort, GtkTreeIter* child_iter, GtkTreeIter* sorted_iter);
+	public static extern void TreeModelSortConvertIterToChildIter(TreeModelSort tree_model_sort, TreeIter child_iter, TreeIter sorted_iter);
 	[LinkName("gtk_tree_model_sort_convert_path_to_child_path")]
-	public static extern GtkTreePath* tree_model_sort_convert_path_to_child_path(GtkTreeModelSort* tree_model_sort, GtkTreePath* sorted_path);
+	public static extern TreePath TreeModelSortConvertPathToChildPath(TreeModelSort tree_model_sort, TreePath sorted_path);
 	[LinkName("gtk_tree_model_sort_get_model")]
-	public static extern GtkTreeModel* tree_model_sort_get_model(GtkTreeModelSort* tree_model);
+	public static extern TreeModel TreeModelSortGetModel(TreeModelSort tree_model);
 	[LinkName("gtk_tree_model_sort_iter_is_valid")]
-	public static extern c_int tree_model_sort_iter_is_valid(GtkTreeModelSort* tree_model_sort, GtkTreeIter* iter);
+	public static extern c_int TreeModelSortIterIsValid(TreeModelSort tree_model_sort, TreeIter iter);
 	[LinkName("gtk_tree_model_sort_reset_default_sort_func")]
-	public static extern void tree_model_sort_reset_default_sort_func(GtkTreeModelSort* tree_model_sort);
+	public static extern void TreeModelSortResetDefaultSortFunc(TreeModelSort tree_model_sort);
 	[CRepr]
-	public struct GtkTreeModelSortClass
+	public struct TreeModelSortClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GtkTreeModelSortPrivate
-	{
-	}
-	[CRepr]
-	public struct GtkTreePath
+	public struct TreeModelSortPrivate
 	{
 	}
 	[CRepr]
-	public struct GtkTreeRowReference
+	public struct TreePath
 	{
 	}
 	[CRepr]
-	public struct GtkTreeSelection;
+	public struct TreeRowReference
+	{
+	}
+	[CRepr]
+	public struct TreeSelection;
 	[LinkName("gtk_tree_selection_count_selected_rows")]
-	public static extern c_int tree_selection_count_selected_rows(GtkTreeSelection* selection);
+	public static extern c_int TreeSelectionCountSelectedRows(TreeSelection selection);
 	[LinkName("gtk_tree_selection_get_mode")]
-	public static extern GtkSelectionMode tree_selection_get_mode(GtkTreeSelection* selection);
+	public static extern SelectionMode TreeSelectionGetMode(TreeSelection selection);
 	[LinkName("gtk_tree_selection_get_select_function")]
-	public static extern GtkTreeSelectionFunc tree_selection_get_select_function(GtkTreeSelection* selection);
+	public static extern TreeSelectionFunc TreeSelectionGetSelectFunction(TreeSelection selection);
 	[LinkName("gtk_tree_selection_get_selected")]
-	public static extern c_int tree_selection_get_selected(GtkTreeSelection* selection, GtkTreeModel** model, GtkTreeIter* iter);
+	public static extern c_int TreeSelectionGetSelected(TreeSelection selection, TreeModel model, TreeIter iter);
 	[LinkName("gtk_tree_selection_get_selected_rows")]
-	public static extern GList* tree_selection_get_selected_rows(GtkTreeSelection* selection, GtkTreeModel** model);
+	public static extern GLib.List TreeSelectionGetSelectedRows(TreeSelection selection, TreeModel model);
 	[LinkName("gtk_tree_selection_get_tree_view")]
-	public static extern GtkTreeView* tree_selection_get_tree_view(GtkTreeSelection* selection);
+	public static extern TreeView TreeSelectionGetTreeView(TreeSelection selection);
 	[LinkName("gtk_tree_selection_get_user_data")]
-	public static extern void* tree_selection_get_user_data(GtkTreeSelection* selection);
+	public static extern void* TreeSelectionGetUserData(TreeSelection selection);
 	[LinkName("gtk_tree_selection_iter_is_selected")]
-	public static extern c_int tree_selection_iter_is_selected(GtkTreeSelection* selection, GtkTreeIter* iter);
+	public static extern c_int TreeSelectionIterIsSelected(TreeSelection selection, TreeIter iter);
 	[LinkName("gtk_tree_selection_path_is_selected")]
-	public static extern c_int tree_selection_path_is_selected(GtkTreeSelection* selection, GtkTreePath* path);
+	public static extern c_int TreeSelectionPathIsSelected(TreeSelection selection, TreePath path);
 	[LinkName("gtk_tree_selection_select_all")]
-	public static extern void tree_selection_select_all(GtkTreeSelection* selection);
+	public static extern void TreeSelectionSelectAll(TreeSelection selection);
 	[LinkName("gtk_tree_selection_select_iter")]
-	public static extern void tree_selection_select_iter(GtkTreeSelection* selection, GtkTreeIter* iter);
+	public static extern void TreeSelectionSelectIter(TreeSelection selection, TreeIter iter);
 	[LinkName("gtk_tree_selection_select_path")]
-	public static extern void tree_selection_select_path(GtkTreeSelection* selection, GtkTreePath* path);
+	public static extern void TreeSelectionSelectPath(TreeSelection selection, TreePath path);
 	[LinkName("gtk_tree_selection_select_range")]
-	public static extern void tree_selection_select_range(GtkTreeSelection* selection, GtkTreePath* start_path, GtkTreePath* end_path);
+	public static extern void TreeSelectionSelectRange(TreeSelection selection, TreePath start_path, TreePath end_path);
 	[LinkName("gtk_tree_selection_selected_foreach")]
-	public static extern void tree_selection_selected_foreach(GtkTreeSelection* selection, GtkTreeSelectionForeachFunc func, void* data);
+	public static extern void TreeSelectionSelectedForeach(TreeSelection selection, TreeSelectionForeachFunc func, void* data);
 	[LinkName("gtk_tree_selection_set_mode")]
-	public static extern void tree_selection_set_mode(GtkTreeSelection* selection, GtkSelectionMode type);
+	public static extern void TreeSelectionSetMode(TreeSelection selection, SelectionMode type);
 	[LinkName("gtk_tree_selection_set_select_function")]
-	public static extern void tree_selection_set_select_function(GtkTreeSelection* selection, GtkTreeSelectionFunc func, void* data, GDestroyNotify destroy);
+	public static extern void TreeSelectionSetSelectFunction(TreeSelection selection, TreeSelectionFunc func, void* data, GLib.DestroyNotify destroy);
 	[LinkName("gtk_tree_selection_unselect_all")]
-	public static extern void tree_selection_unselect_all(GtkTreeSelection* selection);
+	public static extern void TreeSelectionUnselectAll(TreeSelection selection);
 	[LinkName("gtk_tree_selection_unselect_iter")]
-	public static extern void tree_selection_unselect_iter(GtkTreeSelection* selection, GtkTreeIter* iter);
+	public static extern void TreeSelectionUnselectIter(TreeSelection selection, TreeIter iter);
 	[LinkName("gtk_tree_selection_unselect_path")]
-	public static extern void tree_selection_unselect_path(GtkTreeSelection* selection, GtkTreePath* path);
+	public static extern void TreeSelectionUnselectPath(TreeSelection selection, TreePath path);
 	[LinkName("gtk_tree_selection_unselect_range")]
-	public static extern void tree_selection_unselect_range(GtkTreeSelection* selection, GtkTreePath* start_path, GtkTreePath* end_path);
-	public function void GtkTreeSelectionForeachFunc(GtkTreeModel* model, GtkTreePath* path, GtkTreeIter* iter, void* data);
-	public function c_int GtkTreeSelectionFunc(GtkTreeSelection* selection, GtkTreeModel* model, GtkTreePath* path, c_int path_currently_selected, void* data);
+	public static extern void TreeSelectionUnselectRange(TreeSelection selection, TreePath start_path, TreePath end_path);
+	public function void TreeSelectionForeachFunc(TreeModel model, TreePath path, TreeIter iter, void* data);
+	public function c_int TreeSelectionFunc(TreeSelection selection, TreeModel model, TreePath path, c_int path_currently_selected, void* data);
 	[CRepr]
-	public struct GtkTreeSortable
+	public struct TreeSortable
 	{
-		public function c_int(GtkTreeSortable* sortable, c_int* sort_column_id, GtkSortType* order) get_sort_column_id;
+		public function c_int(TreeSortable sortable, c_int sort_column_id, SortType order) get_sort_column_id;
 
-		public function c_int(GtkTreeSortable* sortable) has_default_sort_func;
+		public function c_int(TreeSortable sortable) has_default_sort_func;
 
-		public function void(GtkTreeSortable* sortable, GtkTreeIterCompareFunc sort_func, void* user_data, GDestroyNotify destroy) set_default_sort_func;
+		public function void(TreeSortable sortable, TreeIterCompareFunc sort_func, void* user_data, GLib.DestroyNotify destroy) set_default_sort_func;
 
-		public function void(GtkTreeSortable* sortable, c_int sort_column_id, GtkSortType order) set_sort_column_id;
+		public function void(TreeSortable sortable, c_int sort_column_id, SortType order) set_sort_column_id;
 
-		public function void(GtkTreeSortable* sortable, c_int sort_column_id, GtkTreeIterCompareFunc sort_func, void* user_data, GDestroyNotify destroy) set_sort_func;
+		public function void(TreeSortable sortable, c_int sort_column_id, TreeIterCompareFunc sort_func, void* user_data, GLib.DestroyNotify destroy) set_sort_func;
 
-		public function void(GtkTreeSortable* sortable) sort_column_changed;
+		public function void(TreeSortable sortable) sort_column_changed;
 	}
 	[CRepr]
-	public struct GtkTreeSortableIface
+	public struct TreeSortableIface
 	{
-		GTypeInterface g_iface;
+		GObject.TypeInterface g_iface;
 	}
 	[CRepr]
-	public struct GtkTreeStore;
+	public struct TreeStore;
 	[LinkName("gtk_tree_store_new")]
-	public static extern GtkTreeStore* tree_store_new(c_int n_columns);
+	public static extern TreeStore TreeStoreNew(c_int n_columns);
 	[LinkName("gtk_tree_store_newv")]
-	public static extern GtkTreeStore* tree_store_newv(c_int n_columns);
+	public static extern TreeStore TreeStoreNewv(c_int n_columns);
 	[LinkName("gtk_tree_store_append")]
-	public static extern void tree_store_append(GtkTreeStore* tree_store, GtkTreeIter* iter, GtkTreeIter* parent);
+	public static extern void TreeStoreAppend(TreeStore tree_store, TreeIter iter, TreeIter parent);
 	[LinkName("gtk_tree_store_clear")]
-	public static extern void tree_store_clear(GtkTreeStore* tree_store);
+	public static extern void TreeStoreClear(TreeStore tree_store);
 	[LinkName("gtk_tree_store_insert")]
-	public static extern void tree_store_insert(GtkTreeStore* tree_store, GtkTreeIter* iter, GtkTreeIter* parent, c_int position);
+	public static extern void TreeStoreInsert(TreeStore tree_store, TreeIter iter, TreeIter parent, c_int position);
 	[LinkName("gtk_tree_store_insert_after")]
-	public static extern void tree_store_insert_after(GtkTreeStore* tree_store, GtkTreeIter* iter, GtkTreeIter* parent, GtkTreeIter* sibling);
+	public static extern void TreeStoreInsertAfter(TreeStore tree_store, TreeIter iter, TreeIter parent, TreeIter sibling);
 	[LinkName("gtk_tree_store_insert_before")]
-	public static extern void tree_store_insert_before(GtkTreeStore* tree_store, GtkTreeIter* iter, GtkTreeIter* parent, GtkTreeIter* sibling);
+	public static extern void TreeStoreInsertBefore(TreeStore tree_store, TreeIter iter, TreeIter parent, TreeIter sibling);
 	[LinkName("gtk_tree_store_insert_with_values")]
-	public static extern void tree_store_insert_with_values(GtkTreeStore* tree_store, GtkTreeIter* iter, GtkTreeIter* parent, c_int position);
+	public static extern void TreeStoreInsertWithValues(TreeStore tree_store, TreeIter iter, TreeIter parent, c_int position);
 	[LinkName("gtk_tree_store_insert_with_valuesv")]
-	public static extern void tree_store_insert_with_valuesv(GtkTreeStore* tree_store, GtkTreeIter* iter, GtkTreeIter* parent, c_int position, c_int n_values);
+	public static extern void TreeStoreInsertWithValuesv(TreeStore tree_store, TreeIter iter, TreeIter parent, c_int position, c_int n_values);
 	[LinkName("gtk_tree_store_is_ancestor")]
-	public static extern c_int tree_store_is_ancestor(GtkTreeStore* tree_store, GtkTreeIter* iter, GtkTreeIter* descendant);
+	public static extern c_int TreeStoreIsAncestor(TreeStore tree_store, TreeIter iter, TreeIter descendant);
 	[LinkName("gtk_tree_store_iter_depth")]
-	public static extern c_int tree_store_iter_depth(GtkTreeStore* tree_store, GtkTreeIter* iter);
+	public static extern c_int TreeStoreIterDepth(TreeStore tree_store, TreeIter iter);
 	[LinkName("gtk_tree_store_iter_is_valid")]
-	public static extern c_int tree_store_iter_is_valid(GtkTreeStore* tree_store, GtkTreeIter* iter);
+	public static extern c_int TreeStoreIterIsValid(TreeStore tree_store, TreeIter iter);
 	[LinkName("gtk_tree_store_move_after")]
-	public static extern void tree_store_move_after(GtkTreeStore* tree_store, GtkTreeIter* iter, GtkTreeIter* position);
+	public static extern void TreeStoreMoveAfter(TreeStore tree_store, TreeIter iter, TreeIter position);
 	[LinkName("gtk_tree_store_move_before")]
-	public static extern void tree_store_move_before(GtkTreeStore* tree_store, GtkTreeIter* iter, GtkTreeIter* position);
+	public static extern void TreeStoreMoveBefore(TreeStore tree_store, TreeIter iter, TreeIter position);
 	[LinkName("gtk_tree_store_prepend")]
-	public static extern void tree_store_prepend(GtkTreeStore* tree_store, GtkTreeIter* iter, GtkTreeIter* parent);
+	public static extern void TreeStorePrepend(TreeStore tree_store, TreeIter iter, TreeIter parent);
 	[LinkName("gtk_tree_store_remove")]
-	public static extern c_int tree_store_remove(GtkTreeStore* tree_store, GtkTreeIter* iter);
+	public static extern c_int TreeStoreRemove(TreeStore tree_store, TreeIter iter);
 	[LinkName("gtk_tree_store_reorder")]
-	public static extern void tree_store_reorder(GtkTreeStore* tree_store, GtkTreeIter* parent);
+	public static extern void TreeStoreReorder(TreeStore tree_store, TreeIter parent);
 	[LinkName("gtk_tree_store_set")]
-	public static extern void tree_store_set(GtkTreeStore* tree_store, GtkTreeIter* iter);
+	public static extern void TreeStoreSet(TreeStore tree_store, TreeIter iter);
 	[LinkName("gtk_tree_store_set_column_types")]
-	public static extern void tree_store_set_column_types(GtkTreeStore* tree_store, c_int n_columns);
+	public static extern void TreeStoreSetColumnTypes(TreeStore tree_store, c_int n_columns);
 	[LinkName("gtk_tree_store_set_valist")]
-	public static extern void tree_store_set_valist(GtkTreeStore* tree_store, GtkTreeIter* iter, VarArgs var_args);
+	public static extern void TreeStoreSetValist(TreeStore tree_store, TreeIter iter, VarArgs var_args);
 	[LinkName("gtk_tree_store_set_value")]
-	public static extern void tree_store_set_value(GtkTreeStore* tree_store, GtkTreeIter* iter, c_int column, GValue* value);
+	public static extern void TreeStoreSetValue(TreeStore tree_store, TreeIter iter, c_int column, GObject.Value value);
 	[LinkName("gtk_tree_store_set_valuesv")]
-	public static extern void tree_store_set_valuesv(GtkTreeStore* tree_store, GtkTreeIter* iter, c_int n_values);
+	public static extern void TreeStoreSetValuesv(TreeStore tree_store, TreeIter iter, c_int n_values);
 	[LinkName("gtk_tree_store_swap")]
-	public static extern void tree_store_swap(GtkTreeStore* tree_store, GtkTreeIter* a, GtkTreeIter* b);
+	public static extern void TreeStoreSwap(TreeStore tree_store, TreeIter a, TreeIter b);
 	[CRepr]
-	public struct GtkTreeStoreClass
+	public struct TreeStoreClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GtkTreeStorePrivate
+	public struct TreeStorePrivate
 	{
 	}
 	[CRepr]
-	public struct GtkTreeView;
+	public struct TreeView;
 	[LinkName("gtk_tree_view_new")]
-	public static extern GtkWidget* tree_view_new();
+	public static extern Widget TreeViewNew();
 	[LinkName("gtk_tree_view_new_with_model")]
-	public static extern GtkWidget* tree_view_new_with_model(GtkTreeModel* model);
+	public static extern Widget TreeViewNewWithModel(TreeModel model);
 	[LinkName("gtk_tree_view_append_column")]
-	public static extern c_int tree_view_append_column(GtkTreeView* tree_view, GtkTreeViewColumn* column);
+	public static extern c_int TreeViewAppendColumn(TreeView tree_view, TreeViewColumn column);
 	[LinkName("gtk_tree_view_collapse_all")]
-	public static extern void tree_view_collapse_all(GtkTreeView* tree_view);
+	public static extern void TreeViewCollapseAll(TreeView tree_view);
 	[LinkName("gtk_tree_view_collapse_row")]
-	public static extern c_int tree_view_collapse_row(GtkTreeView* tree_view, GtkTreePath* path);
+	public static extern c_int TreeViewCollapseRow(TreeView tree_view, TreePath path);
 	[LinkName("gtk_tree_view_columns_autosize")]
-	public static extern void tree_view_columns_autosize(GtkTreeView* tree_view);
+	public static extern void TreeViewColumnsAutosize(TreeView tree_view);
 	[LinkName("gtk_tree_view_convert_bin_window_to_tree_coords")]
-	public static extern void tree_view_convert_bin_window_to_tree_coords(GtkTreeView* tree_view, c_int bx, c_int by, c_int* tx, c_int* ty);
+	public static extern void TreeViewConvertBinWindowToTreeCoords(TreeView tree_view, c_int bx, c_int by, c_int tx, c_int ty);
 	[LinkName("gtk_tree_view_convert_bin_window_to_widget_coords")]
-	public static extern void tree_view_convert_bin_window_to_widget_coords(GtkTreeView* tree_view, c_int bx, c_int by, c_int* wx, c_int* wy);
+	public static extern void TreeViewConvertBinWindowToWidgetCoords(TreeView tree_view, c_int bx, c_int by, c_int wx, c_int wy);
 	[LinkName("gtk_tree_view_convert_tree_to_bin_window_coords")]
-	public static extern void tree_view_convert_tree_to_bin_window_coords(GtkTreeView* tree_view, c_int tx, c_int ty, c_int* bx, c_int* by);
+	public static extern void TreeViewConvertTreeToBinWindowCoords(TreeView tree_view, c_int tx, c_int ty, c_int bx, c_int by);
 	[LinkName("gtk_tree_view_convert_tree_to_widget_coords")]
-	public static extern void tree_view_convert_tree_to_widget_coords(GtkTreeView* tree_view, c_int tx, c_int ty, c_int* wx, c_int* wy);
+	public static extern void TreeViewConvertTreeToWidgetCoords(TreeView tree_view, c_int tx, c_int ty, c_int wx, c_int wy);
 	[LinkName("gtk_tree_view_convert_widget_to_bin_window_coords")]
-	public static extern void tree_view_convert_widget_to_bin_window_coords(GtkTreeView* tree_view, c_int wx, c_int wy, c_int* bx, c_int* by);
+	public static extern void TreeViewConvertWidgetToBinWindowCoords(TreeView tree_view, c_int wx, c_int wy, c_int bx, c_int by);
 	[LinkName("gtk_tree_view_convert_widget_to_tree_coords")]
-	public static extern void tree_view_convert_widget_to_tree_coords(GtkTreeView* tree_view, c_int wx, c_int wy, c_int* tx, c_int* ty);
+	public static extern void TreeViewConvertWidgetToTreeCoords(TreeView tree_view, c_int wx, c_int wy, c_int tx, c_int ty);
 	[LinkName("gtk_tree_view_create_row_drag_icon")]
-	public static extern GdkPaintable* tree_view_create_row_drag_icon(GtkTreeView* tree_view, GtkTreePath* path);
+	public static extern Gdk.Paintable TreeViewCreateRowDragIcon(TreeView tree_view, TreePath path);
 	[LinkName("gtk_tree_view_enable_model_drag_dest")]
-	public static extern void tree_view_enable_model_drag_dest(GtkTreeView* tree_view, GdkContentFormats* formats, GdkDragAction actions);
+	public static extern void TreeViewEnableModelDragDest(TreeView tree_view, Gdk.ContentFormats formats, Gdk.DragAction actions);
 	[LinkName("gtk_tree_view_enable_model_drag_source")]
-	public static extern void tree_view_enable_model_drag_source(GtkTreeView* tree_view, GdkModifierType start_button_mask, GdkContentFormats* formats, GdkDragAction actions);
+	public static extern void TreeViewEnableModelDragSource(TreeView tree_view, Gdk.ModifierType start_button_mask, Gdk.ContentFormats formats, Gdk.DragAction actions);
 	[LinkName("gtk_tree_view_expand_all")]
-	public static extern void tree_view_expand_all(GtkTreeView* tree_view);
+	public static extern void TreeViewExpandAll(TreeView tree_view);
 	[LinkName("gtk_tree_view_expand_row")]
-	public static extern c_int tree_view_expand_row(GtkTreeView* tree_view, GtkTreePath* path, c_int open_all);
+	public static extern c_int TreeViewExpandRow(TreeView tree_view, TreePath path, c_int open_all);
 	[LinkName("gtk_tree_view_expand_to_path")]
-	public static extern void tree_view_expand_to_path(GtkTreeView* tree_view, GtkTreePath* path);
+	public static extern void TreeViewExpandToPath(TreeView tree_view, TreePath path);
 	[LinkName("gtk_tree_view_get_activate_on_single_click")]
-	public static extern c_int tree_view_get_activate_on_single_click(GtkTreeView* tree_view);
+	public static extern c_int TreeViewGetActivateOnSingleClick(TreeView tree_view);
 	[LinkName("gtk_tree_view_get_background_area")]
-	public static extern void tree_view_get_background_area(GtkTreeView* tree_view, GtkTreePath* path, GtkTreeViewColumn* column, GdkRectangle* rect);
+	public static extern void TreeViewGetBackgroundArea(TreeView tree_view, TreePath path, TreeViewColumn column, Gdk.Rectangle rect);
 	[LinkName("gtk_tree_view_get_cell_area")]
-	public static extern void tree_view_get_cell_area(GtkTreeView* tree_view, GtkTreePath* path, GtkTreeViewColumn* column, GdkRectangle* rect);
+	public static extern void TreeViewGetCellArea(TreeView tree_view, TreePath path, TreeViewColumn column, Gdk.Rectangle rect);
 	[LinkName("gtk_tree_view_get_column")]
-	public static extern GtkTreeViewColumn* tree_view_get_column(GtkTreeView* tree_view, c_int n);
+	public static extern TreeViewColumn TreeViewGetColumn(TreeView tree_view, c_int n);
 	[LinkName("gtk_tree_view_get_columns")]
-	public static extern GList* tree_view_get_columns(GtkTreeView* tree_view);
+	public static extern GLib.List TreeViewGetColumns(TreeView tree_view);
 	[LinkName("gtk_tree_view_get_cursor")]
-	public static extern void tree_view_get_cursor(GtkTreeView* tree_view, GtkTreePath** path, GtkTreeViewColumn** focus_column);
+	public static extern void TreeViewGetCursor(TreeView tree_view, TreePath path, TreeViewColumn focus_column);
 	[LinkName("gtk_tree_view_get_dest_row_at_pos")]
-	public static extern c_int tree_view_get_dest_row_at_pos(GtkTreeView* tree_view, c_int drag_x, c_int drag_y, GtkTreePath** path, GtkTreeViewDropPosition* pos);
+	public static extern c_int TreeViewGetDestRowAtPos(TreeView tree_view, c_int drag_x, c_int drag_y, TreePath path, TreeViewDropPosition pos);
 	[LinkName("gtk_tree_view_get_drag_dest_row")]
-	public static extern void tree_view_get_drag_dest_row(GtkTreeView* tree_view, GtkTreePath** path, GtkTreeViewDropPosition* pos);
+	public static extern void TreeViewGetDragDestRow(TreeView tree_view, TreePath path, TreeViewDropPosition pos);
 	[LinkName("gtk_tree_view_get_enable_search")]
-	public static extern c_int tree_view_get_enable_search(GtkTreeView* tree_view);
+	public static extern c_int TreeViewGetEnableSearch(TreeView tree_view);
 	[LinkName("gtk_tree_view_get_enable_tree_lines")]
-	public static extern c_int tree_view_get_enable_tree_lines(GtkTreeView* tree_view);
+	public static extern c_int TreeViewGetEnableTreeLines(TreeView tree_view);
 	[LinkName("gtk_tree_view_get_expander_column")]
-	public static extern GtkTreeViewColumn* tree_view_get_expander_column(GtkTreeView* tree_view);
+	public static extern TreeViewColumn TreeViewGetExpanderColumn(TreeView tree_view);
 	[LinkName("gtk_tree_view_get_fixed_height_mode")]
-	public static extern c_int tree_view_get_fixed_height_mode(GtkTreeView* tree_view);
+	public static extern c_int TreeViewGetFixedHeightMode(TreeView tree_view);
 	[LinkName("gtk_tree_view_get_grid_lines")]
-	public static extern GtkTreeViewGridLines tree_view_get_grid_lines(GtkTreeView* tree_view);
+	public static extern TreeViewGridLines TreeViewGetGridLines(TreeView tree_view);
 	[LinkName("gtk_tree_view_get_headers_clickable")]
-	public static extern c_int tree_view_get_headers_clickable(GtkTreeView* tree_view);
+	public static extern c_int TreeViewGetHeadersClickable(TreeView tree_view);
 	[LinkName("gtk_tree_view_get_headers_visible")]
-	public static extern c_int tree_view_get_headers_visible(GtkTreeView* tree_view);
+	public static extern c_int TreeViewGetHeadersVisible(TreeView tree_view);
 	[LinkName("gtk_tree_view_get_hover_expand")]
-	public static extern c_int tree_view_get_hover_expand(GtkTreeView* tree_view);
+	public static extern c_int TreeViewGetHoverExpand(TreeView tree_view);
 	[LinkName("gtk_tree_view_get_hover_selection")]
-	public static extern c_int tree_view_get_hover_selection(GtkTreeView* tree_view);
+	public static extern c_int TreeViewGetHoverSelection(TreeView tree_view);
 	[LinkName("gtk_tree_view_get_level_indentation")]
-	public static extern c_int tree_view_get_level_indentation(GtkTreeView* tree_view);
+	public static extern c_int TreeViewGetLevelIndentation(TreeView tree_view);
 	[LinkName("gtk_tree_view_get_model")]
-	public static extern GtkTreeModel* tree_view_get_model(GtkTreeView* tree_view);
+	public static extern TreeModel TreeViewGetModel(TreeView tree_view);
 	[LinkName("gtk_tree_view_get_n_columns")]
-	public static extern c_uint tree_view_get_n_columns(GtkTreeView* tree_view);
+	public static extern c_uint TreeViewGetNColumns(TreeView tree_view);
 	[LinkName("gtk_tree_view_get_path_at_pos")]
-	public static extern c_int tree_view_get_path_at_pos(GtkTreeView* tree_view, c_int x, c_int y, GtkTreePath** path, GtkTreeViewColumn** column, c_int* cell_x, c_int* cell_y);
+	public static extern c_int TreeViewGetPathAtPos(TreeView tree_view, c_int x, c_int y, TreePath path, TreeViewColumn column, c_int cell_x, c_int cell_y);
 	[LinkName("gtk_tree_view_get_reorderable")]
-	public static extern c_int tree_view_get_reorderable(GtkTreeView* tree_view);
+	public static extern c_int TreeViewGetReorderable(TreeView tree_view);
 	[LinkName("gtk_tree_view_get_row_separator_func")]
-	public static extern GtkTreeViewRowSeparatorFunc tree_view_get_row_separator_func(GtkTreeView* tree_view);
+	public static extern TreeViewRowSeparatorFunc TreeViewGetRowSeparatorFunc(TreeView tree_view);
 	[LinkName("gtk_tree_view_get_rubber_banding")]
-	public static extern c_int tree_view_get_rubber_banding(GtkTreeView* tree_view);
+	public static extern c_int TreeViewGetRubberBanding(TreeView tree_view);
 	[LinkName("gtk_tree_view_get_search_column")]
-	public static extern c_int tree_view_get_search_column(GtkTreeView* tree_view);
+	public static extern c_int TreeViewGetSearchColumn(TreeView tree_view);
 	[LinkName("gtk_tree_view_get_search_entry")]
-	public static extern GtkEditable* tree_view_get_search_entry(GtkTreeView* tree_view);
+	public static extern Editable TreeViewGetSearchEntry(TreeView tree_view);
 	[LinkName("gtk_tree_view_get_search_equal_func")]
-	public static extern GtkTreeViewSearchEqualFunc tree_view_get_search_equal_func(GtkTreeView* tree_view);
+	public static extern TreeViewSearchEqualFunc TreeViewGetSearchEqualFunc(TreeView tree_view);
 	[LinkName("gtk_tree_view_get_selection")]
-	public static extern GtkTreeSelection* tree_view_get_selection(GtkTreeView* tree_view);
+	public static extern TreeSelection TreeViewGetSelection(TreeView tree_view);
 	[LinkName("gtk_tree_view_get_show_expanders")]
-	public static extern c_int tree_view_get_show_expanders(GtkTreeView* tree_view);
+	public static extern c_int TreeViewGetShowExpanders(TreeView tree_view);
 	[LinkName("gtk_tree_view_get_tooltip_column")]
-	public static extern c_int tree_view_get_tooltip_column(GtkTreeView* tree_view);
+	public static extern c_int TreeViewGetTooltipColumn(TreeView tree_view);
 	[LinkName("gtk_tree_view_get_tooltip_context")]
-	public static extern c_int tree_view_get_tooltip_context(GtkTreeView* tree_view, c_int x, c_int y, c_int keyboard_tip, GtkTreeModel** model, GtkTreePath** path, GtkTreeIter* iter);
+	public static extern c_int TreeViewGetTooltipContext(TreeView tree_view, c_int x, c_int y, c_int keyboard_tip, TreeModel model, TreePath path, TreeIter iter);
 	[LinkName("gtk_tree_view_get_visible_range")]
-	public static extern c_int tree_view_get_visible_range(GtkTreeView* tree_view, GtkTreePath** start_path, GtkTreePath** end_path);
+	public static extern c_int TreeViewGetVisibleRange(TreeView tree_view, TreePath start_path, TreePath end_path);
 	[LinkName("gtk_tree_view_get_visible_rect")]
-	public static extern void tree_view_get_visible_rect(GtkTreeView* tree_view, GdkRectangle* visible_rect);
+	public static extern void TreeViewGetVisibleRect(TreeView tree_view, Gdk.Rectangle visible_rect);
 	[LinkName("gtk_tree_view_insert_column")]
-	public static extern c_int tree_view_insert_column(GtkTreeView* tree_view, GtkTreeViewColumn* column, c_int position);
+	public static extern c_int TreeViewInsertColumn(TreeView tree_view, TreeViewColumn column, c_int position);
 	[LinkName("gtk_tree_view_insert_column_with_attributes")]
-	public static extern c_int tree_view_insert_column_with_attributes(GtkTreeView* tree_view, c_int position,  c_char* title, GtkCellRenderer* cell);
+	public static extern c_int TreeViewInsertColumnWithAttributes(TreeView tree_view, c_int position, char8* title, CellRenderer cell);
 	[LinkName("gtk_tree_view_insert_column_with_data_func")]
-	public static extern c_int tree_view_insert_column_with_data_func(GtkTreeView* tree_view, c_int position,  c_char* title, GtkCellRenderer* cell, GtkTreeCellDataFunc func, void* data, GDestroyNotify dnotify);
+	public static extern c_int TreeViewInsertColumnWithDataFunc(TreeView tree_view, c_int position, char8* title, CellRenderer cell, TreeCellDataFunc func, void* data, GLib.DestroyNotify dnotify);
 	[LinkName("gtk_tree_view_is_blank_at_pos")]
-	public static extern c_int tree_view_is_blank_at_pos(GtkTreeView* tree_view, c_int x, c_int y, GtkTreePath** path, GtkTreeViewColumn** column, c_int* cell_x, c_int* cell_y);
+	public static extern c_int TreeViewIsBlankAtPos(TreeView tree_view, c_int x, c_int y, TreePath path, TreeViewColumn column, c_int cell_x, c_int cell_y);
 	[LinkName("gtk_tree_view_is_rubber_banding_active")]
-	public static extern c_int tree_view_is_rubber_banding_active(GtkTreeView* tree_view);
+	public static extern c_int TreeViewIsRubberBandingActive(TreeView tree_view);
 	[LinkName("gtk_tree_view_map_expanded_rows")]
-	public static extern void tree_view_map_expanded_rows(GtkTreeView* tree_view, GtkTreeViewMappingFunc func, void* data);
+	public static extern void TreeViewMapExpandedRows(TreeView tree_view, TreeViewMappingFunc func, void* data);
 	[LinkName("gtk_tree_view_move_column_after")]
-	public static extern void tree_view_move_column_after(GtkTreeView* tree_view, GtkTreeViewColumn* column, GtkTreeViewColumn* base_column);
+	public static extern void TreeViewMoveColumnAfter(TreeView tree_view, TreeViewColumn column, TreeViewColumn base_column);
 	[LinkName("gtk_tree_view_remove_column")]
-	public static extern c_int tree_view_remove_column(GtkTreeView* tree_view, GtkTreeViewColumn* column);
+	public static extern c_int TreeViewRemoveColumn(TreeView tree_view, TreeViewColumn column);
 	[LinkName("gtk_tree_view_row_activated")]
-	public static extern void tree_view_row_activated(GtkTreeView* tree_view, GtkTreePath* path, GtkTreeViewColumn* column);
+	public static extern void TreeViewRowActivated(TreeView tree_view, TreePath path, TreeViewColumn column);
 	[LinkName("gtk_tree_view_row_expanded")]
-	public static extern c_int tree_view_row_expanded(GtkTreeView* tree_view, GtkTreePath* path);
+	public static extern c_int TreeViewRowExpanded(TreeView tree_view, TreePath path);
 	[LinkName("gtk_tree_view_scroll_to_cell")]
-	public static extern void tree_view_scroll_to_cell(GtkTreeView* tree_view, GtkTreePath* path, GtkTreeViewColumn* column, c_int use_align, float row_align, float col_align);
+	public static extern void TreeViewScrollToCell(TreeView tree_view, TreePath path, TreeViewColumn column, c_int use_align, float row_align, float col_align);
 	[LinkName("gtk_tree_view_scroll_to_point")]
-	public static extern void tree_view_scroll_to_point(GtkTreeView* tree_view, c_int tree_x, c_int tree_y);
+	public static extern void TreeViewScrollToPoint(TreeView tree_view, c_int tree_x, c_int tree_y);
 	[LinkName("gtk_tree_view_set_activate_on_single_click")]
-	public static extern void tree_view_set_activate_on_single_click(GtkTreeView* tree_view, c_int single);
+	public static extern void TreeViewSetActivateOnSingleClick(TreeView tree_view, c_int single);
 	[LinkName("gtk_tree_view_set_column_drag_function")]
-	public static extern void tree_view_set_column_drag_function(GtkTreeView* tree_view, GtkTreeViewColumnDropFunc func, void* user_data, GDestroyNotify destroy);
+	public static extern void TreeViewSetColumnDragFunction(TreeView tree_view, TreeViewColumnDropFunc func, void* user_data, GLib.DestroyNotify destroy);
 	[LinkName("gtk_tree_view_set_cursor")]
-	public static extern void tree_view_set_cursor(GtkTreeView* tree_view, GtkTreePath* path, GtkTreeViewColumn* focus_column, c_int start_editing);
+	public static extern void TreeViewSetCursor(TreeView tree_view, TreePath path, TreeViewColumn focus_column, c_int start_editing);
 	[LinkName("gtk_tree_view_set_cursor_on_cell")]
-	public static extern void tree_view_set_cursor_on_cell(GtkTreeView* tree_view, GtkTreePath* path, GtkTreeViewColumn* focus_column, GtkCellRenderer* focus_cell, c_int start_editing);
+	public static extern void TreeViewSetCursorOnCell(TreeView tree_view, TreePath path, TreeViewColumn focus_column, CellRenderer focus_cell, c_int start_editing);
 	[LinkName("gtk_tree_view_set_drag_dest_row")]
-	public static extern void tree_view_set_drag_dest_row(GtkTreeView* tree_view, GtkTreePath* path, GtkTreeViewDropPosition pos);
+	public static extern void TreeViewSetDragDestRow(TreeView tree_view, TreePath path, TreeViewDropPosition pos);
 	[LinkName("gtk_tree_view_set_enable_search")]
-	public static extern void tree_view_set_enable_search(GtkTreeView* tree_view, c_int enable_search);
+	public static extern void TreeViewSetEnableSearch(TreeView tree_view, c_int enable_search);
 	[LinkName("gtk_tree_view_set_enable_tree_lines")]
-	public static extern void tree_view_set_enable_tree_lines(GtkTreeView* tree_view, c_int enabled);
+	public static extern void TreeViewSetEnableTreeLines(TreeView tree_view, c_int enabled);
 	[LinkName("gtk_tree_view_set_expander_column")]
-	public static extern void tree_view_set_expander_column(GtkTreeView* tree_view, GtkTreeViewColumn* column);
+	public static extern void TreeViewSetExpanderColumn(TreeView tree_view, TreeViewColumn column);
 	[LinkName("gtk_tree_view_set_fixed_height_mode")]
-	public static extern void tree_view_set_fixed_height_mode(GtkTreeView* tree_view, c_int enable);
+	public static extern void TreeViewSetFixedHeightMode(TreeView tree_view, c_int enable);
 	[LinkName("gtk_tree_view_set_grid_lines")]
-	public static extern void tree_view_set_grid_lines(GtkTreeView* tree_view, GtkTreeViewGridLines grid_lines);
+	public static extern void TreeViewSetGridLines(TreeView tree_view, TreeViewGridLines grid_lines);
 	[LinkName("gtk_tree_view_set_headers_clickable")]
-	public static extern void tree_view_set_headers_clickable(GtkTreeView* tree_view, c_int setting);
+	public static extern void TreeViewSetHeadersClickable(TreeView tree_view, c_int setting);
 	[LinkName("gtk_tree_view_set_headers_visible")]
-	public static extern void tree_view_set_headers_visible(GtkTreeView* tree_view, c_int headers_visible);
+	public static extern void TreeViewSetHeadersVisible(TreeView tree_view, c_int headers_visible);
 	[LinkName("gtk_tree_view_set_hover_expand")]
-	public static extern void tree_view_set_hover_expand(GtkTreeView* tree_view, c_int expand);
+	public static extern void TreeViewSetHoverExpand(TreeView tree_view, c_int expand);
 	[LinkName("gtk_tree_view_set_hover_selection")]
-	public static extern void tree_view_set_hover_selection(GtkTreeView* tree_view, c_int hover);
+	public static extern void TreeViewSetHoverSelection(TreeView tree_view, c_int hover);
 	[LinkName("gtk_tree_view_set_level_indentation")]
-	public static extern void tree_view_set_level_indentation(GtkTreeView* tree_view, c_int indentation);
+	public static extern void TreeViewSetLevelIndentation(TreeView tree_view, c_int indentation);
 	[LinkName("gtk_tree_view_set_model")]
-	public static extern void tree_view_set_model(GtkTreeView* tree_view, GtkTreeModel* model);
+	public static extern void TreeViewSetModel(TreeView tree_view, TreeModel model);
 	[LinkName("gtk_tree_view_set_reorderable")]
-	public static extern void tree_view_set_reorderable(GtkTreeView* tree_view, c_int reorderable);
+	public static extern void TreeViewSetReorderable(TreeView tree_view, c_int reorderable);
 	[LinkName("gtk_tree_view_set_row_separator_func")]
-	public static extern void tree_view_set_row_separator_func(GtkTreeView* tree_view, GtkTreeViewRowSeparatorFunc func, void* data, GDestroyNotify destroy);
+	public static extern void TreeViewSetRowSeparatorFunc(TreeView tree_view, TreeViewRowSeparatorFunc func, void* data, GLib.DestroyNotify destroy);
 	[LinkName("gtk_tree_view_set_rubber_banding")]
-	public static extern void tree_view_set_rubber_banding(GtkTreeView* tree_view, c_int enable);
+	public static extern void TreeViewSetRubberBanding(TreeView tree_view, c_int enable);
 	[LinkName("gtk_tree_view_set_search_column")]
-	public static extern void tree_view_set_search_column(GtkTreeView* tree_view, c_int column);
+	public static extern void TreeViewSetSearchColumn(TreeView tree_view, c_int column);
 	[LinkName("gtk_tree_view_set_search_entry")]
-	public static extern void tree_view_set_search_entry(GtkTreeView* tree_view, GtkEditable* entry);
+	public static extern void TreeViewSetSearchEntry(TreeView tree_view, Editable entry);
 	[LinkName("gtk_tree_view_set_search_equal_func")]
-	public static extern void tree_view_set_search_equal_func(GtkTreeView* tree_view, GtkTreeViewSearchEqualFunc search_equal_func, void* search_user_data, GDestroyNotify search_destroy);
+	public static extern void TreeViewSetSearchEqualFunc(TreeView tree_view, TreeViewSearchEqualFunc search_equal_func, void* search_user_data, GLib.DestroyNotify search_destroy);
 	[LinkName("gtk_tree_view_set_show_expanders")]
-	public static extern void tree_view_set_show_expanders(GtkTreeView* tree_view, c_int enabled);
+	public static extern void TreeViewSetShowExpanders(TreeView tree_view, c_int enabled);
 	[LinkName("gtk_tree_view_set_tooltip_cell")]
-	public static extern void tree_view_set_tooltip_cell(GtkTreeView* tree_view, GtkTooltip* tooltip, GtkTreePath* path, GtkTreeViewColumn* column, GtkCellRenderer* cell);
+	public static extern void TreeViewSetTooltipCell(TreeView tree_view, Tooltip tooltip, TreePath path, TreeViewColumn column, CellRenderer cell);
 	[LinkName("gtk_tree_view_set_tooltip_column")]
-	public static extern void tree_view_set_tooltip_column(GtkTreeView* tree_view, c_int column);
+	public static extern void TreeViewSetTooltipColumn(TreeView tree_view, c_int column);
 	[LinkName("gtk_tree_view_set_tooltip_row")]
-	public static extern void tree_view_set_tooltip_row(GtkTreeView* tree_view, GtkTooltip* tooltip, GtkTreePath* path);
+	public static extern void TreeViewSetTooltipRow(TreeView tree_view, Tooltip tooltip, TreePath path);
 	[LinkName("gtk_tree_view_unset_rows_drag_dest")]
-	public static extern void tree_view_unset_rows_drag_dest(GtkTreeView* tree_view);
+	public static extern void TreeViewUnsetRowsDragDest(TreeView tree_view);
 	[LinkName("gtk_tree_view_unset_rows_drag_source")]
-	public static extern void tree_view_unset_rows_drag_source(GtkTreeView* tree_view);
+	public static extern void TreeViewUnsetRowsDragSource(TreeView tree_view);
 	[CRepr]
-	public struct GtkTreeViewClass
+	public struct TreeViewClass
 	{
-		GtkWidgetClass parent_class;
+		WidgetClass parent_class;
 	}
 	[CRepr]
-	public struct GtkTreeViewColumn;
+	public struct TreeViewColumn;
 	[LinkName("gtk_tree_view_column_new")]
-	public static extern GtkTreeViewColumn* tree_view_column_new();
+	public static extern TreeViewColumn TreeViewColumnNew();
 	[LinkName("gtk_tree_view_column_new_with_area")]
-	public static extern GtkTreeViewColumn* tree_view_column_new_with_area(GtkCellArea* area);
+	public static extern TreeViewColumn TreeViewColumnNewWithArea(CellArea area);
 	[LinkName("gtk_tree_view_column_new_with_attributes")]
-	public static extern GtkTreeViewColumn* tree_view_column_new_with_attributes( c_char* title, GtkCellRenderer* cell);
+	public static extern TreeViewColumn TreeViewColumnNewWithAttributes(char8* title, CellRenderer cell);
 	[LinkName("gtk_tree_view_column_add_attribute")]
-	public static extern void tree_view_column_add_attribute(GtkTreeViewColumn* tree_column, GtkCellRenderer* cell_renderer,  c_char* attribute, c_int column);
+	public static extern void TreeViewColumnAddAttribute(TreeViewColumn tree_column, CellRenderer cell_renderer, char8* attribute, c_int column);
 	[LinkName("gtk_tree_view_column_cell_get_position")]
-	public static extern c_int tree_view_column_cell_get_position(GtkTreeViewColumn* tree_column, GtkCellRenderer* cell_renderer, c_int* x_offset, c_int* width);
+	public static extern c_int TreeViewColumnCellGetPosition(TreeViewColumn tree_column, CellRenderer cell_renderer, c_int x_offset, c_int width);
 	[LinkName("gtk_tree_view_column_cell_get_size")]
-	public static extern void tree_view_column_cell_get_size(GtkTreeViewColumn* tree_column, c_int* x_offset, c_int* y_offset, c_int* width, c_int* height);
+	public static extern void TreeViewColumnCellGetSize(TreeViewColumn tree_column, c_int x_offset, c_int y_offset, c_int width, c_int height);
 	[LinkName("gtk_tree_view_column_cell_is_visible")]
-	public static extern c_int tree_view_column_cell_is_visible(GtkTreeViewColumn* tree_column);
+	public static extern c_int TreeViewColumnCellIsVisible(TreeViewColumn tree_column);
 	[LinkName("gtk_tree_view_column_cell_set_cell_data")]
-	public static extern void tree_view_column_cell_set_cell_data(GtkTreeViewColumn* tree_column, GtkTreeModel* tree_model, GtkTreeIter* iter, c_int is_expander, c_int is_expanded);
+	public static extern void TreeViewColumnCellSetCellData(TreeViewColumn tree_column, TreeModel tree_model, TreeIter iter, c_int is_expander, c_int is_expanded);
 	[LinkName("gtk_tree_view_column_clear")]
-	public static extern void tree_view_column_clear(GtkTreeViewColumn* tree_column);
+	public static extern void TreeViewColumnClear(TreeViewColumn tree_column);
 	[LinkName("gtk_tree_view_column_clear_attributes")]
-	public static extern void tree_view_column_clear_attributes(GtkTreeViewColumn* tree_column, GtkCellRenderer* cell_renderer);
+	public static extern void TreeViewColumnClearAttributes(TreeViewColumn tree_column, CellRenderer cell_renderer);
 	[LinkName("gtk_tree_view_column_clicked")]
-	public static extern void tree_view_column_clicked(GtkTreeViewColumn* tree_column);
+	public static extern void TreeViewColumnClicked(TreeViewColumn tree_column);
 	[LinkName("gtk_tree_view_column_focus_cell")]
-	public static extern void tree_view_column_focus_cell(GtkTreeViewColumn* tree_column, GtkCellRenderer* cell);
+	public static extern void TreeViewColumnFocusCell(TreeViewColumn tree_column, CellRenderer cell);
 	[LinkName("gtk_tree_view_column_get_alignment")]
-	public static extern float tree_view_column_get_alignment(GtkTreeViewColumn* tree_column);
+	public static extern float TreeViewColumnGetAlignment(TreeViewColumn tree_column);
 	[LinkName("gtk_tree_view_column_get_button")]
-	public static extern GtkWidget* tree_view_column_get_button(GtkTreeViewColumn* tree_column);
+	public static extern Widget TreeViewColumnGetButton(TreeViewColumn tree_column);
 	[LinkName("gtk_tree_view_column_get_clickable")]
-	public static extern c_int tree_view_column_get_clickable(GtkTreeViewColumn* tree_column);
+	public static extern c_int TreeViewColumnGetClickable(TreeViewColumn tree_column);
 	[LinkName("gtk_tree_view_column_get_expand")]
-	public static extern c_int tree_view_column_get_expand(GtkTreeViewColumn* tree_column);
+	public static extern c_int TreeViewColumnGetExpand(TreeViewColumn tree_column);
 	[LinkName("gtk_tree_view_column_get_fixed_width")]
-	public static extern c_int tree_view_column_get_fixed_width(GtkTreeViewColumn* tree_column);
+	public static extern c_int TreeViewColumnGetFixedWidth(TreeViewColumn tree_column);
 	[LinkName("gtk_tree_view_column_get_max_width")]
-	public static extern c_int tree_view_column_get_max_width(GtkTreeViewColumn* tree_column);
+	public static extern c_int TreeViewColumnGetMaxWidth(TreeViewColumn tree_column);
 	[LinkName("gtk_tree_view_column_get_min_width")]
-	public static extern c_int tree_view_column_get_min_width(GtkTreeViewColumn* tree_column);
+	public static extern c_int TreeViewColumnGetMinWidth(TreeViewColumn tree_column);
 	[LinkName("gtk_tree_view_column_get_reorderable")]
-	public static extern c_int tree_view_column_get_reorderable(GtkTreeViewColumn* tree_column);
+	public static extern c_int TreeViewColumnGetReorderable(TreeViewColumn tree_column);
 	[LinkName("gtk_tree_view_column_get_resizable")]
-	public static extern c_int tree_view_column_get_resizable(GtkTreeViewColumn* tree_column);
+	public static extern c_int TreeViewColumnGetResizable(TreeViewColumn tree_column);
 	[LinkName("gtk_tree_view_column_get_sizing")]
-	public static extern GtkTreeViewColumnSizing tree_view_column_get_sizing(GtkTreeViewColumn* tree_column);
+	public static extern TreeViewColumnSizing TreeViewColumnGetSizing(TreeViewColumn tree_column);
 	[LinkName("gtk_tree_view_column_get_sort_column_id")]
-	public static extern c_int tree_view_column_get_sort_column_id(GtkTreeViewColumn* tree_column);
+	public static extern c_int TreeViewColumnGetSortColumnId(TreeViewColumn tree_column);
 	[LinkName("gtk_tree_view_column_get_sort_indicator")]
-	public static extern c_int tree_view_column_get_sort_indicator(GtkTreeViewColumn* tree_column);
+	public static extern c_int TreeViewColumnGetSortIndicator(TreeViewColumn tree_column);
 	[LinkName("gtk_tree_view_column_get_sort_order")]
-	public static extern GtkSortType tree_view_column_get_sort_order(GtkTreeViewColumn* tree_column);
+	public static extern SortType TreeViewColumnGetSortOrder(TreeViewColumn tree_column);
 	[LinkName("gtk_tree_view_column_get_spacing")]
-	public static extern c_int tree_view_column_get_spacing(GtkTreeViewColumn* tree_column);
+	public static extern c_int TreeViewColumnGetSpacing(TreeViewColumn tree_column);
 	[LinkName("gtk_tree_view_column_get_title")]
-	public static extern  c_char* tree_view_column_get_title(GtkTreeViewColumn* tree_column);
+	public static extern char8* TreeViewColumnGetTitle(TreeViewColumn tree_column);
 	[LinkName("gtk_tree_view_column_get_tree_view")]
-	public static extern GtkWidget* tree_view_column_get_tree_view(GtkTreeViewColumn* tree_column);
+	public static extern Widget TreeViewColumnGetTreeView(TreeViewColumn tree_column);
 	[LinkName("gtk_tree_view_column_get_visible")]
-	public static extern c_int tree_view_column_get_visible(GtkTreeViewColumn* tree_column);
+	public static extern c_int TreeViewColumnGetVisible(TreeViewColumn tree_column);
 	[LinkName("gtk_tree_view_column_get_widget")]
-	public static extern GtkWidget* tree_view_column_get_widget(GtkTreeViewColumn* tree_column);
+	public static extern Widget TreeViewColumnGetWidget(TreeViewColumn tree_column);
 	[LinkName("gtk_tree_view_column_get_width")]
-	public static extern c_int tree_view_column_get_width(GtkTreeViewColumn* tree_column);
+	public static extern c_int TreeViewColumnGetWidth(TreeViewColumn tree_column);
 	[LinkName("gtk_tree_view_column_get_x_offset")]
-	public static extern c_int tree_view_column_get_x_offset(GtkTreeViewColumn* tree_column);
+	public static extern c_int TreeViewColumnGetXOffset(TreeViewColumn tree_column);
 	[LinkName("gtk_tree_view_column_pack_end")]
-	public static extern void tree_view_column_pack_end(GtkTreeViewColumn* tree_column, GtkCellRenderer* cell, c_int expand);
+	public static extern void TreeViewColumnPackEnd(TreeViewColumn tree_column, CellRenderer cell, c_int expand);
 	[LinkName("gtk_tree_view_column_pack_start")]
-	public static extern void tree_view_column_pack_start(GtkTreeViewColumn* tree_column, GtkCellRenderer* cell, c_int expand);
+	public static extern void TreeViewColumnPackStart(TreeViewColumn tree_column, CellRenderer cell, c_int expand);
 	[LinkName("gtk_tree_view_column_queue_resize")]
-	public static extern void tree_view_column_queue_resize(GtkTreeViewColumn* tree_column);
+	public static extern void TreeViewColumnQueueResize(TreeViewColumn tree_column);
 	[LinkName("gtk_tree_view_column_set_alignment")]
-	public static extern void tree_view_column_set_alignment(GtkTreeViewColumn* tree_column, float xalign);
+	public static extern void TreeViewColumnSetAlignment(TreeViewColumn tree_column, float xalign);
 	[LinkName("gtk_tree_view_column_set_attributes")]
-	public static extern void tree_view_column_set_attributes(GtkTreeViewColumn* tree_column, GtkCellRenderer* cell_renderer);
+	public static extern void TreeViewColumnSetAttributes(TreeViewColumn tree_column, CellRenderer cell_renderer);
 	[LinkName("gtk_tree_view_column_set_cell_data_func")]
-	public static extern void tree_view_column_set_cell_data_func(GtkTreeViewColumn* tree_column, GtkCellRenderer* cell_renderer, GtkTreeCellDataFunc func, void* func_data, GDestroyNotify destroy);
+	public static extern void TreeViewColumnSetCellDataFunc(TreeViewColumn tree_column, CellRenderer cell_renderer, TreeCellDataFunc func, void* func_data, GLib.DestroyNotify destroy);
 	[LinkName("gtk_tree_view_column_set_clickable")]
-	public static extern void tree_view_column_set_clickable(GtkTreeViewColumn* tree_column, c_int clickable);
+	public static extern void TreeViewColumnSetClickable(TreeViewColumn tree_column, c_int clickable);
 	[LinkName("gtk_tree_view_column_set_expand")]
-	public static extern void tree_view_column_set_expand(GtkTreeViewColumn* tree_column, c_int expand);
+	public static extern void TreeViewColumnSetExpand(TreeViewColumn tree_column, c_int expand);
 	[LinkName("gtk_tree_view_column_set_fixed_width")]
-	public static extern void tree_view_column_set_fixed_width(GtkTreeViewColumn* tree_column, c_int fixed_width);
+	public static extern void TreeViewColumnSetFixedWidth(TreeViewColumn tree_column, c_int fixed_width);
 	[LinkName("gtk_tree_view_column_set_max_width")]
-	public static extern void tree_view_column_set_max_width(GtkTreeViewColumn* tree_column, c_int max_width);
+	public static extern void TreeViewColumnSetMaxWidth(TreeViewColumn tree_column, c_int max_width);
 	[LinkName("gtk_tree_view_column_set_min_width")]
-	public static extern void tree_view_column_set_min_width(GtkTreeViewColumn* tree_column, c_int min_width);
+	public static extern void TreeViewColumnSetMinWidth(TreeViewColumn tree_column, c_int min_width);
 	[LinkName("gtk_tree_view_column_set_reorderable")]
-	public static extern void tree_view_column_set_reorderable(GtkTreeViewColumn* tree_column, c_int reorderable);
+	public static extern void TreeViewColumnSetReorderable(TreeViewColumn tree_column, c_int reorderable);
 	[LinkName("gtk_tree_view_column_set_resizable")]
-	public static extern void tree_view_column_set_resizable(GtkTreeViewColumn* tree_column, c_int resizable);
+	public static extern void TreeViewColumnSetResizable(TreeViewColumn tree_column, c_int resizable);
 	[LinkName("gtk_tree_view_column_set_sizing")]
-	public static extern void tree_view_column_set_sizing(GtkTreeViewColumn* tree_column, GtkTreeViewColumnSizing type);
+	public static extern void TreeViewColumnSetSizing(TreeViewColumn tree_column, TreeViewColumnSizing type);
 	[LinkName("gtk_tree_view_column_set_sort_column_id")]
-	public static extern void tree_view_column_set_sort_column_id(GtkTreeViewColumn* tree_column, c_int sort_column_id);
+	public static extern void TreeViewColumnSetSortColumnId(TreeViewColumn tree_column, c_int sort_column_id);
 	[LinkName("gtk_tree_view_column_set_sort_indicator")]
-	public static extern void tree_view_column_set_sort_indicator(GtkTreeViewColumn* tree_column, c_int setting);
+	public static extern void TreeViewColumnSetSortIndicator(TreeViewColumn tree_column, c_int setting);
 	[LinkName("gtk_tree_view_column_set_sort_order")]
-	public static extern void tree_view_column_set_sort_order(GtkTreeViewColumn* tree_column, GtkSortType order);
+	public static extern void TreeViewColumnSetSortOrder(TreeViewColumn tree_column, SortType order);
 	[LinkName("gtk_tree_view_column_set_spacing")]
-	public static extern void tree_view_column_set_spacing(GtkTreeViewColumn* tree_column, c_int spacing);
+	public static extern void TreeViewColumnSetSpacing(TreeViewColumn tree_column, c_int spacing);
 	[LinkName("gtk_tree_view_column_set_title")]
-	public static extern void tree_view_column_set_title(GtkTreeViewColumn* tree_column,  c_char* title);
+	public static extern void TreeViewColumnSetTitle(TreeViewColumn tree_column, char8* title);
 	[LinkName("gtk_tree_view_column_set_visible")]
-	public static extern void tree_view_column_set_visible(GtkTreeViewColumn* tree_column, c_int visible);
+	public static extern void TreeViewColumnSetVisible(TreeViewColumn tree_column, c_int visible);
 	[LinkName("gtk_tree_view_column_set_widget")]
-	public static extern void tree_view_column_set_widget(GtkTreeViewColumn* tree_column, GtkWidget* widget);
-	public function c_int GtkTreeViewColumnDropFunc(GtkTreeView* tree_view, GtkTreeViewColumn* column, GtkTreeViewColumn* prev_column, GtkTreeViewColumn* next_column, void* data);
-	public enum GtkTreeViewColumnSizing : c_int
+	public static extern void TreeViewColumnSetWidget(TreeViewColumn tree_column, Widget widget);
+	public function c_int TreeViewColumnDropFunc(TreeView tree_view, TreeViewColumn column, TreeViewColumn prev_column, TreeViewColumn next_column, void* data);
+	public enum TreeViewColumnSizing : c_int
 	{
 		GTK_TREE_VIEW_COLUMN_GROW_ONLY,
 		GTK_TREE_VIEW_COLUMN_AUTOSIZE,
 		GTK_TREE_VIEW_COLUMN_FIXED
 	}
-	public enum GtkTreeViewDropPosition : c_int
+	public enum TreeViewDropPosition : c_int
 	{
 		GTK_TREE_VIEW_DROP_BEFORE,
 		GTK_TREE_VIEW_DROP_AFTER,
 		GTK_TREE_VIEW_DROP_INTO_OR_BEFORE,
 		GTK_TREE_VIEW_DROP_INTO_OR_AFTER
 	}
-	public enum GtkTreeViewGridLines : c_int
+	public enum TreeViewGridLines : c_int
 	{
 		GTK_TREE_VIEW_GRID_LINES_NONE,
 		GTK_TREE_VIEW_GRID_LINES_HORIZONTAL,
 		GTK_TREE_VIEW_GRID_LINES_VERTICAL,
 		GTK_TREE_VIEW_GRID_LINES_BOTH
 	}
-	public function void GtkTreeViewMappingFunc(GtkTreeView* tree_view, GtkTreePath* path, void* user_data);
-	public function c_int GtkTreeViewRowSeparatorFunc(GtkTreeModel* model, GtkTreeIter* iter, void* data);
-	public function c_int GtkTreeViewSearchEqualFunc(GtkTreeModel* model, c_int column,  c_char* key, GtkTreeIter* iter, void* search_data);
-	public enum GtkUnit : c_int
+	public function void TreeViewMappingFunc(TreeView tree_view, TreePath path, void* user_data);
+	public function c_int TreeViewRowSeparatorFunc(TreeModel model, TreeIter iter, void* data);
+	public function c_int TreeViewSearchEqualFunc(TreeModel model, c_int column, char8* key, TreeIter iter, void* search_data);
+	public enum Unit : c_int
 	{
 		GTK_UNIT_NONE,
 		GTK_UNIT_POINTS,
@@ -8659,598 +8659,598 @@ class Gtk
 		GTK_UNIT_MM
 	}
 	[CRepr]
-	public struct GtkUriLauncher;
+	public struct UriLauncher;
 	[LinkName("gtk_uri_launcher_new")]
-	public static extern GtkUriLauncher* uri_launcher_new( c_char* uri);
+	public static extern UriLauncher UriLauncherNew(char8* uri);
 	[LinkName("gtk_uri_launcher_get_uri")]
-	public static extern  c_char* uri_launcher_get_uri(GtkUriLauncher* self);
+	public static extern char8* UriLauncherGetUri(UriLauncher self);
 	[LinkName("gtk_uri_launcher_launch")]
-	public static extern void uri_launcher_launch(GtkUriLauncher* self, GtkWindow* parent, GCancellable* cancellable, GAsyncReadyCallback callback, void* user_data);
+	public static extern void UriLauncherLaunch(UriLauncher self, Window parent, Gio.Cancellable cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gtk_uri_launcher_launch_finish")]
-	public static extern c_int uri_launcher_launch_finish(GtkUriLauncher* self, GAsyncResult* result);
+	public static extern c_int UriLauncherLaunchFinish(UriLauncher self, Gio.AsyncResult result);
 	[LinkName("gtk_uri_launcher_set_uri")]
-	public static extern void uri_launcher_set_uri(GtkUriLauncher* self,  c_char* uri);
+	public static extern void UriLauncherSetUri(UriLauncher self, char8* uri);
 	[CRepr]
-	public struct GtkUriLauncherClass
+	public struct UriLauncherClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GtkVideo;
+	public struct Video;
 	[LinkName("gtk_video_new")]
-	public static extern GtkWidget* video_new();
+	public static extern Widget VideoNew();
 	[LinkName("gtk_video_new_for_file")]
-	public static extern GtkWidget* video_new_for_file(GFile* file);
+	public static extern Widget VideoNewForFile(Gio.File file);
 	[LinkName("gtk_video_new_for_filename")]
-	public static extern GtkWidget* video_new_for_filename( c_char* filename);
+	public static extern Widget VideoNewForFilename(char8* filename);
 	[LinkName("gtk_video_new_for_media_stream")]
-	public static extern GtkWidget* video_new_for_media_stream(GtkMediaStream* stream);
+	public static extern Widget VideoNewForMediaStream(MediaStream stream);
 	[LinkName("gtk_video_new_for_resource")]
-	public static extern GtkWidget* video_new_for_resource( c_char* resource_path);
+	public static extern Widget VideoNewForResource(char8* resource_path);
 	[LinkName("gtk_video_get_autoplay")]
-	public static extern c_int video_get_autoplay(GtkVideo* self);
+	public static extern c_int VideoGetAutoplay(Video self);
 	[LinkName("gtk_video_get_file")]
-	public static extern GFile* video_get_file(GtkVideo* self);
+	public static extern Gio.File VideoGetFile(Video self);
 	[LinkName("gtk_video_get_loop")]
-	public static extern c_int video_get_loop(GtkVideo* self);
+	public static extern c_int VideoGetLoop(Video self);
 	[LinkName("gtk_video_get_media_stream")]
-	public static extern GtkMediaStream* video_get_media_stream(GtkVideo* self);
+	public static extern MediaStream VideoGetMediaStream(Video self);
 	[LinkName("gtk_video_set_autoplay")]
-	public static extern void video_set_autoplay(GtkVideo* self, c_int autoplay);
+	public static extern void VideoSetAutoplay(Video self, c_int autoplay);
 	[LinkName("gtk_video_set_file")]
-	public static extern void video_set_file(GtkVideo* self, GFile* file);
+	public static extern void VideoSetFile(Video self, Gio.File file);
 	[LinkName("gtk_video_set_filename")]
-	public static extern void video_set_filename(GtkVideo* self,  c_char* filename);
+	public static extern void VideoSetFilename(Video self, char8* filename);
 	[LinkName("gtk_video_set_loop")]
-	public static extern void video_set_loop(GtkVideo* self, c_int loop);
+	public static extern void VideoSetLoop(Video self, c_int loop);
 	[LinkName("gtk_video_set_media_stream")]
-	public static extern void video_set_media_stream(GtkVideo* self, GtkMediaStream* stream);
+	public static extern void VideoSetMediaStream(Video self, MediaStream stream);
 	[LinkName("gtk_video_set_resource")]
-	public static extern void video_set_resource(GtkVideo* self,  c_char* resource_path);
+	public static extern void VideoSetResource(Video self, char8* resource_path);
 	[CRepr]
-	public struct GtkVideoClass
+	public struct VideoClass
 	{
-		GtkWidgetClass parent_class;
+		WidgetClass parent_class;
 	}
 	[CRepr]
-	public struct GtkViewport;
+	public struct Viewport;
 	[LinkName("gtk_viewport_new")]
-	public static extern GtkWidget* viewport_new(GtkAdjustment* hadjustment, GtkAdjustment* vadjustment);
+	public static extern Widget ViewportNew(Adjustment hadjustment, Adjustment vadjustment);
 	[LinkName("gtk_viewport_get_child")]
-	public static extern GtkWidget* viewport_get_child(GtkViewport* viewport);
+	public static extern Widget ViewportGetChild(Viewport viewport);
 	[LinkName("gtk_viewport_get_scroll_to_focus")]
-	public static extern c_int viewport_get_scroll_to_focus(GtkViewport* viewport);
+	public static extern c_int ViewportGetScrollToFocus(Viewport viewport);
 	[LinkName("gtk_viewport_set_child")]
-	public static extern void viewport_set_child(GtkViewport* viewport, GtkWidget* child);
+	public static extern void ViewportSetChild(Viewport viewport, Widget child);
 	[LinkName("gtk_viewport_set_scroll_to_focus")]
-	public static extern void viewport_set_scroll_to_focus(GtkViewport* viewport, c_int scroll_to_focus);
+	public static extern void ViewportSetScrollToFocus(Viewport viewport, c_int scroll_to_focus);
 	[CRepr]
-	public struct GtkVolumeButton;
+	public struct VolumeButton;
 	[LinkName("gtk_volume_button_new")]
-	public static extern GtkWidget* volume_button_new();
+	public static extern Widget VolumeButtonNew();
 	[CRepr]
-	public struct GtkWidget;
+	public struct Widget;
 	[LinkName("gtk_widget_action_set_enabled")]
-	public static extern void widget_action_set_enabled(GtkWidget* widget,  c_char* action_name, c_int enabled);
+	public static extern void WidgetActionSetEnabled(Widget widget, char8* action_name, c_int enabled);
 	[LinkName("gtk_widget_activate")]
-	public static extern c_int widget_activate(GtkWidget* widget);
+	public static extern c_int WidgetActivate(Widget widget);
 	[LinkName("gtk_widget_activate_action")]
-	public static extern c_int widget_activate_action(GtkWidget* widget,  c_char* name,  c_char* format_string);
+	public static extern c_int WidgetActivateAction(Widget widget, char8* name, char8* format_string);
 	[LinkName("gtk_widget_activate_action_variant")]
-	public static extern c_int widget_activate_action_variant(GtkWidget* widget,  c_char* name, GVariant* args);
+	public static extern c_int WidgetActivateActionVariant(Widget widget, char8* name, GLib.Variant args);
 	[LinkName("gtk_widget_activate_default")]
-	public static extern void widget_activate_default(GtkWidget* widget);
+	public static extern void WidgetActivateDefault(Widget widget);
 	[LinkName("gtk_widget_add_controller")]
-	public static extern void widget_add_controller(GtkWidget* widget, GtkEventController* controller);
+	public static extern void WidgetAddController(Widget widget, EventController controller);
 	[LinkName("gtk_widget_add_css_class")]
-	public static extern void widget_add_css_class(GtkWidget* widget,  c_char* css_class);
+	public static extern void WidgetAddCssClass(Widget widget, char8* css_class);
 	[LinkName("gtk_widget_add_mnemonic_label")]
-	public static extern void widget_add_mnemonic_label(GtkWidget* widget, GtkWidget* label);
+	public static extern void WidgetAddMnemonicLabel(Widget widget, Widget label);
 	[LinkName("gtk_widget_add_tick_callback")]
-	public static extern c_uint widget_add_tick_callback(GtkWidget* widget, GtkTickCallback callback, void* user_data, GDestroyNotify notify);
+	public static extern c_uint WidgetAddTickCallback(Widget widget, TickCallback callback, void* user_data, GLib.DestroyNotify notify);
 	[LinkName("gtk_widget_allocate")]
-	public static extern void widget_allocate(GtkWidget* widget, c_int width, c_int height, c_int baseline, GskTransform* transform);
+	public static extern void WidgetAllocate(Widget widget, c_int width, c_int height, c_int baseline, Gsk.Transform transform);
 	[LinkName("gtk_widget_child_focus")]
-	public static extern c_int widget_child_focus(GtkWidget* widget, GtkDirectionType direction);
+	public static extern c_int WidgetChildFocus(Widget widget, DirectionType direction);
 	[LinkName("gtk_widget_compute_bounds")]
-	public static extern c_int widget_compute_bounds(GtkWidget* widget, GtkWidget* target, graphene_rect_t* out_bounds);
+	public static extern c_int WidgetComputeBounds(Widget widget, Widget target, Graphene.Rect out_bounds);
 	[LinkName("gtk_widget_compute_expand")]
-	public static extern c_int widget_compute_expand(GtkWidget* widget, GtkOrientation orientation);
+	public static extern c_int WidgetComputeExpand(Widget widget, Orientation orientation);
 	[LinkName("gtk_widget_compute_point")]
-	public static extern c_int widget_compute_point(GtkWidget* widget, GtkWidget* target,  graphene_point_t* point, graphene_point_t* out_point);
+	public static extern c_int WidgetComputePoint(Widget widget, Widget target, Graphene.Point point, Graphene.Point out_point);
 	[LinkName("gtk_widget_compute_transform")]
-	public static extern c_int widget_compute_transform(GtkWidget* widget, GtkWidget* target, graphene_matrix_t* out_transform);
+	public static extern c_int WidgetComputeTransform(Widget widget, Widget target, Graphene.Matrix out_transform);
 	[LinkName("gtk_widget_contains")]
-	public static extern c_int widget_contains(GtkWidget* widget, double x, double y);
+	public static extern c_int WidgetContains(Widget widget, double x, double y);
 	[LinkName("gtk_widget_create_pango_context")]
-	public static extern PangoContext* widget_create_pango_context(GtkWidget* widget);
+	public static extern Pango.Context WidgetCreatePangoContext(Widget widget);
 	[LinkName("gtk_widget_create_pango_layout")]
-	public static extern PangoLayout* widget_create_pango_layout(GtkWidget* widget,  c_char* text);
+	public static extern Pango.Layout WidgetCreatePangoLayout(Widget widget, char8* text);
 	[LinkName("gtk_widget_dispose_template")]
-	public static extern void widget_dispose_template(GtkWidget* widget, GType widget_type);
+	public static extern void WidgetDisposeTemplate(Widget widget, GLib.Type widget_type);
 	[LinkName("gtk_drag_check_threshold")]
-	public static extern c_int drag_check_threshold(GtkWidget* widget, c_int start_x, c_int start_y, c_int current_x, c_int current_y);
+	public static extern c_int DragCheckThreshold(Widget widget, c_int start_x, c_int start_y, c_int current_x, c_int current_y);
 	[LinkName("gtk_widget_error_bell")]
-	public static extern void widget_error_bell(GtkWidget* widget);
+	public static extern void WidgetErrorBell(Widget widget);
 	[LinkName("gtk_widget_get_allocated_baseline")]
-	public static extern c_int widget_get_allocated_baseline(GtkWidget* widget);
+	public static extern c_int WidgetGetAllocatedBaseline(Widget widget);
 	[LinkName("gtk_widget_get_allocated_height")]
-	public static extern c_int widget_get_allocated_height(GtkWidget* widget);
+	public static extern c_int WidgetGetAllocatedHeight(Widget widget);
 	[LinkName("gtk_widget_get_allocated_width")]
-	public static extern c_int widget_get_allocated_width(GtkWidget* widget);
+	public static extern c_int WidgetGetAllocatedWidth(Widget widget);
 	[LinkName("gtk_widget_get_allocation")]
-	public static extern void widget_get_allocation(GtkWidget* widget, GtkAllocation* allocation);
+	public static extern void WidgetGetAllocation(Widget widget, Allocation allocation);
 	[LinkName("gtk_widget_get_ancestor")]
-	public static extern GtkWidget* widget_get_ancestor(GtkWidget* widget, GType widget_type);
+	public static extern Widget WidgetGetAncestor(Widget widget, GLib.Type widget_type);
 	[LinkName("gtk_widget_get_baseline")]
-	public static extern c_int widget_get_baseline(GtkWidget* widget);
+	public static extern c_int WidgetGetBaseline(Widget widget);
 	[LinkName("gtk_widget_get_can_focus")]
-	public static extern c_int widget_get_can_focus(GtkWidget* widget);
+	public static extern c_int WidgetGetCanFocus(Widget widget);
 	[LinkName("gtk_widget_get_can_target")]
-	public static extern c_int widget_get_can_target(GtkWidget* widget);
+	public static extern c_int WidgetGetCanTarget(Widget widget);
 	[LinkName("gtk_widget_get_child_visible")]
-	public static extern c_int widget_get_child_visible(GtkWidget* widget);
+	public static extern c_int WidgetGetChildVisible(Widget widget);
 	[LinkName("gtk_widget_get_clipboard")]
-	public static extern GdkClipboard* widget_get_clipboard(GtkWidget* widget);
+	public static extern Gdk.Clipboard WidgetGetClipboard(Widget widget);
 	[LinkName("gtk_widget_get_color")]
-	public static extern void widget_get_color(GtkWidget* widget, GdkRGBA* color);
+	public static extern void WidgetGetColor(Widget widget, Gdk.RGBA color);
 	[LinkName("gtk_widget_get_css_classes")]
-	public static extern c_char** widget_get_css_classes(GtkWidget* widget);
+	public static extern char8* WidgetGetCssClasses(Widget widget);
 	[LinkName("gtk_widget_get_css_name")]
-	public static extern  c_char* widget_get_css_name(GtkWidget* self);
+	public static extern char8* WidgetGetCssName(Widget self);
 	[LinkName("gtk_widget_get_cursor")]
-	public static extern GdkCursor* widget_get_cursor(GtkWidget* widget);
+	public static extern Gdk.Cursor WidgetGetCursor(Widget widget);
 	[LinkName("gtk_widget_get_direction")]
-	public static extern GtkTextDirection widget_get_direction(GtkWidget* widget);
+	public static extern TextDirection WidgetGetDirection(Widget widget);
 	[LinkName("gtk_widget_get_display")]
-	public static extern GdkDisplay* widget_get_display(GtkWidget* widget);
+	public static extern Gdk.Display WidgetGetDisplay(Widget widget);
 	[LinkName("gtk_widget_get_first_child")]
-	public static extern GtkWidget* widget_get_first_child(GtkWidget* widget);
+	public static extern Widget WidgetGetFirstChild(Widget widget);
 	[LinkName("gtk_widget_get_focus_child")]
-	public static extern GtkWidget* widget_get_focus_child(GtkWidget* widget);
+	public static extern Widget WidgetGetFocusChild(Widget widget);
 	[LinkName("gtk_widget_get_focus_on_click")]
-	public static extern c_int widget_get_focus_on_click(GtkWidget* widget);
+	public static extern c_int WidgetGetFocusOnClick(Widget widget);
 	[LinkName("gtk_widget_get_focusable")]
-	public static extern c_int widget_get_focusable(GtkWidget* widget);
+	public static extern c_int WidgetGetFocusable(Widget widget);
 	[LinkName("gtk_widget_get_font_map")]
-	public static extern PangoFontMap* widget_get_font_map(GtkWidget* widget);
+	public static extern Pango.FontMap WidgetGetFontMap(Widget widget);
 	[LinkName("gtk_widget_get_font_options")]
-	public static extern  cairo_font_options_t* widget_get_font_options(GtkWidget* widget);
+	public static extern cairo.FontOptions WidgetGetFontOptions(Widget widget);
 	[LinkName("gtk_widget_get_frame_clock")]
-	public static extern GdkFrameClock* widget_get_frame_clock(GtkWidget* widget);
+	public static extern Gdk.FrameClock WidgetGetFrameClock(Widget widget);
 	[LinkName("gtk_widget_get_halign")]
-	public static extern GtkAlign widget_get_halign(GtkWidget* widget);
+	public static extern Align WidgetGetHalign(Widget widget);
 	[LinkName("gtk_widget_get_has_tooltip")]
-	public static extern c_int widget_get_has_tooltip(GtkWidget* widget);
+	public static extern c_int WidgetGetHasTooltip(Widget widget);
 	[LinkName("gtk_widget_get_height")]
-	public static extern c_int widget_get_height(GtkWidget* widget);
+	public static extern c_int WidgetGetHeight(Widget widget);
 	[LinkName("gtk_widget_get_hexpand")]
-	public static extern c_int widget_get_hexpand(GtkWidget* widget);
+	public static extern c_int WidgetGetHexpand(Widget widget);
 	[LinkName("gtk_widget_get_hexpand_set")]
-	public static extern c_int widget_get_hexpand_set(GtkWidget* widget);
+	public static extern c_int WidgetGetHexpandSet(Widget widget);
 	[LinkName("gtk_widget_get_last_child")]
-	public static extern GtkWidget* widget_get_last_child(GtkWidget* widget);
+	public static extern Widget WidgetGetLastChild(Widget widget);
 	[LinkName("gtk_widget_get_layout_manager")]
-	public static extern GtkLayoutManager* widget_get_layout_manager(GtkWidget* widget);
+	public static extern LayoutManager WidgetGetLayoutManager(Widget widget);
 	[LinkName("gtk_widget_get_mapped")]
-	public static extern c_int widget_get_mapped(GtkWidget* widget);
+	public static extern c_int WidgetGetMapped(Widget widget);
 	[LinkName("gtk_widget_get_margin_bottom")]
-	public static extern c_int widget_get_margin_bottom(GtkWidget* widget);
+	public static extern c_int WidgetGetMarginBottom(Widget widget);
 	[LinkName("gtk_widget_get_margin_end")]
-	public static extern c_int widget_get_margin_end(GtkWidget* widget);
+	public static extern c_int WidgetGetMarginEnd(Widget widget);
 	[LinkName("gtk_widget_get_margin_start")]
-	public static extern c_int widget_get_margin_start(GtkWidget* widget);
+	public static extern c_int WidgetGetMarginStart(Widget widget);
 	[LinkName("gtk_widget_get_margin_top")]
-	public static extern c_int widget_get_margin_top(GtkWidget* widget);
+	public static extern c_int WidgetGetMarginTop(Widget widget);
 	[LinkName("gtk_widget_get_name")]
-	public static extern  c_char* widget_get_name(GtkWidget* widget);
+	public static extern char8* WidgetGetName(Widget widget);
 	[LinkName("gtk_widget_get_native")]
-	public static extern GtkNative* widget_get_native(GtkWidget* widget);
+	public static extern Native WidgetGetNative(Widget widget);
 	[LinkName("gtk_widget_get_next_sibling")]
-	public static extern GtkWidget* widget_get_next_sibling(GtkWidget* widget);
+	public static extern Widget WidgetGetNextSibling(Widget widget);
 	[LinkName("gtk_widget_get_opacity")]
-	public static extern double widget_get_opacity(GtkWidget* widget);
+	public static extern double WidgetGetOpacity(Widget widget);
 	[LinkName("gtk_widget_get_overflow")]
-	public static extern GtkOverflow widget_get_overflow(GtkWidget* widget);
+	public static extern Overflow WidgetGetOverflow(Widget widget);
 	[LinkName("gtk_widget_get_pango_context")]
-	public static extern PangoContext* widget_get_pango_context(GtkWidget* widget);
+	public static extern Pango.Context WidgetGetPangoContext(Widget widget);
 	[LinkName("gtk_widget_get_parent")]
-	public static extern GtkWidget* widget_get_parent(GtkWidget* widget);
+	public static extern Widget WidgetGetParent(Widget widget);
 	[LinkName("gtk_widget_get_preferred_size")]
-	public static extern void widget_get_preferred_size(GtkWidget* widget, GtkRequisition* minimum_size, GtkRequisition* natural_size);
+	public static extern void WidgetGetPreferredSize(Widget widget, Requisition minimum_size, Requisition natural_size);
 	[LinkName("gtk_widget_get_prev_sibling")]
-	public static extern GtkWidget* widget_get_prev_sibling(GtkWidget* widget);
+	public static extern Widget WidgetGetPrevSibling(Widget widget);
 	[LinkName("gtk_widget_get_primary_clipboard")]
-	public static extern GdkClipboard* widget_get_primary_clipboard(GtkWidget* widget);
+	public static extern Gdk.Clipboard WidgetGetPrimaryClipboard(Widget widget);
 	[LinkName("gtk_widget_get_realized")]
-	public static extern c_int widget_get_realized(GtkWidget* widget);
+	public static extern c_int WidgetGetRealized(Widget widget);
 	[LinkName("gtk_widget_get_receives_default")]
-	public static extern c_int widget_get_receives_default(GtkWidget* widget);
+	public static extern c_int WidgetGetReceivesDefault(Widget widget);
 	[LinkName("gtk_widget_get_request_mode")]
-	public static extern GtkSizeRequestMode widget_get_request_mode(GtkWidget* widget);
+	public static extern SizeRequestMode WidgetGetRequestMode(Widget widget);
 	[LinkName("gtk_widget_get_root")]
-	public static extern GtkRoot* widget_get_root(GtkWidget* widget);
+	public static extern Root WidgetGetRoot(Widget widget);
 	[LinkName("gtk_widget_get_scale_factor")]
-	public static extern c_int widget_get_scale_factor(GtkWidget* widget);
+	public static extern c_int WidgetGetScaleFactor(Widget widget);
 	[LinkName("gtk_widget_get_sensitive")]
-	public static extern c_int widget_get_sensitive(GtkWidget* widget);
+	public static extern c_int WidgetGetSensitive(Widget widget);
 	[LinkName("gtk_widget_get_settings")]
-	public static extern GtkSettings* widget_get_settings(GtkWidget* widget);
+	public static extern Settings WidgetGetSettings(Widget widget);
 	[LinkName("gtk_widget_get_size")]
-	public static extern c_int widget_get_size(GtkWidget* widget, GtkOrientation orientation);
+	public static extern c_int WidgetGetSize(Widget widget, Orientation orientation);
 	[LinkName("gtk_widget_get_size_request")]
-	public static extern void widget_get_size_request(GtkWidget* widget, c_int* width, c_int* height);
+	public static extern void WidgetGetSizeRequest(Widget widget, c_int width, c_int height);
 	[LinkName("gtk_widget_get_state_flags")]
-	public static extern GtkStateFlags widget_get_state_flags(GtkWidget* widget);
+	public static extern StateFlags WidgetGetStateFlags(Widget widget);
 	[LinkName("gtk_widget_get_style_context")]
-	public static extern GtkStyleContext* widget_get_style_context(GtkWidget* widget);
+	public static extern StyleContext WidgetGetStyleContext(Widget widget);
 	[LinkName("gtk_widget_get_template_child")]
-	public static extern GObject* widget_get_template_child(GtkWidget* widget, GType widget_type,  c_char* name);
+	public static extern GObject.Object WidgetGetTemplateChild(Widget widget, GLib.Type widget_type, char8* name);
 	[LinkName("gtk_widget_get_tooltip_markup")]
-	public static extern  c_char* widget_get_tooltip_markup(GtkWidget* widget);
+	public static extern char8* WidgetGetTooltipMarkup(Widget widget);
 	[LinkName("gtk_widget_get_tooltip_text")]
-	public static extern  c_char* widget_get_tooltip_text(GtkWidget* widget);
+	public static extern char8* WidgetGetTooltipText(Widget widget);
 	[LinkName("gtk_widget_get_valign")]
-	public static extern GtkAlign widget_get_valign(GtkWidget* widget);
+	public static extern Align WidgetGetValign(Widget widget);
 	[LinkName("gtk_widget_get_vexpand")]
-	public static extern c_int widget_get_vexpand(GtkWidget* widget);
+	public static extern c_int WidgetGetVexpand(Widget widget);
 	[LinkName("gtk_widget_get_vexpand_set")]
-	public static extern c_int widget_get_vexpand_set(GtkWidget* widget);
+	public static extern c_int WidgetGetVexpandSet(Widget widget);
 	[LinkName("gtk_widget_get_visible")]
-	public static extern c_int widget_get_visible(GtkWidget* widget);
+	public static extern c_int WidgetGetVisible(Widget widget);
 	[LinkName("gtk_widget_get_width")]
-	public static extern c_int widget_get_width(GtkWidget* widget);
+	public static extern c_int WidgetGetWidth(Widget widget);
 	[LinkName("gtk_widget_grab_focus")]
-	public static extern c_int widget_grab_focus(GtkWidget* widget);
+	public static extern c_int WidgetGrabFocus(Widget widget);
 	[LinkName("gtk_widget_has_css_class")]
-	public static extern c_int widget_has_css_class(GtkWidget* widget,  c_char* css_class);
+	public static extern c_int WidgetHasCssClass(Widget widget, char8* css_class);
 	[LinkName("gtk_widget_has_default")]
-	public static extern c_int widget_has_default(GtkWidget* widget);
+	public static extern c_int WidgetHasDefault(Widget widget);
 	[LinkName("gtk_widget_has_focus")]
-	public static extern c_int widget_has_focus(GtkWidget* widget);
+	public static extern c_int WidgetHasFocus(Widget widget);
 	[LinkName("gtk_widget_has_visible_focus")]
-	public static extern c_int widget_has_visible_focus(GtkWidget* widget);
+	public static extern c_int WidgetHasVisibleFocus(Widget widget);
 	[LinkName("gtk_widget_hide")]
-	public static extern void widget_hide(GtkWidget* widget);
+	public static extern void WidgetHide(Widget widget);
 	[LinkName("gtk_widget_in_destruction")]
-	public static extern c_int widget_in_destruction(GtkWidget* widget);
+	public static extern c_int WidgetInDestruction(Widget widget);
 	[LinkName("gtk_widget_init_template")]
-	public static extern void widget_init_template(GtkWidget* widget);
+	public static extern void WidgetInitTemplate(Widget widget);
 	[LinkName("gtk_widget_insert_action_group")]
-	public static extern void widget_insert_action_group(GtkWidget* widget,  c_char* name, GActionGroup* group);
+	public static extern void WidgetInsertActionGroup(Widget widget, char8* name, Gio.ActionGroup group);
 	[LinkName("gtk_widget_insert_after")]
-	public static extern void widget_insert_after(GtkWidget* widget, GtkWidget* parent, GtkWidget* previous_sibling);
+	public static extern void WidgetInsertAfter(Widget widget, Widget parent, Widget previous_sibling);
 	[LinkName("gtk_widget_insert_before")]
-	public static extern void widget_insert_before(GtkWidget* widget, GtkWidget* parent, GtkWidget* next_sibling);
+	public static extern void WidgetInsertBefore(Widget widget, Widget parent, Widget next_sibling);
 	[LinkName("gtk_widget_is_ancestor")]
-	public static extern c_int widget_is_ancestor(GtkWidget* widget, GtkWidget* ancestor);
+	public static extern c_int WidgetIsAncestor(Widget widget, Widget ancestor);
 	[LinkName("gtk_widget_is_drawable")]
-	public static extern c_int widget_is_drawable(GtkWidget* widget);
+	public static extern c_int WidgetIsDrawable(Widget widget);
 	[LinkName("gtk_widget_is_focus")]
-	public static extern c_int widget_is_focus(GtkWidget* widget);
+	public static extern c_int WidgetIsFocus(Widget widget);
 	[LinkName("gtk_widget_is_sensitive")]
-	public static extern c_int widget_is_sensitive(GtkWidget* widget);
+	public static extern c_int WidgetIsSensitive(Widget widget);
 	[LinkName("gtk_widget_is_visible")]
-	public static extern c_int widget_is_visible(GtkWidget* widget);
+	public static extern c_int WidgetIsVisible(Widget widget);
 	[LinkName("gtk_widget_keynav_failed")]
-	public static extern c_int widget_keynav_failed(GtkWidget* widget, GtkDirectionType direction);
+	public static extern c_int WidgetKeynavFailed(Widget widget, DirectionType direction);
 	[LinkName("gtk_widget_list_mnemonic_labels")]
-	public static extern GList* widget_list_mnemonic_labels(GtkWidget* widget);
+	public static extern GLib.List WidgetListMnemonicLabels(Widget widget);
 	[LinkName("gtk_widget_map")]
-	public static extern void widget_map(GtkWidget* widget);
+	public static extern void WidgetMap(Widget widget);
 	[LinkName("gtk_widget_measure")]
-	public static extern void widget_measure(GtkWidget* widget, GtkOrientation orientation, c_int for_size, c_int* minimum, c_int* natural, c_int* minimum_baseline, c_int* natural_baseline);
+	public static extern void WidgetMeasure(Widget widget, Orientation orientation, c_int for_size, c_int minimum, c_int natural, c_int minimum_baseline, c_int natural_baseline);
 	[LinkName("gtk_widget_mnemonic_activate")]
-	public static extern c_int widget_mnemonic_activate(GtkWidget* widget, c_int group_cycling);
+	public static extern c_int WidgetMnemonicActivate(Widget widget, c_int group_cycling);
 	[LinkName("gtk_widget_observe_children")]
-	public static extern GListModel* widget_observe_children(GtkWidget* widget);
+	public static extern Gio.ListModel WidgetObserveChildren(Widget widget);
 	[LinkName("gtk_widget_observe_controllers")]
-	public static extern GListModel* widget_observe_controllers(GtkWidget* widget);
+	public static extern Gio.ListModel WidgetObserveControllers(Widget widget);
 	[LinkName("gtk_widget_pick")]
-	public static extern GtkWidget* widget_pick(GtkWidget* widget, double x, double y, GtkPickFlags flags);
+	public static extern Widget WidgetPick(Widget widget, double x, double y, PickFlags flags);
 	[LinkName("gtk_widget_queue_allocate")]
-	public static extern void widget_queue_allocate(GtkWidget* widget);
+	public static extern void WidgetQueueAllocate(Widget widget);
 	[LinkName("gtk_widget_queue_draw")]
-	public static extern void widget_queue_draw(GtkWidget* widget);
+	public static extern void WidgetQueueDraw(Widget widget);
 	[LinkName("gtk_widget_queue_resize")]
-	public static extern void widget_queue_resize(GtkWidget* widget);
+	public static extern void WidgetQueueResize(Widget widget);
 	[LinkName("gtk_widget_realize")]
-	public static extern void widget_realize(GtkWidget* widget);
+	public static extern void WidgetRealize(Widget widget);
 	[LinkName("gtk_widget_remove_controller")]
-	public static extern void widget_remove_controller(GtkWidget* widget, GtkEventController* controller);
+	public static extern void WidgetRemoveController(Widget widget, EventController controller);
 	[LinkName("gtk_widget_remove_css_class")]
-	public static extern void widget_remove_css_class(GtkWidget* widget,  c_char* css_class);
+	public static extern void WidgetRemoveCssClass(Widget widget, char8* css_class);
 	[LinkName("gtk_widget_remove_mnemonic_label")]
-	public static extern void widget_remove_mnemonic_label(GtkWidget* widget, GtkWidget* label);
+	public static extern void WidgetRemoveMnemonicLabel(Widget widget, Widget label);
 	[LinkName("gtk_widget_remove_tick_callback")]
-	public static extern void widget_remove_tick_callback(GtkWidget* widget, c_uint id);
+	public static extern void WidgetRemoveTickCallback(Widget widget, c_uint id);
 	[LinkName("gtk_widget_set_can_focus")]
-	public static extern void widget_set_can_focus(GtkWidget* widget, c_int can_focus);
+	public static extern void WidgetSetCanFocus(Widget widget, c_int can_focus);
 	[LinkName("gtk_widget_set_can_target")]
-	public static extern void widget_set_can_target(GtkWidget* widget, c_int can_target);
+	public static extern void WidgetSetCanTarget(Widget widget, c_int can_target);
 	[LinkName("gtk_widget_set_child_visible")]
-	public static extern void widget_set_child_visible(GtkWidget* widget, c_int child_visible);
+	public static extern void WidgetSetChildVisible(Widget widget, c_int child_visible);
 	[LinkName("gtk_widget_set_css_classes")]
-	public static extern void widget_set_css_classes(GtkWidget* widget);
+	public static extern void WidgetSetCssClasses(Widget widget);
 	[LinkName("gtk_widget_set_cursor")]
-	public static extern void widget_set_cursor(GtkWidget* widget, GdkCursor* cursor);
+	public static extern void WidgetSetCursor(Widget widget, Gdk.Cursor cursor);
 	[LinkName("gtk_widget_set_cursor_from_name")]
-	public static extern void widget_set_cursor_from_name(GtkWidget* widget,  c_char* name);
+	public static extern void WidgetSetCursorFromName(Widget widget, char8* name);
 	[LinkName("gtk_widget_set_direction")]
-	public static extern void widget_set_direction(GtkWidget* widget, GtkTextDirection dir);
+	public static extern void WidgetSetDirection(Widget widget, TextDirection dir);
 	[LinkName("gtk_widget_set_focus_child")]
-	public static extern void widget_set_focus_child(GtkWidget* widget, GtkWidget* child);
+	public static extern void WidgetSetFocusChild(Widget widget, Widget child);
 	[LinkName("gtk_widget_set_focus_on_click")]
-	public static extern void widget_set_focus_on_click(GtkWidget* widget, c_int focus_on_click);
+	public static extern void WidgetSetFocusOnClick(Widget widget, c_int focus_on_click);
 	[LinkName("gtk_widget_set_focusable")]
-	public static extern void widget_set_focusable(GtkWidget* widget, c_int focusable);
+	public static extern void WidgetSetFocusable(Widget widget, c_int focusable);
 	[LinkName("gtk_widget_set_font_map")]
-	public static extern void widget_set_font_map(GtkWidget* widget, PangoFontMap* font_map);
+	public static extern void WidgetSetFontMap(Widget widget, Pango.FontMap font_map);
 	[LinkName("gtk_widget_set_font_options")]
-	public static extern void widget_set_font_options(GtkWidget* widget,  cairo_font_options_t* options);
+	public static extern void WidgetSetFontOptions(Widget widget, cairo.FontOptions options);
 	[LinkName("gtk_widget_set_halign")]
-	public static extern void widget_set_halign(GtkWidget* widget, GtkAlign align);
+	public static extern void WidgetSetHalign(Widget widget, Align align);
 	[LinkName("gtk_widget_set_has_tooltip")]
-	public static extern void widget_set_has_tooltip(GtkWidget* widget, c_int has_tooltip);
+	public static extern void WidgetSetHasTooltip(Widget widget, c_int has_tooltip);
 	[LinkName("gtk_widget_set_hexpand")]
-	public static extern void widget_set_hexpand(GtkWidget* widget, c_int expand);
+	public static extern void WidgetSetHexpand(Widget widget, c_int expand);
 	[LinkName("gtk_widget_set_hexpand_set")]
-	public static extern void widget_set_hexpand_set(GtkWidget* widget, c_int set);
+	public static extern void WidgetSetHexpandSet(Widget widget, c_int set);
 	[LinkName("gtk_widget_set_layout_manager")]
-	public static extern void widget_set_layout_manager(GtkWidget* widget, GtkLayoutManager* layout_manager);
+	public static extern void WidgetSetLayoutManager(Widget widget, LayoutManager layout_manager);
 	[LinkName("gtk_widget_set_margin_bottom")]
-	public static extern void widget_set_margin_bottom(GtkWidget* widget, c_int margin);
+	public static extern void WidgetSetMarginBottom(Widget widget, c_int margin);
 	[LinkName("gtk_widget_set_margin_end")]
-	public static extern void widget_set_margin_end(GtkWidget* widget, c_int margin);
+	public static extern void WidgetSetMarginEnd(Widget widget, c_int margin);
 	[LinkName("gtk_widget_set_margin_start")]
-	public static extern void widget_set_margin_start(GtkWidget* widget, c_int margin);
+	public static extern void WidgetSetMarginStart(Widget widget, c_int margin);
 	[LinkName("gtk_widget_set_margin_top")]
-	public static extern void widget_set_margin_top(GtkWidget* widget, c_int margin);
+	public static extern void WidgetSetMarginTop(Widget widget, c_int margin);
 	[LinkName("gtk_widget_set_name")]
-	public static extern void widget_set_name(GtkWidget* widget,  c_char* name);
+	public static extern void WidgetSetName(Widget widget, char8* name);
 	[LinkName("gtk_widget_set_opacity")]
-	public static extern void widget_set_opacity(GtkWidget* widget, double opacity);
+	public static extern void WidgetSetOpacity(Widget widget, double opacity);
 	[LinkName("gtk_widget_set_overflow")]
-	public static extern void widget_set_overflow(GtkWidget* widget, GtkOverflow overflow);
+	public static extern void WidgetSetOverflow(Widget widget, Overflow overflow);
 	[LinkName("gtk_widget_set_parent")]
-	public static extern void widget_set_parent(GtkWidget* widget, GtkWidget* parent);
+	public static extern void WidgetSetParent(Widget widget, Widget parent);
 	[LinkName("gtk_widget_set_receives_default")]
-	public static extern void widget_set_receives_default(GtkWidget* widget, c_int receives_default);
+	public static extern void WidgetSetReceivesDefault(Widget widget, c_int receives_default);
 	[LinkName("gtk_widget_set_sensitive")]
-	public static extern void widget_set_sensitive(GtkWidget* widget, c_int sensitive);
+	public static extern void WidgetSetSensitive(Widget widget, c_int sensitive);
 	[LinkName("gtk_widget_set_size_request")]
-	public static extern void widget_set_size_request(GtkWidget* widget, c_int width, c_int height);
+	public static extern void WidgetSetSizeRequest(Widget widget, c_int width, c_int height);
 	[LinkName("gtk_widget_set_state_flags")]
-	public static extern void widget_set_state_flags(GtkWidget* widget, GtkStateFlags flags, c_int clear);
+	public static extern void WidgetSetStateFlags(Widget widget, StateFlags flags, c_int clear);
 	[LinkName("gtk_widget_set_tooltip_markup")]
-	public static extern void widget_set_tooltip_markup(GtkWidget* widget,  c_char* markup);
+	public static extern void WidgetSetTooltipMarkup(Widget widget, char8* markup);
 	[LinkName("gtk_widget_set_tooltip_text")]
-	public static extern void widget_set_tooltip_text(GtkWidget* widget,  c_char* text);
+	public static extern void WidgetSetTooltipText(Widget widget, char8* text);
 	[LinkName("gtk_widget_set_valign")]
-	public static extern void widget_set_valign(GtkWidget* widget, GtkAlign align);
+	public static extern void WidgetSetValign(Widget widget, Align align);
 	[LinkName("gtk_widget_set_vexpand")]
-	public static extern void widget_set_vexpand(GtkWidget* widget, c_int expand);
+	public static extern void WidgetSetVexpand(Widget widget, c_int expand);
 	[LinkName("gtk_widget_set_vexpand_set")]
-	public static extern void widget_set_vexpand_set(GtkWidget* widget, c_int set);
+	public static extern void WidgetSetVexpandSet(Widget widget, c_int set);
 	[LinkName("gtk_widget_set_visible")]
-	public static extern void widget_set_visible(GtkWidget* widget, c_int visible);
+	public static extern void WidgetSetVisible(Widget widget, c_int visible);
 	[LinkName("gtk_widget_should_layout")]
-	public static extern c_int widget_should_layout(GtkWidget* widget);
+	public static extern c_int WidgetShouldLayout(Widget widget);
 	[LinkName("gtk_widget_show")]
-	public static extern void widget_show(GtkWidget* widget);
+	public static extern void WidgetShow(Widget widget);
 	[LinkName("gtk_widget_size_allocate")]
-	public static extern void widget_size_allocate(GtkWidget* widget,  GtkAllocation* allocation, c_int baseline);
+	public static extern void WidgetSizeAllocate(Widget widget, Allocation allocation, c_int baseline);
 	[LinkName("gtk_widget_snapshot_child")]
-	public static extern void widget_snapshot_child(GtkWidget* widget, GtkWidget* child, GtkSnapshot* snapshot);
+	public static extern void WidgetSnapshotChild(Widget widget, Widget child, Snapshot snapshot);
 	[LinkName("gtk_widget_translate_coordinates")]
-	public static extern c_int widget_translate_coordinates(GtkWidget* src_widget, GtkWidget* dest_widget, double src_x, double src_y, double* dest_x, double* dest_y);
+	public static extern c_int WidgetTranslateCoordinates(Widget src_widget, Widget dest_widget, double src_x, double src_y, double dest_x, double dest_y);
 	[LinkName("gtk_widget_trigger_tooltip_query")]
-	public static extern void widget_trigger_tooltip_query(GtkWidget* widget);
+	public static extern void WidgetTriggerTooltipQuery(Widget widget);
 	[LinkName("gtk_widget_unmap")]
-	public static extern void widget_unmap(GtkWidget* widget);
+	public static extern void WidgetUnmap(Widget widget);
 	[LinkName("gtk_widget_unparent")]
-	public static extern void widget_unparent(GtkWidget* widget);
+	public static extern void WidgetUnparent(Widget widget);
 	[LinkName("gtk_widget_unrealize")]
-	public static extern void widget_unrealize(GtkWidget* widget);
+	public static extern void WidgetUnrealize(Widget widget);
 	[LinkName("gtk_widget_unset_state_flags")]
-	public static extern void widget_unset_state_flags(GtkWidget* widget, GtkStateFlags flags);
-	public function void GtkWidgetActionActivateFunc(GtkWidget* widget,  c_char* action_name, GVariant* parameter);
+	public static extern void WidgetUnsetStateFlags(Widget widget, StateFlags flags);
+	public function void WidgetActionActivateFunc(Widget widget, char8* action_name, GLib.Variant parameter);
 	[CRepr]
-	public struct GtkWidgetClass
+	public struct WidgetClass
 	{
-		GInitiallyUnownedClass parent_class;
-		GtkWidgetClassPrivate* priv;
+		GObject.InitiallyUnownedClass parent_class;
+		WidgetClassPrivate priv;
 	}
 	[CRepr]
-	public struct GtkWidgetClassPrivate
+	public struct WidgetClassPrivate
 	{
 	}
 	[CRepr]
-	public struct GtkWidgetPaintable;
+	public struct WidgetPaintable;
 	[LinkName("gtk_widget_paintable_new")]
-	public static extern GdkPaintable* widget_paintable_new(GtkWidget* widget);
+	public static extern WidgetPaintable WidgetPaintableNew(Widget widget);
 	[LinkName("gtk_widget_paintable_get_widget")]
-	public static extern GtkWidget* widget_paintable_get_widget(GtkWidgetPaintable* self);
+	public static extern Widget WidgetPaintableGetWidget(WidgetPaintable self);
 	[LinkName("gtk_widget_paintable_set_widget")]
-	public static extern void widget_paintable_set_widget(GtkWidgetPaintable* self, GtkWidget* widget);
+	public static extern void WidgetPaintableSetWidget(WidgetPaintable self, Widget widget);
 	[CRepr]
-	public struct GtkWidgetPaintableClass
+	public struct WidgetPaintableClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GtkWidgetPrivate
+	public struct WidgetPrivate
 	{
 	}
 	[CRepr]
-	public struct GtkWindow;
+	public struct Window;
 	[LinkName("gtk_window_new")]
-	public static extern GtkWidget* window_new();
+	public static extern Widget WindowNew();
 	[LinkName("gtk_window_close")]
-	public static extern void window_close(GtkWindow* window);
+	public static extern void WindowClose(Window window);
 	[LinkName("gtk_window_destroy")]
-	public static extern void window_destroy(GtkWindow* window);
+	public static extern void WindowDestroy(Window window);
 	[LinkName("gtk_window_fullscreen")]
-	public static extern void window_fullscreen(GtkWindow* window);
+	public static extern void WindowFullscreen(Window window);
 	[LinkName("gtk_window_fullscreen_on_monitor")]
-	public static extern void window_fullscreen_on_monitor(GtkWindow* window, GdkMonitor* monitor);
+	public static extern void WindowFullscreenOnMonitor(Window window, Gdk.Monitor monitor);
 	[LinkName("gtk_window_get_application")]
-	public static extern GtkApplication* window_get_application(GtkWindow* window);
+	public static extern Application WindowGetApplication(Window window);
 	[LinkName("gtk_window_get_child")]
-	public static extern GtkWidget* window_get_child(GtkWindow* window);
+	public static extern Widget WindowGetChild(Window window);
 	[LinkName("gtk_window_get_decorated")]
-	public static extern c_int window_get_decorated(GtkWindow* window);
+	public static extern c_int WindowGetDecorated(Window window);
 	[LinkName("gtk_window_get_default_size")]
-	public static extern void window_get_default_size(GtkWindow* window, c_int* width, c_int* height);
+	public static extern void WindowGetDefaultSize(Window window, c_int width, c_int height);
 	[LinkName("gtk_window_get_default_widget")]
-	public static extern GtkWidget* window_get_default_widget(GtkWindow* window);
+	public static extern Widget WindowGetDefaultWidget(Window window);
 	[LinkName("gtk_window_get_deletable")]
-	public static extern c_int window_get_deletable(GtkWindow* window);
+	public static extern c_int WindowGetDeletable(Window window);
 	[LinkName("gtk_window_get_destroy_with_parent")]
-	public static extern c_int window_get_destroy_with_parent(GtkWindow* window);
+	public static extern c_int WindowGetDestroyWithParent(Window window);
 	[LinkName("gtk_window_get_focus")]
-	public static extern GtkWidget* window_get_focus(GtkWindow* window);
+	public static extern Widget WindowGetFocus(Window window);
 	[LinkName("gtk_window_get_focus_visible")]
-	public static extern c_int window_get_focus_visible(GtkWindow* window);
+	public static extern c_int WindowGetFocusVisible(Window window);
 	[LinkName("gtk_window_get_group")]
-	public static extern GtkWindowGroup* window_get_group(GtkWindow* window);
+	public static extern WindowGroup WindowGetGroup(Window window);
 	[LinkName("gtk_window_get_handle_menubar_accel")]
-	public static extern c_int window_get_handle_menubar_accel(GtkWindow* window);
+	public static extern c_int WindowGetHandleMenubarAccel(Window window);
 	[LinkName("gtk_window_get_hide_on_close")]
-	public static extern c_int window_get_hide_on_close(GtkWindow* window);
+	public static extern c_int WindowGetHideOnClose(Window window);
 	[LinkName("gtk_window_get_icon_name")]
-	public static extern  c_char* window_get_icon_name(GtkWindow* window);
+	public static extern char8* WindowGetIconName(Window window);
 	[LinkName("gtk_window_get_mnemonics_visible")]
-	public static extern c_int window_get_mnemonics_visible(GtkWindow* window);
+	public static extern c_int WindowGetMnemonicsVisible(Window window);
 	[LinkName("gtk_window_get_modal")]
-	public static extern c_int window_get_modal(GtkWindow* window);
+	public static extern c_int WindowGetModal(Window window);
 	[LinkName("gtk_window_get_resizable")]
-	public static extern c_int window_get_resizable(GtkWindow* window);
+	public static extern c_int WindowGetResizable(Window window);
 	[LinkName("gtk_window_get_title")]
-	public static extern  c_char* window_get_title(GtkWindow* window);
+	public static extern char8* WindowGetTitle(Window window);
 	[LinkName("gtk_window_get_titlebar")]
-	public static extern GtkWidget* window_get_titlebar(GtkWindow* window);
+	public static extern Widget WindowGetTitlebar(Window window);
 	[LinkName("gtk_window_get_transient_for")]
-	public static extern GtkWindow* window_get_transient_for(GtkWindow* window);
+	public static extern Window WindowGetTransientFor(Window window);
 	[LinkName("gtk_window_has_group")]
-	public static extern c_int window_has_group(GtkWindow* window);
+	public static extern c_int WindowHasGroup(Window window);
 	[LinkName("gtk_window_is_active")]
-	public static extern c_int window_is_active(GtkWindow* window);
+	public static extern c_int WindowIsActive(Window window);
 	[LinkName("gtk_window_is_fullscreen")]
-	public static extern c_int window_is_fullscreen(GtkWindow* window);
+	public static extern c_int WindowIsFullscreen(Window window);
 	[LinkName("gtk_window_is_maximized")]
-	public static extern c_int window_is_maximized(GtkWindow* window);
+	public static extern c_int WindowIsMaximized(Window window);
 	[LinkName("gtk_window_maximize")]
-	public static extern void window_maximize(GtkWindow* window);
+	public static extern void WindowMaximize(Window window);
 	[LinkName("gtk_window_minimize")]
-	public static extern void window_minimize(GtkWindow* window);
+	public static extern void WindowMinimize(Window window);
 	[LinkName("gtk_window_present")]
-	public static extern void window_present(GtkWindow* window);
+	public static extern void WindowPresent(Window window);
 	[LinkName("gtk_window_present_with_time")]
-	public static extern void window_present_with_time(GtkWindow* window, c_uint timestamp);
+	public static extern void WindowPresentWithTime(Window window, c_uint timestamp);
 	[LinkName("gtk_window_set_application")]
-	public static extern void window_set_application(GtkWindow* window, GtkApplication* application);
+	public static extern void WindowSetApplication(Window window, Application application);
 	[LinkName("gtk_window_set_child")]
-	public static extern void window_set_child(GtkWindow* window, GtkWidget* child);
+	public static extern void WindowSetChild(Window window, Widget child);
 	[LinkName("gtk_window_set_decorated")]
-	public static extern void window_set_decorated(GtkWindow* window, c_int setting);
+	public static extern void WindowSetDecorated(Window window, c_int setting);
 	[LinkName("gtk_window_set_default_size")]
-	public static extern void window_set_default_size(GtkWindow* window, c_int width, c_int height);
+	public static extern void WindowSetDefaultSize(Window window, c_int width, c_int height);
 	[LinkName("gtk_window_set_default_widget")]
-	public static extern void window_set_default_widget(GtkWindow* window, GtkWidget* default_widget);
+	public static extern void WindowSetDefaultWidget(Window window, Widget default_widget);
 	[LinkName("gtk_window_set_deletable")]
-	public static extern void window_set_deletable(GtkWindow* window, c_int setting);
+	public static extern void WindowSetDeletable(Window window, c_int setting);
 	[LinkName("gtk_window_set_destroy_with_parent")]
-	public static extern void window_set_destroy_with_parent(GtkWindow* window, c_int setting);
+	public static extern void WindowSetDestroyWithParent(Window window, c_int setting);
 	[LinkName("gtk_window_set_display")]
-	public static extern void window_set_display(GtkWindow* window, GdkDisplay* display);
+	public static extern void WindowSetDisplay(Window window, Gdk.Display display);
 	[LinkName("gtk_window_set_focus")]
-	public static extern void window_set_focus(GtkWindow* window, GtkWidget* focus);
+	public static extern void WindowSetFocus(Window window, Widget focus);
 	[LinkName("gtk_window_set_focus_visible")]
-	public static extern void window_set_focus_visible(GtkWindow* window, c_int setting);
+	public static extern void WindowSetFocusVisible(Window window, c_int setting);
 	[LinkName("gtk_window_set_handle_menubar_accel")]
-	public static extern void window_set_handle_menubar_accel(GtkWindow* window, c_int handle_menubar_accel);
+	public static extern void WindowSetHandleMenubarAccel(Window window, c_int handle_menubar_accel);
 	[LinkName("gtk_window_set_hide_on_close")]
-	public static extern void window_set_hide_on_close(GtkWindow* window, c_int setting);
+	public static extern void WindowSetHideOnClose(Window window, c_int setting);
 	[LinkName("gtk_window_set_icon_name")]
-	public static extern void window_set_icon_name(GtkWindow* window,  c_char* name);
+	public static extern void WindowSetIconName(Window window, char8* name);
 	[LinkName("gtk_window_set_mnemonics_visible")]
-	public static extern void window_set_mnemonics_visible(GtkWindow* window, c_int setting);
+	public static extern void WindowSetMnemonicsVisible(Window window, c_int setting);
 	[LinkName("gtk_window_set_modal")]
-	public static extern void window_set_modal(GtkWindow* window, c_int modal);
+	public static extern void WindowSetModal(Window window, c_int modal);
 	[LinkName("gtk_window_set_resizable")]
-	public static extern void window_set_resizable(GtkWindow* window, c_int resizable);
+	public static extern void WindowSetResizable(Window window, c_int resizable);
 	[LinkName("gtk_window_set_startup_id")]
-	public static extern void window_set_startup_id(GtkWindow* window,  c_char* startup_id);
+	public static extern void WindowSetStartupId(Window window, char8* startup_id);
 	[LinkName("gtk_window_set_title")]
-	public static extern void window_set_title(GtkWindow* window,  c_char* title);
+	public static extern void WindowSetTitle(Window window, char8* title);
 	[LinkName("gtk_window_set_titlebar")]
-	public static extern void window_set_titlebar(GtkWindow* window, GtkWidget* titlebar);
+	public static extern void WindowSetTitlebar(Window window, Widget titlebar);
 	[LinkName("gtk_window_set_transient_for")]
-	public static extern void window_set_transient_for(GtkWindow* window, GtkWindow* parent);
+	public static extern void WindowSetTransientFor(Window window, Window parent);
 	[LinkName("gtk_window_unfullscreen")]
-	public static extern void window_unfullscreen(GtkWindow* window);
+	public static extern void WindowUnfullscreen(Window window);
 	[LinkName("gtk_window_unmaximize")]
-	public static extern void window_unmaximize(GtkWindow* window);
+	public static extern void WindowUnmaximize(Window window);
 	[LinkName("gtk_window_unminimize")]
-	public static extern void window_unminimize(GtkWindow* window);
+	public static extern void WindowUnminimize(Window window);
 	[CRepr]
-	public struct GtkWindowClass
+	public struct WindowClass
 	{
-		GtkWidgetClass parent_class;
+		WidgetClass parent_class;
 	}
 	[CRepr]
-	public struct GtkWindowControls;
+	public struct WindowControls;
 	[LinkName("gtk_window_controls_new")]
-	public static extern GtkWidget* window_controls_new(GtkPackType side);
+	public static extern Widget WindowControlsNew(PackType side);
 	[LinkName("gtk_window_controls_get_decoration_layout")]
-	public static extern  c_char* window_controls_get_decoration_layout(GtkWindowControls* self);
+	public static extern char8* WindowControlsGetDecorationLayout(WindowControls self);
 	[LinkName("gtk_window_controls_get_empty")]
-	public static extern c_int window_controls_get_empty(GtkWindowControls* self);
+	public static extern c_int WindowControlsGetEmpty(WindowControls self);
 	[LinkName("gtk_window_controls_get_side")]
-	public static extern GtkPackType window_controls_get_side(GtkWindowControls* self);
+	public static extern PackType WindowControlsGetSide(WindowControls self);
 	[LinkName("gtk_window_controls_set_decoration_layout")]
-	public static extern void window_controls_set_decoration_layout(GtkWindowControls* self,  c_char* layout);
+	public static extern void WindowControlsSetDecorationLayout(WindowControls self, char8* layout);
 	[LinkName("gtk_window_controls_set_side")]
-	public static extern void window_controls_set_side(GtkWindowControls* self, GtkPackType side);
+	public static extern void WindowControlsSetSide(WindowControls self, PackType side);
 	[CRepr]
-	public struct GtkWindowControlsClass
+	public struct WindowControlsClass
 	{
-		GtkWidgetClass parent_class;
+		WidgetClass parent_class;
 	}
 	[CRepr]
-	public struct GtkWindowGroup;
+	public struct WindowGroup;
 	[LinkName("gtk_window_group_new")]
-	public static extern GtkWindowGroup* window_group_new();
+	public static extern WindowGroup WindowGroupNew();
 	[LinkName("gtk_window_group_add_window")]
-	public static extern void window_group_add_window(GtkWindowGroup* window_group, GtkWindow* window);
+	public static extern void WindowGroupAddWindow(WindowGroup window_group, Window window);
 	[LinkName("gtk_window_group_list_windows")]
-	public static extern GList* window_group_list_windows(GtkWindowGroup* window_group);
+	public static extern GLib.List WindowGroupListWindows(WindowGroup window_group);
 	[LinkName("gtk_window_group_remove_window")]
-	public static extern void window_group_remove_window(GtkWindowGroup* window_group, GtkWindow* window);
+	public static extern void WindowGroupRemoveWindow(WindowGroup window_group, Window window);
 	[CRepr]
-	public struct GtkWindowGroupClass
+	public struct WindowGroupClass
 	{
-		GObjectClass parent_class;
+		GObject.ObjectClass parent_class;
 	}
 	[CRepr]
-	public struct GtkWindowGroupPrivate
+	public struct WindowGroupPrivate
 	{
 	}
 	[CRepr]
-	public struct GtkWindowHandle;
+	public struct WindowHandle;
 	[LinkName("gtk_window_handle_new")]
-	public static extern GtkWidget* window_handle_new();
+	public static extern Widget WindowHandleNew();
 	[LinkName("gtk_window_handle_get_child")]
-	public static extern GtkWidget* window_handle_get_child(GtkWindowHandle* self);
+	public static extern Widget WindowHandleGetChild(WindowHandle self);
 	[LinkName("gtk_window_handle_set_child")]
-	public static extern void window_handle_set_child(GtkWindowHandle* self, GtkWidget* child);
+	public static extern void WindowHandleSetChild(WindowHandle self, Widget child);
 	[CRepr]
-	public struct GtkWindowHandleClass
+	public struct WindowHandleClass
 	{
-		GtkWidgetClass parent_class;
+		WidgetClass parent_class;
 	}
-	public enum GtkWrapMode : c_int
+	public enum WrapMode : c_int
 	{
 		GTK_WRAP_NONE,
 		GTK_WRAP_CHAR,
