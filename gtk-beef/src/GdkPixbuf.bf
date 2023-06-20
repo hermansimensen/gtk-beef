@@ -1,11 +1,7 @@
-namespace GdkPixbuf;
+namespace Gtk;
 
 using System;
 using System.Interop;
-
-using GLib;
-using Gio;
-using GObject;
 
 class GdkPixbuf
 {
@@ -27,7 +23,7 @@ class GdkPixbuf
 	[LinkName("gdk_pixbuf_new_from_bytes")]
 	public static extern Pixbuf* PixbufNewFromBytes(GLib.Bytes* data, Colorspace colorspace, c_int has_alpha, c_int bits_per_sample, c_int width, c_int height, c_int rowstride);
 	[LinkName("gdk_pixbuf_new_from_data")]
-	public static extern Pixbuf* PixbufNewFromData(Colorspace colorspace, c_int has_alpha, c_int bits_per_sample, c_int width, c_int height, c_int rowstride, PixbufDestroyNotify destroy_fn, void* destroy_fn_data);
+	public static extern Pixbuf* PixbufNewFromData(c_uchar* data, Colorspace colorspace, c_int has_alpha, c_int bits_per_sample, c_int width, c_int height, c_int rowstride, PixbufDestroyNotify destroy_fn, void* destroy_fn_data);
 	[LinkName("gdk_pixbuf_new_from_file")]
 	public static extern Pixbuf* PixbufNewFromFile(char8* filename);
 	[LinkName("gdk_pixbuf_new_from_file_at_scale")]
@@ -35,7 +31,7 @@ class GdkPixbuf
 	[LinkName("gdk_pixbuf_new_from_file_at_size")]
 	public static extern Pixbuf* PixbufNewFromFileAtSize(char8* filename, c_int width, c_int height);
 	[LinkName("gdk_pixbuf_new_from_inline")]
-	public static extern Pixbuf* PixbufNewFromInline(c_int data_length, c_int copy_pixels);
+	public static extern Pixbuf* PixbufNewFromInline(c_int data_length, c_uchar* data, c_int copy_pixels);
 	[LinkName("gdk_pixbuf_new_from_resource")]
 	public static extern Pixbuf* PixbufNewFromResource(char8* resource_path);
 	[LinkName("gdk_pixbuf_new_from_resource_at_scale")]
@@ -47,7 +43,7 @@ class GdkPixbuf
 	[LinkName("gdk_pixbuf_new_from_stream_finish")]
 	public static extern Pixbuf* PixbufNewFromStreamFinish(Gio.AsyncResult* async_result);
 	[LinkName("gdk_pixbuf_new_from_xpm_data")]
-	public static extern Pixbuf* PixbufNewFromXpmData();
+	public static extern Pixbuf* PixbufNewFromXpmData(char8* data);
 	[LinkName("gdk_pixbuf_calculate_rowstride")]
 	public static extern c_int PixbufCalculateRowstride(Colorspace colorspace, c_int has_alpha, c_int bits_per_sample, c_int width, c_int height);
 	[LinkName("gdk_pixbuf_get_file_info")]
@@ -123,15 +119,15 @@ class GdkPixbuf
 	[LinkName("gdk_pixbuf_saturate_and_pixelate")]
 	public static extern void PixbufSaturateAndPixelate(Pixbuf* src, Pixbuf* dest, float saturation, c_int pixelate);
 	[LinkName("gdk_pixbuf_save_to_bufferv")]
-	public static extern c_int PixbufSaveToBufferv(Pixbuf* pixbuf, c_ulong* buffer_size, char8* type);
+	public static extern c_int PixbufSaveToBufferv(Pixbuf* pixbuf, c_uchar** buffer, c_ulong* buffer_size, char8* type, char8* option_keys, char8* option_values);
 	[LinkName("gdk_pixbuf_save_to_callbackv")]
-	public static extern c_int PixbufSaveToCallbackv(Pixbuf* pixbuf, PixbufSaveFunc save_func, void* user_data, char8* type);
+	public static extern c_int PixbufSaveToCallbackv(Pixbuf* pixbuf, PixbufSaveFunc save_func, void* user_data, char8* type, char8* option_keys, char8* option_values);
 	[LinkName("gdk_pixbuf_save_to_streamv")]
-	public static extern c_int PixbufSaveToStreamv(Pixbuf* pixbuf, Gio.OutputStream* stream, char8* type, Gio.Cancellable* cancellable);
+	public static extern c_int PixbufSaveToStreamv(Pixbuf* pixbuf, Gio.OutputStream* stream, char8* type, char8* option_keys, char8* option_values, Gio.Cancellable* cancellable);
 	[LinkName("gdk_pixbuf_save_to_streamv_async")]
-	public static extern void PixbufSaveToStreamvAsync(Pixbuf* pixbuf, Gio.OutputStream* stream, char8* type, Gio.Cancellable* cancellable, Gio.AsyncReadyCallback callback, void* user_data);
+	public static extern void PixbufSaveToStreamvAsync(Pixbuf* pixbuf, Gio.OutputStream* stream, char8* type, char8* option_keys, char8* option_values, Gio.Cancellable* cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gdk_pixbuf_savev")]
-	public static extern c_int PixbufSavev(Pixbuf* pixbuf, char8* filename, char8* type);
+	public static extern c_int PixbufSavev(Pixbuf* pixbuf, char8* filename, char8* type, char8* option_keys, char8* option_values);
 	[LinkName("gdk_pixbuf_scale")]
 	public static extern void PixbufScale(Pixbuf* src, Pixbuf* dest, c_int dest_x, c_int dest_y, c_int dest_width, c_int dest_height, double offset_x, double offset_y, double scale_x, double scale_y, InterpType interp_type);
 	[LinkName("gdk_pixbuf_scale_simple")]
@@ -233,7 +229,7 @@ class GdkPixbuf
 	[LinkName("gdk_pixbuf_loader_set_size")]
 	public static extern void PixbufLoaderSetSize(PixbufLoader* loader, c_int width, c_int height);
 	[LinkName("gdk_pixbuf_loader_write")]
-	public static extern c_int PixbufLoaderWrite(PixbufLoader* loader, c_ulong count);
+	public static extern c_int PixbufLoaderWrite(PixbufLoader* loader, c_uchar* buf, c_ulong count);
 	[LinkName("gdk_pixbuf_loader_write_bytes")]
 	public static extern c_int PixbufLoaderWriteBytes(PixbufLoader* loader, GLib.Bytes* buffer);
 	[CRepr]

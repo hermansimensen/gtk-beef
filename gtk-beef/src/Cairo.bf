@@ -1,4 +1,4 @@
-namespace cairo;
+namespace Gtk;
 
 using System;
 using System.Interop;

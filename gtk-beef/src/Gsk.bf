@@ -1,13 +1,7 @@
-namespace Gsk;
+namespace Gtk;
 
 using System;
 using System.Interop;
-using GLib;
-using Graphene;
-using GObject;
-using Gdk;
-using Pango;
-using cairo;
 
 class Gsk
 {
@@ -51,7 +45,7 @@ class Gsk
 	[CRepr]
 	public struct BorderNode;
 	[LinkName("gsk_border_node_new")]
-	public static extern BorderNode* BorderNodeNew(RoundedRect* outline);
+	public static extern BorderNode* BorderNodeNew(RoundedRect* outline, float* border_width, Gdk.RGBA* border_color);
 	[LinkName("gsk_border_node_get_colors")]
 	public static extern Gdk.RGBA* BorderNodeGetColors(BorderNode* node);
 	[LinkName("gsk_border_node_get_outline")]
@@ -107,7 +101,7 @@ class Gsk
 	[CRepr]
 	public struct ConicGradientNode;
 	[LinkName("gsk_conic_gradient_node_new")]
-	public static extern ConicGradientNode* ConicGradientNodeNew(Graphene.Rect* bounds, Graphene.Point* center, float rotation, c_ulong n_color_stops);
+	public static extern ConicGradientNode* ConicGradientNodeNew(Graphene.Rect* bounds, Graphene.Point* center, float rotation, ColorStop* color_stops, c_ulong n_color_stops);
 	[LinkName("gsk_conic_gradient_node_get_angle")]
 	public static extern float ConicGradientNodeGetAngle(ConicGradientNode* node);
 	[LinkName("gsk_conic_gradient_node_get_center")]
@@ -121,7 +115,7 @@ class Gsk
 	[CRepr]
 	public struct ContainerNode;
 	[LinkName("gsk_container_node_new")]
-	public static extern ContainerNode* ContainerNodeNew(c_uint n_children);
+	public static extern ContainerNode* ContainerNodeNew(RenderNode** children, c_uint n_children);
 	[LinkName("gsk_container_node_get_child")]
 	public static extern RenderNode* ContainerNodeGetChild(ContainerNode* node, c_uint idx);
 	[LinkName("gsk_container_node_get_n_children")]
@@ -207,7 +201,7 @@ class Gsk
 	[CRepr]
 	public struct GLShaderNode;
 	[LinkName("gsk_gl_shader_node_new")]
-	public static extern GLShaderNode* GlShaderNodeNew(GLShader* shader, Graphene.Rect* bounds, GLib.Bytes* args, c_uint n_children);
+	public static extern GLShaderNode* GlShaderNodeNew(GLShader* shader, Graphene.Rect* bounds, GLib.Bytes* args, RenderNode** children, c_uint n_children);
 	[LinkName("gsk_gl_shader_node_get_args")]
 	public static extern GLib.Bytes* GlShaderNodeGetArgs(GLShaderNode* node);
 	[LinkName("gsk_gl_shader_node_get_child")]
@@ -246,7 +240,7 @@ class Gsk
 	[CRepr]
 	public struct LinearGradientNode;
 	[LinkName("gsk_linear_gradient_node_new")]
-	public static extern LinearGradientNode* LinearGradientNodeNew(Graphene.Rect* bounds, Graphene.Point* start, Graphene.Point* end, c_ulong n_color_stops);
+	public static extern LinearGradientNode* LinearGradientNodeNew(Graphene.Rect* bounds, Graphene.Point* start, Graphene.Point* end, ColorStop* color_stops, c_ulong n_color_stops);
 	[LinkName("gsk_linear_gradient_node_get_color_stops")]
 	public static extern ColorStop LinearGradientNodeGetColorStops(LinearGradientNode* node, c_ulong* n_stops);
 	[LinkName("gsk_linear_gradient_node_get_end")]
@@ -313,7 +307,7 @@ class Gsk
 	[CRepr]
 	public struct RadialGradientNode;
 	[LinkName("gsk_radial_gradient_node_new")]
-	public static extern RadialGradientNode* RadialGradientNodeNew(Graphene.Rect* bounds, Graphene.Point* center, float hradius, float vradius, float start, float end, c_ulong n_color_stops);
+	public static extern RadialGradientNode* RadialGradientNodeNew(Graphene.Rect* bounds, Graphene.Point* center, float hradius, float vradius, float start, float end, ColorStop* color_stops, c_ulong n_color_stops);
 	[LinkName("gsk_radial_gradient_node_get_center")]
 	public static extern Graphene.Point* RadialGradientNodeGetCenter(RadialGradientNode* node);
 	[LinkName("gsk_radial_gradient_node_get_color_stops")]
@@ -408,11 +402,11 @@ class Gsk
 	[CRepr]
 	public struct RepeatingLinearGradientNode;
 	[LinkName("gsk_repeating_linear_gradient_node_new")]
-	public static extern RepeatingLinearGradientNode* RepeatingLinearGradientNodeNew(Graphene.Rect* bounds, Graphene.Point* start, Graphene.Point* end, c_ulong n_color_stops);
+	public static extern RepeatingLinearGradientNode* RepeatingLinearGradientNodeNew(Graphene.Rect* bounds, Graphene.Point* start, Graphene.Point* end, ColorStop* color_stops, c_ulong n_color_stops);
 	[CRepr]
 	public struct RepeatingRadialGradientNode;
 	[LinkName("gsk_repeating_radial_gradient_node_new")]
-	public static extern RepeatingRadialGradientNode* RepeatingRadialGradientNodeNew(Graphene.Rect* bounds, Graphene.Point* center, float hradius, float vradius, float start, float end, c_ulong n_color_stops);
+	public static extern RepeatingRadialGradientNode* RepeatingRadialGradientNodeNew(Graphene.Rect* bounds, Graphene.Point* center, float hradius, float vradius, float start, float end, ColorStop* color_stops, c_ulong n_color_stops);
 	[CRepr]
 	public struct RoundedClipNode;
 	[LinkName("gsk_rounded_clip_node_new")]
@@ -453,7 +447,7 @@ class Gsk
 	[CRepr]
 	public struct ShadowNode;
 	[LinkName("gsk_shadow_node_new")]
-	public static extern ShadowNode* ShadowNodeNew(RenderNode* child, c_ulong n_shadows);
+	public static extern ShadowNode* ShadowNodeNew(RenderNode* child, Shadow* shadows, c_ulong n_shadows);
 	[LinkName("gsk_shadow_node_get_child")]
 	public static extern RenderNode* ShadowNodeGetChild(ShadowNode* node);
 	[LinkName("gsk_shadow_node_get_n_shadows")]

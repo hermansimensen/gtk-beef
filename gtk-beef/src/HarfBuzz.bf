@@ -1,8 +1,7 @@
-namespace HarfBuzz;
+namespace Gtk;
 
 using System;
 using System.Interop;
-using GLib;
 
 class HarfBuzz
 {
@@ -289,7 +288,7 @@ class HarfBuzz
 	[LinkName("hb_aat_layout_feature_type_get_name_id")]
 	public static extern ot_name_id_t HbAatLayoutFeatureTypeGetNameId(face_t* face, aat_layout_feature_type_t feature_type);
 	[LinkName("hb_aat_layout_feature_type_get_selector_infos")]
-	public static extern c_uint HbAatLayoutFeatureTypeGetSelectorInfos(face_t* face, aat_layout_feature_type_t feature_type, c_uint start_offset, c_uint* selector_count, c_uint* default_index);
+	public static extern c_uint HbAatLayoutFeatureTypeGetSelectorInfos(face_t* face, aat_layout_feature_type_t feature_type, c_uint start_offset, c_uint* selector_count, aat_layout_feature_selector_info_t* selectors, c_uint* default_index);
 	public enum aat_layout_feature_type_t : c_int
 	{
 		invalid = 65535,
@@ -334,7 +333,7 @@ class HarfBuzz
 		cjk_roman_spacing_type = 103
 	}
 	[LinkName("hb_aat_layout_get_feature_types")]
-	public static extern c_uint HbAatLayoutGetFeatureTypes(face_t* face, c_uint start_offset, c_uint* feature_count);
+	public static extern c_uint HbAatLayoutGetFeatureTypes(face_t* face, c_uint start_offset, c_uint* feature_count, aat_layout_feature_type_t* features);
 	[LinkName("hb_aat_layout_has_positioning")]
 	public static extern bool_t HbAatLayoutHasPositioning(face_t* face);
 	[LinkName("hb_aat_layout_has_substitution")]
@@ -368,15 +367,15 @@ class HarfBuzz
 	[LinkName("hb_buffer_add")]
 	public static extern void HbBufferAdd(buffer_t* buffer, codepoint_t codepoint, c_uint cluster);
 	[LinkName("hb_buffer_add_codepoints")]
-	public static extern void HbBufferAddCodepoints(buffer_t* buffer, c_int text_length, c_uint item_offset, c_int item_length);
+	public static extern void HbBufferAddCodepoints(buffer_t* buffer, codepoint_t* text, c_int text_length, c_uint item_offset, c_int item_length);
 	[LinkName("hb_buffer_add_latin1")]
-	public static extern void HbBufferAddLatin1(buffer_t* buffer, c_int text_length, c_uint item_offset, c_int item_length);
+	public static extern void HbBufferAddLatin1(buffer_t* buffer, c_uchar* text, c_int text_length, c_uint item_offset, c_int item_length);
 	[LinkName("hb_buffer_add_utf16")]
-	public static extern void HbBufferAddUtf16(buffer_t* buffer, c_int text_length, c_uint item_offset, c_int item_length);
+	public static extern void HbBufferAddUtf16(buffer_t* buffer, c_ushort* text, c_int text_length, c_uint item_offset, c_int item_length);
 	[LinkName("hb_buffer_add_utf32")]
-	public static extern void HbBufferAddUtf32(buffer_t* buffer, c_int text_length, c_uint item_offset, c_int item_length);
+	public static extern void HbBufferAddUtf32(buffer_t* buffer, c_uint* text, c_int text_length, c_uint item_offset, c_int item_length);
 	[LinkName("hb_buffer_add_utf8")]
-	public static extern void HbBufferAddUtf8(buffer_t* buffer, c_int text_length, c_uint item_offset, c_int item_length);
+	public static extern void HbBufferAddUtf8(buffer_t* buffer, c_uchar* text, c_int text_length, c_uint item_offset, c_int item_length);
 	[LinkName("hb_buffer_allocation_successful")]
 	public static extern bool_t HbBufferAllocationSuccessful(buffer_t* buffer);
 	[LinkName("hb_buffer_append")]
@@ -402,9 +401,9 @@ class HarfBuzz
 	[LinkName("hb_buffer_create_similar")]
 	public static extern buffer_t* HbBufferCreateSimilar(buffer_t* src);
 	[LinkName("hb_buffer_deserialize_glyphs")]
-	public static extern bool_t HbBufferDeserializeGlyphs(buffer_t* buffer, c_int buf_len, char8* end_ptr, font_t* font, buffer_serialize_format_t format);
+	public static extern bool_t HbBufferDeserializeGlyphs(buffer_t* buffer, char8* buf, c_int buf_len, char8* end_ptr, font_t* font, buffer_serialize_format_t format);
 	[LinkName("hb_buffer_deserialize_unicode")]
-	public static extern bool_t HbBufferDeserializeUnicode(buffer_t* buffer, c_int buf_len, char8* end_ptr, buffer_serialize_format_t format);
+	public static extern bool_t HbBufferDeserializeUnicode(buffer_t* buffer, char8* buf, c_int buf_len, char8* end_ptr, buffer_serialize_format_t format);
 	[LinkName("hb_buffer_diff")]
 	public static extern buffer_diff_flags_t HbBufferDiff(buffer_t* buffer, buffer_t* reference, codepoint_t dottedcircle_glyph, c_uint position_fuzz);
 	[CRepr]
@@ -482,7 +481,7 @@ class HarfBuzz
 	[LinkName("hb_buffer_reverse_range")]
 	public static extern void HbBufferReverseRange(buffer_t* buffer, c_uint start, c_uint end);
 	[LinkName("hb_buffer_serialize")]
-	public static extern c_uint HbBufferSerialize(buffer_t* buffer, c_uint start, c_uint end, c_uint buf_size, c_uint* buf_consumed, font_t* font, buffer_serialize_format_t format, buffer_serialize_flags_t flags);
+	public static extern c_uint HbBufferSerialize(buffer_t* buffer, c_uint start, c_uint end, c_uchar* buf, c_uint buf_size, c_uint* buf_consumed, font_t* font, buffer_serialize_format_t format, buffer_serialize_flags_t flags);
 	[CRepr]
 	public enum buffer_serialize_flags_t : int
 	{
@@ -496,7 +495,7 @@ class HarfBuzz
 		defined = 63
 	}
 	[LinkName("hb_buffer_serialize_format_from_string")]
-	public static extern buffer_serialize_format_t HbBufferSerializeFormatFromString(c_int len);
+	public static extern buffer_serialize_format_t HbBufferSerializeFormatFromString(c_uchar* str, c_int len);
 	public enum buffer_serialize_format_t : c_int
 	{
 		text = 1413830740,
@@ -506,11 +505,11 @@ class HarfBuzz
 	[LinkName("hb_buffer_serialize_format_to_string")]
 	public static extern char8* HbBufferSerializeFormatToString(buffer_serialize_format_t format);
 	[LinkName("hb_buffer_serialize_glyphs")]
-	public static extern c_uint HbBufferSerializeGlyphs(buffer_t* buffer, c_uint start, c_uint end, c_uint buf_size, c_uint* buf_consumed, font_t* font, buffer_serialize_format_t format, buffer_serialize_flags_t flags);
+	public static extern c_uint HbBufferSerializeGlyphs(buffer_t* buffer, c_uint start, c_uint end, c_uchar* buf, c_uint buf_size, c_uint* buf_consumed, font_t* font, buffer_serialize_format_t format, buffer_serialize_flags_t flags);
 	[LinkName("hb_buffer_serialize_list_formats")]
 	public static extern char8* HbBufferSerializeListFormats();
 	[LinkName("hb_buffer_serialize_unicode")]
-	public static extern c_uint HbBufferSerializeUnicode(buffer_t* buffer, c_uint start, c_uint end, c_uint buf_size, c_uint* buf_consumed, buffer_serialize_format_t format, buffer_serialize_flags_t flags);
+	public static extern c_uint HbBufferSerializeUnicode(buffer_t* buffer, c_uint start, c_uint end, c_uchar* buf, c_uint buf_size, c_uint* buf_consumed, buffer_serialize_format_t format, buffer_serialize_flags_t flags);
 	[LinkName("hb_buffer_set_cluster_level")]
 	public static extern void HbBufferSetClusterLevel(buffer_t* buffer, buffer_cluster_level_t cluster_level);
 	[LinkName("hb_buffer_set_content_type")]
@@ -551,7 +550,7 @@ class HarfBuzz
 	public static extern c_uchar HbColorGetRed(color_t color);
 	public function void destroy_func_t(void* user_data);
 	[LinkName("hb_direction_from_string")]
-	public static extern direction_t HbDirectionFromString(c_int len);
+	public static extern direction_t HbDirectionFromString(c_uchar* str, c_int len);
 	public enum direction_t : c_int
 	{
 		invalid = 0,
@@ -636,7 +635,7 @@ class HarfBuzz
 	[LinkName("hb_face_get_index")]
 	public static extern c_uint HbFaceGetIndex(face_t* face);
 	[LinkName("hb_face_get_table_tags")]
-	public static extern c_uint HbFaceGetTableTags(face_t* face, c_uint start_offset, c_uint* table_count);
+	public static extern c_uint HbFaceGetTableTags(face_t* face, c_uint start_offset, c_uint* table_count, tag_t* table_tags);
 	[LinkName("hb_face_get_upem")]
 	public static extern c_uint HbFaceGetUpem(face_t* face);
 	[LinkName("hb_face_is_immutable")]
@@ -658,7 +657,7 @@ class HarfBuzz
 	{
 	}
 	[LinkName("hb_feature_from_string")]
-	public static extern bool_t HbFeatureFromString(c_int len, feature_t* feature);
+	public static extern bool_t HbFeatureFromString(c_uchar* str, c_int len, feature_t* feature);
 	[CRepr]
 	public struct feature_t
 	{
@@ -668,7 +667,7 @@ class HarfBuzz
 		c_uint end;
 	}
 	[LinkName("hb_feature_to_string")]
-	public static extern void HbFeatureToString(feature_t* feature, c_uint size);
+	public static extern void HbFeatureToString(feature_t* feature, char8* buf, c_uint size);
 	[LinkName("hb_font_add_glyph_origin_for_direction")]
 	public static extern void HbFontAddGlyphOriginForDirection(font_t* font, codepoint_t glyph, direction_t direction, position_t* x, position_t* y);
 	[LinkName("hb_font_changed")]
@@ -769,7 +768,7 @@ class HarfBuzz
 	public static extern bool_t HbFontGetGlyphExtentsForOrigin(font_t* font, codepoint_t glyph, direction_t direction, glyph_extents_t* extents);
 	public function bool_t font_get_glyph_extents_func_t(font_t font, void* font_data, codepoint_t glyph, glyph_extents_t extents, void* user_data);
 	[LinkName("hb_font_get_glyph_from_name")]
-	public static extern bool_t HbFontGetGlyphFromName(font_t* font, c_int len, codepoint_t* glyph);
+	public static extern bool_t HbFontGetGlyphFromName(font_t* font, char8* name, c_int len, codepoint_t* glyph);
 	public function bool_t font_get_glyph_from_name_func_t(font_t font, void* font_data, c_int len, codepoint_t glyph, void* user_data);
 	public function bool_t font_get_glyph_func_t(font_t font, void* font_data, codepoint_t unicode, codepoint_t variation_selector, codepoint_t glyph, void* user_data);
 	[LinkName("hb_font_get_glyph_h_advance")]
@@ -784,7 +783,7 @@ class HarfBuzz
 	public static extern void HbFontGetGlyphKerningForDirection(font_t* font, codepoint_t first_glyph, codepoint_t second_glyph, direction_t direction, position_t* x, position_t* y);
 	public function position_t font_get_glyph_kerning_func_t(font_t font, void* font_data, codepoint_t first_glyph, codepoint_t second_glyph, void* user_data);
 	[LinkName("hb_font_get_glyph_name")]
-	public static extern bool_t HbFontGetGlyphName(font_t* font, codepoint_t glyph, c_uint size);
+	public static extern bool_t HbFontGetGlyphName(font_t* font, codepoint_t glyph, char8* name, c_uint size);
 	public function bool_t font_get_glyph_name_func_t(font_t font, void* font_data, codepoint_t glyph, c_uint size, void* user_data);
 	[LinkName("hb_font_get_glyph_origin_for_direction")]
 	public static extern void HbFontGetGlyphOriginForDirection(font_t* font, codepoint_t glyph, direction_t direction, position_t* x, position_t* y);
@@ -830,9 +829,9 @@ class HarfBuzz
 	public static extern bool_t HbFontGetVariationGlyph(font_t* font, codepoint_t unicode, codepoint_t variation_selector, codepoint_t* glyph);
 	public function bool_t font_get_variation_glyph_func_t(font_t font, void* font_data, codepoint_t unicode, codepoint_t variation_selector, codepoint_t glyph, void* user_data);
 	[LinkName("hb_font_glyph_from_string")]
-	public static extern bool_t HbFontGlyphFromString(font_t* font, c_int len, codepoint_t* glyph);
+	public static extern bool_t HbFontGlyphFromString(font_t* font, c_uchar* s, c_int len, codepoint_t* glyph);
 	[LinkName("hb_font_glyph_to_string")]
-	public static extern void HbFontGlyphToString(font_t* font, codepoint_t glyph, c_uint size);
+	public static extern void HbFontGlyphToString(font_t* font, codepoint_t glyph, char8* s, c_uint size);
 	[LinkName("hb_font_is_immutable")]
 	public static extern bool_t HbFontIsImmutable(font_t* font);
 	[LinkName("hb_font_make_immutable")]
@@ -854,13 +853,13 @@ class HarfBuzz
 	[LinkName("hb_font_set_synthetic_slant")]
 	public static extern void HbFontSetSyntheticSlant(font_t* font, float slant);
 	[LinkName("hb_font_set_var_coords_design")]
-	public static extern void HbFontSetVarCoordsDesign(font_t* font, c_uint coords_length);
+	public static extern void HbFontSetVarCoordsDesign(font_t* font, float* coords, c_uint coords_length);
 	[LinkName("hb_font_set_var_coords_normalized")]
-	public static extern void HbFontSetVarCoordsNormalized(font_t* font, c_uint coords_length);
+	public static extern void HbFontSetVarCoordsNormalized(font_t* font, c_int* coords, c_uint coords_length);
 	[LinkName("hb_font_set_var_named_instance")]
 	public static extern void HbFontSetVarNamedInstance(font_t* font, c_uint instance_index);
 	[LinkName("hb_font_set_variations")]
-	public static extern void HbFontSetVariations(font_t* font, c_uint variations_length);
+	public static extern void HbFontSetVariations(font_t* font, variation_t* variations, c_uint variations_length);
 	[LinkName("hb_font_subtract_glyph_origin_for_direction")]
 	public static extern void HbFontSubtractGlyphOriginForDirection(font_t* font, codepoint_t glyph, direction_t direction, position_t* x, position_t* y);
 	[CRepr]
@@ -922,7 +921,7 @@ class HarfBuzz
 		var_int_t var_;
 	}
 	[LinkName("hb_language_from_string")]
-	public static extern language_t HbLanguageFromString(c_int len);
+	public static extern language_t HbLanguageFromString(c_uchar* str, c_int len);
 	[LinkName("hb_language_get_default")]
 	public static extern language_t HbLanguageGetDefault();
 	[LinkName("hb_language_matches")]
@@ -971,7 +970,7 @@ class HarfBuzz
 		readonly_may_make_writable = 3
 	}
 	[LinkName("hb_ot_color_glyph_get_layers")]
-	public static extern c_uint HbOtColorGlyphGetLayers(face_t* face, codepoint_t glyph, c_uint start_offset, c_uint* layer_count);
+	public static extern c_uint HbOtColorGlyphGetLayers(face_t* face, codepoint_t glyph, c_uint start_offset, c_uint* layer_count, ot_color_layer_t* layers);
 	[LinkName("hb_ot_color_glyph_reference_png")]
 	public static extern blob_t* HbOtColorGlyphReferencePng(font_t* font, codepoint_t glyph);
 	[LinkName("hb_ot_color_glyph_reference_svg")]
@@ -1000,7 +999,7 @@ class HarfBuzz
 		usable_with_dark_background = 2
 	}
 	[LinkName("hb_ot_color_palette_get_colors")]
-	public static extern c_uint HbOtColorPaletteGetColors(face_t* face, c_uint palette_index, c_uint start_offset, c_uint* color_count);
+	public static extern c_uint HbOtColorPaletteGetColors(face_t* face, c_uint palette_index, c_uint start_offset, c_uint* color_count, color_t* colors);
 	[LinkName("hb_ot_color_palette_get_count")]
 	public static extern c_uint HbOtColorPaletteGetCount(face_t* face);
 	[LinkName("hb_ot_color_palette_get_flags")]
@@ -1022,19 +1021,19 @@ class HarfBuzz
 		math = 1835103336
 	}
 	[LinkName("hb_ot_layout_collect_features")]
-	public static extern void HbOtLayoutCollectFeatures(face_t* face, tag_t table_tag, set_t* feature_indexes);
+	public static extern void HbOtLayoutCollectFeatures(face_t* face, tag_t table_tag, tag_t* scripts, tag_t* languages, tag_t* features, set_t* feature_indexes);
 	[LinkName("hb_ot_layout_collect_lookups")]
-	public static extern void HbOtLayoutCollectLookups(face_t* face, tag_t table_tag, set_t* lookup_indexes);
+	public static extern void HbOtLayoutCollectLookups(face_t* face, tag_t table_tag, tag_t* scripts, tag_t* languages, tag_t* features, set_t* lookup_indexes);
 	[LinkName("hb_ot_layout_feature_get_characters")]
-	public static extern c_uint HbOtLayoutFeatureGetCharacters(face_t* face, tag_t table_tag, c_uint feature_index, c_uint start_offset, c_uint* char_count);
+	public static extern c_uint HbOtLayoutFeatureGetCharacters(face_t* face, tag_t table_tag, c_uint feature_index, c_uint start_offset, c_uint* char_count, codepoint_t* characters);
 	[LinkName("hb_ot_layout_feature_get_lookups")]
-	public static extern c_uint HbOtLayoutFeatureGetLookups(face_t* face, tag_t table_tag, c_uint feature_index, c_uint start_offset, c_uint* lookup_count);
+	public static extern c_uint HbOtLayoutFeatureGetLookups(face_t* face, tag_t table_tag, c_uint feature_index, c_uint start_offset, c_uint* lookup_count, c_uint* lookup_indexes);
 	[LinkName("hb_ot_layout_feature_get_name_ids")]
 	public static extern bool_t HbOtLayoutFeatureGetNameIds(face_t* face, tag_t table_tag, c_uint feature_index, ot_name_id_t* label_id, ot_name_id_t* tooltip_id, ot_name_id_t* sample_id, c_uint* num_named_parameters, ot_name_id_t* first_param_id);
 	[LinkName("hb_ot_layout_feature_with_variations_get_lookups")]
-	public static extern c_uint HbOtLayoutFeatureWithVariationsGetLookups(face_t* face, tag_t table_tag, c_uint feature_index, c_uint variations_index, c_uint start_offset, c_uint* lookup_count);
+	public static extern c_uint HbOtLayoutFeatureWithVariationsGetLookups(face_t* face, tag_t table_tag, c_uint feature_index, c_uint variations_index, c_uint start_offset, c_uint* lookup_count, c_uint* lookup_indexes);
 	[LinkName("hb_ot_layout_get_attach_points")]
-	public static extern c_uint HbOtLayoutGetAttachPoints(face_t* face, codepoint_t glyph, c_uint start_offset, c_uint* point_count);
+	public static extern c_uint HbOtLayoutGetAttachPoints(face_t* face, codepoint_t glyph, c_uint start_offset, c_uint* point_count, c_uint* point_array);
 	[LinkName("hb_ot_layout_get_baseline")]
 	public static extern bool_t HbOtLayoutGetBaseline(font_t* font, ot_layout_baseline_tag_t baseline_tag, direction_t direction, tag_t script_tag, tag_t language_tag, position_t* coord);
 	[LinkName("hb_ot_layout_get_baseline_with_fallback")]
@@ -1046,7 +1045,7 @@ class HarfBuzz
 	[LinkName("hb_ot_layout_get_horizontal_baseline_tag_for_script")]
 	public static extern ot_layout_baseline_tag_t HbOtLayoutGetHorizontalBaselineTagForScript(script_t script);
 	[LinkName("hb_ot_layout_get_ligature_carets")]
-	public static extern c_uint HbOtLayoutGetLigatureCarets(font_t* font, direction_t direction, codepoint_t glyph, c_uint start_offset, c_uint* caret_count);
+	public static extern c_uint HbOtLayoutGetLigatureCarets(font_t* font, direction_t direction, codepoint_t glyph, c_uint start_offset, c_uint* caret_count, position_t* caret_array);
 	[LinkName("hb_ot_layout_get_size_params")]
 	public static extern bool_t HbOtLayoutGetSizeParams(face_t* face, c_uint* design_size, c_uint* subfamily_id, ot_name_id_t* subfamily_name_id, c_uint* range_start, c_uint* range_end);
 	public enum ot_layout_glyph_class_t : c_int
@@ -1066,9 +1065,9 @@ class HarfBuzz
 	[LinkName("hb_ot_layout_language_find_feature")]
 	public static extern bool_t HbOtLayoutLanguageFindFeature(face_t* face, tag_t table_tag, c_uint script_index, c_uint language_index, tag_t feature_tag, c_uint* feature_index);
 	[LinkName("hb_ot_layout_language_get_feature_indexes")]
-	public static extern c_uint HbOtLayoutLanguageGetFeatureIndexes(face_t* face, tag_t table_tag, c_uint script_index, c_uint language_index, c_uint start_offset, c_uint* feature_count);
+	public static extern c_uint HbOtLayoutLanguageGetFeatureIndexes(face_t* face, tag_t table_tag, c_uint script_index, c_uint language_index, c_uint start_offset, c_uint* feature_count, c_uint* feature_indexes);
 	[LinkName("hb_ot_layout_language_get_feature_tags")]
-	public static extern c_uint HbOtLayoutLanguageGetFeatureTags(face_t* face, tag_t table_tag, c_uint script_index, c_uint language_index, c_uint start_offset, c_uint* feature_count);
+	public static extern c_uint HbOtLayoutLanguageGetFeatureTags(face_t* face, tag_t table_tag, c_uint script_index, c_uint language_index, c_uint start_offset, c_uint* feature_count, tag_t* feature_tags);
 	[LinkName("hb_ot_layout_language_get_required_feature")]
 	public static extern bool_t HbOtLayoutLanguageGetRequiredFeature(face_t* face, tag_t table_tag, c_uint script_index, c_uint language_index, c_uint* feature_index, tag_t* feature_tag);
 	[LinkName("hb_ot_layout_language_get_required_feature_index")]
@@ -1076,7 +1075,7 @@ class HarfBuzz
 	[LinkName("hb_ot_layout_lookup_collect_glyphs")]
 	public static extern void HbOtLayoutLookupCollectGlyphs(face_t* face, tag_t table_tag, c_uint lookup_index, set_t* glyphs_before, set_t* glyphs_input, set_t* glyphs_after, set_t* glyphs_output);
 	[LinkName("hb_ot_layout_lookup_get_glyph_alternates")]
-	public static extern c_uint HbOtLayoutLookupGetGlyphAlternates(face_t* face, c_uint lookup_index, codepoint_t glyph, c_uint start_offset, c_uint* alternate_count);
+	public static extern c_uint HbOtLayoutLookupGetGlyphAlternates(face_t* face, c_uint lookup_index, codepoint_t glyph, c_uint start_offset, c_uint* alternate_count, codepoint_t* alternate_glyphs);
 	[LinkName("hb_ot_layout_lookup_substitute_closure")]
 	public static extern void HbOtLayoutLookupSubstituteClosure(face_t* face, c_uint lookup_index, set_t* glyphs);
 	[LinkName("hb_ot_layout_lookup_would_substitute")]
@@ -1086,7 +1085,7 @@ class HarfBuzz
 	[LinkName("hb_ot_layout_script_find_language")]
 	public static extern bool_t HbOtLayoutScriptFindLanguage(face_t* face, tag_t table_tag, c_uint script_index, tag_t language_tag, c_uint* language_index);
 	[LinkName("hb_ot_layout_script_get_language_tags")]
-	public static extern c_uint HbOtLayoutScriptGetLanguageTags(face_t* face, tag_t table_tag, c_uint script_index, c_uint start_offset, c_uint* language_count);
+	public static extern c_uint HbOtLayoutScriptGetLanguageTags(face_t* face, tag_t table_tag, c_uint script_index, c_uint start_offset, c_uint* language_count, tag_t* language_tags);
 	[LinkName("hb_ot_layout_script_select_language")]
 	public static extern bool_t HbOtLayoutScriptSelectLanguage(face_t* face, tag_t table_tag, c_uint script_index, c_uint language_count, tag_t* language_tags, c_uint* language_index);
 	[LinkName("hb_ot_layout_table_choose_script")]
@@ -1096,11 +1095,11 @@ class HarfBuzz
 	[LinkName("hb_ot_layout_table_find_script")]
 	public static extern bool_t HbOtLayoutTableFindScript(face_t* face, tag_t table_tag, tag_t script_tag, c_uint* script_index);
 	[LinkName("hb_ot_layout_table_get_feature_tags")]
-	public static extern c_uint HbOtLayoutTableGetFeatureTags(face_t* face, tag_t table_tag, c_uint start_offset, c_uint* feature_count);
+	public static extern c_uint HbOtLayoutTableGetFeatureTags(face_t* face, tag_t table_tag, c_uint start_offset, c_uint* feature_count, tag_t* feature_tags);
 	[LinkName("hb_ot_layout_table_get_lookup_count")]
 	public static extern c_uint HbOtLayoutTableGetLookupCount(face_t* face, tag_t table_tag);
 	[LinkName("hb_ot_layout_table_get_script_tags")]
-	public static extern c_uint HbOtLayoutTableGetScriptTags(face_t* face, tag_t table_tag, c_uint start_offset, c_uint* script_count);
+	public static extern c_uint HbOtLayoutTableGetScriptTags(face_t* face, tag_t table_tag, c_uint start_offset, c_uint* script_count, tag_t* script_tags);
 	[LinkName("hb_ot_layout_table_select_script")]
 	public static extern bool_t HbOtLayoutTableSelectScript(face_t* face, tag_t table_tag, c_uint script_count, tag_t* script_tags, c_uint* script_index, tag_t* chosen_script);
 	public enum ot_math_constant_t : c_int
@@ -1165,17 +1164,17 @@ class HarfBuzz
 	[LinkName("hb_ot_math_get_constant")]
 	public static extern position_t HbOtMathGetConstant(font_t* font, ot_math_constant_t constant);
 	[LinkName("hb_ot_math_get_glyph_assembly")]
-	public static extern c_uint HbOtMathGetGlyphAssembly(font_t* font, codepoint_t glyph, direction_t direction, c_uint start_offset, c_uint* parts_count, position_t* italics_correction);
+	public static extern c_uint HbOtMathGetGlyphAssembly(font_t* font, codepoint_t glyph, direction_t direction, c_uint start_offset, c_uint* parts_count, ot_math_glyph_part_t* parts, position_t* italics_correction);
 	[LinkName("hb_ot_math_get_glyph_italics_correction")]
 	public static extern position_t HbOtMathGetGlyphItalicsCorrection(font_t* font, codepoint_t glyph);
 	[LinkName("hb_ot_math_get_glyph_kerning")]
 	public static extern position_t HbOtMathGetGlyphKerning(font_t* font, codepoint_t glyph, ot_math_kern_t kern, position_t correction_height);
 	[LinkName("hb_ot_math_get_glyph_kernings")]
-	public static extern c_uint HbOtMathGetGlyphKernings(font_t* font, codepoint_t glyph, ot_math_kern_t kern, c_uint start_offset, c_uint* entries_count);
+	public static extern c_uint HbOtMathGetGlyphKernings(font_t* font, codepoint_t glyph, ot_math_kern_t kern, c_uint start_offset, c_uint* entries_count, ot_math_kern_entry_t* kern_entries);
 	[LinkName("hb_ot_math_get_glyph_top_accent_attachment")]
 	public static extern position_t HbOtMathGetGlyphTopAccentAttachment(font_t* font, codepoint_t glyph);
 	[LinkName("hb_ot_math_get_glyph_variants")]
-	public static extern c_uint HbOtMathGetGlyphVariants(font_t* font, codepoint_t glyph, direction_t direction, c_uint start_offset, c_uint* variants_count);
+	public static extern c_uint HbOtMathGetGlyphVariants(font_t* font, codepoint_t glyph, direction_t direction, c_uint start_offset, c_uint* variants_count, ot_math_glyph_variant_t* variants);
 	[LinkName("hb_ot_math_get_min_connector_overlap")]
 	public static extern position_t HbOtMathGetMinConnectorOverlap(font_t* font, direction_t direction);
 	[CRepr]
@@ -1216,7 +1215,7 @@ class HarfBuzz
 		bottom_left = 3
 	}
 	[LinkName("hb_ot_meta_get_entry_tags")]
-	public static extern c_uint HbOtMetaGetEntryTags(face_t* face, c_uint start_offset, c_uint* entries_count);
+	public static extern c_uint HbOtMetaGetEntryTags(face_t* face, c_uint start_offset, c_uint* entries_count, ot_meta_tag_t* entries);
 	[LinkName("hb_ot_meta_reference_entry")]
 	public static extern blob_t* HbOtMetaReferenceEntry(face_t* face, ot_meta_tag_t meta_tag);
 	public enum ot_meta_tag_t : c_int
@@ -1273,15 +1272,15 @@ class HarfBuzz
 		language_t language;
 	}
 	[LinkName("hb_ot_name_get_utf16")]
-	public static extern c_uint HbOtNameGetUtf16(face_t* face, ot_name_id_t name_id, language_t language, c_uint* text_size);
+	public static extern c_uint HbOtNameGetUtf16(face_t* face, ot_name_id_t name_id, language_t language, c_uint* text_size, c_ushort* text);
 	[LinkName("hb_ot_name_get_utf32")]
-	public static extern c_uint HbOtNameGetUtf32(face_t* face, ot_name_id_t name_id, language_t language, c_uint* text_size);
+	public static extern c_uint HbOtNameGetUtf32(face_t* face, ot_name_id_t name_id, language_t language, c_uint* text_size, c_uint* text);
 	[LinkName("hb_ot_name_get_utf8")]
-	public static extern c_uint HbOtNameGetUtf8(face_t* face, ot_name_id_t name_id, language_t language, c_uint* text_size);
+	public static extern c_uint HbOtNameGetUtf8(face_t* face, ot_name_id_t name_id, language_t language, c_uint* text_size, char8* text);
 	[LinkName("hb_ot_name_list_names")]
 	public static extern ot_name_entry_t HbOtNameListNames(face_t* face, c_uint* num_entries);
 	[LinkName("hb_ot_shape_glyphs_closure")]
-	public static extern void HbOtShapeGlyphsClosure(font_t* font, buffer_t* buffer, c_uint num_features, set_t* glyphs);
+	public static extern void HbOtShapeGlyphsClosure(font_t* font, buffer_t* buffer, feature_t* features, c_uint num_features, set_t* glyphs);
 	[LinkName("hb_ot_shape_plan_collect_lookups")]
 	public static extern void HbOtShapePlanCollectLookups(shape_plan_t* shape_plan, tag_t table_tag, set_t* lookup_indexes);
 	[LinkName("hb_ot_tag_from_language")]
@@ -1327,17 +1326,17 @@ class HarfBuzz
 	[LinkName("hb_ot_var_find_axis_info")]
 	public static extern bool_t HbOtVarFindAxisInfo(face_t* face, tag_t axis_tag, ot_var_axis_info_t* axis_info);
 	[LinkName("hb_ot_var_get_axes")]
-	public static extern c_uint HbOtVarGetAxes(face_t* face, c_uint start_offset, c_uint* axes_count);
+	public static extern c_uint HbOtVarGetAxes(face_t* face, c_uint start_offset, c_uint* axes_count, ot_var_axis_t* axes_array);
 	[LinkName("hb_ot_var_get_axis_count")]
 	public static extern c_uint HbOtVarGetAxisCount(face_t* face);
 	[LinkName("hb_ot_var_get_axis_infos")]
-	public static extern c_uint HbOtVarGetAxisInfos(face_t* face, c_uint start_offset, c_uint* axes_count);
+	public static extern c_uint HbOtVarGetAxisInfos(face_t* face, c_uint start_offset, c_uint* axes_count, ot_var_axis_info_t* axes_array);
 	[LinkName("hb_ot_var_get_named_instance_count")]
 	public static extern c_uint HbOtVarGetNamedInstanceCount(face_t* face);
 	[LinkName("hb_ot_var_has_data")]
 	public static extern bool_t HbOtVarHasData(face_t* face);
 	[LinkName("hb_ot_var_named_instance_get_design_coords")]
-	public static extern c_uint HbOtVarNamedInstanceGetDesignCoords(face_t* face, c_uint instance_index, c_uint* coords_length);
+	public static extern c_uint HbOtVarNamedInstanceGetDesignCoords(face_t* face, c_uint instance_index, c_uint* coords_length, float* coords);
 	[LinkName("hb_ot_var_named_instance_get_postscript_name_id")]
 	public static extern ot_name_id_t HbOtVarNamedInstanceGetPostscriptNameId(face_t* face, c_uint instance_index);
 	[LinkName("hb_ot_var_named_instance_get_subfamily_name_id")]
@@ -1345,12 +1344,12 @@ class HarfBuzz
 	[LinkName("hb_ot_var_normalize_coords")]
 	public static extern void HbOtVarNormalizeCoords(face_t* face, c_uint coords_length, float* design_coords, c_int* normalized_coords);
 	[LinkName("hb_ot_var_normalize_variations")]
-	public static extern void HbOtVarNormalizeVariations(face_t* face, variation_t* variations, c_uint variations_length, c_uint coords_length);
+	public static extern void HbOtVarNormalizeVariations(face_t* face, variation_t* variations, c_uint variations_length, c_int* coords, c_uint coords_length);
 	public function blob_t reference_table_func_t(face_t face, tag_t tag, void* user_data);
 	[LinkName("hb_script_from_iso15924_tag")]
 	public static extern script_t HbScriptFromIso15924Tag(tag_t tag);
 	[LinkName("hb_script_from_string")]
-	public static extern script_t HbScriptFromString(c_int len);
+	public static extern script_t HbScriptFromString(c_uchar* str, c_int len);
 	[LinkName("hb_script_get_horizontal_direction")]
 	public static extern direction_t HbScriptGetHorizontalDirection(script_t script);
 	public enum script_t : c_int
@@ -1544,7 +1543,7 @@ class HarfBuzz
 	[LinkName("hb_set_add_range")]
 	public static extern void HbSetAddRange(set_t* set, codepoint_t first, codepoint_t last);
 	[LinkName("hb_set_add_sorted_array")]
-	public static extern void HbSetAddSortedArray(set_t* set, c_uint num_codepoints);
+	public static extern void HbSetAddSortedArray(set_t* set, codepoint_t* sorted_codepoints, c_uint num_codepoints);
 	[LinkName("hb_set_allocation_successful")]
 	public static extern bool_t HbSetAllocationSuccessful(set_t* set);
 	[LinkName("hb_set_clear")]
@@ -1582,7 +1581,7 @@ class HarfBuzz
 	[LinkName("hb_set_next")]
 	public static extern bool_t HbSetNext(set_t* set, codepoint_t* codepoint);
 	[LinkName("hb_set_next_many")]
-	public static extern c_uint HbSetNextMany(set_t* set, codepoint_t codepoint, c_uint size);
+	public static extern c_uint HbSetNextMany(set_t* set, codepoint_t codepoint, codepoint_t* out_, c_uint size);
 	[LinkName("hb_set_next_range")]
 	public static extern bool_t HbSetNextRange(set_t* set, codepoint_t* first, codepoint_t* last);
 	[LinkName("hb_set_previous")]
@@ -1602,21 +1601,21 @@ class HarfBuzz
 	[LinkName("hb_set_union")]
 	public static extern void HbSetUnion(set_t* set, set_t* other);
 	[LinkName("hb_shape")]
-	public static extern void HbShape(font_t* font, buffer_t* buffer, c_uint num_features);
+	public static extern void HbShape(font_t* font, buffer_t* buffer, feature_t* features, c_uint num_features);
 	[LinkName("hb_shape_full")]
-	public static extern bool_t HbShapeFull(font_t* font, buffer_t* buffer, c_uint num_features);
+	public static extern bool_t HbShapeFull(font_t* font, buffer_t* buffer, feature_t* features, c_uint num_features, char8* shaper_list);
 	[LinkName("hb_shape_list_shapers")]
 	public static extern char8* HbShapeListShapers();
 	[LinkName("hb_shape_plan_create")]
-	public static extern shape_plan_t* HbShapePlanCreate(face_t* face, segment_properties_t* props, c_uint num_user_features);
+	public static extern shape_plan_t* HbShapePlanCreate(face_t* face, segment_properties_t* props, feature_t* user_features, c_uint num_user_features, char8* shaper_list);
 	[LinkName("hb_shape_plan_create2")]
-	public static extern shape_plan_t* HbShapePlanCreate2(face_t* face, segment_properties_t* props, c_uint num_user_features, c_uint num_coords);
+	public static extern shape_plan_t* HbShapePlanCreate2(face_t* face, segment_properties_t* props, feature_t* user_features, c_uint num_user_features, c_int* coords, c_uint num_coords, char8* shaper_list);
 	[LinkName("hb_shape_plan_create_cached")]
-	public static extern shape_plan_t* HbShapePlanCreateCached(face_t* face, segment_properties_t* props, c_uint num_user_features);
+	public static extern shape_plan_t* HbShapePlanCreateCached(face_t* face, segment_properties_t* props, feature_t* user_features, c_uint num_user_features, char8* shaper_list);
 	[LinkName("hb_shape_plan_create_cached2")]
-	public static extern shape_plan_t* HbShapePlanCreateCached2(face_t* face, segment_properties_t* props, c_uint num_user_features, c_uint num_coords);
+	public static extern shape_plan_t* HbShapePlanCreateCached2(face_t* face, segment_properties_t* props, feature_t* user_features, c_uint num_user_features, c_int* coords, c_uint num_coords, char8* shaper_list);
 	[LinkName("hb_shape_plan_execute")]
-	public static extern bool_t HbShapePlanExecute(shape_plan_t* shape_plan, font_t* font, buffer_t* buffer, c_uint num_features);
+	public static extern bool_t HbShapePlanExecute(shape_plan_t* shape_plan, font_t* font, buffer_t* buffer, feature_t* features, c_uint num_features);
 	[LinkName("hb_shape_plan_get_empty")]
 	public static extern shape_plan_t* HbShapePlanGetEmpty();
 	[LinkName("hb_shape_plan_get_shaper")]
@@ -1637,9 +1636,9 @@ class HarfBuzz
 		weight = 2003265652
 	}
 	[LinkName("hb_tag_from_string")]
-	public static extern tag_t HbTagFromString(c_int len);
+	public static extern tag_t HbTagFromString(c_uchar* str, c_int len);
 	[LinkName("hb_tag_to_string")]
-	public static extern void HbTagToString(tag_t tag);
+	public static extern void HbTagToString(tag_t tag, c_uchar* buf);
 	[LinkName("hb_unicode_combining_class")]
 	public static extern unicode_combining_class_t HbUnicodeCombiningClass(unicode_funcs_t* ufuncs, codepoint_t unicode);
 	public function unicode_combining_class_t unicode_combining_class_func_t(unicode_funcs_t ufuncs, codepoint_t unicode, void* user_data);
@@ -1808,7 +1807,7 @@ class HarfBuzz
 		public c_int i32;
 	}
 	[LinkName("hb_variation_from_string")]
-	public static extern bool_t HbVariationFromString(c_int len, variation_t* variation);
+	public static extern bool_t HbVariationFromString(c_uchar* str, c_int len, variation_t* variation);
 	[CRepr]
 	public struct variation_t
 	{
@@ -1816,7 +1815,7 @@ class HarfBuzz
 		float value;
 	}
 	[LinkName("hb_variation_to_string")]
-	public static extern void HbVariationToString(variation_t* variation, c_uint size);
+	public static extern void HbVariationToString(variation_t* variation, char8* buf, c_uint size);
 	[LinkName("hb_version")]
 	public static extern void HbVersion(c_uint* major, c_uint* minor, c_uint* micro);
 	[LinkName("hb_version_atleast")]

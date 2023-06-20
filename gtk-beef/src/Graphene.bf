@@ -1,4 +1,4 @@
-namespace Graphene;
+namespace Gtk;
 
 using System;
 using System.Interop;

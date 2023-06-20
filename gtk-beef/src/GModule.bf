@@ -1,8 +1,7 @@
-namespace GModule;
+namespace Gtk;
 
 using System;
 using System.Interop;
-using GLib;
 
 class GModule
 {

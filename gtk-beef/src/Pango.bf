@@ -1,11 +1,7 @@
-namespace Pango;
+namespace Gtk;
 
 using System;
 using System.Interop;
-
-using GLib;
-using HarfBuzz;
-using GObject;
 
 class Pango
 {
@@ -221,7 +217,7 @@ class Pango
 	[LinkName("pango_context_get_serial")]
 	public static extern c_uint ContextGetSerial(Context* context);
 	[LinkName("pango_context_list_families")]
-	public static extern void ContextListFamilies(Context* context, c_int* n_families);
+	public static extern void ContextListFamilies(Context* context, FontFamily*** families, c_int* n_families);
 	[LinkName("pango_context_load_font")]
 	public static extern Font* ContextLoadFont(Context* context, FontDescription* desc);
 	[LinkName("pango_context_load_fontset")]
@@ -251,7 +247,7 @@ class Pango
 	[LinkName("pango_coverage_new")]
 	public static extern Coverage* CoverageNew();
 	[LinkName("pango_coverage_from_bytes")]
-	public static extern Coverage* CoverageFromBytes(c_int n_bytes);
+	public static extern Coverage* CoverageFromBytes(c_uchar* bytes, c_int n_bytes);
 	[LinkName("pango_coverage_copy")]
 	public static extern Coverage* CoverageCopy(Coverage* coverage);
 	[LinkName("pango_coverage_get")]
@@ -263,7 +259,7 @@ class Pango
 	[LinkName("pango_coverage_set")]
 	public static extern void CoverageSet(Coverage* coverage, c_int index_, CoverageLevel level);
 	[LinkName("pango_coverage_to_bytes")]
-	public static extern void CoverageToBytes(Coverage* coverage, c_int* n_bytes);
+	public static extern void CoverageToBytes(Coverage* coverage, c_uchar** bytes, c_int* n_bytes);
 	[LinkName("pango_coverage_unref")]
 	public static extern void CoverageUnref(Coverage* coverage);
 	public enum CoverageLevel : c_int
@@ -293,7 +289,7 @@ class Pango
 	[CRepr]
 	public struct Font;
 	[LinkName("pango_font_descriptions_free")]
-	public static extern void FontDescriptionsFree(c_int n_descs);
+	public static extern void FontDescriptionsFree(FontDescription** descs, c_int n_descs);
 	[LinkName("pango_font_deserialize")]
 	public static extern Font* FontDeserialize(Context* context, GLib.Bytes* bytes);
 	[LinkName("pango_font_describe")]
@@ -338,7 +334,7 @@ class Pango
 	[LinkName("pango_font_face_is_synthesized")]
 	public static extern c_int FontFaceIsSynthesized(FontFace* face);
 	[LinkName("pango_font_face_list_sizes")]
-	public static extern void FontFaceListSizes(FontFace* face, c_int* n_sizes);
+	public static extern void FontFaceListSizes(FontFace* face, c_int** sizes, c_int* n_sizes);
 	[CRepr]
 	public struct FontFaceClass
 	{
@@ -355,7 +351,7 @@ class Pango
 	[LinkName("pango_font_family_is_variable")]
 	public static extern c_int FontFamilyIsVariable(FontFamily* family);
 	[LinkName("pango_font_family_list_faces")]
-	public static extern void FontFamilyListFaces(FontFamily* family, c_int* n_faces);
+	public static extern void FontFamilyListFaces(FontFamily* family, FontFace*** faces, c_int* n_faces);
 	[CRepr]
 	public struct FontFamilyClass
 	{
@@ -372,7 +368,7 @@ class Pango
 	[LinkName("pango_font_map_get_serial")]
 	public static extern c_uint FontMapGetSerial(FontMap* fontmap);
 	[LinkName("pango_font_map_list_families")]
-	public static extern void FontMapListFamilies(FontMap* fontmap, c_int* n_families);
+	public static extern void FontMapListFamilies(FontMap* fontmap, FontFamily*** families, c_int* n_families);
 	[LinkName("pango_font_map_load_font")]
 	public static extern Font* FontMapLoadFont(FontMap* fontmap, Context* context, FontDescription* desc);
 	[LinkName("pango_font_map_load_fontset")]
@@ -572,7 +568,7 @@ class Pango
 	[LinkName("pango_layout_get_lines_readonly")]
 	public static extern GLib.SList* LayoutGetLinesReadonly(Layout* layout);
 	[LinkName("pango_layout_get_log_attrs")]
-	public static extern void LayoutGetLogAttrs(Layout* layout, c_int* n_attrs);
+	public static extern void LayoutGetLogAttrs(Layout* layout, LogAttr** attrs, c_int* n_attrs);
 	[LinkName("pango_layout_get_log_attrs_readonly")]
 	public static extern LogAttr LayoutGetLogAttrsReadonly(Layout* layout, c_int* n_attrs);
 	[LinkName("pango_layout_get_pixel_extents")]
@@ -1012,7 +1008,7 @@ class Pango
 	[LinkName("pango_attr_baseline_shift_new")]
 	public static extern Attribute* AttrBaselineShiftNew(c_int shift);
 	[LinkName("pango_attr_break")]
-	public static extern void AttrBreak(char8* text, c_int length, AttrList* attr_list, c_int offset, c_int attrs_len);
+	public static extern void AttrBreak(char8* text, c_int length, AttrList* attr_list, c_int offset, LogAttr* attrs, c_int attrs_len);
 	[LinkName("pango_attr_fallback_new")]
 	public static extern Attribute* AttrFallbackNew(c_int enable_fallback);
 	[LinkName("pango_attr_family_new")]
@@ -1090,7 +1086,7 @@ class Pango
 	[LinkName("pango_bidi_type_for_unichar")]
 	public static extern BidiType BidiTypeForUnichar(c_uint ch);
 	[LinkName("pango_break")]
-	public static extern void Break(char8* text, c_int length, Analysis* analysis, c_int attrs_len);
+	public static extern void Break(char8* text, c_int length, Analysis* analysis, LogAttr* attrs, c_int attrs_len);
 	[LinkName("pango_default_break")]
 	public static extern void DefaultBreak(char8* text, c_int length, Analysis* analysis, LogAttr* attrs, c_int attrs_len);
 	[LinkName("pango_extents_to_pixels")]
@@ -1102,7 +1098,7 @@ class Pango
 	[LinkName("pango_font_description_from_string")]
 	public static extern FontDescription* FontDescriptionFromString(char8* str);
 	[LinkName("pango_get_log_attrs")]
-	public static extern void GetLogAttrs(char8* text, c_int length, c_int level, Language* language, c_int attrs_len);
+	public static extern void GetLogAttrs(char8* text, c_int length, c_int level, Language* language, LogAttr* attrs, c_int attrs_len);
 	[LinkName("pango_get_mirror_char")]
 	public static extern c_int GetMirrorChar(c_uint ch, c_uint* mirrored_ch);
 	[LinkName("pango_gravity_get_for_matrix")]
@@ -1176,7 +1172,7 @@ class Pango
 	[LinkName("pango_tab_array_from_string")]
 	public static extern TabArray* TabArrayFromString(char8* text);
 	[LinkName("pango_tailor_break")]
-	public static extern void TailorBreak(char8* text, c_int length, Analysis* analysis, c_int offset, c_int attrs_len);
+	public static extern void TailorBreak(char8* text, c_int length, Analysis* analysis, c_int offset, LogAttr* attrs, c_int attrs_len);
 	[LinkName("pango_trim_string")]
 	public static extern char8* TrimString(char8* str);
 	[LinkName("pango_unichar_direction")]

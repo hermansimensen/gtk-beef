@@ -1,9 +1,7 @@
-namespace Gio;
+namespace Gtk;
 
 using System;
 using System.Interop;
-using GLib;
-using GObject;
 
 class Gio
 {
@@ -103,13 +101,13 @@ class Gio
 
 		public function c_int(AppInfo appinfo1, AppInfo appinfo2) equal;
 
-		public function char8*(AppInfo appinfo) get_commandline;
+		public function char8(AppInfo appinfo) get_commandline;
 
 		public function char8*(AppInfo appinfo) get_description;
 
 		public function char8*(AppInfo appinfo) get_display_name;
 
-		public function char8*(AppInfo appinfo) get_executable;
+		public function char8(AppInfo appinfo) get_executable;
 
 		public function Icon(AppInfo appinfo) get_icon;
 
@@ -129,7 +127,7 @@ class Gio
 
 		public function c_int(AppInfo appinfo, char8* content_type) remove_supports_type;
 
-		public function c_int(AppInfo appinfo, char8* extension_) set_as_default_for_extension;
+		public function c_int(AppInfo appinfo, char8 extension_) set_as_default_for_extension;
 
 		public function c_int(AppInfo appinfo, char8* content_type) set_as_default_for_type;
 
@@ -165,7 +163,7 @@ class Gio
 	[LinkName("g_app_launch_context_get_display")]
 	public static extern char8* AppLaunchContextGetDisplay(AppLaunchContext* context, AppInfo* info, GLib.List* files);
 	[LinkName("g_app_launch_context_get_environment")]
-	public static extern char8* AppLaunchContextGetEnvironment(AppLaunchContext* context);
+	public static extern char8 AppLaunchContextGetEnvironment(AppLaunchContext* context);
 	[LinkName("g_app_launch_context_get_startup_notify_id")]
 	public static extern char8* AppLaunchContextGetStartupNotifyId(AppLaunchContext* context, AppInfo* info, GLib.List* files);
 	[LinkName("g_app_launch_context_launch_failed")]
@@ -196,7 +194,7 @@ class Gio
 	[LinkName("g_application_add_main_option")]
 	public static extern void ApplicationAddMainOption(Application* application, char8* long_name, c_char short_name, GLib.OptionFlags flags, GLib.OptionArg arg, char8* description, char8* arg_description);
 	[LinkName("g_application_add_main_option_entries")]
-	public static extern void ApplicationAddMainOptionEntries(Application* application);
+	public static extern void ApplicationAddMainOptionEntries(Application* application, GLib.OptionEntry* entries);
 	[LinkName("g_application_add_option_group")]
 	public static extern void ApplicationAddOptionGroup(Application* application, GLib.OptionGroup* group);
 	[LinkName("g_application_bind_busy_property")]
@@ -224,7 +222,7 @@ class Gio
 	[LinkName("g_application_mark_busy")]
 	public static extern void ApplicationMarkBusy(Application* application);
 	[LinkName("g_application_open")]
-	public static extern void ApplicationOpen(Application* application, c_int n_files, char8* hint);
+	public static extern void ApplicationOpen(Application* application, File** files, c_int n_files, char8* hint);
 	[LinkName("g_application_quit")]
 	public static extern void ApplicationQuit(Application* application);
 	[LinkName("g_application_register")]
@@ -232,7 +230,7 @@ class Gio
 	[LinkName("g_application_release")]
 	public static extern void ApplicationRelease(Application* application);
 	[LinkName("g_application_run")]
-	public static extern c_int ApplicationRun(Application* application, c_int argc);
+	public static extern c_int ApplicationRun(Application* application, c_int argc, char8** argv);
 	[LinkName("g_application_send_notification")]
 	public static extern void ApplicationSendNotification(Application* application, char8* id, Notification* notification);
 	[LinkName("g_application_set_action_group")]
@@ -269,11 +267,11 @@ class Gio
 	[LinkName("g_application_command_line_create_file_for_arg")]
 	public static extern File* ApplicationCommandLineCreateFileForArg(ApplicationCommandLine* cmdline, char8* arg);
 	[LinkName("g_application_command_line_get_arguments")]
-	public static extern char8* ApplicationCommandLineGetArguments(ApplicationCommandLine* cmdline, c_int* argc);
+	public static extern char8 ApplicationCommandLineGetArguments(ApplicationCommandLine* cmdline, c_int* argc);
 	[LinkName("g_application_command_line_get_cwd")]
 	public static extern char8* ApplicationCommandLineGetCwd(ApplicationCommandLine* cmdline);
 	[LinkName("g_application_command_line_get_environ")]
-	public static extern char8* ApplicationCommandLineGetEnviron(ApplicationCommandLine* cmdline);
+	public static extern char8 ApplicationCommandLineGetEnviron(ApplicationCommandLine* cmdline);
 	[LinkName("g_application_command_line_get_exit_status")]
 	public static extern c_int ApplicationCommandLineGetExitStatus(ApplicationCommandLine* cmdline);
 	[LinkName("g_application_command_line_get_is_remote")]
@@ -370,7 +368,7 @@ class Gio
 	[LinkName("g_buffered_input_stream_get_buffer_size")]
 	public static extern c_ulong BufferedInputStreamGetBufferSize(BufferedInputStream* stream);
 	[LinkName("g_buffered_input_stream_peek")]
-	public static extern c_ulong BufferedInputStreamPeek(BufferedInputStream* stream, c_ulong offset, c_ulong count);
+	public static extern c_ulong BufferedInputStreamPeek(BufferedInputStream* stream, c_uchar* buffer, c_ulong offset, c_ulong count);
 	[LinkName("g_buffered_input_stream_peek_buffer")]
 	public static extern c_uchar BufferedInputStreamPeekBuffer(BufferedInputStream* stream, c_ulong* count);
 	[LinkName("g_buffered_input_stream_read_byte")]
@@ -866,13 +864,13 @@ class Gio
 	[LinkName("g_dbus_message_new")]
 	public static extern DBusMessage* DbusMessageNew();
 	[LinkName("g_dbus_message_new_from_blob")]
-	public static extern DBusMessage* DbusMessageNewFromBlob(c_ulong blob_len, DBusCapabilityFlags capabilities);
+	public static extern DBusMessage* DbusMessageNewFromBlob(c_uchar* blob, c_ulong blob_len, DBusCapabilityFlags capabilities);
 	[LinkName("g_dbus_message_new_method_call")]
 	public static extern DBusMessage* DbusMessageNewMethodCall(char8* name, char8* path, char8* interface_, char8* method);
 	[LinkName("g_dbus_message_new_signal")]
 	public static extern DBusMessage* DbusMessageNewSignal(char8* path, char8* interface_, char8* signal);
 	[LinkName("g_dbus_message_bytes_needed")]
-	public static extern c_long DbusMessageBytesNeeded(c_ulong blob_len);
+	public static extern c_long DbusMessageBytesNeeded(c_uchar* blob, c_ulong blob_len);
 	[LinkName("g_dbus_message_copy")]
 	public static extern DBusMessage* DbusMessageCopy(DBusMessage* message);
 	[LinkName("g_dbus_message_get_arg0")]
@@ -1760,7 +1758,7 @@ class Gio
 
 		public function Mount(File file, AsyncResult res) find_enclosing_mount_finish;
 
-		public function char8*(File file) get_basename;
+		public function char8(File file) get_basename;
 
 		public function File(File file, char8* display_name) get_child_for_display_name;
 
@@ -1768,9 +1766,9 @@ class Gio
 
 		public function char8*(File file) get_parse_name;
 
-		public function char8*(File file) get_path;
+		public function char8(File file) get_path;
 
-		public function char8*(File parent, File descendant) get_relative_path;
+		public function char8(File parent, File descendant) get_relative_path;
 
 		public function char8*(File file) get_uri;
 
@@ -1788,9 +1786,9 @@ class Gio
 
 		public function c_int(File file, AsyncResult result) make_directory_finish;
 
-		public function c_int(File file, char8* symlink_value, Cancellable cancellable) make_symbolic_link;
+		public function c_int(File file, char8 symlink_value, Cancellable cancellable) make_symbolic_link;
 
-		public function void(File file, char8* symlink_value, c_int io_priority, Cancellable cancellable, AsyncReadyCallback callback, void* user_data) make_symbolic_link_async;
+		public function void(File file, char8 symlink_value, c_int io_priority, Cancellable cancellable, AsyncReadyCallback callback, void* user_data) make_symbolic_link_async;
 
 		public function c_int(File file, AsyncResult result) make_symbolic_link_finish;
 
@@ -1864,7 +1862,7 @@ class Gio
 
 		public function FileIOStream(File file, AsyncResult res) replace_readwrite_finish;
 
-		public function File(File file, char8* relative_path) resolve_relative_path;
+		public function File(File file, char8 relative_path) resolve_relative_path;
 
 		public function c_int(File file, char8* attribute, FileAttributeType type, void* value_p, FileQueryInfoFlags flags, Cancellable cancellable) set_attribute;
 
@@ -2146,7 +2144,7 @@ class Gio
 	[LinkName("g_file_info_set_attribute_string")]
 	public static extern void FileInfoSetAttributeString(FileInfo* info, char8* attribute, char8* attr_value);
 	[LinkName("g_file_info_set_attribute_stringv")]
-	public static extern void FileInfoSetAttributeStringv(FileInfo* info, char8* attribute);
+	public static extern void FileInfoSetAttributeStringv(FileInfo* info, char8* attribute, char8* attr_value);
 	[LinkName("g_file_info_set_attribute_uint32")]
 	public static extern void FileInfoSetAttributeUint32(FileInfo* info, char8* attribute, c_uint attr_value);
 	[LinkName("g_file_info_set_attribute_uint64")]
@@ -2490,7 +2488,7 @@ class Gio
 	[LinkName("g_inet_address_new_any")]
 	public static extern InetAddress* InetAddressNewAny(SocketFamily family);
 	[LinkName("g_inet_address_new_from_bytes")]
-	public static extern InetAddress* InetAddressNewFromBytes(SocketFamily family);
+	public static extern InetAddress* InetAddressNewFromBytes(c_uchar* bytes, SocketFamily family);
 	[LinkName("g_inet_address_new_from_string")]
 	public static extern InetAddress* InetAddressNewFromString(char8* string);
 	[LinkName("g_inet_address_new_loopback")]
@@ -2616,15 +2614,15 @@ class Gio
 	[LinkName("g_input_stream_is_closed")]
 	public static extern c_int InputStreamIsClosed(InputStream* stream);
 	[LinkName("g_input_stream_read")]
-	public static extern c_long InputStreamRead(InputStream* stream, c_ulong count, Cancellable* cancellable);
+	public static extern c_long InputStreamRead(InputStream* stream, c_uchar* buffer, c_ulong count, Cancellable* cancellable);
 	[LinkName("g_input_stream_read_all")]
-	public static extern c_int InputStreamReadAll(InputStream* stream, c_ulong count, c_ulong* bytes_read, Cancellable* cancellable);
+	public static extern c_int InputStreamReadAll(InputStream* stream, c_uchar* buffer, c_ulong count, c_ulong* bytes_read, Cancellable* cancellable);
 	[LinkName("g_input_stream_read_all_async")]
-	public static extern void InputStreamReadAllAsync(InputStream* stream, c_ulong count, c_int io_priority, Cancellable* cancellable, AsyncReadyCallback callback, void* user_data);
+	public static extern void InputStreamReadAllAsync(InputStream* stream, c_uchar* buffer, c_ulong count, c_int io_priority, Cancellable* cancellable, AsyncReadyCallback callback, void* user_data);
 	[LinkName("g_input_stream_read_all_finish")]
 	public static extern c_int InputStreamReadAllFinish(InputStream* stream, AsyncResult* result, c_ulong* bytes_read);
 	[LinkName("g_input_stream_read_async")]
-	public static extern void InputStreamReadAsync(InputStream* stream, c_ulong count, c_int io_priority, Cancellable* cancellable, AsyncReadyCallback callback, void* user_data);
+	public static extern void InputStreamReadAsync(InputStream* stream, c_uchar* buffer, c_ulong count, c_int io_priority, Cancellable* cancellable, AsyncReadyCallback callback, void* user_data);
 	[LinkName("g_input_stream_read_bytes")]
 	public static extern GLib.Bytes* InputStreamReadBytes(InputStream* stream, c_ulong count, Cancellable* cancellable);
 	[LinkName("g_input_stream_read_bytes_async")]
@@ -2693,7 +2691,7 @@ class Gio
 	[LinkName("g_list_store_sort")]
 	public static extern void ListStoreSort(ListStore* store, GLib.CompareDataFunc compare_func, void* user_data);
 	[LinkName("g_list_store_splice")]
-	public static extern void ListStoreSplice(ListStore* store, c_uint position, c_uint n_removals, c_uint n_additions);
+	public static extern void ListStoreSplice(ListStore* store, c_uint position, c_uint n_removals, GObject.Object* additions, c_uint n_additions);
 	[CRepr]
 	public struct ListStoreClass
 	{
@@ -2720,11 +2718,11 @@ class Gio
 	[LinkName("g_memory_input_stream_new_from_bytes")]
 	public static extern InputStream* MemoryInputStreamNewFromBytes(GLib.Bytes* bytes);
 	[LinkName("g_memory_input_stream_new_from_data")]
-	public static extern InputStream* MemoryInputStreamNewFromData(c_long len, GLib.DestroyNotify destroy);
+	public static extern InputStream* MemoryInputStreamNewFromData(c_uchar* data, c_long len, GLib.DestroyNotify destroy);
 	[LinkName("g_memory_input_stream_add_bytes")]
 	public static extern void MemoryInputStreamAddBytes(MemoryInputStream* stream, GLib.Bytes* bytes);
 	[LinkName("g_memory_input_stream_add_data")]
-	public static extern void MemoryInputStreamAddData(MemoryInputStream* stream, c_long len, GLib.DestroyNotify destroy);
+	public static extern void MemoryInputStreamAddData(MemoryInputStream* stream, c_uchar* data, c_long len, GLib.DestroyNotify destroy);
 	[CRepr]
 	public struct MemoryInputStreamClass
 	{
@@ -3192,15 +3190,15 @@ class Gio
 	[LinkName("g_output_stream_splice_finish")]
 	public static extern c_long OutputStreamSpliceFinish(OutputStream* stream, AsyncResult* result);
 	[LinkName("g_output_stream_write")]
-	public static extern c_long OutputStreamWrite(OutputStream* stream, c_ulong count, Cancellable* cancellable);
+	public static extern c_long OutputStreamWrite(OutputStream* stream, c_uchar* buffer, c_ulong count, Cancellable* cancellable);
 	[LinkName("g_output_stream_write_all")]
-	public static extern c_int OutputStreamWriteAll(OutputStream* stream, c_ulong count, c_ulong* bytes_written, Cancellable* cancellable);
+	public static extern c_int OutputStreamWriteAll(OutputStream* stream, c_uchar* buffer, c_ulong count, c_ulong* bytes_written, Cancellable* cancellable);
 	[LinkName("g_output_stream_write_all_async")]
-	public static extern void OutputStreamWriteAllAsync(OutputStream* stream, c_ulong count, c_int io_priority, Cancellable* cancellable, AsyncReadyCallback callback, void* user_data);
+	public static extern void OutputStreamWriteAllAsync(OutputStream* stream, c_uchar* buffer, c_ulong count, c_int io_priority, Cancellable* cancellable, AsyncReadyCallback callback, void* user_data);
 	[LinkName("g_output_stream_write_all_finish")]
 	public static extern c_int OutputStreamWriteAllFinish(OutputStream* stream, AsyncResult* result, c_ulong* bytes_written);
 	[LinkName("g_output_stream_write_async")]
-	public static extern void OutputStreamWriteAsync(OutputStream* stream, c_ulong count, c_int io_priority, Cancellable* cancellable, AsyncReadyCallback callback, void* user_data);
+	public static extern void OutputStreamWriteAsync(OutputStream* stream, c_uchar* buffer, c_ulong count, c_int io_priority, Cancellable* cancellable, AsyncReadyCallback callback, void* user_data);
 	[LinkName("g_output_stream_write_bytes")]
 	public static extern c_long OutputStreamWriteBytes(OutputStream* stream, GLib.Bytes* bytes, Cancellable* cancellable);
 	[LinkName("g_output_stream_write_bytes_async")]
@@ -3210,15 +3208,15 @@ class Gio
 	[LinkName("g_output_stream_write_finish")]
 	public static extern c_long OutputStreamWriteFinish(OutputStream* stream, AsyncResult* result);
 	[LinkName("g_output_stream_writev")]
-	public static extern c_int OutputStreamWritev(OutputStream* stream, c_ulong n_vectors, c_ulong* bytes_written, Cancellable* cancellable);
+	public static extern c_int OutputStreamWritev(OutputStream* stream, OutputVector* vectors, c_ulong n_vectors, c_ulong* bytes_written, Cancellable* cancellable);
 	[LinkName("g_output_stream_writev_all")]
-	public static extern c_int OutputStreamWritevAll(OutputStream* stream, c_ulong n_vectors, c_ulong* bytes_written, Cancellable* cancellable);
+	public static extern c_int OutputStreamWritevAll(OutputStream* stream, OutputVector* vectors, c_ulong n_vectors, c_ulong* bytes_written, Cancellable* cancellable);
 	[LinkName("g_output_stream_writev_all_async")]
-	public static extern void OutputStreamWritevAllAsync(OutputStream* stream, c_ulong n_vectors, c_int io_priority, Cancellable* cancellable, AsyncReadyCallback callback, void* user_data);
+	public static extern void OutputStreamWritevAllAsync(OutputStream* stream, OutputVector* vectors, c_ulong n_vectors, c_int io_priority, Cancellable* cancellable, AsyncReadyCallback callback, void* user_data);
 	[LinkName("g_output_stream_writev_all_finish")]
 	public static extern c_int OutputStreamWritevAllFinish(OutputStream* stream, AsyncResult* result, c_ulong* bytes_written);
 	[LinkName("g_output_stream_writev_async")]
-	public static extern void OutputStreamWritevAsync(OutputStream* stream, c_ulong n_vectors, c_int io_priority, Cancellable* cancellable, AsyncReadyCallback callback, void* user_data);
+	public static extern void OutputStreamWritevAsync(OutputStream* stream, OutputVector* vectors, c_ulong n_vectors, c_int io_priority, Cancellable* cancellable, AsyncReadyCallback callback, void* user_data);
 	[LinkName("g_output_stream_writev_finish")]
 	public static extern c_int OutputStreamWritevFinish(OutputStream* stream, AsyncResult* result, c_ulong* bytes_written);
 	[CRepr]
@@ -3611,7 +3609,7 @@ class Gio
 	[LinkName("g_settings_set_string")]
 	public static extern c_int SettingsSetString(Settings* settings, char8* key, char8* value);
 	[LinkName("g_settings_set_strv")]
-	public static extern c_int SettingsSetStrv(Settings* settings, char8* key);
+	public static extern c_int SettingsSetStrv(Settings* settings, char8* key, char8* value);
 	[LinkName("g_settings_set_uint")]
 	public static extern c_int SettingsSetUint(Settings* settings, char8* key, c_uint value);
 	[LinkName("g_settings_set_uint64")]
@@ -3621,7 +3619,7 @@ class Gio
 	[CRepr]
 	public struct SettingsBackend;
 	[LinkName("g_settings_backend_flatten_tree")]
-	public static extern void SettingsBackendFlattenTree(GLib.Tree* tree, char8* path);
+	public static extern void SettingsBackendFlattenTree(GLib.Tree* tree, char8* path, char8* keys, GLib.Variant*** values);
 	[LinkName("g_settings_backend_get_default")]
 	public static extern SettingsBackend* SettingsBackendGetDefault();
 	[LinkName("g_settings_backend_changed")]
@@ -3629,7 +3627,7 @@ class Gio
 	[LinkName("g_settings_backend_changed_tree")]
 	public static extern void SettingsBackendChangedTree(SettingsBackend* backend, GLib.Tree* tree, void* origin_tag);
 	[LinkName("g_settings_backend_keys_changed")]
-	public static extern void SettingsBackendKeysChanged(SettingsBackend* backend, char8* path, void* origin_tag);
+	public static extern void SettingsBackendKeysChanged(SettingsBackend* backend, char8* path, char8* items, void* origin_tag);
 	[LinkName("g_settings_backend_path_changed")]
 	public static extern void SettingsBackendPathChanged(SettingsBackend* backend, char8* path, void* origin_tag);
 	[LinkName("g_settings_backend_path_writable_changed")]
@@ -3696,7 +3694,7 @@ class Gio
 	[LinkName("g_simple_action_group_new")]
 	public static extern SimpleActionGroup* SimpleActionGroupNew();
 	[LinkName("g_simple_action_group_add_entries")]
-	public static extern void SimpleActionGroupAddEntries(SimpleActionGroup* simple, c_int n_entries, void* user_data);
+	public static extern void SimpleActionGroupAddEntries(SimpleActionGroup* simple, ActionEntry* entries, c_int n_entries, void* user_data);
 	[LinkName("g_simple_action_group_insert")]
 	public static extern void SimpleActionGroupInsert(SimpleActionGroup* simple, Action* action);
 	[LinkName("g_simple_action_group_lookup")]
@@ -3756,11 +3754,11 @@ class Gio
 	[CRepr]
 	public struct SimpleProxyResolver;
 	[LinkName("g_simple_proxy_resolver_new")]
-	public static extern ProxyResolver* SimpleProxyResolverNew(char8* default_proxy);
+	public static extern ProxyResolver* SimpleProxyResolverNew(char8* default_proxy, char8* ignore_hosts);
 	[LinkName("g_simple_proxy_resolver_set_default_proxy")]
 	public static extern void SimpleProxyResolverSetDefaultProxy(SimpleProxyResolver* resolver, char8* default_proxy);
 	[LinkName("g_simple_proxy_resolver_set_ignore_hosts")]
-	public static extern void SimpleProxyResolverSetIgnoreHosts(SimpleProxyResolver* resolver);
+	public static extern void SimpleProxyResolverSetIgnoreHosts(SimpleProxyResolver* resolver, char8* ignore_hosts);
 	[LinkName("g_simple_proxy_resolver_set_uri_proxy")]
 	public static extern void SimpleProxyResolverSetUriProxy(SimpleProxyResolver* resolver, char8* uri_scheme, char8* proxy);
 	[CRepr]
@@ -3845,27 +3843,27 @@ class Gio
 	[LinkName("g_socket_listen")]
 	public static extern c_int SocketListen(Socket* socket);
 	[LinkName("g_socket_receive")]
-	public static extern c_long SocketReceive(Socket* socket, c_ulong size, Cancellable* cancellable);
+	public static extern c_long SocketReceive(Socket* socket, c_uchar* buffer, c_ulong size, Cancellable* cancellable);
 	[LinkName("g_socket_receive_from")]
-	public static extern c_long SocketReceiveFrom(Socket* socket, SocketAddress* address, c_ulong size, Cancellable* cancellable);
+	public static extern c_long SocketReceiveFrom(Socket* socket, SocketAddress* address, c_uchar* buffer, c_ulong size, Cancellable* cancellable);
 	[LinkName("g_socket_receive_message")]
-	public static extern c_long SocketReceiveMessage(Socket* socket, SocketAddress* address, c_int num_vectors, c_int* num_messages, c_int* flags, Cancellable* cancellable);
+	public static extern c_long SocketReceiveMessage(Socket* socket, SocketAddress* address, InputVector* vectors, c_int num_vectors, SocketControlMessage*** messages, c_int* num_messages, c_int* flags, Cancellable* cancellable);
 	[LinkName("g_socket_receive_messages")]
-	public static extern c_int SocketReceiveMessages(Socket* socket, c_uint num_messages, c_int flags, Cancellable* cancellable);
+	public static extern c_int SocketReceiveMessages(Socket* socket, InputMessage* messages, c_uint num_messages, c_int flags, Cancellable* cancellable);
 	[LinkName("g_socket_receive_with_blocking")]
-	public static extern c_long SocketReceiveWithBlocking(Socket* socket, c_ulong size, c_int blocking, Cancellable* cancellable);
+	public static extern c_long SocketReceiveWithBlocking(Socket* socket, c_uchar* buffer, c_ulong size, c_int blocking, Cancellable* cancellable);
 	[LinkName("g_socket_send")]
-	public static extern c_long SocketSend(Socket* socket, c_ulong size, Cancellable* cancellable);
+	public static extern c_long SocketSend(Socket* socket, c_uchar* buffer, c_ulong size, Cancellable* cancellable);
 	[LinkName("g_socket_send_message")]
-	public static extern c_long SocketSendMessage(Socket* socket, SocketAddress* address, c_int num_vectors, c_int num_messages, c_int flags, Cancellable* cancellable);
+	public static extern c_long SocketSendMessage(Socket* socket, SocketAddress* address, OutputVector* vectors, c_int num_vectors, SocketControlMessage** messages, c_int num_messages, c_int flags, Cancellable* cancellable);
 	[LinkName("g_socket_send_message_with_timeout")]
-	public static extern PollableReturn SocketSendMessageWithTimeout(Socket* socket, SocketAddress* address, c_int num_vectors, c_int num_messages, c_int flags, c_longlong timeout_us, c_ulong* bytes_written, Cancellable* cancellable);
+	public static extern PollableReturn SocketSendMessageWithTimeout(Socket* socket, SocketAddress* address, OutputVector* vectors, c_int num_vectors, SocketControlMessage** messages, c_int num_messages, c_int flags, c_longlong timeout_us, c_ulong* bytes_written, Cancellable* cancellable);
 	[LinkName("g_socket_send_messages")]
-	public static extern c_int SocketSendMessages(Socket* socket, c_uint num_messages, c_int flags, Cancellable* cancellable);
+	public static extern c_int SocketSendMessages(Socket* socket, OutputMessage* messages, c_uint num_messages, c_int flags, Cancellable* cancellable);
 	[LinkName("g_socket_send_to")]
-	public static extern c_long SocketSendTo(Socket* socket, SocketAddress* address, c_ulong size, Cancellable* cancellable);
+	public static extern c_long SocketSendTo(Socket* socket, SocketAddress* address, c_uchar* buffer, c_ulong size, Cancellable* cancellable);
 	[LinkName("g_socket_send_with_blocking")]
-	public static extern c_long SocketSendWithBlocking(Socket* socket, c_ulong size, c_int blocking, Cancellable* cancellable);
+	public static extern c_long SocketSendWithBlocking(Socket* socket, c_uchar* buffer, c_ulong size, c_int blocking, Cancellable* cancellable);
 	[LinkName("g_socket_set_blocking")]
 	public static extern void SocketSetBlocking(Socket* socket, c_int blocking);
 	[LinkName("g_socket_set_broadcast")]
@@ -4054,7 +4052,7 @@ class Gio
 	[CRepr]
 	public struct SocketControlMessage;
 	[LinkName("g_socket_control_message_deserialize")]
-	public static extern SocketControlMessage* SocketControlMessageDeserialize(c_int level, c_int type, c_ulong size);
+	public static extern SocketControlMessage* SocketControlMessageDeserialize(c_int level, c_int type, c_ulong size, c_uchar data);
 	[LinkName("g_socket_control_message_get_level")]
 	public static extern c_int SocketControlMessageGetLevel(SocketControlMessage* message);
 	[LinkName("g_socket_control_message_get_msg_type")]
@@ -4186,7 +4184,7 @@ class Gio
 	[CRepr]
 	public struct Subprocess;
 	[LinkName("g_subprocess_newv")]
-	public static extern Subprocess* SubprocessNewv(SubprocessFlags flags);
+	public static extern Subprocess* SubprocessNewv(char8** argv, SubprocessFlags flags);
 	[LinkName("g_subprocess_communicate")]
 	public static extern c_int SubprocessCommunicate(Subprocess* subprocess, GLib.Bytes* stdin_buf, Cancellable* cancellable, GLib.Bytes* stdout_buf, GLib.Bytes* stderr_buf);
 	[LinkName("g_subprocess_communicate_async")]
@@ -4260,7 +4258,7 @@ class Gio
 	[LinkName("g_subprocess_launcher_set_cwd")]
 	public static extern void SubprocessLauncherSetCwd(SubprocessLauncher* self, char8* cwd);
 	[LinkName("g_subprocess_launcher_set_environ")]
-	public static extern void SubprocessLauncherSetEnviron(SubprocessLauncher* self);
+	public static extern void SubprocessLauncherSetEnviron(SubprocessLauncher* self, char8** env);
 	[LinkName("g_subprocess_launcher_set_flags")]
 	public static extern void SubprocessLauncherSetFlags(SubprocessLauncher* self, SubprocessFlags flags);
 	[LinkName("g_subprocess_launcher_set_stderr_file_path")]
@@ -4272,7 +4270,7 @@ class Gio
 	[LinkName("g_subprocess_launcher_setenv")]
 	public static extern void SubprocessLauncherSetenv(SubprocessLauncher* self, char8* variable, char8* value, c_int overwrite);
 	[LinkName("g_subprocess_launcher_spawnv")]
-	public static extern Subprocess* SubprocessLauncherSpawnv(SubprocessLauncher* self);
+	public static extern Subprocess* SubprocessLauncherSpawnv(SubprocessLauncher* self, char8** argv);
 	[LinkName("g_subprocess_launcher_take_fd")]
 	public static extern void SubprocessLauncherTakeFd(SubprocessLauncher* self, c_int source_fd, c_int target_fd);
 	[LinkName("g_subprocess_launcher_take_stderr_fd")]
@@ -4414,7 +4412,7 @@ class Gio
 	[LinkName("g_themed_icon_new")]
 	public static extern ThemedIcon* ThemedIconNew(char8* iconname);
 	[LinkName("g_themed_icon_new_from_names")]
-	public static extern ThemedIcon* ThemedIconNewFromNames(c_int len);
+	public static extern ThemedIcon* ThemedIconNewFromNames(char8* iconnames, c_int len);
 	[LinkName("g_themed_icon_new_with_default_fallbacks")]
 	public static extern ThemedIcon* ThemedIconNewWithDefaultFallbacks(char8* iconname);
 	[LinkName("g_themed_icon_append_name")]
@@ -4473,7 +4471,7 @@ class Gio
 	[LinkName("g_tls_certificate_new_from_pkcs11_uris")]
 	public static extern TlsCertificate* TlsCertificateNewFromPkcs11Uris(char8* pkcs11_uri, char8* private_key_pkcs11_uri);
 	[LinkName("g_tls_certificate_new_from_pkcs12")]
-	public static extern TlsCertificate* TlsCertificateNewFromPkcs12(c_ulong length, char8* password);
+	public static extern TlsCertificate* TlsCertificateNewFromPkcs12(c_uchar* data, c_ulong length, char8* password);
 	[LinkName("g_tls_certificate_list_new_from_file")]
 	public static extern GLib.List* TlsCertificateListNewFromFile(char8* file);
 	[LinkName("g_tls_certificate_get_dns_names")]
@@ -4551,7 +4549,7 @@ class Gio
 	[LinkName("g_tls_connection_get_certificate")]
 	public static extern TlsCertificate* TlsConnectionGetCertificate(TlsConnection* conn);
 	[LinkName("g_tls_connection_get_channel_binding_data")]
-	public static extern c_int TlsConnectionGetChannelBindindata(TlsConnection* conn, TlsChannelBindingType type);
+	public static extern c_int TlsConnectionGetChannelBindindata(TlsConnection* conn, TlsChannelBindingType type, c_uchar* data);
 	[LinkName("g_tls_connection_get_ciphersuite_name")]
 	public static extern char8* TlsConnectionGetCiphersuiteName(TlsConnection* conn);
 	[LinkName("g_tls_connection_get_database")]
@@ -4579,7 +4577,7 @@ class Gio
 	[LinkName("g_tls_connection_handshake_finish")]
 	public static extern c_int TlsConnectionHandshakeFinish(TlsConnection* conn, AsyncResult* result);
 	[LinkName("g_tls_connection_set_advertised_protocols")]
-	public static extern void TlsConnectionSetAdvertisedProtocols(TlsConnection* conn);
+	public static extern void TlsConnectionSetAdvertisedProtocols(TlsConnection* conn, char8* protocols);
 	[LinkName("g_tls_connection_set_certificate")]
 	public static extern void TlsConnectionSetCertificate(TlsConnection* conn, TlsCertificate* certificate);
 	[LinkName("g_tls_connection_set_database")]
@@ -4618,9 +4616,9 @@ class Gio
 	[LinkName("g_tls_database_lookup_certificate_issuer_finish")]
 	public static extern TlsCertificate* TlsDatabaseLookupCertificateIssuerFinish(TlsDatabase* self, AsyncResult* result);
 	[LinkName("g_tls_database_lookup_certificates_issued_by")]
-	public static extern GLib.List* TlsDatabaseLookupCertificatesIssuedBy(TlsDatabase* self, TlsInteraction* interaction, TlsDatabaseLookupFlags flags, Cancellable* cancellable);
+	public static extern GLib.List* TlsDatabaseLookupCertificatesIssuedBy(TlsDatabase* self, c_uchar* issuer_raw_dn, TlsInteraction* interaction, TlsDatabaseLookupFlags flags, Cancellable* cancellable);
 	[LinkName("g_tls_database_lookup_certificates_issued_by_async")]
-	public static extern void TlsDatabaseLookupCertificatesIssuedByAsync(TlsDatabase* self, TlsInteraction* interaction, TlsDatabaseLookupFlags flags, Cancellable* cancellable, AsyncReadyCallback callback, void* user_data);
+	public static extern void TlsDatabaseLookupCertificatesIssuedByAsync(TlsDatabase* self, c_uchar* issuer_raw_dn, TlsInteraction* interaction, TlsDatabaseLookupFlags flags, Cancellable* cancellable, AsyncReadyCallback callback, void* user_data);
 	[LinkName("g_tls_database_lookup_certificates_issued_by_finish")]
 	public static extern GLib.List* TlsDatabaseLookupCertificatesIssuedByFinish(TlsDatabase* self, AsyncResult* result);
 	[LinkName("g_tls_database_verify_chain")]
@@ -4718,9 +4716,9 @@ class Gio
 	[LinkName("g_tls_password_set_flags")]
 	public static extern void TlsPasswordSetFlags(TlsPassword* password, TlsPasswordFlags flags);
 	[LinkName("g_tls_password_set_value")]
-	public static extern void TlsPasswordSetValue(TlsPassword* password, c_long length);
+	public static extern void TlsPasswordSetValue(TlsPassword* password, c_uchar* value, c_long length);
 	[LinkName("g_tls_password_set_value_full")]
-	public static extern void TlsPasswordSetValueFull(TlsPassword* password, c_long length, GLib.DestroyNotify destroy);
+	public static extern void TlsPasswordSetValueFull(TlsPassword* password, c_uchar* value, c_long length, GLib.DestroyNotify destroy);
 	[LinkName("g_tls_password_set_warning")]
 	public static extern void TlsPasswordSetWarning(TlsPassword* password, char8* warning);
 	[CRepr]
@@ -4819,7 +4817,7 @@ class Gio
 	[LinkName("g_unix_fd_list_new")]
 	public static extern UnixFDList* UnixFdListNew();
 	[LinkName("g_unix_fd_list_new_from_array")]
-	public static extern UnixFDList* UnixFdListNewFromArray(c_int n_fds);
+	public static extern UnixFDList* UnixFdListNewFromArray(c_int* fds, c_int n_fds);
 	[LinkName("g_unix_fd_list_append")]
 	public static extern c_int UnixFdListAppend(UnixFDList* list, c_int fd);
 	[LinkName("g_unix_fd_list_get")]
@@ -4923,9 +4921,9 @@ class Gio
 	[LinkName("g_unix_socket_address_new")]
 	public static extern SocketAddress* UnixSocketAddressNew(char8* path);
 	[LinkName("g_unix_socket_address_new_abstract")]
-	public static extern SocketAddress* UnixSocketAddressNewAbstract(c_int path_len);
+	public static extern SocketAddress* UnixSocketAddressNewAbstract(c_char* path, c_int path_len);
 	[LinkName("g_unix_socket_address_new_with_type")]
-	public static extern SocketAddress* UnixSocketAddressNewWithType(c_int path_len, UnixSocketAddressType type);
+	public static extern SocketAddress* UnixSocketAddressNewWithType(c_char* path, c_int path_len, UnixSocketAddressType type);
 	[LinkName("g_unix_socket_address_abstract_names_supported")]
 	public static extern c_int UnixSocketAddressAbstractNamesSupported();
 	[LinkName("g_unix_socket_address_get_address_type")]
@@ -5155,7 +5153,7 @@ class Gio
 	[LinkName("g_content_type_get_symbolic_icon")]
 	public static extern Icon* ContentTypeGetSymbolicIcon(char8* type);
 	[LinkName("g_content_type_guess")]
-	public static extern char8* ContentTypeGuess(char8* filename, c_ulong data_size, c_int* result_uncertain);
+	public static extern char8* ContentTypeGuess(char8* filename, c_uchar* data, c_ulong data_size, c_int* result_uncertain);
 	[LinkName("g_content_type_guess_for_tree")]
 	public static extern char8* ContentTypeGuessForTree(File* root);
 	[LinkName("g_content_type_is_a")]
@@ -5165,7 +5163,7 @@ class Gio
 	[LinkName("g_content_type_is_unknown")]
 	public static extern c_int ContentTypeIsUnknown(char8* type);
 	[LinkName("g_content_type_set_mime_dirs")]
-	public static extern void ContentTypeSetMimeDirs();
+	public static extern void ContentTypeSetMimeDirs(char8* dirs);
 	[LinkName("g_content_types_get_registered")]
 	public static extern GLib.List* ContentTypesGetRegistered();
 	[LinkName("g_dbus_address_escape_value")]
@@ -5179,7 +5177,7 @@ class Gio
 	[LinkName("g_dbus_address_get_stream_sync")]
 	public static extern IOStream* DbusAddressGetStreamSync(char8* address, char8* out_guid, Cancellable* cancellable);
 	[LinkName("g_dbus_annotation_info_lookup")]
-	public static extern char8* DbusAnnotationInfoLookup(char8* name);
+	public static extern char8* DbusAnnotationInfoLookup(DBusAnnotationInfo** annotations, char8* name);
 	[LinkName("g_dbus_error_encode_gerror")]
 	public static extern char8* DbusErrorEncodeGerror(GLib.Error* error);
 	[LinkName("g_dbus_error_get_remote_error")]
@@ -5193,7 +5191,7 @@ class Gio
 	[LinkName("g_dbus_error_register_error")]
 	public static extern c_int DbusErrorRegisterError(GLib.Quark error_domain, c_int error_code, char8* dbus_error_name);
 	[LinkName("g_dbus_error_register_error_domain")]
-	public static extern void DbusErrorRegisterErrorDomain(char8* error_domain_quark_name, c_ulong* quark_volatile, c_uint num_entries);
+	public static extern void DbusErrorRegisterErrorDomain(char8* error_domain_quark_name, c_ulong* quark_volatile, DBusErrorEntry* entries, c_uint num_entries);
 	[LinkName("g_dbus_error_strip_remote_error")]
 	public static extern c_int DbusErrorStripRemoteError(GLib.Error* error);
 	[LinkName("g_dbus_error_unregister_error")]
@@ -5201,7 +5199,7 @@ class Gio
 	[LinkName("g_dbus_escape_object_path")]
 	public static extern char8* DbusEscapeObjectPath(char8* s);
 	[LinkName("g_dbus_escape_object_path_bytestring")]
-	public static extern char8* DbusEscapeObjectPathBytestring();
+	public static extern char8* DbusEscapeObjectPathBytestring(c_uchar* bytes);
 	[LinkName("g_dbus_generate_guid")]
 	public static extern char8* DbusGenerateGuid();
 	[LinkName("g_dbus_gvalue_to_gvariant")]

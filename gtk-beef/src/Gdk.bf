@@ -1,13 +1,7 @@
-namespace Gdk;
+namespace Gtk;
 
 using System;
 using System.Interop;
-using Gio;
-using GLib;
-using GObject;
-using cairo;
-using Pango;
-using GdkPixbuf;
 
 class Gdk
 {
@@ -86,7 +80,7 @@ class Gdk
 	[LinkName("gdk_clipboard_is_local")]
 	public static extern c_int ClipboardIsLocal(Clipboard* clipboard);
 	[LinkName("gdk_clipboard_read_async")]
-	public static extern void ClipboardReadAsync(Clipboard* clipboard, c_int io_priority, Gio.Cancellable* cancellable, Gio.AsyncReadyCallback callback, void* user_data);
+	public static extern void ClipboardReadAsync(Clipboard* clipboard, char8* mime_types, c_int io_priority, Gio.Cancellable* cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gdk_clipboard_read_finish")]
 	public static extern Gio.InputStream* ClipboardReadFinish(Clipboard* clipboard, Gio.AsyncResult* result, char8* out_mime_type);
 	[LinkName("gdk_clipboard_read_text_async")]
@@ -149,7 +143,7 @@ class Gdk
 	[LinkName("gdk_content_provider_new_for_value")]
 	public static extern ContentProvider* ContentProviderNewForValue(GObject.Value* value);
 	[LinkName("gdk_content_provider_new_union")]
-	public static extern ContentProvider* ContentProviderNewUnion(c_ulong n_providers);
+	public static extern ContentProvider* ContentProviderNewUnion(ContentProvider** providers, c_ulong n_providers);
 	[LinkName("gdk_content_provider_content_changed")]
 	public static extern void ContentProviderContentChanged(ContentProvider* provider);
 	[LinkName("gdk_content_provider_get_value")]
@@ -347,9 +341,9 @@ class Gdk
 	[LinkName("gdk_display_list_seats")]
 	public static extern GLib.List* DisplayListSeats(Display* display);
 	[LinkName("gdk_display_map_keycode")]
-	public static extern c_int DisplayMapKeycode(Display* display, c_uint keycode, c_int* n_entries);
+	public static extern c_int DisplayMapKeycode(Display* display, c_uint keycode, KeymapKey** keys, c_uint** keyvals, c_int* n_entries);
 	[LinkName("gdk_display_map_keyval")]
-	public static extern c_int DisplayMapKeyval(Display* display, c_uint keyval, c_int* n_keys);
+	public static extern c_int DisplayMapKeyval(Display* display, c_uint keyval, KeymapKey** keys, c_int* n_keys);
 	[LinkName("gdk_display_notify_startup_complete")]
 	public static extern void DisplayNotifyStartupComplete(Display* display, char8* startup_id);
 	[LinkName("gdk_display_prepare_gl")]
@@ -454,7 +448,7 @@ class Gdk
 	[LinkName("gdk_drop_get_surface")]
 	public static extern Surface* DropGetSurface(Drop* self);
 	[LinkName("gdk_drop_read_async")]
-	public static extern void DropReadAsync(Drop* self, c_int io_priority, Gio.Cancellable* cancellable, Gio.AsyncReadyCallback callback, void* user_data);
+	public static extern void DropReadAsync(Drop* self, char8* mime_types, c_int io_priority, Gio.Cancellable* cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 	[LinkName("gdk_drop_read_finish")]
 	public static extern Gio.InputStream* DropReadFinish(Drop* self, Gio.AsyncResult* result, char8* out_mime_type);
 	[LinkName("gdk_drop_read_value_async")]
@@ -472,7 +466,7 @@ class Gdk
 	[LinkName("gdk_events_get_distance")]
 	public static extern c_int EventsGetDistance(Event* event1, Event* event2, double* distance);
 	[LinkName("gdk_event_get_axes")]
-	public static extern c_int EventGetAxes(Event* event, c_uint* n_axes);
+	public static extern c_int EventGetAxes(Event* event, double** axes, c_uint* n_axes);
 	[LinkName("gdk_event_get_axis")]
 	public static extern c_int EventGetAxis(Event* event, AxisUse axis_use, double* value);
 	[LinkName("gdk_event_get_device")]
@@ -1081,7 +1075,7 @@ class Gdk
 	[LinkName("gdk_texture_new_from_resource")]
 	public static extern Texture* TextureNewFromResource(char8* resource_path);
 	[LinkName("gdk_texture_download")]
-	public static extern void TextureDownload(Texture* texture, c_ulong stride);
+	public static extern void TextureDownload(Texture* texture, c_uchar* data, c_ulong stride);
 	[LinkName("gdk_texture_get_format")]
 	public static extern MemoryFormat TextureGetFormat(Texture* self);
 	[LinkName("gdk_texture_get_height")]

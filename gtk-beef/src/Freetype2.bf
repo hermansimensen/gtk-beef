@@ -1,4 +1,4 @@
-namespace freetype2;
+namespace Gtk;
 
 using System;
 using System.Interop;

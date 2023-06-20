@@ -1,8 +1,7 @@
-namespace GObject;
+namespace Gtk;
 
 using System;
 using System.Interop;
-using GLib;
 
 class GObject
 {
@@ -150,7 +149,7 @@ class GObject
 	[CRepr]
 	public struct Object;
 	[LinkName("g_object_newv")]
-	public static extern Object ObjectNewv(GLib.Type object_type, c_uint n_parameters);
+	public static extern Object ObjectNewv(GLib.Type object_type, c_uint n_parameters, Parameter* parameters);
 	[LinkName("g_object_compat_control")]
 	public static extern c_ulong ObjectCompatControl(c_ulong what, void* data);
 	[LinkName("g_object_interface_find_property")]
@@ -176,7 +175,7 @@ class GObject
 	[LinkName("g_object_get_qdata")]
 	public static extern void* ObjectGetQdata(Object* object, GLib.Quark quark);
 	[LinkName("g_object_getv")]
-	public static extern void ObjectGetv(Object* object, c_uint n_properties);
+	public static extern void ObjectGetv(Object* object, c_uint n_properties, char8* names, Value* values);
 	[LinkName("g_object_is_floating")]
 	public static extern c_int ObjectIsFloating(Object object);
 	[LinkName("g_object_notify")]
@@ -686,13 +685,13 @@ class GObject
 	[LinkName("g_signal_add_emission_hook")]
 	public static extern c_ulong SignalAddEmissionHook(c_uint signal_id, GLib.Quark detail, SignalEmissionHook hook_func, void* hook_data, GLib.DestroyNotify data_destroy);
 	[LinkName("g_signal_chain_from_overridden")]
-	public static extern void SignalChainFromOverridden(Value* return_value);
+	public static extern void SignalChainFromOverridden(Value* instance_and_params, Value* return_value);
 	[LinkName("g_signal_connect_closure")]
 	public static extern c_ulong SignalConnectClosure(Object instance, char8* detailed_signal, Closure* closure, c_int after);
 	[LinkName("g_signal_connect_closure_by_id")]
 	public static extern c_ulong SignalConnectClosureById(Object instance, c_uint signal_id, GLib.Quark detail, Closure* closure, c_int after);
 	[LinkName("g_signal_emitv")]
-	public static extern void SignalEmitv(c_uint signal_id, GLib.Quark detail, Value* return_value);
+	public static extern void SignalEmitv(Value* instance_and_params, c_uint signal_id, GLib.Quark detail, Value* return_value);
 	[LinkName("g_signal_get_invocation_hint")]
 	public static extern SignalInvocationHint* SignalGetInvocationHint(Object instance);
 	[LinkName("g_signal_handler_block")]

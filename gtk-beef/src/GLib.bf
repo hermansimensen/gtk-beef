@@ -1,4 +1,4 @@
-namespace GLib;
+namespace Gtk;
 
 using System;
 using System.Interop;
@@ -600,7 +600,7 @@ class GLib
 		in_main = 2,
 		reverse = 4,
 		no_arg = 8,
-		filename = 16,
+		char8 = 16,
 		optional_arg = 32,
 		noalias = 64
 	}
@@ -1650,13 +1650,13 @@ class GLib
 	[LinkName("g_base64_decode")]
 	public static extern c_uchar GBase64Decode(char8* text, c_ulong* out_len);
 	[LinkName("g_base64_decode_inplace")]
-	public static extern c_uchar* GBase64DecodeInplace(c_ulong* out_len);
+	public static extern c_uchar* GBase64DecodeInplace(c_uchar* text, c_ulong* out_len);
 	[LinkName("g_base64_encode")]
-	public static extern char8* GBase64Encode(c_ulong len);
+	public static extern char8* GBase64Encode(c_uchar* data, c_ulong len);
 	[LinkName("g_base64_encode_close")]
-	public static extern c_ulong GBase64EncodeClose(c_int break_lines, c_int* state, c_int* save);
+	public static extern c_ulong GBase64EncodeClose(c_int break_lines, c_uchar* out_, c_int* state, c_int* save);
 	[LinkName("g_base64_encode_step")]
-	public static extern c_ulong GBase64EncodeStep(c_ulong len, c_int break_lines, c_int* state, c_int* save);
+	public static extern c_ulong GBase64EncodeStep(c_uchar* in_, c_ulong len, c_int break_lines, c_uchar* out_, c_int* state, c_int* save);
 	[LinkName("g_basename")]
 	public static extern char8* GBasename(char8* file_name);
 	[LinkName("g_bit_lock")]
@@ -1674,21 +1674,21 @@ class GLib
 	[LinkName("g_bookmark_file_error_quark")]
 	public static extern Quark GBookmarkFileErrorQuark();
 	[LinkName("g_build_filenamev")]
-	public static extern char8* GBuildFilenamev();
+	public static extern char8* GBuildFilenamev(char8** args);
 	[LinkName("g_build_pathv")]
-	public static extern char8* GBuildPathv(char8* separator);
+	public static extern char8* GBuildPathv(char8* separator, char8** args);
 	[LinkName("g_byte_array_free")]
-	public static extern c_uchar* GByteArrayFree(c_int free_segment);
+	public static extern c_uchar* GByteArrayFree(c_uchar* array, c_int free_segment);
 	[LinkName("g_byte_array_free_to_bytes")]
-	public static extern Bytes* GByteArrayFreeToBytes();
+	public static extern Bytes* GByteArrayFreeToBytes(c_uchar* array);
 	[LinkName("g_byte_array_new")]
 	public static extern c_uchar GByteArrayNew();
 	[LinkName("g_byte_array_new_take")]
-	public static extern c_uchar GByteArrayNewTake(c_ulong len);
+	public static extern c_uchar GByteArrayNewTake(c_uchar* data, c_ulong len);
 	[LinkName("g_byte_array_steal")]
-	public static extern c_uchar* GByteArraySteal(c_ulong* len);
+	public static extern c_uchar* GByteArraySteal(c_uchar* array, c_ulong* len);
 	[LinkName("g_byte_array_unref")]
-	public static extern void GByteArrayUnref();
+	public static extern void GByteArrayUnref(c_uchar* array);
 	[LinkName("g_canonicalize_filename")]
 	public static extern char8* GCanonicalizeFilename(char8* filename, char8* relative_to);
 	[LinkName("g_chdir")]
@@ -1708,21 +1708,21 @@ class GLib
 	[LinkName("g_compute_checksum_for_bytes")]
 	public static extern char8* GComputeChecksumForBytes(ChecksumType checksum_type, Bytes* data);
 	[LinkName("g_compute_checksum_for_data")]
-	public static extern char8* GComputeChecksumForData(ChecksumType checksum_type, c_ulong length);
+	public static extern char8* GComputeChecksumForData(ChecksumType checksum_type, c_uchar* data, c_ulong length);
 	[LinkName("g_compute_checksum_for_string")]
 	public static extern char8* GComputeChecksumForString(ChecksumType checksum_type, char8* str, c_long length);
 	[LinkName("g_compute_hmac_for_bytes")]
 	public static extern char8* GComputeHmacForBytes(ChecksumType digest_type, Bytes* key, Bytes* data);
 	[LinkName("g_compute_hmac_for_data")]
-	public static extern char8* GComputeHmacForData(ChecksumType digest_type, c_ulong key_len, c_ulong length);
+	public static extern char8* GComputeHmacForData(ChecksumType digest_type, c_uchar* key, c_ulong key_len, c_uchar* data, c_ulong length);
 	[LinkName("g_compute_hmac_for_string")]
-	public static extern char8* GComputeHmacForString(ChecksumType digest_type, c_ulong key_len, char8* str, c_long length);
+	public static extern char8* GComputeHmacForString(ChecksumType digest_type, c_uchar* key, c_ulong key_len, char8* str, c_long length);
 	[LinkName("g_convert")]
-	public static extern c_uchar GConvert(c_long len, char8* to_codeset, char8* from_codeset, c_ulong* bytes_read, c_ulong* bytes_written);
+	public static extern c_uchar GConvert(c_uchar* str, c_long len, char8* to_codeset, char8* from_codeset, c_ulong* bytes_read, c_ulong* bytes_written);
 	[LinkName("g_convert_error_quark")]
 	public static extern Quark GConvertErrorQuark();
 	[LinkName("g_convert_with_fallback")]
-	public static extern c_uchar GConvertWithFallback(c_long len, char8* to_codeset, char8* from_codeset, char8* fallback, c_ulong* bytes_read, c_ulong* bytes_written);
+	public static extern c_uchar GConvertWithFallback(c_uchar* str, c_long len, char8* to_codeset, char8* from_codeset, char8* fallback, c_ulong* bytes_read, c_ulong* bytes_written);
 	[LinkName("g_datalist_foreach")]
 	public static extern void GDatalistForeach(Data* datalist, DataForeachFunc func, void* user_data);
 	[LinkName("g_datalist_get_data")]
@@ -1732,7 +1732,7 @@ class GLib
 	[LinkName("g_datalist_id_get_data")]
 	public static extern void* GDatalistIdGetData(Data* datalist, Quark key_id);
 	[LinkName("g_datalist_id_remove_multiple")]
-	public static extern void GDatalistIdRemoveMultiple(Data* datalist, c_ulong n_keys);
+	public static extern void GDatalistIdRemoveMultiple(Data* datalist, Quark* keys, c_ulong n_keys);
 	[LinkName("g_datalist_set_flags")]
 	public static extern void GDatalistSetFlags(Data* datalist, c_uint flags);
 	[LinkName("g_datalist_unset_flags")]
@@ -1786,25 +1786,25 @@ class GLib
 	[LinkName("g_dpgettext2")]
 	public static extern char8* GDpgettext2(char8* domain, char8* context, char8* msgid);
 	[LinkName("g_environ_getenv")]
-	public static extern char8* GEnvironGetenv(char8* variable);
+	public static extern char8* GEnvironGetenv(char8** envp, char8* variable);
 	[LinkName("g_environ_setenv")]
-	public static extern char8* GEnvironSetenv(char8* variable, char8* value, c_int overwrite);
+	public static extern char8 GEnvironSetenv(char8** envp, char8* variable, char8* value, c_int overwrite);
 	[LinkName("g_environ_unsetenv")]
-	public static extern char8* GEnvironUnsetenv(char8* variable);
+	public static extern char8 GEnvironUnsetenv(char8** envp, char8* variable);
 	[LinkName("g_file_error_from_errno")]
 	public static extern FileError GFileErrorFromErrno(c_int err_no);
 	[LinkName("g_file_error_quark")]
 	public static extern Quark GFileErrorQuark();
 	[LinkName("g_file_get_contents")]
-	public static extern c_int GFileGetContents(char8* filename, c_ulong* length);
+	public static extern c_int GFileGetContents(char8* filename, c_uchar** contents, c_ulong* length);
 	[LinkName("g_file_open_tmp")]
 	public static extern c_int GFileOpenTmp(char8* tmpl, char8* name_used);
 	[LinkName("g_file_read_link")]
 	public static extern char8* GFileReadLink(char8* filename);
 	[LinkName("g_file_set_contents")]
-	public static extern c_int GFileSetContents(char8* filename, c_long length);
+	public static extern c_int GFileSetContents(char8* filename, c_uchar* contents, c_long length);
 	[LinkName("g_file_set_contents_full")]
-	public static extern c_int GFileSetContentsFull(char8* filename, c_long length, FileSetContentsFlags flags, c_int mode);
+	public static extern c_int GFileSetContentsFull(char8* filename, c_uchar* contents, c_long length, FileSetContentsFlags flags, c_int mode);
 	[LinkName("g_file_test")]
 	public static extern c_int GFileTest(char8* filename, FileTest test);
 	[LinkName("g_filename_display_basename")]
@@ -1844,9 +1844,9 @@ class GLib
 	[LinkName("g_get_current_time")]
 	public static extern void GGetCurrentTime(TimeVal* result);
 	[LinkName("g_get_environ")]
-	public static extern char8* GGetEnviron();
+	public static extern char8 GGetEnviron();
 	[LinkName("g_get_filename_charsets")]
-	public static extern c_int GGetFilenameCharsets();
+	public static extern c_int GGetFilenameCharsets(char8* filename_charsets);
 	[LinkName("g_get_home_dir")]
 	public static extern char8* GGetHomeDir();
 	[LinkName("g_get_host_name")]
@@ -1870,9 +1870,9 @@ class GLib
 	[LinkName("g_get_real_time")]
 	public static extern c_longlong GGetRealTime();
 	[LinkName("g_get_system_config_dirs")]
-	public static extern char8* GGetSystemConfigDirs();
+	public static extern char8 GGetSystemConfigDirs();
 	[LinkName("g_get_system_data_dirs")]
-	public static extern char8* GGetSystemDataDirs();
+	public static extern char8 GGetSystemDataDirs();
 	[LinkName("g_get_tmp_dir")]
 	public static extern char8* GGetTmpDir();
 	[LinkName("g_get_user_cache_dir")]
@@ -1972,11 +1972,11 @@ class GLib
 	[LinkName("g_key_file_error_quark")]
 	public static extern Quark GKeyFileErrorQuark();
 	[LinkName("g_listenv")]
-	public static extern char8* GListenv();
+	public static extern char8 GListenv();
 	[LinkName("g_locale_from_utf8")]
 	public static extern c_uchar GLocaleFromUtf8(char8* utf8string, c_long len, c_ulong* bytes_read, c_ulong* bytes_written);
 	[LinkName("g_locale_to_utf8")]
-	public static extern char8* GLocaleToUtf8(c_long len, c_ulong* bytes_read, c_ulong* bytes_written);
+	public static extern char8* GLocaleToUtf8(c_uchar* opsysstring, c_long len, c_ulong* bytes_read, c_ulong* bytes_written);
 	[LinkName("g_log_default_handler")]
 	public static extern void GLogDefaultHandler(char8* log_domain, LogLevelFlags log_level, char8* message, void* unused_data);
 	[LinkName("g_log_get_debug_enabled")]
@@ -1994,23 +1994,23 @@ class GLib
 	[LinkName("g_log_set_writer_func")]
 	public static extern void GLogSetWriterFunc(LogWriterFunc func, void* user_data, DestroyNotify user_data_free);
 	[LinkName("g_log_structured_array")]
-	public static extern void GLogStructuredArray(LogLevelFlags log_level, c_ulong n_fields);
+	public static extern void GLogStructuredArray(LogLevelFlags log_level, LogField* fields, c_ulong n_fields);
 	[LinkName("g_log_variant")]
 	public static extern void GLogVariant(char8* log_domain, LogLevelFlags log_level, Variant* fields);
 	[LinkName("g_log_writer_default")]
-	public static extern LogWriterOutput GLogWriterDefault(LogLevelFlags log_level, c_ulong n_fields, void* user_data);
+	public static extern LogWriterOutput GLogWriterDefault(LogLevelFlags log_level, LogField* fields, c_ulong n_fields, void* user_data);
 	[LinkName("g_log_writer_default_set_use_stderr")]
 	public static extern void GLogWriterDefaultSetUseStderr(c_int use_stderr);
 	[LinkName("g_log_writer_default_would_drop")]
 	public static extern c_int GLogWriterDefaultWouldDrop(LogLevelFlags log_level, char8* log_domain);
 	[LinkName("g_log_writer_format_fields")]
-	public static extern char8* GLogWriterFormatFields(LogLevelFlags log_level, c_ulong n_fields, c_int use_color);
+	public static extern char8* GLogWriterFormatFields(LogLevelFlags log_level, LogField* fields, c_ulong n_fields, c_int use_color);
 	[LinkName("g_log_writer_is_journald")]
 	public static extern c_int GLogWriterIsJournald(c_int output_fd);
 	[LinkName("g_log_writer_journald")]
-	public static extern LogWriterOutput GLogWriterJournald(LogLevelFlags log_level, c_ulong n_fields, void* user_data);
+	public static extern LogWriterOutput GLogWriterJournald(LogLevelFlags log_level, LogField* fields, c_ulong n_fields, void* user_data);
 	[LinkName("g_log_writer_standard_streams")]
-	public static extern LogWriterOutput GLogWriterStandardStreams(LogLevelFlags log_level, c_ulong n_fields, void* user_data);
+	public static extern LogWriterOutput GLogWriterStandardStreams(LogLevelFlags log_level, LogField* fields, c_ulong n_fields, void* user_data);
 	[LinkName("g_log_writer_supports_color")]
 	public static extern c_int GLogWriterSupportsColor(c_int output_fd);
 	[LinkName("g_main_context_default")]
@@ -2062,7 +2062,7 @@ class GLib
 	[LinkName("g_option_error_quark")]
 	public static extern Quark GOptionErrorQuark();
 	[LinkName("g_parse_debug_string")]
-	public static extern c_uint GParseDebugString(char8* string, c_uint nkeys);
+	public static extern c_uint GParseDebugString(char8* string, DebugKey* keys, c_uint nkeys);
 	[LinkName("g_path_buf_equal")]
 	public static extern c_int GPathBufEqual(void* v1, void* v2);
 	[LinkName("g_path_get_basename")]
@@ -2188,7 +2188,7 @@ class GLib
 	[LinkName("g_shell_error_quark")]
 	public static extern Quark GShellErrorQuark();
 	[LinkName("g_shell_parse_argv")]
-	public static extern c_int GShellParseArgv(char8* command_line, c_int* argcp);
+	public static extern c_int GShellParseArgv(char8* command_line, c_int* argcp, char8*** argvp);
 	[LinkName("g_shell_quote")]
 	public static extern char8* GShellQuote(char8* unquoted_string);
 	[LinkName("g_shell_unquote")]
@@ -2348,9 +2348,9 @@ class GLib
 	[LinkName("g_try_realloc_n")]
 	public static extern void* GTryReallocN(void* mem, c_ulong n_blocks, c_ulong n_block_bytes);
 	[LinkName("g_ucs4_to_utf16")]
-	public static extern c_ushort* GUcs4ToUtf16(c_long len, c_long* items_read, c_long* items_written);
+	public static extern c_ushort* GUcs4ToUtf16(c_uint* str, c_long len, c_long* items_read, c_long* items_written);
 	[LinkName("g_ucs4_to_utf8")]
-	public static extern char8* GUcs4ToUtf8(c_long len, c_long* items_read, c_long* items_written);
+	public static extern char8* GUcs4ToUtf8(c_uint* str, c_long len, c_long* items_read, c_long* items_written);
 	[LinkName("g_unichar_break_type")]
 	public static extern UnicodeBreakType GUnicharBreakType(c_uint c);
 	[LinkName("g_unichar_combining_class")]
@@ -2418,7 +2418,7 @@ class GLib
 	[LinkName("g_unicode_canonical_decomposition")]
 	public static extern c_uint* GUnicodeCanonicalDecomposition(c_uint ch, c_ulong* result_len);
 	[LinkName("g_unicode_canonical_ordering")]
-	public static extern void GUnicodeCanonicalOrdering(c_ulong len);
+	public static extern void GUnicodeCanonicalOrdering(c_uint* string, c_ulong len);
 	[LinkName("g_unicode_script_from_iso15924")]
 	public static extern UnicodeScript GUnicodeScriptFromIso15924(c_uint iso15924);
 	[LinkName("g_unicode_script_to_iso15924")]
@@ -2432,7 +2432,7 @@ class GLib
 	[LinkName("g_unix_get_passwd_entry")]
 	public static extern void* GUnixGetPasswdEntry(char8* user_name);
 	[LinkName("g_unix_open_pipe")]
-	public static extern c_int GUnixOpenPipe(c_int flags);
+	public static extern c_int GUnixOpenPipe(c_int* fds, c_int flags);
 	[LinkName("g_unix_set_fd_nonblocking")]
 	public static extern c_int GUnixSetFdNonblocking(c_int fd, c_int nonblock);
 	[LinkName("g_unix_signal_add_full")]
@@ -2450,7 +2450,7 @@ class GLib
 	[LinkName("g_uri_error_quark")]
 	public static extern Quark GUriErrorQuark();
 	[LinkName("g_uri_escape_bytes")]
-	public static extern char8* GUriEscapeBytes(c_ulong length, char8* reserved_chars_allowed);
+	public static extern char8* GUriEscapeBytes(c_uchar* unescaped, c_ulong length, char8* reserved_chars_allowed);
 	[LinkName("g_uri_escape_string")]
 	public static extern char8* GUriEscapeString(char8* unescaped, char8* reserved_chars_allowed, c_int allow_utf8);
 	[LinkName("g_uri_is_valid")]
@@ -2486,9 +2486,9 @@ class GLib
 	[LinkName("g_usleep")]
 	public static extern void GUsleep(c_ulong microseconds);
 	[LinkName("g_utf16_to_ucs4")]
-	public static extern c_uint* GUtf16ToUcs4(c_long len, c_long* items_read, c_long* items_written);
+	public static extern c_uint* GUtf16ToUcs4(c_ushort* str, c_long len, c_long* items_read, c_long* items_written);
 	[LinkName("g_utf16_to_utf8")]
-	public static extern char8* GUtf16ToUtf8(c_long len, c_long* items_read, c_long* items_written);
+	public static extern char8* GUtf16ToUtf8(c_ushort* str, c_long len, c_long* items_read, c_long* items_written);
 	[LinkName("g_utf8_casefold")]
 	public static extern char8* GUtf8Casefold(char8* str, c_long len);
 	[LinkName("g_utf8_collate")]
@@ -2538,9 +2538,9 @@ class GLib
 	[LinkName("g_utf8_to_utf16")]
 	public static extern c_ushort* GUtf8ToUtf16(char8* str, c_long len, c_long* items_read, c_long* items_written);
 	[LinkName("g_utf8_validate")]
-	public static extern c_int GUtf8Validate(c_long max_len, char8* end);
+	public static extern c_int GUtf8Validate(c_uchar* str, c_long max_len, char8* end);
 	[LinkName("g_utf8_validate_len")]
-	public static extern c_int GUtf8ValidateLen(c_ulong max_len, char8* end);
+	public static extern c_int GUtf8ValidateLen(c_uchar* str, c_ulong max_len, char8* end);
 	[LinkName("g_uuid_string_is_valid")]
 	public static extern c_int GUuidStringIsValid(char8* str);
 	[LinkName("g_uuid_string_random")]
