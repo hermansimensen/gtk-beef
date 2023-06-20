@@ -8,3 +8,7 @@ StartupObject = "gtk_beef.Program"
 [Configs.Debug.Linux64]
 BuildKind = "StaticLib"
 OtherLinkFlags = "$(LinkFlags) -lgtk-4 -lgio-2.0"
+
+[Configs.Debug.Win64]
+LibPaths = ["$(ProjectDir)/libs_x64/gtk-4.lib", "$(ProjectDir)/libs_x64/cairo.lib", "$(ProjectDir)/libs_x64/freetype.lib", "$(ProjectDir)/libs_x64/gdk_pixbuf-2.0.lib", "$(ProjectDir)/libs_x64/gio-2.0.lib", "$(ProjectDir)/libs_x64/glib-2.0.lib", "$(ProjectDir)/libs_x64/gmodule-2.0.lib", "$(ProjectDir)/libs_x64/gobject-2.0.lib", "$(ProjectDir)/libs_x64/graphene-1.0.lib", "$(ProjectDir)/libs_x64/harfbuzz.lib", "$(ProjectDir)/libs_x64/pango-1.0.lib"]
+PostBuildCmds = ["CopyToDependents(\"$(ProjectDir)/dist_x64/*.dll\")"]
