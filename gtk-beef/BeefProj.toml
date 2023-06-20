@@ -7,4 +7,4 @@ StartupObject = "gtk_beef.Program"
 
 [Configs.Debug.Linux64]
 BuildKind = "StaticLib"
-OtherLinkFlags = "$(LinkFlags) -lgtk-4"
+OtherLinkFlags = "$(LinkFlags) -lgtk-4 -lgio-2.0"
