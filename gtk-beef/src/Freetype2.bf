@@ -5,6 +5,7 @@ using System.Interop;
 
 class freetype2
 {
+
 	[CRepr]
 	public struct Bitmap
 	{

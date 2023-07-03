@@ -1,0 +1,146 @@
+namespace Gtk;
+
+using System;
+using System.Interop;
+using System.Collections;
+
+extension GObject
+{
+	static List<void*> gClosureList = new .() ~ {ClearAndDeleteItems(gClosureList); delete gClosureList;}
+
+
+	public static int SignalConnect<T>(GObject.Object* instance, char8 *detailed_signal, T callback, GObject.ConnectFlags connectFlags) where T : Delegate
+	{
+		int32 after = (connectFlags & .After) != 0 ? 1 : 0;
+		int32 swap = (connectFlags & .Swapped) != 0 ? 1 : 0;
+
+		BeefCClosure<T>* c = new .(callback);
+
+		gClosureList.Add((void*)c);
+
+		GObject.SignalConnectClosure(instance, detailed_signal, (.)(void*)c, after);
+
+		return 0;
+	}
+
+	public static void MarshallFunct<T>(Closure* closure, Value* return_value, c_uint n_param_values, Value* param_values, void* invocation_hint, void* marshal_data) where T : Delegate
+	{
+		T funcType;
+		BeefCClosure<T>* cs = (BeefCClosure<T>*) closure;
+
+		for(int i = 0; i < n_param_values; i++)
+		{
+			cs.SetArgument(i, param_values[i].data.v_pointer);
+		}
+
+		cs.InvokeFunction();
+	}
+
+
+	[ClosureGen]
+	struct BeefCClosure<T> where T : Delegate
+	{
+		Closure mClosure;
+		T funcType;
+
+		public this(T callback)
+		{
+			uint32 size = sizeof(BeefCClosure<T>);
+			mClosure = *Closure.NewSimple(size, null);
+			Closure.Ref(&mClosure);
+			Closure.Sink(&mClosure);
+			mClosure.marshal = => MarshallFunct<T>;
+			funcType = ?;
+			mCallbackPtr = (.) callback;
+			mCallback = (.) mCallbackPtr;
+		}
+	}
+
+	struct ClosureGen : Attribute, IComptimeTypeApply
+	{
+		[Comptime]
+		public void ApplyToType(System.Type type)
+		{
+			System.Reflection.FieldInfo info = type.GetField("funcType");
+			System.Type proto = info.FieldType;
+
+			int argCount = 0;
+
+			if (proto == null)
+			{
+				Compiler.EmitTypeBody(type, "public function void() mCallback;");
+				Compiler.EmitTypeBody(type, "\npublic void* mCallbackPtr;");
+				Compiler.EmitTypeBody(type, "\npublic void InvokeFunction(){}\n");
+				Compiler.EmitTypeBody(type, "public void SetArgument(int arg, void* data) mut\n{}\n");
+				return;
+			}
+
+			for (var pt in proto.GetMethods())
+			{
+				argCount = pt.ParamCount;
+				for (int i = 0; i < pt.ParamCount; i++)
+				{
+					System.Type dt = pt.GetParamType(i);
+					var dtype = scope String();
+					dt.GetFullName(dtype);
+					StringView name = pt.GetParamName(i);
+
+					String outStr = scope .();
+					outStr.AppendF("{} {}{} = (.)(void*)null;\n", dtype, "arg", i);
+					Compiler.EmitTypeBody(type, outStr);
+				}
+				break;
+			}
+
+			for (var pt in proto.GetMethods())
+			{
+				Compiler.EmitTypeBody(type, "public function void(");
+				System.Type ret = pt.ReturnType;
+				for (int i = 0; i < pt.ParamCount; i++)
+				{
+					System.Type dt = pt.GetParamType(i);
+					var dtype = scope String();
+					dt.GetFullName(dtype);
+					StringView name = pt.GetParamName(i);
+
+					String outStr = scope .();
+					outStr.AppendF("{} {}", dtype, name);
+					Compiler.EmitTypeBody(type, outStr);
+					var str = (i == pt.ParamCount - 1) ? ")" : ", ";
+					Compiler.EmitTypeBody(type, str);
+				}
+				break;
+			}
+			Compiler.EmitTypeBody(type, " mCallback;");
+			Compiler.EmitTypeBody(type, "\npublic void* mCallbackPtr;");
+
+			Compiler.EmitTypeBody(type,"public void InvokeFunction()\n{\n\tmCallback(");
+			for(var pt in proto.GetMethods())
+			{
+				for (int i = 0; i < pt.ParamCount; i++)
+				{
+					String outStr = scope .();
+					outStr.AppendF("{}{}", "arg", i);
+					Compiler.EmitTypeBody(type, outStr);
+					var str = (i == pt.ParamCount - 1) ? ")" : ", ";
+					Compiler.EmitTypeBody(type, str);
+				}
+				break;
+			}
+			Compiler.EmitTypeBody(type, ";\n}\n");
+
+
+			Compiler.EmitTypeBody(type, "public void SetArgument(int arg, void* data) mut\n{\n");
+			Compiler.EmitTypeBody(type, "\tswitch(arg) {\n");
+			for(int arg = 0; arg < argCount; arg++)
+			{
+				String outStr = scope .();
+				outStr.AppendF("\tcase {}:", arg);
+				outStr.AppendF("\n\t\t{}{} = (.)data;\n", "arg", arg);
+				Compiler.EmitTypeBody(type, outStr);
+			}
+			Compiler.EmitTypeBody(type, "\t}\n");
+			Compiler.EmitTypeBody(type, "}\n");
+		}
+	}
+}

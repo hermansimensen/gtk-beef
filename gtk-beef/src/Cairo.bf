@@ -5,6 +5,9 @@ using System.Interop;
 
 class cairo
 {
+
+		[LinkName("cairo_image_surface_create")]
+		public static extern void ImageSurfaceCreate();
 	[CRepr]
 	public struct Context
 	{
@@ -29,249 +32,9 @@ class cairo
 	public struct Region
 	{
 	}
-	public enum Status : c_int
-	{
-		success = 0,
-		no_memory = 1,
-		invalid_restore = 2,
-		invalid_pop_group = 3,
-		no_current_point = 4,
-		invalid_matrix = 5,
-		invalid_status = 6,
-		null_pointer = 7,
-		invalid_string = 8,
-		invalid_path_data = 9,
-		read_error = 10,
-		write_error = 11,
-		surface_finished = 12,
-		surface_type_mismatch = 13,
-		pattern_type_mismatch = 14,
-		invalid_content = 15,
-		invalid_format = 16,
-		invalid_visual = 17,
-		file_not_found = 18,
-		invalid_dash = 19,
-		invalid_dsc_comment = 20,
-		invalid_index = 21,
-		clip_not_representable = 22,
-		temp_file_error = 23,
-		invalid_stride = 24,
-		font_type_mismatch = 25,
-		user_font_immutable = 26,
-		user_font_error = 27,
-		negative_count = 28,
-		invalid_clusters = 29,
-		invalid_slant = 30,
-		invalid_weight = 31,
-		invalid_size = 32,
-		user_font_not_implemented = 33,
-		device_type_mismatch = 34,
-		device_error = 35,
-		invalid_mesh_construction = 36,
-		device_finished = 37,
-		jbig2_global_missing = 38
-	}
-	public enum Content : c_int
-	{
-		color = 4096,
-		alpha = 8192,
-		color_alpha = 12288
-	}
-	public enum Operator : c_int
-	{
-		clear = 0,
-		source = 1,
-		over = 2,
-		in_ = 3,
-		out_ = 4,
-		atop = 5,
-		dest = 6,
-		dest_over = 7,
-		dest_in = 8,
-		dest_out = 9,
-		dest_atop = 10,
-		xor = 11,
-		add = 12,
-		saturate = 13,
-		multiply = 14,
-		screen = 15,
-		overlay = 16,
-		darken = 17,
-		lighten = 18,
-		color_dodge = 19,
-		color_burn = 20,
-		hard_light = 21,
-		soft_light = 22,
-		difference = 23,
-		exclusion = 24,
-		hsl_hue = 25,
-		hsl_saturation = 26,
-		hsl_color = 27,
-		hsl_luminosity = 28
-	}
-	public enum Antialias : c_int
-	{
-		default_ = 0,
-		none = 1,
-		gray = 2,
-		subpixel = 3,
-		fast = 4,
-		good = 5,
-		best = 6
-	}
-	public enum FillRule : c_int
-	{
-		winding = 0,
-		even_odd = 1
-	}
-	public enum LineCap : c_int
-	{
-		butt = 0,
-		round = 1,
-		square = 2
-	}
-	public enum LineJoin : c_int
-	{
-		miter = 0,
-		round = 1,
-		bevel = 2
-	}
-	public enum TextClusterFlags : c_int
-	{
-		backward = 1
-	}
-	public enum FontSlant : c_int
-	{
-		normal = 0,
-		italic = 1,
-		oblique = 2
-	}
-	public enum FontWeight : c_int
-	{
-		normal = 0,
-		bold = 1
-	}
-	public enum SubpixelOrder : c_int
-	{
-		default_ = 0,
-		rgb = 1,
-		bgr = 2,
-		vrgb = 3,
-		vbgr = 4
-	}
-	public enum HintStyle : c_int
-	{
-		default_ = 0,
-		none = 1,
-		slight = 2,
-		medium = 3,
-		full = 4
-	}
-	public enum HintMetrics : c_int
-	{
-		default_ = 0,
-		off = 1,
-		on = 2
-	}
 	[CRepr]
 	public struct FontOptions
 	{
-	}
-	public enum FontType : c_int
-	{
-		toy = 0,
-		ft = 1,
-		win32 = 2,
-		quartz = 3,
-		user = 4
-	}
-	public enum PathDataType : c_int
-	{
-		move_to = 0,
-		line_to = 1,
-		curve_to = 2,
-		close_path = 3
-	}
-	public enum DeviceType : c_int
-	{
-		drm = 0,
-		gl = 1,
-		script = 2,
-		xcb = 3,
-		xlib = 4,
-		xml = 5,
-		cogl = 6,
-		win32 = 7,
-		invalid = -1
-	}
-	public enum SurfaceType : c_int
-	{
-		image = 0,
-		pdf = 1,
-		ps = 2,
-		xlib = 3,
-		xcb = 4,
-		glitz = 5,
-		quartz = 6,
-		win32 = 7,
-		beos = 8,
-		directfb = 9,
-		svg = 10,
-		os2 = 11,
-		win32_printing = 12,
-		quartz_image = 13,
-		script = 14,
-		qt = 15,
-		recording = 16,
-		vg = 17,
-		gl = 18,
-		drm = 19,
-		tee = 20,
-		xml = 21,
-		skia = 22,
-		subsurface = 23,
-		cogl = 24
-	}
-	public enum Format : c_int
-	{
-		invalid = -1,
-		argb32 = 0,
-		rgb24 = 1,
-		a8 = 2,
-		a1 = 3,
-		rgb16_565 = 4,
-		rgb30 = 5
-	}
-	public enum PatternType : c_int
-	{
-		solid = 0,
-		surface = 1,
-		linear = 2,
-		radial = 3,
-		mesh = 4,
-		raster_source = 5
-	}
-	public enum Extend : c_int
-	{
-		none = 0,
-		repeat_ = 1,
-		reflect = 2,
-		pad = 3
-	}
-	public enum Filter : c_int
-	{
-		fast = 0,
-		good = 1,
-		best = 2,
-		nearest = 3,
-		bilinear = 4,
-		gaussian = 5
-	}
-	public enum RegionOverlap : c_int
-	{
-		in_ = 0,
-		out_ = 1,
-		part = 2
 	}
 	[CRepr]
 	public struct FontFace
@@ -288,19 +51,279 @@ class cairo
 	[CRepr]
 	public struct Rectangle
 	{
-		double x;
-		double y;
-		double width;
-		double height;
+		public double x;
+		public double y;
+		public double width;
+		public double height;
 	}
 	[CRepr]
 	public struct RectangleInt
 	{
-		c_int x;
-		c_int y;
-		c_int width;
-		c_int height;
+		public c_int x;
+		public c_int y;
+		public c_int width;
+		public c_int height;
 	}
-	[LinkName("cairo_image_surface_create")]
-	public static extern void ImageSurfaceCreate();
+	[CRepr, AllowDuplicates]
+	public enum Status
+	{
+		Success = 0,
+		NoMemory = 1,
+		InvalidRestore = 2,
+		InvalidPopGroup = 3,
+		NoCurrentPoint = 4,
+		InvalidMatrix = 5,
+		InvalidStatus = 6,
+		NullPointer = 7,
+		InvalidString = 8,
+		InvalidPathData = 9,
+		ReadError = 10,
+		WriteError = 11,
+		SurfaceFinished = 12,
+		SurfaceTypeMismatch = 13,
+		PatternTypeMismatch = 14,
+		InvalidContent = 15,
+		InvalidFormat = 16,
+		InvalidVisual = 17,
+		FileNotFound = 18,
+		InvalidDash = 19,
+		InvalidDscComment = 20,
+		InvalidIndex = 21,
+		ClipNotRepresentable = 22,
+		TempFileError = 23,
+		InvalidStride = 24,
+		FontTypeMismatch = 25,
+		UserFontImmutable = 26,
+		UserFontError = 27,
+		NegativeCount = 28,
+		InvalidClusters = 29,
+		InvalidSlant = 30,
+		InvalidWeight = 31,
+		InvalidSize = 32,
+		UserFontNotImplemented = 33,
+		DeviceTypeMismatch = 34,
+		DeviceError = 35,
+		InvalidMeshConstruction = 36,
+		DeviceFinished = 37,
+		Jbig2GlobalMissing = 38
+	}
+	[CRepr, AllowDuplicates]
+	public enum Content
+	{
+		Color = 4096,
+		Alpha = 8192,
+		ColorAlpha = 12288
+	}
+	[CRepr, AllowDuplicates]
+	public enum Operator
+	{
+		Clear = 0,
+		Source = 1,
+		Over = 2,
+		In = 3,
+		Out = 4,
+		Atop = 5,
+		Dest = 6,
+		DestOver = 7,
+		DestIn = 8,
+		DestOut = 9,
+		DestAtop = 10,
+		Xor = 11,
+		Add = 12,
+		Saturate = 13,
+		Multiply = 14,
+		Screen = 15,
+		Overlay = 16,
+		Darken = 17,
+		Lighten = 18,
+		ColorDodge = 19,
+		ColorBurn = 20,
+		HardLight = 21,
+		SoftLight = 22,
+		Difference = 23,
+		Exclusion = 24,
+		HslHue = 25,
+		HslSaturation = 26,
+		HslColor = 27,
+		HslLuminosity = 28
+	}
+	[CRepr, AllowDuplicates]
+	public enum Antialias
+	{
+		Default = 0,
+		None = 1,
+		Gray = 2,
+		Subpixel = 3,
+		Fast = 4,
+		Good = 5,
+		Best = 6
+	}
+	[CRepr, AllowDuplicates]
+	public enum FillRule
+	{
+		Winding = 0,
+		EvenOdd = 1
+	}
+	[CRepr, AllowDuplicates]
+	public enum LineCap
+	{
+		Butt = 0,
+		Round = 1,
+		Square = 2
+	}
+	[CRepr, AllowDuplicates]
+	public enum LineJoin
+	{
+		Miter = 0,
+		Round = 1,
+		Bevel = 2
+	}
+	[CRepr, AllowDuplicates]
+	public enum TextClusterFlags
+	{
+		Backward = 1
+	}
+	[CRepr, AllowDuplicates]
+	public enum FontSlant
+	{
+		Normal = 0,
+		Italic = 1,
+		Oblique = 2
+	}
+	[CRepr, AllowDuplicates]
+	public enum FontWeight
+	{
+		Normal = 0,
+		Bold = 1
+	}
+	[CRepr, AllowDuplicates]
+	public enum SubpixelOrder
+	{
+		Default = 0,
+		Rgb = 1,
+		Bgr = 2,
+		Vrgb = 3,
+		Vbgr = 4
+	}
+	[CRepr, AllowDuplicates]
+	public enum HintStyle
+	{
+		Default = 0,
+		None = 1,
+		Slight = 2,
+		Medium = 3,
+		Full = 4
+	}
+	[CRepr, AllowDuplicates]
+	public enum HintMetrics
+	{
+		Default = 0,
+		Off = 1,
+		On = 2
+	}
+	[CRepr, AllowDuplicates]
+	public enum FontType
+	{
+		Toy = 0,
+		Ft = 1,
+		Win32 = 2,
+		Quartz = 3,
+		User = 4
+	}
+	[CRepr, AllowDuplicates]
+	public enum PathDataType
+	{
+		MoveTo = 0,
+		LineTo = 1,
+		CurveTo = 2,
+		ClosePath = 3
+	}
+	[CRepr, AllowDuplicates]
+	public enum DeviceType
+	{
+		Drm = 0,
+		Gl = 1,
+		Script = 2,
+		Xcb = 3,
+		Xlib = 4,
+		Xml = 5,
+		Cogl = 6,
+		Win32 = 7,
+		Invalid = -1
+	}
+	[CRepr, AllowDuplicates]
+	public enum SurfaceType
+	{
+		Image = 0,
+		Pdf = 1,
+		Ps = 2,
+		Xlib = 3,
+		Xcb = 4,
+		Glitz = 5,
+		Quartz = 6,
+		Win32 = 7,
+		Beos = 8,
+		Directfb = 9,
+		Svg = 10,
+		Os2 = 11,
+		Win32Printing = 12,
+		QuartzImage = 13,
+		Script = 14,
+		Qt = 15,
+		Recording = 16,
+		Vg = 17,
+		Gl = 18,
+		Drm = 19,
+		Tee = 20,
+		Xml = 21,
+		Skia = 22,
+		Subsurface = 23,
+		Cogl = 24
+	}
+	[CRepr, AllowDuplicates]
+	public enum Format
+	{
+		Invalid = -1,
+		Argb32 = 0,
+		Rgb24 = 1,
+		A8 = 2,
+		A1 = 3,
+		Rgb16565 = 4,
+		Rgb30 = 5
+	}
+	[CRepr, AllowDuplicates]
+	public enum PatternType
+	{
+		Solid = 0,
+		Surface = 1,
+		Linear = 2,
+		Radial = 3,
+		Mesh = 4,
+		RasterSource = 5
+	}
+	[CRepr, AllowDuplicates]
+	public enum Extend
+	{
+		None = 0,
+		Repeat = 1,
+		Reflect = 2,
+		Pad = 3
+	}
+	[CRepr, AllowDuplicates]
+	public enum Filter
+	{
+		Fast = 0,
+		Good = 1,
+		Best = 2,
+		Nearest = 3,
+		Bilinear = 4,
+		Gaussian = 5
+	}
+	[CRepr, AllowDuplicates]
+	public enum RegionOverlap
+	{
+		In = 0,
+		Out = 1,
+		Part = 2
+	}
 }
