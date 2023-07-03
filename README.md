@@ -4,7 +4,7 @@ GTK4 bindings for Beef
 
 Example: Hello World
 
-```
+```beef
 using Gtk;
 
 class Program
