@@ -52,4 +52,4 @@ class Program
 
 ## Demo
 
-![Hello World](https://github.com/hermansimensen/gtk-beef/blob/main/helloworld.png?raw=true)
+![Hello World](https://github.com/hermansimensen/gtk-beef/blob/main/helloworld.PNG?raw=true)
