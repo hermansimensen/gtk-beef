@@ -9,30 +9,23 @@ using Gtk;
 
 class Program
 {
-	public static void PrintHello (Gtk.Widget* widget, void* data)
+	public static void OnClicked(Gtk.Button* widget, void* data)
 	{
-		  System.Console.WriteLine("You clicked me");
+		System.Console.WriteLine("You clicked me");
 	}
 
-	public static void AppActivate(Gtk.Application *app, void* user_data)
+	public static void AppActivate(Gio.Application *app, void* user_data)
 	{
-		Gtk.Widget* window;
-		Gtk.Button* button;
-
-		window = Gtk.ApplicationWindow.New(app);
+		Gtk.Widget* window; window = Gtk.ApplicationWindow.New((Gtk.Application*)app);
 		Gtk.Window.SetTitle((Gtk.Window*)window, "Window");
 		Gtk.Window.SetDefaultSize((Gtk.Window*)window, 200, 200);
 
-		button = (Gtk.Button*)Gtk.Button.NewWithLabel("Hello World");
-		PrintFunction pf = => PrintHello;
-		GObject.SignalConnect(button, "clicked", pf, .After);
+		Gtk.Button* button = (Gtk.Button*)Gtk.Button.NewWithLabel("Hello World");
+		GObject.SignalConnect<Gtk.Button.ClickedFunc>(button, "clicked", => OnClicked, .After);
 		Gtk.Window.SetChild((Gtk.Window*)(window), button);
 
 		Gtk.Window.Present((Gtk.Window*) window);
 	}
-
-	function void ActivateFunc(Gtk.Application* s, void* st);
-	function void PrintFunction(Gtk.Widget* widget, void* data);
 
 	public static void Main()
 	{
@@ -41,8 +34,7 @@ class Program
 
 		app = Gtk.Application.New("test.test", .DefaultFlags);
 
-		ActivateFunc af = => AppActivate;
-		GObject.SignalConnect<ActivateFunc>(app, "activate", af, .After);
+		GObject.SignalConnect<Gtk.Application.ActivateFunc>(app, "activate", => AppActivate, .After);
 		status = Gio.Application.Run(app, 0, null);
 		GObject.Object.Unref(app);
 	}
