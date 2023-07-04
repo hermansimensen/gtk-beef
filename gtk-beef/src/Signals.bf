@@ -94,8 +94,11 @@ extension GObject
 
 			for (var pt in proto.GetMethods())
 			{
-				Compiler.EmitTypeBody(type, "public function void(");
 				System.Type ret = pt.ReturnType;
+				String retStr = scope .();
+				ret.GetFullName(retStr);
+				String functionStr = scope .()..AppendF("public function {}(", retStr);
+				Compiler.EmitTypeBody(type, functionStr);
 				for (int i = 0; i < pt.ParamCount; i++)
 				{
 					System.Type dt = pt.GetParamType(i);
