@@ -78,6 +78,7 @@ class Gtk
 		public static extern Accessible* GetAccessible(ATContext* self);
 		[LinkName("gtk_at_context_get_accessible_role")]
 		public static extern AccessibleRole GetAccessibleRole(ATContext* self);
+		public function void StateChangeFunc(ATContext* self, void* user_data);
 	}
 	[CRepr]
 	public struct AboutDialog : Window
@@ -150,6 +151,7 @@ class Gtk
 		public static extern void SetWebsiteLabel(AboutDialog* about, char8* website_label);
 		[LinkName("gtk_about_dialog_set_wrap_license")]
 		public static extern void SetWrapLicense(AboutDialog* about, c_int wrap_license);
+		public function c_int ActivateLinkFunc(AboutDialog* self, char8* uri, void* user_data);
 	}
 	[CRepr]
 	public struct ActionBar : Widget
@@ -210,6 +212,8 @@ class Gtk
 		public static extern void SetUpper(Adjustment* adjustment, double upper);
 		[LinkName("gtk_adjustment_set_value")]
 		public static extern void SetValue(Adjustment* adjustment, double value);
+		public function void ChangedFunc(Adjustment* self, void* user_data);
+		public function void ValueChangedFunc(Adjustment* self, void* user_data);
 	}
 	[CRepr]
 	public struct AlertDialog : GObject.Object
@@ -288,6 +292,9 @@ class Gtk
 		public static extern void SetShowDefaultItem(AppChooserButton* self, c_int setting);
 		[LinkName("gtk_app_chooser_button_set_show_dialog_item")]
 		public static extern void SetShowDialogItem(AppChooserButton* self, c_int setting);
+		public function void ActivateFunc(AppChooserButton* self, void* user_data);
+		public function void ChangedFunc(AppChooserButton* self, void* user_data);
+		public function void CustomItemActivatedFunc(AppChooserButton* self, char8* item_name, void* user_data);
 	}
 	[CRepr]
 	public struct AppChooserDialog : Dialog
@@ -332,6 +339,8 @@ class Gtk
 		public static extern void SetShowOther(AppChooserWidget* self, c_int setting);
 		[LinkName("gtk_app_chooser_widget_set_show_recommended")]
 		public static extern void SetShowRecommended(AppChooserWidget* self, c_int setting);
+		public function void ApplicationActivatedFunc(AppChooserWidget* self, Gio.AppInfo application, void* user_data);
+		public function void ApplicationSelectedFunc(AppChooserWidget* self, Gio.AppInfo application, void* user_data);
 	}
 	[CRepr]
 	public struct Application : Gio.Application
@@ -366,6 +375,9 @@ class Gtk
 		public static extern void SetMenubar(Application* application, Gio.MenuModel* menubar);
 		[LinkName("gtk_application_uninhibit")]
 		public static extern void Uninhibit(Application* application, c_uint cookie);
+		public function void QueryEndFunc(Application* self, void* user_data);
+		public function void WindowAddedFunc(Application* self, Window window, void* user_data);
+		public function void WindowRemovedFunc(Application* self, Window window, void* user_data);
 	}
 	[CRepr]
 	public struct ApplicationWindow : Window
@@ -460,6 +472,11 @@ class Gtk
 		public static extern void SetPageType(Assistant* assistant, Widget* page, AssistantPageType type);
 		[LinkName("gtk_assistant_update_buttons_state")]
 		public static extern void UpdateButtonsState(Assistant* assistant);
+		public function void ApplyFunc(Assistant* self, void* user_data);
+		public function void CancelFunc(Assistant* self, void* user_data);
+		public function void CloseFunc(Assistant* self, void* user_data);
+		public function void EscapeFunc(Assistant* self, void* user_data);
+		public function void PrepareFunc(Assistant* self, Widget page, void* user_data);
 	}
 	[CRepr]
 	public struct AssistantPage : GObject.Object
@@ -668,6 +685,8 @@ class Gtk
 		public static extern void SetLabel(Button* button, char8* label);
 		[LinkName("gtk_button_set_use_underline")]
 		public static extern void SetUseUnderline(Button* button, c_int use_underline);
+		public function void ActivateFunc(Button* self, void* user_data);
+		public function void ClickedFunc(Button* self, void* user_data);
 	}
 	[CRepr]
 	public struct CClosureExpression : Expression
@@ -704,6 +723,11 @@ class Gtk
 		public static extern void SetShowWeekNumbers(Calendar* self, c_int value);
 		[LinkName("gtk_calendar_unmark_day")]
 		public static extern void UnmarkDay(Calendar* calendar, c_uint day);
+		public function void DaySelectedFunc(Calendar* self, void* user_data);
+		public function void NextMonthFunc(Calendar* self, void* user_data);
+		public function void NextYearFunc(Calendar* self, void* user_data);
+		public function void PrevMonthFunc(Calendar* self, void* user_data);
+		public function void PrevYearFunc(Calendar* self, void* user_data);
 	}
 	[CRepr]
 	public struct CallbackAction : ShortcutAction
@@ -792,6 +816,10 @@ class Gtk
 		public static extern void Snapshot(CellArea* area, CellAreaContext* context, Widget* widget, Snapshot* snapshot, Gdk.Rectangle* background_area, Gdk.Rectangle* cell_area, CellRendererState flags, c_int paint_focus);
 		[LinkName("gtk_cell_area_stop_editing")]
 		public static extern void StopEditing(CellArea* area, c_int canceled);
+		public function void AddEditableFunc(CellArea* self, CellRenderer renderer, CellEditable editable, Gdk.Rectangle cell_area, char8* path, void* user_data);
+		public function void ApplyAttributesFunc(CellArea* self, TreeModel model, TreeIter iter, c_int is_expander, c_int is_expanded, void* user_data);
+		public function void FocusChangedFunc(CellArea* self, CellRenderer renderer, char8* path, void* user_data);
+		public function void RemoveEditableFunc(CellArea* self, CellRenderer renderer, CellEditable editable, void* user_data);
 	}
 	[CRepr]
 	public struct CellAreaBox : CellArea
@@ -888,18 +916,23 @@ class Gtk
 		public static extern CellEditable* StartEditing(CellRenderer* cell, Gdk.Event* event, Widget* widget, char8* path, Gdk.Rectangle* background_area, Gdk.Rectangle* cell_area, CellRendererState flags);
 		[LinkName("gtk_cell_renderer_stop_editing")]
 		public static extern void StopEditing(CellRenderer* cell, c_int canceled);
+		public function void EditingCanceledFunc(CellRenderer* self, void* user_data);
+		public function void EditingStartedFunc(CellRenderer* self, CellEditable editable, char8* path, void* user_data);
 	}
 	[CRepr]
 	public struct CellRendererAccel : CellRendererText
 	{
 		[LinkName("gtk_cell_renderer_accel_new")]
 		public static extern CellRenderer* New();
+		public function void AccelClearedFunc(CellRendererAccel* self, char8* path_string, void* user_data);
+		public function void AccelEditedFunc(CellRendererAccel* self, char8* path_string, c_uint accel_key, Gdk.ModifierType accel_mods, c_uint hardware_keycode, void* user_data);
 	}
 	[CRepr]
 	public struct CellRendererCombo : CellRendererText
 	{
 		[LinkName("gtk_cell_renderer_combo_new")]
 		public static extern CellRenderer* New();
+		public function void ChangedFunc(CellRendererCombo* self, char8* path_string, TreeIter new_iter, void* user_data);
 	}
 	[CRepr]
 	public struct CellRendererPixbuf : CellRenderer
@@ -932,6 +965,7 @@ class Gtk
 		public static extern CellRenderer* New();
 		[LinkName("gtk_cell_renderer_text_set_fixed_height_from_font")]
 		public static extern void SetFixedHeightFromFont(CellRendererText* renderer, c_int number_of_rows);
+		public function void EditedFunc(CellRendererText* self, char8* path, char8* new_text, void* user_data);
 	}
 	[CRepr]
 	public struct CellRendererToggle : CellRenderer
@@ -950,6 +984,7 @@ class Gtk
 		public static extern void SetActive(CellRendererToggle* toggle, c_int setting);
 		[LinkName("gtk_cell_renderer_toggle_set_radio")]
 		public static extern void SetRadio(CellRendererToggle* toggle, c_int radio);
+		public function void ToggledFunc(CellRendererToggle* self, char8* path, void* user_data);
 	}
 	[CRepr]
 	public struct CellView : Widget
@@ -1068,6 +1103,8 @@ class Gtk
 		public static extern void SetLabel(CheckButton* self, char8* label);
 		[LinkName("gtk_check_button_set_use_underline")]
 		public static extern void SetUseUnderline(CheckButton* self, c_int setting);
+		public function void ActivateFunc(CheckButton* self, void* user_data);
+		public function void ToggledFunc(CheckButton* self, void* user_data);
 	}
 	[CRepr]
 	public struct ClosureExpression : Expression
@@ -1090,6 +1127,8 @@ class Gtk
 		public static extern void SetModal(ColorButton* button, c_int modal);
 		[LinkName("gtk_color_button_set_title")]
 		public static extern void SetTitle(ColorButton* button, char8* title);
+		public function void ActivateFunc(ColorButton* self, void* user_data);
+		public function void ColorSetFunc(ColorButton* self, void* user_data);
 	}
 	[CRepr]
 	public struct ColorChooserDialog : Dialog
@@ -1192,6 +1231,7 @@ class Gtk
 		public static extern void SetTabBehavior(ColumnView* self, ListTabBehavior tab_behavior);
 		[LinkName("gtk_column_view_sort_by_column")]
 		public static extern void SortByColumn(ColumnView* self, ColumnViewColumn* column, SortType direction);
+		public function void ActivateFunc(ColumnView* self, c_uint position, void* user_data);
 	}
 	[CRepr]
 	public struct ColumnViewCell : ListItem
@@ -1346,6 +1386,12 @@ class Gtk
 		public static extern void SetPopupFixedWidth(ComboBox* combo_box, c_int fixed_);
 		[LinkName("gtk_combo_box_set_row_separator_func")]
 		public static extern void SetRowSeparatorFunc(ComboBox* combo_box, TreeViewRowSeparatorFunc func, void* data, GLib.DestroyNotify destroy);
+		public function void ActivateFunc(ComboBox* self, void* user_data);
+		public function void ChangedFunc(ComboBox* self, void* user_data);
+		public function char8* FormatEntryTextFunc(ComboBox* self, char8* path, void* user_data);
+		public function void MoveActiveFunc(ComboBox* self, ScrollType scroll_type, void* user_data);
+		public function c_int PopdownFunc(ComboBox* self, void* user_data);
+		public function void PopupFunc(ComboBox* self, void* user_data);
 	}
 	[CRepr]
 	public struct ComboBoxText : ComboBox
@@ -1484,6 +1530,7 @@ class Gtk
 		public static extern void LoadNamed(CssProvider* provider, char8* name, char8* variant);
 		[LinkName("gtk_css_provider_to_string")]
 		public static extern char8* ToString(CssProvider* provider);
+		public function void ParsingErrorFunc(CssProvider* self, CssSection section, GLib.Error error, void* user_data);
 	}
 	[CRepr]
 	public struct CustomFilter : Filter
@@ -1530,6 +1577,8 @@ class Gtk
 		public static extern void SetDefaultResponse(Dialog* dialog, c_int response_id);
 		[LinkName("gtk_dialog_set_response_sensitive")]
 		public static extern void SetResponseSensitive(Dialog* dialog, c_int response_id, c_int setting);
+		public function void CloseFunc(Dialog* self, void* user_data);
+		public function void ResponseFunc(Dialog* self, c_int response_id, void* user_data);
 	}
 	[CRepr]
 	public struct DirectoryList : GObject.Object
@@ -1584,6 +1633,10 @@ class Gtk
 		public static extern void SetContent(DragSource* source, Gdk.ContentProvider* content);
 		[LinkName("gtk_drag_source_set_icon")]
 		public static extern void SetIcon(DragSource* source, Gdk.Paintable* paintable, c_int hot_x, c_int hot_y);
+		public function void DragBeginFunc(DragSource* self, Gdk.Drag drag, void* user_data);
+		public function c_int DragCancelFunc(DragSource* self, Gdk.Drag drag, Gdk.DragCancelReason reason, void* user_data);
+		public function void DragEndFunc(DragSource* self, Gdk.Drag drag, c_int delete_data, void* user_data);
+		public function Gdk.ContentProvider PrepareFunc(DragSource* self, double x, double y, void* user_data);
 	}
 	[CRepr]
 	public struct DrawingArea : Widget
@@ -1600,6 +1653,7 @@ class Gtk
 		public static extern void SetContentWidth(DrawingArea* self, c_int width);
 		[LinkName("gtk_drawing_area_set_draw_func")]
 		public static extern void SetDrawFunc(DrawingArea* self, DrawingAreaDrawFunc draw_func, void* user_data, GLib.DestroyNotify destroy);
+		public function void ResizeFunc(DrawingArea* self, c_int width, c_int height, void* user_data);
 	}
 	[CRepr]
 	public struct DropControllerMotion : EventController
@@ -1612,6 +1666,9 @@ class Gtk
 		public static extern Gdk.Drop* GetDrop(DropControllerMotion* self);
 		[LinkName("gtk_drop_controller_motion_is_pointer")]
 		public static extern c_int IsPointer(DropControllerMotion* self);
+		public function void EnterFunc(DropControllerMotion* self, double x, double y, void* user_data);
+		public function void LeaveFunc(DropControllerMotion* self, void* user_data);
+		public function void MotionFunc(DropControllerMotion* self, double x, double y, void* user_data);
 	}
 	[CRepr]
 	public struct DropDown : Widget
@@ -1650,6 +1707,7 @@ class Gtk
 		public static extern void SetSelected(DropDown* self, c_uint position);
 		[LinkName("gtk_drop_down_set_show_arrow")]
 		public static extern void SetShowArrow(DropDown* self, c_int show_arrow);
+		public function void ActivateFunc(DropDown* self, void* user_data);
 	}
 	[CRepr]
 	public struct DropTarget : EventController
@@ -1678,6 +1736,11 @@ class Gtk
 		public static extern void SetGtypes(DropTarget* self, GLib.Type* types, c_ulong n_types);
 		[LinkName("gtk_drop_target_set_preload")]
 		public static extern void SetPreload(DropTarget* self, c_int preload);
+		public function c_int AcceptFunc(DropTarget* self, Gdk.Drop drop, void* user_data);
+		public function c_int DropFunc(DropTarget* self, GObject.Value value, double x, double y, void* user_data);
+		public function Gdk.DragAction EnterFunc(DropTarget* self, double x, double y, void* user_data);
+		public function void LeaveFunc(DropTarget* self, void* user_data);
+		public function Gdk.DragAction MotionFunc(DropTarget* self, double x, double y, void* user_data);
 	}
 	[CRepr]
 	public struct DropTargetAsync : EventController
@@ -1694,6 +1757,11 @@ class Gtk
 		public static extern void SetActions(DropTargetAsync* self, Gdk.DragAction actions);
 		[LinkName("gtk_drop_target_async_set_formats")]
 		public static extern void SetFormats(DropTargetAsync* self, Gdk.ContentFormats* formats);
+		public function c_int AcceptFunc(DropTargetAsync* self, Gdk.Drop drop, void* user_data);
+		public function Gdk.DragAction DragEnterFunc(DropTargetAsync* self, Gdk.Drop drop, double x, double y, void* user_data);
+		public function void DragLeaveFunc(DropTargetAsync* self, Gdk.Drop drop, void* user_data);
+		public function Gdk.DragAction DragMotionFunc(DropTargetAsync* self, Gdk.Drop drop, double x, double y, void* user_data);
+		public function c_int DropFunc(DropTargetAsync* self, Gdk.Drop drop, double x, double y, void* user_data);
 	}
 	[CRepr]
 	public struct EditableLabel : Widget
@@ -1712,6 +1780,7 @@ class Gtk
 	{
 		[LinkName("gtk_emoji_chooser_new")]
 		public static extern Widget* New();
+		public function void EmojiPickedFunc(EmojiChooser* self, char8* text, void* user_data);
 	}
 	[CRepr]
 	public struct Entry : Widget
@@ -1836,6 +1905,9 @@ class Gtk
 		public static extern void SetVisibility(Entry* entry, c_int visible);
 		[LinkName("gtk_entry_unset_invisible_char")]
 		public static extern void UnsetInvisibleChar(Entry* entry);
+		public function void ActivateFunc(Entry* self, void* user_data);
+		public function void IconPressFunc(Entry* self, EntryIconPosition icon_pos, void* user_data);
+		public function void IconReleaseFunc(Entry* self, EntryIconPosition icon_pos, void* user_data);
 	}
 	[CRepr]
 	public struct EntryBuffer : GObject.Object
@@ -1862,6 +1934,8 @@ class Gtk
 		public static extern void SetMaxLength(EntryBuffer* buffer, c_int max_length);
 		[LinkName("gtk_entry_buffer_set_text")]
 		public static extern void SetText(EntryBuffer* buffer, char8* chars, c_int n_chars);
+		public function void DeletedTextFunc(EntryBuffer* self, c_uint position, c_uint n_chars, void* user_data);
+		public function void InsertedTextFunc(EntryBuffer* self, c_uint position, char8* chars, c_uint n_chars, void* user_data);
 	}
 	[CRepr]
 	public struct EntryCompletion : GObject.Object
@@ -1914,6 +1988,10 @@ class Gtk
 		public static extern void SetPopupSingleMatch(EntryCompletion* completion, c_int popup_single_match);
 		[LinkName("gtk_entry_completion_set_text_column")]
 		public static extern void SetTextColumn(EntryCompletion* completion, c_int column);
+		public function c_int CursorOnMatchFunc(EntryCompletion* self, TreeModel model, TreeIter iter, void* user_data);
+		public function c_int InsertPrefixFunc(EntryCompletion* self, char8* prefix, void* user_data);
+		public function c_int MatchSelectedFunc(EntryCompletion* self, TreeModel model, TreeIter iter, void* user_data);
+		public function void NoMatchesFunc(EntryCompletion* self, void* user_data);
 	}
 	[CRepr]
 	public struct EventController : GObject.Object
@@ -1954,6 +2032,8 @@ class Gtk
 		public static extern c_int ContainsFocus(EventControllerFocus* self);
 		[LinkName("gtk_event_controller_focus_is_focus")]
 		public static extern c_int IsFocus(EventControllerFocus* self);
+		public function void EnterFunc(EventControllerFocus* self, void* user_data);
+		public function void LeaveFunc(EventControllerFocus* self, void* user_data);
 	}
 	[CRepr]
 	public struct EventControllerKey : EventController
@@ -1968,12 +2048,17 @@ class Gtk
 		public static extern IMContext* GetImContext(EventControllerKey* controller);
 		[LinkName("gtk_event_controller_key_set_im_context")]
 		public static extern void SetImContext(EventControllerKey* controller, IMContext* im_context);
+		public function void ImUpdateFunc(EventControllerKey* self, void* user_data);
+		public function c_int KeyPressedFunc(EventControllerKey* self, c_uint keyval, c_uint keycode, Gdk.ModifierType state, void* user_data);
+		public function void KeyReleasedFunc(EventControllerKey* self, c_uint keyval, c_uint keycode, Gdk.ModifierType state, void* user_data);
+		public function c_int ModifiersFunc(EventControllerKey* self, Gdk.ModifierType keyval, void* user_data);
 	}
 	[CRepr]
 	public struct EventControllerLegacy : EventController
 	{
 		[LinkName("gtk_event_controller_legacy_new")]
 		public static extern EventController* New();
+		public function c_int EventFunc(EventControllerLegacy* self, Gdk.Event event, void* user_data);
 	}
 	[CRepr]
 	public struct EventControllerMotion : EventController
@@ -1984,6 +2069,9 @@ class Gtk
 		public static extern c_int ContainsPointer(EventControllerMotion* self);
 		[LinkName("gtk_event_controller_motion_is_pointer")]
 		public static extern c_int IsPointer(EventControllerMotion* self);
+		public function void EnterFunc(EventControllerMotion* self, double x, double y, void* user_data);
+		public function void LeaveFunc(EventControllerMotion* self, void* user_data);
+		public function void MotionFunc(EventControllerMotion* self, double x, double y, void* user_data);
 	}
 	[CRepr]
 	public struct EventControllerScroll : EventController
@@ -1996,6 +2084,10 @@ class Gtk
 		public static extern Gdk.ScrollUnit GetUnit(EventControllerScroll* scroll);
 		[LinkName("gtk_event_controller_scroll_set_flags")]
 		public static extern void SetFlags(EventControllerScroll* scroll, EventControllerScrollFlags flags);
+		public function void DecelerateFunc(EventControllerScroll* self, double vel_x, double vel_y, void* user_data);
+		public function c_int ScrollFunc(EventControllerScroll* self, double dx, double dy, void* user_data);
+		public function void ScrollBeginFunc(EventControllerScroll* self, void* user_data);
+		public function void ScrollEndFunc(EventControllerScroll* self, void* user_data);
 	}
 	[CRepr]
 	public struct EveryFilter : MultiFilter
@@ -2038,6 +2130,7 @@ class Gtk
 		public static extern void SetUseMarkup(Expander* expander, c_int use_markup);
 		[LinkName("gtk_expander_set_use_underline")]
 		public static extern void SetUseUnderline(Expander* expander, c_int use_underline);
+		public function void ActivateFunc(Expander* self, void* user_data);
 	}
 	[CRepr]
 	public struct Expression
@@ -2080,6 +2173,18 @@ class Gtk
 	{
 		[LinkName("gtk_file_chooser_widget_new")]
 		public static extern Widget* New(FileChooserAction action);
+		public function void DesktopFolderFunc(FileChooserWidget* self, void* user_data);
+		public function void DownFolderFunc(FileChooserWidget* self, void* user_data);
+		public function void HomeFolderFunc(FileChooserWidget* self, void* user_data);
+		public function void LocationPopupFunc(FileChooserWidget* self, char8* path, void* user_data);
+		public function void LocationPopupOnPasteFunc(FileChooserWidget* self, void* user_data);
+		public function void LocationTogglePopupFunc(FileChooserWidget* self, void* user_data);
+		public function void PlacesShortcutFunc(FileChooserWidget* self, void* user_data);
+		public function void QuickBookmarkFunc(FileChooserWidget* self, c_int bookmark_index, void* user_data);
+		public function void RecentShortcutFunc(FileChooserWidget* self, void* user_data);
+		public function void SearchShortcutFunc(FileChooserWidget* self, void* user_data);
+		public function void ShowHiddenFunc(FileChooserWidget* self, void* user_data);
+		public function void UpFolderFunc(FileChooserWidget* self, void* user_data);
 	}
 	[CRepr]
 	public struct FileDialog : GObject.Object
@@ -2190,6 +2295,7 @@ class Gtk
 		public static extern FilterMatch GetStrictness(Filter* self);
 		[LinkName("gtk_filter_match")]
 		public static extern c_int Match(Filter* self, GObject.Object* item);
+		public function void ChangedFunc(Filter* self, FilterChange change, void* user_data);
 	}
 	[CRepr]
 	public struct FilterListModel : GObject.Object
@@ -2328,6 +2434,13 @@ class Gtk
 		public static extern void UnselectAll(FlowBox* box_);
 		[LinkName("gtk_flow_box_unselect_child")]
 		public static extern void UnselectChild(FlowBox* box_, FlowBoxChild* child);
+		public function void ActivateCursorChildFunc(FlowBox* self, void* user_data);
+		public function void ChildActivatedFunc(FlowBox* self, FlowBoxChild child, void* user_data);
+		public function c_int MoveCursorFunc(FlowBox* self, MovementStep step, c_int count, c_int extend, c_int modify, void* user_data);
+		public function void SelectAllFunc(FlowBox* self, void* user_data);
+		public function void SelectedChildrenChangedFunc(FlowBox* self, void* user_data);
+		public function void ToggleCursorChildFunc(FlowBox* self, void* user_data);
+		public function void UnselectAllFunc(FlowBox* self, void* user_data);
 	}
 	[CRepr]
 	public struct FlowBoxChild : Widget
@@ -2344,6 +2457,7 @@ class Gtk
 		public static extern c_int IsSelected(FlowBoxChild* child);
 		[LinkName("gtk_flow_box_child_set_child")]
 		public static extern void SetChild(FlowBoxChild* self, Widget* child);
+		public function void ActivateFunc(FlowBoxChild* self, void* user_data);
 	}
 	[CRepr]
 	public struct FontButton : Widget
@@ -2368,6 +2482,8 @@ class Gtk
 		public static extern void SetUseFont(FontButton* font_button, c_int use_font);
 		[LinkName("gtk_font_button_set_use_size")]
 		public static extern void SetUseSize(FontButton* font_button, c_int use_size);
+		public function void ActivateFunc(FontButton* self, void* user_data);
+		public function void FontSetFunc(FontButton* self, void* user_data);
 	}
 	[CRepr]
 	public struct FontChooserDialog : Dialog
@@ -2522,6 +2638,9 @@ class Gtk
 		public static extern void SetRequiredVersion(GLArea* area, c_int major, c_int minor);
 		[LinkName("gtk_gl_area_set_use_es")]
 		public static extern void SetUseEs(GLArea* area, c_int use_es);
+		public function Gdk.GLContext CreateContextFunc(GLArea* self, void* user_data);
+		public function c_int RenderFunc(GLArea* self, Gdk.GLContext context, void* user_data);
+		public function void ResizeFunc(GLArea* self, c_int width, c_int height, void* user_data);
 	}
 	[CRepr]
 	public struct Gesture : EventController
@@ -2560,12 +2679,21 @@ class Gtk
 		public static extern c_int SetState(Gesture* gesture, EventSequenceState state);
 		[LinkName("gtk_gesture_ungroup")]
 		public static extern void Ungroup(Gesture* gesture);
+		public function void BeginFunc(Gesture* self, Gdk.EventSequence sequence, void* user_data);
+		public function void CancelFunc(Gesture* self, Gdk.EventSequence sequence, void* user_data);
+		public function void EndFunc(Gesture* self, Gdk.EventSequence sequence, void* user_data);
+		public function void SequenceStateChangedFunc(Gesture* self, Gdk.EventSequence sequence, EventSequenceState state, void* user_data);
+		public function void UpdateFunc(Gesture* self, Gdk.EventSequence sequence, void* user_data);
 	}
 	[CRepr]
 	public struct GestureClick : GestureSingle
 	{
 		[LinkName("gtk_gesture_click_new")]
 		public static extern Gesture* New();
+		public function void PressedFunc(GestureClick* self, c_int n_press, double x, double y, void* user_data);
+		public function void ReleasedFunc(GestureClick* self, c_int n_press, double x, double y, void* user_data);
+		public function void StoppedFunc(GestureClick* self, void* user_data);
+		public function void UnpairedReleaseFunc(GestureClick* self, double x, double y, c_uint button, Gdk.EventSequence sequence, void* user_data);
 	}
 	[CRepr]
 	public struct GestureDrag : GestureSingle
@@ -2576,6 +2704,9 @@ class Gtk
 		public static extern c_int GetOffset(GestureDrag* gesture, double* x, double* y);
 		[LinkName("gtk_gesture_drag_get_start_point")]
 		public static extern c_int GetStartPoint(GestureDrag* gesture, double* x, double* y);
+		public function void DragBeginFunc(GestureDrag* self, double start_x, double start_y, void* user_data);
+		public function void DragEndFunc(GestureDrag* self, double offset_x, double offset_y, void* user_data);
+		public function void DragUpdateFunc(GestureDrag* self, double offset_x, double offset_y, void* user_data);
 	}
 	[CRepr]
 	public struct GestureLongPress : GestureSingle
@@ -2586,6 +2717,8 @@ class Gtk
 		public static extern double GetDelayFactor(GestureLongPress* gesture);
 		[LinkName("gtk_gesture_long_press_set_delay_factor")]
 		public static extern void SetDelayFactor(GestureLongPress* gesture, double delay_factor);
+		public function void CancelledFunc(GestureLongPress* self, void* user_data);
+		public function void PressedFunc(GestureLongPress* self, double x, double y, void* user_data);
 	}
 	[CRepr]
 	public struct GesturePan : GestureDrag
@@ -2596,6 +2729,7 @@ class Gtk
 		public static extern Orientation GetOrientation(GesturePan* gesture);
 		[LinkName("gtk_gesture_pan_set_orientation")]
 		public static extern void SetOrientation(GesturePan* gesture, Orientation orientation);
+		public function void PanFunc(GesturePan* self, PanDirection direction, double offset, void* user_data);
 	}
 	[CRepr]
 	public struct GestureRotate : Gesture
@@ -2604,6 +2738,7 @@ class Gtk
 		public static extern Gesture* New();
 		[LinkName("gtk_gesture_rotate_get_angle_delta")]
 		public static extern double GetAngleDelta(GestureRotate* gesture);
+		public function void AngleChangedFunc(GestureRotate* self, double angle, double angle_delta, void* user_data);
 	}
 	[CRepr]
 	public struct GestureSingle : Gesture
@@ -2642,6 +2777,10 @@ class Gtk
 		public static extern c_int GetStylusOnly(GestureStylus* gesture);
 		[LinkName("gtk_gesture_stylus_set_stylus_only")]
 		public static extern void SetStylusOnly(GestureStylus* gesture, c_int stylus_only);
+		public function void DownFunc(GestureStylus* self, double x, double y, void* user_data);
+		public function void MotionFunc(GestureStylus* self, double x, double y, void* user_data);
+		public function void ProximityFunc(GestureStylus* self, double x, double y, void* user_data);
+		public function void UpFunc(GestureStylus* self, double x, double y, void* user_data);
 	}
 	[CRepr]
 	public struct GestureSwipe : GestureSingle
@@ -2650,6 +2789,7 @@ class Gtk
 		public static extern Gesture* New();
 		[LinkName("gtk_gesture_swipe_get_velocity")]
 		public static extern c_int GetVelocity(GestureSwipe* gesture, double* velocity_x, double* velocity_y);
+		public function void SwipeFunc(GestureSwipe* self, double velocity_x, double velocity_y, void* user_data);
 	}
 	[CRepr]
 	public struct GestureZoom : Gesture
@@ -2658,6 +2798,7 @@ class Gtk
 		public static extern Gesture* New();
 		[LinkName("gtk_gesture_zoom_get_scale_delta")]
 		public static extern double GetScaleDelta(GestureZoom* gesture);
+		public function void ScaleChangedFunc(GestureZoom* self, double scale, void* user_data);
 	}
 	[CRepr]
 	public struct Grid : Widget
@@ -2792,6 +2933,7 @@ class Gtk
 		public static extern void SetSingleClickActivate(GridView* self, c_int single_click_activate);
 		[LinkName("gtk_grid_view_set_tab_behavior")]
 		public static extern void SetTabBehavior(GridView* self, ListTabBehavior tab_behavior);
+		public function void ActivateFunc(GridView* self, c_uint position, void* user_data);
 	}
 	[CRepr]
 	public struct HeaderBar : Widget
@@ -2848,6 +2990,12 @@ class Gtk
 		public static extern void SetSurroundingWithSelection(IMContext* context, char8* text, c_int len, c_int cursor_index, c_int anchor_index);
 		[LinkName("gtk_im_context_set_use_preedit")]
 		public static extern void SetUsePreedit(IMContext* context, c_int use_preedit);
+		public function void CommitFunc(IMContext* self, char8* str, void* user_data);
+		public function c_int DeleteSurroundingFunc(IMContext* self, c_int offset, c_int n_chars, void* user_data);
+		public function void PreeditChangedFunc(IMContext* self, void* user_data);
+		public function void PreeditEndFunc(IMContext* self, void* user_data);
+		public function void PreeditStartFunc(IMContext* self, void* user_data);
+		public function c_int RetrieveSurroundingFunc(IMContext* self, void* user_data);
 	}
 	[CRepr]
 	public struct IMContextSimple : IMContext
@@ -2914,6 +3062,7 @@ class Gtk
 		public static extern void SetSearchPath(IconTheme* self, char8** path);
 		[LinkName("gtk_icon_theme_set_theme_name")]
 		public static extern void SetThemeName(IconTheme* self, char8* theme_name);
+		public function void ChangedFunc(IconTheme* self, void* user_data);
 	}
 	[CRepr]
 	public struct IconView : Widget
@@ -3044,6 +3193,14 @@ class Gtk
 		public static extern void UnsetModelDragDest(IconView* icon_view);
 		[LinkName("gtk_icon_view_unset_model_drag_source")]
 		public static extern void UnsetModelDragSource(IconView* icon_view);
+		public function c_int ActivateCursorItemFunc(IconView* self, void* user_data);
+		public function void ItemActivatedFunc(IconView* self, TreePath path, void* user_data);
+		public function c_int MoveCursorFunc(IconView* self, MovementStep step, c_int count, c_int extend, c_int modify, void* user_data);
+		public function void SelectAllFunc(IconView* self, void* user_data);
+		public function void SelectCursorItemFunc(IconView* self, void* user_data);
+		public function void SelectionChangedFunc(IconView* self, void* user_data);
+		public function void ToggleCursorItemFunc(IconView* self, void* user_data);
+		public function void UnselectAllFunc(IconView* self, void* user_data);
 	}
 	[CRepr]
 	public struct Image : Widget
@@ -3126,6 +3283,8 @@ class Gtk
 		public static extern void SetRevealed(InfoBar* info_bar, c_int revealed);
 		[LinkName("gtk_info_bar_set_show_close_button")]
 		public static extern void SetShowCloseButton(InfoBar* info_bar, c_int setting);
+		public function void CloseFunc(InfoBar* self, void* user_data);
+		public function void ResponseFunc(InfoBar* self, c_int response_id, void* user_data);
 	}
 	[CRepr]
 	public struct Inscription : Widget
@@ -3290,6 +3449,10 @@ class Gtk
 		public static extern void SetXalign(Label* self, float xalign);
 		[LinkName("gtk_label_set_yalign")]
 		public static extern void SetYalign(Label* self, float yalign);
+		public function void ActivateCurrentLinkFunc(Label* self, void* user_data);
+		public function c_int ActivateLinkFunc(Label* self, char8* uri, void* user_data);
+		public function void CopyClipboardFunc(Label* self, void* user_data);
+		public function void MoveCursorFunc(Label* self, MovementStep step, c_int count, c_int extend_selection, void* user_data);
 	}
 	[CRepr]
 	public struct LayoutChild : GObject.Object
@@ -3348,6 +3511,7 @@ class Gtk
 		public static extern void SetMode(LevelBar* self, LevelBarMode mode);
 		[LinkName("gtk_level_bar_set_value")]
 		public static extern void SetValue(LevelBar* self, double value);
+		public function void OffsetChangedFunc(LevelBar* self, char8* name, void* user_data);
 	}
 	[CRepr]
 	public struct LinkButton : Button
@@ -3364,6 +3528,7 @@ class Gtk
 		public static extern void SetUri(LinkButton* link_button, char8* uri);
 		[LinkName("gtk_link_button_set_visited")]
 		public static extern void SetVisited(LinkButton* link_button, c_int visited);
+		public function c_int ActivateLinkFunc(LinkButton* self, void* user_data);
 	}
 	[CRepr]
 	public struct ListBase : Widget
@@ -3438,6 +3603,14 @@ class Gtk
 		public static extern void UnselectAll(ListBox* box_);
 		[LinkName("gtk_list_box_unselect_row")]
 		public static extern void UnselectRow(ListBox* box_, ListBoxRow* row);
+		public function void ActivateCursorRowFunc(ListBox* self, void* user_data);
+		public function void MoveCursorFunc(ListBox* self, MovementStep object, c_int p0, c_int p1, c_int p2, void* user_data);
+		public function void RowActivatedFunc(ListBox* self, ListBoxRow row, void* user_data);
+		public function void RowSelectedFunc(ListBox* self, ListBoxRow row, void* user_data);
+		public function void SelectAllFunc(ListBox* self, void* user_data);
+		public function void SelectedRowsChangedFunc(ListBox* self, void* user_data);
+		public function void ToggleCursorRowFunc(ListBox* self, void* user_data);
+		public function void UnselectAllFunc(ListBox* self, void* user_data);
 	}
 	[CRepr]
 	public struct ListBoxRow : Widget
@@ -3466,6 +3639,7 @@ class Gtk
 		public static extern void SetHeader(ListBoxRow* row, Widget* header);
 		[LinkName("gtk_list_box_row_set_selectable")]
 		public static extern void SetSelectable(ListBoxRow* row, c_int selectable);
+		public function void ActivateFunc(ListBoxRow* self, void* user_data);
 	}
 	[CRepr]
 	public struct ListHeader : GObject.Object
@@ -3584,6 +3758,7 @@ class Gtk
 		public static extern void SetSingleClickActivate(ListView* self, c_int single_click_activate);
 		[LinkName("gtk_list_view_set_tab_behavior")]
 		public static extern void SetTabBehavior(ListView* self, ListTabBehavior tab_behavior);
+		public function void ActivateFunc(ListView* self, c_uint position, void* user_data);
 	}
 	[CRepr]
 	public struct LockButton : Button
@@ -3768,6 +3943,7 @@ class Gtk
 		public static extern void SetPrimary(MenuButton* menu_button, c_int primary);
 		[LinkName("gtk_menu_button_set_use_underline")]
 		public static extern void SetUseUnderline(MenuButton* menu_button, c_int use_underline);
+		public function void ActivateFunc(MenuButton* self, void* user_data);
 	}
 	[CRepr]
 	public struct MessageDialog : Dialog
@@ -3864,6 +4040,7 @@ class Gtk
 		public static extern void SetTransientFor(NativeDialog* self, Window* parent);
 		[LinkName("gtk_native_dialog_show")]
 		public static extern void Show(NativeDialog* self);
+		public function void ResponseFunc(NativeDialog* self, c_int response_id, void* user_data);
 	}
 	[CRepr]
 	public struct NeverTrigger : ShortcutTrigger
@@ -3972,6 +4149,16 @@ class Gtk
 		public static extern void SetTabPos(Notebook* notebook, PositionType pos);
 		[LinkName("gtk_notebook_set_tab_reorderable")]
 		public static extern void SetTabReorderable(Notebook* notebook, Widget* child, c_int reorderable);
+		public function c_int ChangeCurrentPageFunc(Notebook* self, c_int object, void* user_data);
+		public function Notebook CreateWindowFunc(Notebook* self, Widget page, void* user_data);
+		public function c_int FocusTabFunc(Notebook* self, NotebookTab object, void* user_data);
+		public function void MoveFocusOutFunc(Notebook* self, DirectionType object, void* user_data);
+		public function void PageAddedFunc(Notebook* self, Widget child, c_uint page_num, void* user_data);
+		public function void PageRemovedFunc(Notebook* self, Widget child, c_uint page_num, void* user_data);
+		public function void PageReorderedFunc(Notebook* self, Widget child, c_uint page_num, void* user_data);
+		public function c_int ReorderTabFunc(Notebook* self, DirectionType object, c_int p0, void* user_data);
+		public function c_int SelectPageFunc(Notebook* self, c_int object, void* user_data);
+		public function void SwitchPageFunc(Notebook* self, Widget page, c_uint page_num, void* user_data);
 	}
 	[CRepr]
 	public struct NotebookPage : GObject.Object
@@ -4026,6 +4213,7 @@ class Gtk
 		public static extern void SetClipOverlay(Overlay* overlay, Widget* widget, c_int clip_overlay);
 		[LinkName("gtk_overlay_set_measure_overlay")]
 		public static extern void SetMeasureOverlay(Overlay* overlay, Widget* widget, c_int measure);
+		public function c_int GetChildPositionFunc(Overlay* self, Widget widget, Gdk.Rectangle allocation, void* user_data);
 	}
 	[CRepr]
 	public struct OverlayLayout : LayoutManager
@@ -4164,6 +4352,12 @@ class Gtk
 		public static extern void SetStartChild(Paned* paned, Widget* child);
 		[LinkName("gtk_paned_set_wide_handle")]
 		public static extern void SetWideHandle(Paned* paned, c_int wide);
+		public function c_int AcceptPositionFunc(Paned* self, void* user_data);
+		public function c_int CancelPositionFunc(Paned* self, void* user_data);
+		public function c_int CycleChildFocusFunc(Paned* self, c_int reversed, void* user_data);
+		public function c_int CycleHandleFocusFunc(Paned* self, c_int reversed, void* user_data);
+		public function c_int MoveHandleFunc(Paned* self, ScrollType scroll_type, void* user_data);
+		public function c_int ToggleHandleFocusFunc(Paned* self, void* user_data);
 	}
 	[CRepr]
 	public struct ParamSpecExpression : GObject.ParamSpec
@@ -4182,6 +4376,7 @@ class Gtk
 		public static extern void SetExtraMenu(PasswordEntry* entry, Gio.MenuModel* model);
 		[LinkName("gtk_password_entry_set_show_peek_icon")]
 		public static extern void SetShowPeekIcon(PasswordEntry* entry, c_int show_peek_icon);
+		public function void ActivateFunc(PasswordEntry* self, void* user_data);
 	}
 	[CRepr]
 	public struct PasswordEntryBuffer : EntryBuffer
@@ -4280,6 +4475,8 @@ class Gtk
 		public static extern void SetPointingTo(Popover* popover, Gdk.Rectangle* rect);
 		[LinkName("gtk_popover_set_position")]
 		public static extern void SetPosition(Popover* popover, PositionType position);
+		public function void ActivateDefaultFunc(Popover* self, void* user_data);
+		public function void ClosedFunc(Popover* self, void* user_data);
 	}
 	[CRepr]
 	public struct PopoverMenu : Popover
@@ -4402,6 +4599,7 @@ class Gtk
 		public static extern c_int SetSourceFile(PrintJob* job, char8* filename);
 		[LinkName("gtk_print_job_set_track_print_status")]
 		public static extern void SetTrackPrintStatus(PrintJob* job, c_int track_status);
+		public function void StatusChangedFunc(PrintJob* self, void* user_data);
 	}
 	[CRepr]
 	public struct PrintOperation : GObject.Object
@@ -4466,6 +4664,17 @@ class Gtk
 		public static extern void SetUnit(PrintOperation* op, Unit unit);
 		[LinkName("gtk_print_operation_set_use_full_page")]
 		public static extern void SetUseFullPage(PrintOperation* op, c_int full_page);
+		public function void BeginPrintFunc(PrintOperation* self, PrintContext context, void* user_data);
+		public function GObject.Object CreateCustomWidgetFunc(PrintOperation* self, void* user_data);
+		public function void CustomWidgetApplyFunc(PrintOperation* self, Widget widget, void* user_data);
+		public function void DoneFunc(PrintOperation* self, PrintOperationResult result, void* user_data);
+		public function void DrawPageFunc(PrintOperation* self, PrintContext context, c_int page_nr, void* user_data);
+		public function void EndPrintFunc(PrintOperation* self, PrintContext context, void* user_data);
+		public function c_int PaginateFunc(PrintOperation* self, PrintContext context, void* user_data);
+		public function c_int PreviewFunc(PrintOperation* self, PrintOperationPreview preview, PrintContext context, Window parent, void* user_data);
+		public function void RequestPageSetupFunc(PrintOperation* self, PrintContext context, c_int page_nr, PageSetup setup, void* user_data);
+		public function void StatusChangedFunc(PrintOperation* self, void* user_data);
+		public function void UpdateCustomWidgetFunc(PrintOperation* self, Widget widget, PageSetup setup, PrintSettings settings, void* user_data);
 	}
 	[CRepr]
 	public struct PrintSettings : GObject.Object
@@ -4712,6 +4921,7 @@ class Gtk
 		public static extern GLib.List* ListPapers(Printer* printer);
 		[LinkName("gtk_printer_request_details")]
 		public static extern void RequestDetails(Printer* printer);
+		public function void DetailsAcquiredFunc(Printer* self, c_int success, void* user_data);
 	}
 	[CRepr]
 	public struct ProgressBar : Widget
@@ -4804,6 +5014,10 @@ class Gtk
 		public static extern void SetSliderSizeFixed(Range* range, c_int size_fixed);
 		[LinkName("gtk_range_set_value")]
 		public static extern void SetValue(Range* range, double value);
+		public function void AdjustBoundsFunc(Range* self, double value, void* user_data);
+		public function c_int ChangeValueFunc(Range* self, ScrollType scroll, double value, void* user_data);
+		public function void MoveSliderFunc(Range* self, ScrollType step, void* user_data);
+		public function void ValueChangedFunc(Range* self, void* user_data);
 	}
 	[CRepr]
 	public struct RecentManager : GObject.Object
@@ -4826,6 +5040,7 @@ class Gtk
 		public static extern c_int PurgeItems(RecentManager* manager);
 		[LinkName("gtk_recent_manager_remove_item")]
 		public static extern c_int RemoveItem(RecentManager* manager, char8* uri);
+		public function void ChangedFunc(RecentManager* self, void* user_data);
 	}
 	[CRepr]
 	public struct Revealer : Widget
@@ -4908,6 +5123,9 @@ class Gtk
 		public static extern void SetIcons(ScaleButton* button, char8** icons);
 		[LinkName("gtk_scale_button_set_value")]
 		public static extern void SetValue(ScaleButton* button, double value);
+		public function void PopdownFunc(ScaleButton* self, void* user_data);
+		public function void PopupFunc(ScaleButton* self, void* user_data);
+		public function void ValueChangedFunc(ScaleButton* self, double value, void* user_data);
 	}
 	[CRepr]
 	public struct Scrollbar : Widget
@@ -4986,6 +5204,10 @@ class Gtk
 		public static extern void SetVadjustment(ScrolledWindow* scrolled_window, Adjustment* vadjustment);
 		[LinkName("gtk_scrolled_window_unset_placement")]
 		public static extern void UnsetPlacement(ScrolledWindow* scrolled_window);
+		public function void EdgeOvershotFunc(ScrolledWindow* self, PositionType pos, void* user_data);
+		public function void EdgeReachedFunc(ScrolledWindow* self, PositionType pos, void* user_data);
+		public function void MoveFocusOutFunc(ScrolledWindow* self, DirectionType direction_type, void* user_data);
+		public function c_int ScrollChildFunc(ScrolledWindow* self, ScrollType scroll, c_int horizontal, void* user_data);
 	}
 	[CRepr]
 	public struct SearchBar : Widget
@@ -5028,6 +5250,12 @@ class Gtk
 		public static extern void SetPlaceholderText(SearchEntry* entry, char8* text);
 		[LinkName("gtk_search_entry_set_search_delay")]
 		public static extern void SetSearchDelay(SearchEntry* entry, c_uint delay);
+		public function void ActivateFunc(SearchEntry* self, void* user_data);
+		public function void NextMatchFunc(SearchEntry* self, void* user_data);
+		public function void PreviousMatchFunc(SearchEntry* self, void* user_data);
+		public function void SearchChangedFunc(SearchEntry* self, void* user_data);
+		public function void SearchStartedFunc(SearchEntry* self, void* user_data);
+		public function void StopSearchFunc(SearchEntry* self, void* user_data);
 	}
 	[CRepr]
 	public struct SelectionFilterModel : GObject.Object
@@ -5144,6 +5372,7 @@ class Gtk
 	[CRepr]
 	public struct ShortcutsSection : Box
 	{
+		public function c_int ChangeCurrentPageFunc(ShortcutsSection* self, c_int object, void* user_data);
 	}
 	[CRepr]
 	public struct ShortcutsShortcut : Widget
@@ -5152,6 +5381,8 @@ class Gtk
 	[CRepr]
 	public struct ShortcutsWindow : Window
 	{
+		public function void CloseFunc(ShortcutsWindow* self, void* user_data);
+		public function void SearchFunc(ShortcutsWindow* self, void* user_data);
 	}
 	[CRepr]
 	public struct SignalAction : ShortcutAction
@@ -5166,6 +5397,10 @@ class Gtk
 	{
 		[LinkName("gtk_signal_list_item_factory_new")]
 		public static extern ListItemFactory* New();
+		public function void BindFunc(SignalListItemFactory* self, GObject.Object object, void* user_data);
+		public function void SetupFunc(SignalListItemFactory* self, GObject.Object object, void* user_data);
+		public function void TeardownFunc(SignalListItemFactory* self, GObject.Object object, void* user_data);
+		public function void UnbindFunc(SignalListItemFactory* self, GObject.Object object, void* user_data);
 	}
 	[CRepr]
 	public struct SingleSelection : GObject.Object
@@ -5354,6 +5589,7 @@ class Gtk
 		public static extern Ordering Compare(Sorter* self, GObject.Object* item1, GObject.Object* item2);
 		[LinkName("gtk_sorter_get_order")]
 		public static extern SorterOrder GetOrder(Sorter* self);
+		public function void ChangedFunc(Sorter* self, SorterChange change, void* user_data);
 	}
 	[CRepr]
 	public struct SpinButton : Widget
@@ -5410,6 +5646,11 @@ class Gtk
 		public static extern void Spin(SpinButton* spin_button, SpinType direction, double increment);
 		[LinkName("gtk_spin_button_update")]
 		public static extern void Update(SpinButton* spin_button);
+		public function void ChangeValueFunc(SpinButton* self, ScrollType scroll, void* user_data);
+		public function c_int InputFunc(SpinButton* self, double* new_value, void* user_data);
+		public function c_int OutputFunc(SpinButton* self, void* user_data);
+		public function void ValueChangedFunc(SpinButton* self, void* user_data);
+		public function void WrappedFunc(SpinButton* self, void* user_data);
 	}
 	[CRepr]
 	public struct Spinner : Widget
@@ -5542,6 +5783,8 @@ class Gtk
 		public static extern void Remove(Statusbar* statusbar, c_uint context_id, c_uint message_id);
 		[LinkName("gtk_statusbar_remove_all")]
 		public static extern void RemoveAll(Statusbar* statusbar, c_uint context_id);
+		public function void TextPoppedFunc(Statusbar* self, c_uint context_id, char8* text, void* user_data);
+		public function void TextPushedFunc(Statusbar* self, c_uint context_id, char8* text, void* user_data);
 	}
 	[CRepr]
 	public struct StringFilter : Filter
@@ -5662,6 +5905,8 @@ class Gtk
 		public static extern void SetActive(Switch* self, c_int is_active);
 		[LinkName("gtk_switch_set_state")]
 		public static extern void SetState(Switch* self, c_int state);
+		public function void ActivateFunc(Switch* self, void* user_data);
+		public function c_int StateSetFunc(Switch* self, c_int state, void* user_data);
 	}
 	[CRepr]
 	public struct Text : Widget
@@ -5738,6 +5983,17 @@ class Gtk
 		public static extern void SetVisibility(Text* self, c_int visible);
 		[LinkName("gtk_text_unset_invisible_char")]
 		public static extern void UnsetInvisibleChar(Text* self);
+		public function void ActivateFunc(Text* self, void* user_data);
+		public function void BackspaceFunc(Text* self, void* user_data);
+		public function void CopyClipboardFunc(Text* self, void* user_data);
+		public function void CutClipboardFunc(Text* self, void* user_data);
+		public function void DeleteFromCursorFunc(Text* self, DeleteType type, c_int count, void* user_data);
+		public function void InsertAtCursorFunc(Text* self, char8* string, void* user_data);
+		public function void InsertEmojiFunc(Text* self, void* user_data);
+		public function void MoveCursorFunc(Text* self, MovementStep step, c_int count, c_int extend, void* user_data);
+		public function void PasteClipboardFunc(Text* self, void* user_data);
+		public function void PreeditChangedFunc(Text* self, char8* preedit, void* user_data);
+		public function void ToggleOverwriteFunc(Text* self, void* user_data);
 	}
 	[CRepr]
 	public struct TextBuffer : GObject.Object
@@ -5878,6 +6134,21 @@ class Gtk
 		public static extern void SetText(TextBuffer* buffer, char8* text, c_int len);
 		[LinkName("gtk_text_buffer_undo")]
 		public static extern void Undo(TextBuffer* buffer);
+		public function void ApplyTagFunc(TextBuffer* self, TextTag tag, TextIter start, TextIter end, void* user_data);
+		public function void BeginUserActionFunc(TextBuffer* self, void* user_data);
+		public function void ChangedFunc(TextBuffer* self, void* user_data);
+		public function void DeleteRangeFunc(TextBuffer* self, TextIter start, TextIter end, void* user_data);
+		public function void EndUserActionFunc(TextBuffer* self, void* user_data);
+		public function void InsertChildAnchorFunc(TextBuffer* self, TextIter location, TextChildAnchor anchor, void* user_data);
+		public function void InsertPaintableFunc(TextBuffer* self, TextIter location, Gdk.Paintable paintable, void* user_data);
+		public function void InsertTextFunc(TextBuffer* self, TextIter location, char8* text, c_int len, void* user_data);
+		public function void MarkDeletedFunc(TextBuffer* self, TextMark mark, void* user_data);
+		public function void MarkSetFunc(TextBuffer* self, TextIter location, TextMark mark, void* user_data);
+		public function void ModifiedChangedFunc(TextBuffer* self, void* user_data);
+		public function void PasteDoneFunc(TextBuffer* self, Gdk.Clipboard clipboard, void* user_data);
+		public function void RedoFunc(TextBuffer* self, void* user_data);
+		public function void RemoveTagFunc(TextBuffer* self, TextTag tag, TextIter start, TextIter end, void* user_data);
+		public function void UndoFunc(TextBuffer* self, void* user_data);
 	}
 	[CRepr]
 	public struct TextChildAnchor : GObject.Object
@@ -5936,6 +6207,9 @@ class Gtk
 		public static extern TextTag* Lookup(TextTagTable* table, char8* name);
 		[LinkName("gtk_text_tag_table_remove")]
 		public static extern void Remove(TextTagTable* table, TextTag* tag);
+		public function void TagAddedFunc(TextTagTable* self, TextTag tag, void* user_data);
+		public function void TagChangedFunc(TextTagTable* self, TextTag tag, c_int size_changed, void* user_data);
+		public function void TagRemovedFunc(TextTagTable* self, TextTag tag, void* user_data);
 	}
 	[CRepr]
 	public struct TextView : Widget
@@ -6086,6 +6360,21 @@ class Gtk
 		public static extern c_int StartsDisplayLine(TextView* text_view, TextIter* iter);
 		[LinkName("gtk_text_view_window_to_buffer_coords")]
 		public static extern void WindowToBufferCoords(TextView* text_view, TextWindowType win, c_int window_x, c_int window_y, c_int* buffer_x, c_int* buffer_y);
+		public function void BackspaceFunc(TextView* self, void* user_data);
+		public function void CopyClipboardFunc(TextView* self, void* user_data);
+		public function void CutClipboardFunc(TextView* self, void* user_data);
+		public function void DeleteFromCursorFunc(TextView* self, DeleteType type, c_int count, void* user_data);
+		public function c_int ExtendSelectionFunc(TextView* self, TextExtendSelection granularity, TextIter location, TextIter start, TextIter end, void* user_data);
+		public function void InsertAtCursorFunc(TextView* self, char8* string, void* user_data);
+		public function void InsertEmojiFunc(TextView* self, void* user_data);
+		public function void MoveCursorFunc(TextView* self, MovementStep step, c_int count, c_int extend_selection, void* user_data);
+		public function void MoveViewportFunc(TextView* self, ScrollStep step, c_int count, void* user_data);
+		public function void PasteClipboardFunc(TextView* self, void* user_data);
+		public function void PreeditChangedFunc(TextView* self, char8* preedit, void* user_data);
+		public function void SelectAllFunc(TextView* self, c_int select, void* user_data);
+		public function void SetAnchorFunc(TextView* self, void* user_data);
+		public function void ToggleCursorVisibleFunc(TextView* self, void* user_data);
+		public function void ToggleOverwriteFunc(TextView* self, void* user_data);
 	}
 	[CRepr]
 	public struct ToggleButton : Button
@@ -6104,6 +6393,7 @@ class Gtk
 		public static extern void SetGroup(ToggleButton* toggle_button, ToggleButton* group);
 		[LinkName("gtk_toggle_button_toggled")]
 		public static extern void Toggled(ToggleButton* toggle_button);
+		public function void ToggledFunc(ToggleButton* self, void* user_data);
 	}
 	[CRepr]
 	public struct Tooltip : GObject.Object
@@ -6286,6 +6576,7 @@ class Gtk
 		public static extern void UnselectPath(TreeSelection* selection, TreePath* path);
 		[LinkName("gtk_tree_selection_unselect_range")]
 		public static extern void UnselectRange(TreeSelection* selection, TreePath* start_path, TreePath* end_path);
+		public function void ChangedFunc(TreeSelection* self, void* user_data);
 	}
 	[CRepr]
 	public struct TreeStore : GObject.Object
@@ -6506,6 +6797,21 @@ class Gtk
 		public static extern void UnsetRowsDragDest(TreeView* tree_view);
 		[LinkName("gtk_tree_view_unset_rows_drag_source")]
 		public static extern void UnsetRowsDragSource(TreeView* tree_view);
+		public function void ColumnsChangedFunc(TreeView* self, void* user_data);
+		public function void CursorChangedFunc(TreeView* self, void* user_data);
+		public function c_int ExpandCollapseCursorRowFunc(TreeView* self, c_int object, c_int p0, c_int p1, void* user_data);
+		public function c_int MoveCursorFunc(TreeView* self, MovementStep step, c_int direction, c_int extend, c_int modify, void* user_data);
+		public function void RowActivatedFunc(TreeView* self, TreePath path, TreeViewColumn column, void* user_data);
+		public function void RowCollapsedFunc(TreeView* self, TreeIter iter, TreePath path, void* user_data);
+		public function void RowExpandedFunc(TreeView* self, TreeIter iter, TreePath path, void* user_data);
+		public function c_int SelectAllFunc(TreeView* self, void* user_data);
+		public function c_int SelectCursorParentFunc(TreeView* self, void* user_data);
+		public function c_int SelectCursorRowFunc(TreeView* self, c_int object, void* user_data);
+		public function c_int StartInteractiveSearchFunc(TreeView* self, void* user_data);
+		public function c_int TestCollapseRowFunc(TreeView* self, TreeIter iter, TreePath path, void* user_data);
+		public function c_int TestExpandRowFunc(TreeView* self, TreeIter iter, TreePath path, void* user_data);
+		public function c_int ToggleCursorRowFunc(TreeView* self, void* user_data);
+		public function c_int UnselectAllFunc(TreeView* self, void* user_data);
 	}
 	[CRepr]
 	public struct TreeViewColumn : GObject.InitiallyUnowned
@@ -6612,6 +6918,7 @@ class Gtk
 		public static extern void SetVisible(TreeViewColumn* tree_column, c_int visible);
 		[LinkName("gtk_tree_view_column_set_widget")]
 		public static extern void SetWidget(TreeViewColumn* tree_column, Widget* widget);
+		public function void ClickedFunc(TreeViewColumn* self, void* user_data);
 	}
 	[CRepr]
 	public struct UriLauncher : GObject.Object
@@ -7006,6 +7313,19 @@ class Gtk
 		public static extern void Unrealize(Widget* widget);
 		[LinkName("gtk_widget_unset_state_flags")]
 		public static extern void UnsetStateFlags(Widget* widget, StateFlags flags);
+		public function void DestroyFunc(Widget* self, void* user_data);
+		public function void DirectionChangedFunc(Widget* self, TextDirection previous_direction, void* user_data);
+		public function void HideFunc(Widget* self, void* user_data);
+		public function c_int KeynavFailedFunc(Widget* self, DirectionType direction, void* user_data);
+		public function void MapFunc(Widget* self, void* user_data);
+		public function c_int MnemonicActivateFunc(Widget* self, c_int group_cycling, void* user_data);
+		public function void MoveFocusFunc(Widget* self, DirectionType direction, void* user_data);
+		public function c_int QueryTooltipFunc(Widget* self, c_int x, c_int y, c_int keyboard_mode, Tooltip tooltip, void* user_data);
+		public function void RealizeFunc(Widget* self, void* user_data);
+		public function void ShowFunc(Widget* self, void* user_data);
+		public function void StateFlagsChangedFunc(Widget* self, StateFlags flags, void* user_data);
+		public function void UnmapFunc(Widget* self, void* user_data);
+		public function void UnrealizeFunc(Widget* self, void* user_data);
 	}
 	[CRepr]
 	public struct WidgetPaintable : GObject.Object
@@ -7130,6 +7450,11 @@ class Gtk
 		public static extern void Unmaximize(Window* window);
 		[LinkName("gtk_window_unminimize")]
 		public static extern void Unminimize(Window* window);
+		public function void ActivateDefaultFunc(Window* self, void* user_data);
+		public function void ActivateFocusFunc(Window* self, void* user_data);
+		public function c_int CloseRequestFunc(Window* self, void* user_data);
+		public function c_int EnableDebuggingFunc(Window* self, c_int toggle, void* user_data);
+		public function void KeysChangedFunc(Window* self, void* user_data);
 	}
 	[CRepr]
 	public struct WindowControls : Widget

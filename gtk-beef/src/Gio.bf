@@ -139,6 +139,7 @@ class Gio
 	[CRepr]
 	public struct AppInfoMonitor : GObject.Object
 	{
+		public function void ChangedFunc(AppInfoMonitor* self, void* user_data);
 	}
 	[CRepr]
 	public struct AppLaunchContext : GObject.Object
@@ -157,6 +158,9 @@ class Gio
 		public static extern void Setenv(AppLaunchContext* context, char8* variable, char8* value);
 		[LinkName("g_app_launch_context_unsetenv")]
 		public static extern void Unsetenv(AppLaunchContext* context, char8* variable);
+		public function void LaunchFailedFunc(AppLaunchContext* self, char8* startup_notify_id, void* user_data);
+		public function void LaunchStartedFunc(AppLaunchContext* self, AppInfo info, GLib.Variant platform_data, void* user_data);
+		public function void LaunchedFunc(AppLaunchContext* self, AppInfo info, GLib.Variant platform_data, void* user_data);
 	}
 	[CRepr]
 	public struct Application : GObject.Object
@@ -231,6 +235,13 @@ class Gio
 		public static extern void UnmarkBusy(Application* application);
 		[LinkName("g_application_withdraw_notification")]
 		public static extern void WithdrawNotification(Application* application, char8* id);
+		public function void ActivateFunc(Application* self, void* user_data);
+		public function c_int CommandLineFunc(Application* self, ApplicationCommandLine command_line, void* user_data);
+		public function c_int HandleLocalOptionsFunc(Application* self, GLib.VariantDict options, void* user_data);
+		public function c_int NameLostFunc(Application* self, void* user_data);
+		public function void OpenFunc(Application* self, File files, c_int n_files, char8* hint, void* user_data);
+		public function void ShutdownFunc(Application* self, void* user_data);
+		public function void StartupFunc(Application* self, void* user_data);
 	}
 	[CRepr]
 	public struct ApplicationCommandLine : GObject.Object
@@ -337,6 +348,7 @@ class Gio
 		public static extern c_int SetErrorIfCancelled(Cancellable* cancellable);
 		[LinkName("g_cancellable_source_new")]
 		public static extern GLib.Source* SourceNew(Cancellable* cancellable);
+		public function void CancelledFunc(Cancellable* self, void* user_data);
 	}
 	[CRepr]
 	public struct CharsetConverter : GObject.Object
@@ -397,6 +409,8 @@ class Gio
 		public static extern c_int AllowMechanism(DBusAuthObserver* observer, char8* mechanism);
 		[LinkName("g_dbus_auth_observer_authorize_authenticated_peer")]
 		public static extern c_int AuthorizeAuthenticatedPeer(DBusAuthObserver* observer, IOStream* stream, Credentials* credentials);
+		public function c_int AllowMechanismFunc(DBusAuthObserver* self, char8* mechanism, void* user_data);
+		public function c_int AuthorizeAuthenticatedPeerFunc(DBusAuthObserver* self, IOStream stream, Credentials credentials, void* user_data);
 	}
 	[CRepr]
 	public struct DBusConnection : GObject.Object
@@ -491,6 +505,7 @@ class Gio
 		public static extern c_int UnregisterObject(DBusConnection* connection, c_uint registration_id);
 		[LinkName("g_dbus_connection_unregister_subtree")]
 		public static extern c_int UnregisterSubtree(DBusConnection* connection, c_uint registration_id);
+		public function void ClosedFunc(DBusConnection* self, c_int remote_peer_vanished, GLib.Error error, void* user_data);
 	}
 	[CRepr]
 	public struct DBusInterfaceSkeleton : GObject.Object
@@ -519,6 +534,7 @@ class Gio
 		public static extern void Unexport(DBusInterfaceSkeleton* interface_);
 		[LinkName("g_dbus_interface_skeleton_unexport_from_connection")]
 		public static extern void UnexportFromConnection(DBusInterfaceSkeleton* interface_, DBusConnection* connection);
+		public function c_int GAuthorizeMethodFunc(DBusInterfaceSkeleton* self, DBusMethodInvocation invocation, void* user_data);
 	}
 	[CRepr]
 	public struct DBusMenuModel : MenuModel
@@ -671,6 +687,8 @@ class Gio
 		public static extern char8* GetName(DBusObjectManagerClient* manager);
 		[LinkName("g_dbus_object_manager_client_get_name_owner")]
 		public static extern char8* GetNameOwner(DBusObjectManagerClient* manager);
+		public function void InterfaceProxyPropertiesChangedFunc(DBusObjectManagerClient* self, DBusObjectProxy object_proxy, DBusProxy interface_proxy, GLib.Variant changed_properties, char8 invalidated_properties, void* user_data);
+		public function void InterfaceProxySignalFunc(DBusObjectManagerClient* self, DBusObjectProxy object_proxy, DBusProxy interface_proxy, char8* sender_name, char8* signal_name, GLib.Variant parameters, void* user_data);
 	}
 	[CRepr]
 	public struct DBusObjectManagerServer : GObject.Object
@@ -713,6 +731,7 @@ class Gio
 		public static extern void RemoveInterfaceByName(DBusObjectSkeleton* object, char8* interface_name);
 		[LinkName("g_dbus_object_skeleton_set_object_path")]
 		public static extern void SetObjectPath(DBusObjectSkeleton* object, char8* object_path);
+		public function c_int AuthorizeMethodFunc(DBusObjectSkeleton* self, DBusInterfaceSkeleton interface_, DBusMethodInvocation invocation, void* user_data);
 	}
 	[CRepr]
 	public struct DBusProxy : GObject.Object
@@ -763,6 +782,8 @@ class Gio
 		public static extern void SetDefaultTimeout(DBusProxy* proxy, c_int timeout_msec);
 		[LinkName("g_dbus_proxy_set_interface_info")]
 		public static extern void SetInterfaceInfo(DBusProxy* proxy, DBusInterfaceInfo* info);
+		public function void GPropertiesChangedFunc(DBusProxy* self, GLib.Variant changed_properties, char8 invalidated_properties, void* user_data);
+		public function void GSignalFunc(DBusProxy* self, char8* sender_name, char8* signal_name, GLib.Variant parameters, void* user_data);
 	}
 	[CRepr]
 	public struct DBusServer : GObject.Object
@@ -781,6 +802,7 @@ class Gio
 		public static extern void Start(DBusServer* server);
 		[LinkName("g_dbus_server_stop")]
 		public static extern void Stop(DBusServer* server);
+		public function c_int NewConnectionFunc(DBusServer* self, DBusConnection connection, void* user_data);
 	}
 	[CRepr]
 	public struct DataInputStream : BufferedInputStream
@@ -865,6 +887,7 @@ class Gio
 		public static extern DebugControllerDBus* New(DBusConnection* connection, Cancellable* cancellable);
 		[LinkName("g_debug_controller_dbus_stop")]
 		public static extern void Stop(DebugControllerDBus* self);
+		public function c_int AuthorizeFunc(DebugControllerDBus* self, DBusMethodInvocation invocation, void* user_data);
 	}
 	[CRepr]
 	public struct DesktopAppInfo : GObject.Object
@@ -1149,6 +1172,7 @@ class Gio
 		public static extern c_int IsCancelled(FileMonitor* monitor);
 		[LinkName("g_file_monitor_set_rate_limit")]
 		public static extern void SetRateLimit(FileMonitor* monitor, c_int limit_msecs);
+		public function void ChangedFunc(FileMonitor* self, File file, File other_file, FileMonitorEvent event_type, void* user_data);
 	}
 	[CRepr]
 	public struct FileOutputStream : OutputStream
@@ -1173,6 +1197,7 @@ class Gio
 		public static extern char8** GetCompletions(FilenameCompleter* completer, char8* initial_text);
 		[LinkName("g_filename_completer_set_dirs_only")]
 		public static extern void SetDirsOnly(FilenameCompleter* completer, c_int dirs_only);
+		public function void GotCompletionDataFunc(FilenameCompleter* self, void* user_data);
 	}
 	[CRepr]
 	public struct FilterInputStream : InputStream
@@ -1507,6 +1532,7 @@ class Gio
 		public static extern MenuAttributeIter* IterateItemAttributes(MenuModel* model, c_int item_index);
 		[LinkName("g_menu_model_iterate_item_links")]
 		public static extern MenuLinkIter* IterateItemLinks(MenuModel* model, c_int item_index);
+		public function void ItemsChangedFunc(MenuModel* self, c_int position, c_int removed, c_int added, void* user_data);
 	}
 	[CRepr]
 	public struct MountOperation : GObject.Object
@@ -1551,6 +1577,12 @@ class Gio
 		public static extern void SetPim(MountOperation* op, c_uint pim);
 		[LinkName("g_mount_operation_set_username")]
 		public static extern void SetUsername(MountOperation* op, char8* username);
+		public function void AbortedFunc(MountOperation* self, void* user_data);
+		public function void AskPasswordFunc(MountOperation* self, char8* message, char8* default_user, char8* default_domain, AskPasswordFlags flags, void* user_data);
+		public function void AskQuestionFunc(MountOperation* self, char8* message, char8 choices, void* user_data);
+		public function void ReplyFunc(MountOperation* self, MountOperationResult result, void* user_data);
+		public function void ShowProcessesFunc(MountOperation* self, char8* message, GLib.Pid processes, char8 choices, void* user_data);
+		public function void ShowUnmountProgressFunc(MountOperation* self, char8* message, c_longlong time_left, c_longlong bytes_left, void* user_data);
 	}
 	[CRepr]
 	public struct NativeSocketAddress : SocketAddress
@@ -1769,6 +1801,7 @@ class Gio
 		public static extern GLib.List* LookupServiceFinish(Resolver* resolver, AsyncResult* result);
 		[LinkName("g_resolver_set_default")]
 		public static extern void SetDefault(Resolver* resolver);
+		public function void ReloadFunc(Resolver* self, void* user_data);
 	}
 	[CRepr]
 	public struct Settings : GObject.Object
@@ -1861,6 +1894,10 @@ class Gio
 		public static extern c_int SetUint64(Settings* settings, char8* key, c_ulonglong value);
 		[LinkName("g_settings_set_value")]
 		public static extern c_int SetValue(Settings* settings, char8* key, GLib.Variant* value);
+		public function c_int ChangeEventFunc(Settings* self, GLib.Quark keys, c_int n_keys, void* user_data);
+		public function void ChangedFunc(Settings* self, char8* key, void* user_data);
+		public function c_int WritableChangeEventFunc(Settings* self, c_uint key, void* user_data);
+		public function void WritableChangedFunc(Settings* self, char8* key, void* user_data);
 	}
 	[CRepr]
 	public struct SettingsBackend : GObject.Object
@@ -1891,6 +1928,8 @@ class Gio
 		public static extern void SetState(SimpleAction* simple, GLib.Variant* value);
 		[LinkName("g_simple_action_set_state_hint")]
 		public static extern void SetStateHint(SimpleAction* simple, GLib.Variant* state_hint);
+		public function void ActivateFunc(SimpleAction* self, GLib.Variant parameter, void* user_data);
+		public function void ChangeStateFunc(SimpleAction* self, GLib.Variant value, void* user_data);
 	}
 	[CRepr]
 	public struct SimpleActionGroup : GObject.Object
@@ -2163,6 +2202,7 @@ class Gio
 		public static extern void SetTls(SocketClient* client, c_int tls);
 		[LinkName("g_socket_client_set_tls_validation_flags")]
 		public static extern void SetTlsValidationFlags(SocketClient* client, TlsCertificateFlags flags);
+		public function void EventFunc(SocketClient* self, SocketClientEvent event, SocketConnectable connectable, IOStream connection, void* user_data);
 	}
 	[CRepr]
 	public struct SocketConnection : IOStream
@@ -2223,6 +2263,7 @@ class Gio
 		public static extern void Close(SocketListener* listener);
 		[LinkName("g_socket_listener_set_backlog")]
 		public static extern void SetBacklog(SocketListener* listener, c_int listen_backlog);
+		public function void EventFunc(SocketListener* self, SocketListenerEvent event, Socket socket, void* user_data);
 	}
 	[CRepr]
 	public struct SocketService : SocketListener
@@ -2235,6 +2276,7 @@ class Gio
 		public static extern void Start(SocketService* service);
 		[LinkName("g_socket_service_stop")]
 		public static extern void Stop(SocketService* service);
+		public function c_int IncomingFunc(SocketService* self, SocketConnection connection, GObject.Object source_object, void* user_data);
 	}
 	[CRepr]
 	public struct Subprocess : GObject.Object
@@ -2447,6 +2489,7 @@ class Gio
 	{
 		[LinkName("g_threaded_socket_service_new")]
 		public static extern SocketService* New(c_int max_threads);
+		public function c_int RunFunc(ThreadedSocketService* self, SocketConnection connection, GObject.Object source_object, void* user_data);
 	}
 	[CRepr]
 	public struct TlsCertificate : GObject.Object
@@ -2531,6 +2574,7 @@ class Gio
 		public static extern void SetRequireCloseNotify(TlsConnection* conn, c_int require_close_notify);
 		[LinkName("g_tls_connection_set_use_system_certdb")]
 		public static extern void SetUseSystemCertdb(TlsConnection* conn, c_int use_system_certdb);
+		public function c_int AcceptCertificateFunc(TlsConnection* self, TlsCertificate peer_cert, TlsCertificateFlags errors, void* user_data);
 	}
 	[CRepr]
 	public struct TlsDatabase : GObject.Object
@@ -2687,6 +2731,8 @@ class Gio
 		public static extern UnixMountMonitor* New();
 		[LinkName("g_unix_mount_monitor_set_rate_limit")]
 		public static extern void SetRateLimit(UnixMountMonitor* mount_monitor, c_int limit_msec);
+		public function void MountpointsChangedFunc(UnixMountMonitor* self, void* user_data);
+		public function void MountsChangedFunc(UnixMountMonitor* self, void* user_data);
 	}
 	[CRepr]
 	public struct UnixOutputStream : OutputStream
@@ -2749,6 +2795,18 @@ class Gio
 		public static extern Volume* GetVolumeForUuid(VolumeMonitor* volume_monitor, char8* uuid);
 		[LinkName("g_volume_monitor_get_volumes")]
 		public static extern GLib.List* GetVolumes(VolumeMonitor* volume_monitor);
+		public function void DriveChangedFunc(VolumeMonitor* self, Drive drive, void* user_data);
+		public function void DriveConnectedFunc(VolumeMonitor* self, Drive drive, void* user_data);
+		public function void DriveDisconnectedFunc(VolumeMonitor* self, Drive drive, void* user_data);
+		public function void DriveEjectButtonFunc(VolumeMonitor* self, Drive drive, void* user_data);
+		public function void DriveStopButtonFunc(VolumeMonitor* self, Drive drive, void* user_data);
+		public function void MountAddedFunc(VolumeMonitor* self, Mount mount, void* user_data);
+		public function void MountChangedFunc(VolumeMonitor* self, Mount mount, void* user_data);
+		public function void MountPreUnmountFunc(VolumeMonitor* self, Mount mount, void* user_data);
+		public function void MountRemovedFunc(VolumeMonitor* self, Mount mount, void* user_data);
+		public function void VolumeAddedFunc(VolumeMonitor* self, Volume volume, void* user_data);
+		public function void VolumeChangedFunc(VolumeMonitor* self, Volume volume, void* user_data);
+		public function void VolumeRemovedFunc(VolumeMonitor* self, Volume volume, void* user_data);
 	}
 	[CRepr]
 	public struct ZlibCompressor : GObject.Object

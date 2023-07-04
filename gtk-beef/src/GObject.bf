@@ -113,6 +113,7 @@ class GObject
 		public static extern void Unref(Object* object);
 		[LinkName("g_object_watch_closure")]
 		public static extern void WatchClosure(Object* object, Closure* closure);
+		public function void NotifyFunc(Object* self, ParamSpec pspec, void* user_data);
 	}
 	[CRepr]
 	public struct ParamSpec
@@ -249,6 +250,8 @@ class GObject
 		public static extern void SetTarget(SignalGroup* self, Object* target);
 		[LinkName("g_signal_group_unblock")]
 		public static extern void Unblock(SignalGroup* self);
+		public function void BindFunc(SignalGroup* self, Object instance, void* user_data);
+		public function void UnbindFunc(SignalGroup* self, void* user_data);
 	}
 	[CRepr]
 	public struct TypeModule : Object

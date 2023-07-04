@@ -2354,6 +2354,7 @@ class Gdk
 		public static extern void StoreAsync(Clipboard* clipboard, c_int io_priority, Gio.Cancellable* cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 		[LinkName("gdk_clipboard_store_finish")]
 		public static extern c_int StoreFinish(Clipboard* clipboard, Gio.AsyncResult* result);
+		public function void ChangedFunc(Clipboard* self, void* user_data);
 	}
 	[CRepr]
 	public struct ContentDeserializer : GObject.Object
@@ -2402,6 +2403,7 @@ class Gdk
 		public static extern void WriteMimeTypeAsync(ContentProvider* provider, char8* mime_type, Gio.OutputStream* stream, c_int io_priority, Gio.Cancellable* cancellable, Gio.AsyncReadyCallback callback, void* user_data);
 		[LinkName("gdk_content_provider_write_mime_type_finish")]
 		public static extern c_int WriteMimeTypeFinish(ContentProvider* provider, Gio.AsyncResult* result);
+		public function void ContentChangedFunc(ContentProvider* self, void* user_data);
 	}
 	[CRepr]
 	public struct ContentSerializer : GObject.Object
@@ -2504,6 +2506,8 @@ class Gdk
 		public static extern char8* GetVendorId(Device* device);
 		[LinkName("gdk_device_has_bidi_layouts")]
 		public static extern c_int HasBidiLayouts(Device* device);
+		public function void ChangedFunc(Device* self, void* user_data);
+		public function void ToolChangedFunc(Device* self, DeviceTool tool, void* user_data);
 	}
 	[CRepr]
 	public struct DeviceTool : GObject.Object
@@ -2572,6 +2576,11 @@ class Gdk
 		public static extern void Sync(Display* display);
 		[LinkName("gdk_display_translate_key")]
 		public static extern c_int TranslateKey(Display* display, c_uint keycode, ModifierType state, c_int group, c_uint* keyval, c_int* effective_group, c_int* level, ModifierType* consumed);
+		public function void ClosedFunc(Display* self, c_int is_error, void* user_data);
+		public function void OpenedFunc(Display* self, void* user_data);
+		public function void SeatAddedFunc(Display* self, Seat seat, void* user_data);
+		public function void SeatRemovedFunc(Display* self, Seat seat, void* user_data);
+		public function void SettingChangedFunc(Display* self, char8* setting, void* user_data);
 	}
 	[CRepr]
 	public struct DisplayManager : GObject.Object
@@ -2584,6 +2593,7 @@ class Gdk
 		public static extern Display* OpenDisplay(DisplayManager* manager, char8* name);
 		[LinkName("gdk_display_manager_set_default_display")]
 		public static extern void SetDefaultDisplay(DisplayManager* manager, Display* display);
+		public function void DisplayOpenedFunc(DisplayManager* self, Display display, void* user_data);
 	}
 	[CRepr]
 	public struct Drag : GObject.Object
@@ -2608,6 +2618,9 @@ class Gdk
 		public static extern Surface* GetSurface(Drag* drag);
 		[LinkName("gdk_drag_set_hotspot")]
 		public static extern void SetHotspot(Drag* drag, c_int hot_x, c_int hot_y);
+		public function void CancelFunc(Drag* self, DragCancelReason reason, void* user_data);
+		public function void DndFinishedFunc(Drag* self, void* user_data);
+		public function void DropPerformedFunc(Drag* self, void* user_data);
 	}
 	[CRepr]
 	public struct DrawContext : GObject.Object
@@ -2726,6 +2739,13 @@ class Gdk
 		public static extern FrameTimings* GetTimings(FrameClock* frame_clock, c_longlong frame_counter);
 		[LinkName("gdk_frame_clock_request_phase")]
 		public static extern void RequestPhase(FrameClock* frame_clock, FrameClockPhase phase);
+		public function void AfterPaintFunc(FrameClock* self, void* user_data);
+		public function void BeforePaintFunc(FrameClock* self, void* user_data);
+		public function void FlushEventsFunc(FrameClock* self, void* user_data);
+		public function void LayoutFunc(FrameClock* self, void* user_data);
+		public function void PaintFunc(FrameClock* self, void* user_data);
+		public function void ResumeEventsFunc(FrameClock* self, void* user_data);
+		public function void UpdateFunc(FrameClock* self, void* user_data);
 	}
 	[CRepr]
 	public struct GLContext : DrawContext
@@ -2882,6 +2902,7 @@ class Gdk
 		public static extern c_int GetWidthMm(Monitor* monitor);
 		[LinkName("gdk_monitor_is_valid")]
 		public static extern c_int IsValid(Monitor* monitor);
+		public function void InvalidateFunc(Monitor* self, void* user_data);
 	}
 	[CRepr]
 	public struct MotionEvent : Event
@@ -2928,6 +2949,10 @@ class Gdk
 		public static extern Device* GetPointer(Seat* seat);
 		[LinkName("gdk_seat_get_tools")]
 		public static extern GLib.List* GetTools(Seat* seat);
+		public function void DeviceAddedFunc(Seat* self, Device device, void* user_data);
+		public function void DeviceRemovedFunc(Seat* self, Device device, void* user_data);
+		public function void ToolAddedFunc(Seat* self, DeviceTool tool, void* user_data);
+		public function void ToolRemovedFunc(Seat* self, DeviceTool tool, void* user_data);
 	}
 	[CRepr]
 	public struct Snapshot : GObject.Object
@@ -2990,6 +3015,11 @@ class Gdk
 		public static extern void SetOpaqueRegion(Surface* surface, cairo.Region* region);
 		[LinkName("gdk_surface_translate_coordinates")]
 		public static extern c_int TranslateCoordinates(Surface* from, Surface* to, double* x, double* y);
+		public function void EnterMonitorFunc(Surface* self, Monitor monitor, void* user_data);
+		public function c_int EventFunc(Surface* self, Event* event, void* user_data);
+		public function void LayoutFunc(Surface* self, c_int width, c_int height, void* user_data);
+		public function void LeaveMonitorFunc(Surface* self, Monitor monitor, void* user_data);
+		public function c_int RenderFunc(Surface* self, cairo.Region region, void* user_data);
 	}
 	[CRepr]
 	public struct Texture : GObject.Object
@@ -3044,6 +3074,7 @@ class Gdk
 	[CRepr]
 	public struct VulkanContext : DrawContext
 	{
+		public function void ImagesUpdatedFunc(VulkanContext* self, void* user_data);
 	}
 		[LinkName("gdk_cairo_draw_from_gl")]
 		public static extern void CairoDrawFromGl(cairo.Context* cr, Surface* surface, c_int source, c_int source_type, c_int buffer_scale, c_int x, c_int y, c_int width, c_int height);

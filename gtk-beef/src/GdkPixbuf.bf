@@ -169,6 +169,10 @@ class GdkPixbuf
 		public static extern c_int Write(PixbufLoader* loader, c_uchar* buf, c_ulong count);
 		[LinkName("gdk_pixbuf_loader_write_bytes")]
 		public static extern c_int WriteBytes(PixbufLoader* loader, GLib.Bytes* buffer);
+		public function void AreaPreparedFunc(PixbufLoader* self, void* user_data);
+		public function void AreaUpdatedFunc(PixbufLoader* self, c_int x, c_int y, c_int width, c_int height, void* user_data);
+		public function void ClosedFunc(PixbufLoader* self, void* user_data);
+		public function void SizePreparedFunc(PixbufLoader* self, c_int width, c_int height, void* user_data);
 	}
 	[CRepr]
 	public struct PixbufNonAnim : PixbufAnimation
