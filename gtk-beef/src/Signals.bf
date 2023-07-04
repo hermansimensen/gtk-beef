@@ -37,7 +37,7 @@ extension GObject
 	}
 
 
-	[ClosureGen]
+	[CRepr, ClosureGen]
 	struct BeefCClosure<T> where T : Delegate
 	{
 		Closure mClosure;
