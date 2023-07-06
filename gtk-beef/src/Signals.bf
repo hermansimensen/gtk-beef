@@ -6,55 +6,59 @@ using System.Collections;
 
 extension GObject
 {
-	static List<void*> gClosureList = new .() ~ {ClearAndDeleteItems(gClosureList); delete gClosureList;}
-
-
+	static List<void*> gClosureList = new .() ~ 
+	{
+		for(var c in gClosureList)
+		{
+			int closurePtr = (int) (void*)&c;
+        	void* addr = (void*)(closurePtr -= 0x20);
+			delete addr;
+		}
+		delete gClosureList;
+	}
+	
 	public static int SignalConnect<T>(GObject.Object* instance, char8 *detailed_signal, T callback, GObject.ConnectFlags connectFlags) where T : Delegate
-	{
-		int32 after = (connectFlags & .After) != 0 ? 1 : 0;
-		int32 swap = (connectFlags & .Swapped) != 0 ? 1 : 0;
+    {
+        int32 after = (connectFlags & .After) != 0 ? 1 : 0;
 
-		BeefCClosure<T>* c = new .(callback);
+        BeefCClosure<T>* c = (.) Closure.NewSimple(sizeof(BeefCClosure<T>), null);
 
-		gClosureList.Add((void*)c);
+        c.marshal = => MarshallFunct<T>;
+        Closure.Ref(c);
+        Closure.Sink(c);
+        c.mCallbackPtr = (.) callback;
+        c.mCallback = (.) c.mCallbackPtr;
 
-		GObject.SignalConnectClosure(instance, detailed_signal, (.)(void*)c, after);
+        int closurePtr = (int) (void*)&c;
+        void* addr = (void*)(closurePtr -= 0x20);
+        Internal.MemCpy(addr, &c.marshal, sizeof(void*));
 
-		return 0;
-	}
+        gClosureList.Add(c);
 
-	public static void MarshallFunct<T>(Closure* closure, Value* return_value, c_uint n_param_values, Value* param_values, void* invocation_hint, void* marshal_data) where T : Delegate
-	{
-		T funcType;
-		BeefCClosure<T>* cs = (BeefCClosure<T>*) closure;
+        GObject.SignalConnectClosure(instance, detailed_signal, c, after);
 
-		for(int i = 0; i < n_param_values; i++)
-		{
-			cs.SetArgument(i, param_values[i].data.v_pointer);
-		}
+        return 0;
+    }
 
-		cs.InvokeFunction();
-	}
+    public static void MarshallFunct<T>(Closure* closure, Value* return_value, c_uint n_param_values, Value* param_values, void* invocation_hint, void* marshal_data) where T : Delegate
+    {
+        T funcType;
+        BeefCClosure<T>* cs = (BeefCClosure<T>*) closure;
+
+        for(int i = 0; i < n_param_values; i++)
+        {
+            cs.SetArgument(i, param_values[i].data.v_pointer);
+        }
+
+        cs.InvokeFunction();
+    }
 
 
-	[CRepr, ClosureGen]
-	struct BeefCClosure<T> where T : Delegate
-	{
-		Closure mClosure;
-		T funcType;
-
-		public this(T callback)
-		{
-			uint32 size = sizeof(BeefCClosure<T>);
-			mClosure = *Closure.NewSimple(size, null);
-			Closure.Ref(&mClosure);
-			Closure.Sink(&mClosure);
-			mClosure.marshal = => MarshallFunct<T>;
-			funcType = ?;
-			mCallbackPtr = (.) callback;
-			mCallback = (.) mCallbackPtr;
-		}
-	}
+    [CRepr, ClosureGen]
+    public struct BeefCClosure<T> : Closure where T : Delegate
+    {
+        T funcType;
+    }
 
 	struct ClosureGen : Attribute, IComptimeTypeApply
 	{
