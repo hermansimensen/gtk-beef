@@ -6,17 +6,6 @@ using System.Collections;
 
 extension GObject
 {
-	static List<void*> gClosureList = new .() ~ 
-	{
-		for(var c in gClosureList)
-		{
-			int closurePtr = (int) (void*)&c;
-        	void* addr = (void*)(closurePtr -= 0x20);
-			delete addr;
-		}
-		delete gClosureList;
-	}
-	
 	public static int SignalConnect<T>(GObject.Object* instance, char8 *detailed_signal, T callback, GObject.ConnectFlags connectFlags) where T : Delegate
     {
         int32 after = (connectFlags & .After) != 0 ? 1 : 0;
@@ -29,11 +18,9 @@ extension GObject
         c.mCallbackPtr = (.) callback;
         c.mCallback = (.) c.mCallbackPtr;
 
-        int closurePtr = (int) (void*)&c;
+        int closurePtr = (int) (void*)c;
         void* addr = (void*)(closurePtr -= 0x20);
         Internal.MemCpy(addr, &c.marshal, sizeof(void*));
-
-        gClosureList.Add(c);
 
         GObject.SignalConnectClosure(instance, detailed_signal, c, after);
 
